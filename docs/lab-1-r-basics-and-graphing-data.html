@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Answering questions with data: Lab Manual</title>
+  <meta name="description" content="A lab manual for Psyc 3400">
+  <meta name="generator" content="bookdown 0.6 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Answering questions with data: Lab Manual" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="A lab manual for Psyc 3400" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Answering questions with data: Lab Manual" />
+  
+  <meta name="twitter:description" content="A lab manual for Psyc 3400" />
+  
+
+<meta name="author" content="Matthew J. C. Crump">
+<meta name="author" content="Anajali Krishnan">
+<meta name="author" content="Stephen Volz">
+<meta name="author" content="Alla Chavarga">
+<meta name="author" content="Jeffrey Suzuki">
+
+
+<meta name="date" content="2018-04-11">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="index.html">
+<link rel="next" href="lab-2-descriptive-statistics.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script type="text/javascript">
+mattcrump=1;
+</script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="tufte.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Statistics Lab Manual</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#r"><i class="fa fa-check"></i><b>0.1</b> R</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#why-r"><i class="fa fa-check"></i><b>0.2</b> Why R?</a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#installing-r-and-r-studio"><i class="fa fa-check"></i><b>0.3</b> Installing R and R Studio</a></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#r-studio-notes-and-tips"><i class="fa fa-check"></i><b>0.4</b> R studio notes and tips</a><ul>
+<li class="chapter" data-level="0.4.1" data-path="index.html"><a href="index.html#console"><i class="fa fa-check"></i><b>0.4.1</b> Console</a></li>
+<li class="chapter" data-level="0.4.2" data-path="index.html"><a href="index.html#script-editor"><i class="fa fa-check"></i><b>0.4.2</b> Script Editor</a></li>
+<li class="chapter" data-level="0.4.3" data-path="index.html"><a href="index.html#workspace-and-history"><i class="fa fa-check"></i><b>0.4.3</b> Workspace and History</a></li>
+<li class="chapter" data-level="0.4.4" data-path="index.html"><a href="index.html#file-plot-packages-help"><i class="fa fa-check"></i><b>0.4.4</b> File, Plot, Packages, Help</a></li>
+</ul></li>
+<li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#final-comments"><i class="fa fa-check"></i><b>0.5</b> Final comments</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="lab-1-r-basics-and-graphing-data.html"><a href="lab-1-r-basics-and-graphing-data.html"><i class="fa fa-check"></i><b>1</b> Lab 1: R basics and Graphing Data</a><ul>
+<li class="chapter" data-level="1.1" data-path="lab-1-r-basics-and-graphing-data.html"><a href="lab-1-r-basics-and-graphing-data.html#general-goals"><i class="fa fa-check"></i><b>1.1</b> General Goals</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="lab-1-r-basics-and-graphing-data.html"><a href="lab-1-r-basics-and-graphing-data.html#r-basics-checklist"><i class="fa fa-check"></i><b>1.1.1</b> R basics Checklist</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="lab-1-r-basics-and-graphing-data.html"><a href="lab-1-r-basics-and-graphing-data.html#a-clean-start"><i class="fa fa-check"></i><b>1.2</b> A clean start</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="lab-1-r-basics-and-graphing-data.html"><a href="lab-1-r-basics-and-graphing-data.html#making-an-r-project"><i class="fa fa-check"></i><b>1.2.1</b> Making an R project</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="lab-1-r-basics-and-graphing-data.html"><a href="lab-1-r-basics-and-graphing-data.html#r-console"><i class="fa fa-check"></i><b>1.3</b> R console</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="lab-1-r-basics-and-graphing-data.html"><a href="lab-1-r-basics-and-graphing-data.html#using-the-console-as-a-calculator"><i class="fa fa-check"></i><b>1.3.1</b> Using the console as a calculator</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="lab-1-r-basics-and-graphing-data.html"><a href="lab-1-r-basics-and-graphing-data.html#r-editor"><i class="fa fa-check"></i><b>1.4</b> R editor</a></li>
+<li class="chapter" data-level="1.5" data-path="lab-1-r-basics-and-graphing-data.html"><a href="lab-1-r-basics-and-graphing-data.html#an-example-script"><i class="fa fa-check"></i><b>1.5</b> An example script</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="lab-1-r-basics-and-graphing-data.html"><a href="lab-1-r-basics-and-graphing-data.html#variable-name"><i class="fa fa-check"></i><b>1.5.1</b> Variable name</a></li>
+<li class="chapter" data-level="1.5.2" data-path="lab-1-r-basics-and-graphing-data.html"><a href="lab-1-r-basics-and-graphing-data.html#section"><i class="fa fa-check"></i><b>1.5.2</b> &lt;-</a></li>
+<li class="chapter" data-level="1.5.3" data-path="lab-1-r-basics-and-graphing-data.html"><a href="lab-1-r-basics-and-graphing-data.html#section-1"><i class="fa fa-check"></i><b>1.5.3</b> 1+1</a></li>
+<li class="chapter" data-level="1.5.4" data-path="lab-1-r-basics-and-graphing-data.html"><a href="lab-1-r-basics-and-graphing-data.html#where-are-the-variables"><i class="fa fa-check"></i><b>1.5.4</b> Where are the variables?</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="lab-1-r-basics-and-graphing-data.html"><a href="lab-1-r-basics-and-graphing-data.html#a-bunch-of-numbers"><i class="fa fa-check"></i><b>1.6</b> A bunch of numbers</a></li>
+<li class="chapter" data-level="1.7" data-path="lab-1-r-basics-and-graphing-data.html"><a href="lab-1-r-basics-and-graphing-data.html#making-numbers-in-r"><i class="fa fa-check"></i><b>1.7</b> Making numbers in R</a><ul>
+<li class="chapter" data-level="1.7.1" data-path="lab-1-r-basics-and-graphing-data.html"><a href="lab-1-r-basics-and-graphing-data.html#rep-function"><i class="fa fa-check"></i><b>1.7.1</b> rep function</a></li>
+<li class="chapter" data-level="1.7.2" data-path="lab-1-r-basics-and-graphing-data.html"><a href="lab-1-r-basics-and-graphing-data.html#seq-function"><i class="fa fa-check"></i><b>1.7.2</b> seq function</a></li>
+<li class="chapter" data-level="1.7.3" data-path="lab-1-r-basics-and-graphing-data.html"><a href="lab-1-r-basics-and-graphing-data.html#runif-function"><i class="fa fa-check"></i><b>1.7.3</b> runif function</a></li>
+<li class="chapter" data-level="1.7.4" data-path="lab-1-r-basics-and-graphing-data.html"><a href="lab-1-r-basics-and-graphing-data.html#rnorm-function"><i class="fa fa-check"></i><b>1.7.4</b> rnorm function</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="lab-1-r-basics-and-graphing-data.html"><a href="lab-1-r-basics-and-graphing-data.html#graphing-data-in-r"><i class="fa fa-check"></i><b>1.8</b> Graphing Data in R</a><ul>
+<li class="chapter" data-level="1.8.1" data-path="lab-1-r-basics-and-graphing-data.html"><a href="lab-1-r-basics-and-graphing-data.html#plot-function"><i class="fa fa-check"></i><b>1.8.1</b> Plot function</a></li>
+<li class="chapter" data-level="1.8.2" data-path="lab-1-r-basics-and-graphing-data.html"><a href="lab-1-r-basics-and-graphing-data.html#histograms"><i class="fa fa-check"></i><b>1.8.2</b> Histograms</a></li>
+<li class="chapter" data-level="1.8.3" data-path="lab-1-r-basics-and-graphing-data.html"><a href="lab-1-r-basics-and-graphing-data.html#what-are-histograms-useful-for"><i class="fa fa-check"></i><b>1.8.3</b> What are histograms useful for?</a></li>
+</ul></li>
+<li class="chapter" data-level="1.9" data-path="lab-1-r-basics-and-graphing-data.html"><a href="lab-1-r-basics-and-graphing-data.html#problems"><i class="fa fa-check"></i><b>1.9</b> Problems</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="lab-2-descriptive-statistics.html"><a href="lab-2-descriptive-statistics.html"><i class="fa fa-check"></i><b>2</b> Lab 2: Descriptive Statistics</a><ul>
+<li class="chapter" data-level="2.1" data-path="lab-2-descriptive-statistics.html"><a href="lab-2-descriptive-statistics.html#outline-of-problem-to-solve"><i class="fa fa-check"></i><b>2.1</b> Outline of Problem to solve</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="lab-2-descriptive-statistics.html"><a href="lab-2-descriptive-statistics.html#important-things"><i class="fa fa-check"></i><b>2.1.1</b> important things</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="lab-2-descriptive-statistics.html"><a href="lab-2-descriptive-statistics.html#r-1"><i class="fa fa-check"></i><b>2.2</b> R</a></li>
+<li class="chapter" data-level="2.3" data-path="lab-2-descriptive-statistics.html"><a href="lab-2-descriptive-statistics.html#excel"><i class="fa fa-check"></i><b>2.3</b> Excel</a></li>
+<li class="chapter" data-level="2.4" data-path="lab-2-descriptive-statistics.html"><a href="lab-2-descriptive-statistics.html#spss"><i class="fa fa-check"></i><b>2.4</b> SPSS</a></li>
+<li class="chapter" data-level="2.5" data-path="lab-2-descriptive-statistics.html"><a href="lab-2-descriptive-statistics.html#matlab"><i class="fa fa-check"></i><b>2.5</b> Matlab</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Answering questions with data: Lab Manual</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="lab-1-r-basics-and-graphing-data" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Lab 1: R basics and Graphing Data</h1>
+<p><span class="newthought"> The commonality between science and art is in trying to see profoundly - to develop strategies of seeing and showing. —Edward Tufte </span></p>
+<div id="general-goals" class="section level2">
+<h2><span class="header-section-number">1.1</span> General Goals</h2>
+<ol style="list-style-type: decimal">
+<li>A brief tour of R-studio</li>
+<li>Some R basics</li>
+<li>Graphing data in R</li>
+<li>Graphing data using ggplot2</li>
+</ol>
+<div id="r-basics-checklist" class="section level3">
+<h3><span class="header-section-number">1.1.1</span> R basics Checklist</h3>
+<ol style="list-style-type: decimal">
+<li>Create a new R project</li>
+<li>Execute commands in the console</li>
+<li>Open and save new R script in the editor</li>
+<li>Write a short script, and run the commands in the script in the console</li>
+<li>View the contents of variables in the environment window</li>
+<li>View the contents of variables using the console</li>
+<li>Use the console like a calculator</li>
+<li>Store numbers in variables</li>
+</ol>
+</div>
+</div>
+<div id="a-clean-start" class="section level2">
+<h2><span class="header-section-number">1.2</span> A clean start</h2>
+<p>Good organization is key to data analysis. To explain, let me tell you a story to help you avoid being like me when I started learning how to analyze data. As a graduate student, I would collect data from experiments I was running. I stored the data in different files in different folders on my computer (all over the place, hard to remember where sometimes). I would copy the data into excel so I could look at it, do basic analysis, and reformat it so I could run statistics on the data using programs like SPSS. I would often have many different versions of excel spreadsheets with different versions of the data, sometimes stored in different folders. I would have many different SPSS outputs for each analysis I performed, sometimes in different locations. I would create tables and graphs in new excel spreadsheets, and edit the graphs in programs like Adobe Illustrator. All of these files would be all over the place. Sometimes, weeks, or months, or years later, I would revisit the data. After spending time to find it all, I would have to retrace my steps, doing detective work to figure out what analyses I had done. Ultimately, my previous work was so hard to understand, that I would end up redoing the analysis again. This was a messy process, and it took a lot of time. Wouldn’t it be nice if everything was in one place? R provides this solution.</p>
+<div id="making-an-r-project" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> Making an R project</h3>
+<p>R projects are a convenient way to organize everything you do in R. To create an R project in R-studio you can go to the file menu, and choose “New Project…”. Or, if you look in the top, right-side of the screen, you should see a little blue cube with an R in it. This shows your current R project. You can click this to create a new R project.</p>
+<p>If you are using a lab computer, then insert a USB stick. Then click to create a new R project. Navigate to your USB stick drive. Give your project a name, like “StatsLab”. This will create a new folder on your USB stick. Inside the folder will be a new R project file.</p>
+<p>Once you have loaded an R project, all of the new files that you make will be saved in this project folder. You can also put data that you want to analyse in this folder. Additionally, the output of your analyses (including figures etc.) will be saved into this folder. This great, because everything is in one place, and you know where that is. When you want to return to work on your R project, you just have to load it up. You can make as many R projects as you like as a way to organize your work in R.</p>
+</div>
+</div>
+<div id="r-console" class="section level2">
+<h2><span class="header-section-number">1.3</span> R console</h2>
+<p>R does things using scripts, which involves typing in commands to R. To begin, we will learn how to type in a command and execute it using the console.</p>
+<p>The console is an interface to using R. You type in a command, then press enter to execute it. Then, R will show you the result in the console.</p>
+<p>The console should be located in the bottom-left window of R-studio. You should see a tab that says “Console”. If you do not see the console window, then click on the word Console, and the window should appear.</p>
+<p>Inside the console you will a bunch of text telling you what version of R you are using. Scroll down to the bottom of the console and you should see a blue arrow (&gt;) followed by a cursor. If you click into the console, then you will be able to type commands. For example, click into the console and type 1+1, then press enter.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1+1</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<p>Above you should see two grey boxes. The first grey box is example code, showing what I typed into the console (e.g., 1+1). The second grey box is output given by R after pressing enter. You can see it gave the answer 2.</p>
+<div id="using-the-console-as-a-calculator" class="section level3">
+<h3><span class="header-section-number">1.3.1</span> Using the console as a calculator</h3>
+<p>R can be used just a like a calculator. Here are some examples:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">7+100</span></code></pre></div>
+<pre><code>## [1] 107</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">43-23</span></code></pre></div>
+<pre><code>## [1] 20</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">34</span>*<span class="dv">4</span></code></pre></div>
+<pre><code>## [1] 136</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">22</span>/<span class="dv">2</span></code></pre></div>
+<pre><code>## [1] 11</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span>+(<span class="dv">2</span>*<span class="dv">3</span>)+<span class="dv">5</span></code></pre></div>
+<pre><code>## [1] 12</code></pre>
+<p>Try using the R console as a calculator for yourself.</p>
+<p>Using the console is a quick and easy way to enter one command at a time. However, what if you want to enter more than one command? In this case, we want to write a script. A script is a recipe of multiple commands that tells R to do more than one thing, one after another.</p>
+</div>
+</div>
+<div id="r-editor" class="section level2">
+<h2><span class="header-section-number">1.4</span> R editor</h2>
+<p>We will use the R editor to write, save, and work on our scripts. The editor appears in the top-left window of R-Studio. When you open new scripts in R, you will see them appear as new tabs in the Editor window.</p>
+<p>To open a new R script, look to the top left-hand side of R-studio. You should see a white square with a green plus sign. Click this button, and you can create a new R script.</p>
+<p>The first thing that happens is a new, blank, R script is loaded, with the name “Untitled.R”. If you save this file (file menu-&gt;save), then you will be asked to give your new script a name. Give it a new name. If you are working in an R Project, then R-studio will automatically save your new script in your R project folder. All “.R” files a just plain text files.</p>
+</div>
+<div id="an-example-script" class="section level2">
+<h2><span class="header-section-number">1.5</span> An example script</h2>
+<p>After you create a new script, you can click into the editor window, and write anything you want, just like a word processor. In general, the scripts we will write, will give R instructions one line at a time. Below is an example:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># this is a comment</span>
+a &lt;-<span class="st"> </span><span class="dv">1+1</span>
+b &lt;-<span class="st"> </span><span class="dv">2</span>*<span class="dv">3</span>
+c &lt;-<span class="st"> </span>a+b</code></pre></div>
+<p>You can run this entire script in a few different ways:</p>
+<ol style="list-style-type: decimal">
+<li>Highlight all of the lines of text, copy them to the clipboard, then paste them into the console, and press enter (or return).</li>
+<li>Highlight all of the lines of text, and press the “run” button at the top of the editor window (this automatically copies and pastes the selected lines, and runs them in the console).</li>
+</ol>
+<p>After you run the script, you should see some output in the R console. Specifically, you should see each of lines of code that you asked R to run.</p>
+<p>Notice, however, that we do not see any of the answers of our this script. What has happened?</p>
+<p>Let’s step through each line. The first line says “# this is a comment”. Anything text that follows a “#” tells R not to run that line as code. Instead, R knows this is just a comment. Comments are very useful to insert into your scripts to explain, in plain english what is going on. For example, I will add more comments to the above script to explain what is going on.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># this is a comment</span>
+a &lt;-<span class="st"> </span><span class="dv">1+1</span> <span class="co"># puts 1+1 into new variable a</span>
+b &lt;-<span class="st"> </span><span class="dv">2</span>*<span class="dv">3</span> <span class="co"># puts 2 times 3 into new variable b</span>
+c &lt;-<span class="st"> </span>a+b <span class="co"># puts the sum of variable a and b into c</span></code></pre></div>
+<p>The comments give more insight into what R is doing here. For example, each line does a simple calculation, and stores the result into a new variable. Variables are a way to store our data in R. You can think of them as containers with names.</p>
+<p>Let’s look more closely at this line:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="dv">1+1</span></code></pre></div>
+<div id="variable-name" class="section level3">
+<h3><span class="header-section-number">1.5.1</span> Variable name</h3>
+<p>The ‘a’ is the name of the variable. In general, you can choose any name that you want. It is best to give descriptive names that are meaningful, and that help you remember what the variable is being used for.</p>
+</div>
+<div id="section" class="section level3">
+<h3><span class="header-section-number">1.5.2</span> &lt;-</h3>
+<p>The ‘&lt;-’ command tells R to put something into the variable. Anything that is to the right of the ‘&lt;-’ command will be put into the variable named on the left-hand side of the ‘&lt;-’ command</p>
+</div>
+<div id="section-1" class="section level3">
+<h3><span class="header-section-number">1.5.3</span> 1+1</h3>
+<p>1+1 is an operation that we are asking R to compute. The output of this operation is put into ‘&lt;-’ the variable named ‘a’.</p>
+</div>
+<div id="where-are-the-variables" class="section level3">
+<h3><span class="header-section-number">1.5.4</span> Where are the variables?</h3>
+<p>Where are these variables, and how can we see them? There are two ways to see what is inside variables.</p>
+<ol style="list-style-type: decimal">
+<li>In the top right window, you should see a tab called “Environment”. This tab lists all of the variables that you have currently stored in R. You should see an a, b, and c, along with the numbers inside them.</li>
+<li>You can type the name of the variable into the R console, and then press enter. The console will display the contents of the variable.</li>
+</ol>
+</div>
+</div>
+<div id="a-bunch-of-numbers" class="section level2">
+<h2><span class="header-section-number">1.6</span> A bunch of numbers</h2>
+<p>Data comes in all shapes and sizes. Usually, there are so many numbers that it is difficult to make sense of them. Let me show you 100 numbers.</p>
+<p>Where did these numbers come from? What kind of properties do these numbers have? Are there any patterns in the numbers? Do some kinds of numbers happen more often than other kinds of numbers? What can we say about these numbers just by looking at them?</p>
+<p>If you take some time to look at the above numbers, you might start noticing some regularities. When I quickly look at them I see:</p>
+<ol style="list-style-type: decimal">
+<li>Most the numbers are around 100.</li>
+<li>The numbers all appear to be different by big or small amounts</li>
+<li>There are no negative numbers</li>
+<li>There are no really small numbers (e.g., close to 0)</li>
+<li>There are no really huge numbers</li>
+</ol>
+<p>At least we can get some sense of the numbers by eyeballing them. If there were 1000s or 100000s of numbers, eyeballing them one at a time would take forever.</p>
+</div>
+<div id="making-numbers-in-r" class="section level2">
+<h2><span class="header-section-number">1.7</span> Making numbers in R</h2>
+<p>Before we go ahead and use R to make plots and graphs of data, we need to first have some data to plot. And, before we start using real data, it is worth pointing out that we can use R to create numbers. So, after we create our own sets of numbers, we can then plot them to see how graphing works.</p>
+<div id="rep-function" class="section level3">
+<h3><span class="header-section-number">1.7.1</span> rep function</h3>
+<p>Let’s say you wanted to create a variable that stored the number 43, 100 times. You can do this using the rep function (rep is short for repeat). Below is an example of how this function is used.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_numbers &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">43</span>,<span class="dv">100</span>)</code></pre></div>
+<p>We can check to see what is inside the new variable <em>my_numbers</em> by typing it into the console, or looking at it in the environment tab. You should see that it contains the number 43, repeated 100 times. Using the rep function you can repeat anything, any number of times</p>
+</div>
+<div id="seq-function" class="section level3">
+<h3><span class="header-section-number">1.7.2</span> seq function</h3>
+<p>Let’s say you want to create a sequence of numbers. You can do this using the seq function. The example below starts at 23, and goes to 56, in increments of 1. You can modify the starting value, the ending value, and the increment value to create many different kinds of sequences.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_sequence &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">23</span>,<span class="dv">56</span>,<span class="dv">1</span>)</code></pre></div>
+</div>
+<div id="runif-function" class="section level3">
+<h3><span class="header-section-number">1.7.3</span> runif function</h3>
+<p>R can generate numbers in much more sophisticated ways. In particular, we can use R to sample numbers from distributions with particular properties. We will introduce distributions in the next lab.</p>
+<p>R can generate random numbers using the runif function. In the example below, R generates 100 numbers that are randomly between 0 and 1. You can generate as many numbers as you want, between any two numbers that you want.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_randoms &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">100</span>,<span class="dv">0</span>,<span class="dv">1</span>)</code></pre></div>
+</div>
+<div id="rnorm-function" class="section level3">
+<h3><span class="header-section-number">1.7.4</span> rnorm function</h3>
+<p>R can generate numbers from a normal distibrution. In the example belwo, we generate 100 numbers from a distribution with a mean of 10, and a standard deviation of 20.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_normal &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">10</span>,<span class="dv">20</span>)</code></pre></div>
+</div>
+</div>
+<div id="graphing-data-in-r" class="section level2">
+<h2><span class="header-section-number">1.8</span> Graphing Data in R</h2>
+<p>Graphs, or visual displays, of numbers can be very useful for interpreting data. Fortunately, we can use R to create many kinds of visual displays, that can help us interpret the data. To begin we will look at the plot and histogram functions.</p>
+<div id="plot-function" class="section level3">
+<h3><span class="header-section-number">1.8.1</span> Plot function</h3>
+<p>Previously, we created a <em>my_numbers</em> variable, that contains the number 43, repeated 100 times. If we plot this in R, what should we see? Let’s do it and find out.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(my_numbers)</code></pre></div>
+<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>Whenever you have a variable with multiple numbers, you can always plot it, just like in the above example. Remember the variable <em>my_numbers</em> contains 100 numbers. This means there are 100 slots in the variable. Each slot has an <em>index</em> value. The index value for the first slot is 1, the index value for the second slot is 2, and so on. The x-axis (the bottom line in the graph) shows the index value from 1 to 100. Remember also, that each slot contains the number 43. The y-axis (the vertical line in the graph) shows a range of numbers. The dots in the graph represent the value inside each slot of the variable. Because each slot contains the value 43, we see all 100 dots, all in a line, all positioned at 43 with respect to the y-axis.</p>
+<p>Let’s plot some of the other variables we made.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(my_sequence)</code></pre></div>
+<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p>The variable <em>my_sequence</em> contains the numbers 23 to 56, going up by one. We see in the plot, the first number (on the x-axis) is a 23 on the y-axis. As we go across the x-axis, the numbers go up by one until we get to 56. We see a straight diagonal line.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(my_randoms)</code></pre></div>
+<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p>The variable <em>my_randoms</em> contains 100 random numbers between 0 and 1. The plot shows dots all over the place between 0 and 1 on the y-axis.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(my_normal)</code></pre></div>
+<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p>The variable <em>my_normal</em> contains 100 numbers sample from a normal distribution with a mean of 10, and a standard deviation of 20. Roughly, most of the numbers should be close to 10, some of the numbers will be greater and smaller than 10. But, as the numbers move away from 10 in either direction, really small or really big numbers should occur less and less frequently. We can sort of see this in the plot. For example, you might notice that most the numbers are near the horizontal middle of the graph, near the 10 on the y-axis, and less of the numbers are near the top or bottom of the graph.</p>
+</div>
+<div id="histograms" class="section level3">
+<h3><span class="header-section-number">1.8.2</span> Histograms</h3>
+<p>Histograms are used to visually summarize a set of numbers. In particular, histograms split a set of numbers into bins, and then show how many numbers fall within each bin. Each bin represents a pre-defined range.</p>
+<p>Let’s create a set of numbers made up from 1s, 2s, and 3s. Let’s say we have ten 1s, twenty 2s, and 30 3s.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_set &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">10</span>),<span class="kw">rep</span>(<span class="dv">2</span>,<span class="dv">20</span>),<span class="kw">rep</span>(<span class="dv">3</span>,<span class="dv">30</span>))</code></pre></div>
+<p>The above line of code uses two R functions, rep(), and c(). We already know how rep works. The c() function is short for combine. So, the above line of code, combines 10 1s, 20 2s and 30 3s, all into one variable. The contents of the variable looks like this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_set</code></pre></div>
+<pre><code>##  [1] 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3
+## [36] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3</code></pre>
+<p>Because, we made this variable, we already know what is inside it. Let’s make a histogram of the variable, to see what that looks like:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(my_set)</code></pre></div>
+<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p>The histogram is a bar graph. The height of each bar represents a count, or the frequency of how many numbers fall inside each bin. The x-axis shows the bin ranges. If you do not specify the bin ranges, then R will make a reasonable guess for you. In this case, R set the bin ranges in steps of .5. For example, 1-1.5, 1.5-2, 2-2.5, 2.5-3. R uses the word <em>breaks</em> to refer to bins. And, when you plot a histogram, you can set your own breaks, or bin ranges.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(my_set, <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>))</code></pre></div>
+<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p>Let’s spend a moment interpreting this new histogram. The first bar is between 0 and 1 on the x-axis, and has a value of 10 on the y-axis. This means that there are 10 numbers inside the my_set variable that have a value between 0 and 1; specifically, a value greater than zero up to and equalling 1. The second bar is between 1 and 2 on the x-axis, and has a value of 20 on the y-axis. So, there are 20 numbers in the variable with a value greater than 1 up to and equalling 2. Finally, the third bar shows there are 30 numbers in the range greater than 2, up to equalling 3. We can also see there are no numbers smaller than 0, or greater than 4.</p>
+</div>
+<div id="what-are-histograms-useful-for" class="section level3">
+<h3><span class="header-section-number">1.8.3</span> What are histograms useful for?</h3>
+<p>A primary purpose of histograms is to get a quick look at the range and frequency of a set of numbers. In particular, when the bars are of different sizes, we can know that some values occur more than others.</p>
+<p>What should a histogram look like for a set of values whose numbers all occur randomly, and equally frequently? By this definition, we are saying that all numbers, within all ranges, occur equally often. For example, imagine we created a set of 10,000 numbers, and chose those numbers from between 1 and 10, such that any number between 1 and 10 occurs with the same frequency as all other numbers. We can use the random number generator and histogram to find out:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">some_random_numbers &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">10000</span>,<span class="dv">1</span>,<span class="dv">10</span>)
+<span class="kw">hist</span>(some_random_numbers,<span class="dt">breaks=</span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">11</span>,<span class="dv">1</span>))</code></pre></div>
+<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#notice I set the breaks using the seq() function</span></code></pre></div>
+<p>We see that heights of the bars are all close to the same number. This is good, because each number between 1 to 10 should have had an equal chance of being selected. However, notice the bars are not exactly the same height. This shows that the random number generator did actually generate each number with equal frequency.</p>
+<p>What about sets of numbers where some kinds of numbers occur more than others? Here, we would expect higher bars for ranges containing many values, and smaller numbers for ranges containing fewer values.</p>
+<p>Let’s plot histogram for a normal distribution and see what it looks like. We will set the mean to 100, and the standard deviation to 20, and we ask R to generate 10000 numbers from this distribution.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">normal_sample &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10000</span>,<span class="dv">100</span>,<span class="dv">20</span>)
+<span class="kw">hist</span>(normal_sample)</code></pre></div>
+<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-20-1.png" width="672" /> The histogram shows that the highest bars are in the middle, near the 100 mark. So, numbers near 100 occured most frequently in our set. What happens to the heights of the bars on either side of the histogram? The bars are decreasing in height as they move away from the middle in both directions. So, as numbers move away from 100, they occur less and less frequently. For example, we don’t see any bars in the range of 500 or 1000. This means that no values that high were in our set of numbers. From the histogram, we can clearly see that our set hardly had any numbers greater than 150, or less than 50. Or, in other words, most of the numbers were between 50 and 150.</p>
+</div>
+</div>
+<div id="problems" class="section level2">
+<h2><span class="header-section-number">1.9</span> Problems</h2>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="lab-2-descriptive-statistics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/CrumpLab/statisticsLab/blob/master/01-Graphing.Rmd",
+"text": "Edit"
+},
+"download": ["Programming_Crump.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
