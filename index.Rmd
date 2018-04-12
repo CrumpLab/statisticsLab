@@ -27,7 +27,8 @@ description: "A lab manual for Psyc 3400"
 
 # Preface {-}
 
-This lab manual involves tutorials and data-analysis problems using the free statistics software R. The goal is to train students to be able to organize and analyze data common to research in psychology using r (e.g., learning recipes), as well as to understand the ideas behind the analyses so students can take creative approaches to answering questions with data (e.g., learning to cook).
+This lab manual involves tutorials and data-analysis problems using the free statistics software R, as well as Excel, and SPSS. The goal is to train students to be able to organize and analyze data common to research in psychology, as well as to understand the ideas behind the analyses so students can take creative approaches to answering questions with data.
+
 
 ## R
 
