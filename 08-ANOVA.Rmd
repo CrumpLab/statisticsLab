@@ -1,0 +1,39 @@
+# Lab 8: One-way ANOVA
+
+<div class="marginnote">
+This lab is modified and extended from [Open Stats Labs](https://sites.trinity.edu/osl). Thanks to Open Stats Labs (Dr. Kevin P. McIntyre) for their fantastic work.
+</div>
+
+## Lab Skills Learned
+
+## Important Stuff
+- citation: James, E. L., Bonsall, M. B., Hoppitt, L., Tunbridge, E. M., Geddes, J. R., Milton, A. L., & Holmes, E. A. (2015). Computer game play reduces intrusive memories of experimental trauma via reconsolidation-update mechanisms. Psychological Science, 26, 1201-1215.
+- [Link to .pdf of article](http://journals.sagepub.com/stoken/default+domain/hQ2W4fbPrZVJ7eyNJaqu/full)
+- [Data in .csv format](https://drive.google.com/open?id=0Bz-rhZ21ShvOM1cxWUpUNlQ0UlE)
+- [Data in SPSS format](https://drive.google.com/file/d/0Bz-rhZ21ShvOZ1lvQ0dQekZGWU0/view?usp=sharing)
+
+## Outline of Problem to solve
+
+Stuff we need to say in general
+
+### important  things
+
+Other things to say
+
+## R
+
+How to do it in R
+
+## Excel
+
+How to do it in Excel
+
+## SPSS
+
+How to do it in SPSS
+
+## Matlab
+
+How to do it in Matlab
+
+

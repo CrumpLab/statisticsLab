@@ -1,4 +1,4 @@
-# Lab 6: Fundamentals of Hypothesis Testing
+# Lab 5: Fundamentals of Hypothesis Testing
 
 <span class="newthought">
 Some inspiring quote

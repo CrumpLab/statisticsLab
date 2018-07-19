@@ -1,0 +1,36 @@
+# Lab 9: One-way ANOVA
+
+## Lab Skills Learned
+
+## Important Stuff
+- citation: Rosenbaum, D., Mama, Y., & Algom, D. (2017). Stand by Your Stroop: Standing Up Enhances Selective Attention and Cognitive Control. Psychological science, 28(12), 1864-1867.
+- [Link to .pdf of article](http://journals.sagepub.com/doi/abs/10.1177/0956797617721270?journalCode=pssa)
+- [Data in .csv format]()
+- [Data in SPSS format]()
+
+
+## Outline of Problem to solve
+
+Stuff we need to say in general
+
+### important  things
+
+Other things to say
+
+## R
+
+How to do it in R
+
+## Excel
+
+How to do it in Excel
+
+## SPSS
+
+How to do it in SPSS
+
+## Matlab
+
+How to do it in Matlab
+
+

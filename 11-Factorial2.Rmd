@@ -1,10 +1,12 @@
-# Lab 12: Repeated Measures Factorial ANOVA
+# Lab 11: Mixed Factorial ANOVA
 
-<span class="newthought">
-Some inspiring quote
----Inspiring Person
-</span>
+## Lab Skills Learned
 
+## Important Stuff
+- citation: 
+- [Link to .pdf of article]()
+- [Data in .csv format]()
+- [Data in SPSS format]()
 ## Outline of Problem to solve
 
 Stuff we need to say in general

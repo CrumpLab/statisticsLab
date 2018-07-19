@@ -1,4 +1,4 @@
-# Lab 8: t-Test (one-sample, paired sample)
+# Lab 4: Normal Distribution & Central Limit Theorem
 
 <span class="newthought">
 Some inspiring quote

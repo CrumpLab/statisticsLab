@@ -1,0 +1,35 @@
+# Lab 10: Factorial ANOVA
+
+## Lab Skills Learned
+
+## Important Stuff
+- citation: Barasch, A., Diehl, K., Silverman, J., & Zauberman, G. (2017). Photographic memory: The effects of volitional photo taking on memory for visual and auditory aspects of an experience. Psychological science, 28(8), 1056-1066.
+- [Link to .pdf of article](http://journals.sagepub.com/doi/abs/10.1177/0956797617694868)
+- [Data in .csv format]()
+- [Data in SPSS format]()
+
+## Outline of Problem to solve
+
+Stuff we need to say in general
+
+### important  things
+
+Other things to say
+
+## R
+
+How to do it in R
+
+## Excel
+
+How to do it in Excel
+
+## SPSS
+
+How to do it in SPSS
+
+## Matlab
+
+How to do it in Matlab
+
+

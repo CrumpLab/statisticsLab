@@ -1,0 +1,40 @@
+# Lab 6: t-Test (one-sample, paired sample)
+
+<div class="marginnote">
+This lab is modified and extended from [Open Stats Labs](https://sites.trinity.edu/osl). Thanks to Open Stats Labs (Dr. Kevin P. McIntyre) for their fantastic work.
+</div>
+
+## Lab skills learned
+
+
+## Important Stuff
+- citation: Mehr, S. A., Song. L. A., & Spelke, E. S. (2016). For 5-month-old infants, melodies are social. Psychological Science, 27, 486-501.
+- [Link to .pdf of article](http://journals.sagepub.com/stoken/default+domain/d5HcBHg85XamSXGdYqYN/full)
+- [Data in .csv format](https://drive.google.com/open?id=0Bz-rhZ21ShvOdW1wV0pmUTJSSk0)
+- [Data in SPSS format](https://drive.google.com/open?id=0Bz-rhZ21ShvOa3c4X3hqOWxwcUU)
+
+## Outline of Problem to solve
+
+Stuff we need to say in general
+
+### important  things
+
+Other things to say
+
+## R
+
+How to do it in R
+
+## Excel
+
+How to do it in Excel
+
+## SPSS
+
+How to do it in SPSS
+
+## Matlab
+
+How to do it in Matlab
+
+

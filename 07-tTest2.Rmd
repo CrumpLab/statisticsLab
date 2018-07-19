@@ -1,0 +1,39 @@
+# Lab 7: t-test (Independent Sample)
+
+<div class="marginnote">
+This lab is modified and extended from [Open Stats Labs](https://sites.trinity.edu/osl). Thanks to Open Stats Labs (Dr. Kevin P. McIntyre) for their fantastic work.
+</div>
+
+## Lab skills learned
+
+## Important Stuff
+- citation: Schroeder, J., & Epley, N. (2015). The sound of intellect: Speech reveals a thoughtful mind, increasing a job candidate’s appeal. Psychological Science, 26, 877-891.
+- [Link to .pdf of article](http://journals.sagepub.com/stoken/default+domain/PhtK6MPtXvkgnYRrnGbA/full)
+- [Data in .csv format](https://drive.google.com/open?id=0Bz-rhZ21ShvOei1MM24xNndnQ00)
+- [Data in SPSS format](https://drive.google.com/open?id=0Bz-rhZ21ShvOVXlDMjEzQU1oY1k)
+
+## Outline of Problem to solve
+
+Stuff we need to say in general
+
+### important  things
+
+Other things to say
+
+## R
+
+How to do it in R
+
+## Excel
+
+How to do it in Excel
+
+## SPSS
+
+How to do it in SPSS
+
+## Matlab
+
+How to do it in Matlab
+
+
