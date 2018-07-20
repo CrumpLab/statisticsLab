@@ -1,5 +1,6 @@
 # Lab 6: t-Test (one-sample, paired sample)
 
+
 <div class="marginnote">
 This lab is modified and extended from [Open Stats Labs](https://sites.trinity.edu/osl). Thanks to Open Stats Labs (Dr. Kevin P. McIntyre) for their fantastic work.
 </div>
@@ -38,9 +39,140 @@ Following this 1-2 week exposure period, the parents and their infant returned t
 
 The first thing to do is download the .csv formatted data file, using the link above, or just click [here](https://drive.google.com/open?id=0Bz-rhZ21ShvOdW1wV0pmUTJSSk0). It turns out there are lots of ways to load .csv files into R.
 
+1. Load the data.table library. Then use the fread function and supply the web address to the file. Just like this. No downloading required.
+
+```{r,eval=F}
+library(data.table)
+all_data <- fread("https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/MehrSongSpelke2016.csv")
+```
+
+2. Or, if you downloaded the .csv file. Then you can use fread, but you need to point it to the correct file location. The file location in this next example will not work for you, because the file is on my computer. 
+
 ```{r}
-#a<-fread("https://drive.google.com/open?id=0Bz-rhZ21ShvOdW1wV0pmUTJSSk0")
-#b<-fread("~/Downloads/ttest1.csv")
+library(data.table)
+all_data <- fread("Data/MehrSongSpelke2016.csv")
+```
+
+### Inspect the data frame
+
+When you have loaded data it's always a good idea to check out what it looks like. You can look at all of the data in the environment tab on the top right hand corner. The data should be in a variable called `all_data`. Clicking on `all_data` will load it into a viewer, and you can scroll around. This can be helpful to see things. But, there is so much data, can be hard to know what you are looking for.
+
+#### summarytools
+
+The summarytools packages give a quick way to summarize all of the data in a data frame. Here's how. When you run this code you will see the summary in the viewer on the bottom right hand side. There's a little browser button (arrow on top of little window) that you can click to expand and see the whole thing in a browser.
+
+```{r, eval=F}
+library(summarytools)
+view(dfSummary(all_data))
+
+```
+
+### Get the data for Experiment one
+
+The data contains all of the measurements from all five experiments in the paper. By searching through the `all_data` dataframe, you should look for the variables that code for each experiment. For example, the third column is called `exp1`, which stands for experiment 1. Notice that it contains a series of 1s. If you keep scrolling down, the 1s stop. These 1s identify the rows associated with the data for Experiment 1. We only want to analyse that data. So, we need to filter our data, and put only those rows into a new variable. We do this with the `dplyr` library, using the `filter` function.
+
+```{r}
+library(dplyr)
+experiment_one <- all_data %>% filter(exp1==1)
+```
+
+Now if you look at the new variable `experiment_one`, there are only 32 rows of data. Much less than before. Now we have the data from experiment 1.
+
+### Baseline phase: Conduct a one sample t-test
+
+You first want to show that infants' looking behavior did not differ from chance during the baseline trial. The baseline trial was 16 seconds long. During the baseline, infants watched a video of two unfamilar people, one of the left and one on the right. There was no sound during the basline. Both of the actors in the video smiled directly at the infant.
+
+The important question was to determine whether the infant looked more or less to either person. If they showed no preference, the infant should look at both people about 50% of the time. How could we determine whether the infant looked at both people about 50% of the time?
+
+The `experiment_one` dataframe has a column called `Baseline_Proportion_Gaze_to_Singer`. All of these values show how the proportion of time that the infant looked to the person who would later sing the familiar song to them. If the average of these proportion is .5 across the infants, then we would have some evidence that the infants were not biased at the beginning of the experiment. However, if the infants on average had a bias toward the singer, then the average proportion of the looking time should be different than .5.
+
+Using a one-sample t-test, we can test the hypothesis that our sample mean for the `Baseline_Proportion_Gaze_to_Singer` was not different from .5.
+
+To do this in R, we just need to isolate the column of data called `Baseline_Proportion_Gaze_to_Singer`. We will do this using the `$` operator. The `$` operator is placed after any data frame variable, and allows you to select a column of the data. The next bit of code will select the column of data we want, and put it into a new variable called `Baseline`. Note, if you type `exp1$` then Rstudio should automatically bring up all the columns you can choose from.
+
+```{r}
+baseline <- experiment_one$Baseline_Proportion_Gaze_to_Singer
+```
+
+#### Look at the numbers
+
+Ok, we could just do the t-test right away, it's really easy, only one line of code. But, we haven't even looked at the numbers yet. Let's at least do that. First, we'll just use plot. It will show every data point for each infant as a dot.
+
+```{r}
+plot(baseline)
+```
+
+That's helpful, we see that the dots are all over the place. Let's do a histrogram, so we can get a better sense of the frequency of different proportions.
+
+```{r}
+hist(baseline)
+```
+
+#### Look at the descriptives
+
+Let's get the mean and standard deviation of the sample
+
+```{r}
+mean(baseline)
+sd(baseline)
+```
+
+Ok, so just looking at the mean, we see the proportion is close to .5 (it's .521). And, we see there is a healthy amount of variance (the dots were all over the place), as the standard deviation was about .176.
+
+Now, before we run the t-test, what do you think is going to happen? We are going to get a t-value, and an associated p-value. If you can make a guess at what those numbers would be right now in your head, and those end up being pretty close to the ones we will see in a moment, then you should pat yourself on the back. You have learned how to have intuitions about the data. As I am writing this I will tell you that 1) I can't remember what the t and p was from the paper, and I haven't done the test yet, so I don't know the answer. So, I am allowed to guess what the answer will be. Here are my guesses t(31) = 0.2, p = .95. The numbers in the brackets are degrees of freedom, which we know are 31 (df= n-1 = 32-1= 31). More important than the specific numbers I am guessing (which will probably be wrong), I am guessing that the p-value will be pretty large, it will not be less than .05, which the author's set as their alpha rate. So, I am guessing we will not reject the hypothesis that .52 is different from .5.
+
+Let's do the t-test and see what happens.
+
+#### Conduct t.test
+
+```{r}
+t.test(baseline, mu=.5)
+```
+
+So, there we have it. We did a one-sample t-test. Here's how you would report it, t(31) = .67, p = .505. Or, we might say something like:
+
+> During the basline condition, the mean proportion looking time toward the singer was .52, and was not significantly different from .5, according to a one-sample test, t(31) = .67, p = .505.
+
+You should take the time to check this result, and see if it is the same one that was reported in the paper.
+
+### Test phase
+
+Remember how the experiment went. Infants watched silent video recordings of two women (Baseline). Then each person sung a song, one was familiar to the infant (their parents sung the song to them many times), and one was unfamiliar (singing phase). After the singing phase, the infants watched the silent video of the two singers argain (test phase). The critical question was whether the infants would look more to the person who sung the familiar song compared to the person who sun the unfamiliar song. If the infants did this, they should look more than 50% of the time to the singer who sang the familiar song. We have the data, we can do another one sample t-test to find out. We can re-use all the code we already wrote to do this. I'll put it all in one place. If we run all of this code, we will see all of the things we want to see.
+
+We only need to make two changes. We will change `experiment_one$Baseline_Proportion_Gaze_to_Singer` to `experiment_one$Test_Proportion_Gaze_to_Singer`, because that column has the test phase data. And, instead of putting the data into the variable `baseline`. We will make  a new variable called `test_phase` to store the data.
+
+```{r}
+test_phase <- experiment_one$Test_Proportion_Gaze_to_Singer
+plot(test_phase)
+hist(test_phase)
+mean(test_phase)
+sd(test_phase)
+t.test(test_phase, mu = .5)
+
+```
+
+Alright. What did we find? You should take a stab at writing down what we found. You can use the same kind of language that I used from the first one sample-test. You should state the mean proportion, the t-value, the dfs, and the p-value. You should be able to answer the question, did the infants look longer at the singer who sang the familiar song? And, did they look longer than would be consist with chance at 50%.
+
+### Paired-samples t-test
+
+The paired samples t-test is easy to do. We've already made two variables called `baseline`, and `test_phase`. These contain each of the infants looking time proportions to the singer for both parts of the experiment. We can see if the difference between them was likely or unlikely due to chance by running a paired samples t-test. We do it like this in one line:
+
+```{r}
+t.test(baseline, test_phase, paired=TRUE, var.equal=TRUE)
+```
+
+I'l leave it to you to interpret these values, and to see if they are the same as the ones in the paper. Based on these values what do you conclude? Is there a difference between the mean proportion looking times for the baseline and testing phase?
+
+
+#### Relationship between one-sample and paired sample t-test
+
+We've discussed in the textbook that the one-sample and paired sample t-test are related, they can be the same test. The one-sample test whether a sample mean is different from some particular mean. The paired sample t-test, is to determine whether one sample mean is different from another sample mean. If you take the scores for each variable in a paired samples t-test, and subtract them from one another, then you have one list of difference scores. Then, you could use a one sample t-test to test whether these difference scores are different from 0. It turns out you get the same answer from a paired sample t-test testing the difference between two sample means, and the one sample t-test testing whether the mean difference of the difference scores between the samples are different from 0. We can show this in r easily like this:
+
+```{r}
+t.test(baseline, test_phase, paired=TRUE, var.equal=TRUE)
+
+difference_scores<-baseline-test_phase
+t.test(difference_scores, mu=0)
 
 ```
 
@@ -55,5 +187,3 @@ How to do it in SPSS
 ## Matlab
 
 How to do it in Matlab
-
-

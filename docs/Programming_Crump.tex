@@ -1068,7 +1068,65 @@ This lab is modified and extended from
 \href{https://sites.trinity.edu/osl}{Open Stats Labs}. Thanks to Open
 Stats Labs (Dr.~Kevin P. McIntyre) for their fantastic work.
 
+\section{Does Music Convey Social Information to
+Infants?}\label{does-music-convey-social-information-to-infants}
+
+This lab activity uses the open data from Experiment 1 of Mehr, Song,
+and Spelke (2016) to teach one-sample and paired samplest -tests.
+Results of the activity provided below should exactly reproduce the
+results described in the paper.
+
+\subsection{STUDY DESCRIPTION}\label{study-description}
+
+Parents often sing to their children and, even as infants, children
+listen to and look at their parents while they are singing.Research by
+Mehr, Song, and Spelke (2016) sought to explore the psychological
+function that music has for parents and infants, by examining the
+hypothesis that particular melodies convey important social information
+to infants.Specifically, melodies convey information about social
+affiliation.
+
+The authors argue that melodies are shared within social groups. Whereas
+children growing up in one culture may be exposed to certain songs as
+infants (e.g., ``Rock-a-bye Baby''), children growing up in other
+cultures (or even other groups within a culture) may be exposed to
+different songs.Thus, when a novel person (someone who the infant has
+never seen before) sings a familiar song, it may signal to the infant
+that this new person is a member of their social group.
+
+To test this hypothesis, the researchers recruited 32 infants and their
+parents to complete an experiment.During their first visit to the lab,
+the parents were taught a new lullaby (one that neither they nor their
+infants had heard before).The experimenters asked the parents to sing
+the new lullaby to their child every day for the next 1-2 weeks.
+
+Following this 1-2 week exposure period, the parents and their infant
+returned to the lab to complete the experimental portion of the
+study.Infants were first shown a screen with side-by-side videos of two
+unfamiliar people, each of whom were silently smiling and looking at the
+infant.The researchers recorded the looking behavior (or gaze) of the
+infants during this `baseline' phase. Next, one by one, the two
+unfamiliar people on the screen sang either the lullaby that the parents
+learned or a different lullaby (that had the same lyrics and rhythm, but
+a different melody).Finally, the infants saw the same silent video used
+at baseline, and the researchers again recorded the looking behavior of
+the infants during this `test' phase.For more details on the
+experiment's methods, please refer to Mehr et al. (2016) Experiment 1.
+
 \section{Lab skills learned}\label{lab-skills-learned}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Conducting a one-sample t-test
+\item
+  Conducting a two-sample t-test
+\item
+  Plotting the data
+\item
+  Discussing inferences and limitations
+\end{enumerate}
 
 \section{Important Stuff}\label{important-stuff}
 
@@ -1089,18 +1147,426 @@ Stats Labs (Dr.~Kevin P. McIntyre) for their fantastic work.
   in SPSS format}
 \end{itemize}
 
-\section{Outline of Problem to
-solve}\label{outline-of-problem-to-solve-4}
-
-Stuff we need to say in general
-
-\subsection{important things}\label{important-things-4}
-
-Other things to say
-
 \section{R}\label{r-6}
 
-How to do it in R
+\subsection{Loading the data}\label{loading-the-data}
+
+The first thing to do is download the .csv formatted data file, using
+the link above, or just click
+\href{https://drive.google.com/open?id=0Bz-rhZ21ShvOdW1wV0pmUTJSSk0}{here}.
+It turns out there are lots of ways to load .csv files into R.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Load the data.table library. Then use the fread function and supply
+  the web address to the file. Just like this. No downloading required.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(data.table)}
+\NormalTok{all_data <-}\StringTok{ }\KeywordTok{fread}\NormalTok{(}\StringTok{"https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/MehrSongSpelke2016.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Or, if you downloaded the .csv file. Then you can use fread, but you
+  need to point it to the correct file location. The file location in
+  this next example will not work for you, because the file is on my
+  computer.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(data.table)}
+\NormalTok{all_data <-}\StringTok{ }\KeywordTok{fread}\NormalTok{(}\StringTok{"Data/MehrSongSpelke2016.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Inspect the data frame}\label{inspect-the-data-frame}
+
+When you have loaded data it's always a good idea to check out what it
+looks like. You can look at all of the data in the environment tab on
+the top right hand corner. The data should be in a variable called
+\texttt{all\_data}. Clicking on \texttt{all\_data} will load it into a
+viewer, and you can scroll around. This can be helpful to see things.
+But, there is so much data, can be hard to know what you are looking
+for.
+
+\subsubsection{summarytools}\label{summarytools}
+
+The summarytools packages give a quick way to summarize all of the data
+in a data frame. Here's how. When you run this code you will see the
+summary in the viewer on the bottom right hand side. There's a little
+browser button (arrow on top of little window) that you can click to
+expand and see the whole thing in a browser.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(summarytools)}
+\KeywordTok{view}\NormalTok{(}\KeywordTok{dfSummary}\NormalTok{(all_data))}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Get the data for Experiment
+one}\label{get-the-data-for-experiment-one}
+
+The data contains all of the measurements from all five experiments in
+the paper. By searching through the \texttt{all\_data} dataframe, you
+should look for the variables that code for each experiment. For
+example, the third column is called \texttt{exp1}, which stands for
+experiment 1. Notice that it contains a series of 1s. If you keep
+scrolling down, the 1s stop. These 1s identify the rows associated with
+the data for Experiment 1. We only want to analyse that data. So, we
+need to filter our data, and put only those rows into a new variable. We
+do this with the \texttt{dplyr} library, using the \texttt{filter}
+function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(dplyr)}
+\NormalTok{experiment_one <-}\StringTok{ }\NormalTok{all_data %>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(exp1==}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Now if you look at the new variable \texttt{experiment\_one}, there are
+only 32 rows of data. Much less than before. Now we have the data from
+experiment 1.
+
+\subsection{Baseline phase: Conduct a one sample
+t-test}\label{baseline-phase-conduct-a-one-sample-t-test}
+
+You first want to show that infants' looking behavior did not differ
+from chance during the baseline trial. The baseline trial was 16 seconds
+long. During the baseline, infants watched a video of two unfamilar
+people, one of the left and one on the right. There was no sound during
+the basline. Both of the actors in the video smiled directly at the
+infant.
+
+The important question was to determine whether the infant looked more
+or less to either person. If they showed no preference, the infant
+should look at both people about 50\% of the time. How could we
+determine whether the infant looked at both people about 50\% of the
+time?
+
+The \texttt{experiment\_one} dataframe has a column called
+\texttt{Baseline\_Proportion\_Gaze\_to\_Singer}. All of these values
+show how the proportion of time that the infant looked to the person who
+would later sing the familiar song to them. If the average of these
+proportion is .5 across the infants, then we would have some evidence
+that the infants were not biased at the beginning of the experiment.
+However, if the infants on average had a bias toward the singer, then
+the average proportion of the looking time should be different than .5.
+
+Using a one-sample t-test, we can test the hypothesis that our sample
+mean for the \texttt{Baseline\_Proportion\_Gaze\_to\_Singer} was not
+different from .5.
+
+To do this in R, we just need to isolate the column of data called
+\texttt{Baseline\_Proportion\_Gaze\_to\_Singer}. We will do this using
+the \texttt{\$} operator. The \texttt{\$} operator is placed after any
+data frame variable, and allows you to select a column of the data. The
+next bit of code will select the column of data we want, and put it into
+a new variable called \texttt{Baseline}. Note, if you type
+\texttt{exp1\$} then Rstudio should automatically bring up all the
+columns you can choose from.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{baseline <-}\StringTok{ }\NormalTok{experiment_one$Baseline_Proportion_Gaze_to_Singer}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{Look at the numbers}\label{look-at-the-numbers}
+
+Ok, we could just do the t-test right away, it's really easy, only one
+line of code. But, we haven't even looked at the numbers yet. Let's at
+least do that. First, we'll just use plot. It will show every data point
+for each infant as a dot.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(baseline)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-26-1.pdf}
+
+That's helpful, we see that the dots are all over the place. Let's do a
+histrogram, so we can get a better sense of the frequency of different
+proportions.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{hist}\NormalTok{(baseline)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-27-1.pdf}
+
+\subsubsection{Look at the descriptives}\label{look-at-the-descriptives}
+
+Let's get the mean and standard deviation of the sample
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{mean}\NormalTok{(baseline)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.5210967
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sd}\NormalTok{(baseline)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.1769651
+\end{verbatim}
+
+Ok, so just looking at the mean, we see the proportion is close to .5
+(it's .521). And, we see there is a healthy amount of variance (the dots
+were all over the place), as the standard deviation was about .176.
+
+Now, before we run the t-test, what do you think is going to happen? We
+are going to get a t-value, and an associated p-value. If you can make a
+guess at what those numbers would be right now in your head, and those
+end up being pretty close to the ones we will see in a moment, then you
+should pat yourself on the back. You have learned how to have intuitions
+about the data. As I am writing this I will tell you that 1) I can't
+remember what the t and p was from the paper, and I haven't done the
+test yet, so I don't know the answer. So, I am allowed to guess what the
+answer will be. Here are my guesses t(31) = 0.2, p = .95. The numbers in
+the brackets are degrees of freedom, which we know are 31 (df= n-1 =
+32-1= 31). More important than the specific numbers I am guessing (which
+will probably be wrong), I am guessing that the p-value will be pretty
+large, it will not be less than .05, which the author's set as their
+alpha rate. So, I am guessing we will not reject the hypothesis that .52
+is different from .5.
+
+Let's do the t-test and see what happens.
+
+\subsubsection{Conduct t.test}\label{conduct-t.test}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{t.test}\NormalTok{(baseline, }\DataTypeTok{mu=}\NormalTok{.}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  One Sample t-test
+## 
+## data:  baseline
+## t = 0.67438, df = 31, p-value = 0.5051
+## alternative hypothesis: true mean is not equal to 0.5
+## 95 percent confidence interval:
+##  0.4572940 0.5848994
+## sample estimates:
+## mean of x 
+## 0.5210967
+\end{verbatim}
+
+So, there we have it. We did a one-sample t-test. Here's how you would
+report it, t(31) = .67, p = .505. Or, we might say something like:
+
+\begin{quote}
+During the basline condition, the mean proportion looking time toward
+the singer was .52, and was not significantly different from .5,
+according to a one-sample test, t(31) = .67, p = .505.
+\end{quote}
+
+You should take the time to check this result, and see if it is the same
+one that was reported in the paper.
+
+\subsection{Test phase}\label{test-phase}
+
+Remember how the experiment went. Infants watched silent video
+recordings of two women (Baseline). Then each person sung a song, one
+was familiar to the infant (their parents sung the song to them many
+times), and one was unfamiliar (singing phase). After the singing phase,
+the infants watched the silent video of the two singers argain (test
+phase). The critical question was whether the infants would look more to
+the person who sung the familiar song compared to the person who sun the
+unfamiliar song. If the infants did this, they should look more than
+50\% of the time to the singer who sang the familiar song. We have the
+data, we can do another one sample t-test to find out. We can re-use all
+the code we already wrote to do this. I'll put it all in one place. If
+we run all of this code, we will see all of the things we want to see.
+
+We only need to make two changes. We will change
+\texttt{experiment\_one\$Baseline\_Proportion\_Gaze\_to\_Singer} to
+\texttt{experiment\_one\$Test\_Proportion\_Gaze\_to\_Singer}, because
+that column has the test phase data. And, instead of putting the data
+into the variable \texttt{baseline}. We will make a new variable called
+\texttt{test\_phase} to store the data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test_phase <-}\StringTok{ }\NormalTok{experiment_one$Test_Proportion_Gaze_to_Singer}
+\KeywordTok{plot}\NormalTok{(test_phase)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-30-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{hist}\NormalTok{(test_phase)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-30-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{mean}\NormalTok{(test_phase)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.5934913
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sd}\NormalTok{(test_phase)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.1786884
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{t.test}\NormalTok{(test_phase, }\DataTypeTok{mu =} \NormalTok{.}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  One Sample t-test
+## 
+## data:  test_phase
+## t = 2.9597, df = 31, p-value = 0.005856
+## alternative hypothesis: true mean is not equal to 0.5
+## 95 percent confidence interval:
+##  0.5290672 0.6579153
+## sample estimates:
+## mean of x 
+## 0.5934913
+\end{verbatim}
+
+Alright. What did we find? You should take a stab at writing down what
+we found. You can use the same kind of language that I used from the
+first one sample-test. You should state the mean proportion, the
+t-value, the dfs, and the p-value. You should be able to answer the
+question, did the infants look longer at the singer who sang the
+familiar song? And, did they look longer than would be consist with
+chance at 50\%.
+
+\subsection{Paired-samples t-test}\label{paired-samples-t-test}
+
+The paired samples t-test is easy to do. We've already made two
+variables called \texttt{baseline}, and \texttt{test\_phase}. These
+contain each of the infants looking time proportions to the singer for
+both parts of the experiment. We can see if the difference between them
+was likely or unlikely due to chance by running a paired samples t-test.
+We do it like this in one line:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{t.test}\NormalTok{(baseline, test_phase, }\DataTypeTok{paired=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{var.equal=}\OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Paired t-test
+## 
+## data:  baseline and test_phase
+## t = -2.4164, df = 31, p-value = 0.02175
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -0.13349698 -0.01129217
+## sample estimates:
+## mean of the differences 
+##             -0.07239458
+\end{verbatim}
+
+I'l leave it to you to interpret these values, and to see if they are
+the same as the ones in the paper. Based on these values what do you
+conclude? Is there a difference between the mean proportion looking
+times for the baseline and testing phase?
+
+\subsubsection{Relationship between one-sample and paired sample
+t-test}\label{relationship-between-one-sample-and-paired-sample-t-test}
+
+We've discussed in the textbook that the one-sample and paired sample
+t-test are related, they can be the same test. The one-sample test
+whether a sample mean is different from some particular mean. The paired
+sample t-test, is to determine whether one sample mean is different from
+another sample mean. If you take the scores for each variable in a
+paired samples t-test, and subtract them from one another, then you have
+one list of difference scores. Then, you could use a one sample t-test
+to test whether these difference scores are different from 0. It turns
+out you get the same answer from a paired sample t-test testing the
+difference between two sample means, and the one sample t-test testing
+whether the mean difference of the difference scores between the samples
+are different from 0. We can show this in r easily like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{t.test}\NormalTok{(baseline, test_phase, }\DataTypeTok{paired=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{var.equal=}\OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Paired t-test
+## 
+## data:  baseline and test_phase
+## t = -2.4164, df = 31, p-value = 0.02175
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -0.13349698 -0.01129217
+## sample estimates:
+## mean of the differences 
+##             -0.07239458
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{difference_scores<-baseline-test_phase}
+\KeywordTok{t.test}\NormalTok{(difference_scores, }\DataTypeTok{mu=}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  One Sample t-test
+## 
+## data:  difference_scores
+## t = -2.4164, df = 31, p-value = 0.02175
+## alternative hypothesis: true mean is not equal to 0
+## 95 percent confidence interval:
+##  -0.13349698 -0.01129217
+## sample estimates:
+##   mean of x 
+## -0.07239458
+\end{verbatim}
 
 \section{Excel}\label{excel-5}
 
@@ -1143,11 +1609,11 @@ Stats Labs (Dr.~Kevin P. McIntyre) for their fantastic work.
 \end{itemize}
 
 \section{Outline of Problem to
-solve}\label{outline-of-problem-to-solve-5}
+solve}\label{outline-of-problem-to-solve-4}
 
 Stuff we need to say in general
 
-\subsection{important things}\label{important-things-5}
+\subsection{important things}\label{important-things-4}
 
 Other things to say
 
@@ -1197,11 +1663,11 @@ Stats Labs (Dr.~Kevin P. McIntyre) for their fantastic work.
 \end{itemize}
 
 \section{Outline of Problem to
-solve}\label{outline-of-problem-to-solve-6}
+solve}\label{outline-of-problem-to-solve-5}
 
 Stuff we need to say in general
 
-\subsection{important things}\label{important-things-6}
+\subsection{important things}\label{important-things-5}
 
 Other things to say
 
@@ -1243,11 +1709,11 @@ How to do it in Matlab
 \end{itemize}
 
 \section{Outline of Problem to
-solve}\label{outline-of-problem-to-solve-7}
+solve}\label{outline-of-problem-to-solve-6}
 
 Stuff we need to say in general
 
-\subsection{important things}\label{important-things-7}
+\subsection{important things}\label{important-things-6}
 
 Other things to say
 
@@ -1290,11 +1756,11 @@ How to do it in Matlab
 \end{itemize}
 
 \section{Outline of Problem to
-solve}\label{outline-of-problem-to-solve-8}
+solve}\label{outline-of-problem-to-solve-7}
 
 Stuff we need to say in general
 
-\subsection{important things}\label{important-things-8}
+\subsection{important things}\label{important-things-7}
 
 Other things to say
 
@@ -1335,7 +1801,7 @@ ANOVA}\label{lab-11-mixed-factorial-anova}
 
 Stuff we need to say in general
 
-\subsection{important things}\label{important-things-9}
+\subsection{important things}\label{important-things-8}
 
 Other things to say
 
