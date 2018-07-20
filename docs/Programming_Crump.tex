@@ -124,7 +124,7 @@
   \postauthor{\par}
   \predate{\centering\large\emph}
   \postdate{\par}
-  \date{2018-07-19}
+  \date{2018-07-20}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -1285,6 +1285,9 @@ columns you can choose from.
 
 \subsubsection{Look at the numbers}\label{look-at-the-numbers}
 
+\textbf{Question:} Why is it important to look at your numbers? What
+could happen if you didn't?
+
 Ok, we could just do the t-test right away, it's really easy, only one
 line of code. But, we haven't even looked at the numbers yet. Let's at
 least do that. First, we'll just use plot. It will show every data point
@@ -1338,6 +1341,10 @@ Ok, so just looking at the mean, we see the proportion is close to .5
 (it's .521). And, we see there is a healthy amount of variance (the dots
 were all over the place), as the standard deviation was about .176.
 
+\textbf{Question:} Based on the means and standard deviations can you
+make an educated guess about what the t and p values might be? Learn how
+to do this and you will be improving your data-sense.
+
 Now, before we run the t-test, what do you think is going to happen? We
 are going to get a t-value, and an associated p-value. If you can make a
 guess at what those numbers would be right now in your head, and those
@@ -1378,11 +1385,14 @@ Let's do the t-test and see what happens.
 ## 0.5210967
 \end{verbatim}
 
+\textbf{Question:} Why was the baseline condition important for the
+experiment? What does performance in this condition tell us?
+
 So, there we have it. We did a one-sample t-test. Here's how you would
 report it, t(31) = .67, p = .505. Or, we might say something like:
 
 \begin{quote}
-During the basline condition, the mean proportion looking time toward
+During the baseline condition, the mean proportion looking time toward
 the singer was .52, and was not significantly different from .5,
 according to a one-sample test, t(31) = .67, p = .505.
 \end{quote}
@@ -1469,6 +1479,9 @@ into the variable \texttt{baseline}. We will make a new variable called
 ## 0.5934913
 \end{verbatim}
 
+\textbf{Question:} Why was the test condition important for the
+experiment? What does performance in this condition tell us?
+
 Alright. What did we find? You should take a stab at writing down what
 we found. You can use the same kind of language that I used from the
 first one sample-test. You should state the mean proportion, the
@@ -1488,7 +1501,7 @@ We do it like this in one line:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{t.test}\NormalTok{(baseline, test_phase, }\DataTypeTok{paired=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{var.equal=}\OtherTok{TRUE}\NormalTok{)}
+\KeywordTok{t.test}\NormalTok{(test_phase, baseline, }\DataTypeTok{paired=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{var.equal=}\OtherTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1496,15 +1509,19 @@ We do it like this in one line:
 ## 
 ##  Paired t-test
 ## 
-## data:  baseline and test_phase
-## t = -2.4164, df = 31, p-value = 0.02175
+## data:  test_phase and baseline
+## t = 2.4164, df = 31, p-value = 0.02175
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -0.13349698 -0.01129217
+##  0.01129217 0.13349698
 ## sample estimates:
 ## mean of the differences 
-##             -0.07239458
+##              0.07239458
 \end{verbatim}
+
+\textbf{Question:} Why was the paired samples t-test necessary if we
+already did two one sample t-test? What new question is the paired
+samples t-test asking?
 
 I'l leave it to you to interpret these values, and to see if they are
 the same as the ones in the paper. Based on these values what do you
@@ -1513,6 +1530,11 @@ times for the baseline and testing phase?
 
 \subsubsection{Relationship between one-sample and paired sample
 t-test}\label{relationship-between-one-sample-and-paired-sample-t-test}
+
+\textbf{Question:} Why is it that a paired samples t-test can be the
+same as the one sample t-test? What do you have to do the data in the
+paired samples t-test in order to conduct a one-sample t-test that would
+give you the same result?
 
 We've discussed in the textbook that the one-sample and paired sample
 t-test are related, they can be the same test. The one-sample test
@@ -1529,7 +1551,7 @@ are different from 0. We can show this in r easily like this:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{t.test}\NormalTok{(baseline, test_phase, }\DataTypeTok{paired=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{var.equal=}\OtherTok{TRUE}\NormalTok{)}
+\KeywordTok{t.test}\NormalTok{(test_phase, baseline, }\DataTypeTok{paired=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{var.equal=}\OtherTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1537,19 +1559,19 @@ are different from 0. We can show this in r easily like this:
 ## 
 ##  Paired t-test
 ## 
-## data:  baseline and test_phase
-## t = -2.4164, df = 31, p-value = 0.02175
+## data:  test_phase and baseline
+## t = 2.4164, df = 31, p-value = 0.02175
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -0.13349698 -0.01129217
+##  0.01129217 0.13349698
 ## sample estimates:
 ## mean of the differences 
-##             -0.07239458
+##              0.07239458
 \end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{difference_scores<-baseline-test_phase}
+\NormalTok{difference_scores<-test_phase-baseline}
 \KeywordTok{t.test}\NormalTok{(difference_scores, }\DataTypeTok{mu=}\DecValTok{0}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -1559,14 +1581,385 @@ are different from 0. We can show this in r easily like this:
 ##  One Sample t-test
 ## 
 ## data:  difference_scores
-## t = -2.4164, df = 31, p-value = 0.02175
+## t = 2.4164, df = 31, p-value = 0.02175
 ## alternative hypothesis: true mean is not equal to 0
 ## 95 percent confidence interval:
-##  -0.13349698 -0.01129217
+##  0.01129217 0.13349698
 ## sample estimates:
-##   mean of x 
-## -0.07239458
+##  mean of x 
+## 0.07239458
 \end{verbatim}
+
+\subsubsection{Usefulness of difference
+scores}\label{usefulness-of-difference-scores}
+
+Ok fine, the paired samples t-test can be a one sample t-test if you use
+the difference scores. This might just seem like a mildly useful factoid
+you can use for stats trivia games (which no one plays). The point of
+drawing your attention to the relationship, is to get you to focus on
+the difference scores. These are what we are actually interested in.
+
+Let's use the difference scores to one more useful thing. Sometime the
+results of a t-test aren't intuitively obvious. By the t-test we found
+out that a small difference between the test phase and baseline was not
+likely produced by chance. How does this relate to the research question
+about infants using familiar songs as cues for being social? Let's ask a
+very simple question. How many infants actually showed the bias? How
+many infants out of 32 looked longer at the singer who sang the familiar
+song during test, compared to during baseline.
+
+We can determine this by calculating the difference scores. Then, asking
+how many of them were greater than zero:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{difference_scores <-}\StringTok{ }\NormalTok{test_phase-baseline}
+\KeywordTok{length}\NormalTok{(difference_scores[difference_scores>}\DecValTok{0}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 22
+\end{verbatim}
+
+So, 22 out of 32 infants showed the effect. To put that in terms of
+probability, 68.75\% of infants showed the effect. These odds and
+percentages give us another way to appreciate how strong the effect is.
+It wasn't strong enough for all infants to show it.
+
+\subsection{Graphing the findings}\label{graphing-the-findings}
+
+It is often useful to graph the results of our analysis. We have already
+looked at dot plots and histograms of the individual samples. But, we
+also conducted some t-tests on the means of the baseline and test\_phase
+samples. One of the major questions was whether these means are
+different. Now, we will make a graph that shows the means for each
+condition. Actually, we will make a few different graphs, so that you
+can think about what kinds of graphs are most helpful. There are two
+major important things to show: 1) the sample means, and 2) a visual aid
+for statistical inference showing whether the results were likely due to
+chance.
+
+We will use the ggplot2 package to make our graphs. Remember, there are
+two steps to take when using ggplot2. 1) put your data in a long form
+dataframe, where each measure has one row, and 2) define the layers of
+the ggplot.
+
+\subsubsection{Make the dataframe for
+plotting}\label{make-the-dataframe-for-plotting}
+
+To start we will need 2 columns. One column will code the experimental
+phase, Baseline or Test. There are 32 observations in each phase, so we
+want the word \texttt{Baseline} to appear 32 times, followed by the word
+\texttt{Test} 32 times. Then we want a single column with each of the
+proportions for each infant.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Phase <-}\StringTok{ }\KeywordTok{rep}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"Baseline"}\NormalTok{,}\StringTok{"Test"}\NormalTok{), }\DataTypeTok{each =} \DecValTok{32}\NormalTok{)}
+\NormalTok{Proportions <-}\StringTok{ }\KeywordTok{c}\NormalTok{(baseline,test_phase)}
+\NormalTok{plot_df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(Phase,Proportions)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{Dot plot of raw scores}\label{dot-plot-of-raw-scores}
+
+This shows every scores value on the y-axis, split by the baseline and
+test groups. If you just looked at this, you might not think the test
+phase was different from the basline phase. Still very useful to see the
+spread of individual scores. Supports the intuition that the scores are
+still kind of in a similar ballpark.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(ggplot2)}
+\KeywordTok{ggplot}\NormalTok{(plot_df, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Phase, }\DataTypeTok{y=}\NormalTok{Proportions))+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-35-1.pdf}
+
+\subsubsection{Dot plot with means and raw
+scores}\label{dot-plot-with-means-and-raw-scores}
+
+\textbf{Question:} What kinds of inferences about the role of chance in
+producing the difference between the means can we make from this graph?
+What is missing?
+
+\texttt{ggplot2} is great because it let's us add different layers on
+top of an existing plot. It would be good to see where the mean values
+for each sample lie on top of the sample scores. We can do this. But, to
+do it, we need to supply ggplot with another data frame, one that
+contains the means for each phase in long form. There are are only two
+phases, and two means, so we will make a rather small data.frame. It
+will have two columns, a Phase column, and Mean\_value column. There
+will only be two rows in the dataframe, one for the mean for each phase.
+
+To make the smaller data frame for the means we will use the
+\texttt{aggregate} function. This allows us to find the means for each
+phase from the plot\_df dataframe. It also automatically returns the
+data frame we are looking for.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mean_df <-}\StringTok{ }\KeywordTok{aggregate}\NormalTok{(Proportions ~}\StringTok{ }\NormalTok{Phase, plot_df, mean)}
+
+\KeywordTok{ggplot}\NormalTok{(plot_df, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Phase, }\DataTypeTok{y=}\NormalTok{Proportions))+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{()+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{data=}\NormalTok{mean_df, }\DataTypeTok{color=}\StringTok{"Red"}\NormalTok{, }\DataTypeTok{size=}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-36-1.pdf}
+
+\subsubsection{Bar plot}\label{bar-plot}
+
+It's very common to use bars in graphs. We can easily do this by using
+\texttt{geom\_bar}, rather than \texttt{geom\_point}. Also, we can plot
+bars for the means, and keep showing the dots like this\ldots{}(note
+this will be messed up, but I want to show you why).
+
+Also look for these changes.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  added \texttt{stat="identity"} Necessary for bar plot to show specific
+  numbers
+\item
+  added \texttt{aes(fill=Phase)} Makes each bar a different color,
+  depending on which phase it comes from
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(plot_df, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Phase, }\DataTypeTok{y=}\NormalTok{Proportions))+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{()+}
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{data=}\NormalTok{mean_df, }\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill=}\NormalTok{Phase))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-37-1.pdf}
+
+Ok, we see the bars and some of the dots, but not all of them. What is
+going on? Remember, ggplot2 works in layers. Whatever layer you add
+first will be printed first in the graph, whatever layer you add second
+will be printed on top of the first. We put the bars on top of the dots.
+Let's change the order of the layers so the dot's go on top of the bars.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(plot_df, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Phase, }\DataTypeTok{y=}\NormalTok{Proportions))+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{data=}\NormalTok{mean_df, }\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill=}\NormalTok{Phase))+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-38-1.pdf}
+
+\subsubsection{Bar plot with error bars}\label{bar-plot-with-error-bars}
+
+So far we have only plotted the means and individual sample scores.
+These are useful, but neither of them give us clear visual information
+about our statistical test. Our paired sample t-test suggested that the
+mean difference between Baseline and Test was not very likely by chance.
+It could have happened, but wouldn't happen very often.
+
+\textbf{Question:} Why would the standard deviation of each mean, or the
+standard error of each mean be inappropriate to use in this case?
+
+\textbf{Question:} How would error bars based on the standard error of
+the mean differences aid in visual inference about the role of chance in
+producing the difference?
+
+Error bars are commonly used as an aid for visual inference. The use of
+error bars can be a subtle nuanced issue. This is because there a
+different kinds of error bars that can be plotted, and each one supports
+different kinds of inference. In general, the error bar is supposed to
+represent some aspect of the variability associated with each mean. We
+could plot little bars that are +1 or -1 standard deviations of each
+mean, or we would do +1 or -1 standard errors of each mean. In the case
+of paired samples, neither or these error bars would be appropriate,
+they wouldn't reflect the variability associated with mean we are
+interested in. In a paired samples t-test, we are interested in the
+variability of the mean of the difference scores. Let's calculate the
+standard error of the mean (SEM) for the difference scores between
+Baseline and Test, and then add error bars to the plot.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{difference_scores <-}\StringTok{ }\NormalTok{baseline-test_phase }\CommentTok{#calculate difference scores}
+\NormalTok{standard_error <-}\StringTok{ }\KeywordTok{sd}\NormalTok{(difference_scores)/}\KeywordTok{sqrt}\NormalTok{(}\KeywordTok{length}\NormalTok{(difference_scores)) }\CommentTok{#calculate SEM}
+
+
+\KeywordTok{ggplot}\NormalTok{(plot_df, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Phase, }\DataTypeTok{y=}\NormalTok{Proportions))+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{data=}\NormalTok{mean_df, }\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill=}\NormalTok{Phase))+}
+\StringTok{  }\KeywordTok{geom_errorbar}\NormalTok{(}\DataTypeTok{data=}\NormalTok{mean_df, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{ymin=}\NormalTok{Proportions-standard_error, }
+                                  \DataTypeTok{ymax=}\NormalTok{Proportions+standard_error), }\DataTypeTok{width=}\NormalTok{.}\DecValTok{1}\NormalTok{) +}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{alpha=}\NormalTok{.}\DecValTok{25}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-39-1.pdf}
+
+\textbf{Question:} What is one reason why these error bars (standard
+error of the mean difference between Baseline and Test) are appropriate
+to use. What is one reason they are not appropriate to use?
+
+We have done something that is useful for visual inference. From the
+textbook, we learned that differences of about 2 standard errors of the
+mean are near the point where we would claim that chance is unlikely to
+have produced the difference. This is a rough estimate. But, we can see
+that the top of the error bar for Baseline is lower than the bottom of
+the error bar for Test, resulting in a difference greater than 2
+standard error bars. So, based on this graph, we might expect the
+difference between conditions to be significant. We can also complain
+about what we have done here, we are placing the same error bars from
+the meand difference scores onto the means for each condition. In some
+sense this is misleading. The error bars are not for the depicted sample
+means, they are for the hidden single set of difference scores. To make
+this more clear, we will make a bar plot with a single bar only for the
+differences scores.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{difference_scores <-}\StringTok{ }\NormalTok{test_phase-baseline }\CommentTok{#calculate difference scores}
+\NormalTok{standard_error <-}\StringTok{ }\KeywordTok{sd}\NormalTok{(difference_scores)/}\KeywordTok{sqrt}\NormalTok{(}\KeywordTok{length}\NormalTok{(difference_scores)) }\CommentTok{#calculate SEM}
+\NormalTok{mean_difference <-}\StringTok{ }\KeywordTok{mean}\NormalTok{(difference_scores)}
+
+\KeywordTok{qplot}\NormalTok{(}\DataTypeTok{x=}\StringTok{"MeanDifference"}\NormalTok{, }\DataTypeTok{y=}\NormalTok{mean_difference)+}
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{, }\DataTypeTok{width=}\NormalTok{.}\DecValTok{5}\NormalTok{, }\DataTypeTok{alpha=}\NormalTok{.}\DecValTok{5}\NormalTok{)+}
+\StringTok{  }\KeywordTok{geom_hline}\NormalTok{(}\DataTypeTok{yintercept=}\DecValTok{0}\NormalTok{)+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y=}\NormalTok{difference_scores), }\DataTypeTok{alpha=}\NormalTok{.}\DecValTok{25}\NormalTok{)+}
+\StringTok{  }\KeywordTok{geom_errorbar}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{ymin=}\NormalTok{mean_difference-standard_error, }
+                                  \DataTypeTok{ymax=}\NormalTok{mean_difference+standard_error), }\DataTypeTok{width=}\NormalTok{.}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-40-1.pdf}
+
+\textbf{Question:} Why is is it more appropriate to put the standard
+error of the difference on this bar graph? What important aspects of the
+original results shown in the previous graph are missing from this
+graph?
+
+This plot is very useful too, it gives us some new information. We can
+see that the mean difference (test - baseline) was greater than 0. And,
+we are plotting the standard error of the mean differences, which are
+the error bars that more formally belong to this graph. Still, we are in
+a position to make some guesses for visual inference. The lower error
+bar represents only 1 SEM. It does not cross 0, but the fact that 1 SEM
+does not cross zero isn't important. For SEMs it's usually closer to 2.
+We can sort of visually guesstimate that that 2 SEMs would not cross
+zero, which would suggest we would obtain a small p-value. We also see
+each of the mean difference scores. It's very clear that they are all
+over the place. This means that not every infant showed a looking time
+preference toward the singer of the familiar song. Finally, this single
+bar plot misses something. It doesn't tell us what the values of the
+original means were.
+
+\subsubsection{Bar plot with confidence
+intervals}\label{bar-plot-with-confidence-intervals}
+
+Confidence intervals are also often used for error bars, rather than the
+standard error (or other measure of variance). If we use 95\% confidence
+intervals, then our error bars can be even more helpful for visual
+inference. Running the \texttt{t.test} function produces confidence
+interval estimates, and we can pull them out and use them for error
+bars.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{t_test_results <-}\StringTok{ }\KeywordTok{t.test}\NormalTok{(difference_scores)}
+\NormalTok{lower_interval<-}\StringTok{ }\NormalTok{t_test_results$conf.int[}\DecValTok{1}\NormalTok{]}
+\NormalTok{upper_interval<-}\StringTok{ }\NormalTok{t_test_results$conf.int[}\DecValTok{2}\NormalTok{]}
+
+\KeywordTok{qplot}\NormalTok{(}\DataTypeTok{x=}\StringTok{"MeanDifference"}\NormalTok{, }\DataTypeTok{y=}\NormalTok{mean_difference)+}
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{, }\DataTypeTok{width=}\NormalTok{.}\DecValTok{5}\NormalTok{, }\DataTypeTok{alpha=}\NormalTok{.}\DecValTok{5}\NormalTok{)+}
+\StringTok{  }\KeywordTok{geom_hline}\NormalTok{(}\DataTypeTok{yintercept=}\DecValTok{0}\NormalTok{)+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y=}\NormalTok{difference_scores), }\DataTypeTok{alpha=}\NormalTok{.}\DecValTok{25}\NormalTok{)+}
+\StringTok{  }\KeywordTok{geom_errorbar}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{ymin=}\NormalTok{lower_interval, }
+                                  \DataTypeTok{ymax=}\NormalTok{upper_interval), }\DataTypeTok{width=}\NormalTok{.}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-41-1.pdf}
+
+Notice that the 95\% confidence intervals around the mean are wider than
+the SEM error bars from the previous graph. These new confidence
+intervals tell us that 95\% of the time our sample mean will fall
+between the two lines. The bottom line is slightly above 0, so we can
+now visually see support for our statistical inference that chance was
+unlikely to produce the result. If chance was likely to produce the
+result, the horizontal line indicating 0, would be well inside the
+confidence interval. We can also notice that the mean difference was
+just barely different from chance, that lower bar is almost touching 0.
+
+\subsection{Data-simulation}\label{data-simulation}
+
+We can do a little bit of data simulation to get a better feel for this
+kind of data. For example, we saw that the dots in our plots were quite
+variable. We might wonder about what chance can do in the current
+experiment. One way to do this is to estimate the standard deviation of
+the looking time proportions. Perhaps the best way to do that would be
+to an average of the standard deviation in the baseline and test\_phase
+conditions. Then, we could simulate 32 scores from a normal distribution
+with mean = .5, and standard deviation equalling our mean standard
+deviation. We could calculate the mean of our simulated sample. And, we
+could do this many times, say 1000 times. Then, we could look at a
+histogram of our means. This will show the range of sample means we
+would expect just by chance. This is another way to tell whether the
+observed difference in this experiment in the testing phase was close or
+not close from being produced by chance. Take a look at the histogram.
+What do you think?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sample_sd   <-}\StringTok{ }\NormalTok{(}\KeywordTok{sd}\NormalTok{(baseline)+}\KeywordTok{sd}\NormalTok{(test_phase))/}\DecValTok{2}
+
+\NormalTok{simulated_means <-}\StringTok{ }\KeywordTok{length}\NormalTok{(}\DecValTok{1000}\NormalTok{)}
+\NormalTok{for(i in }\DecValTok{1}\NormalTok{:}\DecValTok{1000}\NormalTok{)\{}
+ \NormalTok{simulated_means[i] <-}\StringTok{ }\KeywordTok{mean}\NormalTok{(}\KeywordTok{rnorm}\NormalTok{(}\DecValTok{32}\NormalTok{,.}\DecValTok{5}\NormalTok{, sample_sd))}
+\NormalTok{\}}
+
+\KeywordTok{hist}\NormalTok{(simulated_means)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-42-1.pdf}
+\#\#\#\# Simulating the mean differences
+
+We can do the simulation slightly differently to give us a different
+look at chance. Above we simulated the sample means from a normal
+distibrution centered on .5. The experimental question of interest was
+whether the mean difference between the baseline and test\_phase
+condition was different. So, we should do a simulation of the difference
+scores. First, we estimate the standard deviation of the difference
+scores, and then run the simulation with a normal distribution centered
+on 0 (an expected mean difference of 0). This shows roughly how often we
+might expect mean differences of various sizes to occur. One major
+limitation is that we likely had only a rough estimate of the true
+standard deviation of these mean differences, after all there were only
+32 of them, so we should take this with a grain of salt. Nevertheless,
+the pattern in the simulation fits well with the observations in that we
+already made from the data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sample_sd   <-}\StringTok{ }\KeywordTok{sd}\NormalTok{(baseline-test_phase)}
+
+\NormalTok{simulated_mean_difference <-}\StringTok{ }\KeywordTok{length}\NormalTok{(}\DecValTok{1000}\NormalTok{)}
+\NormalTok{for(i in }\DecValTok{1}\NormalTok{:}\DecValTok{1000}\NormalTok{)\{}
+ \NormalTok{simulated_mean_difference[i] <-}\StringTok{ }\KeywordTok{mean}\NormalTok{(}\KeywordTok{rnorm}\NormalTok{(}\DecValTok{32}\NormalTok{,}\DecValTok{0}\NormalTok{, sample_sd))}
+\NormalTok{\}}
+
+\KeywordTok{hist}\NormalTok{(simulated_mean_difference)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-43-1.pdf}
 
 \section{Excel}\label{excel-5}
 
@@ -1587,7 +1980,53 @@ This lab is modified and extended from
 \href{https://sites.trinity.edu/osl}{Open Stats Labs}. Thanks to Open
 Stats Labs (Dr.~Kevin P. McIntyre) for their fantastic work.
 
+\section{Do you come across as smarter when people read what you say or
+hear what you
+say?}\label{do-you-come-across-as-smarter-when-people-read-what-you-say-or-hear-what-you-say}
+
+\subsection{STUDY DESCRIPTION}\label{study-description-1}
+
+Imagine you were a job candidate trying to pitch your skills to a
+potential employer. Would you be more likely to get the job after giving
+a short speech describing your skills, or after writing a short speech
+and having a potential employer read those words? That was the question
+raised by Schroeder and Epley (2015).The authors predicted that a
+person's speech (i.e., vocal tone, cadence, and pitch) communicates
+information about their intellect better than their written words (even
+if they are the same words as in the speech).
+
+To examine this possibility, the authors randomly assigned 39
+professional recruiters for Fortune 500 companies to one of two
+conditions. In the audio condition, participants listened to audio
+recordings of a job candidate's spoken job pitch. In the transcript
+condition, participants read a transcription of the job candidate's
+pitch. After hearing or reading the pitch, the participants rated the
+job candidates on three dimensions: intelligence, competence, and
+thoughtfulness. These ratings were then averaged to create a single
+measure of the job candidate's intellect, with higher scores indicating
+the recruiters rated the candidates as higher in intellect. The
+participants also rated their overall impression of the job candidate (a
+composite of two items measuring positive and negative impressions).
+Finally, the participants indicated how likely they would be to
+recommend hiring the job candidate (0 - not at all likely, 10 -
+extremely likely).
+
+What happened? Did the recruiters think job applicants were smarter when
+they read the transcripts, or when the heard the applicants speak? We
+have the data, we can find out.
+
 \section{Lab skills learned}\label{lab-skills-learned-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Conduct independent samples t-tests
+\item
+  Generate figures
+\item
+  Discuss the results and implications
+\end{enumerate}
 
 \section{Important Stuff}\label{important-stuff-1}
 
@@ -1608,18 +2047,375 @@ Stats Labs (Dr.~Kevin P. McIntyre) for their fantastic work.
   in SPSS format}
 \end{itemize}
 
-\section{Outline of Problem to
-solve}\label{outline-of-problem-to-solve-4}
-
-Stuff we need to say in general
-
-\subsection{important things}\label{important-things-4}
-
-Other things to say
-
 \section{R}\label{r-7}
 
-How to do it in R
+\subsection{Load the data}\label{load-the-data}
+
+Remember that any line with a \# makes a comment and the code does not
+run. Below is how to load the .csv data from the online repository, or
+from a local file (you need to change the file path to where the local
+file is, if you downloaded it). The data contains all of the measures
+and conditions from Experiment 4.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(data.table)}
+\CommentTok{# load from github repo}
+\CommentTok{#all_data <- fread("https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/SchroederEpley2015data.csv")}
+
+\NormalTok{all_data <-}\StringTok{ }\KeywordTok{fread}\NormalTok{(}\StringTok{"Data/SchroederEpley2015data.csv"}\NormalTok{) }\CommentTok{# load from file on computer}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Inspect data frame}\label{inspect-data-frame}
+
+This will give you a big picture of the data frame. Click the button to
+view it in your browser, then take a look to see what is in it.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(summarytools)}
+\KeywordTok{view}\NormalTok{(}\KeywordTok{dfSummary}\NormalTok{(all_data))}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Find the data you need}\label{find-the-data-you-need}
+
+This time the data comes prefiltered for us. The authors ran lots of
+experiments, but we only have the data from Experiment 4. This is great,
+we don't need to subset the data frame to find all of the data that we
+need. But, we do still need to understand what data we want to analyze.
+Let's start with identify the column that codes the experimental
+conditions for whether or not the evaluator read a transcript or heard
+the interview.
+
+\subsubsection{Condition variable}\label{condition-variable}
+
+Lucky for us, the condition variable is called \texttt{CONDITION}! Let's
+take a look. We printed it out just by writing down
+\texttt{all\_data\$CONDITION}. There 0s and 1s for each condition (audio
+vs.~transcript). But which one is which? This isn't clear from the data,
+and it isn't clear from the paper, or from the repository. We have to do
+some guess work. I went ahead and computed the means for the
+Intellect\_rating between each condition, and then compared those to the
+graph in the paper for E4. It looks like 1 = audio condition, and 0 =
+transcript condition.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{all_data$CONDITION}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 1 1 1 0 0 0 1 0 1 0 0 1 1 0 0 1 1 1 0 0 0 0 0 1 1 1 0 1 1 1 0 0 1 1 0
+## [36] 1 0 1 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{aggregate}\NormalTok{(Intellect_Rating~CONDITION,all_data,mean)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   CONDITION Intellect_Rating
+## 1         0         3.648148
+## 2         1         5.634921
+\end{verbatim}
+
+Let's use words instead of 0s and 1s to refer to our experimental
+conditions. To do this, we will chance the values of 0 and 1, to the
+words \texttt{transcript} and \texttt{audio}. We can do this in two
+steps. First we convert the CONDITION column to a factor. This will
+automatically turn the 0s and 1s into strings (not numbers, text).
+Factors have an internal variable for the names of the levels, which
+will be 0 and 1. We can simply change the level names to transcript and
+audio.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{all_data$CONDITION <-}\StringTok{ }\KeywordTok{as.factor}\NormalTok{(all_data$CONDITION)}
+\KeywordTok{levels}\NormalTok{(all_data$CONDITION) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"transcript"}\NormalTok{,}\StringTok{"audio"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Now if you look at the \texttt{all\_data} variable, you will see the
+words transcript and audio, where 0s and 1s used to be.
+
+\subsubsection{Dependent Measures}\label{dependent-measures}
+
+Next it's time to find the depende measure columns. The graph from the
+paper shows three different measures in each condition. These included
+\texttt{Intellect}, \texttt{General\ Impression}, and
+\texttt{Hiring\ Likelihood}. Every evaluator (either given a transcript
+or audio recording of the interview) gave ratings on a scale of 1 to 10
+for each of those concepts. It's not immediately clear which columns in
+\texttt{all\_data} correspond to those three measures. There are lots of
+different measures that could be the ones they reported. It turns out
+the relevant ones are called
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \texttt{Intellect\_Rating}
+\item
+  \texttt{Impression\_Rating}
+\item
+  \texttt{Hire\_Rating}
+\end{enumerate}
+
+In this tutorial we are going to walk through doing an independent
+samples t-test for the first measure, \texttt{Intellect\_Rating}. You
+can follow these same steps to complete the same kind of t-test for the
+other two variables.
+
+\subsection{Look at the dependent
+variable.}\label{look-at-the-dependent-variable.}
+
+\textbf{Question:} Why do we always want to look at the data?
+
+What is the first thing we do before even considering an inferential
+test? Look at the data. Always look at the data. We could make a dot
+plot or histogram of the data from the \texttt{Intellect\_ratings}. But,
+from our last lab we already learned how to make graphs showing most of
+the information we would want to look at. For example, we could make a
+bar graph that has the means for each condition (transcript vs.~audio),
+standard errors of the mean and the actual scores as little dots. This
+would be great to look at it. Not only will it tell us if there are
+really weird numbers in the data (who knows maybe the data file is
+corrupted, you need to look), it will also give us strong intuitions
+about what to expect for the t-test.
+
+We can plot each score as a dot using the \texttt{all\_data} dataframe.
+If we want to add on a layer for the sample means, and for the sample
+standard errors, we have to compute those and put them in a new
+dataframe first. Then we use both dataframes with ggplot to plot all of
+the information.
+
+We will use \texttt{dplyr} to quickly get the means and the standard
+errors and put them in a new data frame called \texttt{decriptive\_df}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(dplyr)}
+\KeywordTok{library}\NormalTok{(ggplot2)}
+
+\CommentTok{# get means and SEs}
+\NormalTok{descriptive_df <-}\StringTok{ }\NormalTok{all_data %>%}\StringTok{ }
+\StringTok{                    }\KeywordTok{group_by}\NormalTok{(CONDITION) %>%}\StringTok{ }
+\StringTok{                    }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{means=} \KeywordTok{mean}\NormalTok{(Intellect_Rating),}
+                              \DataTypeTok{SEs =} \KeywordTok{sd}\NormalTok{(Intellect_Rating)/}\KeywordTok{sqrt}\NormalTok{(}\KeywordTok{length}\NormalTok{(Intellect_Rating)))}
+
+\CommentTok{# Make the plot}
+\KeywordTok{ggplot}\NormalTok{(descriptive_df, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{CONDITION, }\DataTypeTok{y=}\NormalTok{means))+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill=}\NormalTok{CONDITION))+}\StringTok{ }\CommentTok{# add means}
+\StringTok{  }\KeywordTok{geom_errorbar}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{ymin=}\NormalTok{means-SEs,               }\CommentTok{# add error bars}
+                    \DataTypeTok{ymax=}\NormalTok{means+SEs), }\DataTypeTok{width=}\NormalTok{.}\DecValTok{1}\NormalTok{) +}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{data=}\NormalTok{all_data, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{CONDITION, }\DataTypeTok{y=}\NormalTok{Intellect_Rating), }\DataTypeTok{alpha=}\NormalTok{.}\DecValTok{5}\NormalTok{)+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{alpha=}\NormalTok{.}\DecValTok{25}\NormalTok{)+}
+\StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Rating"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-48-1.pdf}
+
+This plot is very useful. First, we can see the numbers in our dependent
+measure are behaving sensibly. We know that the numbers have to be
+between 1-10, because those were the only options in the scale. If we
+found numbers bigger or smaller, we would know something was wrong.
+Checking for things that are obvsiouly wrong in the data is one reason
+why we always look at first. We are checking for obvious errors. There
+are other ways to check to, but looking is fast and easy.
+
+\textbf{Question:} Why are the standard errors of each sample an
+appropriate thing to use for error bars?
+
+Now that you can see the patterns in the data, you should form an
+intuition about how the independent samples t-test will turn out. You
+can see how big the error bars (+1/-1 standard error of each sample
+man). The t-test will tell us whether the observed difference (or
+greater) is likely due to chance. Should we find a big t-value or a
+small t-value? Should we find a big p-value or a small t-value. If you
+understand how t-values and p-values work, the answer should be very
+clear from the graph. You should already know how the t-test will turn
+out before you run it. Running it will confirm what you already suspect
+to be true.
+
+\subsection{Conduct Independent samples
+t-test}\label{conduct-independent-samples-t-test}
+
+\textbf{Question:} Why are we conducting an independent samples t-test,
+and not a one-sample or paired samples t-test?
+
+We use the very same \texttt{t.test} function that we used last time to
+conduct a t-test. The only difference is that we don't tell the R to use
+a paired sample t-test. We leave the \texttt{paired=TRUE} statment out,
+and R automatically knows we want to do an independent samples t-test.
+Remember to set the \texttt{var.equal=TRUE}, otherwise R will compute a
+different version of the t-test.
+
+You can use different syntax to run the t-test. Because our data is
+already in a data frame we can use this syntax.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{t.test}\NormalTok{(Intellect_Rating~CONDITION, }\DataTypeTok{data=}\NormalTok{all_data, }\DataTypeTok{var.equal=}\OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Two Sample t-test
+## 
+## data:  Intellect_Rating by CONDITION
+## t = -3.5259, df = 37, p-value = 0.001144
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -3.1284798 -0.8450652
+## sample estimates:
+## mean in group transcript      mean in group audio 
+##                 3.648148                 5.634921
+\end{verbatim}
+
+The \texttt{t.test} function also will work on two variables, not in a
+data frame. For example, the following does the same thing. But, it's
+harder to read, and the means are described in terms of X and Y, not
+terms of \texttt{transcript} and \texttt{audio}, like the report above.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{t.test}\NormalTok{(all_data[all_data$CONDITION==}\StringTok{'transcript'}\NormalTok{,]$Intellect_Rating,}
+       \NormalTok{all_data[all_data$CONDITION==}\StringTok{'audio'}\NormalTok{,]$Intellect_Rating,}
+       \DataTypeTok{var.equal=}\NormalTok{T)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Two Sample t-test
+## 
+## data:  all_data[all_data$CONDITION == "transcript", ]$Intellect_Rating and all_data[all_data$CONDITION == "audio", ]$Intellect_Rating
+## t = -3.5259, df = 37, p-value = 0.001144
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -3.1284798 -0.8450652
+## sample estimates:
+## mean of x mean of y 
+##  3.648148  5.634921
+\end{verbatim}
+
+\textbf{Question:} What conclusions do we draw from the t-test? Based on
+these results, if you were being evaluated for a job interview, would
+you rather have the evaluator read a transcript of your interview or
+listen to an audio recording?
+
+So, now we have the t-test. It shows the t-value, the p-value, and the
+means for each group. You can double-check with the paper to see if we
+found the same results as reported by the authors.
+
+\subsection{Remaining ratings}\label{remaining-ratings}
+
+Now, you should use what you have learned to anlayse the last two
+ratings for the dependent variables \texttt{Impression\_Rating}, and
+\texttt{Hire\_Rating}. Remember to plot the data for each, and conduct a
+t-test for each. Then compare what you found to the original article.
+What did you find, and what do the results mean?
+
+\subsection{Reconstructing the graph from the
+paper}\label{reconstructing-the-graph-from-the-paper}
+
+The results from Experimen4 4 in the paper plot the means and error bars
+(+1 / -1 SEM) for all three dependent measures, for both experimental
+conditions. We can do this in ggplot using the data. We will have to
+make a couple changes to the dataframe. But, it won't be too hard. What
+we need to do is make a fully long form data frame. Remember a long form
+data frame has one row per dependent measure.
+
+The \texttt{all\_data} frame is partly long and partly wide. If we are
+only interested in one dependent measure, then it is a long data frame
+for that measure. For example, example if we are only interested in
+plotting \texttt{Intellect\_Rating}, then we already have one
+observation of that dependent measure for each row. But, in the other
+columns, the dependent measures for \texttt{Impression\_Rating} and
+\texttt{Hire\_Rating} are in the same rows.
+
+Before continuing, it is very much worth mentioning that this part of
+data analysis happens alot, and it is kind of annoying. I call it the
+rubix cube problem, because we need to ``rotate'' and transform the
+format of the data to accomplish different kinds of analysis goals. It's
+good to be able to know how to do this. This problem occurs all of the
+time, can occur for any software package. It's a good thing you are
+learning R, because we can do these things easily in R. They are not
+often so easy to do without a computer programming language like R. The
+worst thing to do is transform the data by hand. That really sucks.
+Believe me you don't want to do it. Why? Because you will make mistakes,
+and you will mess up the data, then you will mess up your analysis. And,
+you won't be able to find your mistakes, and it will take you ages to
+correct them. That sucks.
+
+There's more than one way to transform data in R. For example the
+\texttt{cast} and \texttt{melt} functions do this kind of thing. You can
+look those up. In this example we will not use those functions. Instead
+we will show some steps to build the required dataframe one step at a
+time.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# repeat CONDITION column three times}
+
+\NormalTok{condition <-}\StringTok{ }\KeywordTok{rep}\NormalTok{(all_data$CONDITION,}\DecValTok{3}\NormalTok{)}
+
+\CommentTok{# make a ratings variable with all three ratings in one variable}
+
+\NormalTok{ratings <-}\StringTok{ }\KeywordTok{c}\NormalTok{(all_data$Intellect_Rating,}
+             \NormalTok{all_data$Impression_Rating,}
+             \NormalTok{all_data$Hire_Rating)}
+
+\CommentTok{# make a new factor variable with the names of the ratings}
+\CommentTok{# need to repeat each level name the appropriate number of times}
+
+\NormalTok{num_to_repeat <-}\StringTok{ }\KeywordTok{length}\NormalTok{(all_data$CONDITION)}
+
+\NormalTok{rating_type <-}\StringTok{ }\KeywordTok{rep}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"Intellect"}\NormalTok{,}\StringTok{"Impression"}\NormalTok{,}\StringTok{"Hire"}\NormalTok{),num_to_repeat)}
+
+\CommentTok{# put the new variables into a data frame}
+
+\NormalTok{plot_all <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(condition,rating_type,ratings)}
+
+\CommentTok{# Get the means and standard errors for each rating by condition}
+
+\NormalTok{descriptive_all <-}\StringTok{ }\NormalTok{plot_all %>%}\StringTok{ }
+\StringTok{                    }\KeywordTok{group_by}\NormalTok{(condition,rating_type) %>%}\StringTok{ }
+\StringTok{                    }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{means=} \KeywordTok{mean}\NormalTok{(ratings),}
+                              \DataTypeTok{SEs =} \KeywordTok{sd}\NormalTok{(ratings)/}\KeywordTok{sqrt}\NormalTok{(}\KeywordTok{length}\NormalTok{(ratings)))}
+
+\CommentTok{# Make the plot}
+
+\KeywordTok{ggplot}\NormalTok{(descriptive_all, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{rating_type, }\DataTypeTok{y=}\NormalTok{means, }\DataTypeTok{group=}\NormalTok{condition))+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill=}\NormalTok{condition), }\DataTypeTok{position=}\StringTok{'dodge'}\NormalTok{)+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_errorbar}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{ymin=}\NormalTok{means-SEs,               }
+                    \DataTypeTok{ymax=}\NormalTok{means+SEs), }
+                \DataTypeTok{width=}\NormalTok{.}\DecValTok{1}\NormalTok{, }
+                \DataTypeTok{position =} \KeywordTok{position_dodge}\NormalTok{(}\DataTypeTok{width=}\NormalTok{.}\DecValTok{9}\NormalTok{)) +}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{data=}\NormalTok{plot_all, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{rating_type, }
+                                \DataTypeTok{y=}\NormalTok{ratings, }
+                                \DataTypeTok{group=}\NormalTok{condition), }
+             \DataTypeTok{alpha=}\NormalTok{.}\DecValTok{25}\NormalTok{, }
+             \DataTypeTok{position =} \KeywordTok{position_dodge}\NormalTok{(}\DataTypeTok{width=}\NormalTok{.}\DecValTok{9}\NormalTok{))+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{alpha=}\NormalTok{.}\DecValTok{25}\NormalTok{)+}
+\StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Rating"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-51-1.pdf}
+
+Well, we didn't make the exact graph. We have the bars, the error bars,
+and we added the individual scores because they are useful to look at.
+Otherwise, it's the same graph (except the the ordering of bars is
+determined alphabetically here. We change that in ggplot, but we won't
+do that today.)
 
 \section{Excel}\label{excel-6}
 
@@ -1663,11 +2459,11 @@ Stats Labs (Dr.~Kevin P. McIntyre) for their fantastic work.
 \end{itemize}
 
 \section{Outline of Problem to
-solve}\label{outline-of-problem-to-solve-5}
+solve}\label{outline-of-problem-to-solve-4}
 
 Stuff we need to say in general
 
-\subsection{important things}\label{important-things-5}
+\subsection{important things}\label{important-things-4}
 
 Other things to say
 
@@ -1709,11 +2505,11 @@ How to do it in Matlab
 \end{itemize}
 
 \section{Outline of Problem to
-solve}\label{outline-of-problem-to-solve-6}
+solve}\label{outline-of-problem-to-solve-5}
 
 Stuff we need to say in general
 
-\subsection{important things}\label{important-things-6}
+\subsection{important things}\label{important-things-5}
 
 Other things to say
 
@@ -1756,11 +2552,11 @@ How to do it in Matlab
 \end{itemize}
 
 \section{Outline of Problem to
-solve}\label{outline-of-problem-to-solve-7}
+solve}\label{outline-of-problem-to-solve-6}
 
 Stuff we need to say in general
 
-\subsection{important things}\label{important-things-7}
+\subsection{important things}\label{important-things-6}
 
 Other things to say
 
@@ -1801,7 +2597,7 @@ ANOVA}\label{lab-11-mixed-factorial-anova}
 
 Stuff we need to say in general
 
-\subsection{important things}\label{important-things-8}
+\subsection{important things}\label{important-things-7}
 
 Other things to say
 
