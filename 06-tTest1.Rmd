@@ -4,7 +4,26 @@
 This lab is modified and extended from [Open Stats Labs](https://sites.trinity.edu/osl). Thanks to Open Stats Labs (Dr. Kevin P. McIntyre) for their fantastic work.
 </div>
 
+## Does Music Convey Social Information to Infants?
+
+This lab activity uses the open data from Experiment 1 of Mehr, Song, and Spelke (2016) to teach one-sample and paired samplest -tests. Results of the activity provided below should exactly reproduce the results described in the paper.
+
+### STUDY DESCRIPTION
+
+Parents often sing to their children and, even as infants, children listen to and look at their parents while they are singing.Research by Mehr, Song, and Spelke (2016) sought to explore the psychological function that music has for parents and infants, by examining the hypothesis that particular melodies convey important social information to infants.Specifically, melodies convey information about social affiliation.
+
+The authors argue that melodies are shared within social groups. Whereas children growing up in one culture may be exposed to certain songs as infants (e.g., “Rock-a-bye Baby”), children growing up in other cultures (or even other groups within a culture) may be exposed to different songs.Thus, when a novel person (someone who the infant has never seen before) sings a familiar song, it may signal to the infant that this new person is a member of their social group.
+
+To test this hypothesis, the researchers recruited 32 infants and their parents to complete an experiment.During their first visit to the lab, the parents were taught a new lullaby (one that neither they nor their infants had heard before).The experimenters asked the parents to sing the new lullaby to their child every day for the next 1-2 weeks.
+
+Following this 1-2 week exposure period, the parents and their infant returned to the lab to complete the experimental portion of the study.Infants were first shown a screen with side-by-side videos of two unfamiliar people, each of whom were silently smiling and looking at the infant.The researchers recorded the looking behavior (or gaze) of the infants during this ‘baseline’ phase. Next, one by one, the two unfamiliar people on the screen sang either the lullaby that the parents learned or a different lullaby (that had the same lyrics and rhythm, but a different melody).Finally, the infants saw the same silent video used at baseline, and the researchers again recorded the looking behavior of the infants during this ‘test’ phase.For more details on the experiment’s methods, please refer to Mehr et al. (2016) Experiment 1.
+
 ## Lab skills learned
+
+1. Conducting a one-sample t-test
+2. Conducting a two-sample t-test
+3. Plotting the data
+4. Discussing inferences and limitations
 
 
 ## Important Stuff
@@ -13,17 +32,17 @@ This lab is modified and extended from [Open Stats Labs](https://sites.trinity.e
 - [Data in .csv format](https://drive.google.com/open?id=0Bz-rhZ21ShvOdW1wV0pmUTJSSk0)
 - [Data in SPSS format](https://drive.google.com/open?id=0Bz-rhZ21ShvOa3c4X3hqOWxwcUU)
 
-## Outline of Problem to solve
-
-Stuff we need to say in general
-
-### important  things
-
-Other things to say
-
 ## R
 
-How to do it in R
+### Loading the data
+
+The first thing to do is download the .csv formatted data file, using the link above, or just click [here](https://drive.google.com/open?id=0Bz-rhZ21ShvOdW1wV0pmUTJSSk0). It turns out there are lots of ways to load .csv files into R.
+
+```{r}
+#a<-fread("https://drive.google.com/open?id=0Bz-rhZ21ShvOdW1wV0pmUTJSSk0")
+#b<-fread("~/Downloads/ttest1.csv")
+
+```
 
 ## Excel
 
