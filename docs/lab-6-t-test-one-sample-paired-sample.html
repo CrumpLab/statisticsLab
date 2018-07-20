@@ -189,6 +189,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6.4.4" data-path="lab-6-t-test-one-sample-paired-sample.html"><a href="lab-6-t-test-one-sample-paired-sample.html#baseline-phase-conduct-a-one-sample-t-test"><i class="fa fa-check"></i><b>6.4.4</b> Baseline phase: Conduct a one sample t-test</a></li>
 <li class="chapter" data-level="6.4.5" data-path="lab-6-t-test-one-sample-paired-sample.html"><a href="lab-6-t-test-one-sample-paired-sample.html#test-phase"><i class="fa fa-check"></i><b>6.4.5</b> Test phase</a></li>
 <li class="chapter" data-level="6.4.6" data-path="lab-6-t-test-one-sample-paired-sample.html"><a href="lab-6-t-test-one-sample-paired-sample.html#paired-samples-t-test"><i class="fa fa-check"></i><b>6.4.6</b> Paired-samples t-test</a></li>
+<li class="chapter" data-level="6.4.7" data-path="lab-6-t-test-one-sample-paired-sample.html"><a href="lab-6-t-test-one-sample-paired-sample.html#data-simulation"><i class="fa fa-check"></i><b>6.4.7</b> Data-simulation</a></li>
 </ul></li>
 <li class="chapter" data-level="6.5" data-path="lab-6-t-test-one-sample-paired-sample.html"><a href="lab-6-t-test-one-sample-paired-sample.html#excel-5"><i class="fa fa-check"></i><b>6.5</b> Excel</a></li>
 <li class="chapter" data-level="6.6" data-path="lab-6-t-test-one-sample-paired-sample.html"><a href="lab-6-t-test-one-sample-paired-sample.html#spss-5"><i class="fa fa-check"></i><b>6.6</b> SPSS</a></li>
@@ -469,6 +470,19 @@ all_data &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class
 ##   mean of x 
 ## -0.07239458</code></pre>
 </div>
+</div>
+<div id="data-simulation" class="section level3">
+<h3><span class="header-section-number">6.4.7</span> Data-simulation</h3>
+<p>We can do a little bit of data simulation to get a better feel for this kind of data. For example, we saw that the dots in our plots were quite variable. We might wonder about what chance can do in the current experiment. One way to do this is to estimate the standard deviation of the looking time proportions. Perhaps the best way to do that would be to an average of the standard deviation in the baseline and test_phase conditions. Then, we could simulate 32 scores from a normal distribution with mean = .5, and standard deviation equalling our mean standard deviation. We could calculate the mean of our simulated sample. And, we could do this many times, say 1000 times. Then, we could look at a histogram of our means. This will show the range of sample means we would expect just by chance. This is another way to tell whether the observed difference in this experiment in the testing phase was close or not close from being produced by chance. Take a look at the histogram. What do you think?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sample_sd   &lt;-<span class="st"> </span>(<span class="kw">sd</span>(baseline)+<span class="kw">sd</span>(test_phase))/<span class="dv">2</span>
+
+simulated_means &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
+for(i in <span class="dv">1</span>:<span class="dv">1000</span>){
+ simulated_means[i] &lt;-<span class="st"> </span><span class="kw">mean</span>(<span class="kw">rnorm</span>(<span class="dv">32</span>,.<span class="dv">5</span>, sample_sd))
+}
+
+<span class="kw">hist</span>(simulated_means)</code></pre></div>
+<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 </div>
 </div>
 <div id="excel-5" class="section level2">
