@@ -4,7 +4,21 @@
 This lab is modified and extended from [Open Stats Labs](https://sites.trinity.edu/osl). Thanks to Open Stats Labs (Dr. Kevin P. McIntyre) for their fantastic work.
 </div>
 
+## Do you come across as smarter when people read what you say or hear what you say?
+
+### STUDY DESCRIPTION
+
+Imagine you were a job candidate trying to pitch your skills to a potential employer. Would you be more likely to get the job after giving a short speech describing your skills, or after writing a short speech and having a potential employer read those words? That was the question raised by Schroeder and Epley (2015).The authors predicted that a person’s speech (i.e., vocal tone, cadence, and pitch) communicates information about their intellect better than their written words (even if they are the same words as in the speech).
+
+To examine this possibility, the authors randomly assigned 39 professional recruiters for Fortune 500 companies to one of two conditions. In the audio condition, participants listened to audio recordings of a job candidate’s spoken job pitch. In the transcript condition, participants read a transcription of the job candidate’s pitch. After hearing or reading the pitch, the participants rated the job candidates on three dimensions: intelligence, competence, and thoughtfulness. These ratings were then averaged to create a single measure of the job candidate’s intellect, with higher scores indicating the recruiters rated the candidates as higher in intellect. The participants also rated their overall impression of the job candidate (a composite of two items measuring positive and negative impressions). Finally, the participants indicated how likely they would be to recommend hiring the job candidate (0 - not at all likely, 10 - extremely likely).
+
+What happened? Did the recruiters think job applicants were smarter when they read the transcripts, or when the heard the applicants speak? We have the data, we can find out.
+
 ## Lab skills learned
+
+1. Conduct independent samples t-tests
+2. Generate figures
+3. Discuss the results and implications
 
 ## Important Stuff
 - citation: Schroeder, J., & Epley, N. (2015). The sound of intellect: Speech reveals a thoughtful mind, increasing a job candidate’s appeal. Psychological Science, 26, 877-891.
@@ -12,17 +26,24 @@ This lab is modified and extended from [Open Stats Labs](https://sites.trinity.e
 - [Data in .csv format](https://drive.google.com/open?id=0Bz-rhZ21ShvOei1MM24xNndnQ00)
 - [Data in SPSS format](https://drive.google.com/open?id=0Bz-rhZ21ShvOVXlDMjEzQU1oY1k)
 
-## Outline of Problem to solve
-
-Stuff we need to say in general
-
-### important  things
-
-Other things to say
 
 ## R
 
-How to do it in R
+### Load the data
+
+```{r}
+library(data.table)
+all_data <- fread("Data/SchroederEpley2015data.csv")
+
+```
+
+
+
+### Look at the data
+
+### Find the data you need
+
+### 
 
 ## Excel
 
