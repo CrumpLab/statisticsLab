@@ -192,6 +192,22 @@ for(i in 1:1000){
 hist(simulated_means)
 
 ```
+#### Simulating the mean differences
+
+We can do the simulation slightly differently to give us a different look at chance. Above we simulated the sample means from a normal distibrution centered on .5. The experimental question of interest was whether the mean difference between the baseline and test_phase condition was different. So, we should do a simulation of the difference scores. First, we estimate the standard deviation of the difference scores, and then run the simulation with a normal distribution centered on 0 (an expected mean difference of 0). This shows roughly how often we might expect mean differences of various sizes to occur. One major limitation is that we likely had only a rough estimate of the true standard deviation of these mean differences, after all there were only 32 of them, so we should take this with a grain of salt. Nevertheless, the pattern in the simulation fits well with the observations in that we already made from the data.
+
+```{r}
+
+sample_sd   <- sd(baseline-test_phase)
+
+simulated_mean_difference <- length(1000)
+for(i in 1:1000){
+ simulated_mean_difference[i] <- mean(rnorm(32,0, sample_sd))
+}
+
+hist(simulated_mean_difference)
+
+```
 
 ## Excel
 

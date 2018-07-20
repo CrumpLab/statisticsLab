@@ -29,7 +29,7 @@
 <meta name="author" content="Jeffrey Suzuki">
 
 
-<meta name="date" content="2018-07-19">
+<meta name="date" content="2018-07-20">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -482,7 +482,17 @@ for(i in <span class="dv">1</span>:<span class="dv">1000</span>){
 }
 
 <span class="kw">hist</span>(simulated_means)</code></pre></div>
-<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-13-1.png" width="672" /> #### Simulating the mean differences</p>
+<p>We can do the simulation slightly differently to give us a different look at chance. Above we simulated the sample means from a normal distibrution centered on .5. The experimental question of interest was whether the mean difference between the baseline and test_phase condition was different. So, we should do a simulation of the difference scores. First, we estimate the standard deviation of the difference scores, and then run the simulation with a normal distribution centered on 0 (an expected mean difference of 0). This shows roughly how often we might expect mean differences of various sizes to occur. One major limitation is that we likely had only a rough estimate of the true standard deviation of these mean differences, after all there were only 32 of them, so we should take this with a grain of salt. Nevertheless, the pattern in the simulation fits well with the observations in that we already made from the data.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sample_sd   &lt;-<span class="st"> </span><span class="kw">sd</span>(baseline-test_phase)
+
+simulated_mean_difference &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
+for(i in <span class="dv">1</span>:<span class="dv">1000</span>){
+ simulated_mean_difference[i] &lt;-<span class="st"> </span><span class="kw">mean</span>(<span class="kw">rnorm</span>(<span class="dv">32</span>,<span class="dv">0</span>, sample_sd))
+}
+
+<span class="kw">hist</span>(simulated_mean_difference)</code></pre></div>
+<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 </div>
 </div>
 <div id="excel-5" class="section level2">
