@@ -189,7 +189,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6.4.4" data-path="lab-6-t-test-one-sample-paired-sample.html"><a href="lab-6-t-test-one-sample-paired-sample.html#baseline-phase-conduct-a-one-sample-t-test"><i class="fa fa-check"></i><b>6.4.4</b> Baseline phase: Conduct a one sample t-test</a></li>
 <li class="chapter" data-level="6.4.5" data-path="lab-6-t-test-one-sample-paired-sample.html"><a href="lab-6-t-test-one-sample-paired-sample.html#test-phase"><i class="fa fa-check"></i><b>6.4.5</b> Test phase</a></li>
 <li class="chapter" data-level="6.4.6" data-path="lab-6-t-test-one-sample-paired-sample.html"><a href="lab-6-t-test-one-sample-paired-sample.html#paired-samples-t-test"><i class="fa fa-check"></i><b>6.4.6</b> Paired-samples t-test</a></li>
-<li class="chapter" data-level="6.4.7" data-path="lab-6-t-test-one-sample-paired-sample.html"><a href="lab-6-t-test-one-sample-paired-sample.html#data-simulation"><i class="fa fa-check"></i><b>6.4.7</b> Data-simulation</a></li>
+<li class="chapter" data-level="6.4.7" data-path="lab-6-t-test-one-sample-paired-sample.html"><a href="lab-6-t-test-one-sample-paired-sample.html#graphing-the-findings"><i class="fa fa-check"></i><b>6.4.7</b> Graphing the findings</a></li>
+<li class="chapter" data-level="6.4.8" data-path="lab-6-t-test-one-sample-paired-sample.html"><a href="lab-6-t-test-one-sample-paired-sample.html#data-simulation"><i class="fa fa-check"></i><b>6.4.8</b> Data-simulation</a></li>
 </ul></li>
 <li class="chapter" data-level="6.5" data-path="lab-6-t-test-one-sample-paired-sample.html"><a href="lab-6-t-test-one-sample-paired-sample.html#excel-5"><i class="fa fa-check"></i><b>6.5</b> Excel</a></li>
 <li class="chapter" data-level="6.6" data-path="lab-6-t-test-one-sample-paired-sample.html"><a href="lab-6-t-test-one-sample-paired-sample.html#spss-5"><i class="fa fa-check"></i><b>6.6</b> SPSS</a></li>
@@ -359,6 +360,9 @@ all_data &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">baseline &lt;-<span class="st"> </span>experiment_one$Baseline_Proportion_Gaze_to_Singer</code></pre></div>
 <div id="look-at-the-numbers" class="section level4">
 <h4><span class="header-section-number">6.4.4.1</span> Look at the numbers</h4>
+<div class="marginnote">
+<p><strong>Question:</strong> Why is it important to look at your numbers? What could happen if you didn’t?</p>
+</div>
 <p>Ok, we could just do the t-test right away, it’s really easy, only one line of code. But, we haven’t even looked at the numbers yet. Let’s at least do that. First, we’ll just use plot. It will show every data point for each infant as a dot.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(baseline)</code></pre></div>
 <p><img src="Programming_Crump_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
@@ -374,6 +378,9 @@ all_data &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sd</span>(baseline)</code></pre></div>
 <pre><code>## [1] 0.1769651</code></pre>
 <p>Ok, so just looking at the mean, we see the proportion is close to .5 (it’s .521). And, we see there is a healthy amount of variance (the dots were all over the place), as the standard deviation was about .176.</p>
+<div class="marginnote">
+<p><strong>Question:</strong> Based on the means and standard deviations can you make an educated guess about what the t and p values might be? Learn how to do this and you will be improving your data-sense.</p>
+</div>
 <p>Now, before we run the t-test, what do you think is going to happen? We are going to get a t-value, and an associated p-value. If you can make a guess at what those numbers would be right now in your head, and those end up being pretty close to the ones we will see in a moment, then you should pat yourself on the back. You have learned how to have intuitions about the data. As I am writing this I will tell you that 1) I can’t remember what the t and p was from the paper, and I haven’t done the test yet, so I don’t know the answer. So, I am allowed to guess what the answer will be. Here are my guesses t(31) = 0.2, p = .95. The numbers in the brackets are degrees of freedom, which we know are 31 (df= n-1 = 32-1= 31). More important than the specific numbers I am guessing (which will probably be wrong), I am guessing that the p-value will be pretty large, it will not be less than .05, which the author’s set as their alpha rate. So, I am guessing we will not reject the hypothesis that .52 is different from .5.</p>
 <p>Let’s do the t-test and see what happens.</p>
 </div>
@@ -391,9 +398,12 @@ all_data &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class
 ## sample estimates:
 ## mean of x 
 ## 0.5210967</code></pre>
+<div class="marginnote">
+<p><strong>Question:</strong> Why was the baseline condition important for the experiment? What does performance in this condition tell us?</p>
+</div>
 <p>So, there we have it. We did a one-sample t-test. Here’s how you would report it, t(31) = .67, p = .505. Or, we might say something like:</p>
 <blockquote>
-<p>During the basline condition, the mean proportion looking time toward the singer was .52, and was not significantly different from .5, according to a one-sample test, t(31) = .67, p = .505.</p>
+<p>During the baseline condition, the mean proportion looking time toward the singer was .52, and was not significantly different from .5, according to a one-sample test, t(31) = .67, p = .505.</p>
 </blockquote>
 <p>You should take the time to check this result, and see if it is the same one that was reported in the paper.</p>
 </div>
@@ -423,56 +433,184 @@ all_data &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class
 ## sample estimates:
 ## mean of x 
 ## 0.5934913</code></pre>
+<div class="marginnote">
+<p><strong>Question:</strong> Why was the test condition important for the experiment? What does performance in this condition tell us?</p>
+</div>
 <p>Alright. What did we find? You should take a stab at writing down what we found. You can use the same kind of language that I used from the first one sample-test. You should state the mean proportion, the t-value, the dfs, and the p-value. You should be able to answer the question, did the infants look longer at the singer who sang the familiar song? And, did they look longer than would be consist with chance at 50%.</p>
 </div>
 <div id="paired-samples-t-test" class="section level3">
 <h3><span class="header-section-number">6.4.6</span> Paired-samples t-test</h3>
 <p>The paired samples t-test is easy to do. We’ve already made two variables called <code>baseline</code>, and <code>test_phase</code>. These contain each of the infants looking time proportions to the singer for both parts of the experiment. We can see if the difference between them was likely or unlikely due to chance by running a paired samples t-test. We do it like this in one line:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(baseline, test_phase, <span class="dt">paired=</span><span class="ot">TRUE</span>, <span class="dt">var.equal=</span><span class="ot">TRUE</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(test_phase, baseline, <span class="dt">paired=</span><span class="ot">TRUE</span>, <span class="dt">var.equal=</span><span class="ot">TRUE</span>)</code></pre></div>
 <pre><code>## 
 ##  Paired t-test
 ## 
-## data:  baseline and test_phase
-## t = -2.4164, df = 31, p-value = 0.02175
+## data:  test_phase and baseline
+## t = 2.4164, df = 31, p-value = 0.02175
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -0.13349698 -0.01129217
+##  0.01129217 0.13349698
 ## sample estimates:
 ## mean of the differences 
-##             -0.07239458</code></pre>
+##              0.07239458</code></pre>
+<div class="marginnote">
+<p><strong>Question:</strong> Why was the paired samples t-test necessary if we already did two one sample t-test? What new question is the paired samples t-test asking?</p>
+</div>
 <p>I’l leave it to you to interpret these values, and to see if they are the same as the ones in the paper. Based on these values what do you conclude? Is there a difference between the mean proportion looking times for the baseline and testing phase?</p>
 <div id="relationship-between-one-sample-and-paired-sample-t-test" class="section level4">
 <h4><span class="header-section-number">6.4.6.1</span> Relationship between one-sample and paired sample t-test</h4>
+<div class="marginnote">
+<p><strong>Question:</strong> Why is it that a paired samples t-test can be the same as the one sample t-test? What do you have to do the data in the paired samples t-test in order to conduct a one-sample t-test that would give you the same result?</p>
+</div>
 <p>We’ve discussed in the textbook that the one-sample and paired sample t-test are related, they can be the same test. The one-sample test whether a sample mean is different from some particular mean. The paired sample t-test, is to determine whether one sample mean is different from another sample mean. If you take the scores for each variable in a paired samples t-test, and subtract them from one another, then you have one list of difference scores. Then, you could use a one sample t-test to test whether these difference scores are different from 0. It turns out you get the same answer from a paired sample t-test testing the difference between two sample means, and the one sample t-test testing whether the mean difference of the difference scores between the samples are different from 0. We can show this in r easily like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(baseline, test_phase, <span class="dt">paired=</span><span class="ot">TRUE</span>, <span class="dt">var.equal=</span><span class="ot">TRUE</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(test_phase, baseline, <span class="dt">paired=</span><span class="ot">TRUE</span>, <span class="dt">var.equal=</span><span class="ot">TRUE</span>)</code></pre></div>
 <pre><code>## 
 ##  Paired t-test
 ## 
-## data:  baseline and test_phase
-## t = -2.4164, df = 31, p-value = 0.02175
+## data:  test_phase and baseline
+## t = 2.4164, df = 31, p-value = 0.02175
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -0.13349698 -0.01129217
+##  0.01129217 0.13349698
 ## sample estimates:
 ## mean of the differences 
-##             -0.07239458</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">difference_scores&lt;-baseline-test_phase
+##              0.07239458</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">difference_scores&lt;-test_phase-baseline
 <span class="kw">t.test</span>(difference_scores, <span class="dt">mu=</span><span class="dv">0</span>)</code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
 ## data:  difference_scores
-## t = -2.4164, df = 31, p-value = 0.02175
+## t = 2.4164, df = 31, p-value = 0.02175
 ## alternative hypothesis: true mean is not equal to 0
 ## 95 percent confidence interval:
-##  -0.13349698 -0.01129217
+##  0.01129217 0.13349698
 ## sample estimates:
-##   mean of x 
-## -0.07239458</code></pre>
+##  mean of x 
+## 0.07239458</code></pre>
+</div>
+<div id="usefulness-of-difference-scores" class="section level4">
+<h4><span class="header-section-number">6.4.6.2</span> Usefulness of difference scores</h4>
+<p>Ok fine, the paired samples t-test can be a one sample t-test if you use the difference scores. This might just seem like a mildly useful factoid you can use for stats trivia games (which no one plays). The point of drawing your attention to the relationship, is to get you to focus on the difference scores. These are what we are actually interested in.</p>
+<p>Let’s use the difference scores to one more useful thing. Sometime the results of a t-test aren’t intuitively obvious. By the t-test we found out that a small difference between the test phase and baseline was not likely produced by chance. How does this relate to the research question about infants using familiar songs as cues for being social? Let’s ask a very simple question. How many infants actually showed the bias? How many infants out of 32 looked longer at the singer who sang the familiar song during test, compared to during baseline.</p>
+<p>We can determine this by calculating the difference scores. Then, asking how many of them were greater than zero:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">difference_scores &lt;-<span class="st"> </span>test_phase-baseline
+<span class="kw">length</span>(difference_scores[difference_scores&gt;<span class="dv">0</span>])</code></pre></div>
+<pre><code>## [1] 22</code></pre>
+<p>So, 22 out of 32 infants showed the effect. To put that in terms of probability, 68.75% of infants showed the effect. These odds and percentages give us another way to appreciate how strong the effect is. It wasn’t strong enough for all infants to show it.</p>
+</div>
+</div>
+<div id="graphing-the-findings" class="section level3">
+<h3><span class="header-section-number">6.4.7</span> Graphing the findings</h3>
+<p>It is often useful to graph the results of our analysis. We have already looked at dot plots and histograms of the individual samples. But, we also conducted some t-tests on the means of the baseline and test_phase samples. One of the major questions was whether these means are different. Now, we will make a graph that shows the means for each condition. Actually, we will make a few different graphs, so that you can think about what kinds of graphs are most helpful. There are two major important things to show: 1) the sample means, and 2) a visual aid for statistical inference showing whether the results were likely due to chance.</p>
+<p>We will use the ggplot2 package to make our graphs. Remember, there are two steps to take when using ggplot2. 1) put your data in a long form dataframe, where each measure has one row, and 2) define the layers of the ggplot.</p>
+<div id="make-the-dataframe-for-plotting" class="section level4">
+<h4><span class="header-section-number">6.4.7.1</span> Make the dataframe for plotting</h4>
+<p>To start we will need 2 columns. One column will code the experimental phase, Baseline or Test. There are 32 observations in each phase, so we want the word <code>Baseline</code> to appear 32 times, followed by the word <code>Test</code> 32 times. Then we want a single column with each of the proportions for each infant.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Phase &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;Baseline&quot;</span>,<span class="st">&quot;Test&quot;</span>), <span class="dt">each =</span> <span class="dv">32</span>)
+Proportions &lt;-<span class="st"> </span><span class="kw">c</span>(baseline,test_phase)
+plot_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(Phase,Proportions)</code></pre></div>
+</div>
+<div id="dot-plot-of-raw-scores" class="section level4">
+<h4><span class="header-section-number">6.4.7.2</span> Dot plot of raw scores</h4>
+<p>This shows every scores value on the y-axis, split by the baseline and test groups. If you just looked at this, you might not think the test phase was different from the basline phase. Still very useful to see the spread of individual scores. Supports the intuition that the scores are still kind of in a similar ballpark.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)</code></pre></div>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.4.4</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(plot_df, <span class="kw">aes</span>(<span class="dt">x=</span>Phase, <span class="dt">y=</span>Proportions))+
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
+<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+</div>
+<div id="dot-plot-with-means-and-raw-scores" class="section level4">
+<h4><span class="header-section-number">6.4.7.3</span> Dot plot with means and raw scores</h4>
+<div class="marginnote">
+<p><strong>Question:</strong> What kinds of inferences about the role of chance in producing the difference between the means can we make from this graph? What is missing?</p>
+</div>
+<p><code>ggplot2</code> is great because it let’s us add different layers on top of an existing plot. It would be good to see where the mean values for each sample lie on top of the sample scores. We can do this. But, to do it, we need to supply ggplot with another data frame, one that contains the means for each phase in long form. There are are only two phases, and two means, so we will make a rather small data.frame. It will have two columns, a Phase column, and Mean_value column. There will only be two rows in the dataframe, one for the mean for each phase.</p>
+<p>To make the smaller data frame for the means we will use the <code>aggregate</code> function. This allows us to find the means for each phase from the plot_df dataframe. It also automatically returns the data frame we are looking for.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mean_df &lt;-<span class="st"> </span><span class="kw">aggregate</span>(Proportions ~<span class="st"> </span>Phase, plot_df, mean)
+
+<span class="kw">ggplot</span>(plot_df, <span class="kw">aes</span>(<span class="dt">x=</span>Phase, <span class="dt">y=</span>Proportions))+<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>()+
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data=</span>mean_df, <span class="dt">color=</span><span class="st">&quot;Red&quot;</span>, <span class="dt">size=</span><span class="dv">2</span>)</code></pre></div>
+<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+</div>
+<div id="bar-plot" class="section level4">
+<h4><span class="header-section-number">6.4.7.4</span> Bar plot</h4>
+<p>It’s very common to use bars in graphs. We can easily do this by using <code>geom_bar</code>, rather than <code>geom_point</code>. Also, we can plot bars for the means, and keep showing the dots like this…(note this will be messed up, but I want to show you why).</p>
+<p>Also look for these changes.</p>
+<ol style="list-style-type: decimal">
+<li>added <code>stat=&quot;identity&quot;</code> Necessary for bar plot to show specific numbers</li>
+<li>added <code>aes(fill=Phase)</code> Makes each bar a different color, depending on which phase it comes from</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(plot_df, <span class="kw">aes</span>(<span class="dt">x=</span>Phase, <span class="dt">y=</span>Proportions))+<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>()+
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">data=</span>mean_df, <span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>,<span class="kw">aes</span>(<span class="dt">fill=</span>Phase))</code></pre></div>
+<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p>Ok, we see the bars and some of the dots, but not all of them. What is going on? Remember, ggplot2 works in layers. Whatever layer you add first will be printed first in the graph, whatever layer you add second will be printed on top of the first. We put the bars on top of the dots. Let’s change the order of the layers so the dot’s go on top of the bars.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(plot_df, <span class="kw">aes</span>(<span class="dt">x=</span>Phase, <span class="dt">y=</span>Proportions))+<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">data=</span>mean_df, <span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>,<span class="kw">aes</span>(<span class="dt">fill=</span>Phase))+
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
+<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+</div>
+<div id="bar-plot-with-error-bars" class="section level4">
+<h4><span class="header-section-number">6.4.7.5</span> Bar plot with error bars</h4>
+<p>So far we have only plotted the means and individual sample scores. These are useful, but neither of them give us clear visual information about our statistical test. Our paired sample t-test suggested that the mean difference between Baseline and Test was not very likely by chance. It could have happened, but wouldn’t happen very often.</p>
+<div class="marginnote">
+<p><strong>Question:</strong> Why would the standard deviation of each mean, or the standard error of each mean be inappropriate to use in this case?</p>
+</div>
+<div class="marginnote">
+<p><strong>Question:</strong> How would error bars based on the standard error of the mean differences aid in visual inference about the role of chance in producing the difference?</p>
+</div>
+<p>Error bars are commonly used as an aid for visual inference. The use of error bars can be a subtle nuanced issue. This is because there a different kinds of error bars that can be plotted, and each one supports different kinds of inference. In general, the error bar is supposed to represent some aspect of the variability associated with each mean. We could plot little bars that are +1 or -1 standard deviations of each mean, or we would do +1 or -1 standard errors of each mean. In the case of paired samples, neither or these error bars would be appropriate, they wouldn’t reflect the variability associated with mean we are interested in. In a paired samples t-test, we are interested in the variability of the mean of the difference scores. Let’s calculate the standard error of the mean (SEM) for the difference scores between Baseline and Test, and then add error bars to the plot.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">difference_scores &lt;-<span class="st"> </span>baseline-test_phase <span class="co">#calculate difference scores</span>
+standard_error &lt;-<span class="st"> </span><span class="kw">sd</span>(difference_scores)/<span class="kw">sqrt</span>(<span class="kw">length</span>(difference_scores)) <span class="co">#calculate SEM</span>
+
+
+<span class="kw">ggplot</span>(plot_df, <span class="kw">aes</span>(<span class="dt">x=</span>Phase, <span class="dt">y=</span>Proportions))+<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">data=</span>mean_df, <span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>,<span class="kw">aes</span>(<span class="dt">fill=</span>Phase))+
+<span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="dt">data=</span>mean_df, <span class="kw">aes</span>(<span class="dt">ymin=</span>Proportions-standard_error, 
+                                  <span class="dt">ymax=</span>Proportions+standard_error), <span class="dt">width=</span>.<span class="dv">1</span>) +
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha=</span>.<span class="dv">25</span>)</code></pre></div>
+<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<div class="marginnote">
+<p><strong>Question:</strong> What is one reason why these error bars (standard error of the mean difference between Baseline and Test) are appropriate to use. What is one reason they are not appropriate to use?</p>
+</div>
+<p>We have done something that is useful for visual inference. From the textbook, we learned that differences of about 2 standard errors of the mean are near the point where we would claim that chance is unlikely to have produced the difference. This is a rough estimate. But, we can see that the top of the error bar for Baseline is lower than the bottom of the error bar for Test, resulting in a difference greater than 2 standard error bars. So, based on this graph, we might expect the difference between conditions to be significant. We can also complain about what we have done here, we are placing the same error bars from the meand difference scores onto the means for each condition. In some sense this is misleading. The error bars are not for the depicted sample means, they are for the hidden single set of difference scores. To make this more clear, we will make a bar plot with a single bar only for the differences scores.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">difference_scores &lt;-<span class="st"> </span>test_phase-baseline <span class="co">#calculate difference scores</span>
+standard_error &lt;-<span class="st"> </span><span class="kw">sd</span>(difference_scores)/<span class="kw">sqrt</span>(<span class="kw">length</span>(difference_scores)) <span class="co">#calculate SEM</span>
+mean_difference &lt;-<span class="st"> </span><span class="kw">mean</span>(difference_scores)
+
+<span class="kw">qplot</span>(<span class="dt">x=</span><span class="st">&quot;MeanDifference&quot;</span>, <span class="dt">y=</span>mean_difference)+
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="dt">width=</span>.<span class="dv">5</span>, <span class="dt">alpha=</span>.<span class="dv">5</span>)+
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept=</span><span class="dv">0</span>)+
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y=</span>difference_scores), <span class="dt">alpha=</span>.<span class="dv">25</span>)+
+<span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin=</span>mean_difference-standard_error, 
+                                  <span class="dt">ymax=</span>mean_difference+standard_error), <span class="dt">width=</span>.<span class="dv">1</span>)</code></pre></div>
+<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<div class="marginnote">
+<p><strong>Question:</strong> Why is is it more appropriate to put the standard error of the difference on this bar graph? What important aspects of the original results shown in the previous graph are missing from this graph?</p>
+</div>
+<p>This plot is very useful too, it gives us some new information. We can see that the mean difference (test - baseline) was greater than 0. And, we are plotting the standard error of the mean differences, which are the error bars that more formally belong to this graph. Still, we are in a position to make some guesses for visual inference. The lower error bar represents only 1 SEM. It does not cross 0, but the fact that 1 SEM does not cross zero isn’t important. For SEMs it’s usually closer to 2. We can sort of visually guesstimate that that 2 SEMs would not cross zero, which would suggest we would obtain a small p-value. We also see each of the mean difference scores. It’s very clear that they are all over the place. This means that not every infant showed a looking time preference toward the singer of the familiar song. Finally, this single bar plot misses something. It doesn’t tell us what the values of the original means were.</p>
+</div>
+<div id="bar-plot-with-confidence-intervals" class="section level4">
+<h4><span class="header-section-number">6.4.7.6</span> Bar plot with confidence intervals</h4>
+<p>Confidence intervals are also often used for error bars, rather than the standard error (or other measure of variance). If we use 95% confidence intervals, then our error bars can be even more helpful for visual inference. Running the <code>t.test</code> function produces confidence interval estimates, and we can pull them out and use them for error bars.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">t_test_results &lt;-<span class="st"> </span><span class="kw">t.test</span>(difference_scores)
+lower_interval&lt;-<span class="st"> </span>t_test_results$conf.int[<span class="dv">1</span>]
+upper_interval&lt;-<span class="st"> </span>t_test_results$conf.int[<span class="dv">2</span>]
+
+<span class="kw">qplot</span>(<span class="dt">x=</span><span class="st">&quot;MeanDifference&quot;</span>, <span class="dt">y=</span>mean_difference)+
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="dt">width=</span>.<span class="dv">5</span>, <span class="dt">alpha=</span>.<span class="dv">5</span>)+
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept=</span><span class="dv">0</span>)+
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y=</span>difference_scores), <span class="dt">alpha=</span>.<span class="dv">25</span>)+
+<span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin=</span>lower_interval, 
+                                  <span class="dt">ymax=</span>upper_interval), <span class="dt">width=</span>.<span class="dv">1</span>)</code></pre></div>
+<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p>Notice that the 95% confidence intervals around the mean are wider than the SEM error bars from the previous graph. These new confidence intervals tell us that 95% of the time our sample mean will fall between the two lines. The bottom line is slightly above 0, so we can now visually see support for our statistical inference that chance was unlikely to produce the result. If chance was likely to produce the result, the horizontal line indicating 0, would be well inside the confidence interval. We can also notice that the mean difference was just barely different from chance, that lower bar is almost touching 0.</p>
 </div>
 </div>
 <div id="data-simulation" class="section level3">
-<h3><span class="header-section-number">6.4.7</span> Data-simulation</h3>
+<h3><span class="header-section-number">6.4.8</span> Data-simulation</h3>
 <p>We can do a little bit of data simulation to get a better feel for this kind of data. For example, we saw that the dots in our plots were quite variable. We might wonder about what chance can do in the current experiment. One way to do this is to estimate the standard deviation of the looking time proportions. Perhaps the best way to do that would be to an average of the standard deviation in the baseline and test_phase conditions. Then, we could simulate 32 scores from a normal distribution with mean = .5, and standard deviation equalling our mean standard deviation. We could calculate the mean of our simulated sample. And, we could do this many times, say 1000 times. Then, we could look at a histogram of our means. This will show the range of sample means we would expect just by chance. This is another way to tell whether the observed difference in this experiment in the testing phase was close or not close from being produced by chance. Take a look at the histogram. What do you think?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sample_sd   &lt;-<span class="st"> </span>(<span class="kw">sd</span>(baseline)+<span class="kw">sd</span>(test_phase))/<span class="dv">2</span>
 
@@ -482,7 +620,7 @@ for(i in <span class="dv">1</span>:<span class="dv">1000</span>){
 }
 
 <span class="kw">hist</span>(simulated_means)</code></pre></div>
-<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-13-1.png" width="672" /> #### Simulating the mean differences</p>
+<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-22-1.png" width="672" /> #### Simulating the mean differences</p>
 <p>We can do the simulation slightly differently to give us a different look at chance. Above we simulated the sample means from a normal distibrution centered on .5. The experimental question of interest was whether the mean difference between the baseline and test_phase condition was different. So, we should do a simulation of the difference scores. First, we estimate the standard deviation of the difference scores, and then run the simulation with a normal distribution centered on 0 (an expected mean difference of 0). This shows roughly how often we might expect mean differences of various sizes to occur. One major limitation is that we likely had only a rough estimate of the true standard deviation of these mean differences, after all there were only 32 of them, so we should take this with a grain of salt. Nevertheless, the pattern in the simulation fits well with the observations in that we already made from the data.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sample_sd   &lt;-<span class="st"> </span><span class="kw">sd</span>(baseline-test_phase)
 
@@ -492,7 +630,7 @@ for(i in <span class="dv">1</span>:<span class="dv">1000</span>){
 }
 
 <span class="kw">hist</span>(simulated_mean_difference)</code></pre></div>
-<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 </div>
 </div>
 <div id="excel-5" class="section level2">
