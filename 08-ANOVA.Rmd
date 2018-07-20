@@ -4,6 +4,36 @@
 This lab is modified and extended from [Open Stats Labs](https://sites.trinity.edu/osl). Thanks to Open Stats Labs (Dr. Kevin P. McIntyre) for their fantastic work.
 </div>
 
+## How to not think about bad memories by playing Tetris
+
+This lab activity uses the open data from Experiment 2 of James et al. (2015) to teach one-way ANOVA with planned comparisons. Results of the activity provided below should exactly reproduce the results described in the paper.
+
+### STUDY DESCRIPTION
+
+Following traumatic experiences, some people have flashbacks, which are also called "intrusive memories"" and are characterized by involuntary images of aspects of the traumatic event. Although people often try to simply forget traumatic memories, this approach is not very effective. Instead, previous research suggests that a better approach may be to try to change aspects of the memory after it is formed. For example, some research shows that traumatic memories can be altered and weakened to the point that they are no longer intrusive.
+
+Because intrusive memories of trauma are often visual in nature, James and colleagues (2015) sought to explore whether completing a visuospatial task (e.g., tetris) after a memory was formed would interfere with the storage of that memory, and thereby reduce the frequency of subsequent intrusions. They hypothesized that  only participants who complete a visuospatial task after reactivation of the traumatic memories would experience a  reduction in intrusive memories. In comparison, simply completing a visuospatial task (without reactivation) or reactivation (without a visuospatial task), would not reduce the occurrence intrusive memories.
+
+In other words, if you play tetris shortly after you were remembering bad memories, playing tetris might weaken those memories, which could cause you experience those kinds of intrusive memories less often in the future.
+
+### Study Methods
+
+To test their hypothesis, the  autho rs conducted an experiment ( N = 72,  n = 18 per condition). The procedure is summarized as follows:
+
+**Trauma Film**: All participants viewed a series of video clips of graphic violence (e.g., a person getting hit by a van while using his phone as he crosses the road) as a way to create memories that should become intrusive memories. Participants then went home and recorded the number of intrusive memories they experienced over the next 24 hours. Because this is before the experimental manipulations, all groups were predicted to have an  equal occurrence of intrusive memories during the first 24-hours (called Day 0).
+
+**Experimental Task**: After this 24-hour period, the participants returned to the lab and completed the experimental task. The experimenters randomly assigned participants to ONE of the following conditions:
+
+1. No-task control: These participants completed a 10-minute music filler task.
+2. Reactivation + Tetris: These participants were shown a series of images from the trauma film to reactivate the traumatic memories (i.e., reactivation task). After a 10-minute music filler task, participants played the video game Tetris for 12 minutes.
+3. Tetris Only: These participants played Tetris for 12 minutes, but did not complete the reactivation task.
+4. Reactivation Only: These participants completed the reactivation task, but did not play Tetris.
+
+**Intrusive Memories**: All participants were asked to record the number of intrusive memories that they experienced over the next seven days (Days 1 to 7).
+
+After the seven days had passed, participants completed an Intrusion-Provocation Task, in which they were shown blurred images from the trauma film and asked to indicate whether the blurred image triggered an intrusive memory.
+
+
 ## Lab Skills Learned
 
 ## Important Stuff
@@ -12,17 +42,15 @@ This lab is modified and extended from [Open Stats Labs](https://sites.trinity.e
 - [Data in .csv format](https://drive.google.com/open?id=0Bz-rhZ21ShvOM1cxWUpUNlQ0UlE)
 - [Data in SPSS format](https://drive.google.com/file/d/0Bz-rhZ21ShvOZ1lvQ0dQekZGWU0/view?usp=sharing)
 
-## Outline of Problem to solve
-
-Stuff we need to say in general
-
-### important  things
-
-Other things to say
-
 ## R
 
-How to do it in R
+### Load the data
+
+### Inspect the dataframe
+
+### Get the data you need
+
+
 
 ## Excel
 

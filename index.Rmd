@@ -5,7 +5,6 @@ author:
 - "Anajali Krishnan"
 - "Stephen Volz"
 - "Alla Chavarga"
-- "Jeffrey Suzuki"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: 
