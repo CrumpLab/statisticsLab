@@ -25,7 +25,7 @@
 \usepackage{hyperref}
 \hypersetup{unicode=true,
             pdftitle={Answering questions with data: Lab Manual},
-            pdfauthor={Matthew J. C. Crump; Anajali Krishnan; Stephen Volz; Alla Chavarga; Jeffrey Suzuki},
+            pdfauthor={Matthew J. C. Crump; Anajali Krishnan; Stephen Volz; Alla Chavarga},
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
@@ -119,7 +119,7 @@
   \title{Answering questions with data: Lab Manual}
   \pretitle{\vspace{\droptitle}\centering\huge}
   \posttitle{\par}
-  \author{Matthew J. C. Crump \\ Anajali Krishnan \\ Stephen Volz \\ Alla Chavarga \\ Jeffrey Suzuki}
+  \author{Matthew J. C. Crump \\ Anajali Krishnan \\ Stephen Volz \\ Alla Chavarga}
   \preauthor{\centering\large\emph}
   \postauthor{\par}
   \predate{\centering\large\emph}
@@ -2435,6 +2435,88 @@ This lab is modified and extended from
 \href{https://sites.trinity.edu/osl}{Open Stats Labs}. Thanks to Open
 Stats Labs (Dr.~Kevin P. McIntyre) for their fantastic work.
 
+\section{How to not think about bad memories by playing
+Tetris}\label{how-to-not-think-about-bad-memories-by-playing-tetris}
+
+This lab activity uses the open data from Experiment 2 of James et al.
+(2015) to teach one-way ANOVA with planned comparisons. Results of the
+activity provided below should exactly reproduce the results described
+in the paper.
+
+\subsection{STUDY DESCRIPTION}\label{study-description-2}
+
+Following traumatic experiences, some people have flashbacks, which are
+also called ``intrusive memories''" and are characterized by involuntary
+images of aspects of the traumatic event. Although people often try to
+simply forget traumatic memories, this approach is not very effective.
+Instead, previous research suggests that a better approach may be to try
+to change aspects of the memory after it is formed. For example, some
+research shows that traumatic memories can be altered and weakened to
+the point that they are no longer intrusive.
+
+Because intrusive memories of trauma are often visual in nature, James
+and colleagues (2015) sought to explore whether completing a
+visuospatial task (e.g., tetris) after a memory was formed would
+interfere with the storage of that memory, and thereby reduce the
+frequency of subsequent intrusions. They hypothesized that only
+participants who complete a visuospatial task after reactivation of the
+traumatic memories would experience a reduction in intrusive memories.
+In comparison, simply completing a visuospatial task (without
+reactivation) or reactivation (without a visuospatial task), would not
+reduce the occurrence intrusive memories.
+
+In other words, if you play tetris shortly after you were remembering
+bad memories, playing tetris might weaken those memories, which could
+cause you experience those kinds of intrusive memories less often in the
+future.
+
+\subsection{Study Methods}\label{study-methods}
+
+To test their hypothesis, the autho rs conducted an experiment ( N = 72,
+n = 18 per condition). The procedure is summarized as follows:
+
+\textbf{Trauma Film}: All participants viewed a series of video clips of
+graphic violence (e.g., a person getting hit by a van while using his
+phone as he crosses the road) as a way to create memories that should
+become intrusive memories. Participants then went home and recorded the
+number of intrusive memories they experienced over the next 24 hours.
+Because this is before the experimental manipulations, all groups were
+predicted to have an equal occurrence of intrusive memories during the
+first 24-hours (called Day 0).
+
+\textbf{Experimental Task}: After this 24-hour period, the participants
+returned to the lab and completed the experimental task. The
+experimenters randomly assigned participants to ONE of the following
+conditions:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  No-task control: These participants completed a 10-minute music filler
+  task.
+\item
+  Reactivation + Tetris: These participants were shown a series of
+  images from the trauma film to reactivate the traumatic memories
+  (i.e., reactivation task). After a 10-minute music filler task,
+  participants played the video game Tetris for 12 minutes.
+\item
+  Tetris Only: These participants played Tetris for 12 minutes, but did
+  not complete the reactivation task.
+\item
+  Reactivation Only: These participants completed the reactivation task,
+  but did not play Tetris.
+\end{enumerate}
+
+\textbf{Intrusive Memories}: All participants were asked to record the
+number of intrusive memories that they experienced over the next seven
+days (Days 1 to 7).
+
+After the seven days had passed, participants completed an
+Intrusion-Provocation Task, in which they were shown blurred images from
+the trauma film and asked to indicate whether the blurred image
+triggered an intrusive memory.
+
 \section{Lab Skills Learned}\label{lab-skills-learned-2}
 
 \section{Important Stuff}\label{important-stuff-2}
@@ -2458,18 +2540,97 @@ Stats Labs (Dr.~Kevin P. McIntyre) for their fantastic work.
   in SPSS format}
 \end{itemize}
 
-\section{Outline of Problem to
-solve}\label{outline-of-problem-to-solve-4}
-
-Stuff we need to say in general
-
-\subsection{important things}\label{important-things-4}
-
-Other things to say
-
 \section{R}\label{r-8}
 
-How to do it in R
+\subsection{Load the data}\label{load-the-data-1}
+
+Remember that any line with a \# makes a comment and the code does not
+run. Below is how to load the .csv data from the online repository, or
+from a local file (you need to change the file path to where the local
+file is, if you downloaded it). The data contains all of the measures
+and conditions from Experiment 2 in the paper.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(data.table)}
+\CommentTok{#fread("https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/Jamesetal2015Experiment2.csv")}
+\NormalTok{all_data <-}\StringTok{ }\KeywordTok{fread}\NormalTok{(}\StringTok{"data/Jamesetal2015Experiment2.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Inspect the dataframe}\label{inspect-the-dataframe}
+
+This will give you a big picture of the data frame. Click the button to
+view it in your browser, then take a look to see what is in it.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(summarytools)}
+\KeywordTok{view}\NormalTok{(}\KeywordTok{dfSummary}\NormalTok{(all_data))}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Get the data you need}\label{get-the-data-you-need}
+
+Again we have only the data from Experiment 2, so we don't need to get
+rid of any rows of the data. But we do need look at the columns to see
+how the independent variable and dependent variables were coded.
+
+\subsubsection{The independent variable}\label{the-independent-variable}
+
+There was one important independent variable, and it had four levels.
+The first column in the data frame is called condition, and it has four
+levels. The levels are 1, 2, 3, and 4 in the dataframe. These will
+correspond to the four levels in shown in figure:
+
+\begin{itemize}
+\tightlist
+\item
+  No-task control
+\item
+  Reactivation Plus tetris
+\item
+  Tetris only
+\item
+  Reactivation only
+\end{itemize}
+
+Each of these refer to what subjects did after they watched the
+traumatic film. But, which of these correspond to the numbers 1 to 4 in
+the dataframe? It turns out the are in the right order, and 1 to 4 refer
+to:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  No-task control
+\item
+  Reactivation Plus tetris
+\item
+  Tetris only
+\item
+  Reactivation only
+\end{enumerate}
+
+Let's do ourselves a favor and rename the levels of the
+\texttt{Condition} column with words so we know what they refer to.
+First, convert the \texttt{Condition} column to a factor, then rename
+the levels. Then.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{all_data$Condition <-}\StringTok{ }\KeywordTok{as.factor}\NormalTok{(all_data$Condition)}
+\KeywordTok{levels}\NormalTok{(all_data$Condition) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Control"}\NormalTok{,}
+                                \StringTok{"Reactivation+Tetris"}\NormalTok{, }
+                                \StringTok{"Tetris_only"}\NormalTok{,}
+                                \StringTok{"Reactivation_only"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{The dependent variable}\label{the-dependent-variable}
+
+The authors showed two figures, one where they analysed
 
 \section{Excel}\label{excel-7}
 
@@ -2505,11 +2666,11 @@ How to do it in Matlab
 \end{itemize}
 
 \section{Outline of Problem to
-solve}\label{outline-of-problem-to-solve-5}
+solve}\label{outline-of-problem-to-solve-4}
 
 Stuff we need to say in general
 
-\subsection{important things}\label{important-things-5}
+\subsection{important things}\label{important-things-4}
 
 Other things to say
 
@@ -2552,11 +2713,11 @@ How to do it in Matlab
 \end{itemize}
 
 \section{Outline of Problem to
-solve}\label{outline-of-problem-to-solve-6}
+solve}\label{outline-of-problem-to-solve-5}
 
 Stuff we need to say in general
 
-\subsection{important things}\label{important-things-6}
+\subsection{important things}\label{important-things-5}
 
 Other things to say
 
@@ -2597,7 +2758,7 @@ ANOVA}\label{lab-11-mixed-factorial-anova}
 
 Stuff we need to say in general
 
-\subsection{important things}\label{important-things-7}
+\subsection{important things}\label{important-things-6}
 
 Other things to say
 

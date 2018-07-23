@@ -5,7 +5,8 @@ author:
 - "Anajali Krishnan"
 - "Stephen Volz"
 - "Alla Chavarga"
-date: "`r Sys.Date()`"
+- "Currently in draft, all attributions and licensed to adapted content will be recognized by the time we are finished."
+date: "2018: Last Compiled `r Sys.Date()`"
 site: bookdown::bookdown_site
 output: 
   bookdown::gitbook:
@@ -29,6 +30,10 @@ knitr::opts_chunk$set(message=FALSE,warning=FALSE)
 ```
 
 # Preface {-}
+
+```{r,echo=F,fig.align="center",eval=T}
+knitr::include_graphics("LabmanualCover.png")
+```
 
 This lab manual involves tutorials and data-analysis problems using the free statistics software R, as well as Excel, and SPSS. The goal is to train students to be able to organize and analyze data common to research in psychology, as well as to understand the ideas behind the analyses so students can take creative approaches to answering questions with data.
 

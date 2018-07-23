@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Answering questions with data: Lab Manual</title>
+  <meta name="description" content="A lab manual for Psyc 3400">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Answering questions with data: Lab Manual" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="A lab manual for Psyc 3400" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Answering questions with data: Lab Manual" />
+  
+  <meta name="twitter:description" content="A lab manual for Psyc 3400" />
+  
+
+<meta name="author" content="Matthew J. C. Crump">
+<meta name="author" content="Anajali Krishnan">
+<meta name="author" content="Stephen Volz">
+<meta name="author" content="Alla Chavarga">
+
+
+<meta name="date" content="2018-07-20">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="some-tips-5.html">
+<link rel="next" href="macros.html">
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets/htmlwidgets.js"></script>
+<link href="libs/datatables-css/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding/datatables.js"></script>
+<link href="libs/dt-core/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk/js/crosstalk.min.js"></script>
+<script type="text/javascript">
+mattcrump=1;
+</script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="tufte.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Statistics Lab Manual</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#r"><i class="fa fa-check"></i><b>0.1</b> R</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#why-r"><i class="fa fa-check"></i><b>0.2</b> Why R?</a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#installing-r-and-r-studio"><i class="fa fa-check"></i><b>0.3</b> Installing R and R Studio</a></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#r-studio-notes-and-tips"><i class="fa fa-check"></i><b>0.4</b> R studio notes and tips</a><ul>
+<li class="chapter" data-level="0.4.1" data-path="index.html"><a href="index.html#console"><i class="fa fa-check"></i><b>0.4.1</b> Console</a></li>
+<li class="chapter" data-level="0.4.2" data-path="index.html"><a href="index.html#script-editor"><i class="fa fa-check"></i><b>0.4.2</b> Script Editor</a></li>
+<li class="chapter" data-level="0.4.3" data-path="index.html"><a href="index.html#workspace-and-history"><i class="fa fa-check"></i><b>0.4.3</b> Workspace and History</a></li>
+<li class="chapter" data-level="0.4.4" data-path="index.html"><a href="index.html#file-plot-packages-help"><i class="fa fa-check"></i><b>0.4.4</b> File, Plot, Packages, Help</a></li>
+</ul></li>
+<li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#final-comments"><i class="fa fa-check"></i><b>0.5</b> Final comments</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="lab-1-graphing-data.html"><a href="lab-1-graphing-data.html"><i class="fa fa-check"></i><b>1</b> Lab 1: Graphing Data</a><ul>
+<li class="chapter" data-level="1.1" data-path="lab-1-graphing-data.html"><a href="lab-1-graphing-data.html#general-goals"><i class="fa fa-check"></i><b>1.1</b> General Goals</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="lab-1-graphing-data.html"><a href="lab-1-graphing-data.html#other-things-if-needed"><i class="fa fa-check"></i><b>1.1.1</b> Other things if needed</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="lab-1-graphing-data.html"><a href="lab-1-graphing-data.html#r-1"><i class="fa fa-check"></i><b>1.2</b> R</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="lab-1-graphing-data.html"><a href="lab-1-graphing-data.html#general-goals-1"><i class="fa fa-check"></i><b>1.2.1</b> General Goals</a></li>
+<li class="chapter" data-level="1.2.2" data-path="lab-1-graphing-data.html"><a href="lab-1-graphing-data.html#a-clean-start"><i class="fa fa-check"></i><b>1.2.2</b> A clean start</a></li>
+<li class="chapter" data-level="1.2.3" data-path="lab-1-graphing-data.html"><a href="lab-1-graphing-data.html#r-console"><i class="fa fa-check"></i><b>1.2.3</b> R console</a></li>
+<li class="chapter" data-level="1.2.4" data-path="lab-1-graphing-data.html"><a href="lab-1-graphing-data.html#r-editor"><i class="fa fa-check"></i><b>1.2.4</b> R editor</a></li>
+<li class="chapter" data-level="1.2.5" data-path="lab-1-graphing-data.html"><a href="lab-1-graphing-data.html#an-example-script"><i class="fa fa-check"></i><b>1.2.5</b> An example script</a></li>
+<li class="chapter" data-level="1.2.6" data-path="lab-1-graphing-data.html"><a href="lab-1-graphing-data.html#a-bunch-of-numbers"><i class="fa fa-check"></i><b>1.2.6</b> A bunch of numbers</a></li>
+<li class="chapter" data-level="1.2.7" data-path="lab-1-graphing-data.html"><a href="lab-1-graphing-data.html#making-numbers-in-r"><i class="fa fa-check"></i><b>1.2.7</b> Making numbers in R</a></li>
+<li class="chapter" data-level="1.2.8" data-path="lab-1-graphing-data.html"><a href="lab-1-graphing-data.html#graphing-data-in-r"><i class="fa fa-check"></i><b>1.2.8</b> Graphing Data in R</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="lab-1-graphing-data.html"><a href="lab-1-graphing-data.html#excel"><i class="fa fa-check"></i><b>1.3</b> Excel</a></li>
+<li class="chapter" data-level="1.4" data-path="lab-1-graphing-data.html"><a href="lab-1-graphing-data.html#spss"><i class="fa fa-check"></i><b>1.4</b> SPSS</a></li>
+<li class="chapter" data-level="1.5" data-path="lab-1-graphing-data.html"><a href="lab-1-graphing-data.html#matlab"><i class="fa fa-check"></i><b>1.5</b> Matlab</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="lab-2-descriptive-statistics.html"><a href="lab-2-descriptive-statistics.html"><i class="fa fa-check"></i><b>2</b> Lab 2: Descriptive Statistics</a><ul>
+<li class="chapter" data-level="2.1" data-path="lab-2-descriptive-statistics.html"><a href="lab-2-descriptive-statistics.html#outline-of-problem-to-solve"><i class="fa fa-check"></i><b>2.1</b> Outline of Problem to solve</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="lab-2-descriptive-statistics.html"><a href="lab-2-descriptive-statistics.html#important-things"><i class="fa fa-check"></i><b>2.1.1</b> important things</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="lab-2-descriptive-statistics.html"><a href="lab-2-descriptive-statistics.html#r-2"><i class="fa fa-check"></i><b>2.2</b> R</a></li>
+<li class="chapter" data-level="2.3" data-path="lab-2-descriptive-statistics.html"><a href="lab-2-descriptive-statistics.html#excel-1"><i class="fa fa-check"></i><b>2.3</b> Excel</a></li>
+<li class="chapter" data-level="2.4" data-path="lab-2-descriptive-statistics.html"><a href="lab-2-descriptive-statistics.html#spss-1"><i class="fa fa-check"></i><b>2.4</b> SPSS</a></li>
+<li class="chapter" data-level="2.5" data-path="lab-2-descriptive-statistics.html"><a href="lab-2-descriptive-statistics.html#matlab-1"><i class="fa fa-check"></i><b>2.5</b> Matlab</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="lab-3-correlation.html"><a href="lab-3-correlation.html"><i class="fa fa-check"></i><b>3</b> Lab 3: Correlation</a><ul>
+<li class="chapter" data-level="3.1" data-path="lab-3-correlation.html"><a href="lab-3-correlation.html#outline-of-problem-to-solve-1"><i class="fa fa-check"></i><b>3.1</b> Outline of Problem to solve</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="lab-3-correlation.html"><a href="lab-3-correlation.html#important-things-1"><i class="fa fa-check"></i><b>3.1.1</b> important things</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="lab-3-correlation.html"><a href="lab-3-correlation.html#r-3"><i class="fa fa-check"></i><b>3.2</b> R</a></li>
+<li class="chapter" data-level="3.3" data-path="lab-3-correlation.html"><a href="lab-3-correlation.html#excel-2"><i class="fa fa-check"></i><b>3.3</b> Excel</a></li>
+<li class="chapter" data-level="3.4" data-path="lab-3-correlation.html"><a href="lab-3-correlation.html#spss-2"><i class="fa fa-check"></i><b>3.4</b> SPSS</a></li>
+<li class="chapter" data-level="3.5" data-path="lab-3-correlation.html"><a href="lab-3-correlation.html#matlab-2"><i class="fa fa-check"></i><b>3.5</b> Matlab</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="lab-4-normal-distribution-central-limit-theorem.html"><a href="lab-4-normal-distribution-central-limit-theorem.html"><i class="fa fa-check"></i><b>4</b> Lab 4: Normal Distribution &amp; Central Limit Theorem</a><ul>
+<li class="chapter" data-level="4.1" data-path="lab-4-normal-distribution-central-limit-theorem.html"><a href="lab-4-normal-distribution-central-limit-theorem.html#outline-of-problem-to-solve-2"><i class="fa fa-check"></i><b>4.1</b> Outline of Problem to solve</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="lab-4-normal-distribution-central-limit-theorem.html"><a href="lab-4-normal-distribution-central-limit-theorem.html#important-things-2"><i class="fa fa-check"></i><b>4.1.1</b> important things</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="lab-4-normal-distribution-central-limit-theorem.html"><a href="lab-4-normal-distribution-central-limit-theorem.html#r-4"><i class="fa fa-check"></i><b>4.2</b> R</a></li>
+<li class="chapter" data-level="4.3" data-path="lab-4-normal-distribution-central-limit-theorem.html"><a href="lab-4-normal-distribution-central-limit-theorem.html#excel-3"><i class="fa fa-check"></i><b>4.3</b> Excel</a></li>
+<li class="chapter" data-level="4.4" data-path="lab-4-normal-distribution-central-limit-theorem.html"><a href="lab-4-normal-distribution-central-limit-theorem.html#spss-3"><i class="fa fa-check"></i><b>4.4</b> SPSS</a></li>
+<li class="chapter" data-level="4.5" data-path="lab-4-normal-distribution-central-limit-theorem.html"><a href="lab-4-normal-distribution-central-limit-theorem.html#matlab-3"><i class="fa fa-check"></i><b>4.5</b> Matlab</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="lab-5-fundamentals-of-hypothesis-testing.html"><a href="lab-5-fundamentals-of-hypothesis-testing.html"><i class="fa fa-check"></i><b>5</b> Lab 5: Fundamentals of Hypothesis Testing</a><ul>
+<li class="chapter" data-level="5.1" data-path="lab-5-fundamentals-of-hypothesis-testing.html"><a href="lab-5-fundamentals-of-hypothesis-testing.html#outline-of-problem-to-solve-3"><i class="fa fa-check"></i><b>5.1</b> Outline of Problem to solve</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="lab-5-fundamentals-of-hypothesis-testing.html"><a href="lab-5-fundamentals-of-hypothesis-testing.html#important-things-3"><i class="fa fa-check"></i><b>5.1.1</b> important things</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="lab-5-fundamentals-of-hypothesis-testing.html"><a href="lab-5-fundamentals-of-hypothesis-testing.html#r-5"><i class="fa fa-check"></i><b>5.2</b> R</a></li>
+<li class="chapter" data-level="5.3" data-path="lab-5-fundamentals-of-hypothesis-testing.html"><a href="lab-5-fundamentals-of-hypothesis-testing.html#excel-4"><i class="fa fa-check"></i><b>5.3</b> Excel</a></li>
+<li class="chapter" data-level="5.4" data-path="lab-5-fundamentals-of-hypothesis-testing.html"><a href="lab-5-fundamentals-of-hypothesis-testing.html#spss-4"><i class="fa fa-check"></i><b>5.4</b> SPSS</a></li>
+<li class="chapter" data-level="5.5" data-path="lab-5-fundamentals-of-hypothesis-testing.html"><a href="lab-5-fundamentals-of-hypothesis-testing.html#matlab-4"><i class="fa fa-check"></i><b>5.5</b> Matlab</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="lab-6-t-test-one-sample-paired-sample.html"><a href="lab-6-t-test-one-sample-paired-sample.html"><i class="fa fa-check"></i><b>6</b> Lab 6: t-Test (one-sample, paired sample)</a><ul>
+<li class="chapter" data-level="6.1" data-path="lab-6-t-test-one-sample-paired-sample.html"><a href="lab-6-t-test-one-sample-paired-sample.html#does-music-convey-social-information-to-infants"><i class="fa fa-check"></i><b>6.1</b> Does Music Convey Social Information to Infants?</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="lab-6-t-test-one-sample-paired-sample.html"><a href="lab-6-t-test-one-sample-paired-sample.html#study-description"><i class="fa fa-check"></i><b>6.1.1</b> STUDY DESCRIPTION</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="lab-6-t-test-one-sample-paired-sample.html"><a href="lab-6-t-test-one-sample-paired-sample.html#lab-skills-learned"><i class="fa fa-check"></i><b>6.2</b> Lab skills learned</a></li>
+<li class="chapter" data-level="6.3" data-path="lab-6-t-test-one-sample-paired-sample.html"><a href="lab-6-t-test-one-sample-paired-sample.html#important-stuff"><i class="fa fa-check"></i><b>6.3</b> Important Stuff</a></li>
+<li class="chapter" data-level="6.4" data-path="lab-6-t-test-one-sample-paired-sample.html"><a href="lab-6-t-test-one-sample-paired-sample.html#r-6"><i class="fa fa-check"></i><b>6.4</b> R</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="lab-6-t-test-one-sample-paired-sample.html"><a href="lab-6-t-test-one-sample-paired-sample.html#loading-the-data"><i class="fa fa-check"></i><b>6.4.1</b> Loading the data</a></li>
+<li class="chapter" data-level="6.4.2" data-path="lab-6-t-test-one-sample-paired-sample.html"><a href="lab-6-t-test-one-sample-paired-sample.html#inspect-the-data-frame"><i class="fa fa-check"></i><b>6.4.2</b> Inspect the data frame</a></li>
+<li class="chapter" data-level="6.4.3" data-path="lab-6-t-test-one-sample-paired-sample.html"><a href="lab-6-t-test-one-sample-paired-sample.html#get-the-data-for-experiment-one"><i class="fa fa-check"></i><b>6.4.3</b> Get the data for Experiment one</a></li>
+<li class="chapter" data-level="6.4.4" data-path="lab-6-t-test-one-sample-paired-sample.html"><a href="lab-6-t-test-one-sample-paired-sample.html#baseline-phase-conduct-a-one-sample-t-test"><i class="fa fa-check"></i><b>6.4.4</b> Baseline phase: Conduct a one sample t-test</a></li>
+<li class="chapter" data-level="6.4.5" data-path="lab-6-t-test-one-sample-paired-sample.html"><a href="lab-6-t-test-one-sample-paired-sample.html#test-phase"><i class="fa fa-check"></i><b>6.4.5</b> Test phase</a></li>
+<li class="chapter" data-level="6.4.6" data-path="lab-6-t-test-one-sample-paired-sample.html"><a href="lab-6-t-test-one-sample-paired-sample.html#paired-samples-t-test"><i class="fa fa-check"></i><b>6.4.6</b> Paired-samples t-test</a></li>
+<li class="chapter" data-level="6.4.7" data-path="lab-6-t-test-one-sample-paired-sample.html"><a href="lab-6-t-test-one-sample-paired-sample.html#graphing-the-findings"><i class="fa fa-check"></i><b>6.4.7</b> Graphing the findings</a></li>
+<li class="chapter" data-level="6.4.8" data-path="lab-6-t-test-one-sample-paired-sample.html"><a href="lab-6-t-test-one-sample-paired-sample.html#data-simulation"><i class="fa fa-check"></i><b>6.4.8</b> Data-simulation</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="lab-6-t-test-one-sample-paired-sample.html"><a href="lab-6-t-test-one-sample-paired-sample.html#excel-5"><i class="fa fa-check"></i><b>6.5</b> Excel</a></li>
+<li class="chapter" data-level="6.6" data-path="lab-6-t-test-one-sample-paired-sample.html"><a href="lab-6-t-test-one-sample-paired-sample.html#spss-5"><i class="fa fa-check"></i><b>6.6</b> SPSS</a></li>
+<li class="chapter" data-level="6.7" data-path="lab-6-t-test-one-sample-paired-sample.html"><a href="lab-6-t-test-one-sample-paired-sample.html#matlab-5"><i class="fa fa-check"></i><b>6.7</b> Matlab</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="lab-7-t-test-independent-sample.html"><a href="lab-7-t-test-independent-sample.html"><i class="fa fa-check"></i><b>7</b> Lab 7: t-test (Independent Sample)</a><ul>
+<li class="chapter" data-level="7.1" data-path="lab-7-t-test-independent-sample.html"><a href="lab-7-t-test-independent-sample.html#do-you-come-across-as-smarter-when-people-read-what-you-say-or-hear-what-you-say"><i class="fa fa-check"></i><b>7.1</b> Do you come across as smarter when people read what you say or hear what you say?</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="lab-7-t-test-independent-sample.html"><a href="lab-7-t-test-independent-sample.html#study-description-1"><i class="fa fa-check"></i><b>7.1.1</b> STUDY DESCRIPTION</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="lab-7-t-test-independent-sample.html"><a href="lab-7-t-test-independent-sample.html#lab-skills-learned-1"><i class="fa fa-check"></i><b>7.2</b> Lab skills learned</a></li>
+<li class="chapter" data-level="7.3" data-path="lab-7-t-test-independent-sample.html"><a href="lab-7-t-test-independent-sample.html#important-stuff-1"><i class="fa fa-check"></i><b>7.3</b> Important Stuff</a></li>
+<li class="chapter" data-level="7.4" data-path="lab-7-t-test-independent-sample.html"><a href="lab-7-t-test-independent-sample.html#r-7"><i class="fa fa-check"></i><b>7.4</b> R</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="lab-7-t-test-independent-sample.html"><a href="lab-7-t-test-independent-sample.html#load-the-data"><i class="fa fa-check"></i><b>7.4.1</b> Load the data</a></li>
+<li class="chapter" data-level="7.4.2" data-path="lab-7-t-test-independent-sample.html"><a href="lab-7-t-test-independent-sample.html#inspect-data-frame"><i class="fa fa-check"></i><b>7.4.2</b> Inspect data frame</a></li>
+<li class="chapter" data-level="7.4.3" data-path="lab-7-t-test-independent-sample.html"><a href="lab-7-t-test-independent-sample.html#find-the-data-you-need"><i class="fa fa-check"></i><b>7.4.3</b> Find the data you need</a></li>
+<li class="chapter" data-level="7.4.4" data-path="lab-7-t-test-independent-sample.html"><a href="lab-7-t-test-independent-sample.html#look-at-the-dependent-variable."><i class="fa fa-check"></i><b>7.4.4</b> Look at the dependent variable.</a></li>
+<li class="chapter" data-level="7.4.5" data-path="lab-7-t-test-independent-sample.html"><a href="lab-7-t-test-independent-sample.html#conduct-independent-samples-t-test"><i class="fa fa-check"></i><b>7.4.5</b> Conduct Independent samples t-test</a></li>
+<li class="chapter" data-level="7.4.6" data-path="lab-7-t-test-independent-sample.html"><a href="lab-7-t-test-independent-sample.html#remaining-ratings"><i class="fa fa-check"></i><b>7.4.6</b> Remaining ratings</a></li>
+<li class="chapter" data-level="7.4.7" data-path="lab-7-t-test-independent-sample.html"><a href="lab-7-t-test-independent-sample.html#reconstructing-the-graph-from-the-paper"><i class="fa fa-check"></i><b>7.4.7</b> Reconstructing the graph from the paper</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="lab-7-t-test-independent-sample.html"><a href="lab-7-t-test-independent-sample.html#excel-6"><i class="fa fa-check"></i><b>7.5</b> Excel</a></li>
+<li class="chapter" data-level="7.6" data-path="lab-7-t-test-independent-sample.html"><a href="lab-7-t-test-independent-sample.html#spss-6"><i class="fa fa-check"></i><b>7.6</b> SPSS</a></li>
+<li class="chapter" data-level="7.7" data-path="lab-7-t-test-independent-sample.html"><a href="lab-7-t-test-independent-sample.html#matlab-6"><i class="fa fa-check"></i><b>7.7</b> Matlab</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="lab-8-one-way-anova.html"><a href="lab-8-one-way-anova.html"><i class="fa fa-check"></i><b>8</b> Lab 8: One-way ANOVA</a><ul>
+<li class="chapter" data-level="8.1" data-path="lab-8-one-way-anova.html"><a href="lab-8-one-way-anova.html#how-to-not-think-about-bad-memories-by-playing-tetris"><i class="fa fa-check"></i><b>8.1</b> How to not think about bad memories by playing Tetris</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="lab-8-one-way-anova.html"><a href="lab-8-one-way-anova.html#study-description-2"><i class="fa fa-check"></i><b>8.1.1</b> STUDY DESCRIPTION</a></li>
+<li class="chapter" data-level="8.1.2" data-path="lab-8-one-way-anova.html"><a href="lab-8-one-way-anova.html#study-methods"><i class="fa fa-check"></i><b>8.1.2</b> Study Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="lab-8-one-way-anova.html"><a href="lab-8-one-way-anova.html#lab-skills-learned-2"><i class="fa fa-check"></i><b>8.2</b> Lab Skills Learned</a></li>
+<li class="chapter" data-level="8.3" data-path="lab-8-one-way-anova.html"><a href="lab-8-one-way-anova.html#important-stuff-2"><i class="fa fa-check"></i><b>8.3</b> Important Stuff</a></li>
+<li class="chapter" data-level="8.4" data-path="lab-8-one-way-anova.html"><a href="lab-8-one-way-anova.html#r-8"><i class="fa fa-check"></i><b>8.4</b> R</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="lab-8-one-way-anova.html"><a href="lab-8-one-way-anova.html#load-the-data-1"><i class="fa fa-check"></i><b>8.4.1</b> Load the data</a></li>
+<li class="chapter" data-level="8.4.2" data-path="lab-8-one-way-anova.html"><a href="lab-8-one-way-anova.html#inspect-the-dataframe"><i class="fa fa-check"></i><b>8.4.2</b> Inspect the dataframe</a></li>
+<li class="chapter" data-level="8.4.3" data-path="lab-8-one-way-anova.html"><a href="lab-8-one-way-anova.html#get-the-data-you-need"><i class="fa fa-check"></i><b>8.4.3</b> Get the data you need</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="lab-8-one-way-anova.html"><a href="lab-8-one-way-anova.html#excel-7"><i class="fa fa-check"></i><b>8.5</b> Excel</a></li>
+<li class="chapter" data-level="8.6" data-path="lab-8-one-way-anova.html"><a href="lab-8-one-way-anova.html#spss-7"><i class="fa fa-check"></i><b>8.6</b> SPSS</a></li>
+<li class="chapter" data-level="8.7" data-path="lab-8-one-way-anova.html"><a href="lab-8-one-way-anova.html#matlab-7"><i class="fa fa-check"></i><b>8.7</b> Matlab</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="lab-9-one-way-anova.html"><a href="lab-9-one-way-anova.html"><i class="fa fa-check"></i><b>9</b> Lab 9: One-way ANOVA</a><ul>
+<li class="chapter" data-level="9.1" data-path="lab-9-one-way-anova.html"><a href="lab-9-one-way-anova.html#lab-skills-learned-3"><i class="fa fa-check"></i><b>9.1</b> Lab Skills Learned</a></li>
+<li class="chapter" data-level="9.2" data-path="lab-9-one-way-anova.html"><a href="lab-9-one-way-anova.html#important-stuff-3"><i class="fa fa-check"></i><b>9.2</b> Important Stuff</a></li>
+<li class="chapter" data-level="9.3" data-path="lab-9-one-way-anova.html"><a href="lab-9-one-way-anova.html#outline-of-problem-to-solve-4"><i class="fa fa-check"></i><b>9.3</b> Outline of Problem to solve</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="lab-9-one-way-anova.html"><a href="lab-9-one-way-anova.html#important-things-4"><i class="fa fa-check"></i><b>9.3.1</b> important things</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="lab-9-one-way-anova.html"><a href="lab-9-one-way-anova.html#r-9"><i class="fa fa-check"></i><b>9.4</b> R</a></li>
+<li class="chapter" data-level="9.5" data-path="lab-9-one-way-anova.html"><a href="lab-9-one-way-anova.html#excel-8"><i class="fa fa-check"></i><b>9.5</b> Excel</a></li>
+<li class="chapter" data-level="9.6" data-path="lab-9-one-way-anova.html"><a href="lab-9-one-way-anova.html#spss-8"><i class="fa fa-check"></i><b>9.6</b> SPSS</a></li>
+<li class="chapter" data-level="9.7" data-path="lab-9-one-way-anova.html"><a href="lab-9-one-way-anova.html#matlab-8"><i class="fa fa-check"></i><b>9.7</b> Matlab</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="lab-10-factorial-anova.html"><a href="lab-10-factorial-anova.html"><i class="fa fa-check"></i><b>10</b> Lab 10: Factorial ANOVA</a><ul>
+<li class="chapter" data-level="10.1" data-path="lab-10-factorial-anova.html"><a href="lab-10-factorial-anova.html#lab-skills-learned-4"><i class="fa fa-check"></i><b>10.1</b> Lab Skills Learned</a></li>
+<li class="chapter" data-level="10.2" data-path="lab-10-factorial-anova.html"><a href="lab-10-factorial-anova.html#important-stuff-4"><i class="fa fa-check"></i><b>10.2</b> Important Stuff</a></li>
+<li class="chapter" data-level="10.3" data-path="lab-10-factorial-anova.html"><a href="lab-10-factorial-anova.html#outline-of-problem-to-solve-5"><i class="fa fa-check"></i><b>10.3</b> Outline of Problem to solve</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="lab-10-factorial-anova.html"><a href="lab-10-factorial-anova.html#important-things-5"><i class="fa fa-check"></i><b>10.3.1</b> important things</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="lab-10-factorial-anova.html"><a href="lab-10-factorial-anova.html#r-10"><i class="fa fa-check"></i><b>10.4</b> R</a></li>
+<li class="chapter" data-level="10.5" data-path="lab-10-factorial-anova.html"><a href="lab-10-factorial-anova.html#excel-9"><i class="fa fa-check"></i><b>10.5</b> Excel</a></li>
+<li class="chapter" data-level="10.6" data-path="lab-10-factorial-anova.html"><a href="lab-10-factorial-anova.html#spss-9"><i class="fa fa-check"></i><b>10.6</b> SPSS</a></li>
+<li class="chapter" data-level="10.7" data-path="lab-10-factorial-anova.html"><a href="lab-10-factorial-anova.html#matlab-9"><i class="fa fa-check"></i><b>10.7</b> Matlab</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html"><i class="fa fa-check"></i><b>11</b> Lab 11: Mixed Factorial ANOVA</a><ul>
+<li class="chapter" data-level="11.1" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html#lab-skills-learned-5"><i class="fa fa-check"></i><b>11.1</b> Lab Skills Learned</a></li>
+<li class="chapter" data-level="11.2" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html#important-stuff-5"><i class="fa fa-check"></i><b>11.2</b> Important Stuff</a></li>
+<li class="chapter" data-level="11.3" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html#outline-of-problem-to-solve-6"><i class="fa fa-check"></i><b>11.3</b> Outline of Problem to solve</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html#important-things-6"><i class="fa fa-check"></i><b>11.3.1</b> important things</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html#r-11"><i class="fa fa-check"></i><b>11.4</b> R</a></li>
+<li class="chapter" data-level="11.5" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html#excel-10"><i class="fa fa-check"></i><b>11.5</b> Excel</a></li>
+<li class="chapter" data-level="11.6" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html#spss-10"><i class="fa fa-check"></i><b>11.6</b> SPSS</a></li>
+<li class="chapter" data-level="11.7" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html#matlab-10"><i class="fa fa-check"></i><b>11.7</b> Matlab</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="get-started.html"><a href="get-started.html"><i class="fa fa-check"></i><b>12</b> Get Started</a></li>
+<li class="chapter" data-level="13" data-path="hello-world.html"><a href="hello-world.html"><i class="fa fa-check"></i><b>13</b> Hello World</a></li>
+<li class="chapter" data-level="14" data-path="hello-ninja.html"><a href="hello-ninja.html"><i class="fa fa-check"></i><b>14</b> Hello Ninja</a></li>
+<li class="chapter" data-level="15" data-path="remark-js.html"><a href="remark-js.html"><i class="fa fa-check"></i><b>15</b> remark.js</a></li>
+<li class="chapter" data-level="16" data-path="using-xaringan.html"><a href="using-xaringan.html"><i class="fa fa-check"></i><b>16</b> Using xaringan</a></li>
+<li class="chapter" data-level="17" data-path="xaringan.html"><a href="xaringan.html"><i class="fa fa-check"></i><b>17</b> xaringan</a></li>
+<li class="chapter" data-level="18" data-path="remark-js-vs-xaringan.html"><a href="remark-js-vs-xaringan.html"><i class="fa fa-check"></i><b>18</b> remark.js vs xaringan</a></li>
+<li class="chapter" data-level="19" data-path="math-expressions.html"><a href="math-expressions.html"><i class="fa fa-check"></i><b>19</b> Math Expressions</a></li>
+<li class="chapter" data-level="20" data-path="r-code.html"><a href="r-code.html"><i class="fa fa-check"></i><b>20</b> R Code</a></li>
+<li class="chapter" data-level="21" data-path="r-plots.html"><a href="r-plots.html"><i class="fa fa-check"></i><b>21</b> R Plots</a></li>
+<li class="chapter" data-level="22" data-path="tables.html"><a href="tables.html"><i class="fa fa-check"></i><b>22</b> Tables</a></li>
+<li class="chapter" data-level="23" data-path="html-widgets.html"><a href="html-widgets.html"><i class="fa fa-check"></i><b>23</b> HTML Widgets</a></li>
+<li class="chapter" data-level="24" data-path="some-tips.html"><a href="some-tips.html"><i class="fa fa-check"></i><b>24</b> Some Tips</a></li>
+<li class="chapter" data-level="25" data-path="some-tips-1.html"><a href="some-tips-1.html"><i class="fa fa-check"></i><b>25</b> Some Tips</a></li>
+<li class="chapter" data-level="26" data-path="some-tips-2.html"><a href="some-tips-2.html"><i class="fa fa-check"></i><b>26</b> Some Tips</a></li>
+<li class="chapter" data-level="27" data-path="some-tips-3.html"><a href="some-tips-3.html"><i class="fa fa-check"></i><b>27</b> Some Tips</a></li>
+<li class="chapter" data-level="28" data-path="some-tips-4.html"><a href="some-tips-4.html"><i class="fa fa-check"></i><b>28</b> Some Tips</a></li>
+<li class="chapter" data-level="29" data-path="some-tips-5.html"><a href="some-tips-5.html"><i class="fa fa-check"></i><b>29</b> Some Tips</a></li>
+<li class="chapter" data-level="30" data-path="some-tips-6.html"><a href="some-tips-6.html"><i class="fa fa-check"></i><b>30</b> Some Tips</a></li>
+<li class="chapter" data-level="31" data-path="macros.html"><a href="macros.html"><i class="fa fa-check"></i><b>31</b> Macros</a></li>
+<li class="chapter" data-level="32" data-path="macros-continued.html"><a href="macros-continued.html"><i class="fa fa-check"></i><b>32</b> Macros (continued)</a></li>
+<li class="chapter" data-level="33" data-path="css.html"><a href="css.html"><i class="fa fa-check"></i><b>33</b> CSS</a></li>
+<li class="chapter" data-level="34" data-path="css-1.html"><a href="css-1.html"><i class="fa fa-check"></i><b>34</b> CSS</a></li>
+<li class="chapter" data-level="35" data-path="themes.html"><a href="themes.html"><i class="fa fa-check"></i><b>35</b> Themes</a></li>
+<li class="chapter" data-level="36" data-path="themes-1.html"><a href="themes-1.html"><i class="fa fa-check"></i><b>36</b> Themes</a></li>
+<li class="chapter" data-level="37" data-path="sharingan.html"><a href="sharingan.html"><i class="fa fa-check"></i><b>37</b> Sharingan</a></li>
+<li class="chapter" data-level="38" data-path="naruto-terminology.html"><a href="naruto-terminology.html"><i class="fa fa-check"></i><b>38</b> Naruto terminology</a></li>
+<li class="chapter" data-level="39" data-path="hand-seals-.html"><a href="hand-seals-.html"><i class="fa fa-check"></i><b>39</b> Hand seals (印)</a></li>
+<li class="chapter" data-level="40" data-path="thanks.html"><a href="thanks.html"><i class="fa fa-check"></i><b>40</b> Thanks!</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Answering questions with data: Lab Manual</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="some-tips-6" class="section level1">
+<h1><span class="header-section-number">Chapter 30</span> Some Tips</h1>
+<ul>
+<li><p>To make slides work offline, you need to download a copy of remark.js in advance, because <strong>xaringan</strong> uses the online version by default (see the help page <code>?xaringan::moon_reader</code>).</p></li>
+<li><p>You can use <code>xaringan::summon_remark()</code> to download the latest or a specified version of remark.js. By default, it is downloaded to <code>libs/remark-latest.min.js</code>.</p></li>
+<li><p>Then change the <code>chakra</code> option in YAML to point to this file, e.g.</p>
+<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="fu">output:</span>
+  <span class="fu">xaringan:</span>:moon_reader:
+    <span class="fu">chakra:</span> libs/remark-latest.min.js</code></pre></div></li>
+<li><p>If you used Google fonts in slides (the default theme uses <em>Yanone Kaffeesatz</em>, <em>Droid Serif</em>, and <em>Source Code Pro</em>), they won’t work offline unless you download or install them locally. The Heroku app <a href="https://google-webfonts-helper.herokuapp.com/fonts">google-webfonts-helper</a> can help you download fonts and generate the necessary CSS.</p></li>
+</ul>
+<hr />
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="some-tips-5.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="macros.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/CrumpLab/statisticsLab/blob/master/TestNinjaPres.Rmd",
+"text": "Edit"
+},
+"download": ["Programming_Crump.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -46,10 +46,57 @@ After the seven days had passed, participants completed an Intrusion-Provocation
 
 ### Load the data
 
+Remember that any line with a \# makes a comment and the code does not run. Below is how to load the .csv data from the online repository, or from a local file (you need to change the file path to where the local file is, if you downloaded it). The data contains all of the measures and conditions from Experiment 2 in the paper.
+
+```{r}
+library(data.table)
+#fread("https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/Jamesetal2015Experiment2.csv")
+all_data <- fread("data/Jamesetal2015Experiment2.csv")
+```
+
 ### Inspect the dataframe
+
+This will give you a big picture of the data frame. Click the button to view it in your browser, then take a look to see what is in it. 
+
+```{r, eval=F}
+library(summarytools)
+view(dfSummary(all_data))
+```
 
 ### Get the data you need
 
+Again we have only the data from Experiment 2, so we don't need to get rid of any rows of the data. But we do need look at the columns to see how the independent variable and dependent variables were coded. 
+
+#### The independent variable
+
+There was one important independent variable, and it had four levels. The first column in the data frame is called condition, and it has four levels. The levels are 1, 2, 3, and 4 in the dataframe. These will correspond to the four levels in shown in figure: 
+
+- No-task control
+- Reactivation Plus tetris
+- Tetris only
+- Reactivation only
+
+Each of these refer to what subjects did after they watched the traumatic film. But, which of these correspond to the numbers 1 to 4 in the dataframe? It turns out the are in the right order, and 1 to 4 refer to:
+
+1. No-task control
+2. Reactivation Plus tetris
+3. Tetris only
+4. Reactivation only
+
+Let's do ourselves a favor and rename the levels of the `Condition` column with words so we know what they refer to. First, convert the `Condition` column to a factor, then rename the levels. Then.
+
+
+```{r}
+all_data$Condition <- as.factor(all_data$Condition)
+levels(all_data$Condition) <- c("Control",
+                                "Reactivation+Tetris", 
+                                "Tetris_only",
+                                "Reactivation_only")
+```
+
+#### The dependent variable
+
+The authors showed two figures, one where they analysed
 
 
 ## Excel
