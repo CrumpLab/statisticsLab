@@ -26,9 +26,9 @@
 <meta name="author" content="Anajali Krishnan">
 <meta name="author" content="Stephen Volz">
 <meta name="author" content="Alla Chavarga">
+<meta name="author" content="Currently in draft, all attributions and licensed to adapted content will be recognized by the time we are finished.">
 
 
-<meta name="date" content="2018-07-20">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -225,6 +225,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.4.1" data-path="lab-8-one-way-anova.html"><a href="lab-8-one-way-anova.html#load-the-data-1"><i class="fa fa-check"></i><b>8.4.1</b> Load the data</a></li>
 <li class="chapter" data-level="8.4.2" data-path="lab-8-one-way-anova.html"><a href="lab-8-one-way-anova.html#inspect-the-dataframe"><i class="fa fa-check"></i><b>8.4.2</b> Inspect the dataframe</a></li>
 <li class="chapter" data-level="8.4.3" data-path="lab-8-one-way-anova.html"><a href="lab-8-one-way-anova.html#get-the-data-you-need"><i class="fa fa-check"></i><b>8.4.3</b> Get the data you need</a></li>
+<li class="chapter" data-level="8.4.4" data-path="lab-8-one-way-anova.html"><a href="lab-8-one-way-anova.html#look-at-the-data"><i class="fa fa-check"></i><b>8.4.4</b> Look at the data</a></li>
+<li class="chapter" data-level="8.4.5" data-path="lab-8-one-way-anova.html"><a href="lab-8-one-way-anova.html#conduct-the-anova"><i class="fa fa-check"></i><b>8.4.5</b> Conduct the ANOVA</a></li>
+<li class="chapter" data-level="8.4.6" data-path="lab-8-one-way-anova.html"><a href="lab-8-one-way-anova.html#reporting-the-anova-results"><i class="fa fa-check"></i><b>8.4.6</b> Reporting the ANOVA results</a></li>
+<li class="chapter" data-level="8.4.7" data-path="lab-8-one-way-anova.html"><a href="lab-8-one-way-anova.html#individual-comparisons"><i class="fa fa-check"></i><b>8.4.7</b> Individual comparisons</a></li>
+<li class="chapter" data-level="8.4.8" data-path="lab-8-one-way-anova.html"><a href="lab-8-one-way-anova.html#writing-it-all-up."><i class="fa fa-check"></i><b>8.4.8</b> Writing it all up.</a></li>
+<li class="chapter" data-level="8.4.9" data-path="lab-8-one-way-anova.html"><a href="lab-8-one-way-anova.html#now-its-your-turn."><i class="fa fa-check"></i><b>8.4.9</b> Now it’s your turn.</a></li>
+<li class="chapter" data-level="8.4.10" data-path="lab-8-one-way-anova.html"><a href="lab-8-one-way-anova.html#food-for-thought"><i class="fa fa-check"></i><b>8.4.10</b> Food for thought</a></li>
 </ul></li>
 <li class="chapter" data-level="8.5" data-path="lab-8-one-way-anova.html"><a href="lab-8-one-way-anova.html#excel-7"><i class="fa fa-check"></i><b>8.5</b> Excel</a></li>
 <li class="chapter" data-level="8.6" data-path="lab-8-one-way-anova.html"><a href="lab-8-one-way-anova.html#spss-7"><i class="fa fa-check"></i><b>8.6</b> SPSS</a></li>
@@ -447,17 +454,17 @@ c &lt;-<span class="st"> </span>a+b <span class="co"># puts the sum of variable 
 <h4><span class="header-section-number">1.2.8.1</span> Plot function</h4>
 <p>Previously, we created a <em>my_numbers</em> variable, that contains the number 43, repeated 100 times. If we plot this in R, what should we see? Let’s do it and find out.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(my_numbers)</code></pre></div>
-<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p>Whenever you have a variable with multiple numbers, you can always plot it, just like in the above example. Remember the variable <em>my_numbers</em> contains 100 numbers. This means there are 100 slots in the variable. Each slot has an <em>index</em> value. The index value for the first slot is 1, the index value for the second slot is 2, and so on. The x-axis (the bottom line in the graph) shows the index value from 1 to 100. Remember also, that each slot contains the number 43. The y-axis (the vertical line in the graph) shows a range of numbers. The dots in the graph represent the value inside each slot of the variable. Because each slot contains the value 43, we see all 100 dots, all in a line, all positioned at 43 with respect to the y-axis.</p>
 <p>Let’s plot some of the other variables we made.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(my_sequence)</code></pre></div>
-<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <p>The variable <em>my_sequence</em> contains the numbers 23 to 56, going up by one. We see in the plot, the first number (on the x-axis) is a 23 on the y-axis. As we go across the x-axis, the numbers go up by one until we get to 56. We see a straight diagonal line.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(my_randoms)</code></pre></div>
-<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 <p>The variable <em>my_randoms</em> contains 100 random numbers between 0 and 1. The plot shows dots all over the place between 0 and 1 on the y-axis.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(my_normal)</code></pre></div>
-<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 <p>The variable <em>my_normal</em> contains 100 numbers sample from a normal distribution with a mean of 10, and a standard deviation of 20. Roughly, most of the numbers should be close to 10, some of the numbers will be greater and smaller than 10. But, as the numbers move away from 10 in either direction, really small or really big numbers should occur less and less frequently. We can sort of see this in the plot. For example, you might notice that most the numbers are near the horizontal middle of the graph, near the 10 on the y-axis, and less of the numbers are near the top or bottom of the graph.</p>
 </div>
 <div id="histograms" class="section level4">
@@ -471,10 +478,10 @@ c &lt;-<span class="st"> </span>a+b <span class="co"># puts the sum of variable 
 ## [36] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3</code></pre>
 <p>Because, we made this variable, we already know what is inside it. Let’s make a histogram of the variable, to see what that looks like:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(my_set)</code></pre></div>
-<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 <p>The histogram is a bar graph. The height of each bar represents a count, or the frequency of how many numbers fall inside each bin. The x-axis shows the bin ranges. If you do not specify the bin ranges, then R will make a reasonable guess for you. In this case, R set the bin ranges in steps of .5. For example, 1-1.5, 1.5-2, 2-2.5, 2.5-3. R uses the word <em>breaks</em> to refer to bins. And, when you plot a histogram, you can set your own breaks, or bin ranges.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(my_set, <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>))</code></pre></div>
-<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <p>Let’s spend a moment interpreting this new histogram. The first bar is between 0 and 1 on the x-axis, and has a value of 10 on the y-axis. This means that there are 10 numbers inside the my_set variable that have a value between 0 and 1; specifically, a value greater than zero up to and equalling 1. The second bar is between 1 and 2 on the x-axis, and has a value of 20 on the y-axis. So, there are 20 numbers in the variable with a value greater than 1 up to and equalling 2. Finally, the third bar shows there are 30 numbers in the range greater than 2, up to equalling 3. We can also see there are no numbers smaller than 0, or greater than 4.</p>
 </div>
 <div id="what-are-histograms-useful-for" class="section level4">
@@ -483,14 +490,14 @@ c &lt;-<span class="st"> </span>a+b <span class="co"># puts the sum of variable 
 <p>What should a histogram look like for a set of values whose numbers all occur randomly, and equally frequently? By this definition, we are saying that all numbers, within all ranges, occur equally often. For example, imagine we created a set of 10,000 numbers, and chose those numbers from between 1 and 10, such that any number between 1 and 10 occurs with the same frequency as all other numbers. We can use the random number generator and histogram to find out:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">some_random_numbers &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">10000</span>,<span class="dv">1</span>,<span class="dv">10</span>)
 <span class="kw">hist</span>(some_random_numbers,<span class="dt">breaks=</span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">11</span>,<span class="dv">1</span>))</code></pre></div>
-<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#notice I set the breaks using the seq() function</span></code></pre></div>
 <p>We see that heights of the bars are all close to the same number. This is good, because each number between 1 to 10 should have had an equal chance of being selected. However, notice the bars are not exactly the same height. This shows that the random number generator did actually generate each number with equal frequency.</p>
 <p>What about sets of numbers where some kinds of numbers occur more than others? Here, we would expect higher bars for ranges containing many values, and smaller numbers for ranges containing fewer values.</p>
 <p>Let’s plot histogram for a normal distribution and see what it looks like. We will set the mean to 100, and the standard deviation to 20, and we ask R to generate 10000 numbers from this distribution.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">normal_sample &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10000</span>,<span class="dv">100</span>,<span class="dv">20</span>)
 <span class="kw">hist</span>(normal_sample)</code></pre></div>
-<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-20-1.png" width="672" /> The histogram shows that the highest bars are in the middle, near the 100 mark. So, numbers near 100 occured most frequently in our set. What happens to the heights of the bars on either side of the histogram? The bars are decreasing in height as they move away from the middle in both directions. So, as numbers move away from 100, they occur less and less frequently. For example, we don’t see any bars in the range of 500 or 1000. This means that no values that high were in our set of numbers. From the histogram, we can clearly see that our set hardly had any numbers greater than 150, or less than 50. Or, in other words, most of the numbers were between 50 and 150.</p>
+<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-21-1.png" width="672" /> The histogram shows that the highest bars are in the middle, near the 100 mark. So, numbers near 100 occured most frequently in our set. What happens to the heights of the bars on either side of the histogram? The bars are decreasing in height as they move away from the middle in both directions. So, as numbers move away from 100, they occur less and less frequently. For example, we don’t see any bars in the range of 500 or 1000. This means that no values that high were in our set of numbers. From the histogram, we can clearly see that our set hardly had any numbers greater than 150, or less than 50. Or, in other words, most of the numbers were between 50 and 150.</p>
 </div>
 </div>
 </div>

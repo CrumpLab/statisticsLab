@@ -55,6 +55,43 @@ mattcrump=1;
 </script>
 
 
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
 
 <link rel="stylesheet" href="tufte.css" type="text/css" />
 </head>
@@ -188,6 +225,13 @@ mattcrump=1;
 <li class="chapter" data-level="8.4.1" data-path="lab-8-one-way-anova.html"><a href="lab-8-one-way-anova.html#load-the-data-1"><i class="fa fa-check"></i><b>8.4.1</b> Load the data</a></li>
 <li class="chapter" data-level="8.4.2" data-path="lab-8-one-way-anova.html"><a href="lab-8-one-way-anova.html#inspect-the-dataframe"><i class="fa fa-check"></i><b>8.4.2</b> Inspect the dataframe</a></li>
 <li class="chapter" data-level="8.4.3" data-path="lab-8-one-way-anova.html"><a href="lab-8-one-way-anova.html#get-the-data-you-need"><i class="fa fa-check"></i><b>8.4.3</b> Get the data you need</a></li>
+<li class="chapter" data-level="8.4.4" data-path="lab-8-one-way-anova.html"><a href="lab-8-one-way-anova.html#look-at-the-data"><i class="fa fa-check"></i><b>8.4.4</b> Look at the data</a></li>
+<li class="chapter" data-level="8.4.5" data-path="lab-8-one-way-anova.html"><a href="lab-8-one-way-anova.html#conduct-the-anova"><i class="fa fa-check"></i><b>8.4.5</b> Conduct the ANOVA</a></li>
+<li class="chapter" data-level="8.4.6" data-path="lab-8-one-way-anova.html"><a href="lab-8-one-way-anova.html#reporting-the-anova-results"><i class="fa fa-check"></i><b>8.4.6</b> Reporting the ANOVA results</a></li>
+<li class="chapter" data-level="8.4.7" data-path="lab-8-one-way-anova.html"><a href="lab-8-one-way-anova.html#individual-comparisons"><i class="fa fa-check"></i><b>8.4.7</b> Individual comparisons</a></li>
+<li class="chapter" data-level="8.4.8" data-path="lab-8-one-way-anova.html"><a href="lab-8-one-way-anova.html#writing-it-all-up."><i class="fa fa-check"></i><b>8.4.8</b> Writing it all up.</a></li>
+<li class="chapter" data-level="8.4.9" data-path="lab-8-one-way-anova.html"><a href="lab-8-one-way-anova.html#now-its-your-turn."><i class="fa fa-check"></i><b>8.4.9</b> Now it’s your turn.</a></li>
+<li class="chapter" data-level="8.4.10" data-path="lab-8-one-way-anova.html"><a href="lab-8-one-way-anova.html#food-for-thought"><i class="fa fa-check"></i><b>8.4.10</b> Food for thought</a></li>
 </ul></li>
 <li class="chapter" data-level="8.5" data-path="lab-8-one-way-anova.html"><a href="lab-8-one-way-anova.html#excel-7"><i class="fa fa-check"></i><b>8.5</b> Excel</a></li>
 <li class="chapter" data-level="8.6" data-path="lab-8-one-way-anova.html"><a href="lab-8-one-way-anova.html#spss-7"><i class="fa fa-check"></i><b>8.6</b> SPSS</a></li>
@@ -217,14 +261,13 @@ mattcrump=1;
 </ul></li>
 <li class="chapter" data-level="11" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html"><i class="fa fa-check"></i><b>11</b> Lab 11: Mixed Factorial ANOVA</a><ul>
 <li class="chapter" data-level="11.1" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html#lab-skills-learned-5"><i class="fa fa-check"></i><b>11.1</b> Lab Skills Learned</a></li>
-<li class="chapter" data-level="11.2" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html#important-stuff-5"><i class="fa fa-check"></i><b>11.2</b> Important Stuff</a></li>
-<li class="chapter" data-level="11.3" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html#outline-of-problem-to-solve-6"><i class="fa fa-check"></i><b>11.3</b> Outline of Problem to solve</a><ul>
-<li class="chapter" data-level="11.3.1" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html#important-things-6"><i class="fa fa-check"></i><b>11.3.1</b> important things</a></li>
+<li class="chapter" data-level="11.2" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html#important-stuff-5"><i class="fa fa-check"></i><b>11.2</b> Important Stuff</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html#important-things-6"><i class="fa fa-check"></i><b>11.2.1</b> important things</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html#r-11"><i class="fa fa-check"></i><b>11.4</b> R</a></li>
-<li class="chapter" data-level="11.5" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html#excel-10"><i class="fa fa-check"></i><b>11.5</b> Excel</a></li>
-<li class="chapter" data-level="11.6" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html#spss-10"><i class="fa fa-check"></i><b>11.6</b> SPSS</a></li>
-<li class="chapter" data-level="11.7" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html#matlab-10"><i class="fa fa-check"></i><b>11.7</b> Matlab</a></li>
+<li class="chapter" data-level="11.3" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html#r-11"><i class="fa fa-check"></i><b>11.3</b> R</a></li>
+<li class="chapter" data-level="11.4" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html#excel-10"><i class="fa fa-check"></i><b>11.4</b> Excel</a></li>
+<li class="chapter" data-level="11.5" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html#spss-10"><i class="fa fa-check"></i><b>11.5</b> SPSS</a></li>
+<li class="chapter" data-level="11.6" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html#matlab-10"><i class="fa fa-check"></i><b>11.6</b> Matlab</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -253,7 +296,7 @@ mattcrump=1;
 <h4 class="author"><em>Stephen Volz</em></h4>
 <h4 class="author"><em>Alla Chavarga</em></h4>
 <h4 class="author"><em>Currently in draft, all attributions and licensed to adapted content will be recognized by the time we are finished.</em></h4>
-<h4 class="date"><em>2018: Last Compiled 2018-07-23</em></h4>
+<h4 class="date"><em>2018: Last Compiled 2018-07-24</em></h4>
 </div>
 <div id="preface" class="section level1 unnumbered">
 <h1>Preface</h1>

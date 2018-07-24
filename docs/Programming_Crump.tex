@@ -25,7 +25,7 @@
 \usepackage{hyperref}
 \hypersetup{unicode=true,
             pdftitle={Answering questions with data: Lab Manual},
-            pdfauthor={Matthew J. C. Crump; Anajali Krishnan; Stephen Volz; Alla Chavarga},
+            pdfauthor={Matthew J. C. Crump; Anajali Krishnan; Stephen Volz; Alla Chavarga; Currently in draft, all attributions and licensed to adapted content will be recognized by the time we are finished.},
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
@@ -119,12 +119,13 @@
   \title{Answering questions with data: Lab Manual}
   \pretitle{\vspace{\droptitle}\centering\huge}
   \posttitle{\par}
-  \author{Matthew J. C. Crump \\ Anajali Krishnan \\ Stephen Volz \\ Alla Chavarga}
+  \author{Matthew J. C. Crump \\ Anajali Krishnan \\ Stephen Volz \\ Alla Chavarga \\ Currently in draft, all attributions and licensed to adapted content
+will be recognized by the time we are finished.}
   \preauthor{\centering\large\emph}
   \postauthor{\par}
   \predate{\centering\large\emph}
   \postdate{\par}
-  \date{2018-07-20}
+  \date{2018: Last Compiled 2018-07-24}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -158,6 +159,8 @@
 }
 \chapter*{Preface}\label{preface}
 \addcontentsline{toc}{chapter}{Preface}
+
+\begin{center}\includegraphics[width=12.5in]{LabmanualCover} \end{center}
 
 This lab manual involves tutorials and data-analysis problems using the
 free statistics software R, as well as Excel, and SPSS. The goal is to
@@ -745,7 +748,7 @@ Let's do it and find out.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-11-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-12-1.pdf}
 
 Whenever you have a variable with multiple numbers, you can always plot
 it, just like in the above example. Remember the variable
@@ -767,7 +770,7 @@ Let's plot some of the other variables we made.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-12-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-13-1.pdf}
 
 The variable \emph{my\_sequence} contains the numbers 23 to 56, going up
 by one. We see in the plot, the first number (on the x-axis) is a 23 on
@@ -780,7 +783,7 @@ we get to 56. We see a straight diagonal line.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-13-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-14-1.pdf}
 
 The variable \emph{my\_randoms} contains 100 random numbers between 0
 and 1. The plot shows dots all over the place between 0 and 1 on the
@@ -792,7 +795,7 @@ y-axis.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-14-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-15-1.pdf}
 
 The variable \emph{my\_normal} contains 100 numbers sample from a normal
 distribution with a mean of 10, and a standard deviation of 20. Roughly,
@@ -845,7 +848,7 @@ make a histogram of the variable, to see what that looks like:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-17-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-18-1.pdf}
 
 The histogram is a bar graph. The height of each bar represents a count,
 or the frequency of how many numbers fall inside each bin. The x-axis
@@ -861,7 +864,7 @@ set your own breaks, or bin ranges.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-18-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-19-1.pdf}
 
 Let's spend a moment interpreting this new histogram. The first bar is
 between 0 and 1 on the x-axis, and has a value of 10 on the y-axis. This
@@ -896,7 +899,7 @@ random number generator and histogram to find out:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-19-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-20-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -925,7 +928,7 @@ we ask R to generate 10000 numbers from this distribution.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-20-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-21-1.pdf}
 The histogram shows that the highest bars are in the middle, near the
 100 mark. So, numbers near 100 occured most frequently in our set. What
 happens to the heights of the bars on either side of the histogram? The
@@ -1299,7 +1302,7 @@ for each infant as a dot.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-26-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-27-1.pdf}
 
 That's helpful, we see that the dots are all over the place. Let's do a
 histrogram, so we can get a better sense of the frequency of different
@@ -1311,7 +1314,7 @@ proportions.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-27-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-28-1.pdf}
 
 \subsubsection{Look at the descriptives}\label{look-at-the-descriptives}
 
@@ -1429,7 +1432,7 @@ into the variable \texttt{baseline}. We will make a new variable called
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-30-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-31-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1437,7 +1440,7 @@ into the variable \texttt{baseline}. We will make a new variable called
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-30-2.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-31-2.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1678,7 +1681,7 @@ still kind of in a similar ballpark.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-35-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-36-1.pdf}
 
 \subsubsection{Dot plot with means and raw
 scores}\label{dot-plot-with-means-and-raw-scores}
@@ -1711,7 +1714,7 @@ data frame we are looking for.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-36-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-37-1.pdf}
 
 \subsubsection{Bar plot}\label{bar-plot}
 
@@ -1741,7 +1744,7 @@ Also look for these changes.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-37-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-38-1.pdf}
 
 Ok, we see the bars and some of the dots, but not all of them. What is
 going on? Remember, ggplot2 works in layers. Whatever layer you add
@@ -1757,7 +1760,7 @@ Let's change the order of the layers so the dot's go on top of the bars.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-38-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-39-1.pdf}
 
 \subsubsection{Bar plot with error bars}\label{bar-plot-with-error-bars}
 
@@ -1802,7 +1805,7 @@ Baseline and Test, and then add error bars to the plot.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-39-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-40-1.pdf}
 
 \textbf{Question:} What is one reason why these error bars (standard
 error of the mean difference between Baseline and Test) are appropriate
@@ -1838,7 +1841,7 @@ differences scores.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-40-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-41-1.pdf}
 
 \textbf{Question:} Why is is it more appropriate to put the standard
 error of the difference on this bar graph? What important aspects of the
@@ -1885,7 +1888,7 @@ bars.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-41-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-42-1.pdf}
 
 Notice that the 95\% confidence intervals around the mean are wider than
 the SEM error bars from the previous graph. These new confidence
@@ -1928,7 +1931,7 @@ What do you think?
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-42-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-43-1.pdf}
 \#\#\#\# Simulating the mean differences
 
 We can do the simulation slightly differently to give us a different
@@ -1959,7 +1962,7 @@ already made from the data.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-43-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-44-1.pdf}
 
 \section{Excel}\label{excel-5}
 
@@ -2219,7 +2222,7 @@ errors and put them in a new data frame called \texttt{decriptive\_df}.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-48-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-49-1.pdf}
 
 This plot is very useful. First, we can see the numbers in our dependent
 measure are behaving sensibly. We know that the numbers have to be
@@ -2409,7 +2412,7 @@ time.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-51-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-52-1.pdf}
 
 Well, we didn't make the exact graph. We have the bars, the error bars,
 and we added the individual scores because they are useful to look at.
@@ -2630,7 +2633,809 @@ the levels. Then.
 
 \subsubsection{The dependent variable}\label{the-dependent-variable}
 
-The authors showed two figures, one where they analysed
+The authors showed two figures, one where they analysed intrusive memory
+frequency as the mean for the week, and the other where the used
+intrusice memory frequency on Day 7. In this tutorial, we will do the
+steps to run an ANOVA on the mean for the week data, and you will do
+follow these steps to run another ANOVA on the Day 7 data.
+
+The mean for the week data for each subject is apparently coded in the
+column \texttt{Days\_One\_to\_Seven\_Number\_of\_Intrusions}.
+
+\subsection{Look at the data}\label{look-at-the-data}
+
+Remember before we do any analysis, we always want to ``look'' at the
+data. This first pass let's us know if the data ``look right''. For
+example, the data file could be messed up and maybe there aren't any
+numbers there, or maybe the numbers are just too weird.
+
+In the last two labs, we saw how to show all the data we are interested
+in looking at in one go. We can do the same things here. For example, in
+one little piece of code, we can display the means in each condition,
+the standard errors of the mean, and the individual scores for each
+subject in each condition. This is a lot to look at, but it's everything
+we want to look at for starters all in the same place. Looking at the
+data this way will also give us intuitions about what our ANOVA will
+tell us before we run the ANOVA. This is helpful for determining whether
+the results of your ANOVA are accurate or not. Let's do it\ldots{}also
+notice that the code is very similar to what we did for the independent
+t-test. In fact, all I did was copy and paste that code right here, and
+edited it a little bit. This is really fast, and shows the efficiency of
+doing things this way.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(dplyr)}
+
+\KeywordTok{library}\NormalTok{(ggplot2)}
+
+\CommentTok{# get means and SEs}
+\NormalTok{descriptive_df <-}\StringTok{ }\NormalTok{all_data %>%}\StringTok{ }
+\StringTok{                    }\KeywordTok{group_by}\NormalTok{(Condition) %>%}\StringTok{ }
+\StringTok{                    }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{means=} \KeywordTok{mean}\NormalTok{(Days_One_to_Seven_Number_of_Intrusions),}
+                              \DataTypeTok{SEs =} \KeywordTok{sd}\NormalTok{(Days_One_to_Seven_Number_of_Intrusions)/}\KeywordTok{sqrt}\NormalTok{(}\KeywordTok{length}\NormalTok{(Days_One_to_Seven_Number_of_Intrusions)))}
+
+\CommentTok{# Make the plot}
+\KeywordTok{ggplot}\NormalTok{(descriptive_df, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Condition, }\DataTypeTok{y=}\NormalTok{means))+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill=}\NormalTok{Condition))+}\StringTok{ }\CommentTok{# add means}
+\StringTok{  }\KeywordTok{geom_errorbar}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{ymin=}\NormalTok{means-SEs,               }\CommentTok{# add error bars}
+                    \DataTypeTok{ymax=}\NormalTok{means+SEs), }\DataTypeTok{width=}\NormalTok{.}\DecValTok{1}\NormalTok{) +}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{data=}\NormalTok{all_data, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Condition, }\DataTypeTok{y=}\NormalTok{Days_One_to_Seven_Number_of_Intrusions), }\DataTypeTok{alpha=}\NormalTok{.}\DecValTok{5}\NormalTok{)+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{alpha=}\NormalTok{.}\DecValTok{25}\NormalTok{)+}
+\StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Intrusive Memories (Mean for Week)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-56-1.pdf}
+
+There we have it. A nice graph showing us everything. We can see there
+was a lot of differences at the level of individual subjects. Some
+subjects had a mean of 15 instrusives memories for the week. Some had 0.
+Lots of differences.
+
+And, to be completlely honest, this data seems a bit weird to me. It
+might not be weird, but it might be. The wording in the manuscript is
+that this data is the mean frequency of intrusive memories over the
+week. For the people who had 15, this means that every day they had on
+average 15 intrusive memories. Some people had on average 0 per day.
+This could be the data. But, it also seems like the data might just be
+frequency counts and not means at all. For example, the data could be
+that some people had a total of 15 intrusive over the week. The data
+might make more sense if these were frequency counts. Otherwise the
+differences between people are truly very large. For example the person
+who had an average of 15 intrusive memories per week, must have had 15*7
+= 105 intrusive memories, which is a lot more than zero. In any case,
+this kind of wondering about the data is what happens when you start to
+notice how numbers work. It's useful develop your data sense.
+
+Let's move on to the ANOVA. By looking at the above graph do you have an
+intuition about what the ANOVA will tell us? I do, it should easily tell
+us that we are going to get an F-value that is bigger than one, and a
+p-value that is probably smaller than .05? How do I know this? I looked
+at the error bars, which represent the standard errors of the mean. If
+we look across conditions we can see that that the error bars don't
+always overlap. This suggests there are differences in the data that
+don't happen very often by chance. So, we expect a smallish p-value. Why
+do you think I expect the F-value to be greater than 1? If you can
+answer this question with a justification and explanation of how F
+works, pat yourself on the back!
+
+\subsection{Conduct the ANOVA}\label{conduct-the-anova}
+
+Conducting an ANOVA in R is pretty easy. It's one line of code, just
+like the t-test.
+
+It's worth knowing that there are a few different packages out there to
+do an ANOVA, for example Mike Lawrence's \texttt{ezANOVA} package is
+pretty popular.
+
+For this tutorial we'll show you how to run the ANOVA using the
+\texttt{aov} function from base R (comes pre-installed). This is pretty
+``easy'' too. I put easy in quotes because the first time I saw this, it
+was not easy for me. Here's a brief digression for me to tell you that I
+feel your pain. I was first introduced to R by Patrick Bennett (a
+professor at McMaster University, where I attended graduate school).
+Pat, like I am doing know, forced us to use R in his statistics class. I
+remember having zero clue about so many things, and was often very
+frustrated. So, I imagine some of you are quite frustrated too. I was
+luck, like some of you, to have had some previous experience with other
+programming languages, so I was familiar with what R might be doing.
+What I was most frustrated with, was learning how to tell R what to do.
+In other words, I didn't know how to write the commands properly. I
+didn't understand what we call the \textbf{syntax} of R.
+
+This was back many years ago now, well before there was so many helpful
+examples on google with working code, showing you how the syntax works.
+All we had was the R help files, which were a total mystery to me. If
+you want to see the help file for \texttt{aov}, just type
+\texttt{?aov()} into the console, and press enter. You will see an
+``explanation'' of how the \texttt{aov} function is supposed to work.
+You can use the same trick for any R function, like this
+\texttt{?name\_of\_function()}. To be clear, you have to replace the
+letters \texttt{name\_of\_function}, with the name of the function. Some
+of you think that might be super obvious, but that is the kind of thing
+I did not think was obvious. So, when I read the help file for how to
+use the \texttt{aov} function, that is to learn what to put where, I
+didn't feel like it was showing me what I needed to do. Usually, at the
+bottom of the help file, there are some examples, and these are helpful,
+but sometimes they are missing the example you need, and you are
+expected to generalize your knowledge of how \texttt{aov} works, to make
+it work for your problem. This is a catch-22 because if you don't know
+how it works, you can't generalize. IMO, you need a lot of examples of
+things that work.
+
+So, with that digression, I'm going to explain the syntax for the aov
+function. It looks like this:
+
+\texttt{aov(DV\ \textasciitilde{}\ IV,\ dataframe)}
+
+That probably looks really foreign. Let me explain. First you need write
+\texttt{aov()}. \texttt{aov} is the name of the function, followed by
+the brackets. The brackets are a sandwich. Sandwiches have a top and a
+bottom, and they enclose the things you put in the sandwich. We then put
+things inside the \texttt{()}, in specific ways to make the \texttt{aov}
+sandwich. The \texttt{DV} stands for the name of the dependendent
+variable in the data frame. For us, this will be
+\texttt{Days\_One\_to\_Seven\_Number\_of\_Intrusions}. So, when we add
+that, our function will look like:
+
+\texttt{aov(Days\_One\_to\_Seven\_Number\_of\_Intrusions\ \textasciitilde{}\ IV,\ dataframe)}
+
+Next, the \texttt{\textasciitilde{}} (tilda) stands for the word `by'.
+We are saying we want to anlayse the Dependent variable \textbf{by} the
+conditions of the independent variable.
+
+The \texttt{IV} stands for the name of the column that is your
+independent variable. Our's is called \texttt{Condition}. Adding that
+in, our formula looks like:
+
+\texttt{aov(Days\_One\_to\_Seven\_Number\_of\_Intrusions\ \textasciitilde{}\ Condition,\ dataframe)}
+
+Finally, the last part is the name of the dataframe we are using. The
+\texttt{aov} function only works on long-form data, where each score on
+the dependent variable has it's own row. Our's is already set up this
+way! The name of our dataframe is \texttt{all\_data}. We add that in,
+and it looks like:
+
+\texttt{aov(Days\_One\_to\_Seven\_Number\_of\_Intrusions\ \textasciitilde{}\ Condition,\ all\_data)}
+
+In english, this means, do an ANOVA on the dependent variable as a
+function of the independent variable, and use the data in my data frame.
+
+This is it for now. The \texttt{aov} function is very flexible because
+you can define different kinds of formulas (the
+\texttt{DV\ \textasciitilde{}\ IV} part). We'll see other examples in
+later chapters. For now, this is all we need. Also, what's cool, is that
+this will work for any single IV with any number of levels (conditions)
+2 or greater. Fun. Let's see it in action.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{aov}\NormalTok{(Days_One_to_Seven_Number_of_Intrusions ~}\StringTok{ }\NormalTok{Condition, all_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Call:
+##    aov(formula = Days_One_to_Seven_Number_of_Intrusions ~ Condition, 
+##     data = all_data)
+## 
+## Terms:
+##                 Condition Residuals
+## Sum of Squares   114.8194  685.8333
+## Deg. of Freedom         3        68
+## 
+## Residual standard error: 3.175812
+## Estimated effects may be unbalanced
+\end{verbatim}
+
+What is this garbage? I don't see an ANOVA table, what is this? You are
+seeing the raw print out of the aov function. Clearly, this is not
+helpful, it's not what we want to see.
+
+Fortunately, R comes with another function called \texttt{summary}. What
+it does is summarise the results of functions like \texttt{aov}, and
+prints them out in a nicer way. Let's see the summary function do it's
+thing:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(}\KeywordTok{aov}\NormalTok{(Days_One_to_Seven_Number_of_Intrusions ~}\StringTok{ }\NormalTok{Condition, all_data))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##             Df Sum Sq Mean Sq F value Pr(>F)  
+## Condition    3  114.8   38.27   3.795 0.0141 *
+## Residuals   68  685.8   10.09                 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+Alright, now we have an ANOVA table we can look at. However, it still
+looks ugly, at least to me. When you are working inside an R Markdown
+document, you have some more options to make it look nice. We can use
+the \texttt{kable} and \texttt{xtable} function together, like this.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(xtable)}
+\NormalTok{aov_out<-}\KeywordTok{aov}\NormalTok{(Days_One_to_Seven_Number_of_Intrusions ~}\StringTok{ }\NormalTok{Condition, all_data)}
+\NormalTok{summary_out<-}\KeywordTok{summary}\NormalTok{(aov_out)}
+
+\NormalTok{knitr::}\KeywordTok{kable}\NormalTok{(}\KeywordTok{xtable}\NormalTok{(summary_out))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{l|r|r|r|r|r}
+\hline
+  & Df & Sum Sq & Mean Sq & F value & Pr(>F)\\
+\hline
+Condition & 3 & 114.8194 & 38.27315 & 3.794762 & 0.0140858\\
+\hline
+Residuals & 68 & 685.8333 & 10.08578 & NA & NA\\
+\hline
+\end{tabular}
+
+Now we see a nicer print out. Especially if we \texttt{knit} the
+document into a webpage.
+
+\subsection{Reporting the ANOVA
+results}\label{reporting-the-anova-results}
+
+Refer tot the textbook on ANOVAs for a deeper discussion of all the
+things in the ANOVA table. We'll remind about some of those things here.
+
+First, let's look at how we might report the results. There are three
+very important parts to this.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Saying what test you did to what data
+\item
+  Reporting the inferential statistics
+\item
+  Reporting the pattern in the means
+\end{enumerate}
+
+Here is part 1, we need to say what data we used, and what kind of test
+we used on that data:
+
+\begin{quote}
+We submitted the mean intrusive memories for the week from each subject
+in each condition to a one-factor betwee-subjects ANOVA, with
+Intervention type (No-task control, Reactivation Plus tetris, Tetris
+only, Reactivation only) as the sole independent variable.
+\end{quote}
+
+Part 2 is saying what the results of the test were. Specifically, we
+report the values from the inferential test (see the textbook for why
+these values). Also, you should be able to answer this question: why do
+we report the values that we do?
+
+\begin{quote}
+We found a main effect of Intervention type, F(3, 68) = 3.79, MSE =
+10.09, p = 0.014.
+\end{quote}
+
+Part 3 is saying what the pattern was in the means. Remember, that in
+the ANOVA, a significant effect refers to the global variation among the
+means. In other words, we can say that there are some differences
+between the means, but we can't specifically say which pairs of means
+are different, or which groups of means are different from one another.
+How can we report this, where are the means? In fact, we already found
+them when we plotted the data earlier. So, we can copy paste that code,
+and print out the means, rather than the figure:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# get means and SEs}
+\NormalTok{descriptive_df <-}\StringTok{ }\NormalTok{all_data %>%}\StringTok{ }
+\StringTok{                    }\KeywordTok{group_by}\NormalTok{(Condition) %>%}\StringTok{ }
+\StringTok{                    }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{means=} \KeywordTok{mean}\NormalTok{(Days_One_to_Seven_Number_of_Intrusions),}
+                              \DataTypeTok{SEs =} \KeywordTok{sd}\NormalTok{(Days_One_to_Seven_Number_of_Intrusions)/}\KeywordTok{sqrt}\NormalTok{(}\KeywordTok{length}\NormalTok{(Days_One_to_Seven_Number_of_Intrusions)))}
+
+\NormalTok{knitr::}\KeywordTok{kable}\NormalTok{(descriptive_df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{l|r|r}
+\hline
+Condition & means & SEs\\
+\hline
+Control & 5.111111 & 0.9963623\\
+\hline
+Reactivation+Tetris & 1.888889 & 0.4113495\\
+\hline
+Tetris\_only & 3.888889 & 0.6806806\\
+\hline
+Reactivation\_only & 4.833333 & 0.7848650\\
+\hline
+\end{tabular}
+
+No we have to use a sentence to describe these means.
+
+\begin{quote}
+Refer to table 1 for the means and standard errors of the mean in each
+condition
+\end{quote}
+
+or,
+
+\begin{quote}
+Mean intrusive memories per week were 5.11 (SE = .99); 1.89 (SE = .41);
+3.89 (SE = .68); and 4.83 (SE= .78), in the Control, Reaction plus
+Tetris, Tetris Only, and Reactivation only conditions, respectively
+\end{quote}
+
+Ugh, what a mouthful. Be mindful of how you write results. The above is
+not helpful because you see a list of numbers, and then a list of
+conditions, and the reader has to do a lot of work to keep everything
+straight. I like the table option.
+
+I also like this other kind of option:
+
+\begin{quote}
+Mean intrusive memories were significantly different between the Control
+(M = 5.11, SE = .99), Reactivation plus Tetris (M = 3.89, SE = .68),
+Tetris only (M= 3.89, SE = .68), and Reactivation only (M = 4.83, .78)
+conditions.
+\end{quote}
+
+That's a little bit better. Let's put it all in one place to see what it
+look like:
+
+\begin{quote}
+We submitted the mean intrusive memories for the week from each subject
+in each condition to a one-factor betwee-subjects ANOVA, with
+Intervention type (No-task control, Reactivation Plus tetris, Tetris
+only, Reactivation only) as the sole independent variable. We found a
+main effect of Intervention type, F(3, 68) = 3.79, MSE = 10.09, p =
+0.014. Mean intrusive memories were significantly different between the
+Control (M = 5.11, SE = .99), Reactivation plus Tetris (M = 3.89, SE =
+.68), Tetris only (M= 3.89, SE = .68), and Reactivation only (M = 4.83,
+.78) conditions.
+\end{quote}
+
+\subsection{Individual comparisons}\label{individual-comparisons}
+
+This next part is complicated, so we intentionally simplify it. There
+are these things (remember from the textbook), called comparisons. We
+use them to compare differences between specific conditions of interest.
+That part isn't very complicated. You just pick the things you want to
+compare, and compare them.
+
+What is complicated is exactly what you ``should'' do to make the
+comparison. It turns out there are lots of recommendations and
+disagreements about what you should do. There are also lots of tests
+that you can do, so you have a lot of options. We are not going to show
+you here all of the tests. This is beyond the scope of what we are
+trying to teach you. Instead, we will use tests that you already know,
+the t-test for independent samples from the last lab. It will do the job
+for this data.
+
+We think that before you can make good decisions about the kind of
+comparison test you want to use, you have to have a solid understanding
+of \textbf{what you are comparing} and \textbf{what you are not
+comparing} when you use different tests. We think this understanding is
+more important than what test you use. More important, is that you know
+what means you want to compare. In this case, we will talk about what
+means we want to compare, and then just do a t-test.
+
+\subsubsection{What did the ANOVA tell
+us}\label{what-did-the-anova-tell-us}
+
+Remember, the ANOVA we conducted is termed the \textbf{omnibus} test in
+the textbook. What means was it comparing? It wasn't comparing specific
+means. It was asking a kind of blind and very general question: Are any
+of these means different. Our answer was yes. Our next question is: What
+means were different from what other means? The ANOVA doesn't know the
+answer to this question. It just says I don't know\ldots{}
+
+\subsubsection{Comparing specific means and the experimental
+question}\label{comparing-specific-means-and-the-experimental-question}
+
+Notice there are 4 means to compare. So, there are (4-1)! = 3! = 3x2x1 =
+6 total different comparisons. The ! stands for factorial. What's more
+important is recognizing that when you have more than two conditions
+(where you can only make one comparison, A vs.~B), you get increasingly
+more comparisons. For four conditions, A, B, C, D, you get six
+comparisons, they are:
+
+\texttt{AB,\ AC,\ AD,\ BC,\ BD,\ and\ CD} where each letter pair refers
+to A compared to B (AB), A compared to C (AC), and so on.
+
+Do we actually care about all of these comparisons? Perhaps. What was
+the point of the experiment? Remember, the experiment was asking a
+questions, that's why they set-up the condition necessary to produce
+these means. What question were they asking? What did they want to know?
+
+They wanted to find out if various interventions after watching the
+scary movie, would change how many bad intrusive memories people would
+experience in the week following the movie. They discuss the idea that a
+memory can become malleable when it is re-activated. They want to
+``Re-activate'' the bad memories, and then while they were changeable,
+do something to them to make them less likely to be intrusive later on.
+The big idea was that doing a bit of ``re-activation'' AND then playing
+tetris (which takes up visual cognitive bandwidth) could cause changes
+to the re-activated memories, that would decrease the number of
+intrusive memories later on. With that reminder, let's go through some
+different comparisons that we can make, and talk about what they might
+mean.
+
+\subsubsection{Control
+vs.~Reactivation\_only}\label{control-vs.reactivation_only}
+
+There was a control group that did not do anything special after
+watching the traumatic movie. The mean number of intrusive memories for
+the control group, gives some idea of the amount of intrusive memories
+we would expect to measure, when you do nothing to change that number.
+
+Comparing to the control group is a very sensible thing do to for each
+of the other groups. If one of the manipulations worked, it should show
+a different mean (something changed) than the control group.
+
+So, did the Reaction\_only group have less instrusive memories over the
+control group? First we use the \texttt{filter} function from
+\texttt{dplyr} to select only the rows from the data frame that have the
+Control and Reactivation\_only conditions. Then we run a t-test
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{comparison_df <-}\StringTok{ }\NormalTok{all_data %>%}\StringTok{ }
+\StringTok{                  }\KeywordTok{filter}\NormalTok{(Condition %in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{'Control'}\NormalTok{,}\StringTok{'Reactivation_only'}\NormalTok{)==}\OtherTok{TRUE}\NormalTok{)}
+                        
+\KeywordTok{t.test}\NormalTok{(Days_One_to_Seven_Number_of_Intrusions ~}\StringTok{ }\NormalTok{Condition, }
+       \NormalTok{comparison_df,}
+       \DataTypeTok{var.equal=}\OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Two Sample t-test
+## 
+## data:  Days_One_to_Seven_Number_of_Intrusions by Condition
+## t = 0.219, df = 34, p-value = 0.828
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -2.299851  2.855406
+## sample estimates:
+##           mean in group Control mean in group Reactivation_only 
+##                        5.111111                        4.833333
+\end{verbatim}
+
+The means are both basically 5, not a big difference!. The p-value is
+large, suggesting that change could easily have produced the tiny
+differences between the means. In other words, it doesn't look like the
+``re-activation'' phase did anything to suppress the amount of intrusive
+memories that people would have over one week, compared to control.
+
+Notice, this was a comparison we could make. But, was it an informative
+one about the goal of the study? Not really.
+
+\subsubsection{Control
+vs.~Reactivation+Tetris}\label{control-vs.reactivationtetris}
+
+What we really want to know is if Reactivation+Tetris cause fewer
+intrusive memories\ldots{}but compared to what? Well, if it did
+something, it should have a smaller mean than the Control group. So,
+let's do that comparison:
+
+Note: we just change the one level name to the level we want
+\texttt{Reactivation+Tetris}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{comparison_df <-}\StringTok{ }\NormalTok{all_data %>%}\StringTok{ }
+\StringTok{                  }\KeywordTok{filter}\NormalTok{(Condition %in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{'Control'}\NormalTok{,}\StringTok{'Reactivation+Tetris'}\NormalTok{)==}\OtherTok{TRUE}\NormalTok{)}
+                        
+\KeywordTok{t.test}\NormalTok{(Days_One_to_Seven_Number_of_Intrusions ~}\StringTok{ }\NormalTok{Condition, }
+       \NormalTok{comparison_df,}
+       \DataTypeTok{var.equal=}\OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Two Sample t-test
+## 
+## data:  Days_One_to_Seven_Number_of_Intrusions by Condition
+## t = 2.9893, df = 34, p-value = 0.005167
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  1.031592 5.412852
+## sample estimates:
+##             mean in group Control mean in group Reactivation+Tetris 
+##                          5.111111                          1.888889
+\end{verbatim}
+
+There is a bigger difference now, roughly 5.1 intrusive memories for
+control, and 1.9 for Reactivation+Tetirs. The p-value is quite small,
+indicating this difference was not likely produced by chance. Now, we
+have some evidence that Reactivation+Tetris caused something to change,
+that condition produced fewer intrusive memories than control.
+
+\subsubsection{Control vs.~Tetris\_only}\label{control-vs.tetris_only}
+
+Now we can really start wondering what caused the difference. Was it
+just playing Tetris? It wasn't just doing the reactivation, we already
+found out that didn't do anything. Does just playing Tetris reduce the
+number of intrusive memories during the week? Let's compare that to
+control:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{comparison_df <-}\StringTok{ }\NormalTok{all_data %>%}\StringTok{ }
+\StringTok{                  }\KeywordTok{filter}\NormalTok{(Condition %in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{'Control'}\NormalTok{,}\StringTok{'Tetris_only'}\NormalTok{)==}\OtherTok{TRUE}\NormalTok{)}
+                        
+\KeywordTok{t.test}\NormalTok{(Days_One_to_Seven_Number_of_Intrusions ~}\StringTok{ }\NormalTok{Condition, }
+       \NormalTok{comparison_df,}
+       \DataTypeTok{var.equal=}\OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Two Sample t-test
+## 
+## data:  Days_One_to_Seven_Number_of_Intrusions by Condition
+## t = 1.0129, df = 34, p-value = 0.3183
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -1.230036  3.674480
+## sample estimates:
+##     mean in group Control mean in group Tetris_only 
+##                  5.111111                  3.888889
+\end{verbatim}
+
+There's mean difference of about 1, but the p-value isn't very small.
+This suggests chance produces a difference of this size fairly often. If
+we claimed that just playing tetris caused a difference based on this
+data, we could easily be making a type I error (claiming the result is
+real when it is not, a false-positive). Still, the difference was in the
+right direction wasn't it.
+
+\subsubsection{Tetris\_only vs.~Reactivation +
+Tetris}\label{tetris_only-vs.reactivation-tetris}
+
+Finally, we might ask if the Reactivation+Tetris group had fewer
+unwanted memories than the Tetris\_only group. Did putting the two
+things together (reactivation AND Tetris) really do something special
+here, beyond just playing Tetris.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{comparison_df <-}\StringTok{ }\NormalTok{all_data %>%}\StringTok{ }
+\StringTok{                  }\KeywordTok{filter}\NormalTok{(Condition %in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{'Tetris_only'}\NormalTok{,}\StringTok{'Reactivation+Tetris'}\NormalTok{)==}\OtherTok{TRUE}\NormalTok{)}
+                        
+\KeywordTok{t.test}\NormalTok{(Days_One_to_Seven_Number_of_Intrusions ~}\StringTok{ }\NormalTok{Condition, }
+       \NormalTok{comparison_df,}
+       \DataTypeTok{var.equal=}\OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Two Sample t-test
+## 
+## data:  Days_One_to_Seven_Number_of_Intrusions by Condition
+## t = -2.5147, df = 34, p-value = 0.01681
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -3.6162855 -0.3837145
+## sample estimates:
+## mean in group Reactivation+Tetris         mean in group Tetris_only 
+##                          1.888889                          3.888889
+\end{verbatim}
+
+Well, according to the t-test, the p-value is again fairly small.
+Suggesting that the difference between Reactivation+Tetris (M=1.89) and
+Tetris\_only (3.89), was not likely to be produced by chance. So, on the
+basis of this, there is some evidence that Reactivation+Tetris, really
+does cause fewer intrusive memories.
+
+\subsection{Writing it all up.}\label{writing-it-all-up.}
+
+Because we have spent so much time on individual comparisons, we won't
+do a full write up of the results. A full write-up would include telling
+the reader what data was used, what test was conducted, the results of
+the test, and the pattern of the means, AND then, the results of
+specific comparisons of interest. You can read the paper to see how the
+authors did it.
+
+\subsection{Now it's your turn.}\label{now-its-your-turn.}
+
+You get to repeat the above, but instead of analyzing the first
+Dependent variable (mean intrusive memories per week), you get to
+analyze the other one (see if you can find it from what is described in
+the paper)
+
+\subsection{Food for thought}\label{food-for-thought}
+
+Think about what we did here. We almost blindly just downloaded the data
+and ran the same analysis as the authors did. Sure, we looked at the
+data first, and then did the analysis. But, did we really look? Did you
+notice anything about what you looked at? What did we not look closely
+at that might make you skeptical of the conclusions fromt the
+research\ldots{}
+
+Here's a hint. Sample-size. We know that is important. Let's ask the
+question, was there an equal number of participants in each of the 4
+conditions. We can use \texttt{dplyr} again to do this. We'll add the
+\texttt{length} function, which counts the number of subjects in each
+condition:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{descriptive_df <-}\StringTok{ }\NormalTok{all_data %>%}\StringTok{ }
+\StringTok{                    }\KeywordTok{group_by}\NormalTok{(Condition) %>%}\StringTok{ }
+\StringTok{                    }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{means=} \KeywordTok{mean}\NormalTok{(Days_One_to_Seven_Number_of_Intrusions),}
+                              \DataTypeTok{SEs =} \KeywordTok{sd}\NormalTok{(Days_One_to_Seven_Number_of_Intrusions)/}\KeywordTok{sqrt}\NormalTok{(}\KeywordTok{length}\NormalTok{(Days_One_to_Seven_Number_of_Intrusions)),}
+                              \DataTypeTok{count =} \KeywordTok{length}\NormalTok{(Days_One_to_Seven_Number_of_Intrusions))}
+
+\NormalTok{knitr::}\KeywordTok{kable}\NormalTok{(descriptive_df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{l|r|r|r}
+\hline
+Condition & means & SEs & count\\
+\hline
+Control & 5.111111 & 0.9963623 & 18\\
+\hline
+Reactivation+Tetris & 1.888889 & 0.4113495 & 18\\
+\hline
+Tetris\_only & 3.888889 & 0.6806806 & 18\\
+\hline
+Reactivation\_only & 4.833333 & 0.7848650 & 18\\
+\hline
+\end{tabular}
+
+The answer is YES, there were an equal number of subjects. That's good.
+We should have checked that before. Lesson for next time. For example,
+if there were only 9 subjects in the Reactivation+Tetris group, we might
+be suspicious that they got lucky, and accidentally (by chance) assigned
+people to that group who are unlikely to report having intrusive
+memories. After all, different people are different, and not everybody
+is as susceptible to intrusive memories.
+
+Let's do one more thing for fun, and to see everything in action all in
+one place. Let's consider the role of outliers. Looking at the first
+graph we can see that most people in all the groups had fewer than 10
+instrusive memories (mean we assume) per week. It looks like 5 people
+had more than that, and they just happended to be in the other groups.
+Maybe Reactivation+Tetris made those people have way less intrusive
+memories (which is why no one is above 10), or maybe the researchers got
+a little bit unlucky, and accidentally didn't get any ``outliers''
+(people with extreme values on the measure) in that group.
+
+Let's re-run the analysis, but remove anybody with a mean higher than
+10. This will only remove 5 subjects, so we will still have a lot left.
+What happens?
+
+Before we find out, let me point out again the beaty of R. All we need
+to do is copy and paste our previous code. Then, just filter the data
+once to remove the outliers, then voila, we redo everything all in one
+go. It's much more complicated and time consuming to do this in many
+other software programs. You are lucky to be learning R.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# get rid out of outliers}
+
+\NormalTok{all_data  <-}\StringTok{ }\NormalTok{all_data %>%}
+\StringTok{             }\KeywordTok{filter}\NormalTok{(Days_One_to_Seven_Number_of_Intrusions <}\StringTok{ }\DecValTok{10}\NormalTok{)}
+
+\CommentTok{# get means and SEs}
+
+\NormalTok{descriptive_df <-}\StringTok{ }\NormalTok{all_data %>%}\StringTok{ }
+\StringTok{                    }\KeywordTok{group_by}\NormalTok{(Condition) %>%}\StringTok{ }
+\StringTok{                    }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{means=} \KeywordTok{mean}\NormalTok{(Days_One_to_Seven_Number_of_Intrusions),}
+                              \DataTypeTok{SEs =} \KeywordTok{sd}\NormalTok{(Days_One_to_Seven_Number_of_Intrusions)/}\KeywordTok{sqrt}\NormalTok{(}\KeywordTok{length}\NormalTok{(Days_One_to_Seven_Number_of_Intrusions)))}
+
+\CommentTok{# Make the plot}
+
+\KeywordTok{ggplot}\NormalTok{(descriptive_df, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Condition, }\DataTypeTok{y=}\NormalTok{means))+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill=}\NormalTok{Condition))+}\StringTok{ }\CommentTok{# add means}
+\StringTok{  }\KeywordTok{geom_errorbar}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{ymin=}\NormalTok{means-SEs,               }\CommentTok{# add error bars}
+                    \DataTypeTok{ymax=}\NormalTok{means+SEs), }\DataTypeTok{width=}\NormalTok{.}\DecValTok{1}\NormalTok{) +}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{data=}\NormalTok{all_data, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Condition, }\DataTypeTok{y=}\NormalTok{Days_One_to_Seven_Number_of_Intrusions), }\DataTypeTok{alpha=}\NormalTok{.}\DecValTok{5}\NormalTok{)+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{alpha=}\NormalTok{.}\DecValTok{25}\NormalTok{)+}
+\StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Intrusive Memories (Mean for Week)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-66-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# run and report the ANOVA}
+
+\NormalTok{aov_out<-}\KeywordTok{aov}\NormalTok{(Days_One_to_Seven_Number_of_Intrusions ~}\StringTok{ }\NormalTok{Condition, all_data)}
+\NormalTok{summary_out<-}\KeywordTok{summary}\NormalTok{(aov_out)}
+
+\NormalTok{knitr::}\KeywordTok{kable}\NormalTok{(}\KeywordTok{xtable}\NormalTok{(summary_out))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{l|r|r|r|r|r}
+\hline
+  & Df & Sum Sq & Mean Sq & F value & Pr(>F)\\
+\hline
+Condition & 3 & 51.49152 & 17.163841 & 4.024458 & 0.0110347\\
+\hline
+Residuals & 63 & 268.68758 & 4.264882 & NA & NA\\
+\hline
+\end{tabular}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# conduct critical comparisons}
+
+\NormalTok{## control vs reactivation+Tetris}
+
+\NormalTok{comparison_df <-}\StringTok{ }\NormalTok{all_data %>%}\StringTok{ }
+\StringTok{                  }\KeywordTok{filter}\NormalTok{(Condition %in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{'Control'}\NormalTok{,}\StringTok{'Reactivation+Tetris'}\NormalTok{)==}\OtherTok{TRUE}\NormalTok{)}
+                        
+\KeywordTok{t.test}\NormalTok{(Days_One_to_Seven_Number_of_Intrusions ~}\StringTok{ }\NormalTok{Condition, }
+       \NormalTok{comparison_df,}
+       \DataTypeTok{var.equal=}\OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Two Sample t-test
+## 
+## data:  Days_One_to_Seven_Number_of_Intrusions by Condition
+## t = 2.4159, df = 31, p-value = 0.02178
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  0.2562181 3.0326708
+## sample estimates:
+##             mean in group Control mean in group Reactivation+Tetris 
+##                          3.533333                          1.888889
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## Tetris_only vs reactivation+Tetris}
+
+\NormalTok{comparison_df <-}\StringTok{ }\NormalTok{all_data %>%}\StringTok{ }
+\StringTok{                  }\KeywordTok{filter}\NormalTok{(Condition %in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{'Tetris_only'}\NormalTok{,}\StringTok{'Reactivation+Tetris'}\NormalTok{)==}\OtherTok{TRUE}\NormalTok{)}
+                        
+\KeywordTok{t.test}\NormalTok{(Days_One_to_Seven_Number_of_Intrusions ~}\StringTok{ }\NormalTok{Condition, }
+       \NormalTok{comparison_df,}
+       \DataTypeTok{var.equal=}\OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Two Sample t-test
+## 
+## data:  Days_One_to_Seven_Number_of_Intrusions by Condition
+## t = -2.3239, df = 33, p-value = 0.02643
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -2.8561054 -0.1896463
+## sample estimates:
+## mean in group Reactivation+Tetris         mean in group Tetris_only 
+##                          1.888889                          3.411765
+\end{verbatim}
+
+The take home is that yes, even after removing outliers, the same basic
+pattern in the data is observed. Overall, this is a small n study, and
+ideally the basic findings should be replicated in another lab before we
+really have full confidence in them. But, I'd say the trends here look
+promising.
+
+That's ANOVA. Come back next week for another ANOVA tutorial, this time
+using within-subject data. It's called a repeated measures ANOVA, and
+it's what's happening next week.
 
 \section{Excel}\label{excel-7}
 
