@@ -1,0 +1,6 @@
+base
+data.table
+dplyr
+bindrcpp
+ggplot2
+xtable

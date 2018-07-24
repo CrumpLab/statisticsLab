@@ -261,14 +261,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="11" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html"><i class="fa fa-check"></i><b>11</b> Lab 11: Mixed Factorial ANOVA</a><ul>
 <li class="chapter" data-level="11.1" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html#lab-skills-learned-5"><i class="fa fa-check"></i><b>11.1</b> Lab Skills Learned</a></li>
-<li class="chapter" data-level="11.2" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html#important-stuff-5"><i class="fa fa-check"></i><b>11.2</b> Important Stuff</a></li>
-<li class="chapter" data-level="11.3" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html#outline-of-problem-to-solve-6"><i class="fa fa-check"></i><b>11.3</b> Outline of Problem to solve</a><ul>
-<li class="chapter" data-level="11.3.1" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html#important-things-6"><i class="fa fa-check"></i><b>11.3.1</b> important things</a></li>
+<li class="chapter" data-level="11.2" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html#important-stuff-5"><i class="fa fa-check"></i><b>11.2</b> Important Stuff</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html#important-things-6"><i class="fa fa-check"></i><b>11.2.1</b> important things</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html#r-11"><i class="fa fa-check"></i><b>11.4</b> R</a></li>
-<li class="chapter" data-level="11.5" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html#excel-10"><i class="fa fa-check"></i><b>11.5</b> Excel</a></li>
-<li class="chapter" data-level="11.6" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html#spss-10"><i class="fa fa-check"></i><b>11.6</b> SPSS</a></li>
-<li class="chapter" data-level="11.7" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html#matlab-10"><i class="fa fa-check"></i><b>11.7</b> Matlab</a></li>
+<li class="chapter" data-level="11.3" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html#r-11"><i class="fa fa-check"></i><b>11.3</b> R</a></li>
+<li class="chapter" data-level="11.4" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html#excel-10"><i class="fa fa-check"></i><b>11.4</b> Excel</a></li>
+<li class="chapter" data-level="11.5" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html#spss-10"><i class="fa fa-check"></i><b>11.5</b> SPSS</a></li>
+<li class="chapter" data-level="11.6" data-path="lab-11-mixed-factorial-anova.html"><a href="lab-11-mixed-factorial-anova.html#matlab-10"><i class="fa fa-check"></i><b>11.6</b> Matlab</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -382,27 +381,17 @@ all_data &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class
 <h3><span class="header-section-number">8.4.4</span> Look at the data</h3>
 <p>Remember before we do any analysis, we always want to “look” at the data. This first pass let’s us know if the data “look right”. For example, the data file could be messed up and maybe there aren’t any numbers there, or maybe the numbers are just too weird.</p>
 <p>In the last two labs, we saw how to show all the data we are interested in looking at in one go. We can do the same things here. For example, in one little piece of code, we can display the means in each condition, the standard errors of the mean, and the individual scores for each subject in each condition. This is a lot to look at, but it’s everything we want to look at for starters all in the same place. Looking at the data this way will also give us intuitions about what our ANOVA will tell us before we run the ANOVA. This is helpful for determining whether the results of your ANOVA are accurate or not. Let’s do it…also notice that the code is very similar to what we did for the independent t-test. In fact, all I did was copy and paste that code right here, and edited it a little bit. This is really fast, and shows the efficiency of doing things this way.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)</code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;dplyr&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:data.table&#39;:
-## 
-##     between, first, last</code></pre>
-<pre><code>## The following objects are masked from &#39;package:stats&#39;:
-## 
-##     filter, lag</code></pre>
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
-## 
-##     intersect, setdiff, setequal, union</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)</code></pre></div>
-<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.4.4</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># get means and SEs</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
+
+<span class="kw">library</span>(ggplot2)
+
+<span class="co"># get means and SEs</span>
 descriptive_df &lt;-<span class="st"> </span>all_data %&gt;%<span class="st"> </span>
 <span class="st">                    </span><span class="kw">group_by</span>(Condition) %&gt;%<span class="st"> </span>
 <span class="st">                    </span><span class="kw">summarise</span>(<span class="dt">means=</span> <span class="kw">mean</span>(Days_One_to_Seven_Number_of_Intrusions),
-                              <span class="dt">SEs =</span> <span class="kw">sd</span>(Days_One_to_Seven_Number_of_Intrusions)/<span class="kw">sqrt</span>(<span class="kw">length</span>(Days_One_to_Seven_Number_of_Intrusions)))</code></pre></div>
-<pre><code>## Warning: package &#39;bindrcpp&#39; was built under R version 3.4.4</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Make the plot</span>
+                              <span class="dt">SEs =</span> <span class="kw">sd</span>(Days_One_to_Seven_Number_of_Intrusions)/<span class="kw">sqrt</span>(<span class="kw">length</span>(Days_One_to_Seven_Number_of_Intrusions)))
+
+<span class="co"># Make the plot</span>
 <span class="kw">ggplot</span>(descriptive_df, <span class="kw">aes</span>(<span class="dt">x=</span>Condition, <span class="dt">y=</span>means))+<span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="kw">aes</span>(<span class="dt">fill=</span>Condition))+<span class="st"> </span><span class="co"># add means</span>
 <span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin=</span>means-SEs,               <span class="co"># add error bars</span>
@@ -410,7 +399,7 @@ descriptive_df &lt;-<span class="st"> </span>all_data %&gt;%<span class="st"> </
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data=</span>all_data, <span class="kw">aes</span>(<span class="dt">x=</span>Condition, <span class="dt">y=</span>Days_One_to_Seven_Number_of_Intrusions), <span class="dt">alpha=</span>.<span class="dv">5</span>)+
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha=</span>.<span class="dv">25</span>)+
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Intrusive Memories (Mean for Week)&quot;</span>)</code></pre></div>
-<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
 <p>There we have it. A nice graph showing us everything. We can see there was a lot of differences at the level of individual subjects. Some subjects had a mean of 15 intrusive memories for the week. Some had 0. Lots of differences.</p>
 <p>And, to be completely honest, this data seems a bit weird to me. It might not be weird, but it might be. The wording in the manuscript is that this data is the mean frequency of intrusive memories over the week. For the people who had 15, this means that every day they had on average 15 intrusive memories. Some people had on average 0 per day. This could be the data. But, it also seems like the data might just be frequency counts and not means at all. For example, the data could be that some people had a total of 15 intrusive over the week. The data might make more sense if these were frequency counts. Otherwise the differences between people are truly very large. For example the person who had an average of 15 intrusive memories per week, must have had 15*7 = 105 intrusive memories, which is a lot more than zero. In any case, this kind of wondering about the data is what happens when you start to notice how numbers work. It’s useful develop your data sense.</p>
 <p>Let’s move on to the ANOVA. By looking at the above graph do you have an intuition about what the ANOVA will tell us? I do, it should easily tell us that we are going to get an F-value that is bigger than one, and a p-value that is probably smaller than .05? How do I know this? I looked at the error bars, which represent the standard errors of the mean. If we look across conditions we can see that that the error bars don’t always overlap. This suggests there are differences in the data that don’t happen very often by chance. So, we expect a smallish p-value. Why do you think I expect the F-value to be greater than 1? If you can answer this question with a justification and explanation of how F works, pat yourself on the back!</p>
@@ -753,7 +742,7 @@ descriptive_df &lt;-<span class="st"> </span>all_data %&gt;%<span class="st"> </
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data=</span>all_data, <span class="kw">aes</span>(<span class="dt">x=</span>Condition, <span class="dt">y=</span>Days_One_to_Seven_Number_of_Intrusions), <span class="dt">alpha=</span>.<span class="dv">5</span>)+
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha=</span>.<span class="dv">25</span>)+
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Intrusive Memories (Mean for Week)&quot;</span>)</code></pre></div>
-<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-66-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># run and report the ANOVA</span>
 
 aov_out&lt;-<span class="kw">aov</span>(Days_One_to_Seven_Number_of_Intrusions ~<span class="st"> </span>Condition, all_data)

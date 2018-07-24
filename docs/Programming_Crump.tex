@@ -2459,23 +2459,23 @@ the point that they are no longer intrusive.
 
 Because intrusive memories of trauma are often visual in nature, James
 and colleagues (2015) sought to explore whether completing a
-visuospatial task (e.g., tetris) after a memory was formed would
+visuospatial task (e.g., Tetris) after a memory was formed would
 interfere with the storage of that memory, and thereby reduce the
 frequency of subsequent intrusions. They hypothesized that only
-participants who complete a visuospatial task after reactivation of the
+participants who complete a visuo-spatial task after reactivation of the
 traumatic memories would experience a reduction in intrusive memories.
-In comparison, simply completing a visuospatial task (without
-reactivation) or reactivation (without a visuospatial task), would not
+In comparison, simply completing a visuo-spatial task (without
+reactivation) or reactivation (without a visuo-spatial task), would not
 reduce the occurrence intrusive memories.
 
-In other words, if you play tetris shortly after you were remembering
-bad memories, playing tetris might weaken those memories, which could
+In other words, if you play Tetris shortly after you were remembering
+bad memories, playing Tetris might weaken those memories, which could
 cause you experience those kinds of intrusive memories less often in the
 future.
 
 \subsection{Study Methods}\label{study-methods}
 
-To test their hypothesis, the autho rs conducted an experiment ( N = 72,
+To test their hypothesis, the authors conducted an experiment ( N = 72,
 n = 18 per condition). The procedure is summarized as follows:
 
 \textbf{Trauma Film}: All participants viewed a series of video clips of
@@ -2530,7 +2530,7 @@ triggered an intrusive memory.
   citation: James, E. L., Bonsall, M. B., Hoppitt, L., Tunbridge, E. M.,
   Geddes, J. R., Milton, A. L., \& Holmes, E. A. (2015). Computer game
   play reduces intrusive memories of experimental trauma via
-  reconsolidation-update mechanisms. Psychological Science, 26,
+  re-consolidation-update mechanisms. Psychological Science, 26,
   1201-1215.
 \item
   \href{http://journals.sagepub.com/stoken/default+domain/hQ2W4fbPrZVJ7eyNJaqu/full}{Link
@@ -2583,7 +2583,7 @@ how the independent variable and dependent variables were coded.
 
 There was one important independent variable, and it had four levels.
 The first column in the data frame is called condition, and it has four
-levels. The levels are 1, 2, 3, and 4 in the dataframe. These will
+levels. The levels are 1, 2, 3, and 4 in the data-frame. These will
 correspond to the four levels in shown in figure:
 
 \begin{itemize}
@@ -2591,7 +2591,7 @@ correspond to the four levels in shown in figure:
 \item
   No-task control
 \item
-  Reactivation Plus tetris
+  Reactivation Plus Tetris
 \item
   Tetris only
 \item
@@ -2600,8 +2600,8 @@ correspond to the four levels in shown in figure:
 
 Each of these refer to what subjects did after they watched the
 traumatic film. But, which of these correspond to the numbers 1 to 4 in
-the dataframe? It turns out the are in the right order, and 1 to 4 refer
-to:
+the data-frame? It turns out the are in the right order, and 1 to 4
+refer to:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -2609,7 +2609,7 @@ to:
 \item
   No-task control
 \item
-  Reactivation Plus tetris
+  Reactivation Plus Tetris
 \item
   Tetris only
 \item
@@ -2635,7 +2635,7 @@ the levels. Then.
 
 The authors showed two figures, one where they analysed intrusive memory
 frequency as the mean for the week, and the other where the used
-intrusice memory frequency on Day 7. In this tutorial, we will do the
+intrusive memory frequency on Day 7. In this tutorial, we will do the
 steps to run an ANOVA on the mean for the week data, and you will do
 follow these steps to run another ANOVA on the Day 7 data.
 
@@ -2690,10 +2690,10 @@ doing things this way.
 
 There we have it. A nice graph showing us everything. We can see there
 was a lot of differences at the level of individual subjects. Some
-subjects had a mean of 15 instrusives memories for the week. Some had 0.
+subjects had a mean of 15 intrusive memories for the week. Some had 0.
 Lots of differences.
 
-And, to be completlely honest, this data seems a bit weird to me. It
+And, to be completely honest, this data seems a bit weird to me. It
 might not be weird, but it might be. The wording in the manuscript is
 that this data is the mean frequency of intrusive memories over the
 week. For the people who had 15, this means that every day they had on
@@ -2745,7 +2745,7 @@ In other words, I didn't know how to write the commands properly. I
 didn't understand what we call the \textbf{syntax} of R.
 
 This was back many years ago now, well before there was so many helpful
-examples on google with working code, showing you how the syntax works.
+examples on Google with working code, showing you how the syntax works.
 All we had was the R help files, which were a total mystery to me. If
 you want to see the help file for \texttt{aov}, just type
 \texttt{?aov()} into the console, and press enter. You will see an
@@ -2774,15 +2774,15 @@ That probably looks really foreign. Let me explain. First you need write
 the brackets. The brackets are a sandwich. Sandwiches have a top and a
 bottom, and they enclose the things you put in the sandwich. We then put
 things inside the \texttt{()}, in specific ways to make the \texttt{aov}
-sandwich. The \texttt{DV} stands for the name of the dependendent
-variable in the data frame. For us, this will be
+sandwich. The \texttt{DV} stands for the name of the dependent variable
+in the data frame. For us, this will be
 \texttt{Days\_One\_to\_Seven\_Number\_of\_Intrusions}. So, when we add
 that, our function will look like:
 
 \texttt{aov(Days\_One\_to\_Seven\_Number\_of\_Intrusions\ \textasciitilde{}\ IV,\ dataframe)}
 
 Next, the \texttt{\textasciitilde{}} (tilda) stands for the word `by'.
-We are saying we want to anlayse the Dependent variable \textbf{by} the
+We are saying we want to analyse the Dependent variable \textbf{by} the
 conditions of the independent variable.
 
 The \texttt{IV} stands for the name of the column that is your
@@ -2791,15 +2791,15 @@ in, our formula looks like:
 
 \texttt{aov(Days\_One\_to\_Seven\_Number\_of\_Intrusions\ \textasciitilde{}\ Condition,\ dataframe)}
 
-Finally, the last part is the name of the dataframe we are using. The
+Finally, the last part is the name of the data-frame we are using. The
 \texttt{aov} function only works on long-form data, where each score on
 the dependent variable has it's own row. Our's is already set up this
-way! The name of our dataframe is \texttt{all\_data}. We add that in,
+way! The name of our data-frame is \texttt{all\_data}. We add that in,
 and it looks like:
 
 \texttt{aov(Days\_One\_to\_Seven\_Number\_of\_Intrusions\ \textasciitilde{}\ Condition,\ all\_data)}
 
-In english, this means, do an ANOVA on the dependent variable as a
+In English, this means, do an ANOVA on the dependent variable as a
 function of the independent variable, and use the data in my data frame.
 
 This is it for now. The \texttt{aov} function is very flexible because
@@ -2834,7 +2834,7 @@ seeing the raw print out of the aov function. Clearly, this is not
 helpful, it's not what we want to see.
 
 Fortunately, R comes with another function called \texttt{summary}. What
-it does is summarise the results of functions like \texttt{aov}, and
+it does is summarize the results of functions like \texttt{aov}, and
 prints them out in a nicer way. Let's see the summary function do it's
 thing:
 
@@ -3059,7 +3059,7 @@ memory can become malleable when it is re-activated. They want to
 ``Re-activate'' the bad memories, and then while they were changeable,
 do something to them to make them less likely to be intrusive later on.
 The big idea was that doing a bit of ``re-activation'' AND then playing
-tetris (which takes up visual cognitive bandwidth) could cause changes
+Tetris (which takes up visual cognitive bandwidth) could cause changes
 to the re-activated memories, that would decrease the number of
 intrusive memories later on. With that reminder, let's go through some
 different comparisons that we can make, and talk about what they might
@@ -3077,7 +3077,7 @@ Comparing to the control group is a very sensible thing do to for each
 of the other groups. If one of the manipulations worked, it should show
 a different mean (something changed) than the control group.
 
-So, did the Reaction\_only group have less instrusive memories over the
+So, did the Reaction\_only group have less intrusive memories over the
 control group? First we use the \texttt{filter} function from
 \texttt{dplyr} to select only the rows from the data frame that have the
 Control and Reactivation\_only conditions. Then we run a t-test
@@ -3153,7 +3153,7 @@ Note: we just change the one level name to the level we want
 \end{verbatim}
 
 There is a bigger difference now, roughly 5.1 intrusive memories for
-control, and 1.9 for Reactivation+Tetirs. The p-value is quite small,
+control, and 1.9 for Reactivation+Tetris. The p-value is quite small,
 indicating this difference was not likely produced by chance. Now, we
 have some evidence that Reactivation+Tetris caused something to change,
 that condition produced fewer intrusive memories than control.
@@ -3193,7 +3193,7 @@ control:
 
 There's mean difference of about 1, but the p-value isn't very small.
 This suggests chance produces a difference of this size fairly often. If
-we claimed that just playing tetris caused a difference based on this
+we claimed that just playing Tetris caused a difference based on this
 data, we could easily be making a type I error (claiming the result is
 real when it is not, a false-positive). Still, the difference was in the
 right direction wasn't it.
@@ -3259,7 +3259,7 @@ Think about what we did here. We almost blindly just downloaded the data
 and ran the same analysis as the authors did. Sure, we looked at the
 data first, and then did the analysis. But, did we really look? Did you
 notice anything about what you looked at? What did we not look closely
-at that might make you skeptical of the conclusions fromt the
+at that might make you skeptical of the conclusions from the
 research\ldots{}
 
 Here's a hint. Sample-size. We know that is important. Let's ask the
@@ -3305,18 +3305,18 @@ is as susceptible to intrusive memories.
 Let's do one more thing for fun, and to see everything in action all in
 one place. Let's consider the role of outliers. Looking at the first
 graph we can see that most people in all the groups had fewer than 10
-instrusive memories (mean we assume) per week. It looks like 5 people
-had more than that, and they just happended to be in the other groups.
-Maybe Reactivation+Tetris made those people have way less intrusive
-memories (which is why no one is above 10), or maybe the researchers got
-a little bit unlucky, and accidentally didn't get any ``outliers''
-(people with extreme values on the measure) in that group.
+intrusive memories (mean we assume) per week. It looks like 5 people had
+more than that, and they just happened to be in the other groups. Maybe
+Reactivation+Tetris made those people have way less intrusive memories
+(which is why no one is above 10), or maybe the researchers got a little
+bit unlucky, and accidentally didn't get any ``outliers'' (people with
+extreme values on the measure) in that group.
 
 Let's re-run the analysis, but remove anybody with a mean higher than
 10. This will only remove 5 subjects, so we will still have a lot left.
 What happens?
 
-Before we find out, let me point out again the beaty of R. All we need
+Before we find out, let me point out again the beauty of R. All we need
 to do is copy and paste our previous code. Then, just filter the data
 once to remove the outliers, then voila, we redo everything all in one
 go. It's much more complicated and time consuming to do this in many
