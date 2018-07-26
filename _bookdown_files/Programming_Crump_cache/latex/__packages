@@ -5,3 +5,5 @@ bindrcpp
 ggplot2
 xtable
 gapminder
+magrittr
+ggpubr
