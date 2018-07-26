@@ -116,16 +116,17 @@
 }
 
 \setlength{\droptitle}{-2em}
+
   \title{Answering questions with data: Lab Manual}
-  \pretitle{\vspace{\droptitle}\centering\huge}
+    \pretitle{\vspace{\droptitle}\centering\huge}
   \posttitle{\par}
-  \author{Matthew J. C. Crump \\ Anajali Krishnan \\ Stephen Volz \\ Alla Chavarga \\ Currently in draft, all attributions and licensed to adapted content
+    \author{Matthew J. C. Crump \\ Anajali Krishnan \\ Stephen Volz \\ Alla Chavarga \\ Currently in draft, all attributions and licensed to adapted content
 will be recognized by the time we are finished.}
-  \preauthor{\centering\large\emph}
+    \preauthor{\centering\large\emph}
   \postauthor{\par}
-  \predate{\centering\large\emph}
+      \predate{\centering\large\emph}
   \postdate{\par}
-  \date{2018: Last Compiled 2018-07-25}
+    \date{2018: Last Compiled 2018-07-26}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -359,424 +360,854 @@ speak. We'll do these things:
 
 \section{R}\label{r-1}
 
-\subsection{General Goals}\label{general-goals-1}
+Your lab instructor will show you how to open R-studio on the lab
+computer. Just find it and double-click. Now you have R-studio.
+
+There are numerous resources for learning about R, we put some of them
+on the course website, under the
+\href{https://crumplab.github.io/psyc3400/Resources.html}{resouces
+page}. You will find these resources helpful as you learn. We also have
+a kind of \href{}{general introduction to R and Rstudio here}. This
+shows you how to download R and R-studio at home (it's free).
+
+When we made this course, we assumed that most students would be
+unfamiliar with R and R-studio, and might even be frightened of it,
+because it is a computer programming language (OOOOHHH NOOOOOOO, I NEED
+TO DROP THIS COURSE NOW)\ldots{}Don't worry. It's going to be way easier
+than you think. Let's compare to other statistics courses where you
+would learn something like SPSS. That is also a limited programming
+language, but you would mostly learn how to point with a mouse, and
+click with button. I bet you already know how to do that. I bet you also
+already know how to copy and paste text, and press enter. That's mostly
+what we'll be doing to learn R. We will be doing statistics by typing
+commands, rather than by clicking buttons. However, lucky for you, all
+of the commands are already written for you. You just have to copy/paste
+them.
+
+We know that this will seem challenging at first. But, we think that
+with lots of working examples, you will get the hang of it, and by the
+end of the course you will be able to do things you might never have
+dreamed you can do. It's really a fantastic skill to learn, even if you
+aren't planning on going on to do research in Psychology (in which case,
+this kind of thing is necessary skill to learn). With that, let's begin.
+
+\subsection{Get some data}\label{get-some-data}
+
+In order to graph data, we need to have some data first\ldots{}Actually,
+with R, that's not quite true. Run this bit of code and see what
+happens:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{hist}\NormalTok{(}\KeywordTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{, }\DataTypeTok{mean=}\DecValTok{50}\NormalTok{, }\DataTypeTok{sd=}\DecValTok{25}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-2-1.pdf}
+
+You just made R sample 100 numbers, and then plot the results in a
+histogram. Pretty neat. We'll be doing some of this later in the course,
+where get R to make fake data for us, and then we learn to think about
+how data behaves under different kinds of assumptions.
+
+For now, let's do something that might be a little bit more
+interesting\ldots{}what movies are going to be filming in NYC? It turns
+out that NYC makes a lot of data about a lot things open and free for
+anyone to download and look at. This is the NYC Open Data website:
+\url{https://opendata.cityofnewyork.us}. I searched through the data,
+and found this data file that lists the locations of film permits for
+shooting movies all throughout the burroughs. You can download the data
+to your computer from
+\href{https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/MehrSongSpelke2016.csv}{this
+link}
+
+NOTE TO SELF, COME BACK HERE AND WALKTHROUGH FILE PATHS AND THINGS
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(data.table)}
+\NormalTok{nyc_films <-}\KeywordTok{fread}\NormalTok{(}\StringTok{"data/Film_Permits.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Look at the data}\label{look-at-the-data}
+
+You will be downloading and analyzing all kinds of data files this
+semester. We will follow the very same steps every time. The steps are
+to load the data, then look at it. You want to see what you've got.
+
+In R-studio, you will now see a variable called \texttt{nyc\_films} in
+the top right-hand corner of the screen, in the environment tab. If you
+click this thing, it will show you the contents of the data in a new
+window. The data is stored in something we call a \texttt{data\ frame}.
+It's R lingo, for the thing that contains the data. Notice is a square,
+with rows going across, and columns going up and down. It looks kind of
+like an excel spreadsheet if you are familiar with Excel.
+
+It's useful to know you can look at the data frame this way if you need
+to. But, this dataframe is really big, it has 50,728 rows of data.
+That's a lot too much to look at.
+
+\subsubsection{summarytools}\label{summarytools}
+
+The summarytools packages give a quick way to summarize all of the data
+in a data frame. Here's how. When you run this code you will see the
+summary in the viewer on the bottom right hand side. There's a little
+browser button (arrow on top of little window) that you can click to
+expand and see the whole thing in a browser.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(summarytools)}
+\KeywordTok{view}\NormalTok{(}\KeywordTok{dfSummary}\NormalTok{(nyc_films))}
+\end{Highlighting}
+\end{Shaded}
+
+That is super helpful, but it's still a lot to look at. Because there is
+so much data here, it's pretty much mind-boggling to start thinking
+about what to do with it.
+
+\subsection{Make Plots to answer
+questions}\label{make-plots-to-answer-questions}
+
+Let's walk through a couple questions we might have about this data. We
+can see that there were 50,728 film permits made. We can also see that
+there are different columns telling us information about each of the
+film permits. For example, the \texttt{Borough} column lists the Borough
+for each request, whether it was made for: Manhattan, Brooklyn, Bronx,
+Queen's, or Staten Island. Now we can ask our first question, and learn
+how to do some plotting in R.
+
+\subsubsection{Where are the most film permits being
+requested?}\label{where-are-the-most-film-permits-being-requested}
+
+Do you have any guesses? Is it Manhattan, or Brookyln, of the Bronx? Or
+Queen's or Staten Island? We can find out by plotting the data using a
+bar plot. We just need to count how many film permits are made in each
+burough, and then make different bars represent the the counts.
+
+First, we do the counting in R. Run the following code.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(dplyr)}
+
+\NormalTok{counts <-}\StringTok{ }\NormalTok{nyc_films %>%}
+\StringTok{          }\KeywordTok{group_by}\NormalTok{(Borough) %>%}
+\StringTok{          }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{count_of_permits =} \KeywordTok{length}\NormalTok{(Borough))}
+\end{Highlighting}
+\end{Shaded}
+
+The above grouped the data by each of the five Borough's, and then
+counted the number of times each Borough occured (using the
+\texttt{length} function). The result is a new variable called
+\texttt{count}. I chose to name this variable \texttt{count}. You can
+see that it is now displayed in the top-right hand corned in the
+environment tab. If you gave \texttt{count} a different name, like
+\texttt{muppets}, then it would be named what you called it.
+
+If you click on the \texttt{counts} variable, you will see the five
+boroughs listed, along with the counts for how many film permits were
+requested in each Borough. These are the numbers that we want to plot in
+a graph.
+
+We do the plot using a fantastic package called \texttt{ggplot2}. It is
+very powerful once you get the hand of it, and when you do, you will be
+able to make all sorts of interesting graphs. Here's the code to make
+the plot
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(ggplot2)}
+
+\KeywordTok{ggplot}\NormalTok{(counts, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \NormalTok{Borough, }\DataTypeTok{y =} \NormalTok{count_of_permits )) +}
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+There it is, we're done here! We can easily look at this graph, and
+answer our question. Most of the film permits were requested in
+Manhattan, followed by Brooklyn, then Queen's, the Bronx, and finally
+Staten Island.
+
+\subsubsection{\texorpdfstring{What kind of ``films'' are being made,
+what is the
+category?}{What kind of films are being made, what is the category?}}\label{what-kind-of-films-are-being-made-what-is-the-category}
+
+We think you might be skeptical of what you are doing here, copying and
+pasting things. Soon you'll see just how fast you can do things by
+copying and pasting, and make a few little changes. Let's quickly ask
+another question about what kinds of films are being made. The column
+\texttt{Category}, gives us some information about that. Let's just copy
+paste the code we already made, and see what kinds of categories the
+films fall into. See if you can tell what I changed in the code to make
+this work, I'll do it all at once:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{counts <-}\StringTok{ }\NormalTok{nyc_films %>%}
+\StringTok{          }\KeywordTok{group_by}\NormalTok{(Category) %>%}
+\StringTok{          }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{count_of_permits =} \KeywordTok{length}\NormalTok{(Category))}
+
+\KeywordTok{ggplot}\NormalTok{(counts, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \NormalTok{Category, }\DataTypeTok{y =} \NormalTok{count_of_permits )) +}
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{)+}\StringTok{ }
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.x =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{angle =} \DecValTok{90}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+Ok, so this figure might look a bit weird because the labels on the
+bottom are running into each other. We'll fix that in a bit. First,
+let's notice the changes.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\tightlist
 \item
-  A brief tour of R-studio
+  I changed \texttt{Borough} to \texttt{Category}. That was the main
+  thing
 \item
-  Some R basics
-\item
-  Graphing data in R
-\item
-  Graphing data using ggplot2
+  I left out a bunch of things from before. None of the
+  \texttt{library()} commands are used again, and I didn't re-run the
+  very early code to get the data. R already has those things in it's
+  memory, so we don't need to do that first. If you ever clear the
+  memory of R, then you will need to reload those things. First-things
+  come first.
 \end{enumerate}
 
-\subsubsection{R basics Checklist}\label{r-basics-checklist}
+Fine, so how do we fix the graph? Good question. To be honest, I don't
+know right now. I totally forgot how. But, I know ggplot2 can do this,
+and I'm going to google it, right now. Then I'm going to find the
+answer, and use it here. The googling of your questions is a fine way to
+learn. It's what everybody does these days\ldots{}.{[}goes to
+google\ldots{}{]}.
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Create a new R project
-\item
-  Execute commands in the console
-\item
-  Open and save new R script in the editor
-\item
-  Write a short script, and run the commands in the script in the
-  console
-\item
-  View the contents of variables in the environment window
-\item
-  View the contents of variables using the console
-\item
-  Use the console like a calculator
-\item
-  Store numbers in variables
-\end{enumerate}
-
-\subsection{A clean start}\label{a-clean-start}
-
-Good organization is key to data analysis. To explain, let me tell you a
-story to help you avoid being like me when I started learning how to
-analyze data. As a graduate student, I would collect data from
-experiments I was running. I stored the data in different files in
-different folders on my computer (all over the place, hard to remember
-where sometimes). I would copy the data into excel so I could look at
-it, do basic analysis, and reformat it so I could run statistics on the
-data using programs like SPSS. I would often have many different
-versions of excel spreadsheets with different versions of the data,
-sometimes stored in different folders. I would have many different SPSS
-outputs for each analysis I performed, sometimes in different locations.
-I would create tables and graphs in new excel spreadsheets, and edit the
-graphs in programs like Adobe Illustrator. All of these files would be
-all over the place. Sometimes, weeks, or months, or years later, I would
-revisit the data. After spending time to find it all, I would have to
-retrace my steps, doing detective work to figure out what analyses I had
-done. Ultimately, my previous work was so hard to understand, that I
-would end up redoing the analysis again. This was a messy process, and
-it took a lot of time. Wouldn't it be nice if everything was in one
-place? R provides this solution.
-
-\subsubsection{Making an R project}\label{making-an-r-project}
-
-R projects are a convenient way to organize everything you do in R. To
-create an R project in R-studio you can go to the file menu, and choose
-``New Project\ldots{}''. Or, if you look in the top, right-side of the
-screen, you should see a little blue cube with an R in it. This shows
-your current R project. You can click this to create a new R project.
-
-If you are using a lab computer, then insert a USB stick. Then click to
-create a new R project. Navigate to your USB stick drive. Give your
-project a name, like ``StatsLab''. This will create a new folder on your
-USB stick. Inside the folder will be a new R project file.
-
-Once you have loaded an R project, all of the new files that you make
-will be saved in this project folder. You can also put data that you
-want to analyse in this folder. Additionally, the output of your
-analyses (including figures etc.) will be saved into this folder. This
-great, because everything is in one place, and you know where that is.
-When you want to return to work on your R project, you just have to load
-it up. You can make as many R projects as you like as a way to organize
-your work in R.
-
-\subsection{R console}\label{r-console}
-
-R does things using scripts, which involves typing in commands to R. To
-begin, we will learn how to type in a command and execute it using the
-console.
-
-The console is an interface to using R. You type in a command, then
-press enter to execute it. Then, R will show you the result in the
-console.
-
-The console should be located in the bottom-left window of R-studio. You
-should see a tab that says ``Console''. If you do not see the console
-window, then click on the word Console, and the window should appear.
-
-Inside the console you will a bunch of text telling you what version of
-R you are using. Scroll down to the bottom of the console and you should
-see a blue arrow (\textgreater{}) followed by a cursor. If you click
-into the console, then you will be able to type commands. For example,
-click into the console and type 1+1, then press enter.
+Found it, actually found a lot of ways to do this. The trick is to add
+the last line. I just copy-pasted it from the solution I found on
+\href{https://stackoverflow.com/questions/1330989/rotating-and-spacing-axis-labels-in-ggplot2}{stack
+overflow} (you will become friend's with stack overflow, there are many
+solutions there to all of your questions)
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\DecValTok{1+1}
+\NormalTok{counts <-}\StringTok{ }\NormalTok{nyc_films %>%}
+\StringTok{          }\KeywordTok{group_by}\NormalTok{(Category) %>%}
+\StringTok{          }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{count_of_permits =} \KeywordTok{length}\NormalTok{(Category))}
+
+\KeywordTok{ggplot}\NormalTok{(counts, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \NormalTok{Category, }\DataTypeTok{y =} \NormalTok{count_of_permits )) +}
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{)+}\StringTok{ }
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.x =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{angle =} \DecValTok{90}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{1}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+\subsection{ggplot2 basics}\label{ggplot2-basics}
+
+Before we go further, I want to point out some basic properties of
+ggplot2, just to give you a sense of how it is working. This will make
+more sense in a few weeks, so come back here to remind yourself. We'll
+do just a bit a basics, and then move on to making more graphs, by
+copying and pasting.
+
+The ggplot function uses layers. Layers you say? What are these layers?
+Well, it draws things from the bottom up. It lays down one layer of
+graphics, then you can keep adding on top, drawing more things. So the
+idea is something like: Layer 1 + Layer 2 + Layer 3, and so on. If you
+want Layer 3 to be Layer 2, then you just switch them in the code.
+
+Here is a way of thinking about ggplot code
 
 \begin{verbatim}
-## [1] 2
+ggplot(name_of_data, aes(x = name_of_x_variable, y = name_of_y_variable)) +
+    geom_layer()+
+    geom_layer()+
+    geom_layer()
 \end{verbatim}
 
-Above you should see two grey boxes. The first grey box is example code,
-showing what I typed into the console (e.g., 1+1). The second grey box
-is output given by R after pressing enter. You can see it gave the
-answer 2.
+What I want you to focus on in the above description is the \(+\) signs.
+What we are doing with the plus signs is adding layers to plot. The
+layers get added in the order that they are written. If you look back to
+our previous code, you will see we add a \texttt{geom\_bar} layer, then
+we added another layer to change the rotation of the words on the
+x-axis. This is how it works.
 
-\subsubsection{Using the console as a
-calculator}\label{using-the-console-as-a-calculator}
+BUT WAIT? How am I supposed to know what to add? This is nuts! We know.
+You're not supposed to know just yet, how could you? We'll give you lots
+of examples where you can copy and paste, and they will work. That's how
+you'll learn. If you really want to read the
+\href{https://ggplot2.tidyverse.org/reference/index.html}{help manual}
+you can do that too. It's on the ggplot2 website. This will become
+useful after you already know what you are doing, before that, it will
+probably just seem very confusing. However, it is pretty neat to look
+and \href{http://www.ggplot2-exts.org/gallery/}{see all of the different
+things you can do}, it's very powerful.
 
-R can be used just a like a calculator. Here are some examples:
+For now, let's the get the hang of adding things to the graph that let
+us change some stuff we might want to change. For example, how do you
+add a title? Or change the labels on the axes? Or add different colors,
+or change the font-size, or change the background? You can change all of
+these things by adding different lines to the existing code.
+
+\subsubsection{ylab() changes y label}\label{ylab-changes-y-label}
+
+The last graph had \texttt{count\_of\_permits} as the label on the
+y-axis. That doesn't look right. ggplot2 automatically took the label
+from the column, and made it be the name on the y-axis. We can change
+that by adding \texttt{ylab("what\ we\ want")}. We do this by adding a
+\(+\) to the last line, then adding \texttt{ylab()}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\DecValTok{7+100}
+\KeywordTok{ggplot}\NormalTok{(counts, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \NormalTok{Category, }\DataTypeTok{y =} \NormalTok{count_of_permits )) +}
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{) +}\StringTok{ }
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.x =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{angle =} \DecValTok{90}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{1}\NormalTok{)) +}
+\StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Number of Film Permits"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-## [1] 107
-\end{verbatim}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+\subsubsection{xlab() changes x label}\label{xlab-changes-x-label}
+
+Let's slightly modify the x label too:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\DecValTok{43-23}
+\KeywordTok{ggplot}\NormalTok{(counts, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \NormalTok{Category, }\DataTypeTok{y =} \NormalTok{count_of_permits )) +}
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{) +}\StringTok{ }
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.x =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{angle =} \DecValTok{90}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{1}\NormalTok{)) +}
+\StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Number of Film Permits"}\NormalTok{) +}\StringTok{ }
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Category of film"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-## [1] 20
-\end{verbatim}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-10-1.pdf}
+
+\subsubsection{ggtitle() adds title}\label{ggtitle-adds-title}
+
+Let's give our graph a title
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\DecValTok{34}\NormalTok{*}\DecValTok{4}
+\KeywordTok{ggplot}\NormalTok{(counts, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \NormalTok{Category, }\DataTypeTok{y =} \NormalTok{count_of_permits )) +}
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{) +}\StringTok{ }
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.x =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{angle =} \DecValTok{90}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{1}\NormalTok{)) +}
+\StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Number of Film Permits"}\NormalTok{) +}\StringTok{ }
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Category of film"}\NormalTok{) +}
+\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"Number of Film permits in NYC by Category"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-## [1] 136
-\end{verbatim}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-11-1.pdf}
+
+\subsubsection{color adds color}\label{color-adds-color}
+
+Let's make the bars different colors. To do this, we add new code to the
+inside of the \texttt{aes()} part:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\DecValTok{22}\NormalTok{/}\DecValTok{2}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 11
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\DecValTok{1}\NormalTok{+(}\DecValTok{2}\NormalTok{*}\DecValTok{3}\NormalTok{)+}\DecValTok{5}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 12
-\end{verbatim}
-
-Try using the R console as a calculator for yourself.
-
-Using the console is a quick and easy way to enter one command at a
-time. However, what if you want to enter more than one command? In this
-case, we want to write a script. A script is a recipe of multiple
-commands that tells R to do more than one thing, one after another.
-
-\subsection{R editor}\label{r-editor}
-
-We will use the R editor to write, save, and work on our scripts. The
-editor appears in the top-left window of R-Studio. When you open new
-scripts in R, you will see them appear as new tabs in the Editor window.
-
-To open a new R script, look to the top left-hand side of R-studio. You
-should see a white square with a green plus sign. Click this button, and
-you can create a new R script.
-
-The first thing that happens is a new, blank, R script is loaded, with
-the name ``Untitled.R''. If you save this file (file
-menu-\textgreater{}save), then you will be asked to give your new script
-a name. Give it a new name. If you are working in an R Project, then
-R-studio will automatically save your new script in your R project
-folder. All ``.R'' files a just plain text files.
-
-\subsection{An example script}\label{an-example-script}
-
-After you create a new script, you can click into the editor window, and
-write anything you want, just like a word processor. In general, the
-scripts we will write, will give R instructions one line at a time.
-Below is an example:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# this is a comment}
-\NormalTok{a <-}\StringTok{ }\DecValTok{1+1}
-\NormalTok{b <-}\StringTok{ }\DecValTok{2}\NormalTok{*}\DecValTok{3}
-\NormalTok{c <-}\StringTok{ }\NormalTok{a+b}
-\end{Highlighting}
-\end{Shaded}
-
-You can run this entire script in a few different ways:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Highlight all of the lines of text, copy them to the clipboard, then
-  paste them into the console, and press enter (or return).
-\item
-  Highlight all of the lines of text, and press the ``run'' button at
-  the top of the editor window (this automatically copies and pastes the
-  selected lines, and runs them in the console).
-\end{enumerate}
-
-After you run the script, you should see some output in the R console.
-Specifically, you should see each of lines of code that you asked R to
-run.
-
-Notice, however, that we do not see any of the answers of our this
-script. What has happened?
-
-Let's step through each line. The first line says ``\# this is a
-comment''. Anything text that follows a ``\#'' tells R not to run that
-line as code. Instead, R knows this is just a comment. Comments are very
-useful to insert into your scripts to explain, in plain english what is
-going on. For example, I will add more comments to the above script to
-explain what is going on.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# this is a comment}
-\NormalTok{a <-}\StringTok{ }\DecValTok{1+1} \CommentTok{# puts 1+1 into new variable a}
-\NormalTok{b <-}\StringTok{ }\DecValTok{2}\NormalTok{*}\DecValTok{3} \CommentTok{# puts 2 times 3 into new variable b}
-\NormalTok{c <-}\StringTok{ }\NormalTok{a+b }\CommentTok{# puts the sum of variable a and b into c}
-\end{Highlighting}
-\end{Shaded}
-
-The comments give more insight into what R is doing here. For example,
-each line does a simple calculation, and stores the result into a new
-variable. Variables are a way to store our data in R. You can think of
-them as containers with names.
-
-Let's look more closely at this line:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{a <-}\StringTok{ }\DecValTok{1+1}
-\end{Highlighting}
-\end{Shaded}
-
-\subsubsection{Variable name}\label{variable-name}
-
-The `a' is the name of the variable. In general, you can choose any name
-that you want. It is best to give descriptive names that are meaningful,
-and that help you remember what the variable is being used for.
-
-\subsubsection{\textless{}-}\label{section}
-
-The `\textless{}-' command tells R to put something into the variable.
-Anything that is to the right of the `\textless{}-' command will be put
-into the variable named on the left-hand side of the `\textless{}-'
-command
-
-\subsubsection{1+1}\label{section-1}
-
-1+1 is an operation that we are asking R to compute. The output of this
-operation is put into `\textless{}-' the variable named `a'.
-
-\subsubsection{Where are the variables?}\label{where-are-the-variables}
-
-Where are these variables, and how can we see them? There are two ways
-to see what is inside variables.
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  In the top right window, you should see a tab called ``Environment''.
-  This tab lists all of the variables that you have currently stored in
-  R. You should see an a, b, and c, along with the numbers inside them.
-\item
-  You can type the name of the variable into the R console, and then
-  press enter. The console will display the contents of the variable.
-\end{enumerate}
-
-\subsection{A bunch of numbers}\label{a-bunch-of-numbers}
-
-Data comes in all shapes and sizes. Usually, there are so many numbers
-that it is difficult to make sense of them. Let me show you 100 numbers.
-
-Where did these numbers come from? What kind of properties do these
-numbers have? Are there any patterns in the numbers? Do some kinds of
-numbers happen more often than other kinds of numbers? What can we say
-about these numbers just by looking at them?
-
-If you take some time to look at the above numbers, you might start
-noticing some regularities. When I quickly look at them I see:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Most the numbers are around 100.
-\item
-  The numbers all appear to be different by big or small amounts
-\item
-  There are no negative numbers
-\item
-  There are no really small numbers (e.g., close to 0)
-\item
-  There are no really huge numbers
-\end{enumerate}
-
-At least we can get some sense of the numbers by eyeballing them. If
-there were 1000s or 100000s of numbers, eyeballing them one at a time
-would take forever.
-
-\subsection{Making numbers in R}\label{making-numbers-in-r}
-
-Before we go ahead and use R to make plots and graphs of data, we need
-to first have some data to plot. And, before we start using real data,
-it is worth pointing out that we can use R to create numbers. So, after
-we create our own sets of numbers, we can then plot them to see how
-graphing works.
-
-\subsubsection{rep function}\label{rep-function}
-
-Let's say you wanted to create a variable that stored the number 43, 100
-times. You can do this using the rep function (rep is short for repeat).
-Below is an example of how this function is used.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{my_numbers <-}\StringTok{ }\KeywordTok{rep}\NormalTok{(}\DecValTok{43}\NormalTok{,}\DecValTok{100}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-We can check to see what is inside the new variable \emph{my\_numbers}
-by typing it into the console, or looking at it in the environment tab.
-You should see that it contains the number 43, repeated 100 times. Using
-the rep function you can repeat anything, any number of times
-
-\subsubsection{seq function}\label{seq-function}
-
-Let's say you want to create a sequence of numbers. You can do this
-using the seq function. The example below starts at 23, and goes to 56,
-in increments of 1. You can modify the starting value, the ending value,
-and the increment value to create many different kinds of sequences.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{my_sequence <-}\StringTok{ }\KeywordTok{seq}\NormalTok{(}\DecValTok{23}\NormalTok{,}\DecValTok{56}\NormalTok{,}\DecValTok{1}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\subsubsection{runif function}\label{runif-function}
-
-R can generate numbers in much more sophisticated ways. In particular,
-we can use R to sample numbers from distributions with particular
-properties. We will introduce distributions in the next lab.
-
-R can generate random numbers using the runif function. In the example
-below, R generates 100 numbers that are randomly between 0 and 1. You
-can generate as many numbers as you want, between any two numbers that
-you want.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{my_randoms <-}\StringTok{ }\KeywordTok{runif}\NormalTok{(}\DecValTok{100}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\subsubsection{rnorm function}\label{rnorm-function}
-
-R can generate numbers from a normal distibrution. In the example belwo,
-we generate 100 numbers from a distribution with a mean of 10, and a
-standard deviation of 20.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{my_normal <-}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{20}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\subsection{Graphing Data in R}\label{graphing-data-in-r}
-
-Graphs, or visual displays, of numbers can be very useful for
-interpreting data. Fortunately, we can use R to create many kinds of
-visual displays, that can help us interpret the data. To begin we will
-look at the plot and histogram functions.
-
-\subsubsection{Plot function}\label{plot-function}
-
-Previously, we created a \emph{my\_numbers} variable, that contains the
-number 43, repeated 100 times. If we plot this in R, what should we see?
-Let's do it and find out.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{plot}\NormalTok{(my_numbers)}
+\KeywordTok{ggplot}\NormalTok{(counts, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \NormalTok{Category, }\DataTypeTok{y =} \NormalTok{count_of_permits, }\DataTypeTok{color=}\NormalTok{Category )) +}
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{) +}\StringTok{ }
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.x =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{angle =} \DecValTok{90}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{1}\NormalTok{)) +}
+\StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Number of Film Permits"}\NormalTok{) +}\StringTok{ }
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Category of film"}\NormalTok{) +}
+\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"Number of Film permits in NYC by Category"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-12-1.pdf}
+
+\subsubsection{fill fills in color}\label{fill-fills-in-color}
+
+Let's make the bars different colors. To do this, we add new code to the
+inside of the \texttt{aes()} part\ldots{}Notice I've started using new
+lines to make the code more readable.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(counts, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \NormalTok{Category, }\DataTypeTok{y =} \NormalTok{count_of_permits, }
+                   \DataTypeTok{color=}\NormalTok{Category, }
+                   \DataTypeTok{fill=} \NormalTok{Category )) +}
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{) +}\StringTok{ }
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.x =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{angle =} \DecValTok{90}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{1}\NormalTok{)) +}
+\StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Number of Film Permits"}\NormalTok{) +}\StringTok{ }
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Category of film"}\NormalTok{) +}
+\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"Number of Film permits in NYC by Category"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-13-1.pdf}
+
+\subsubsection{get rid of the legend}\label{get-rid-of-the-legend}
+
+Sometimes you just don't want the legend on the side, to remove it add
+
+\texttt{theme(legend.position="none")}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(counts, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \NormalTok{Category, }\DataTypeTok{y =} \NormalTok{count_of_permits, }
+                   \DataTypeTok{color=}\NormalTok{Category, }
+                   \DataTypeTok{fill=} \NormalTok{Category )) +}
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{) +}\StringTok{ }
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.x =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{angle =} \DecValTok{90}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{1}\NormalTok{)) +}
+\StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Number of Film Permits"}\NormalTok{) +}\StringTok{ }
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Category of film"}\NormalTok{) +}
+\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"Number of Film permits in NYC by Category"}\NormalTok{) +}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"none"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-14-1.pdf}
+
+\subsubsection{theme\_classic() makes white
+background}\label{theme_classic-makes-white-background}
+
+The rest is often just visual preference. For example, the graph above
+has this grey grid behind the bars. For a clean classic no nonsense
+look, use \texttt{theme\_classic()} to take away the grid.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(counts, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \NormalTok{Category, }\DataTypeTok{y =} \NormalTok{count_of_permits, }
+                   \DataTypeTok{color=}\NormalTok{Category, }
+                   \DataTypeTok{fill=} \NormalTok{Category )) +}
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{) +}\StringTok{ }
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.x =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{angle =} \DecValTok{90}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{1}\NormalTok{)) +}
+\StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Number of Film Permits"}\NormalTok{) +}\StringTok{ }
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Category of film"}\NormalTok{) +}
+\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"Number of Film permits in NYC by Category"}\NormalTok{) +}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"none"}\NormalTok{) +}
+\StringTok{  }\KeywordTok{theme_classic}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-15-1.pdf}
+
+\subsubsection{Sometimes layer order
+matters}\label{sometimes-layer-order-matters}
+
+Interesting, \texttt{theme\_classic()} is misbehaving a little bit. It
+looks like we have some of our layer out of order, let's re-order. I
+just moved \texttt{theme\_classic()} to just underneath the
+\texttt{geom\_bar()} line. Now everything get's drawn properly.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(counts, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \NormalTok{Category, }\DataTypeTok{y =} \NormalTok{count_of_permits, }
+                   \DataTypeTok{color=}\NormalTok{Category, }
+                   \DataTypeTok{fill=} \NormalTok{Category )) +}
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{) +}\StringTok{ }
+\StringTok{  }\KeywordTok{theme_classic}\NormalTok{() +}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.x =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{angle =} \DecValTok{90}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{1}\NormalTok{)) +}
+\StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Number of Film Permits"}\NormalTok{) +}\StringTok{ }
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Category of film"}\NormalTok{) +}
+\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"Number of Film permits in NYC by Category"}\NormalTok{) +}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"none"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-16-1.pdf}
+
+\subsubsection{Font-size}\label{font-size}
+
+Changing font-size is often something you want to do. ggplot2 can do
+this in different ways. I suggest using the \texttt{base\_size} option
+inside \texttt{theme\_classic()}. You set one number for the largest
+font size in the graph, and everything else gets scaled to fit with that
+that first number. It's really convenient. Look for the insisde of
+\texttt{theme\_classic()}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(counts, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \NormalTok{Category, }\DataTypeTok{y =} \NormalTok{count_of_permits, }
+                   \DataTypeTok{color=}\NormalTok{Category, }
+                   \DataTypeTok{fill=} \NormalTok{Category )) +}
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{) +}\StringTok{ }
+\StringTok{  }\KeywordTok{theme_classic}\NormalTok{(}\DataTypeTok{base_size =} \DecValTok{15}\NormalTok{) +}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.x =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{angle =} \DecValTok{90}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{1}\NormalTok{)) +}
+\StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Number of Film Permits"}\NormalTok{) +}\StringTok{ }
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Category of film"}\NormalTok{) +}
+\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"Number of Film permits in NYC by Category"}\NormalTok{) +}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"none"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-17-1.pdf}
+or make things small\ldots{} just to see what happens
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(counts, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \NormalTok{Category, }\DataTypeTok{y =} \NormalTok{count_of_permits, }
+                   \DataTypeTok{color=}\NormalTok{Category, }
+                   \DataTypeTok{fill=} \NormalTok{Category )) +}
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{) +}\StringTok{ }
+\StringTok{  }\KeywordTok{theme_classic}\NormalTok{(}\DataTypeTok{base_size =} \DecValTok{10}\NormalTok{) +}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.x =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{angle =} \DecValTok{90}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{1}\NormalTok{)) +}
+\StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Number of Film Permits"}\NormalTok{) +}\StringTok{ }
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Category of film"}\NormalTok{) +}
+\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"Number of Film permits in NYC by Category"}\NormalTok{) +}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"none"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-18-1.pdf}
+
+\subsubsection{ggplot2 summary}\label{ggplot2-summary}
+
+That's enough of the ggplot2 basics for now. You will discover that many
+things are possible with ggplot2. It is amazing. We are going to get
+back to answering some questions about the data with graphs. But, now
+that we have built the code to make the graphs, all we need to do is
+copy-paste, and make a few small changes, and boom, we have our graph.
+
+\subsection{More questions about NYC
+films}\label{more-questions-about-nyc-films}
+
+\subsubsection{What are the sub-categories of
+films?}\label{what-are-the-sub-categories-of-films}
+
+Notice the \texttt{nyc\_films} data frame also has a column for
+\texttt{SubCategoryName}. Let's see what's going on there with a quick
+plot.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# get the counts (this is a comment it's just here for you to read)}
+
+\NormalTok{counts <-}\StringTok{ }\NormalTok{nyc_films %>%}
+\StringTok{          }\KeywordTok{group_by}\NormalTok{(SubCategoryName) %>%}
+\StringTok{          }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{count_of_permits =} \KeywordTok{length}\NormalTok{(SubCategoryName))}
+
+\CommentTok{# make the plot}
+
+\KeywordTok{ggplot}\NormalTok{(counts, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \NormalTok{SubCategoryName, }\DataTypeTok{y =} \NormalTok{count_of_permits, }
+                   \DataTypeTok{color=}\NormalTok{SubCategoryName, }
+                   \DataTypeTok{fill=} \NormalTok{SubCategoryName )) +}
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{) +}\StringTok{ }
+\StringTok{  }\KeywordTok{theme_classic}\NormalTok{(}\DataTypeTok{base_size =} \DecValTok{10}\NormalTok{) +}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.x =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{angle =} \DecValTok{90}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{1}\NormalTok{)) +}
+\StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Number of Film Permits"}\NormalTok{) +}\StringTok{ }
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Sub-category of film"}\NormalTok{) +}
+\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"Number of Film permits in NYC by Sub-category"}\NormalTok{) +}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"none"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-19-1.pdf}
+
+I guess ``episodic series'' are the most common. Using a graph like this
+gave us our answer super fast.
+
+\subsubsection{Categories by different
+Boroughs}\label{categories-by-different-boroughs}
+
+Let's see one more really useful thing about ggplot2. It's called
+\texttt{facet\_wrap()}. It's an ugly word, but you will see that it is
+very cool, and you can do next-level-super-hero graph styles with
+\texttt{facet\_wrap} that other people can't do very easily.
+
+Here's our question. We know that some films are made in different
+Boroughs, and that sme films are made in different categories, but do
+different Boroughs have different patterns for the kinds of categories
+of films they request permits for? Are their more tv shows in Brookyln?
+How do we find out? Watch, just like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# get the counts (this is a comment it's just here for you to read)}
+
+\NormalTok{counts <-}\StringTok{ }\NormalTok{nyc_films %>%}
+\StringTok{          }\KeywordTok{group_by}\NormalTok{(Borough,Category) %>%}
+\StringTok{          }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{count_of_permits =} \KeywordTok{length}\NormalTok{(Category))}
+
+\CommentTok{# make the plot}
+
+\KeywordTok{ggplot}\NormalTok{(counts, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \NormalTok{Category, }\DataTypeTok{y =} \NormalTok{count_of_permits, }
+                   \DataTypeTok{color=}\NormalTok{Category, }
+                   \DataTypeTok{fill=} \NormalTok{Category )) +}
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{) +}\StringTok{ }
+\StringTok{  }\KeywordTok{theme_classic}\NormalTok{(}\DataTypeTok{base_size =} \DecValTok{10}\NormalTok{) +}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.x =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{angle =} \DecValTok{90}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{1}\NormalTok{)) +}
+\StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Number of Film Permits"}\NormalTok{) +}\StringTok{ }
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Category of film"}\NormalTok{) +}
+\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"Number of Film permits in NYC by Category and Borough"}\NormalTok{) +}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"none"}\NormalTok{) +}
+\StringTok{  }\KeywordTok{facet_wrap}\NormalTok{(~Borough, }\DataTypeTok{ncol=}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-20-1.pdf}
+
+We did two important things. First we added \texttt{Borough} and
+\texttt{Category} into the \texttt{group\_by()} function. This
+automatically gives separate counts for each category of film, for each
+Borough. Then we added
+\texttt{facet\_wrap(\textasciitilde{}Borough,\ ncol=3)} to the end of
+the plot, and it automatically drew us 5 different bar graphs, one for
+each Borough! That was fast. Imagine doing that by hand.
+
+The nice thing about this is we can switch things around if we want. For
+example, we could do it this way by switching the \texttt{Category} with
+\texttt{Borough}, and facet-wrapping by Category instead of Borough like
+we did above. Do what works for you.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(counts, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \NormalTok{Borough, }\DataTypeTok{y =} \NormalTok{count_of_permits, }
+                   \DataTypeTok{color=}\NormalTok{Borough, }
+                   \DataTypeTok{fill=} \NormalTok{Borough )) +}
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{) +}\StringTok{ }
+\StringTok{  }\KeywordTok{theme_classic}\NormalTok{(}\DataTypeTok{base_size =} \DecValTok{10}\NormalTok{) +}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.x =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{angle =} \DecValTok{90}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{1}\NormalTok{)) +}
+\StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Number of Film Permits"}\NormalTok{) +}\StringTok{ }
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Borough"}\NormalTok{) +}
+\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"Number of Film permits in NYC by Category and Borough"}\NormalTok{) +}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"none"}\NormalTok{) +}
+\StringTok{  }\KeywordTok{facet_wrap}\NormalTok{(~Category, }\DataTypeTok{ncol=}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-21-1.pdf}
+
+\subsection{Gapminder Data}\label{gapminder-data}
+
+\url{https://www.gapminder.org} is an organization that collects some
+really interesting worldwide data. They also make cool visualization
+tools for looking at the data. There are many neat examples, and they
+have visualization tools built right into their website that you can
+play around with \url{https://www.gapminder.org/tools/}. That's fun
+check it out.
+
+There is also an R package called \texttt{gapminder}. When you install
+this package, it loads in some of the data from gapminder, so we can
+play with it in R.
+
+If you don't have the gapminder packe installed, you can install it by
+running this code
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"gapminder"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Once the package is installed, you need to load the new library, like
+this. Then, you can put the \texttt{gapminder} data into a data frame,
+like we do here: \texttt{gapminder\_df}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(gapminder)}
+\NormalTok{gapminder_df<-gapminder}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{Look at the data frame}\label{look-at-the-data-frame}
+
+You can look at the data frame to see what is in it, and you can use
+\texttt{summarytools} again to view a summary of the data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{view}\NormalTok{(}\KeywordTok{dfSummary}\NormalTok{(gapminder_df))}
+\end{Highlighting}
+\end{Shaded}
+
+There are 1704 rows of data, and we see some columns for country,
+continent, year, life expectancy, population, and GDP per capita.
+
+\subsection{Asking Questions with the gap minder
+data}\label{asking-questions-with-the-gap-minder-data}
+
+We will show you how to graph some the data to answer a few different
+kinds of questions. Then you will form your own questions, and see if
+you can answer them with ggplot2 yourself. All you will need to do is
+copy and paste the following examples, and change them up a little bit
+
+\subsubsection{Life Expectancy
+histogram}\label{life-expectancy-histogram}
+
+How long are people living all around the world according to this data
+set? There are many ways we could plot the data to find out. The first
+way is a histogram. We have many numbers for life expectancy in the
+column \texttt{lifeExp}. This is a big sample, full of numbers for 142
+countries across many years. It's easy to make a histrogram in ggplot to
+view the distribution:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(gapminder_df, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{lifeExp))+}
+\StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\DataTypeTok{color=}\StringTok{"white"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-25-1.pdf}
+
+See, that was easy. Next, is a code block that adds more layers and
+settings if you wanted to modify parts of the graph:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(gapminder_df, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \NormalTok{lifeExp)) +}
+\StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\DataTypeTok{color=}\StringTok{"white"}\NormalTok{)+}\StringTok{ }
+\StringTok{  }\KeywordTok{theme_classic}\NormalTok{(}\DataTypeTok{base_size =} \DecValTok{15}\NormalTok{) +}
+\StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Frequency count"}\NormalTok{) +}\StringTok{ }
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Life Expectancy"}\NormalTok{) +}
+\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"Histogram of Life Expectancy from Gapminder"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-26-1.pdf}
+
+The histogram shows a wide range of life expectancies, from below 40 to
+just over 80. Histograms are useful, they can show you what kinds of
+values happen more often than others.
+
+One final thing about histograms in ggplot. You may want to change the
+bin size. That controls how wide or narrow, or the number of bars (how
+they split across the range), in the histogram. You need to set the
+\texttt{bins=} option in \texttt{geom\_histogram()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(gapminder_df, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \NormalTok{lifeExp)) +}
+\StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\DataTypeTok{color=}\StringTok{"white"}\NormalTok{, }\DataTypeTok{bins=}\DecValTok{50}\NormalTok{)+}\StringTok{ }
+\StringTok{  }\KeywordTok{theme_classic}\NormalTok{(}\DataTypeTok{base_size =} \DecValTok{15}\NormalTok{) +}
+\StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Frequency count"}\NormalTok{) +}\StringTok{ }
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Life Expectancy"}\NormalTok{) +}
+\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"Histogram of Life Expectancy from Gapminder"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-27-1.pdf}
+
+See, same basic patter, but now breaking up the range into 50 little
+equal sized bins, rather than 30, which is the default. You get to
+choose what you want to do.
+
+\subsubsection{Life Expectancy by year
+Scatterplot}\label{life-expectancy-by-year-scatterplot}
+
+We can see we have data for life expectancy and different years. So,
+does worldwide life expectancy change across the years in the data set?
+As we go into the future, are people living longer?
+
+Let's look at this using a scatterplot. We can set the x-axis to be
+year, and the y-axis to be life expectancy. Then we can use
+\texttt{geom\_point()} to display a whole bunch of dots, and then look
+at them. Here's the simple code:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(gapminder_df, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y=} \NormalTok{lifeExp, }\DataTypeTok{x=} \NormalTok{year))+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-28-1.pdf}
+
+Whoa, that's a lot of dots! Remember that each country is measured each
+year. So, the bands of dots you see, show the life expectancies for the
+whole range of countries within each year of the database. There is a
+big spread inside each year. But, on the whole it looks like groups of
+dots slowly go up over years.
+
+\subsubsection{One country, life expectancy by
+year}\label{one-country-life-expectancy-by-year}
+
+I'm (Matt) from Canada, so maybe I want to know if life expectancy for
+Canadians is going up over the years. To find out the answer for one
+country, we first need to split the full data set, into another smaller
+data set that only contains data for Canada. In other words, we want
+only the rows where the word ``Canada'' is found in the \texttt{country}
+column. We will use the \texttt{filter} function from `dplyr for this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# filter rows to contain Canada}
+
+\NormalTok{smaller_df <-}\StringTok{ }\NormalTok{gapminder_df %>%}\StringTok{ }
+\StringTok{                 }\KeywordTok{filter}\NormalTok{(country ==}\StringTok{ "Canada"}\NormalTok{)}
+
+\CommentTok{# plot the new data contained in smaller_df}
+
+\KeywordTok{ggplot}\NormalTok{(smaller_df, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y=} \NormalTok{lifeExp, }\DataTypeTok{x=} \NormalTok{year))+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-29-1.pdf}
+
+I would say things are looking good for Canadians, their life expectancy
+is going up over the years!
+
+\subsubsection{Multiple countries
+scatterplot}\label{multiple-countries-scatterplot}
+
+What if we want to look at a few countries altogether. We can do this
+too. We just change how we filter the data so more than one country is
+allowed, then we plot the data. We will also add some nicer color
+options and make the plot look pretty. First, the simple code:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# filter rows to contain countries of choice}
+
+\NormalTok{smaller_df <-}\StringTok{ }\NormalTok{gapminder_df %>%}\StringTok{ }
+\StringTok{                 }\KeywordTok{filter}\NormalTok{(country %in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Canada"}\NormalTok{,}\StringTok{"France"}\NormalTok{,}\StringTok{"Brazil"}\NormalTok{) ==}\StringTok{ }\OtherTok{TRUE}\NormalTok{)}
+
+\CommentTok{# plot the new data contained in smaller_df}
+
+\KeywordTok{ggplot}\NormalTok{(smaller_df, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y=} \NormalTok{lifeExp, }\DataTypeTok{x=} \NormalTok{year, }\DataTypeTok{group=} \NormalTok{country))+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-30-1.pdf}
+
+Nice, we can now see three sets of dots, but which are countries do they
+represent? Let's add a lengend, and make the graph better looking.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(smaller_df,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y=} \NormalTok{lifeExp, }\DataTypeTok{x=} \NormalTok{year, }
+                      \DataTypeTok{group=} \NormalTok{country, }\DataTypeTok{color =} \NormalTok{country)) +}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{()+}\StringTok{ }
+\StringTok{  }\KeywordTok{theme_classic}\NormalTok{(}\DataTypeTok{base_size =} \DecValTok{15}\NormalTok{) +}
+\StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Life Expectancy"}\NormalTok{) +}\StringTok{ }
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Year"}\NormalTok{) +}
+\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"Life expectancy by year for three countries"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-31-1.pdf}
+
+\subsubsection{geom\_line() connecting the
+dots}\label{geom_line-connecting-the-dots}
+
+We might also want to connect the dots with a line, to make it easier to
+see the connection! Remember, ggplot2 draws layers on top of layers. So,
+we add in a new \texttt{geom\_line()} layer.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(smaller_df,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y=} \NormalTok{lifeExp, }\DataTypeTok{x=} \NormalTok{year, }
+                      \DataTypeTok{group=} \NormalTok{country, }\DataTypeTok{color =} \NormalTok{country)) +}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{()+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{()+}
+\StringTok{  }\KeywordTok{theme_classic}\NormalTok{(}\DataTypeTok{base_size =} \DecValTok{15}\NormalTok{) +}
+\StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Life Expectancy"}\NormalTok{) +}\StringTok{ }
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Year"}\NormalTok{) +}
+\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"Life expectancy by year for three countries"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-32-1.pdf}
 
 Whenever you have a variable with multiple numbers, you can always plot
 it, just like in the above example. Remember the variable
@@ -798,7 +1229,7 @@ Let's plot some of the other variables we made.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-13-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-44-1.pdf}
 
 The variable \emph{my\_sequence} contains the numbers 23 to 56, going up
 by one. We see in the plot, the first number (on the x-axis) is a 23 on
@@ -811,7 +1242,7 @@ we get to 56. We see a straight diagonal line.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-14-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-45-1.pdf}
 
 The variable \emph{my\_randoms} contains 100 random numbers between 0
 and 1. The plot shows dots all over the place between 0 and 1 on the
@@ -823,7 +1254,7 @@ y-axis.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-15-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-46-1.pdf}
 
 The variable \emph{my\_normal} contains 100 numbers sample from a normal
 distribution with a mean of 10, and a standard deviation of 20. Roughly,
@@ -876,7 +1307,7 @@ make a histogram of the variable, to see what that looks like:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-18-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-49-1.pdf}
 
 The histogram is a bar graph. The height of each bar represents a count,
 or the frequency of how many numbers fall inside each bin. The x-axis
@@ -892,7 +1323,7 @@ set your own breaks, or bin ranges.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-19-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-50-1.pdf}
 
 Let's spend a moment interpreting this new histogram. The first bar is
 between 0 and 1 on the x-axis, and has a value of 10 on the y-axis. This
@@ -927,7 +1358,7 @@ random number generator and histogram to find out:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-20-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-51-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -956,7 +1387,7 @@ we ask R to generate 10000 numbers from this distribution.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-21-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-52-1.pdf}
 The histogram shows that the highest bars are in the middle, near the
 100 mark. So, numbers near 100 occured most frequently in our set. What
 happens to the heights of the bars on either side of the histogram? The
@@ -967,6 +1398,8 @@ frequently. For example, we don't see any bars in the range of 500 or
 From the histogram, we can clearly see that our set hardly had any
 numbers greater than 150, or less than 50. Or, in other words, most of
 the numbers were between 50 and 150.
+
+--\textgreater{}
 
 \section{Excel}\label{excel}
 
@@ -1230,7 +1663,7 @@ viewer, and you can scroll around. This can be helpful to see things.
 But, there is so much data, can be hard to know what you are looking
 for.
 
-\subsubsection{summarytools}\label{summarytools}
+\subsubsection{summarytools}\label{summarytools-1}
 
 The summarytools packages give a quick way to summarize all of the data
 in a data frame. Here's how. When you run this code you will see the
@@ -1330,7 +1763,7 @@ for each infant as a dot.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-27-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-58-1.pdf}
 
 That's helpful, we see that the dots are all over the place. Let's do a
 histrogram, so we can get a better sense of the frequency of different
@@ -1342,7 +1775,7 @@ proportions.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-28-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-59-1.pdf}
 
 \subsubsection{Look at the descriptives}\label{look-at-the-descriptives}
 
@@ -1460,7 +1893,7 @@ into the variable \texttt{baseline}. We will make a new variable called
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-31-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-62-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1468,7 +1901,7 @@ into the variable \texttt{baseline}. We will make a new variable called
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-31-2.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-62-2.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1709,7 +2142,7 @@ still kind of in a similar ballpark.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-36-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-67-1.pdf}
 
 \subsubsection{Dot plot with means and raw
 scores}\label{dot-plot-with-means-and-raw-scores}
@@ -1742,7 +2175,7 @@ data frame we are looking for.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-37-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-68-1.pdf}
 
 \subsubsection{Bar plot}\label{bar-plot}
 
@@ -1772,7 +2205,7 @@ Also look for these changes.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-38-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-69-1.pdf}
 
 Ok, we see the bars and some of the dots, but not all of them. What is
 going on? Remember, ggplot2 works in layers. Whatever layer you add
@@ -1788,7 +2221,7 @@ Let's change the order of the layers so the dot's go on top of the bars.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-39-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-70-1.pdf}
 
 \subsubsection{Bar plot with error bars}\label{bar-plot-with-error-bars}
 
@@ -1833,7 +2266,7 @@ Baseline and Test, and then add error bars to the plot.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-40-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-71-1.pdf}
 
 \textbf{Question:} What is one reason why these error bars (standard
 error of the mean difference between Baseline and Test) are appropriate
@@ -1869,7 +2302,7 @@ differences scores.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-41-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-72-1.pdf}
 
 \textbf{Question:} Why is is it more appropriate to put the standard
 error of the difference on this bar graph? What important aspects of the
@@ -1916,7 +2349,7 @@ bars.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-42-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-73-1.pdf}
 
 Notice that the 95\% confidence intervals around the mean are wider than
 the SEM error bars from the previous graph. These new confidence
@@ -1959,7 +2392,7 @@ What do you think?
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-43-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-74-1.pdf}
 \#\#\#\# Simulating the mean differences
 
 We can do the simulation slightly differently to give us a different
@@ -1990,7 +2423,7 @@ already made from the data.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-44-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-75-1.pdf}
 
 \section{Excel}\label{excel-5}
 
@@ -2250,7 +2683,7 @@ errors and put them in a new data frame called \texttt{decriptive\_df}.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-49-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-80-1.pdf}
 
 This plot is very useful. First, we can see the numbers in our dependent
 measure are behaving sensibly. We know that the numbers have to be
@@ -2440,7 +2873,7 @@ time.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-52-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-83-1.pdf}
 
 Well, we didn't make the exact graph. We have the bars, the error bars,
 and we added the individual scores because they are useful to look at.
@@ -2670,7 +3103,7 @@ follow these steps to run another ANOVA on the Day 7 data.
 The mean for the week data for each subject is apparently coded in the
 column \texttt{Days\_One\_to\_Seven\_Number\_of\_Intrusions}.
 
-\subsection{Look at the data}\label{look-at-the-data}
+\subsection{Look at the data}\label{look-at-the-data-1}
 
 Remember before we do any analysis, we always want to ``look'' at the
 data. This first pass let's us know if the data ``look right''. For
@@ -2714,7 +3147,7 @@ doing things this way.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-56-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-87-1.pdf}
 
 There we have it. A nice graph showing us everything. We can see there
 was a lot of differences at the level of individual subjects. Some
@@ -3376,7 +3809,7 @@ other software programs. You are lucky to be learning R.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-66-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-97-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
