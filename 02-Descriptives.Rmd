@@ -15,7 +15,266 @@ Other things to say
 
 ## R
 
-How to do it in R
+### Descriptives basics in R
+
+We learned in lecture and from the textbook that data we want to use ask and answer questions often comes with loads of numbers. Too many numbers to look at all at once. That's one reason we use descriptive statistics. To reduce the big set of numbers to one or two summary numbers that tell use something about all of the numbers. R can produce descriptive statistics for you in many ways. There are base functions for most of the ones that you want. We'll go over some R basics for descriptive statistics, and then use our newfound skills to ask some questions about real data.
+
+#### Making numbers in R
+
+In order to do descriptive statistics we need to put some numbers in a variable. You can also do this using the `c()` command, which stands for combine
+
+```{r}
+my_numbers <- c(1,2,3,4)
+```
+
+There a few other handy ways to make numbers. We can use `seq()` to make a sequence. Here's making the numbers from 1 to 100
+
+```{r}
+one_to_one_hundred <- seq(1,100,1)
+```
+
+We can repeat things, using rep. Here's making 10 5s, and 25 1s:
+
+```{r}
+rep(10,5)
+rep(1,25)
+all_together_now <- c(rep(10,5),rep(1,25)) 
+```
+
+#### Sum
+
+Let's play with the number 1 to 100. First, let's use the `sum()` function to add them up
+
+```{r}
+one_to_one_hundred <- seq(1,100,1)
+sum(one_to_one_hundred)
+```
+
+#### Length
+
+We put 100 numbers into the variable `one_to_one_hundred`. We know how many numbers there are in there. How can we get R to tell us? We use `length()` for that. 
+
+```{r}
+length(one_to_one_hundred)
+```
+
+### Central Tendency
+
+#### Mean
+
+Remember the mean of some numbers is their sum, divided by the number of numbers. We can compute the mean like this:
+
+```{r}
+sum(one_to_one_hundred)/length(one_to_one_hundred)
+```
+
+Or, we could just use the `mean()` function like this:
+
+```{r}
+mean(one_to_one_hundred)
+```
+
+#### Median
+
+The median is the number in the exact middle of the numbers ordered from smallest to largest. If there are an even number of numbers (no number in the middle), then we take the number in between the two (decimal .5). Use the `median` function. There's only 3 numbers here. The middle one is 2, that should be the median
+
+```{r}
+median(c(1,2,3))
+```
+
+#### Mode
+
+R does not a base function for the Mode. You would have to write one for yourself. Here is an example of writing your own mode function, and then using it. Note I searched how to do this on google, and am using the mode defined by [this answer on stack overflow](https://stackoverflow.com/questions/2547402/is-there-a-built-in-function-for-finding-the-mode)
+
+Remember, the mode is the most frequently occuring number in the set. Below 1 occurs the most, so the mode will be one.
+
+```{r}
+
+my_mode <- function(x) {
+  ux <- unique(x)
+  ux[which.max(tabulate(match(x, ux)))]
+}
+
+my_mode(c(1,1,1,1,1,1,1,2,3,4))
+
+
+```
+
+### Variation
+
+We often want to know how variable the numbers are. We are going to look at descriptive statistics to describe this such as the **range**, **variance**, the **standard deviation**, and a few others.
+
+First, let's remind ourselves what variation looks like (it's when the numbers are different). We will sample 100 numbers from a normal distribution (don't worry about this yet), with a mean of 10, and a standard deviation of 5, and then make a histrogram so we can see the variation around 10..
+
+```{r}
+sample_numbers <- rnorm(100,10,5)
+hist(sample_numbers)
+```
+
+#### range
+
+The range is the minimum and maximum values in the set, we use the `range` function.
+
+```{r}
+range(sample_numbers)
+```
+
+#### var = variance
+
+We can find the sample variance using `var`. Note, divides by (n-1)
+
+```{r}
+var(sample_numbers)
+
+```
+
+#### sd = standard deviation
+
+We find the sample standard deviation us sd. Note, divides by (n-1)
+
+```{r}
+sd(sample_numbers)
+```
+
+Rember that the standard deviation is just the square root of the variance, see:
+
+```{r}
+sqrt(var(sample_numbers))
+```
+
+#### All Descriptives
+
+Let's put all of the descriptives and other functions so far in one place:
+
+```{r}
+sample_numbers <- rnorm(100,10,5)
+
+sum(sample_numbers)
+length(sample_numbers)
+mean(sample_numbers)
+median(sample_numbers)
+my_mode(sample_numbers)
+range(sample_numbers)
+var(sample_numbers)
+sd(sample_numbers)
+
+```
+
+### Descriptives by conditions
+
+Sometimes you will have a single variable with some numbers, and you can use the above functions to find the descriptives for that variable. Other times (most often in this course), you will have a big data frame of numbers, with different numbers in different conditions. You will want to find descriptive statistics for each the sets of numbers inside each of the conditions. Fortunately, this is where R really shines, it does it all for you in one go. 
+
+Let's illustrate the problem. Here I make a date frame with 10 numbers in each condition. There are 10 conditions, each labelled, A, B, C, D, E, F, G, H, I, J.
+
+```{r}
+scores <- rnorm(100,10,5)
+conditions <- rep(c("A","B","C","D","E","F","G","H","I","J"), each =10)
+my_df <- data.frame(conditions,scores)
+```
+
+If you look at the `my_df` data frame, you will see it has 100 rows, there are 10 rows for each condition with a label in the `conditions` column, and 10 scores for each condition in the `scores` column. What if you wanted to know the mean of the scores in each condition? You would want to find 10 means.
+
+The slow way to do it would be like this:
+
+```{r}
+mean(my_df[my_df$conditions=="A",]$scores)
+mean(my_df[my_df$conditions=="B",]$scores)
+mean(my_df[my_df$conditions=="C",]$scores)
+# and then keep going
+```
+
+Nobody wants to do that! Not, me I stopped doing it that way, you should to.
+
+#### group_by and summarise
+
+We can easily do everthing all at once using the `group_by` and `summarise` function from the `dplyr` package. Just watch
+
+```{r}
+library(dplyr)
+
+my_df %>%
+  group_by(conditions) %>%
+  summarise(means = mean(scores))
+
+```
+
+A couple things now. First, the print out of this was ugly. Let's fix that. we put the results of our code into a new variable, then we use `knitr::kable` to print it out nicely when we `knit` the document
+
+
+```{r}
+
+summary_df <- my_df %>%
+               group_by(conditions) %>%
+               summarise(means = mean(scores))
+
+knitr::kable(summary_df)
+
+```
+
+#### multiple descriptives
+
+The best thing about the `dplyr` method, is that we can add more than one function, and we'll get more than one summary returned, all in a nice format, let's add the standard deviation:
+
+```{r}
+
+summary_df <- my_df %>%
+               group_by(conditions) %>%
+               summarise(means = mean(scores),
+                         sds = sd(scores))
+
+knitr::kable(summary_df)
+
+```
+
+We'll add the min and the max too:
+
+```{r}
+
+summary_df <- my_df %>%
+               group_by(conditions) %>%
+               summarise(means = mean(scores),
+                         sds = sd(scores),
+                         min = min(scores),
+                         max = max(scores))
+
+knitr::kable(summary_df)
+
+```
+
+### Describing gapminder
+
+Now that we know how to get descriptive statistics from R, we cam do this will some real data. Let's quickly ask a few question about the gapminder data. Reinstall the gapminder library if you don't already have it, then laod the data into a dataframe:
+
+```{r}
+library(gapminder)
+gapminder_df <- gapminder
+```
+
+#### What are some descriptive for Life expectancy by continent?
+
+Copy the code from the last part of descriptives using dplyr, then change the names like this:
+
+```{r}
+
+summary_df <- gapminder_df %>%
+               group_by(continent) %>%
+               summarise(means = mean(lifeExp),
+                         sds = sd(lifeExp),
+                         min = min(lifeExp),
+                         max = max(lifeExp))
+
+knitr::kable(summary_df)
+
+```
+
+### Generalization Exercise
+
+Complete the generalization exercise described in your R Markdown document for this lab.
+
+### Writing asignment
+
+Complete the writing assignment described in your R Markdown document for this lab. When you have finished everything. Knit the document and hand in your stuff (you can submit your .RMD file to blackboard if it does not knit.)
+
 
 ## Excel
 
