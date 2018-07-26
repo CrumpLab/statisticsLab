@@ -94,7 +94,137 @@ You can see that the slope of the blue line is not always flat. Sometimes it loo
 
 The point is, now you know you can find correlations by chance. So, in the next section, you should always wonder if the correlations you find reflect meaningful assocation between the x and y variable, or could have just occured by chance.
 
+### Humor Styles Questionnaire
 
+Let's take a look at some correlations in real data. We are going to look at responses to a questionnaire about happiness that was sent around the world, from the [world happiness report](http://worldhappiness.report)
+
+#### Load the data
+
+we load the data into a dataframe.
+
+```{r}
+library(data.table)
+whr_data <- fread('data/WHR2018.csv')
+```
+
+#### Look at the data
+
+```{r, eval=FALSE}
+library(summarytools)
+view(dfSummary(whr_data))
+```
+
+You should be able to see that there is data for many different countries, across a few different years. There are lots of different kinds of measures, and each are given a name. I'll show you some examples of asking questions about correlations with this data, then you get to ask and answer your own questions.
+
+#### My Question #1
+ 
+For the year 2017 only, does a countries measure for "freedom to make life choices" correlate with that countries measure for " Confidence in national government"?
+
+Let's find out. We calculate the correlation, and then we make the scatterplot.
+
+
+```{r}
+
+cor(whr_data$`Freedom to make life choices`,
+    whr_data$`Confidence in national government`)
+
+ggplot(whr_data, aes(x=`Freedom to make life choices`,
+                     y=`Confidence in national government`))+
+  geom_point()+
+  theme_classic()
+
+```
+
+Interesting, what happened here? We can see some dots, but the correlation was NA (meaning undefined). This occured because there are some missing data points in the data. We can remove all the rows with missing data first, then do the correlation. We will do this a couple steps, first creating our own data.frame with only the numbers we want to analyse. We can select the columns we want to keep using `select`. Then we use `filter` to remove the rows with NAs.
+
+```{r}
+library(dplyr)
+
+smaller_df <- whr_data %>%
+               select(country,
+                      `Freedom to make life choices`,
+                      `Confidence in national government`) %>%
+               filter(!is.na(`Freedom to make life choices`),
+                      !is.na(`Confidence in national government`))
+
+cor(smaller_df$`Freedom to make life choices`,
+    smaller_df$`Confidence in national government`)
+```
+
+Now we see the correlation is .408. 
+
+Although the scatterplot shows the dots are everywhere, it generally shows that as Freedom to make lifechoices increases in a country, that countries confidence in their national government also increase. This is a positive correlation. Let's do this again and add the best fit line, so the trend is more clear, we use `geom_smooth(method=lm, se=FALSE)`. I also change the `alpha` value of the dots so they blend it bit, and you can see more of them.
+
+```{r}
+
+# select DVs and filter for NAs
+
+smaller_df <- whr_data %>%
+               select(country,
+                      `Freedom to make life choices`,
+                      `Confidence in national government`) %>%
+               filter(!is.na(`Freedom to make life choices`),
+                      !is.na(`Confidence in national government`))
+
+# calcualte correlation
+
+cor(smaller_df$`Freedom to make life choices`,
+    smaller_df$`Confidence in national government`)
+
+# plot the data with best fit line
+
+ggplot(smaller_df, aes(x=`Freedom to make life choices`,
+                     y=`Confidence in national government`))+
+  geom_point(alpha=.5)+
+  geom_smooth(method=lm, se=FALSE)+
+  theme_classic()
+
+
+```
+
+#### My Question #2
+
+After all that work, we can now speedily answer more questions. For example, what is the relationship between positive affect in a country and negative affect in a country. I wouldn't be surprised if there was a negative correlation here: when positive feelings generally go up, shouldn't negative feelings generally go down?
+
+To answer this question, we just copy paste the last code block, and change the DVs to be `Positive affect`, nad `Negative affect`
+
+```{r}
+
+# select DVs and filter for NAs
+
+smaller_df <- whr_data %>%
+               select(country,
+                      `Positive affect`,
+                      `Negative affect`) %>%
+               filter(!is.na(`Positive affect`),
+                      !is.na(`Negative affect`))
+
+# calcualte correlation
+
+cor(smaller_df$`Positive affect`,
+    smaller_df$`Negative affect`)
+
+# plot the data with best fit line
+
+ggplot(smaller_df, aes(x=`Positive affect`,
+                     y=`Negative affect`))+
+  geom_point(alpha=.5)+
+  geom_smooth(method=lm, se=FALSE)+
+  theme_classic()
+
+
+```
+
+Bam, there we have it. As positive affect goes up, negative affect goes down. A negative correlation.
+
+
+### Generalization Exercise
+
+Complete the generalization exercise described in your R Markdown document for this lab.
+
+### Writing asignment
+
+Complete the writing assignment described in your R Markdown document for this lab. When you have finished everything. Knit the document and hand in your stuff (you can submit your .RMD file to blackboard if it does not knit.)
 
 ## Excel
 
