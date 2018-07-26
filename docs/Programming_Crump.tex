@@ -1422,7 +1422,624 @@ Other things to say
 
 \section{R}\label{r-2}
 
-How to do it in R
+\subsection{Descriptives basics in R}\label{descriptives-basics-in-r}
+
+We learned in lecture and from the textbook that data we want to use ask
+and answer questions often comes with loads of numbers. Too many numbers
+to look at all at once. That's one reason we use descriptive statistics.
+To reduce the big set of numbers to one or two summary numbers that tell
+use something about all of the numbers. R can produce descriptive
+statistics for you in many ways. There are base functions for most of
+the ones that you want. We'll go over some R basics for descriptive
+statistics, and then use our newfound skills to ask some questions about
+real data.
+
+\subsubsection{Making numbers in R}\label{making-numbers-in-r}
+
+In order to do descriptive statistics we need to put some numbers in a
+variable. You can also do this using the \texttt{c()} command, which
+stands for combine
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_numbers <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+There a few other handy ways to make numbers. We can use \texttt{seq()}
+to make a sequence. Here's making the numbers from 1 to 100
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{one_to_one_hundred <-}\StringTok{ }\KeywordTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{100}\NormalTok{,}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+We can repeat things, using rep. Here's making 10 5s, and 25 1s:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{rep}\NormalTok{(}\DecValTok{10}\NormalTok{,}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 10 10 10 10 10
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{25}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{all_together_now <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\KeywordTok{rep}\NormalTok{(}\DecValTok{10}\NormalTok{,}\DecValTok{5}\NormalTok{),}\KeywordTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{25}\NormalTok{)) }
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{Sum}\label{sum}
+
+Let's play with the number 1 to 100. First, let's use the \texttt{sum()}
+function to add them up
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{one_to_one_hundred <-}\StringTok{ }\KeywordTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{100}\NormalTok{,}\DecValTok{1}\NormalTok{)}
+\KeywordTok{sum}\NormalTok{(one_to_one_hundred)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5050
+\end{verbatim}
+
+\subsubsection{Length}\label{length}
+
+We put 100 numbers into the variable \texttt{one\_to\_one\_hundred}. We
+know how many numbers there are in there. How can we get R to tell us?
+We use \texttt{length()} for that.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{length}\NormalTok{(one_to_one_hundred)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 100
+\end{verbatim}
+
+\subsection{Central Tendency}\label{central-tendency}
+
+\subsubsection{Mean}\label{mean}
+
+Remember the mean of some numbers is their sum, divided by the number of
+numbers. We can compute the mean like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sum}\NormalTok{(one_to_one_hundred)/}\KeywordTok{length}\NormalTok{(one_to_one_hundred)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 50.5
+\end{verbatim}
+
+Or, we could just use the \texttt{mean()} function like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{mean}\NormalTok{(one_to_one_hundred)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 50.5
+\end{verbatim}
+
+\subsubsection{Median}\label{median}
+
+The median is the number in the exact middle of the numbers ordered from
+smallest to largest. If there are an even number of numbers (no number
+in the middle), then we take the number in between the two (decimal .5).
+Use the \texttt{median} function. There's only 3 numbers here. The
+middle one is 2, that should be the median
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{median}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2
+\end{verbatim}
+
+\subsubsection{Mode}\label{mode}
+
+R does not a base function for the Mode. You would have to write one for
+yourself. Here is an example of writing your own mode function, and then
+using it. Note I searched how to do this on google, and am using the
+mode defined by
+\href{https://stackoverflow.com/questions/2547402/is-there-a-built-in-function-for-finding-the-mode}{this
+answer on stack overflow}
+
+Remember, the mode is the most frequently occuring number in the set.
+Below 1 occurs the most, so the mode will be one.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_mode <-}\StringTok{ }\NormalTok{function(x) \{}
+  \NormalTok{ux <-}\StringTok{ }\KeywordTok{unique}\NormalTok{(x)}
+  \NormalTok{ux[}\KeywordTok{which.max}\NormalTok{(}\KeywordTok{tabulate}\NormalTok{(}\KeywordTok{match}\NormalTok{(x, ux)))]}
+\NormalTok{\}}
+
+\KeywordTok{my_mode}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+\subsection{Variation}\label{variation}
+
+We often want to know how variable the numbers are. We are going to look
+at descriptive statistics to describe this such as the \textbf{range},
+\textbf{variance}, the \textbf{standard deviation}, and a few others.
+
+First, let's remind ourselves what variation looks like (it's when the
+numbers are different). We will sample 100 numbers from a normal
+distribution (don't worry about this yet), with a mean of 10, and a
+standard deviation of 5, and then make a histrogram so we can see the
+variation around 10..
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sample_numbers <-}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{5}\NormalTok{)}
+\KeywordTok{hist}\NormalTok{(sample_numbers)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-62-1.pdf}
+
+\subsubsection{range}\label{range}
+
+The range is the minimum and maximum values in the set, we use the
+\texttt{range} function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{range}\NormalTok{(sample_numbers)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -3.670097 22.043840
+\end{verbatim}
+
+\subsubsection{var = variance}\label{var-variance}
+
+We can find the sample variance using \texttt{var}. Note, divides by
+(n-1)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{var}\NormalTok{(sample_numbers)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 26.27427
+\end{verbatim}
+
+\subsubsection{sd = standard deviation}\label{sd-standard-deviation}
+
+We find the sample standard deviation us sd. Note, divides by (n-1)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sd}\NormalTok{(sample_numbers)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5.125843
+\end{verbatim}
+
+Rember that the standard deviation is just the square root of the
+variance, see:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sqrt}\NormalTok{(}\KeywordTok{var}\NormalTok{(sample_numbers))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5.125843
+\end{verbatim}
+
+\subsubsection{All Descriptives}\label{all-descriptives}
+
+Let's put all of the descriptives and other functions so far in one
+place:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sample_numbers <-}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{5}\NormalTok{)}
+
+\KeywordTok{sum}\NormalTok{(sample_numbers)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 988.536
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{length}\NormalTok{(sample_numbers)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 100
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{mean}\NormalTok{(sample_numbers)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 9.88536
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{median}\NormalTok{(sample_numbers)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 10.05067
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{my_mode}\NormalTok{(sample_numbers)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 8.865402
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{range}\NormalTok{(sample_numbers)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -1.710019 21.689287
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{var}\NormalTok{(sample_numbers)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 26.53768
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sd}\NormalTok{(sample_numbers)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5.151474
+\end{verbatim}
+
+\subsection{Descriptives by
+conditions}\label{descriptives-by-conditions}
+
+Sometimes you will have a single variable with some numbers, and you can
+use the above functions to find the descriptives for that variable.
+Other times (most often in this course), you will have a big data frame
+of numbers, with different numbers in different conditions. You will
+want to find descriptive statistics for each the sets of numbers inside
+each of the conditions. Fortunately, this is where R really shines, it
+does it all for you in one go.
+
+Let's illustrate the problem. Here I make a date frame with 10 numbers
+in each condition. There are 10 conditions, each labelled, A, B, C, D,
+E, F, G, H, I, J.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{scores <-}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{5}\NormalTok{)}
+\NormalTok{conditions <-}\StringTok{ }\KeywordTok{rep}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{,}\StringTok{"B"}\NormalTok{,}\StringTok{"C"}\NormalTok{,}\StringTok{"D"}\NormalTok{,}\StringTok{"E"}\NormalTok{,}\StringTok{"F"}\NormalTok{,}\StringTok{"G"}\NormalTok{,}\StringTok{"H"}\NormalTok{,}\StringTok{"I"}\NormalTok{,}\StringTok{"J"}\NormalTok{), }\DataTypeTok{each =}\DecValTok{10}\NormalTok{)}
+\NormalTok{my_df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(conditions,scores)}
+\end{Highlighting}
+\end{Shaded}
+
+If you look at the \texttt{my\_df} data frame, you will see it has 100
+rows, there are 10 rows for each condition with a label in the
+\texttt{conditions} column, and 10 scores for each condition in the
+\texttt{scores} column. What if you wanted to know the mean of the
+scores in each condition? You would want to find 10 means.
+
+The slow way to do it would be like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{mean}\NormalTok{(my_df[my_df$conditions==}\StringTok{"A"}\NormalTok{,]$scores)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 8.284299
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{mean}\NormalTok{(my_df[my_df$conditions==}\StringTok{"B"}\NormalTok{,]$scores)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 9.071022
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{mean}\NormalTok{(my_df[my_df$conditions==}\StringTok{"C"}\NormalTok{,]$scores)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 7.426698
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# and then keep going}
+\end{Highlighting}
+\end{Shaded}
+
+Nobody wants to do that! Not, me I stopped doing it that way, you should
+to.
+
+\subsubsection{group\_by and summarise}\label{group_by-and-summarise}
+
+We can easily do everthing all at once using the \texttt{group\_by} and
+\texttt{summarise} function from the \texttt{dplyr} package. Just watch
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(dplyr)}
+
+\NormalTok{my_df %>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(conditions) %>%}
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{means =} \KeywordTok{mean}\NormalTok{(scores))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 10 x 2
+##    conditions means
+##    <fct>      <dbl>
+##  1 A           8.28
+##  2 B           9.07
+##  3 C           7.43
+##  4 D           8.63
+##  5 E           9.76
+##  6 F           5.63
+##  7 G           8.31
+##  8 H           9.59
+##  9 I          12.4 
+## 10 J          11.9
+\end{verbatim}
+
+A couple things now. First, the print out of this was ugly. Let's fix
+that. we put the results of our code into a new variable, then we use
+\texttt{knitr::kable} to print it out nicely when we \texttt{knit} the
+document
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{summary_df <-}\StringTok{ }\NormalTok{my_df %>%}
+\StringTok{               }\KeywordTok{group_by}\NormalTok{(conditions) %>%}
+\StringTok{               }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{means =} \KeywordTok{mean}\NormalTok{(scores))}
+
+\NormalTok{knitr::}\KeywordTok{kable}\NormalTok{(summary_df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{l|r}
+\hline
+conditions & means\\
+\hline
+A & 8.284299\\
+\hline
+B & 9.071022\\
+\hline
+C & 7.426698\\
+\hline
+D & 8.630906\\
+\hline
+E & 9.759095\\
+\hline
+F & 5.632737\\
+\hline
+G & 8.310846\\
+\hline
+H & 9.590302\\
+\hline
+I & 12.398364\\
+\hline
+J & 11.881236\\
+\hline
+\end{tabular}
+
+\subsubsection{multiple descriptives}\label{multiple-descriptives}
+
+The best thing about the \texttt{dplyr} method, is that we can add more
+than one function, and we'll get more than one summary returned, all in
+a nice format, let's add the standard deviation:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{summary_df <-}\StringTok{ }\NormalTok{my_df %>%}
+\StringTok{               }\KeywordTok{group_by}\NormalTok{(conditions) %>%}
+\StringTok{               }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{means =} \KeywordTok{mean}\NormalTok{(scores),}
+                         \DataTypeTok{sds =} \KeywordTok{sd}\NormalTok{(scores))}
+
+\NormalTok{knitr::}\KeywordTok{kable}\NormalTok{(summary_df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{l|r|r}
+\hline
+conditions & means & sds\\
+\hline
+A & 8.284299 & 5.718872\\
+\hline
+B & 9.071022 & 7.346908\\
+\hline
+C & 7.426698 & 5.403125\\
+\hline
+D & 8.630906 & 4.240390\\
+\hline
+E & 9.759095 & 3.664083\\
+\hline
+F & 5.632737 & 5.414865\\
+\hline
+G & 8.310846 & 5.754972\\
+\hline
+H & 9.590302 & 4.911016\\
+\hline
+I & 12.398364 & 3.911585\\
+\hline
+J & 11.881236 & 4.591293\\
+\hline
+\end{tabular}
+
+We'll add the min and the max too:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{summary_df <-}\StringTok{ }\NormalTok{my_df %>%}
+\StringTok{               }\KeywordTok{group_by}\NormalTok{(conditions) %>%}
+\StringTok{               }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{means =} \KeywordTok{mean}\NormalTok{(scores),}
+                         \DataTypeTok{sds =} \KeywordTok{sd}\NormalTok{(scores),}
+                         \DataTypeTok{min =} \KeywordTok{min}\NormalTok{(scores),}
+                         \DataTypeTok{max =} \KeywordTok{max}\NormalTok{(scores))}
+
+\NormalTok{knitr::}\KeywordTok{kable}\NormalTok{(summary_df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{l|r|r|r|r}
+\hline
+conditions & means & sds & min & max\\
+\hline
+A & 8.284299 & 5.718872 & -0.9643942 & 18.47722\\
+\hline
+B & 9.071022 & 7.346908 & -2.5467949 & 19.96221\\
+\hline
+C & 7.426698 & 5.403125 & -1.9385197 & 16.58471\\
+\hline
+D & 8.630906 & 4.240390 & 2.7670265 & 16.26315\\
+\hline
+E & 9.759095 & 3.664083 & 2.6638108 & 17.19651\\
+\hline
+F & 5.632737 & 5.414865 & -3.2441815 & 14.16092\\
+\hline
+G & 8.310846 & 5.754972 & -0.6914890 & 20.09894\\
+\hline
+H & 9.590302 & 4.911016 & 1.8352048 & 18.73463\\
+\hline
+I & 12.398364 & 3.911585 & 8.6547700 & 19.84778\\
+\hline
+J & 11.881236 & 4.591293 & 5.9818904 & 21.35033\\
+\hline
+\end{tabular}
+
+\subsection{Describing gapminder}\label{describing-gapminder}
+
+Now that we know how to get descriptive statistics from R, we cam do
+this will some real data. Let's quickly ask a few question about the
+gapminder data. Reinstall the gapminder library if you don't already
+have it, then laod the data into a dataframe:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(gapminder)}
+\NormalTok{gapminder_df <-}\StringTok{ }\NormalTok{gapminder}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{What are some descriptive for Life expectancy by
+continent?}\label{what-are-some-descriptive-for-life-expectancy-by-continent}
+
+Copy the code from the last part of descriptives using dplyr, then
+change the names like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{summary_df <-}\StringTok{ }\NormalTok{gapminder_df %>%}
+\StringTok{               }\KeywordTok{group_by}\NormalTok{(continent) %>%}
+\StringTok{               }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{means =} \KeywordTok{mean}\NormalTok{(lifeExp),}
+                         \DataTypeTok{sds =} \KeywordTok{sd}\NormalTok{(lifeExp),}
+                         \DataTypeTok{min =} \KeywordTok{min}\NormalTok{(lifeExp),}
+                         \DataTypeTok{max =} \KeywordTok{max}\NormalTok{(lifeExp))}
+
+\NormalTok{knitr::}\KeywordTok{kable}\NormalTok{(summary_df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{l|r|r|r|r}
+\hline
+continent & means & sds & min & max\\
+\hline
+Africa & 48.86533 & 9.150210 & 23.599 & 76.442\\
+\hline
+Americas & 64.65874 & 9.345088 & 37.579 & 80.653\\
+\hline
+Asia & 60.06490 & 11.864532 & 28.801 & 82.603\\
+\hline
+Europe & 71.90369 & 5.433178 & 43.585 & 81.757\\
+\hline
+Oceania & 74.32621 & 3.795611 & 69.120 & 81.235\\
+\hline
+\end{tabular}
+
+\subsection{Generalization Exercise}\label{generalization-exercise}
+
+Complete the generalization exercise described in your R Markdown
+document for this lab.
+
+\subsection{Writing asignment}\label{writing-asignment}
+
+Complete the writing assignment described in your R Markdown document
+for this lab. When you have finished everything. Knit the document and
+hand in your stuff (you can submit your .RMD file to blackboard if it
+does not knit.)
 
 \section{Excel}\label{excel-1}
 
@@ -1451,7 +2068,350 @@ Other things to say
 
 \section{R}\label{r-3}
 
-How to do it in R
+In this lab we use explore to explore correlations between any two
+variables, and alsot show how to do a regression line. There will be
+three main parts. Getting R to compute the correlation, and looking at
+the data using scatterplots. We'll look at some correlations from the
+World Happiness Report. Then you'll look at correlations using data we
+collect from ourselves. It will be fun.
+
+\subsection{cor for correlation}\label{cor-for-correlation}
+
+R has the \texttt{cor} function for computing pearson's r between any
+two variables. In fact this same function computes other versions of
+correlation, but we'll skip those here. To use the function you just
+need two variables with numbers in them like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x  <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{9}\NormalTok{)}
+\NormalTok{y  <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{6}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{13}\NormalTok{)}
+\KeywordTok{cor}\NormalTok{(x,y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.76539
+\end{verbatim}
+
+Well, that was easy.
+
+\subsubsection{scatterplots}\label{scatterplots}
+
+Let's take our silly example, and plot the data in a scatterplot using
+ggplot2, and let's also return the correlation and print it on the
+scatterplot. Remember, ggplot2 wants the data in a data.frame, so we
+first put our x and y variables in a data frame.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(ggplot2)}
+
+\CommentTok{# create data frame for plotting}
+\NormalTok{my_df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(x,y)}
+
+\CommentTok{# plot it}
+\KeywordTok{ggplot}\NormalTok{(my_df, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{x,}\DataTypeTok{y=}\NormalTok{y))+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{()+}
+\StringTok{  }\KeywordTok{geom_text}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{label =} \KeywordTok{round}\NormalTok{(}\KeywordTok{cor}\NormalTok{(x,y), }\DataTypeTok{digits=}\DecValTok{2}\NormalTok{), }\DataTypeTok{y=}\DecValTok{12}\NormalTok{, }\DataTypeTok{x=}\DecValTok{2} \NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-77-1.pdf}
+
+Wow, we're moving fast here.
+
+\subsubsection{lots of scatterplots}\label{lots-of-scatterplots}
+
+Before we move on to real data, let's look at some fake data first.
+Often we will have many measures of X and Y, split between a few
+different conditions, for example, A, B, C, and D. Let's make some fake
+data for X and Y, for each condition A, B, C, and D, and then use
+facet\_wrapping to look at four scatterplots all at once
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x<-}\KeywordTok{rnorm}\NormalTok{(}\DecValTok{40}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{)}
+\NormalTok{y<-}\KeywordTok{rnorm}\NormalTok{(}\DecValTok{40}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{)}
+\NormalTok{conditions<-}\KeywordTok{rep}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{,}\StringTok{"B"}\NormalTok{,}\StringTok{"C"}\NormalTok{,}\StringTok{"D"}\NormalTok{), }\DataTypeTok{each=}\DecValTok{10}\NormalTok{)}
+
+\NormalTok{all_df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(conditions, x, y)}
+
+\KeywordTok{ggplot}\NormalTok{(all_df, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{x,}\DataTypeTok{y=}\NormalTok{y))+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{()+}
+\StringTok{  }\KeywordTok{facet_wrap}\NormalTok{(~conditions)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-78-1.pdf}
+
+\subsubsection{computing the correlations all at
+once}\label{computing-the-correlations-all-at-once}
+
+We've seen how we can make four graphs at once. Facet\_wrap will always
+try to make as many graphs as there are individual conditions in the
+column variable. In this case there are four, so it makes four.
+
+Notice, the scatterplots don't show the correlation (r) values. Getting
+these numbers on there is possible, but we have to calculate them first.
+We'll leave it to you to google how to do this, if it's something you
+want to do. Instead, what we will do is make a table of the correlations
+in addition to the scatterplot. We again use \texttt{dplyr} to do this:
+
+Ok, we are basically ready to turn to some real data and ask if there
+are correlations between interesting variables\ldots{}You will find that
+there are some\ldots{} But before we do that, we do one more thing. This
+will help you become a little bit more skeptical of these
+``correlations''.
+
+\subsubsection{Chance correlations}\label{chance-correlations}
+
+As you learned from the textbook. We can find correlations by chance
+alone, even when there is no true correlation between the variables. For
+example, if we sampled randomly into x, and then sampled some numbers
+randomly into y. We know they aren't related, because we randomly
+sampled the numbers. However, doing this creates some correlations some
+of the time just by chance. You can demonstrate this to yourself with
+the following code. It's a repeat of what we already saw, jut with a few
+more conditions added. Let's look at 20 conditions, with random numbers
+for x and y in each. For each, sample size will be 10. We'll make the
+fake data, then make a big graph to look at all. And, even though we get
+to regression later in the lab, I'll put the best fit line onto each
+scatterplot, so you can ``see the correlations''.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x<-}\KeywordTok{rnorm}\NormalTok{(}\DecValTok{10}\NormalTok{*}\DecValTok{20}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{)}
+\NormalTok{y<-}\KeywordTok{rnorm}\NormalTok{(}\DecValTok{10}\NormalTok{*}\DecValTok{20}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{)}
+\NormalTok{conditions<-}\KeywordTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{:}\DecValTok{20}\NormalTok{, }\DataTypeTok{each=}\DecValTok{10}\NormalTok{)}
+
+\NormalTok{all_df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(conditions, x, y)}
+
+\KeywordTok{ggplot}\NormalTok{(all_df, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{x,}\DataTypeTok{y=}\NormalTok{y))+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{()+}
+\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method=}\NormalTok{lm, }\DataTypeTok{se=}\OtherTok{FALSE}\NormalTok{)+}
+\StringTok{  }\KeywordTok{facet_wrap}\NormalTok{(~conditions)+}
+\StringTok{  }\KeywordTok{theme_classic}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-79-1.pdf}
+
+You can see that the slope of the blue line is not always flat.
+Sometimes it looks like there is a correlation, when we know there
+shouldn't be. You can keep re-doing this graph, by reknitting your R
+Markdown document, or by pressing the little green play button. This is
+basically you simulating the outcomes as many times as you press the
+button.
+
+The point is, now you know you can find correlations by chance. So, in
+the next section, you should always wonder if the correlations you find
+reflect meaningful assocation between the x and y variable, or could
+have just occured by chance.
+
+\subsection{Humor Styles
+Questionnaire}\label{humor-styles-questionnaire}
+
+Let's take a look at some correlations in real data. We are going to
+look at responses to a questionnaire about happiness that was sent
+around the world, from the \href{http://worldhappiness.report}{world
+happiness report}
+
+\subsubsection{Load the data}\label{load-the-data}
+
+we load the data into a dataframe.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(data.table)}
+\NormalTok{whr_data <-}\StringTok{ }\KeywordTok{fread}\NormalTok{(}\StringTok{'data/WHR2018.csv'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{Look at the data}\label{look-at-the-data-1}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(summarytools)}
+\KeywordTok{view}\NormalTok{(}\KeywordTok{dfSummary}\NormalTok{(whr_data))}
+\end{Highlighting}
+\end{Shaded}
+
+You should be able to see that there is data for many different
+countries, across a few different years. There are lots of different
+kinds of measures, and each are given a name. I'll show you some
+examples of asking questions about correlations with this data, then you
+get to ask and answer your own questions.
+
+\subsubsection{My Question \#1}\label{my-question-1}
+
+For the year 2017 only, does a countries measure for ``freedom to make
+life choices'' correlate with that countries measure for " Confidence in
+national government``?
+
+Let's find out. We calculate the correlation, and then we make the
+scatterplot.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{cor}\NormalTok{(whr_data$}\StringTok{`}\DataTypeTok{Freedom to make life choices}\StringTok{`}\NormalTok{,}
+    \NormalTok{whr_data$}\StringTok{`}\DataTypeTok{Confidence in national government}\StringTok{`}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] NA
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(whr_data, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\StringTok{`}\DataTypeTok{Freedom to make life choices}\StringTok{`}\NormalTok{,}
+                     \DataTypeTok{y=}\StringTok{`}\DataTypeTok{Confidence in national government}\StringTok{`}\NormalTok{))+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{()+}
+\StringTok{  }\KeywordTok{theme_classic}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-82-1.pdf}
+
+Interesting, what happened here? We can see some dots, but the
+correlation was NA (meaning undefined). This occured because there are
+some missing data points in the data. We can remove all the rows with
+missing data first, then do the correlation. We will do this a couple
+steps, first creating our own data.frame with only the numbers we want
+to analyse. We can select the columns we want to keep using
+\texttt{select}. Then we use \texttt{filter} to remove the rows with
+NAs.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(dplyr)}
+
+\NormalTok{smaller_df <-}\StringTok{ }\NormalTok{whr_data %>%}
+\StringTok{               }\KeywordTok{select}\NormalTok{(country,}
+                      \StringTok{`}\DataTypeTok{Freedom to make life choices}\StringTok{`}\NormalTok{,}
+                      \StringTok{`}\DataTypeTok{Confidence in national government}\StringTok{`}\NormalTok{) %>%}
+\StringTok{               }\KeywordTok{filter}\NormalTok{(!}\KeywordTok{is.na}\NormalTok{(}\StringTok{`}\DataTypeTok{Freedom to make life choices}\StringTok{`}\NormalTok{),}
+                      \NormalTok{!}\KeywordTok{is.na}\NormalTok{(}\StringTok{`}\DataTypeTok{Confidence in national government}\StringTok{`}\NormalTok{))}
+
+\KeywordTok{cor}\NormalTok{(smaller_df$}\StringTok{`}\DataTypeTok{Freedom to make life choices}\StringTok{`}\NormalTok{,}
+    \NormalTok{smaller_df$}\StringTok{`}\DataTypeTok{Confidence in national government}\StringTok{`}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.4080963
+\end{verbatim}
+
+Now we see the correlation is .408.
+
+Although the scatterplot shows the dots are everywhere, it generally
+shows that as Freedom to make lifechoices increases in a country, that
+countries confidence in their national government also increase. This is
+a positive correlation. Let's do this again and add the best fit line,
+so the trend is more clear, we use
+\texttt{geom\_smooth(method=lm,\ se=FALSE)}. I also change the
+\texttt{alpha} value of the dots so they blend it bit, and you can see
+more of them.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# select DVs and filter for NAs}
+
+\NormalTok{smaller_df <-}\StringTok{ }\NormalTok{whr_data %>%}
+\StringTok{               }\KeywordTok{select}\NormalTok{(country,}
+                      \StringTok{`}\DataTypeTok{Freedom to make life choices}\StringTok{`}\NormalTok{,}
+                      \StringTok{`}\DataTypeTok{Confidence in national government}\StringTok{`}\NormalTok{) %>%}
+\StringTok{               }\KeywordTok{filter}\NormalTok{(!}\KeywordTok{is.na}\NormalTok{(}\StringTok{`}\DataTypeTok{Freedom to make life choices}\StringTok{`}\NormalTok{),}
+                      \NormalTok{!}\KeywordTok{is.na}\NormalTok{(}\StringTok{`}\DataTypeTok{Confidence in national government}\StringTok{`}\NormalTok{))}
+
+\CommentTok{# calcualte correlation}
+
+\KeywordTok{cor}\NormalTok{(smaller_df$}\StringTok{`}\DataTypeTok{Freedom to make life choices}\StringTok{`}\NormalTok{,}
+    \NormalTok{smaller_df$}\StringTok{`}\DataTypeTok{Confidence in national government}\StringTok{`}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.4080963
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# plot the data with best fit line}
+
+\KeywordTok{ggplot}\NormalTok{(smaller_df, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\StringTok{`}\DataTypeTok{Freedom to make life choices}\StringTok{`}\NormalTok{,}
+                     \DataTypeTok{y=}\StringTok{`}\DataTypeTok{Confidence in national government}\StringTok{`}\NormalTok{))+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{alpha=}\NormalTok{.}\DecValTok{5}\NormalTok{)+}
+\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method=}\NormalTok{lm, }\DataTypeTok{se=}\OtherTok{FALSE}\NormalTok{)+}
+\StringTok{  }\KeywordTok{theme_classic}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-84-1.pdf}
+
+\subsubsection{My Question \#2}\label{my-question-2}
+
+After all that work, we can now speedily answer more questions. For
+example, what is the relationship between positive affect in a country
+and negative affect in a country. I wouldn't be surprised if there was a
+negative correlation here: when positive feelings generally go up,
+shouldn't negative feelings generally go down?
+
+To answer this question, we just copy paste the last code block, and
+change the DVs to be \texttt{Positive\ affect}, nad
+\texttt{Negative\ affect}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# select DVs and filter for NAs}
+
+\NormalTok{smaller_df <-}\StringTok{ }\NormalTok{whr_data %>%}
+\StringTok{               }\KeywordTok{select}\NormalTok{(country,}
+                      \StringTok{`}\DataTypeTok{Positive affect}\StringTok{`}\NormalTok{,}
+                      \StringTok{`}\DataTypeTok{Negative affect}\StringTok{`}\NormalTok{) %>%}
+\StringTok{               }\KeywordTok{filter}\NormalTok{(!}\KeywordTok{is.na}\NormalTok{(}\StringTok{`}\DataTypeTok{Positive affect}\StringTok{`}\NormalTok{),}
+                      \NormalTok{!}\KeywordTok{is.na}\NormalTok{(}\StringTok{`}\DataTypeTok{Negative affect}\StringTok{`}\NormalTok{))}
+
+\CommentTok{# calcualte correlation}
+
+\KeywordTok{cor}\NormalTok{(smaller_df$}\StringTok{`}\DataTypeTok{Positive affect}\StringTok{`}\NormalTok{,}
+    \NormalTok{smaller_df$}\StringTok{`}\DataTypeTok{Negative affect}\StringTok{`}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -0.3841123
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# plot the data with best fit line}
+
+\KeywordTok{ggplot}\NormalTok{(smaller_df, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\StringTok{`}\DataTypeTok{Positive affect}\StringTok{`}\NormalTok{,}
+                     \DataTypeTok{y=}\StringTok{`}\DataTypeTok{Negative affect}\StringTok{`}\NormalTok{))+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{alpha=}\NormalTok{.}\DecValTok{5}\NormalTok{)+}
+\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method=}\NormalTok{lm, }\DataTypeTok{se=}\OtherTok{FALSE}\NormalTok{)+}
+\StringTok{  }\KeywordTok{theme_classic}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-85-1.pdf}
+
+Bam, there we have it. As positive affect goes up, negative affect goes
+down. A negative correlation.
+
+\subsection{Generalization Exercise}\label{generalization-exercise-1}
+
+Complete the generalization exercise described in your R Markdown
+document for this lab.
+
+\subsection{Writing asignment}\label{writing-asignment-1}
+
+Complete the writing assignment described in your R Markdown document
+for this lab. When you have finished everything. Knit the document and
+hand in your stuff (you can submit your .RMD file to blackboard if it
+does not knit.)
 
 \section{Excel}\label{excel-2}
 
@@ -1763,7 +2723,7 @@ for each infant as a dot.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-58-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-91-1.pdf}
 
 That's helpful, we see that the dots are all over the place. Let's do a
 histrogram, so we can get a better sense of the frequency of different
@@ -1775,7 +2735,7 @@ proportions.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-59-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-92-1.pdf}
 
 \subsubsection{Look at the descriptives}\label{look-at-the-descriptives}
 
@@ -1893,7 +2853,7 @@ into the variable \texttt{baseline}. We will make a new variable called
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-62-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-95-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1901,7 +2861,7 @@ into the variable \texttt{baseline}. We will make a new variable called
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-62-2.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-95-2.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2142,7 +3102,7 @@ still kind of in a similar ballpark.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-67-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-100-1.pdf}
 
 \subsubsection{Dot plot with means and raw
 scores}\label{dot-plot-with-means-and-raw-scores}
@@ -2175,7 +3135,7 @@ data frame we are looking for.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-68-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-101-1.pdf}
 
 \subsubsection{Bar plot}\label{bar-plot}
 
@@ -2205,7 +3165,7 @@ Also look for these changes.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-69-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-102-1.pdf}
 
 Ok, we see the bars and some of the dots, but not all of them. What is
 going on? Remember, ggplot2 works in layers. Whatever layer you add
@@ -2221,7 +3181,7 @@ Let's change the order of the layers so the dot's go on top of the bars.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-70-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-103-1.pdf}
 
 \subsubsection{Bar plot with error bars}\label{bar-plot-with-error-bars}
 
@@ -2266,7 +3226,7 @@ Baseline and Test, and then add error bars to the plot.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-71-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-104-1.pdf}
 
 \textbf{Question:} What is one reason why these error bars (standard
 error of the mean difference between Baseline and Test) are appropriate
@@ -2302,7 +3262,7 @@ differences scores.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-72-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-105-1.pdf}
 
 \textbf{Question:} Why is is it more appropriate to put the standard
 error of the difference on this bar graph? What important aspects of the
@@ -2349,7 +3309,7 @@ bars.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-73-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-106-1.pdf}
 
 Notice that the 95\% confidence intervals around the mean are wider than
 the SEM error bars from the previous graph. These new confidence
@@ -2392,7 +3352,7 @@ What do you think?
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-74-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-107-1.pdf}
 \#\#\#\# Simulating the mean differences
 
 We can do the simulation slightly differently to give us a different
@@ -2423,7 +3383,7 @@ already made from the data.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-75-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-108-1.pdf}
 
 \section{Excel}\label{excel-5}
 
@@ -2513,7 +3473,7 @@ have the data, we can find out.
 
 \section{R}\label{r-7}
 
-\subsection{Load the data}\label{load-the-data}
+\subsection{Load the data}\label{load-the-data-1}
 
 Remember that any line with a \# makes a comment and the code does not
 run. Below is how to load the .csv data from the online repository, or
@@ -2683,7 +3643,7 @@ errors and put them in a new data frame called \texttt{decriptive\_df}.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-80-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-113-1.pdf}
 
 This plot is very useful. First, we can see the numbers in our dependent
 measure are behaving sensibly. We know that the numbers have to be
@@ -2873,7 +3833,7 @@ time.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-83-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-116-1.pdf}
 
 Well, we didn't make the exact graph. We have the bars, the error bars,
 and we added the individual scores because they are useful to look at.
@@ -3006,7 +3966,7 @@ triggered an intrusive memory.
 
 \section{R}\label{r-8}
 
-\subsection{Load the data}\label{load-the-data-1}
+\subsection{Load the data}\label{load-the-data-2}
 
 Remember that any line with a \# makes a comment and the code does not
 run. Below is how to load the .csv data from the online repository, or
@@ -3103,7 +4063,7 @@ follow these steps to run another ANOVA on the Day 7 data.
 The mean for the week data for each subject is apparently coded in the
 column \texttt{Days\_One\_to\_Seven\_Number\_of\_Intrusions}.
 
-\subsection{Look at the data}\label{look-at-the-data-1}
+\subsection{Look at the data}\label{look-at-the-data-2}
 
 Remember before we do any analysis, we always want to ``look'' at the
 data. This first pass let's us know if the data ``look right''. For
@@ -3147,7 +4107,7 @@ doing things this way.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-87-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-120-1.pdf}
 
 There we have it. A nice graph showing us everything. We can see there
 was a lot of differences at the level of individual subjects. Some
@@ -3809,7 +4769,7 @@ other software programs. You are lucky to be learning R.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-97-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-130-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
