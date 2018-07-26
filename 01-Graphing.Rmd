@@ -836,7 +836,7 @@ The histogram shows that the highest bars are in the middle, near the 100 mark. 
 
 ## SPSS
 
-## Matlab
+## JAMOVI
 
 
   

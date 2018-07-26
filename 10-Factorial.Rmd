@@ -28,8 +28,8 @@ How to do it in Excel
 
 How to do it in SPSS
 
-## Matlab
+## JAMOVI
 
-How to do it in Matlab
+How to do it in JAMOVI
 
 
