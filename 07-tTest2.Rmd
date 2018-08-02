@@ -217,6 +217,14 @@ ggplot(descriptive_all, aes(x=rating_type, y=means, group=condition))+
 
 Well, we didn't make the exact graph. We have the bars, the error bars, and we added the individual scores because they are useful to look at. Otherwise, it's the same graph (except the the ordering of bars is determined alphabetically here. We change that in ggplot, but we won't do that today.)
 
+### Generalization Exercise
+
+Complete the generalization exercise described in your R Markdown document for this lab.
+
+### Writing asignment
+
+Complete the writing assignment described in your R Markdown document for this lab. When you have finished everything. Knit the document and hand in your stuff (you can submit your .RMD file to blackboard if it does not knit.)
+
 
 ## Excel
 

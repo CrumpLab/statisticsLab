@@ -423,6 +423,14 @@ The take home is that yes, even after removing outliers, the same basic pattern 
 
 That's ANOVA. Come back next week for another ANOVA tutorial, this time using within-subject data. It's called a repeated measures ANOVA, and it's what's happening next week.
 
+### Generalization Exercise
+
+Complete the generalization exercise described in your R Markdown document for this lab.
+
+### Writing asignment
+
+Complete the writing assignment described in your R Markdown document for this lab. When you have finished everything. Knit the document and hand in your stuff (you can submit your .RMD file to blackboard if it does not knit.)
+
 
 
 ## Excel

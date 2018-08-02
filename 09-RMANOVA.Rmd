@@ -31,18 +31,333 @@ The authors conducted a repeated measures experiment. A total of 38 subjects wer
 
 Reminder, this is a repeated measures design because each participant typed letter strings from the word, bigrams, and random conditions.
 
-
 ## Lab Skills Learned
+
+- Conducting a one-factor repeated measures ANOVA
+- Conducting follow-up comparisons
 
 ## Important Stuff
 - citation: Behmer, Lawrence P., Crump, M. J. C. (2017). Spatial Knowledge during Skilled Action Sequencing: Hierarchical versus Non-Hierarchical Representations. Attention, Perception & Psychophysics, 79, 2435-2448.
 - [Link to .pdf of article](https://github.com/CrumpLab/CrumpLab.github.io/raw/master/files/8753/Behmer%20and%20Crump%20-%202017.pdf)
-- [Data in .csv format](https://drive.google.com/open?id=0Bz-rhZ21ShvOM1cxWUpUNlQ0UlE)
+- [Data in .csv format](https://github.com/CrumpLab/statisticsLab/raw/master/data/exp1_BehmerCrumpAPP.csv)
 
 
 ## R
 
-How to do it in R
+### Load the data
+
+Remember that any line with a \# makes a comment and the code does not run. Below is how to load the .csv data from the online repository, or from a local file (you need to change the file path to where the local file is, if you downloaded it). The data contains all of the measures and conditions from Experiment 1 in the paper.
+
+```{r}
+library(data.table)
+#all_data <- fread("https://github.com/CrumpLab/statisticsLab/raw/master/data/exp1_BehmerCrumpAPP.csv")
+all_data <- fread("data/exp1_BehmerCrumpAPP.csv")
+```
+
+### Inspect the dataframe
+
+This will give you a big picture of the data frame. Click the button to view it in your browser, then take a look to see what is in it. 
+
+```{r, eval=F}
+library(summarytools)
+view(dfSummary(all_data[,c(1:7,10:20)]))
+```
+
+Note, there is some weird stuff in code above. Normally, we would just write `view(dfSummary(all_data))`, why we add this: `all_data[,c(1:7,10:20)]`? It turns out the dfSummary function didn't like some of the data. In particular it didn't like the data in columns 8 an 9 (notice those numbers are missing, the range inside c is 1 to 7 and 10 to 20). It doesn't mean the data isn't there, just that it didn't want to display it in the viewer.
+
+### Get the data you need
+
+This data file contains all of the data from Experiment 1 in the paper. So, we don't need to get rid of any rows. 
+
+There are numerous columns, some of them we don't need for the analysis. But, we'll just ignore these later when we use dplyr to group by the columns we want.
+
+The structure of this data a file is in long form. Every row described a measurement for a single keypress. For example, the first 5 rows, have data for the timing of the first 5 keypresses, that the first subject made to type the first string of letters they saw. In total there were 85,410 keypresses made. That's quite a lot. 
+
+#### The independent variable
+
+The important independent variable is in the column `Stimulus`.
+
+- Normal (5 letter english words)
+- Bigrams (5 letter strings that kind of looked like words)
+- Random (5 letter strings that were random)
+
+It is also important to know that the `Order` column codes the position for each letter, from 1 to 5.
+
+Note: there was another independent variable in the study as well. We talk about this later. The second IV is coded in the `Block` column. 
+
+- Baseline (normal typing, keyboard is visible while typing)
+- Manipulation (occluded typing, keyboard is covered while typing)
+
+#### The dependent variables
+
+1. `TimeFromOnset` : This column records the temporal interval in milliseconds between the onset of the word and each keypress. When order is 1 (first keystroke), the number here is the reaction time to start typing.
+2. `PureRTs` : This column contains keystroke intervals. The first interval is between the onset of the word and the first keypress (order 1), the second interval is between the first and second keypress (order 2), and so on. `PureRTs` for orders 2 to 5, represent the interkeystroke intervals reported in  paper.
+3. `AllCorrect` : 0 means incorrect (wrong letter was typed), 1 means correct (correct letter was typed)
+
+### Look at the data
+
+Remember before we do any analysis, we always want to "look" at the data. This first pass let's us know if the data "look right". For example, the data file could be messed up and maybe there aren't any numbers there, or maybe the numbers are just too weird. 
+
+For example, this study involves reaction times: the time between seeing something and responding to it. If you had done a study like this before, you would know that it usually doesn't take people that long to start responding. Most reaction times will be under a second (or 1000 millseconds). But, sometime people are little slow, and sometimes they do funny things like check their phone in the middle of an experiment.
+
+Before I analyze reaction time data, I often make a histrogram of all of the RT data, like this:
+
+```{r}
+hist(all_data$PureRTs)
+```
+
+
+We can see that almost all of the reaction times are well below 5000 milliseconds (5 seconds), which is good. Most of the time people were paying attention and not "checking their phone". Notice, the range of the histrogram goes out to 15,000 milliseconds. You can't see any bars out there (too small to notice), but there must be at least a few trials where somebody took 15 seconds to start responding. These are called outliers. We will remove them before we conduct our analysis
+
+### Look at the means
+
+As part of looking at the data, we might as well make a figure that shows the mean reaction times in each condition, and some error bars to look at the spread in each condition. The following code takes three important steps:
+
+1. Get the means for each subject in each condition. These are put into the data frame called `subject_means`.
+2. Get the means for each condition, by averaging over the means for each subject. These are put into the data frame called `plot_means`.
+3. Make a graph with the `plot_means` data frame using ggplot2. 
+
+
+```{r}
+library(dplyr)
+library(ggplot2)
+
+all_data$Block<-as.factor(all_data$Block)
+levels(all_data$Block) <- c("Visible keyboard","Covered Keyboard")
+
+## get subject mean RTs
+
+subject_means <- all_data %>%
+                 filter(Order==1, Correct==1, PureRTs<5000) %>%
+                 group_by(Subject, Block, Stimulus) %>%
+                 summarise(mean_rt = mean(PureRTs))
+
+subject_means$Subject<-as.factor(subject_means$Subject)
+subject_means$Block<-as.factor(subject_means$Block)
+subject_means$Stimulus<-as.factor(subject_means$Stimulus)
+
+## get condition mean RTs
+
+plot_means <- subject_means %>%
+              group_by(Block, Stimulus) %>%
+              summarise(means = mean(mean_rt),
+                        SEs = sd(mean_rt)/sqrt(length(mean_rt)))
+
+## plot the condition means
+
+# re-order stimulus factor for plotting
+plot_means$Stimulus <- factor(plot_means$Stimulus, levels = c("Normal", "Bigrams", "Random"))
+
+ggplot(plot_means, aes(x=Stimulus, y=means, group=Block, color=Block))+
+  geom_point()+
+  geom_line()+
+  geom_errorbar(aes(ymin=means-SEs, ymax=means+SEs), width=.2)+
+  theme_classic()+
+  ylab("Mean Reaction Time (ms)")+
+  xlab("Typing Material")
+
+```
+
+Alright, we made things a little bit more complicated than they need to be. Our primary question is whether reaction times followed this pattern: Normal < Bigrams < Random. We can see the means do follow this pattern. However, shouldn't we only be looking at three means, why are their six means, and two lines?
+
+The above code included the second independent variable `Block`. As a result, you are seeing the means for Typing material when subjects could see the keyboard, and when the couldn't see the keyboard. We will come back to this later. For now, let's ignore the Block condition, and find the means for the Typing Material IV by averaging over the Block conditions. We run the same code as above, by take out `Block`, in the `group_by` function. We also take `Block` out the ggplot function.
+
+**VERY IMPORTANT**: We did something in the above code that we didn't point out. We filtered the data before we found the means. For most of the datasets in other labs, we given you data that is more or less ready to analyse. More often than not data needs to be pre-processed, or filtered before you analyze it. We can use the `filter` function in `dplyr` to do our filtering. `filter` filters the rows for us, so we will only include the rows that we want.
+
+1. We want to analyze the time between the onset of the stimulus and the first keystroke. The reaction times for this value are in the `PureRTs` column, but this column contains other RTs that we do not want to analyse. For example, the `Order` column codes for the letter position in the string. We only want to analyze the rows that contain a `1`, for the first position. So, that is why we add `Order==1` to the filter function below.
+
+2. We want to analyze only the reaction times that are correct. That is, when the subject typed the first letter correctly, and did not make a typo. Accuracy is coded in the `Correct` column, with 1 = correct, and 0 = incorrect. We add `Correct==1` to the filtering function.
+
+Note the use of `==`, that is two equal signs in a row. In R, two equal signs in a row has a special meaning. It means conduct a `logic` test to determine if one thing is the same as another. 
+
+3. We want to analyze only reaction times that are "sensible" to analyze. What does sensible mean? We don't want to analyze data that is clearly garbage data. For example, if someone fell asleep at the computer and didn't respond for 15 seconds, that kind of data is not what we want to analyze. If we were to filter the data, and exclude these kinds of `outliers`, we would be conducting an outlier elimination procedure. Behmer & Crump (2017) did this, and it is commonly done in many different kinds of studies. We skip an extended discussion of outlier elimination for this lab. But, we do introduce the idea of doing it. We want to keep as much of the data as possible. So, what we do is keep all of the RTs that are less than 5000 ms (that's 5 seconds). To do this, we add `PureRTs<5000` to the filter function.
+
+```{r}
+## get subject mean RTs
+
+subject_means <- all_data %>%
+                 filter(Order==1, Correct==1, PureRTs<5000) %>%
+                 group_by(Subject, Stimulus) %>%
+                 summarise(mean_rt = mean(PureRTs))
+
+subject_means$Subject<-as.factor(subject_means$Subject)
+subject_means$Stimulus<-as.factor(subject_means$Stimulus)
+
+## get condition mean RTs
+
+plot_means <- subject_means %>%
+              group_by(Stimulus) %>%
+              summarise(means = mean(mean_rt),
+                        SEs = sd(mean_rt)/sqrt(length(mean_rt)))
+
+## plot the condition means
+
+# re-order stimulus factor for plotting
+plot_means$Stimulus <- factor(plot_means$Stimulus, levels = c("Normal", "Bigrams", "Random"))
+
+ggplot(plot_means, aes(x=Stimulus, y=means, group=1))+
+  geom_point()+
+  geom_line(stat="identity")+
+  geom_errorbar(aes(ymin=means-SEs, ymax=means+SEs), width=.2)+
+  theme_classic()+
+  ylab("Mean Reaction Time (ms)")+
+  xlab("Typing Material")
+
+```
+
+### Conduct the repeated Measures ANOVA
+
+We use the same `aov` function as we used last time. The only difference is that we add in a new part to the formula. Remember the formula for a one-factor betwee-n subjects ANOVA looked like this:
+
+`aov( DV ~ IV , dataframe)`, where DV is the name of the column with your independent variable, IV is the name of the column with your independent variable, and `dataframe` is the name of your dataframe containing the means in each condition.
+
+The formula for a repeated-measures ANOVA looks like this:
+
+`aov( DV ~ IV + Error(Subject/IV), dataframe)`. We have added `+ Error(Subject/IV)`. This tells R to use the appropriate error term for the repeated measures ANOVA. In the formula, `Subject` refers to the name of the column coding your subjects (make sure this is a factor in R), and `IV` is the name of the column for your independent variable.
+
+The formula for our data would be: `aov( mean_rt ~ Stimulus + Error(Subject/Stimulus), subject_means)`.
+
+Here is the code below. Just as reminder, the raw data codes every single keypress on each row. We don't want to submit this as the data frame to the `aov` function. Instead, we need to calculate the data frame for the subject means in each condition. We did that above as a step toward making the graphs. We do it again here to remind you that you need to do this.
+
+```{r}
+
+# get subject means
+
+subject_means <- all_data %>%
+                 filter(Order==1, Correct==1, PureRTs<5000) %>%
+                 group_by(Subject, Stimulus) %>%
+                 summarise(mean_rt = mean(PureRTs))
+
+# Make sure IV and Subject are coded as factors
+subject_means$Subject  <- as.factor(subject_means$Subject)
+subject_means$Stimulus <- as.factor(subject_means$Stimulus)
+
+# Conduct the anova
+
+aov_out <- aov( mean_rt ~ Stimulus + Error(Subject/Stimulus), subject_means)
+summary_out <- summary(aov_out)
+
+library(xtable)
+knitr::kable(xtable(summary_out))
+```
+
+Great, we have conducted the ANOVA. We could write up the results of the ANOVA like this:
+
+> For each subject we computed mean reactions for correct keystrokes in each condition of the Stimulus factor. These means were submitted to a one-factor repeated-measures ANOVA, with Stimulus (Normal, Bigrams, and Random) as the sole factor. The effect of Stimulus was signficant, F(2, 74) = 230.58, MSE = 2510.98, p < 0.001.
+
+Note, the p-value shows up as a zero, that's because it is so small that R doesn't want to print the actual number 0.000000000000000...1.
+
+What does this tell us? 
+
+1. The $F$ value we obtained (230.58) almost never occurs by chance. More specifically, the sampling distribution of F from the distribution of no differences virtually never produces a huge F like 230.58
+
+2. It is super-duper unlikely that chance (sampling error) could have produced the difference we observed.
+
+3. We reject the idea that chance caused the differences, and are very confident that the manipulation (changing the kinds of letters that people have to type), has a causal influence on reaction time in typing.
+
+#### Report the means too
+
+Remember, the important goal when conducting analyses, and then writing about them, is to tell people what you did and what you found. This involves more than one step. For this example, we might do three basic things. 1) make a figure to show the means, 2) report the ANOVA so people know if there is support for the inference that the differences between the means are not caused by chance, and 3) report descriptives for the means, so people know what the numbers are (the figure doesn't show the exact values).
+
+We've already made the figure and done the ANOVA, let's report the condition means. To do this, we need to find the means for each condition, collapsing over the means for each subject in each condition. Note that, we already did this to make the figure. Here's the code again:
+
+```{r}
+## get subject mean RTs
+
+subject_means <- all_data %>%
+                 filter(Order==1, Correct==1, PureRTs<5000) %>%
+                 group_by(Subject, Stimulus) %>%
+                 summarise(mean_rt = mean(PureRTs))
+
+subject_means$Subject<-as.factor(subject_means$Subject)
+subject_means$Stimulus<-as.factor(subject_means$Stimulus)
+
+## get condition mean RTs
+
+plot_means <- subject_means %>%
+              group_by(Stimulus) %>%
+              summarise(means = mean(mean_rt),
+                        SEs = sd(mean_rt)/sqrt(length(mean_rt)))
+
+knitr::kable(plot_means)
+
+```
+Now, our full write-up of the results would look like this.
+
+> For each subject we computed mean reactions for correct keystrokes in each condition of the Stimulus factor. These means were submitted to a one-factor repeated-measures ANOVA, with Stimulus (Normal, Bigrams, and Random) as the sole factor. The effect of Stimulus was signficant, F(2, 74) = 230.58, MSE = 2510.98, p < 0.001. The mean reaction time was fastest in the Normal condition (M = 833 ms, SE = 24 ms), followed by the Bigram condition, (M = 924 ms, SE = 27 ms) and slowest in the Random Condition (M = 1078 ms, SE = 32 ms).
+
+### Follow-up comparisons
+
+The ANOVA tells us that the differences between the means are unlikely to be due to chance. But, remember, this is an ombnibus test. It does not tell us if specific pairs of means are different from one another. To determine whether the difference between two specific means is not likely due to chance, we need to conduct follow-up tests. 
+
+Because this is a repeated-measures design, we can use the paired-samples t-test for follow-up tests. Let's do two follow-up tests to confirm that the RTs for Normal words were indeed faster than the RTs for the Bigram condition (word-like non-words); and then, let's confirm that the RTs for the Bigram condition were indeed faster than the RTs for the Random condition.
+
+#### Normal vs Bigrams
+
+We use the `subject_means` data frame. But, we want to rid of all the rows containing the means from the Random condition. We use filter to do that, then we conduct the paired-samples t-test.
+
+```{r}
+comparison_df <- subject_means %>%
+                  filter(Stimulus != "Random")
+
+t.test(mean_rt~Stimulus, 
+       paired=TRUE, 
+       var.equal=TRUE, 
+       data = comparison_df)
+
+```
+
+####  Bigrams vs Random
+
+We use the `subject_means` data frame. But, we want to rid of all the rows containing the means from the Normal condition. We use filter to do that, then we conduct the paired-samples t-test.
+
+```{r}
+comparison_df <- subject_means %>%
+                  filter(Stimulus != "Normal")
+
+t.test(mean_rt~Stimulus, 
+       paired=TRUE, 
+       var.equal=TRUE, 
+       data = comparison_df)
+
+```
+
+### Reporting everything
+
+Now we can look at some write-ups that report everything we did, and everything we want to know. I'll show you two ways to do it. 
+
+#### First way
+
+In the first way, we embed the results of the t-test into the description of the mean reaction times.
+
+For each subject we computed mean reactions for correct keystrokes in each condition of the Stimulus factor. These means were submitted to a one-factor repeated-measures ANOVA, with Stimulus (Normal, Bigrams, and Random) as the sole factor. The effect of Stimulus was signficant, F(2, 74) = 230.58, MSE = 2510.98, p < 0.001. The mean reaction time was significantly faster in the Normal condition (M = 833 ms, SE = 24 ms), compared to the Bigram condition, (M = 924 ms, SE = 27 ms), t(37) = 12.14, p<0.001. Additionally, mean reactions in the Bigram condition were significantly faster than the Random Condition (M = 1078 ms, SE = 32 ms), t(37) = 14.21, p < 0.001.
+
+
+#### Second way
+
+In the second way, we first report the means as we did the very first time, and then after that we report the t-test results to higlight the size the of the differences between each comparison.
+
+For each subject we computed mean reactions for correct keystrokes in each condition of the Stimulus factor. These means were submitted to a one-factor repeated-measures ANOVA, with Stimulus (Normal, Bigrams, and Random) as the sole factor. The effect of Stimulus was signficant, F(2, 74) = 230.58, MSE = 2510.98, p < 0.001. The mean reaction time was fastest in the Normal condition (M = 833 ms, SE = 24 ms), followed by the Bigram condition, (M = 924 ms, SE = 27 ms) and slowest in the Random Condition (M = 1078 ms, SE = 32 ms). Mean reaction times were significantly faster (M = 91 ms) in the Normal than Bigrams condition, t(37) = 12.14, p < 0.001. And, mean reaction times were signifcantly faster (M = 152 ms) in the Bigrams than Random condition, t(37) = 14.21, p < 0.01.
+
+There are other ways to write-up statistical results. These are just some example recipes. The important thing is to:
+
+1. Say what the numbers were that you are analyzing
+2. Say what the statistical test was
+3. Say the results of the statistical test
+4. Say what the patterns of means were
+5. Say what the follow-up tests were when you test differences between specific means.
+6. Add a table or figure so it is easier to "see" the results.
+
+### Generalization Exercise
+
+Complete the generalization exercise described in your R Markdown document for this lab.
+
+### Writing asignment
+
+Complete the writing assignment described in your R Markdown document for this lab. When you have finished everything. Knit the document and hand in your stuff (you can submit your .RMD file to blackboard if it does not knit.)
+
+
+
 
 ## Excel
 
