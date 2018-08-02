@@ -1,21 +1,44 @@
-# Lab 9: One-way ANOVA
+# Lab 9: Repeated Measures ANOVA
+
+## Betcha can't type JHDBZKCO very fast on your first try
+
+This lab activity uses the data from Behmer & Crump (2017) to teach one-factor repeated measures ANOVA with-up follow comparisons
+
+### STUDY DESCRIPTION
+
+Behmer & Crump (2017) used the everyday task of typing on a computer keyboard to ask questions about how people learn to put sequences of actions together. Whenever you type a series of letters on the keyboard, you are putting a sequence of actions together, so typing is task that could be used to measure skilled sequencing. Typing also happens to be a convenient task for measuring sequencing. For example, every time a person types a letter, the timing of the button press and the letter pressed can be measured and stored for later analysis.
+
+Behmer & Crump were interested in asking a few different questions, however, we will simplify everything and talk about replication. First we describe an interesting finding from previous research. Behmer & Crump repeated an experiment that should alos produce this same finding. If they succeed in doing this, it means the finding can be replicated, and that it happens in more than one lab.
+
+**Finding from previous resaearch:** Prior research showed that typists do something funny. Skilled typists can type normal words very fast. This suggests they know how to locate all of the letters on the keyboard, and can press each letter very quickly to type words. That part isn't particulary funny. However, if you take really skilled typists and make them type random letters like this:  kwitb dhhgjtryq xkldpt mazhyffdt, guess what happens? They slow down a lot. It's kind of weird that a typist would slow down, after all they can type letters really fast when they appear in words, but not when they appear in random orders...what gives? Last, it turns out that typists are kind of in the middle in terms of speed, if you ask them to type non-words that have similar properties to words, such as: quenp hamlke phwempy.
+
+To summarize, prior research showed that typing speed changes as a function of the structure of the text, roughly in this order from fastest to slowest.
+
+(FASTEST)  Normal Words < Word-like Non-words < Random strings  (SLOWEST)
+
+**Replication question:** Behmer & Crump also measured typists while they typed words, non-words that were english-like, and random strings. They had some additional things they were interested in, but for us, we are interested in whether they would show the same effect. Would they replicate the patten: Normal words (Fastest) < Word-like Non-words (medium) <- Random strings (Slowest)?
+
+
+### Study Methods
+
+The authors conducted a repeated measures experiment. A total of 38 subjects were used for the analysis.
+
+**Independent Variable**: The IV Stimulus or typing material had three levels: Normal, Bigrams, and Random. Normal refers to normal 5 letter english words (like truck, or plant). Bigrams refers to non-words that have properties similar to words (e.g., phemt quilp). Random refers to 5 letter strings whose letters were totally random (qmklt gdrzn lprni).
+
+**Dependent Variables**: There were three dependent variables, that all measured different aspects of typing performance. Reaction times (RTs) were defined as the temporal interval between seeing a stimulus (to type), and then starting to type it (first key press). Interkeystroke intervals (IKSIs) are the times between each keypress. Last, accuracy was also measured (correct or incorrect keypresses)
+
+**The task**: Participants (who happened to also be students from Brooklyn College) sat in front a computer. They were presented with one stimulus (word, bigrams, or random) at a time. As soon as they saw the string of letters, they typed it as quickly and accurately as they could, then they moved on to the next trial. 
+
+Reminder, this is a repeated measures design because each participant typed letter strings from the word, bigrams, and random conditions.
+
 
 ## Lab Skills Learned
 
 ## Important Stuff
-- citation: Rosenbaum, D., Mama, Y., & Algom, D. (2017). Stand by Your Stroop: Standing Up Enhances Selective Attention and Cognitive Control. Psychological science, 28(12), 1864-1867.
-- [Link to .pdf of article](http://journals.sagepub.com/doi/abs/10.1177/0956797617721270?journalCode=pssa)
-- [Data in .csv format]()
-- [Data in SPSS format]()
+- citation: Behmer, Lawrence P., Crump, M. J. C. (2017). Spatial Knowledge during Skilled Action Sequencing: Hierarchical versus Non-Hierarchical Representations. Attention, Perception & Psychophysics, 79, 2435-2448.
+- [Link to .pdf of article](https://github.com/CrumpLab/CrumpLab.github.io/raw/master/files/8753/Behmer%20and%20Crump%20-%202017.pdf)
+- [Data in .csv format](https://drive.google.com/open?id=0Bz-rhZ21ShvOM1cxWUpUNlQ0UlE)
 
-
-## Outline of Problem to solve
-
-Stuff we need to say in general
-
-### important  things
-
-Other things to say
 
 ## R
 
