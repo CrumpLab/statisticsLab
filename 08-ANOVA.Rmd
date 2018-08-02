@@ -1,4 +1,4 @@
-# Lab 8: One-way ANOVA
+# Lab 8 One-way ANOVA
 
 <div class="marginnote">
 This lab is modified and extended from [Open Stats Labs](https://sites.trinity.edu/osl). Thanks to Open Stats Labs (Dr. Kevin P. McIntyre) for their fantastic work.

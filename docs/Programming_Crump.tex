@@ -126,7 +126,7 @@ will be recognized by the time we are finished.}
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2018: Last Compiled 2018-07-26}
+    \date{2018: Last Compiled 2018-08-02}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -3293,15 +3293,816 @@ Testing}\label{lab-5-fundamentals-of-hypothesis-testing}
 \section{Outline of Problem to
 solve}\label{outline-of-problem-to-solve-3}
 
-Stuff we need to say in general
-
 \subsection{important things}\label{important-things-3}
 
 Other things to say
 
 \section{R}\label{r-5}
 
-How to do it in R
+From here on out in the labs we will be focusing on making sense of data
+from experiments. In all of this, we use experiments to ask a question
+about whether one thing causes change (influences) another thing. Then,
+we look at the data to help us answer that question. In general, we
+expect to find a difference in our measurement between the conditions of
+the experimental manipulation. We expect to find a difference when the
+manipulation works, and causes change in our measure. We expect not to
+find a difference when the manipulation does not work, and does not
+cause change.
+
+However, as you well know from reading the textbook, and attending the
+lectures. Experimental manipulations are not the only thing that can
+cause change in our measure. Chance alone can cause change. Our measures
+are usually variable themselves, so they come along with some change in
+them due to sampling error.
+
+At a minimum, when we conduct an experiment, we want to know \textbf{if
+the change we observed is bigger than the change that can be produced by
+chance}. Theoretically, random chance could produce most any change we
+might measure in our experiment. So, there will always be uncertainty
+about whether our manpiulation caused the change, or chance caused the
+change. But, we can reduce and evaluate that uncertainty. When we do
+this, we make \textbf{inferences} about what caused change in our
+experiments. This process is called \textbf{statistical inference}. We
+use \textbf{inferential statistics} as tools to help us make these
+inferences.
+
+In this lab we introduce you to foundational concepts in
+\textbf{statistical inference}. This is also commonyl termed
+\textbf{hypothesis testing}. But, for various reasons using that
+language to describe the process is tied to particular philosophies
+about doing statistical inference. We use some of that language here, so
+that you know what it means. But, we also use our own plain language, so
+you know what the point is, without the statistical jargon.
+
+The textbook describes a few different statistical tests for building
+your conceptual understanding for statistical inference. In this lab, we
+work through some of them. In particular, we work through the Crump
+test, and the Randomization test. We show you how to conduct these tests
+in R on fake data, and real data.
+
+\subsection{The Crump Test}\label{the-crump-test}
+
+\href{https://crumplab.github.io/statistics/foundations-for-inference.html\#the-crump-test}{The
+Crump test is described more fully in the textbook here}, but you
+already read that in preparation for this lab, right! I hope you did.
+
+The big idea behind the Crump test is this. You find out what kind of
+differences between two conditions can be found by chance alone. This
+shows you what chance can do. Then, you compare what you actually found
+in one experiment, with the chance distribution, and make an inference
+about whether or not chance could have produced the difference.
+
+\subsubsection{Make assumptions about the distribution for your
+measurement}\label{make-assumptions-about-the-distribution-for-your-measurement}
+
+The first step in conducting the Crump test is to make a guess at the
+distribution behind your measurement. We will see in the next part how
+to do this from real data. For now, we just pick a distribution. For
+example, let's say we are measuring something that comes from a normal
+distribution with mean = 75 and standard deviation = 5. Perhaps, this is
+a distribution for how people perform on a particular test. The mean on
+the test is 75\%, with a standard deviation of 5\%. We know from last
+lab that 3 standard deviations away from the mean is pretty unlikely
+with this distribution. So, for example, most people never score above
+90\% (5*3=15, 75+15 = 90) on this test.
+
+In this example situation, we might imagine an experiment that was
+conducted to determine whether manipulation A improves test performance,
+compared to a control condition where no manipulation took place. Using
+the Crump test, we can simulate differences that can occur by chance. We
+are formally simulating the differences that could be obtained between
+two control conditions, where no manipulation took place.
+
+To, restate our assumptions, we assume a single score for each subject
+is sampled from:
+
+\texttt{rnorm(n,\ mean=75,\ sd=5)}
+
+\subsubsection{Make assumptions about N}\label{make-assumptions-about-n}
+
+In the real world, experiments have some number of subjects in each
+condition, this number is called N. For our simulation we, need to
+choose the number of subjects that we have. For this demonstration, we
+choose N = 20 in each condition.
+
+\subsubsection{Choose the number of simulations to
+run}\label{choose-the-number-of-simulations-to-run}
+
+We are going to run a fake experiment with no manipulation, and do this
+many times over (doing it many times over is called \textbf{monte carlo
+simulation}). Each time we will do this:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Sample 20 numbers for control group A using
+  \texttt{rnorm(20,\ mean=75,\ sd=5)}
+\item
+  Sample 20 numbers for control group B using
+  \texttt{rnorm(20,\ mean=75,\ sd=5)}
+\item
+  Compute the means for control group A and B
+\item
+  Compute the difference betweem the mean for group A and B
+\item
+  Save the differences score in a variable
+\item
+  Repeat as many times as we want
+\end{enumerate}
+
+If we repeat the simulatoin 100 times, we will see the differences that
+can be produced by chance, when given the opportunity 100 times. For
+example, in a simulation like this, the biggest difference (the maximum
+value) only happens once. We can find that difference, and then roughly
+conclude that a difference of that big happens 1 out of 100 times just
+by chance. That's not alot.
+
+If we want to be more restrictive, we can make the simluation go to
+1,000, or 10,000, or greater. Each time the maximum value will tell us
+what is the biggest thing chance did 1 out of 1000 times, or 1 out of
+10,000 times.
+
+The textbook uses 10,000 times. Let's use 100 times here to keep things
+simple.
+
+\subsubsection{Run the simluation}\label{run-the-simluation}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(ggplot2)}
+
+\CommentTok{# set paramaters of simulation}
+
+\NormalTok{sims_to_run <-}\StringTok{ }\DecValTok{100}
+\NormalTok{sample_n   <-}\StringTok{ }\DecValTok{20}
+\NormalTok{dist_mean  <-}\StringTok{ }\DecValTok{75}
+\NormalTok{dist_sd    <-}\StringTok{ }\DecValTok{5}
+
+\CommentTok{# run simulation}
+
+\NormalTok{mean_differences <-}\StringTok{ }\KeywordTok{length}\NormalTok{(sims_to_run)}
+\NormalTok{for(i in }\DecValTok{1}\NormalTok{:sims_to_run)\{}
+  \NormalTok{mean_control_A      <-}\StringTok{ }\KeywordTok{mean}\NormalTok{(}\KeywordTok{rnorm}\NormalTok{(sample_n, dist_mean, dist_sd))}
+  \NormalTok{mean_control_B      <-}\StringTok{ }\KeywordTok{mean}\NormalTok{(}\KeywordTok{rnorm}\NormalTok{(sample_n, dist_mean, dist_sd))}
+  \NormalTok{mean_differences[i] <-}\StringTok{ }\NormalTok{mean_control_A -}\StringTok{ }\NormalTok{mean_control_B}
+\NormalTok{\}}
+
+\CommentTok{# plot the  distribution of mean difference scores}
+
+\NormalTok{plot_df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{sim=}\DecValTok{1}\NormalTok{:sims_to_run,mean_differences)}
+
+\KeywordTok{ggplot}\NormalTok{(plot_df,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{mean_differences))+}
+\StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\DataTypeTok{bins=}\DecValTok{20}\NormalTok{, }\DataTypeTok{color=}\StringTok{"white"}\NormalTok{)+}
+\StringTok{  }\KeywordTok{theme_classic}\NormalTok{()+}
+\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"Histogram of mean differences between two samples (n=20) }\CharTok{\textbackslash{}n}
+\StringTok{          both drawn from the same normal distribution (u=75, sd=5"}\NormalTok{)+}
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"mean difference"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-115-1.pdf}
+
+\subsubsection{find the range}\label{find-the-range}
+
+We can see that chance produces some differences that are non-zero. The
+histrogram shows all the mean differences that were produced by chance.
+Most of the differences are between -2 and +2, but some of them are bit
+more negative, or a bit more positive. If we want to know what chance
+\textbf{did} do in this one simulation with 100 runs, then we need to
+find the range, the minimum and maximum value. This will tell us the
+most negative mean difference that chance did produce, and the most
+positive mean difference that chance did produce. Then, we will also
+know that chance \textbf{did not} produce any larger negative, or larger
+positive differences, in this simulation.
+
+We use the \texttt{min()} and \texttt{max()} functions to get the
+minimum and maximum value.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{min}\NormalTok{(mean_differences)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -3.59432
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{max}\NormalTok{(mean_differences)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3.926386
+\end{verbatim}
+
+We now know, that biggest negative difference was -3.594, and the
+biggest positive difference was 3.926. We also know that any mean
+difference inside the range \textbf{was produced by chance} in our
+simulation, and any mean difference outside the range \textbf{was not
+produced by chance} in our simulation
+
+\subsubsection{Make inferences}\label{make-inferences}
+
+This part requires you to think about the answers. Let's go through some
+scenario's.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  You sample 20 numbers from a normal distribution with mean = 75, and
+  standard deviation =5. The mean of your sample is 76. Then, you take
+  another sample of the same size, from the same distribution, and the
+  mean of your second sample is 78. The mean difference is +1 (or -1,
+  depending on how you take the difference)
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    \textbf{Question}: According to the histogram did a mean difference
+    of 1 or -1 occur by chance?
+  \item
+    \textbf{Answer}: Yes, it is inside the range
+  \end{enumerate}
+\item
+  Same as above, but the mean of your first sample is 74, and the mean
+  of your second sample is 80, showing a mean difference of 6, or -6.
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    \textbf{Question}: According to the histogram did a mean difference
+    of 6 or -6 occur by chance?
+  \item
+    \textbf{Answer}: No, it is outside the range
+  \end{enumerate}
+\item
+  You run an experiment. Group A recieves additional instruction that
+  shoul make them do better on a test. Group B takes the test, but
+  without the instruction. There are 20 people in each group. You have a
+  pretty good idea that group B's test scores will be coming from a
+  normal distribution with mean = 75, and standard deviation = 5. You
+  know this because you have given the test many times, and this is what
+  the distribution usually looks like. You are making an educated guess.
+  You find that the mean test performance for Group A (with additional
+  instruction) was 76\%, and the mean test performance for Group B (no
+  additional instruction) was 75\%. The mean difference has an absolute
+  value of +1.
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    \textbf{Question \#1}: According to the histogram, could chance
+    alone have produced a mean absolute difference of +1?
+  \item
+    \textbf{Answer}: Yes, it is inside the range
+  \item
+    \textbf{Question \#2}: It looks like Group A did better on the test
+    (on average), by 1\%, compared to the control group B. Are you
+    willing to believe that your additional instruction \textbf{caused
+    the increase in test performance}?
+  \item
+    \textbf{Answer}: The answer is up to you. There is no correct
+    answer. It could easily be the case that your additional instruction
+    did not do anything at all, and that the difference in mean test
+    performance was produced by chance. My inference is that I do not
+    know if my instruction did anything, I can't tell it's potential
+    influence from chance.
+  \end{enumerate}
+\item
+  Same as 3, except the group mean for A (receiving instruction) is
+  90\%. The group mean for B (no instruction control) is 75\%. The
+  absolute mean difference is 15\%.
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    \textbf{Question \#1}: According to the histogram, could chance
+    alone have produced a mean absolute difference of +15?
+  \item
+    \textbf{Answer}: No, it is well outside the range
+  \item
+    \textbf{Question \#2}: It looks like Group A did better on the test
+    (on average), by 15\%, compared to the control group B. Are you
+    willing to believe that your additional instruction \textbf{caused
+    the increase in test performance}?
+  \item
+    \textbf{Answer}: The answer is up to you. There is no correct
+    answer. You know from the simulation that chance never produced a
+    difference this big, and that that producing a difference this big
+    by chance would be like winning the lottery (almost never happens to
+    you). My inference is that I believe chance did not produce the
+    difference, I'm willing to believe that my instructional did cause
+    the difference.
+  \end{enumerate}
+\end{enumerate}
+
+\subsubsection{Planning your experiment}\label{planning-your-experiment}
+
+We've been talking about a hypothetical experiment where an instructor
+tests whether group A does better (when receiving additional
+instruction) on a test, compared to a group that does receives no
+additional instruction and just takes the test.
+
+If this hypothetical instructor wanted to make an experiment, they would
+get to choose things like how many subjects they will put in each
+condition. How many subjects should they plan to get?
+
+\textbf{The number of subjects they plan to get will change what chance
+can do, and will change the sensitivity of their experiment to detect
+differences of various sizes, that are not due to chance}.
+
+We can use the simulation process to make informed decisions about how
+many subjects to recruit for an experiment. This is called
+\textbf{sample-size planning}. There are two goals here. The instructor
+might have a first goal in mind. They may be only interested in adopting
+a new method for instruction, if it actually improves test performance
+beyond more than 1\% (compared to control). Differences of less than 1\%
+are just not worth it for the instructor. They want bigger differences,
+they want to help their students improve more than 1\%.
+
+One problem for the instructor, is that they just don't know in advance
+how good their new teaching materials will be. Some of them will be good
+and produce bigger differences, and some of them won't. The size of the
+difference from the manipulation can be unknown. However, this doesn't
+really matter for planning the experiment. The instructor wants to know
+that they can \textbf{find} or detect any real difference (not due to
+chance) that is say 2\% or bigger. We can use the simulation to figure
+out roughly (or more exactly, depending on how much we work at it) how
+many subjects are needed to detect difference of at least 2\%.
+
+Notice, from our prior simulation, chance does produce differences of
+2\% some of the time (given 100 runs). The task now is to re-run the
+simulation, but use different numbers of subjects to figure out how many
+subjects are needed to always detect differences of 2\%. To be simple
+about this, we are interested in producing a distribution of mean
+differences that never produces a mean difference of -2\% to + 2\% (not
+once out of 100 times). You can re-run this code, and change N until the
+min and max are always smaller than -2 to +2.
+
+The code starts out exactly as it was before. You should change the
+number for \texttt{sample\_n}. As you make the number bigger, the range
+(min and max) of the mean differences by chance will get smaller and
+smaller. Eventually it will be smaller than -2 to +2. When you get it
+this small, then the N that you used is your answer. Use that many
+subjects. If you run your experiment with that many subjects,
+\textbf{AND} you find a difference or 2 or greater, then you know that
+chance does not do this even 1 times out of 100.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(ggplot2)}
+
+\CommentTok{# set paramaters of simulation}
+
+\NormalTok{sims_to_run <-}\StringTok{ }\DecValTok{100}
+\NormalTok{sample_n   <-}\StringTok{ }\DecValTok{20}
+\NormalTok{dist_mean  <-}\StringTok{ }\DecValTok{75}
+\NormalTok{dist_sd    <-}\StringTok{ }\DecValTok{5}
+
+\CommentTok{# run simulation}
+
+\NormalTok{mean_differences <-}\StringTok{ }\KeywordTok{length}\NormalTok{(sims_to_run)}
+\NormalTok{for(i in }\DecValTok{1}\NormalTok{:sims_to_run)\{}
+  \NormalTok{mean_control_A      <-}\StringTok{ }\KeywordTok{mean}\NormalTok{(}\KeywordTok{rnorm}\NormalTok{(sample_n, dist_mean, dist_sd))}
+  \NormalTok{mean_control_B      <-}\StringTok{ }\KeywordTok{mean}\NormalTok{(}\KeywordTok{rnorm}\NormalTok{(sample_n, dist_mean, dist_sd))}
+  \NormalTok{mean_differences[i] <-}\StringTok{ }\NormalTok{mean_control_A -}\StringTok{ }\NormalTok{mean_control_B}
+\NormalTok{\}}
+
+\CommentTok{# plot the  distribution of mean difference scores}
+
+\NormalTok{plot_df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{sim=}\DecValTok{1}\NormalTok{:sims_to_run,mean_differences)}
+
+\KeywordTok{ggplot}\NormalTok{(plot_df,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{mean_differences))+}
+\StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\DataTypeTok{bins=}\DecValTok{20}\NormalTok{, }\DataTypeTok{color=}\StringTok{"white"}\NormalTok{)+}
+\StringTok{  }\KeywordTok{theme_classic}\NormalTok{()+}
+\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"Histogram of mean differences between two samples (n=20) }\CharTok{\textbackslash{}n}
+\StringTok{          both drawn from the same normal distribution (u=75, sd=5"}\NormalTok{)+}
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"mean difference"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-117-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{min}\NormalTok{(mean_differences)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -4.169135
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{max}\NormalTok{(mean_differences)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3.619899
+\end{verbatim}
+
+\subsection{Crumping real data}\label{crumping-real-data}
+
+In this example we look at how you can run a Crump test to evaluate the
+results in a published paper. The goal of this is to build up your
+intutions about whether or not an observed difference could have been
+caused by chance. We take many liberties, and this is not an exact test
+of anything. However, we will see how a series of rough, and reasonable
+assumptions can be made to simulate the results of published
+experiments, even when exact information is not provided in the paper.
+
+\subsubsection{Test-enhanced learning}\label{test-enhanced-learning}
+
+We have already been using an educational example. We've been talking
+about a manipulation that might be employed to help students learn
+something better than they otherwise would without the manipulation.
+
+Research in Cognitive Psychology has discovered clear evidence of some
+teaching practices that really work to enhance memory and comprehension.
+On of these practices is called test-enhanced learning. Students who
+study material, and take a quick test (quiz) while they study, do better
+at remember the material compared to students who just studied the whole
+time and did not take a quiz (why do you think we have so many quizzes,
+in the textbook and for this class? This is why. Prior research shows
+this will improve your memory for the content, so we are asking you to
+take the quizzes so that it helps you learn!).
+
+Here is a link to a
+\href{https://www.jstor.org/stable/pdf/40064526.pdf?casa_token=jMQnevvTRoIAAAAA:J96DQ0EHWCDKvjV3D-OdQ7TFnJ_DTZEz_G6zG1YMstqGu7fuzjzM0V4PiNREvB1sfLxTXn68FpHhoIUFpOx9p5fjsB7hcqQTUCQix9jxdj_hx-zqoZ8}{paper
+demonstrating the test-enhanced learning effect}.
+
+The citation is: Roediger III, H. L., \& Karpicke, J. D. (2006).
+Test-enhanced learning: Taking memory tests improves long-term
+retention. Psychological science, 17(3), 249-255.
+
+\subsubsection{Brief summary}\label{brief-summary}
+
+This is really brief. The subjects learned about some things in two
+conditions. In one condition (study-study) they studied some things,
+then studied them again. In the other condition (study-test) they
+studied some things, then took a quiz about the things rather then
+studying them one more time.
+
+Everyone received follow up tests to see what they learned and
+remembered. They came back one week later and took the test. The
+researchers measured the mean proportion of things remembered in both
+conditions. They found the study-test condition had a higher mean
+proportion than the study-study condition. So, the difference between
+the mean proportions suggest that taking a quick test after studying was
+beneficial for remembering the content. The researchers also conducted
+statistical tests, and they concluded the difference they found was not
+likely due to chance. Let's apply the Crump test to their findings, and
+see if we come to the same conclusion about the role of chance.
+
+\subsubsection{Estimate the paramaters of the
+distribution}\label{estimate-the-paramaters-of-the-distribution}
+
+To do the Crump test, we need to make assumptions about where out sample
+data is coming from. Download the paper from the link, then look at
+Figure 1. We will estimate our distribution by looking at this figure.
+We will be doing \textbf{informed guesstimation} (a real word I just
+made up).
+
+Look only at the two bars for the \texttt{1\ week} condition. There are
+two bars there, one for each group. First, what is the overall mean for
+these two bars? We don't know, we have to \textbf{visually guesstimate}
+that. One bare is below .5 on the y-axis, and the other bar is above .5
+on the y-axis. For simplicity sake, I will guesstimate that the mean is
+.5\ldots{}I that right. I made the graph much bigger on my computer and
+drew a line across, the middle is probably more like .48 (more precise
+guesstimation). So, we will set the mean of our normal distribution for
+the Crump test to be mean =.48.
+
+What should our standard deviation be? This is a little bit nuanced, pay
+close attention. Read the description of the figure. What does it say
+about the error bars? It says they are \textbf{standard errors of the
+mean}.
+
+Guess what, if you remember from the textbook and the lecture, the
+\textbf{standard deviation} of the sampling distribution of the sample
+means, IS \textbf{the standard error of the mean}. So, we can use the
+standard error of the mean from the figure to help us with our
+simulation.
+
+How big is one standard error on the figure? I'm going to guesstimate
+that at about .02. It's not .1, that's difference say between .5, and
+.6.. That's too big. It's smaller than half of that .05. In fact two
+standard errors (the whole line from top hat to bottom hat\ldots{}the
+little ticks) seems smaller thant .05, I'd say the total width is about
+.04. But, .04 is for two standard errors, so that's where I get my
+guesstimate of .02 for one standard error.
+
+Finally, how many subjects were in each condition? There were a total of
+120 subjects, and they each contributed data in both conditions
+(study-study \& study-test). So, our N is 120.
+
+\subsubsection{Findings from the original
+study}\label{findings-from-the-original-study}
+
+One week after the initial learning conditions, subjects came back and
+took a retention test to see how much they learned. The mean proportion
+``idea units'' recalled was:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  study-study : 42\% or .42
+\item
+  study-test : 56\% or .56
+\end{enumerate}
+
+The mean difference was .56-.42 = .14 or a whopping 14\% improvements.
+That's actually pretty big.
+
+What we want to know is whether chance could produce a difference of
+14\%, or .14, just by itself.
+
+\subsubsection{Run the simulation}\label{run-the-simulation}
+
+I think this is how the simulation should work. We can run it, then look
+to see if a difference of .14 can happen by chance 1 out of 100 times.
+There is a wrinkle in this experiment, and to be honest, I'm pretty sure
+I've done it correctly, but perhaps I made a mistake. It's ok to put
+things out there and be corrected later. Maybe one of you can correct me
+if I'm wrong.
+
+The code is almost the same as what we did before. I changed the
+\texttt{sample\_n} to 120, the \texttt{dist\_mean} to .48, and the
+\texttt{dist\_sd} to .02. These were our guesstimates for the
+distribution paramaters.
+
+Notice however, that I commented out two lines. These are the green
+lines inside the simulation. I do not use 120 for the number of samples.
+Instead I only take 1 sample for each group. Why did I do this, and not
+use 120? I did this because we are using the standard deviation of the
+sample means (the standard error of the mean from the figure), and not
+the standard deviation of each subjects proportion recalled (which isn't
+really a thing, because each subject gives one number, one proportion,
+reflecting the proportion of idea units). For this reason, we shouldn't
+use 120, we are not taking 120 samples and then computing the mean,
+instead we are taking 1 sample each from the presumed sampling
+distribution of the sample means, and then taking the difference. This I
+know is a big mouthful. Please correct me if I am wrong here. We all
+need to understand what would be the appropriate thing to do. If you can
+make a justifiable and reasonable argument about what should be done
+here, then you are really learning the concepts behind what we are
+doing.
+
+Let's see how the simulation would work:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# set paramaters of simulation}
+
+\NormalTok{sims_to_run <-}\StringTok{ }\DecValTok{100}
+\NormalTok{sample_n   <-}\StringTok{ }\DecValTok{120}
+\NormalTok{dist_mean  <-}\StringTok{ }\NormalTok{.}\DecValTok{48}
+\NormalTok{dist_sd    <-}\StringTok{ }\NormalTok{.}\DecValTok{02}
+
+\CommentTok{# run simulation}
+
+\NormalTok{mean_differences <-}\StringTok{ }\KeywordTok{length}\NormalTok{(sims_to_run)}
+\NormalTok{for(i in }\DecValTok{1}\NormalTok{:sims_to_run)\{}
+  \CommentTok{#mean_control_A      <- mean(rnorm(sample_n, dist_mean, dist_sd))}
+  \CommentTok{#mean_control_B      <- mean(rnorm(sample_n, dist_mean, dist_sd))}
+  \NormalTok{mean_control_A      <-}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{1}\NormalTok{, dist_mean, dist_sd)}
+  \NormalTok{mean_control_B      <-}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{1}\NormalTok{, dist_mean, dist_sd)}
+  \NormalTok{mean_differences[i] <-}\StringTok{ }\NormalTok{mean_control_A -}\StringTok{ }\NormalTok{mean_control_B}
+\NormalTok{\}}
+
+\CommentTok{# plot the  distribution of mean difference scores}
+
+\NormalTok{plot_df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{sim=}\DecValTok{1}\NormalTok{:sims_to_run,mean_differences)}
+
+\KeywordTok{ggplot}\NormalTok{(plot_df,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{mean_differences))+}
+\StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\DataTypeTok{bins=}\DecValTok{20}\NormalTok{, }\DataTypeTok{color=}\StringTok{"white"}\NormalTok{)+}
+\StringTok{  }\KeywordTok{theme_classic}\NormalTok{()+}
+\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"Histogram of mean differences in proportion remembered"}\NormalTok{)+}
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"mean difference"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-118-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{min}\NormalTok{(mean_differences)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -0.07402127
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{max}\NormalTok{(mean_differences)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.06086386
+\end{verbatim}
+
+According to the simulation, the biggest negative difference was -0.074,
+and the biggest positive difference was 0.061. We also know that any
+mean difference inside the range \textbf{was produced by chance} in our
+simulation, and any mean difference outside the range \textbf{was not
+produced by chance} in our simulation.
+
+Clearly, a difference of .14 or 14\% was never produced by chance, it
+was completely outside the range. Based on this anlaysis we can be
+fairly confident that the test-enhanced learning effect was not a fluke,
+it was not produced by chance. We have evidence to support the claim
+that testing enhances learning, and because of this we test you while
+you are learning to enhance your learning while you learn.
+
+\subsection{The Randomization Test}\label{the-randomization-test}
+
+Unlike the Crump test, which was made to help you understand some basic
+ideas about how chnace can do things, the Randomization test is a
+well-known, very real, statistical test for making inferences about what
+chance can do. You will see that it is very similar to the Crump test in
+many respects. In fact, we might say that the Crump test is really just
+a randomization test.
+
+You read about the randomization test in the textbook. We won't repeat
+much about that here, but we will show you how to do one in R.
+
+To briefly remind you, in a randomization test we first obtain some data
+from an experiment. So we have a sample of numbers for group A, and
+Group B. We calculate the means for both groups (or other statistic we
+want to know about), and then see if they are different. We want to know
+if the difference we found could be produced by chance, so we conduct
+the randomization test on using the sample data that we have.
+
+The major difference between the Crump test and the Randomization test,
+is that we make no assumption about the distribution that the sample
+data came from. We just randomize the sample data. We do:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Take all the numbers from group A and B, put them in the same pot.
+  Then randomly take the numbers out and assign them back into A and B.
+  Then, compute the means, and the difference, and save the difference
+\item
+  Do this over and over
+\item
+  Plot the histogram of the mean differences obtained by shuffling the
+  numbers. This shows you what chance can do.
+\end{enumerate}
+
+\subsubsection{Run the randomization
+test}\label{run-the-randomization-test}
+
+Note, this time when we calculate the mean differences for each new
+group, we will take the absolute value of the mean difference.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# get sample numbers from one experiment}
+\NormalTok{Group_A <-}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{20}\NormalTok{,}\DecValTok{50}\NormalTok{,}\DecValTok{10}\NormalTok{)}
+\NormalTok{Group_B <-}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{20}\NormalTok{,}\DecValTok{50}\NormalTok{,}\DecValTok{10}\NormalTok{)}
+
+\CommentTok{# randomize the numbers, compute mean difference, save the mean difference}
+\NormalTok{mean_differences <-}\StringTok{ }\KeywordTok{length}\NormalTok{(}\DecValTok{1000}\NormalTok{)}
+\NormalTok{for(i in }\DecValTok{1}\NormalTok{:}\DecValTok{1000}\NormalTok{)\{}
+  \NormalTok{shuffle_numbers <-}\StringTok{ }\KeywordTok{sample}\NormalTok{(}\KeywordTok{c}\NormalTok{(Group_A, Group_B), }\DataTypeTok{replace=}\OtherTok{FALSE}\NormalTok{)}
+  \NormalTok{new_group_A <-}\StringTok{ }\NormalTok{shuffle_numbers[}\DecValTok{1}\NormalTok{:}\DecValTok{20}\NormalTok{]}
+  \NormalTok{new_group_B <-}\StringTok{ }\NormalTok{shuffle_numbers[}\DecValTok{21}\NormalTok{:}\DecValTok{40}\NormalTok{]}
+  \NormalTok{mean_differences[i] <-}\StringTok{ }\KeywordTok{abs}\NormalTok{(}\KeywordTok{mean}\NormalTok{(new_group_A)-}\KeywordTok{mean}\NormalTok{(new_group_B))}
+\NormalTok{\}}
+
+\CommentTok{# plot the histogram}
+\NormalTok{plot_df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{sim=}\DecValTok{1}\NormalTok{:}\DecValTok{1000}\NormalTok{,mean_differences)}
+
+\KeywordTok{ggplot}\NormalTok{(plot_df,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{mean_differences))+}
+\StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\DataTypeTok{bins=}\DecValTok{20}\NormalTok{, }\DataTypeTok{color=}\StringTok{"white"}\NormalTok{)+}
+\StringTok{  }\KeywordTok{theme_classic}\NormalTok{()+}
+\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"Histogram of mean differences"}\NormalTok{)+}
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"mean difference"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-119-1.pdf}
+
+The histogram shows us the kinds of absolute mean difference that happen
+by chance alone. So, in this data, a mean difference of 10 hardly
+wouldn't happen very often. A difference between 0 and 2.5 happens
+fairly often by chance.
+
+\subsubsection{Decision criteria}\label{decision-criteria}
+
+When you are determining whether or not chance could have produced a
+difference in your data, you might want to consider how stringent you
+want to be about accepting the possibility that chance did something.
+For example chance could produce a difference of 0 or greater 100\% of
+the time. Or, it produces a difference of 10 or greater, a very small
+(less than .00001\% of the time). How big does the difference need to
+be, before you will consider the possibility that chance probably didn't
+cause the difference.
+
+\textbf{Alpha}. Researchers often set what is called an \textbf{alpha}
+criteria. This draws a line in the histogram, and says I will be
+comfortable assuming that chance did not produce my differences, when
+chance produces difference less than X percent of the time. This X
+percent, is the alpha value. For example, it is often set to 5\%, or
+\textbf{p \textless{}= .05}.
+
+Where is 5\% of the time on our histogram? What mean difference or
+greater happens less than or equal to 5\% of the time.
+
+\subsubsection{Finding the critical
+region}\label{finding-the-critical-region}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Take the simulated mean difference scores and order them from smallest
+  to largest
+\item
+  We have 1000 numbers, ordered from smallest to largest.
+\item
+  The number in position 950 is the alpha location. All of the numbers
+  from position 0 to 950, reflect 95\% of the numbers. What is left over
+  is 5\% of the numbers.
+\item
+  Find the alpha cut-off, and plot it on the histogram
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ordered_differences <-}\StringTok{ }\KeywordTok{sort}\NormalTok{(mean_differences) }\CommentTok{# sort}
+\NormalTok{alpha_cutoff <-}\StringTok{ }\NormalTok{ordered_differences[}\DecValTok{950}\NormalTok{] }\CommentTok{# pick 950th number}
+\NormalTok{alpha_cutoff}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 7.596646
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# add to histogram using vline}
+
+\KeywordTok{ggplot}\NormalTok{(plot_df,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{mean_differences))+}
+\StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\DataTypeTok{bins=}\DecValTok{20}\NormalTok{, }\DataTypeTok{color=}\StringTok{"white"}\NormalTok{)+}
+\StringTok{  }\KeywordTok{geom_vline}\NormalTok{(}\DataTypeTok{xintercept=}\NormalTok{alpha_cutoff)+}
+\StringTok{  }\KeywordTok{theme_classic}\NormalTok{()+}
+\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"Histogram of mean differences"}\NormalTok{)+}
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"absolute mean difference"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-120-1.pdf}
+
+Ok, so our alpha criterion or cutoff is located at 7.6 on the x-xaxis.
+This shows us that mean differences of 7.6 or larger happen only 5\% of
+the time by chance.
+
+You could use this information to make an inference about whether or not
+chance produced the difference in your experiments
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  When the mean difference is 7.6 or larger, you might conclude that
+  chance did not produce the difference
+\item
+  When the mean difference is less than 7.6, you might conclude that
+  chance could hve produced the mean difference.
+\end{enumerate}
+
+It's up to you to set your alpha criterion. In practice it is often set
+at p=.05. But, you could be more conservative and set it to p=.01. Or
+more liberal and set it to p=.1. It's up to you.
+
+\subsection{Generalization Exercise}\label{generalization-exercise-3}
+
+Complete the generalization exercise described in your R Markdown
+document for this lab.
+
+\subsection{Writing asignment}\label{writing-asignment-3}
+
+Complete the writing assignment described in your R Markdown document
+for this lab. When you have finished everything. Knit the document and
+hand in your stuff (you can submit your .RMD file to blackboard if it
+does not knit.)
 
 \section{Excel}\label{excel-4}
 
@@ -3333,11 +4134,11 @@ results described in the paper.
 \subsection{STUDY DESCRIPTION}\label{study-description}
 
 Parents often sing to their children and, even as infants, children
-listen to and look at their parents while they are singing.Research by
+listen to and look at their parents while they are singing. Research by
 Mehr, Song, and Spelke (2016) sought to explore the psychological
 function that music has for parents and infants, by examining the
 hypothesis that particular melodies convey important social information
-to infants.Specifically, melodies convey information about social
+to infants. Specifically, melodies convey information about social
 affiliation.
 
 The authors argue that melodies are shared within social groups. Whereas
@@ -3553,7 +4354,7 @@ for each infant as a dot.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-120-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-126-1.pdf}
 
 That's helpful, we see that the dots are all over the place. Let's do a
 histrogram, so we can get a better sense of the frequency of different
@@ -3565,7 +4366,7 @@ proportions.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-121-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-127-1.pdf}
 
 \subsubsection{Look at the descriptives}\label{look-at-the-descriptives}
 
@@ -3683,7 +4484,7 @@ into the variable \texttt{baseline}. We will make a new variable called
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-124-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-130-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3691,7 +4492,7 @@ into the variable \texttt{baseline}. We will make a new variable called
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-124-2.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-130-2.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3932,7 +4733,7 @@ still kind of in a similar ballpark.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-129-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-135-1.pdf}
 
 \subsubsection{Dot plot with means and raw
 scores}\label{dot-plot-with-means-and-raw-scores}
@@ -3965,7 +4766,7 @@ data frame we are looking for.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-130-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-136-1.pdf}
 
 \subsubsection{Bar plot}\label{bar-plot}
 
@@ -3995,7 +4796,7 @@ Also look for these changes.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-131-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-137-1.pdf}
 
 Ok, we see the bars and some of the dots, but not all of them. What is
 going on? Remember, ggplot2 works in layers. Whatever layer you add
@@ -4011,7 +4812,7 @@ Let's change the order of the layers so the dot's go on top of the bars.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-132-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-138-1.pdf}
 
 \subsubsection{Bar plot with error bars}\label{bar-plot-with-error-bars}
 
@@ -4056,7 +4857,7 @@ Baseline and Test, and then add error bars to the plot.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-133-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-139-1.pdf}
 
 \textbf{Question:} What is one reason why these error bars (standard
 error of the mean difference between Baseline and Test) are appropriate
@@ -4092,7 +4893,7 @@ differences scores.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-134-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-140-1.pdf}
 
 \textbf{Question:} Why is is it more appropriate to put the standard
 error of the difference on this bar graph? What important aspects of the
@@ -4139,7 +4940,7 @@ bars.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-135-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-141-1.pdf}
 
 Notice that the 95\% confidence intervals around the mean are wider than
 the SEM error bars from the previous graph. These new confidence
@@ -4182,7 +4983,7 @@ What do you think?
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-136-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-142-1.pdf}
 \#\#\#\# Simulating the mean differences
 
 We can do the simulation slightly differently to give us a different
@@ -4213,7 +5014,7 @@ already made from the data.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-137-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-143-1.pdf}
 
 \section{Excel}\label{excel-5}
 
@@ -4473,7 +5274,7 @@ errors and put them in a new data frame called \texttt{decriptive\_df}.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-142-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-148-1.pdf}
 
 This plot is very useful. First, we can see the numbers in our dependent
 measure are behaving sensibly. We know that the numbers have to be
@@ -4663,13 +5464,25 @@ time.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-145-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-151-1.pdf}
 
 Well, we didn't make the exact graph. We have the bars, the error bars,
 and we added the individual scores because they are useful to look at.
 Otherwise, it's the same graph (except the the ordering of bars is
 determined alphabetically here. We change that in ggplot, but we won't
 do that today.)
+
+\subsection{Generalization Exercise}\label{generalization-exercise-4}
+
+Complete the generalization exercise described in your R Markdown
+document for this lab.
+
+\subsection{Writing asignment}\label{writing-asignment-4}
+
+Complete the writing assignment described in your R Markdown document
+for this lab. When you have finished everything. Knit the document and
+hand in your stuff (you can submit your .RMD file to blackboard if it
+does not knit.)
 
 \section{Excel}\label{excel-6}
 
@@ -4683,7 +5496,7 @@ How to do it in SPSS
 
 How to do it in JAMOVI
 
-\chapter{Lab 8: One-way ANOVA}\label{lab-8-one-way-anova}
+\chapter{Lab 8 One-way ANOVA}\label{lab-8-one-way-anova}
 
 This lab is modified and extended from
 \href{https://sites.trinity.edu/osl}{Open Stats Labs}. Thanks to Open
@@ -4937,7 +5750,7 @@ doing things this way.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-149-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-155-1.pdf}
 
 There we have it. A nice graph showing us everything. We can see there
 was a lot of differences at the level of individual subjects. Some
@@ -5599,7 +6412,7 @@ other software programs. You are lucky to be learning R.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-159-1.pdf}
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-165-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5688,6 +6501,18 @@ That's ANOVA. Come back next week for another ANOVA tutorial, this time
 using within-subject data. It's called a repeated measures ANOVA, and
 it's what's happening next week.
 
+\subsection{Generalization Exercise}\label{generalization-exercise-5}
+
+Complete the generalization exercise described in your R Markdown
+document for this lab.
+
+\subsection{Writing asignment}\label{writing-asignment-5}
+
+Complete the writing assignment described in your R Markdown document
+for this lab. When you have finished everything. Knit the document and
+hand in your stuff (you can submit your .RMD file to blackboard if it
+does not knit.)
+
 \section{Excel}\label{excel-7}
 
 How to do it in Excel
@@ -5700,39 +6525,734 @@ How to do it in SPSS
 
 How to do it in JAMOVI
 
-\chapter{Lab 9: One-way ANOVA}\label{lab-9-one-way-anova}
+\chapter{Lab 9 Repeated Measures
+ANOVA}\label{lab-9-repeated-measures-anova}
+
+\section{Betcha can't type JHDBZKCO very fast on your first
+try}\label{betcha-cant-type-jhdbzkco-very-fast-on-your-first-try}
+
+This lab activity uses the data from Behmer \& Crump (2017) to teach
+one-factor repeated measures ANOVA with-up follow comparisons
+
+\subsection{STUDY DESCRIPTION}\label{study-description-3}
+
+Behmer \& Crump (2017) used the everyday task of typing on a computer
+keyboard to ask questions about how people learn to put sequences of
+actions together. Whenever you type a series of letters on the keyboard,
+you are putting a sequence of actions together, so typing is task that
+could be used to measure skilled sequencing. Typing also happens to be a
+convenient task for measuring sequencing. For example, every time a
+person types a letter, the timing of the button press and the letter
+pressed can be measured and stored for later analysis.
+
+Behmer \& Crump were interested in asking a few different questions,
+however, we will simplify everything and talk about replication. First
+we describe an interesting finding from previous research. Behmer \&
+Crump repeated an experiment that should alos produce this same finding.
+If they succeed in doing this, it means the finding can be replicated,
+and that it happens in more than one lab.
+
+\textbf{Finding from previous resaearch:} Prior research showed that
+typists do something funny. Skilled typists can type normal words very
+fast. This suggests they know how to locate all of the letters on the
+keyboard, and can press each letter very quickly to type words. That
+part isn't particulary funny. However, if you take really skilled
+typists and make them type random letters like this: kwitb dhhgjtryq
+xkldpt mazhyffdt, guess what happens? They slow down a lot. It's kind of
+weird that a typist would slow down, after all they can type letters
+really fast when they appear in words, but not when they appear in
+random orders\ldots{}what gives? Last, it turns out that typists are
+kind of in the middle in terms of speed, if you ask them to type
+non-words that have similar properties to words, such as: quenp hamlke
+phwempy.
+
+To summarize, prior research showed that typing speed changes as a
+function of the structure of the text, roughly in this order from
+fastest to slowest.
+
+(FASTEST) Normal Words \textless{} Word-like Non-words \textless{}
+Random strings (SLOWEST)
+
+\textbf{Replication question:} Behmer \& Crump also measured typists
+while they typed words, non-words that were english-like, and random
+strings. They had some additional things they were interested in, but
+for us, we are interested in whether they would show the same effect.
+Would they replicate the patten: Normal words (Fastest) \textless{}
+Word-like Non-words (medium) \textless{}- Random strings (Slowest)?
+
+\subsection{Study Methods}\label{study-methods-1}
+
+The authors conducted a repeated measures experiment. A total of 38
+subjects were used for the analysis.
+
+\textbf{Independent Variable}: The IV Stimulus or typing material had
+three levels: Normal, Bigrams, and Random. Normal refers to normal 5
+letter english words (like truck, or plant). Bigrams refers to non-words
+that have properties similar to words (e.g., phemt quilp). Random refers
+to 5 letter strings whose letters were totally random (qmklt gdrzn
+lprni).
+
+\textbf{Dependent Variables}: There were three dependent variables, that
+all measured different aspects of typing performance. Reaction times
+(RTs) were defined as the temporal interval between seeing a stimulus
+(to type), and then starting to type it (first key press).
+Interkeystroke intervals (IKSIs) are the times between each keypress.
+Last, accuracy was also measured (correct or incorrect keypresses)
+
+\textbf{The task}: Participants (who happened to also be students from
+Brooklyn College) sat in front a computer. They were presented with one
+stimulus (word, bigrams, or random) at a time. As soon as they saw the
+string of letters, they typed it as quickly and accurately as they
+could, then they moved on to the next trial.
+
+Reminder, this is a repeated measures design because each participant
+typed letter strings from the word, bigrams, and random conditions.
 
 \section{Lab Skills Learned}\label{lab-skills-learned-3}
+
+\begin{itemize}
+\tightlist
+\item
+  Conducting a one-factor repeated measures ANOVA
+\item
+  Conducting follow-up comparisons
+\end{itemize}
 
 \section{Important Stuff}\label{important-stuff-3}
 
 \begin{itemize}
 \tightlist
 \item
-  citation: Rosenbaum, D., Mama, Y., \& Algom, D. (2017). Stand by Your
-  Stroop: Standing Up Enhances Selective Attention and Cognitive
-  Control. Psychological science, 28(12), 1864-1867.
+  citation: Behmer, Lawrence P., Crump, M. J. C. (2017). Spatial
+  Knowledge during Skilled Action Sequencing: Hierarchical versus
+  Non-Hierarchical Representations. Attention, Perception \&
+  Psychophysics, 79, 2435-2448.
 \item
-  \href{http://journals.sagepub.com/doi/abs/10.1177/0956797617721270?journalCode=pssa}{Link
+  \href{https://github.com/CrumpLab/CrumpLab.github.io/raw/master/files/8753/Behmer\%20and\%20Crump\%20-\%202017.pdf}{Link
   to .pdf of article}
 \item
-  \href{}{Data in .csv format}
-\item
-  \href{}{Data in SPSS format}
+  \href{https://github.com/CrumpLab/statisticsLab/raw/master/data/exp1_BehmerCrumpAPP.csv}{Data
+  in .csv format}
 \end{itemize}
-
-\section{Outline of Problem to
-solve}\label{outline-of-problem-to-solve-4}
-
-Stuff we need to say in general
-
-\subsection{important things}\label{important-things-4}
-
-Other things to say
 
 \section{R}\label{r-9}
 
-How to do it in R
+\subsection{Load the data}\label{load-the-data-3}
+
+Remember that any line with a \# makes a comment and the code does not
+run. Below is how to load the .csv data from the online repository, or
+from a local file (you need to change the file path to where the local
+file is, if you downloaded it). The data contains all of the measures
+and conditions from Experiment 1 in the paper.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(data.table)}
+\CommentTok{#all_data <- fread("https://github.com/CrumpLab/statisticsLab/raw/master/data/exp1_BehmerCrumpAPP.csv")}
+\NormalTok{all_data <-}\StringTok{ }\KeywordTok{fread}\NormalTok{(}\StringTok{"data/exp1_BehmerCrumpAPP.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Inspect the dataframe}\label{inspect-the-dataframe-1}
+
+This will give you a big picture of the data frame. Click the button to
+view it in your browser, then take a look to see what is in it.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(summarytools)}
+\KeywordTok{view}\NormalTok{(}\KeywordTok{dfSummary}\NormalTok{(all_data[,}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{:}\DecValTok{7}\NormalTok{,}\DecValTok{10}\NormalTok{:}\DecValTok{20}\NormalTok{)]))}
+\end{Highlighting}
+\end{Shaded}
+
+Note, there is some weird stuff in code above. Normally, we would just
+write \texttt{view(dfSummary(all\_data))}, why we add this:
+\texttt{all\_data{[},c(1:7,10:20){]}}? It turns out the dfSummary
+function didn't like some of the data. In particular it didn't like the
+data in columns 8 an 9 (notice those numbers are missing, the range
+inside c is 1 to 7 and 10 to 20). It doesn't mean the data isn't there,
+just that it didn't want to display it in the viewer.
+
+\subsection{Get the data you need}\label{get-the-data-you-need-1}
+
+This data file contains all of the data from Experiment 1 in the paper.
+So, we don't need to get rid of any rows.
+
+There are numerous columns, some of them we don't need for the analysis.
+But, we'll just ignore these later when we use dplyr to group by the
+columns we want.
+
+The structure of this data a file is in long form. Every row described a
+measurement for a single keypress. For example, the first 5 rows, have
+data for the timing of the first 5 keypresses, that the first subject
+made to type the first string of letters they saw. In total there were
+85,410 keypresses made. That's quite a lot.
+
+\subsubsection{The independent
+variable}\label{the-independent-variable-1}
+
+The important independent variable is in the column \texttt{Stimulus}.
+
+\begin{itemize}
+\tightlist
+\item
+  Normal (5 letter english words)
+\item
+  Bigrams (5 letter strings that kind of looked like words)
+\item
+  Random (5 letter strings that were random)
+\end{itemize}
+
+It is also important to know that the \texttt{Order} column codes the
+position for each letter, from 1 to 5.
+
+Note: there was another independent variable in the study as well. We
+talk about this later. The second IV is coded in the \texttt{Block}
+column.
+
+\begin{itemize}
+\tightlist
+\item
+  Baseline (normal typing, keyboard is visible while typing)
+\item
+  Manipulation (occluded typing, keyboard is covered while typing)
+\end{itemize}
+
+\subsubsection{The dependent variables}\label{the-dependent-variables}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \texttt{TimeFromOnset} : This column records the temporal interval in
+  milliseconds between the onset of the word and each keypress. When
+  order is 1 (first keystroke), the number here is the reaction time to
+  start typing.
+\item
+  \texttt{PureRTs} : This column contains keystroke intervals. The first
+  interval is between the onset of the word and the first keypress
+  (order 1), the second interval is between the first and second
+  keypress (order 2), and so on. \texttt{PureRTs} for orders 2 to 5,
+  represent the interkeystroke intervals reported in paper.
+\item
+  \texttt{AllCorrect} : 0 means incorrect (wrong letter was typed), 1
+  means correct (correct letter was typed)
+\end{enumerate}
+
+\subsection{Look at the data}\label{look-at-the-data-3}
+
+Remember before we do any analysis, we always want to ``look'' at the
+data. This first pass let's us know if the data ``look right''. For
+example, the data file could be messed up and maybe there aren't any
+numbers there, or maybe the numbers are just too weird.
+
+For example, this study involves reaction times: the time between seeing
+something and responding to it. If you had done a study like this
+before, you would know that it usually doesn't take people that long to
+start responding. Most reaction times will be under a second (or 1000
+millseconds). But, sometime people are little slow, and sometimes they
+do funny things like check their phone in the middle of an experiment.
+
+Before I analyze reaction time data, I often make a histrogram of all of
+the RT data, like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{hist}\NormalTok{(all_data$PureRTs)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-168-1.pdf}
+
+We can see that almost all of the reaction times are well below 5000
+milliseconds (5 seconds), which is good. Most of the time people were
+paying attention and not ``checking their phone''. Notice, the range of
+the histrogram goes out to 15,000 milliseconds. You can't see any bars
+out there (too small to notice), but there must be at least a few trials
+where somebody took 15 seconds to start responding. These are called
+outliers. We will remove them before we conduct our analysis
+
+\subsection{Look at the means}\label{look-at-the-means}
+
+As part of looking at the data, we might as well make a figure that
+shows the mean reaction times in each condition, and some error bars to
+look at the spread in each condition. The following code takes three
+important steps:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Get the means for each subject in each condition. These are put into
+  the data frame called \texttt{subject\_means}.
+\item
+  Get the means for each condition, by averaging over the means for each
+  subject. These are put into the data frame called
+  \texttt{plot\_means}.
+\item
+  Make a graph with the \texttt{plot\_means} data frame using ggplot2.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(dplyr)}
+\KeywordTok{library}\NormalTok{(ggplot2)}
+
+\NormalTok{all_data$Block<-}\KeywordTok{as.factor}\NormalTok{(all_data$Block)}
+\KeywordTok{levels}\NormalTok{(all_data$Block) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Visible keyboard"}\NormalTok{,}\StringTok{"Covered Keyboard"}\NormalTok{)}
+
+\NormalTok{## get subject mean RTs}
+
+\NormalTok{subject_means <-}\StringTok{ }\NormalTok{all_data %>%}
+\StringTok{                 }\KeywordTok{filter}\NormalTok{(Order==}\DecValTok{1}\NormalTok{, Correct==}\DecValTok{1}\NormalTok{, PureRTs<}\DecValTok{5000}\NormalTok{) %>%}
+\StringTok{                 }\KeywordTok{group_by}\NormalTok{(Subject, Block, Stimulus) %>%}
+\StringTok{                 }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{mean_rt =} \KeywordTok{mean}\NormalTok{(PureRTs))}
+
+\NormalTok{subject_means$Subject<-}\KeywordTok{as.factor}\NormalTok{(subject_means$Subject)}
+\NormalTok{subject_means$Block<-}\KeywordTok{as.factor}\NormalTok{(subject_means$Block)}
+\NormalTok{subject_means$Stimulus<-}\KeywordTok{as.factor}\NormalTok{(subject_means$Stimulus)}
+
+\NormalTok{## get condition mean RTs}
+
+\NormalTok{plot_means <-}\StringTok{ }\NormalTok{subject_means %>%}
+\StringTok{              }\KeywordTok{group_by}\NormalTok{(Block, Stimulus) %>%}
+\StringTok{              }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{means =} \KeywordTok{mean}\NormalTok{(mean_rt),}
+                        \DataTypeTok{SEs =} \KeywordTok{sd}\NormalTok{(mean_rt)/}\KeywordTok{sqrt}\NormalTok{(}\KeywordTok{length}\NormalTok{(mean_rt)))}
+
+\NormalTok{## plot the condition means}
+
+\CommentTok{# re-order stimulus factor for plotting}
+\NormalTok{plot_means$Stimulus <-}\StringTok{ }\KeywordTok{factor}\NormalTok{(plot_means$Stimulus, }\DataTypeTok{levels =} \KeywordTok{c}\NormalTok{(}\StringTok{"Normal"}\NormalTok{, }\StringTok{"Bigrams"}\NormalTok{, }\StringTok{"Random"}\NormalTok{))}
+
+\KeywordTok{ggplot}\NormalTok{(plot_means, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Stimulus, }\DataTypeTok{y=}\NormalTok{means, }\DataTypeTok{group=}\NormalTok{Block, }\DataTypeTok{color=}\NormalTok{Block))+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{()+}
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{()+}
+\StringTok{  }\KeywordTok{geom_errorbar}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{ymin=}\NormalTok{means-SEs, }\DataTypeTok{ymax=}\NormalTok{means+SEs), }\DataTypeTok{width=}\NormalTok{.}\DecValTok{2}\NormalTok{)+}
+\StringTok{  }\KeywordTok{theme_classic}\NormalTok{()+}
+\StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Mean Reaction Time (ms)"}\NormalTok{)+}
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Typing Material"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-169-1.pdf}
+
+Alright, we made things a little bit more complicated than they need to
+be. Our primary question is whether reaction times followed this
+pattern: Normal \textless{} Bigrams \textless{} Random. We can see the
+means do follow this pattern. However, shouldn't we only be looking at
+three means, why are their six means, and two lines?
+
+The above code included the second independent variable \texttt{Block}.
+As a result, you are seeing the means for Typing material when subjects
+could see the keyboard, and when the couldn't see the keyboard. We will
+come back to this later. For now, let's ignore the Block condition, and
+find the means for the Typing Material IV by averaging over the Block
+conditions. We run the same code as above, by take out \texttt{Block},
+in the \texttt{group\_by} function. We also take \texttt{Block} out the
+ggplot function.
+
+\textbf{VERY IMPORTANT}: We did something in the above code that we
+didn't point out. We filtered the data before we found the means. For
+most of the datasets in other labs, we given you data that is more or
+less ready to analyse. More often than not data needs to be
+pre-processed, or filtered before you analyze it. We can use the
+\texttt{filter} function in \texttt{dplyr} to do our filtering.
+\texttt{filter} filters the rows for us, so we will only include the
+rows that we want.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  We want to analyze the time between the onset of the stimulus and the
+  first keystroke. The reaction times for this value are in the
+  \texttt{PureRTs} column, but this column contains other RTs that we do
+  not want to analyse. For example, the \texttt{Order} column codes for
+  the letter position in the string. We only want to analyze the rows
+  that contain a \texttt{1}, for the first position. So, that is why we
+  add \texttt{Order==1} to the filter function below.
+\item
+  We want to analyze only the reaction times that are correct. That is,
+  when the subject typed the first letter correctly, and did not make a
+  typo. Accuracy is coded in the \texttt{Correct} column, with 1 =
+  correct, and 0 = incorrect. We add \texttt{Correct==1} to the
+  filtering function.
+\end{enumerate}
+
+Note the use of \texttt{==}, that is two equal signs in a row. In R, two
+equal signs in a row has a special meaning. It means conduct a
+\texttt{logic} test to determine if one thing is the same as another.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  We want to analyze only reaction times that are ``sensible'' to
+  analyze. What does sensible mean? We don't want to analyze data that
+  is clearly garbage data. For example, if someone fell asleep at the
+  computer and didn't respond for 15 seconds, that kind of data is not
+  what we want to analyze. If we were to filter the data, and exclude
+  these kinds of \texttt{outliers}, we would be conducting an outlier
+  elimination procedure. Behmer \& Crump (2017) did this, and it is
+  commonly done in many different kinds of studies. We skip an extended
+  discussion of outlier elimination for this lab. But, we do introduce
+  the idea of doing it. We want to keep as much of the data as possible.
+  So, what we do is keep all of the RTs that are less than 5000 ms
+  (that's 5 seconds). To do this, we add \texttt{PureRTs\textless{}5000}
+  to the filter function.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## get subject mean RTs}
+
+\NormalTok{subject_means <-}\StringTok{ }\NormalTok{all_data %>%}
+\StringTok{                 }\KeywordTok{filter}\NormalTok{(Order==}\DecValTok{1}\NormalTok{, Correct==}\DecValTok{1}\NormalTok{, PureRTs<}\DecValTok{5000}\NormalTok{) %>%}
+\StringTok{                 }\KeywordTok{group_by}\NormalTok{(Subject, Stimulus) %>%}
+\StringTok{                 }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{mean_rt =} \KeywordTok{mean}\NormalTok{(PureRTs))}
+
+\NormalTok{subject_means$Subject<-}\KeywordTok{as.factor}\NormalTok{(subject_means$Subject)}
+\NormalTok{subject_means$Stimulus<-}\KeywordTok{as.factor}\NormalTok{(subject_means$Stimulus)}
+
+\NormalTok{## get condition mean RTs}
+
+\NormalTok{plot_means <-}\StringTok{ }\NormalTok{subject_means %>%}
+\StringTok{              }\KeywordTok{group_by}\NormalTok{(Stimulus) %>%}
+\StringTok{              }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{means =} \KeywordTok{mean}\NormalTok{(mean_rt),}
+                        \DataTypeTok{SEs =} \KeywordTok{sd}\NormalTok{(mean_rt)/}\KeywordTok{sqrt}\NormalTok{(}\KeywordTok{length}\NormalTok{(mean_rt)))}
+
+\NormalTok{## plot the condition means}
+
+\CommentTok{# re-order stimulus factor for plotting}
+\NormalTok{plot_means$Stimulus <-}\StringTok{ }\KeywordTok{factor}\NormalTok{(plot_means$Stimulus, }\DataTypeTok{levels =} \KeywordTok{c}\NormalTok{(}\StringTok{"Normal"}\NormalTok{, }\StringTok{"Bigrams"}\NormalTok{, }\StringTok{"Random"}\NormalTok{))}
+
+\KeywordTok{ggplot}\NormalTok{(plot_means, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Stimulus, }\DataTypeTok{y=}\NormalTok{means, }\DataTypeTok{group=}\DecValTok{1}\NormalTok{))+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{()+}
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{)+}
+\StringTok{  }\KeywordTok{geom_errorbar}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{ymin=}\NormalTok{means-SEs, }\DataTypeTok{ymax=}\NormalTok{means+SEs), }\DataTypeTok{width=}\NormalTok{.}\DecValTok{2}\NormalTok{)+}
+\StringTok{  }\KeywordTok{theme_classic}\NormalTok{()+}
+\StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Mean Reaction Time (ms)"}\NormalTok{)+}
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Typing Material"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-170-1.pdf}
+
+\subsection{Conduct the repeated Measures
+ANOVA}\label{conduct-the-repeated-measures-anova}
+
+We use the same \texttt{aov} function as we used last time. The only
+difference is that we add in a new part to the formula. Remember the
+formula for a one-factor betwee-n subjects ANOVA looked like this:
+
+\texttt{aov(\ DV\ \textasciitilde{}\ IV\ ,\ dataframe)}, where DV is the
+name of the column with your independent variable, IV is the name of the
+column with your independent variable, and \texttt{dataframe} is the
+name of your dataframe containing the means in each condition.
+
+The formula for a repeated-measures ANOVA looks like this:
+
+\texttt{aov(\ DV\ \textasciitilde{}\ IV\ +\ Error(Subject/IV),\ dataframe)}.
+We have added \texttt{+\ Error(Subject/IV)}. This tells R to use the
+appropriate error term for the repeated measures ANOVA. In the formula,
+\texttt{Subject} refers to the name of the column coding your subjects
+(make sure this is a factor in R), and \texttt{IV} is the name of the
+column for your independent variable.
+
+The formula for our data would be:
+\texttt{aov(\ mean\_rt\ \textasciitilde{}\ Stimulus\ +\ Error(Subject/Stimulus),\ subject\_means)}.
+
+Here is the code below. Just as reminder, the raw data codes every
+single keypress on each row. We don't want to submit this as the data
+frame to the \texttt{aov} function. Instead, we need to calculate the
+data frame for the subject means in each condition. We did that above as
+a step toward making the graphs. We do it again here to remind you that
+you need to do this.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# get subject means}
+
+\NormalTok{subject_means <-}\StringTok{ }\NormalTok{all_data %>%}
+\StringTok{                 }\KeywordTok{filter}\NormalTok{(Order==}\DecValTok{1}\NormalTok{, Correct==}\DecValTok{1}\NormalTok{, PureRTs<}\DecValTok{5000}\NormalTok{) %>%}
+\StringTok{                 }\KeywordTok{group_by}\NormalTok{(Subject, Stimulus) %>%}
+\StringTok{                 }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{mean_rt =} \KeywordTok{mean}\NormalTok{(PureRTs))}
+
+\CommentTok{# Make sure IV and Subject are coded as factors}
+\NormalTok{subject_means$Subject  <-}\StringTok{ }\KeywordTok{as.factor}\NormalTok{(subject_means$Subject)}
+\NormalTok{subject_means$Stimulus <-}\StringTok{ }\KeywordTok{as.factor}\NormalTok{(subject_means$Stimulus)}
+
+\CommentTok{# Conduct the anova}
+
+\NormalTok{aov_out <-}\StringTok{ }\KeywordTok{aov}\NormalTok{( mean_rt ~}\StringTok{ }\NormalTok{Stimulus +}\StringTok{ }\KeywordTok{Error}\NormalTok{(Subject/Stimulus), subject_means)}
+\NormalTok{summary_out <-}\StringTok{ }\KeywordTok{summary}\NormalTok{(aov_out)}
+
+\KeywordTok{library}\NormalTok{(xtable)}
+\NormalTok{knitr::}\KeywordTok{kable}\NormalTok{(}\KeywordTok{xtable}\NormalTok{(summary_out))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{l|r|r|r|r|r}
+\hline
+  & Df & Sum Sq & Mean Sq & F value & Pr(>F)\\
+\hline
+Residuals & 37 & 3030779.9 & 81912.970 & NA & NA\\
+\hline
+Stimulus & 2 & 1157965.2 & 578982.606 & 230.5806 & 0\\
+\hline
+Residuals1 & 74 & 185812.3 & 2510.977 & NA & NA\\
+\hline
+\end{tabular}
+
+Great, we have conducted the ANOVA. We could write up the results of the
+ANOVA like this:
+
+\begin{quote}
+For each subject we computed mean reactions for correct keystrokes in
+each condition of the Stimulus factor. These means were submitted to a
+one-factor repeated-measures ANOVA, with Stimulus (Normal, Bigrams, and
+Random) as the sole factor. The effect of Stimulus was signficant, F(2,
+74) = 230.58, MSE = 2510.98, p \textless{} 0.001.
+\end{quote}
+
+Note, the p-value shows up as a zero, that's because it is so small that
+R doesn't want to print the actual number 0.000000000000000\ldots{}1.
+
+What does this tell us?
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  The \(F\) value we obtained (230.58) almost never occurs by chance.
+  More specifically, the sampling distribution of F from the
+  distribution of no differences virtually never produces a huge F like
+  230.58
+\item
+  It is super-duper unlikely that chance (sampling error) could have
+  produced the difference we observed.
+\item
+  We reject the idea that chance caused the differences, and are very
+  confident that the manipulation (changing the kinds of letters that
+  people have to type), has a causal influence on reaction time in
+  typing.
+\end{enumerate}
+
+\subsubsection{Report the means too}\label{report-the-means-too}
+
+Remember, the important goal when conducting analyses, and then writing
+about them, is to tell people what you did and what you found. This
+involves more than one step. For this example, we might do three basic
+things. 1) make a figure to show the means, 2) report the ANOVA so
+people know if there is support for the inference that the differences
+between the means are not caused by chance, and 3) report descriptives
+for the means, so people know what the numbers are (the figure doesn't
+show the exact values).
+
+We've already made the figure and done the ANOVA, let's report the
+condition means. To do this, we need to find the means for each
+condition, collapsing over the means for each subject in each condition.
+Note that, we already did this to make the figure. Here's the code
+again:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## get subject mean RTs}
+
+\NormalTok{subject_means <-}\StringTok{ }\NormalTok{all_data %>%}
+\StringTok{                 }\KeywordTok{filter}\NormalTok{(Order==}\DecValTok{1}\NormalTok{, Correct==}\DecValTok{1}\NormalTok{, PureRTs<}\DecValTok{5000}\NormalTok{) %>%}
+\StringTok{                 }\KeywordTok{group_by}\NormalTok{(Subject, Stimulus) %>%}
+\StringTok{                 }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{mean_rt =} \KeywordTok{mean}\NormalTok{(PureRTs))}
+
+\NormalTok{subject_means$Subject<-}\KeywordTok{as.factor}\NormalTok{(subject_means$Subject)}
+\NormalTok{subject_means$Stimulus<-}\KeywordTok{as.factor}\NormalTok{(subject_means$Stimulus)}
+
+\NormalTok{## get condition mean RTs}
+
+\NormalTok{plot_means <-}\StringTok{ }\NormalTok{subject_means %>%}
+\StringTok{              }\KeywordTok{group_by}\NormalTok{(Stimulus) %>%}
+\StringTok{              }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{means =} \KeywordTok{mean}\NormalTok{(mean_rt),}
+                        \DataTypeTok{SEs =} \KeywordTok{sd}\NormalTok{(mean_rt)/}\KeywordTok{sqrt}\NormalTok{(}\KeywordTok{length}\NormalTok{(mean_rt)))}
+
+\NormalTok{knitr::}\KeywordTok{kable}\NormalTok{(plot_means)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{l|r|r}
+\hline
+Stimulus & means & SEs\\
+\hline
+Bigrams & 924.8764 & 26.69375\\
+\hline
+Normal & 833.1872 & 24.00055\\
+\hline
+Random & 1077.5361 & 31.60979\\
+\hline
+\end{tabular}
+
+Now, our full write-up of the results would look like this.
+
+\begin{quote}
+For each subject we computed mean reactions for correct keystrokes in
+each condition of the Stimulus factor. These means were submitted to a
+one-factor repeated-measures ANOVA, with Stimulus (Normal, Bigrams, and
+Random) as the sole factor. The effect of Stimulus was signficant, F(2,
+74) = 230.58, MSE = 2510.98, p \textless{} 0.001. The mean reaction time
+was fastest in the Normal condition (M = 833 ms, SE = 24 ms), followed
+by the Bigram condition, (M = 924 ms, SE = 27 ms) and slowest in the
+Random Condition (M = 1078 ms, SE = 32 ms).
+\end{quote}
+
+\subsection{Follow-up comparisons}\label{follow-up-comparisons}
+
+The ANOVA tells us that the differences between the means are unlikely
+to be due to chance. But, remember, this is an ombnibus test. It does
+not tell us if specific pairs of means are different from one another.
+To determine whether the difference between two specific means is not
+likely due to chance, we need to conduct follow-up tests.
+
+Because this is a repeated-measures design, we can use the
+paired-samples t-test for follow-up tests. Let's do two follow-up tests
+to confirm that the RTs for Normal words were indeed faster than the RTs
+for the Bigram condition (word-like non-words); and then, let's confirm
+that the RTs for the Bigram condition were indeed faster than the RTs
+for the Random condition.
+
+\subsubsection{Normal vs Bigrams}\label{normal-vs-bigrams}
+
+We use the \texttt{subject\_means} data frame. But, we want to rid of
+all the rows containing the means from the Random condition. We use
+filter to do that, then we conduct the paired-samples t-test.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{comparison_df <-}\StringTok{ }\NormalTok{subject_means %>%}
+\StringTok{                  }\KeywordTok{filter}\NormalTok{(Stimulus !=}\StringTok{ "Random"}\NormalTok{)}
+
+\KeywordTok{t.test}\NormalTok{(mean_rt~Stimulus, }
+       \DataTypeTok{paired=}\OtherTok{TRUE}\NormalTok{, }
+       \DataTypeTok{var.equal=}\OtherTok{TRUE}\NormalTok{, }
+       \DataTypeTok{data =} \NormalTok{comparison_df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Paired t-test
+## 
+## data:  mean_rt by Stimulus
+## t = 12.14, df = 37, p-value = 1.807e-14
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##   76.38601 106.99253
+## sample estimates:
+## mean of the differences 
+##                91.68927
+\end{verbatim}
+
+\subsubsection{Bigrams vs Random}\label{bigrams-vs-random}
+
+We use the \texttt{subject\_means} data frame. But, we want to rid of
+all the rows containing the means from the Normal condition. We use
+filter to do that, then we conduct the paired-samples t-test.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{comparison_df <-}\StringTok{ }\NormalTok{subject_means %>%}
+\StringTok{                  }\KeywordTok{filter}\NormalTok{(Stimulus !=}\StringTok{ "Normal"}\NormalTok{)}
+
+\KeywordTok{t.test}\NormalTok{(mean_rt~Stimulus, }
+       \DataTypeTok{paired=}\OtherTok{TRUE}\NormalTok{, }
+       \DataTypeTok{var.equal=}\OtherTok{TRUE}\NormalTok{, }
+       \DataTypeTok{data =} \NormalTok{comparison_df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Paired t-test
+## 
+## data:  mean_rt by Stimulus
+## t = -14.212, df = 37, p-value < 2.2e-16
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -174.4245 -130.8949
+## sample estimates:
+## mean of the differences 
+##               -152.6597
+\end{verbatim}
+
+\subsection{Reporting everything}\label{reporting-everything}
+
+Now we can look at some write-ups that report everything we did, and
+everything we want to know. I'll show you two ways to do it.
+
+\subsubsection{First way}\label{first-way}
+
+In the first way, we embed the results of the t-test into the
+description of the mean reaction times.
+
+For each subject we computed mean reactions for correct keystrokes in
+each condition of the Stimulus factor. These means were submitted to a
+one-factor repeated-measures ANOVA, with Stimulus (Normal, Bigrams, and
+Random) as the sole factor. The effect of Stimulus was signficant, F(2,
+74) = 230.58, MSE = 2510.98, p \textless{} 0.001. The mean reaction time
+was significantly faster in the Normal condition (M = 833 ms, SE = 24
+ms), compared to the Bigram condition, (M = 924 ms, SE = 27 ms), t(37) =
+12.14, p\textless{}0.001. Additionally, mean reactions in the Bigram
+condition were significantly faster than the Random Condition (M = 1078
+ms, SE = 32 ms), t(37) = 14.21, p \textless{} 0.001.
+
+\subsubsection{Second way}\label{second-way}
+
+In the second way, we first report the means as we did the very first
+time, and then after that we report the t-test results to higlight the
+size the of the differences between each comparison.
+
+For each subject we computed mean reactions for correct keystrokes in
+each condition of the Stimulus factor. These means were submitted to a
+one-factor repeated-measures ANOVA, with Stimulus (Normal, Bigrams, and
+Random) as the sole factor. The effect of Stimulus was signficant, F(2,
+74) = 230.58, MSE = 2510.98, p \textless{} 0.001. The mean reaction time
+was fastest in the Normal condition (M = 833 ms, SE = 24 ms), followed
+by the Bigram condition, (M = 924 ms, SE = 27 ms) and slowest in the
+Random Condition (M = 1078 ms, SE = 32 ms). Mean reaction times were
+significantly faster (M = 91 ms) in the Normal than Bigrams condition,
+t(37) = 12.14, p \textless{} 0.001. And, mean reaction times were
+signifcantly faster (M = 152 ms) in the Bigrams than Random condition,
+t(37) = 14.21, p \textless{} 0.01.
+
+There are other ways to write-up statistical results. These are just
+some example recipes. The important thing is to:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Say what the numbers were that you are analyzing
+\item
+  Say what the statistical test was
+\item
+  Say the results of the statistical test
+\item
+  Say what the patterns of means were
+\item
+  Say what the follow-up tests were when you test differences between
+  specific means.
+\item
+  Add a table or figure so it is easier to ``see'' the results.
+\end{enumerate}
+
+\subsection{Generalization Exercise}\label{generalization-exercise-6}
+
+Complete the generalization exercise described in your R Markdown
+document for this lab.
+
+\subsection{Writing asignment}\label{writing-asignment-6}
+
+Complete the writing assignment described in your R Markdown document
+for this lab. When you have finished everything. Knit the document and
+hand in your stuff (you can submit your .RMD file to blackboard if it
+does not knit.)
 
 \section{Excel}\label{excel-8}
 
@@ -5769,11 +7289,11 @@ How to do it in JAMOVI
 \end{itemize}
 
 \section{Outline of Problem to
-solve}\label{outline-of-problem-to-solve-5}
+solve}\label{outline-of-problem-to-solve-4}
 
 Stuff we need to say in general
 
-\subsection{important things}\label{important-things-5}
+\subsection{important things}\label{important-things-4}
 
 Other things to say
 
@@ -5814,7 +7334,7 @@ ANOVA}\label{lab-11-mixed-factorial-anova}
 
 Stuff we need to say in general
 
-\subsection{important things}\label{important-things-6}
+\subsection{important things}\label{important-things-5}
 
 Other things to say
 
