@@ -348,7 +348,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="does-music-convey-social-information-to-infants" class="section level2">
 <h2><span class="header-section-number">6.1</span> Does Music Convey Social Information to Infants?</h2>
-<p>This lab activity uses the open data from Experiment 1 of Mehr, Song, and Spelke (2016) to teach one-sample and paired samplest -tests. Results of the activity provided below should exactly reproduce the results described in the paper.</p>
+<p>This lab activity uses the open data from Experiment 1 of Mehr, Song, and Spelke (2016) to teach one-sample and paired samples t-tests. Results of the activity provided below should exactly reproduce the results described in the paper.</p>
 <div id="study-description" class="section level3">
 <h3><span class="header-section-number">6.1.1</span> STUDY DESCRIPTION</h3>
 <p>Parents often sing to their children and, even as infants, children listen to and look at their parents while they are singing. Research by Mehr, Song, and Spelke (2016) sought to explore the psychological function that music has for parents and infants, by examining the hypothesis that particular melodies convey important social information to infants. Specifically, melodies convey information about social affiliation.</p>
@@ -381,12 +381,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h3><span class="header-section-number">6.4.1</span> Loading the data</h3>
 <p>The first thing to do is download the .csv formatted data file, using the link above, or just click <a href="https://drive.google.com/open?id=0Bz-rhZ21ShvOdW1wV0pmUTJSSk0">here</a>. It turns out there are lots of ways to load .csv files into R.</p>
 <ol style="list-style-type: decimal">
-<li>Load the data.table library. Then use the fread function and supply the web address to the file. Just like this. No downloading required.</li>
+<li>Load the data.table library. Then use the <code>fread</code> function and supply the web address to the file. Just like this. No downloading required.</li>
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(data.table)
 all_data &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class="st">&quot;https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/MehrSongSpelke2016.csv&quot;</span>)</code></pre></div>
 <ol start="2" style="list-style-type: decimal">
-<li>Or, if you downloaded the .csv file. Then you can use fread, but you need to point it to the correct file location. The file location in this next example will not work for you, because the file is on my computer.</li>
+<li>Or, if you downloaded the .csv file. Then you can use <code>fread</code>, but you need to point it to the correct file location. The file location in this next example will not work for you, because the file is on my computer.</li>
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(data.table)
 all_data &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class="st">&quot;Data/MehrSongSpelke2016.csv&quot;</span>)</code></pre></div>
@@ -396,35 +396,35 @@ all_data &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class
 <p>When you have loaded data it’s always a good idea to check out what it looks like. You can look at all of the data in the environment tab on the top right hand corner. The data should be in a variable called <code>all_data</code>. Clicking on <code>all_data</code> will load it into a viewer, and you can scroll around. This can be helpful to see things. But, there is so much data, can be hard to know what you are looking for.</p>
 <div id="summarytools-1" class="section level4">
 <h4><span class="header-section-number">6.4.2.1</span> summarytools</h4>
-<p>The summarytools packages give a quick way to summarize all of the data in a data frame. Here’s how. When you run this code you will see the summary in the viewer on the bottom right hand side. There’s a little browser button (arrow on top of little window) that you can click to expand and see the whole thing in a browser.</p>
+<p>The <code>summarytools</code> packages give a quick way to summarize all of the data in a data frame. Here’s how. When you run this code you will see the summary in the viewer on the bottom right hand side. There’s a little browser button (arrow on top of little window) that you can click to expand and see the whole thing in a browser.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(summarytools)
 <span class="kw">view</span>(<span class="kw">dfSummary</span>(all_data))</code></pre></div>
 </div>
 </div>
 <div id="get-the-data-for-experiment-one" class="section level3">
 <h3><span class="header-section-number">6.4.3</span> Get the data for Experiment one</h3>
-<p>The data contains all of the measurements from all five experiments in the paper. By searching through the <code>all_data</code> dataframe, you should look for the variables that code for each experiment. For example, the third column is called <code>exp1</code>, which stands for experiment 1. Notice that it contains a series of 1s. If you keep scrolling down, the 1s stop. These 1s identify the rows associated with the data for Experiment 1. We only want to analyse that data. So, we need to filter our data, and put only those rows into a new variable. We do this with the <code>dplyr</code> library, using the <code>filter</code> function.</p>
+<p>The data contains all of the measurements from all five experiments in the paper. By searching through the <code>all_data</code> data frame, you should look for the variables that code for each experiment. For example, the third column is called <code>exp1</code>, which stands for experiment 1. Notice that it contains a series of 1s. If you keep scrolling down, the 1s stop. These 1s identify the rows associated with the data for Experiment 1. We only want to analyse that data. So, we need to filter our data, and put only those rows into a new variable. We do this with the <code>dplyr</code> library, using the <code>filter</code> function.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
 experiment_one &lt;-<span class="st"> </span>all_data %&gt;%<span class="st"> </span><span class="kw">filter</span>(exp1==<span class="dv">1</span>)</code></pre></div>
 <p>Now if you look at the new variable <code>experiment_one</code>, there are only 32 rows of data. Much less than before. Now we have the data from experiment 1.</p>
 </div>
 <div id="baseline-phase-conduct-a-one-sample-t-test" class="section level3">
 <h3><span class="header-section-number">6.4.4</span> Baseline phase: Conduct a one sample t-test</h3>
-<p>You first want to show that infants’ looking behavior did not differ from chance during the baseline trial. The baseline trial was 16 seconds long. During the baseline, infants watched a video of two unfamilar people, one of the left and one on the right. There was no sound during the basline. Both of the actors in the video smiled directly at the infant.</p>
+<p>You first want to show that infants’ looking behavior did not differ from chance during the baseline trial. The baseline trial was 16 seconds long. During the baseline, infants watched a video of two unfamiliar people, one of the left and one on the right. There was no sound during the baseline. Both of the actors in the video smiled directly at the infant.</p>
 <p>The important question was to determine whether the infant looked more or less to either person. If they showed no preference, the infant should look at both people about 50% of the time. How could we determine whether the infant looked at both people about 50% of the time?</p>
-<p>The <code>experiment_one</code> dataframe has a column called <code>Baseline_Proportion_Gaze_to_Singer</code>. All of these values show how the proportion of time that the infant looked to the person who would later sing the familiar song to them. If the average of these proportion is .5 across the infants, then we would have some evidence that the infants were not biased at the beginning of the experiment. However, if the infants on average had a bias toward the singer, then the average proportion of the looking time should be different than .5.</p>
+<p>The <code>experiment_one</code> data frame has a column called <code>Baseline_Proportion_Gaze_to_Singer</code>. All of these values show how the proportion of time that the infant looked to the person who would later sing the familiar song to them. If the average of these proportion is .5 across the infants, then we would have some evidence that the infants were not biased at the beginning of the experiment. However, if the infants on average had a bias toward the singer, then the average proportion of the looking time should be different than .5.</p>
 <p>Using a one-sample t-test, we can test the hypothesis that our sample mean for the <code>Baseline_Proportion_Gaze_to_Singer</code> was not different from .5.</p>
-<p>To do this in R, we just need to isolate the column of data called <code>Baseline_Proportion_Gaze_to_Singer</code>. We will do this using the <code>$</code> operator. The <code>$</code> operator is placed after any data frame variable, and allows you to select a column of the data. The next bit of code will select the column of data we want, and put it into a new variable called <code>Baseline</code>. Note, if you type <code>exp1$</code> then Rstudio should automatically bring up all the columns you can choose from.</p>
+<p>To do this in R, we just need to isolate the column of data called <code>Baseline_Proportion_Gaze_to_Singer</code>. We will do this using the <code>$</code> operator. The <code>$</code> operator is placed after any data frame variable, and allows you to select a column of the data. The next bit of code will select the column of data we want, and put it into a new variable called <code>Baseline</code>. Note, if you type <code>exp1$</code> then R-Studio should automatically bring up all the columns you can choose from.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">baseline &lt;-<span class="st"> </span>experiment_one$Baseline_Proportion_Gaze_to_Singer</code></pre></div>
 <div id="look-at-the-numbers" class="section level4">
 <h4><span class="header-section-number">6.4.4.1</span> Look at the numbers</h4>
 <div class="marginnote">
 <p><strong>Question:</strong> Why is it important to look at your numbers? What could happen if you didn’t?</p>
 </div>
-<p>Ok, we could just do the t-test right away, it’s really easy, only one line of code. But, we haven’t even looked at the numbers yet. Let’s at least do that. First, we’ll just use plot. It will show every data point for each infant as a dot.</p>
+<p>OK, we could just do the t-test right away, it’s really easy, only one line of code. But, we haven’t even looked at the numbers yet. Let’s at least do that. First, we’ll just use plot. It will show every data point for each infant as a dot.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(baseline)</code></pre></div>
 <p><img src="Programming_Crump_files/figure-html/unnamed-chunk-126-1.png" width="672" /></p>
-<p>That’s helpful, we see that the dots are all over the place. Let’s do a histrogram, so we can get a better sense of the frequency of different proportions.</p>
+<p>That’s helpful, we see that the dots are all over the place. Let’s do a histogram, so we can get a better sense of the frequency of different proportions.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(baseline)</code></pre></div>
 <p><img src="Programming_Crump_files/figure-html/unnamed-chunk-127-1.png" width="672" /></p>
 </div>
@@ -435,7 +435,7 @@ experiment_one &lt;-<span class="st"> </span>all_data %&gt;%<span class="st"> </
 <pre><code>## [1] 0.5210967</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sd</span>(baseline)</code></pre></div>
 <pre><code>## [1] 0.1769651</code></pre>
-<p>Ok, so just looking at the mean, we see the proportion is close to .5 (it’s .521). And, we see there is a healthy amount of variance (the dots were all over the place), as the standard deviation was about .176.</p>
+<p>OK, so just looking at the mean, we see the proportion is close to .5 (it’s .521). And, we see there is a healthy amount of variance (the dots were all over the place), as the standard deviation was about .176.</p>
 <div class="marginnote">
 <p><strong>Question:</strong> Based on the means and standard deviations can you make an educated guess about what the t and p values might be? Learn how to do this and you will be improving your data-sense.</p>
 </div>
@@ -468,7 +468,7 @@ experiment_one &lt;-<span class="st"> </span>all_data %&gt;%<span class="st"> </
 </div>
 <div id="test-phase" class="section level3">
 <h3><span class="header-section-number">6.4.5</span> Test phase</h3>
-<p>Remember how the experiment went. Infants watched silent video recordings of two women (Baseline). Then each person sung a song, one was familiar to the infant (their parents sung the song to them many times), and one was unfamiliar (singing phase). After the singing phase, the infants watched the silent video of the two singers argain (test phase). The critical question was whether the infants would look more to the person who sung the familiar song compared to the person who sun the unfamiliar song. If the infants did this, they should look more than 50% of the time to the singer who sang the familiar song. We have the data, we can do another one sample t-test to find out. We can re-use all the code we already wrote to do this. I’ll put it all in one place. If we run all of this code, we will see all of the things we want to see.</p>
+<p>Remember how the experiment went. Infants watched silent video recordings of two women (Baseline). Then each person sung a song, one was familiar to the infant (their parents sung the song to them many times), and one was unfamiliar (singing phase). After the singing phase, the infants watched the silent video of the two singers again (test phase). The critical question was whether the infants would look more to the person who sung the familiar song compared to the person who sun the unfamiliar song. If the infants did this, they should look more than 50% of the time to the singer who sang the familiar song. We have the data, we can do another one sample t-test to find out. We can re-use all the code we already wrote to do this. I’ll put it all in one place. If we run all of this code, we will see all of the things we want to see.</p>
 <p>We only need to make two changes. We will change <code>experiment_one$Baseline_Proportion_Gaze_to_Singer</code> to <code>experiment_one$Test_Proportion_Gaze_to_Singer</code>, because that column has the test phase data. And, instead of putting the data into the variable <code>baseline</code>. We will make a new variable called <code>test_phase</code> to store the data.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">test_phase &lt;-<span class="st"> </span>experiment_one$Test_Proportion_Gaze_to_Singer
 <span class="kw">plot</span>(test_phase)</code></pre></div>
@@ -514,7 +514,7 @@ experiment_one &lt;-<span class="st"> </span>all_data %&gt;%<span class="st"> </
 <div class="marginnote">
 <p><strong>Question:</strong> Why was the paired samples t-test necessary if we already did two one sample t-test? What new question is the paired samples t-test asking?</p>
 </div>
-<p>I’l leave it to you to interpret these values, and to see if they are the same as the ones in the paper. Based on these values what do you conclude? Is there a difference between the mean proportion looking times for the baseline and testing phase?</p>
+<p>I’ll leave it to you to interpret these values, and to see if they are the same as the ones in the paper. Based on these values what do you conclude? Is there a difference between the mean proportion looking times for the baseline and testing phase?</p>
 <div id="relationship-between-one-sample-and-paired-sample-t-test" class="section level4">
 <h4><span class="header-section-number">6.4.6.1</span> Relationship between one-sample and paired sample t-test</h4>
 <div class="marginnote">
@@ -549,7 +549,7 @@ experiment_one &lt;-<span class="st"> </span>all_data %&gt;%<span class="st"> </
 </div>
 <div id="usefulness-of-difference-scores" class="section level4">
 <h4><span class="header-section-number">6.4.6.2</span> Usefulness of difference scores</h4>
-<p>Ok fine, the paired samples t-test can be a one sample t-test if you use the difference scores. This might just seem like a mildly useful factoid you can use for stats trivia games (which no one plays). The point of drawing your attention to the relationship, is to get you to focus on the difference scores. These are what we are actually interested in.</p>
+<p>OK fine, the paired samples t-test can be a one sample t-test if you use the difference scores. This might just seem like a mildly useful factoid you can use for stats trivia games (which no one plays). The point of drawing your attention to the relationship, is to get you to focus on the difference scores. These are what we are actually interested in.</p>
 <p>Let’s use the difference scores to one more useful thing. Sometime the results of a t-test aren’t intuitively obvious. By the t-test we found out that a small difference between the test phase and baseline was not likely produced by chance. How does this relate to the research question about infants using familiar songs as cues for being social? Let’s ask a very simple question. How many infants actually showed the bias? How many infants out of 32 looked longer at the singer who sang the familiar song during test, compared to during baseline.</p>
 <p>We can determine this by calculating the difference scores. Then, asking how many of them were greater than zero:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">difference_scores &lt;-<span class="st"> </span>test_phase-baseline
@@ -561,7 +561,7 @@ experiment_one &lt;-<span class="st"> </span>all_data %&gt;%<span class="st"> </
 <div id="graphing-the-findings" class="section level3">
 <h3><span class="header-section-number">6.4.7</span> Graphing the findings</h3>
 <p>It is often useful to graph the results of our analysis. We have already looked at dot plots and histograms of the individual samples. But, we also conducted some t-tests on the means of the baseline and test_phase samples. One of the major questions was whether these means are different. Now, we will make a graph that shows the means for each condition. Actually, we will make a few different graphs, so that you can think about what kinds of graphs are most helpful. There are two major important things to show: 1) the sample means, and 2) a visual aid for statistical inference showing whether the results were likely due to chance.</p>
-<p>We will use the ggplot2 package to make our graphs. Remember, there are two steps to take when using ggplot2. 1) put your data in a long form dataframe, where each measure has one row, and 2) define the layers of the ggplot.</p>
+<p>We will use the ggplot2 package to make our graphs. Remember, there are two steps to take when using ggplot2. 1) put your data in a long form data frame, where each measure has one row, and 2) define the layers of the ggplot.</p>
 <div id="make-the-dataframe-for-plotting" class="section level4">
 <h4><span class="header-section-number">6.4.7.1</span> Make the dataframe for plotting</h4>
 <p>To start we will need 2 columns. One column will code the experimental phase, Baseline or Test. There are 32 observations in each phase, so we want the word <code>Baseline</code> to appear 32 times, followed by the word <code>Test</code> 32 times. Then we want a single column with each of the proportions for each infant.</p>
@@ -571,7 +571,7 @@ plot_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(Phase,P
 </div>
 <div id="dot-plot-of-raw-scores" class="section level4">
 <h4><span class="header-section-number">6.4.7.2</span> Dot plot of raw scores</h4>
-<p>This shows every scores value on the y-axis, split by the baseline and test groups. If you just looked at this, you might not think the test phase was different from the basline phase. Still very useful to see the spread of individual scores. Supports the intuition that the scores are still kind of in a similar ballpark.</p>
+<p>This shows every scores value on the y-axis, split by the baseline and test groups. If you just looked at this, you might not think the test phase was different from the baseline phase. Still very useful to see the spread of individual scores. Supports the intuition that the scores are still kind of in a similar ballpark.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
 <span class="kw">ggplot</span>(plot_df, <span class="kw">aes</span>(<span class="dt">x=</span>Phase, <span class="dt">y=</span>Proportions))+
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
@@ -582,8 +582,8 @@ plot_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(Phase,P
 <div class="marginnote">
 <p><strong>Question:</strong> What kinds of inferences about the role of chance in producing the difference between the means can we make from this graph? What is missing?</p>
 </div>
-<p><code>ggplot2</code> is great because it let’s us add different layers on top of an existing plot. It would be good to see where the mean values for each sample lie on top of the sample scores. We can do this. But, to do it, we need to supply ggplot with another data frame, one that contains the means for each phase in long form. There are are only two phases, and two means, so we will make a rather small data.frame. It will have two columns, a Phase column, and Mean_value column. There will only be two rows in the dataframe, one for the mean for each phase.</p>
-<p>To make the smaller data frame for the means we will use the <code>aggregate</code> function. This allows us to find the means for each phase from the plot_df dataframe. It also automatically returns the data frame we are looking for.</p>
+<p><code>ggplot2</code> is great because it let’s us add different layers on top of an existing plot. It would be good to see where the mean values for each sample lie on top of the sample scores. We can do this. But, to do it, we need to supply ggplot with another data frame, one that contains the means for each phase in long form. There are are only two phases, and two means, so we will make a rather small data.frame. It will have two columns, a Phase column, and Mean_value column. There will only be two rows in the data frame, one for the mean for each phase.</p>
+<p>To make the smaller data frame for the means we will use the <code>aggregate</code> function. This allows us to find the means for each phase from the plot_df data frame. It also automatically returns the data frame we are looking for.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mean_df &lt;-<span class="st"> </span><span class="kw">aggregate</span>(Proportions ~<span class="st"> </span>Phase, plot_df, mean)
 
 <span class="kw">ggplot</span>(plot_df, <span class="kw">aes</span>(<span class="dt">x=</span>Phase, <span class="dt">y=</span>Proportions))+<span class="st"> </span>
@@ -603,7 +603,7 @@ plot_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(Phase,P
 <span class="st">  </span><span class="kw">geom_point</span>()+
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">data=</span>mean_df, <span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>,<span class="kw">aes</span>(<span class="dt">fill=</span>Phase))</code></pre></div>
 <p><img src="Programming_Crump_files/figure-html/unnamed-chunk-137-1.png" width="672" /></p>
-<p>Ok, we see the bars and some of the dots, but not all of them. What is going on? Remember, ggplot2 works in layers. Whatever layer you add first will be printed first in the graph, whatever layer you add second will be printed on top of the first. We put the bars on top of the dots. Let’s change the order of the layers so the dot’s go on top of the bars.</p>
+<p>OK, we see the bars and some of the dots, but not all of them. What is going on? Remember, ggplot2 works in layers. Whatever layer you add first will be printed first in the graph, whatever layer you add second will be printed on top of the first. We put the bars on top of the dots. Let’s change the order of the layers so the dot’s go on top of the bars.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(plot_df, <span class="kw">aes</span>(<span class="dt">x=</span>Phase, <span class="dt">y=</span>Proportions))+<span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">data=</span>mean_df, <span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>,<span class="kw">aes</span>(<span class="dt">fill=</span>Phase))+
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
@@ -632,7 +632,7 @@ standard_error &lt;-<span class="st"> </span><span class="kw">sd</span>(differen
 <div class="marginnote">
 <p><strong>Question:</strong> What is one reason why these error bars (standard error of the mean difference between Baseline and Test) are appropriate to use. What is one reason they are not appropriate to use?</p>
 </div>
-<p>We have done something that is useful for visual inference. From the textbook, we learned that differences of about 2 standard errors of the mean are near the point where we would claim that chance is unlikely to have produced the difference. This is a rough estimate. But, we can see that the top of the error bar for Baseline is lower than the bottom of the error bar for Test, resulting in a difference greater than 2 standard error bars. So, based on this graph, we might expect the difference between conditions to be significant. We can also complain about what we have done here, we are placing the same error bars from the meand difference scores onto the means for each condition. In some sense this is misleading. The error bars are not for the depicted sample means, they are for the hidden single set of difference scores. To make this more clear, we will make a bar plot with a single bar only for the differences scores.</p>
+<p>We have done something that is useful for visual inference. From the textbook, we learned that differences of about 2 standard errors of the mean are near the point where we would claim that chance is unlikely to have produced the difference. This is a rough estimate. But, we can see that the top of the error bar for Baseline is lower than the bottom of the error bar for Test, resulting in a difference greater than 2 standard error bars. So, based on this graph, we might expect the difference between conditions to be significant. We can also complain about what we have done here, we are placing the same error bars from the mean difference scores onto the means for each condition. In some sense this is misleading. The error bars are not for the depicted sample means, they are for the hidden single set of difference scores. To make this more clear, we will make a bar plot with a single bar only for the differences scores.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">difference_scores &lt;-<span class="st"> </span>test_phase-baseline <span class="co">#calculate difference scores</span>
 standard_error &lt;-<span class="st"> </span><span class="kw">sd</span>(difference_scores)/<span class="kw">sqrt</span>(<span class="kw">length</span>(difference_scores)) <span class="co">#calculate SEM</span>
 mean_difference &lt;-<span class="st"> </span><span class="kw">mean</span>(difference_scores)
@@ -668,7 +668,7 @@ upper_interval&lt;-<span class="st"> </span>t_test_results$conf.int[<span class=
 </div>
 <div id="data-simulation" class="section level3">
 <h3><span class="header-section-number">6.4.8</span> Data-simulation</h3>
-<p>We can do a little bit of data simulation to get a better feel for this kind of data. For example, we saw that the dots in our plots were quite variable. We might wonder about what chance can do in the current experiment. One way to do this is to estimate the standard deviation of the looking time proportions. Perhaps the best way to do that would be to an average of the standard deviation in the baseline and test_phase conditions. Then, we could simulate 32 scores from a normal distribution with mean = .5, and standard deviation equalling our mean standard deviation. We could calculate the mean of our simulated sample. And, we could do this many times, say 1000 times. Then, we could look at a histogram of our means. This will show the range of sample means we would expect just by chance. This is another way to tell whether the observed difference in this experiment in the testing phase was close or not close from being produced by chance. Take a look at the histogram. What do you think?</p>
+<p>We can do a little bit of data simulation to get a better feel for this kind of data. For example, we saw that the dots in our plots were quite variable. We might wonder about what chance can do in the current experiment. One way to do this is to estimate the standard deviation of the looking time proportions. Perhaps the best way to do that would be to an average of the standard deviation in the baseline and test_phase conditions. Then, we could simulate 32 scores from a normal distribution with mean = .5, and standard deviation equaling our mean standard deviation. We could calculate the mean of our simulated sample. And, we could do this many times, say 1000 times. Then, we could look at a histogram of our means. This will show the range of sample means we would expect just by chance. This is another way to tell whether the observed difference in this experiment in the testing phase was close or not close from being produced by chance. Take a look at the histogram. What do you think?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sample_sd   &lt;-<span class="st"> </span>(<span class="kw">sd</span>(baseline)+<span class="kw">sd</span>(test_phase))/<span class="dv">2</span>
 
 simulated_means &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
@@ -678,7 +678,7 @@ for(i in <span class="dv">1</span>:<span class="dv">1000</span>){
 
 <span class="kw">hist</span>(simulated_means)</code></pre></div>
 <p><img src="Programming_Crump_files/figure-html/unnamed-chunk-142-1.png" width="672" /> #### Simulating the mean differences</p>
-<p>We can do the simulation slightly differently to give us a different look at chance. Above we simulated the sample means from a normal distibrution centered on .5. The experimental question of interest was whether the mean difference between the baseline and test_phase condition was different. So, we should do a simulation of the difference scores. First, we estimate the standard deviation of the difference scores, and then run the simulation with a normal distribution centered on 0 (an expected mean difference of 0). This shows roughly how often we might expect mean differences of various sizes to occur. One major limitation is that we likely had only a rough estimate of the true standard deviation of these mean differences, after all there were only 32 of them, so we should take this with a grain of salt. Nevertheless, the pattern in the simulation fits well with the observations in that we already made from the data.</p>
+<p>We can do the simulation slightly differently to give us a different look at chance. Above we simulated the sample means from a normal distribution centered on .5. The experimental question of interest was whether the mean difference between the baseline and test_phase condition was different. So, we should do a simulation of the difference scores. First, we estimate the standard deviation of the difference scores, and then run the simulation with a normal distribution centered on 0 (an expected mean difference of 0). This shows roughly how often we might expect mean differences of various sizes to occur. One major limitation is that we likely had only a rough estimate of the true standard deviation of these mean differences, after all there were only 32 of them, so we should take this with a grain of salt. Nevertheless, the pattern in the simulation fits well with the observations in that we already made from the data.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sample_sd   &lt;-<span class="st"> </span><span class="kw">sd</span>(baseline-test_phase)
 
 simulated_mean_difference &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)

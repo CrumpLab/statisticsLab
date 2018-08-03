@@ -8,24 +8,24 @@ This lab activity uses the data from Behmer & Crump (2017) to teach one-factor r
 
 Behmer & Crump (2017) used the everyday task of typing on a computer keyboard to ask questions about how people learn to put sequences of actions together. Whenever you type a series of letters on the keyboard, you are putting a sequence of actions together, so typing is task that could be used to measure skilled sequencing. Typing also happens to be a convenient task for measuring sequencing. For example, every time a person types a letter, the timing of the button press and the letter pressed can be measured and stored for later analysis.
 
-Behmer & Crump were interested in asking a few different questions, however, we will simplify everything and talk about replication. First we describe an interesting finding from previous research. Behmer & Crump repeated an experiment that should alos produce this same finding. If they succeed in doing this, it means the finding can be replicated, and that it happens in more than one lab.
+Behmer & Crump were interested in asking a few different questions, however, we will simplify everything and talk about replication. First we describe an interesting finding from previous research. Behmer & Crump repeated an experiment that should also produce this same finding. If they succeed in doing this, it means the finding can be replicated, and that it happens in more than one lab.
 
-**Finding from previous resaearch:** Prior research showed that typists do something funny. Skilled typists can type normal words very fast. This suggests they know how to locate all of the letters on the keyboard, and can press each letter very quickly to type words. That part isn't particulary funny. However, if you take really skilled typists and make them type random letters like this:  kwitb dhhgjtryq xkldpt mazhyffdt, guess what happens? They slow down a lot. It's kind of weird that a typist would slow down, after all they can type letters really fast when they appear in words, but not when they appear in random orders...what gives? Last, it turns out that typists are kind of in the middle in terms of speed, if you ask them to type non-words that have similar properties to words, such as: quenp hamlke phwempy.
+**Finding from previous resaearch:** Prior research showed that typists do something funny. Skilled typists can type normal words very fast. This suggests they know how to locate all of the letters on the keyboard, and can press each letter very quickly to type words. That part isn't particularly funny. However, if you take really skilled typists and make them type random letters like this:  kwitb dhhgjtryq xkldpt mazhyffdt, guess what happens? They slow down a lot. It's kind of weird that a typist would slow down, after all they can type letters really fast when they appear in words, but not when they appear in random orders...what gives? Last, it turns out that typists are kind of in the middle in terms of speed, if you ask them to type non-words that have similar properties to words, such as: quenp hamlke phwempy.
 
 To summarize, prior research showed that typing speed changes as a function of the structure of the text, roughly in this order from fastest to slowest.
 
 (FASTEST)  Normal Words < Word-like Non-words < Random strings  (SLOWEST)
 
-**Replication question:** Behmer & Crump also measured typists while they typed words, non-words that were english-like, and random strings. They had some additional things they were interested in, but for us, we are interested in whether they would show the same effect. Would they replicate the patten: Normal words (Fastest) < Word-like Non-words (medium) <- Random strings (Slowest)?
+**Replication question:** Behmer & Crump also measured typists while they typed words, non-words that were English-like, and random strings. They had some additional things they were interested in, but for us, we are interested in whether they would show the same effect. Would they replicate the pattern: Normal words (Fastest) < Word-like Non-words (medium) <- Random strings (Slowest)?
 
 
 ### Study Methods
 
 The authors conducted a repeated measures experiment. A total of 38 subjects were used for the analysis.
 
-**Independent Variable**: The IV Stimulus or typing material had three levels: Normal, Bigrams, and Random. Normal refers to normal 5 letter english words (like truck, or plant). Bigrams refers to non-words that have properties similar to words (e.g., phemt quilp). Random refers to 5 letter strings whose letters were totally random (qmklt gdrzn lprni).
+**Independent Variable**: The IV Stimulus or typing material had three levels: Normal, Bigrams, and Random. Normal refers to normal 5 letter English words (like truck, or plant). Bigrams refers to non-words that have properties similar to words (e.g., phemt quilp). Random refers to 5 letter strings whose letters were totally random (qmklt gdrzn lprni).
 
-**Dependent Variables**: There were three dependent variables, that all measured different aspects of typing performance. Reaction times (RTs) were defined as the temporal interval between seeing a stimulus (to type), and then starting to type it (first key press). Interkeystroke intervals (IKSIs) are the times between each keypress. Last, accuracy was also measured (correct or incorrect keypresses)
+**Dependent Variables**: There were three dependent variables, that all measured different aspects of typing performance. Reaction times (RTs) were defined as the temporal interval between seeing a stimulus (to type), and then starting to type it (first key press). Inter-keystroke intervals (IKSIs) are the times between each key-press. Last, accuracy was also measured (correct or incorrect key-presses)
 
 **The task**: Participants (who happened to also be students from Brooklyn College) sat in front a computer. They were presented with one stimulus (word, bigrams, or random) at a time. As soon as they saw the string of letters, they typed it as quickly and accurately as they could, then they moved on to the next trial. 
 
@@ -69,15 +69,15 @@ Note, there is some weird stuff in code above. Normally, we would just write `vi
 
 This data file contains all of the data from Experiment 1 in the paper. So, we don't need to get rid of any rows. 
 
-There are numerous columns, some of them we don't need for the analysis. But, we'll just ignore these later when we use dplyr to group by the columns we want.
+There are numerous columns, some of them we don't need for the analysis. But, we'll just ignore these later when we use `dplyr` to group by the columns we want.
 
-The structure of this data a file is in long form. Every row described a measurement for a single keypress. For example, the first 5 rows, have data for the timing of the first 5 keypresses, that the first subject made to type the first string of letters they saw. In total there were 85,410 keypresses made. That's quite a lot. 
+The structure of this data a file is in long form. Every row described a measurement for a single key-press. For example, the first 5 rows, have data for the timing of the first 5 key-presses, that the first subject made to type the first string of letters they saw. In total there were 85,410 key-presses made. That's quite a lot. 
 
 #### The independent variable
 
 The important independent variable is in the column `Stimulus`.
 
-- Normal (5 letter english words)
+- Normal (5 letter English words)
 - Bigrams (5 letter strings that kind of looked like words)
 - Random (5 letter strings that were random)
 
@@ -90,24 +90,24 @@ Note: there was another independent variable in the study as well. We talk about
 
 #### The dependent variables
 
-1. `TimeFromOnset` : This column records the temporal interval in milliseconds between the onset of the word and each keypress. When order is 1 (first keystroke), the number here is the reaction time to start typing.
-2. `PureRTs` : This column contains keystroke intervals. The first interval is between the onset of the word and the first keypress (order 1), the second interval is between the first and second keypress (order 2), and so on. `PureRTs` for orders 2 to 5, represent the interkeystroke intervals reported in  paper.
+1. `TimeFromOnset` : This column records the temporal interval in milliseconds between the onset of the word and each key-press. When order is 1 (first keystroke), the number here is the reaction time to start typing.
+2. `PureRTs` : This column contains keystroke intervals. The first interval is between the onset of the word and the first key-press (order 1), the second interval is between the first and second key-press (order 2), and so on. `PureRTs` for orders 2 to 5, represent the inter-keystroke intervals reported in  paper.
 3. `AllCorrect` : 0 means incorrect (wrong letter was typed), 1 means correct (correct letter was typed)
 
 ### Look at the data
 
 Remember before we do any analysis, we always want to "look" at the data. This first pass let's us know if the data "look right". For example, the data file could be messed up and maybe there aren't any numbers there, or maybe the numbers are just too weird. 
 
-For example, this study involves reaction times: the time between seeing something and responding to it. If you had done a study like this before, you would know that it usually doesn't take people that long to start responding. Most reaction times will be under a second (or 1000 millseconds). But, sometime people are little slow, and sometimes they do funny things like check their phone in the middle of an experiment.
+For example, this study involves reaction times: the time between seeing something and responding to it. If you had done a study like this before, you would know that it usually doesn't take people that long to start responding. Most reaction times will be under a second (or 1000 milliseconds). But, sometime people are little slow, and sometimes they do funny things like check their phone in the middle of an experiment.
 
-Before I analyze reaction time data, I often make a histrogram of all of the RT data, like this:
+Before I analyze reaction time data, I often make a histogram of all of the RT data, like this:
 
 ```{r}
 hist(all_data$PureRTs)
 ```
 
 
-We can see that almost all of the reaction times are well below 5000 milliseconds (5 seconds), which is good. Most of the time people were paying attention and not "checking their phone". Notice, the range of the histrogram goes out to 15,000 milliseconds. You can't see any bars out there (too small to notice), but there must be at least a few trials where somebody took 15 seconds to start responding. These are called outliers. We will remove them before we conduct our analysis
+We can see that almost all of the reaction times are well below 5000 milliseconds (5 seconds), which is good. Most of the time people were paying attention and not "checking their phone". Notice, the range of the histogram goes out to 15,000 milliseconds. You can't see any bars out there (too small to notice), but there must be at least a few trials where somebody took 15 seconds to start responding. These are called outliers. We will remove them before we conduct our analysis
 
 ### Look at the means
 
@@ -162,7 +162,7 @@ Alright, we made things a little bit more complicated than they need to be. Our 
 
 The above code included the second independent variable `Block`. As a result, you are seeing the means for Typing material when subjects could see the keyboard, and when the couldn't see the keyboard. We will come back to this later. For now, let's ignore the Block condition, and find the means for the Typing Material IV by averaging over the Block conditions. We run the same code as above, by take out `Block`, in the `group_by` function. We also take `Block` out the ggplot function.
 
-**VERY IMPORTANT**: We did something in the above code that we didn't point out. We filtered the data before we found the means. For most of the datasets in other labs, we given you data that is more or less ready to analyse. More often than not data needs to be pre-processed, or filtered before you analyze it. We can use the `filter` function in `dplyr` to do our filtering. `filter` filters the rows for us, so we will only include the rows that we want.
+**VERY IMPORTANT**: We did something in the above code that we didn't point out. We filtered the data before we found the means. For most of the data sets in other labs, we given you data that is more or less ready to analyse. More often than not data needs to be pre-processed, or filtered before you analyze it. We can use the `filter` function in `dplyr` to do our filtering. `filter` filters the rows for us, so we will only include the rows that we want.
 
 1. We want to analyze the time between the onset of the stimulus and the first keystroke. The reaction times for this value are in the `PureRTs` column, but this column contains other RTs that we do not want to analyse. For example, the `Order` column codes for the letter position in the string. We only want to analyze the rows that contain a `1`, for the first position. So, that is why we add `Order==1` to the filter function below.
 
@@ -207,9 +207,9 @@ ggplot(plot_means, aes(x=Stimulus, y=means, group=1))+
 
 ### Conduct the repeated Measures ANOVA
 
-We use the same `aov` function as we used last time. The only difference is that we add in a new part to the formula. Remember the formula for a one-factor betwee-n subjects ANOVA looked like this:
+We use the same `aov` function as we used last time. The only difference is that we add in a new part to the formula. Remember the formula for a one-factor between subjects ANOVA looked like this:
 
-`aov( DV ~ IV , dataframe)`, where DV is the name of the column with your independent variable, IV is the name of the column with your independent variable, and `dataframe` is the name of your dataframe containing the means in each condition.
+`aov( DV ~ IV , dataframe)`, where DV is the name of the column with your independent variable, IV is the name of the column with your independent variable, and `dataframe` is the name of your data frame containing the means in each condition.
 
 The formula for a repeated-measures ANOVA looks like this:
 
@@ -217,7 +217,7 @@ The formula for a repeated-measures ANOVA looks like this:
 
 The formula for our data would be: `aov( mean_rt ~ Stimulus + Error(Subject/Stimulus), subject_means)`.
 
-Here is the code below. Just as reminder, the raw data codes every single keypress on each row. We don't want to submit this as the data frame to the `aov` function. Instead, we need to calculate the data frame for the subject means in each condition. We did that above as a step toward making the graphs. We do it again here to remind you that you need to do this.
+Here is the code below. Just as reminder, the raw data codes every single key press on each row. We don't want to submit this as the data frame to the `aov` function. Instead, we need to calculate the data frame for the subject means in each condition. We did that above as a step toward making the graphs. We do it again here to remind you that you need to do this.
 
 ```{r}
 
@@ -288,7 +288,7 @@ Now, our full write-up of the results would look like this.
 
 ### Follow-up comparisons
 
-The ANOVA tells us that the differences between the means are unlikely to be due to chance. But, remember, this is an ombnibus test. It does not tell us if specific pairs of means are different from one another. To determine whether the difference between two specific means is not likely due to chance, we need to conduct follow-up tests. 
+The ANOVA tells us that the differences between the means are unlikely to be due to chance. But, remember, this is an omnibus test. It does not tell us if specific pairs of means are different from one another. To determine whether the difference between two specific means is not likely due to chance, we need to conduct follow-up tests. 
 
 Because this is a repeated-measures design, we can use the paired-samples t-test for follow-up tests. Let's do two follow-up tests to confirm that the RTs for Normal words were indeed faster than the RTs for the Bigram condition (word-like non-words); and then, let's confirm that the RTs for the Bigram condition were indeed faster than the RTs for the Random condition.
 
@@ -330,14 +330,14 @@ Now we can look at some write-ups that report everything we did, and everything 
 
 In the first way, we embed the results of the t-test into the description of the mean reaction times.
 
-For each subject we computed mean reactions for correct keystrokes in each condition of the Stimulus factor. These means were submitted to a one-factor repeated-measures ANOVA, with Stimulus (Normal, Bigrams, and Random) as the sole factor. The effect of Stimulus was signficant, F(2, 74) = 230.58, MSE = 2510.98, p < 0.001. The mean reaction time was significantly faster in the Normal condition (M = 833 ms, SE = 24 ms), compared to the Bigram condition, (M = 924 ms, SE = 27 ms), t(37) = 12.14, p<0.001. Additionally, mean reactions in the Bigram condition were significantly faster than the Random Condition (M = 1078 ms, SE = 32 ms), t(37) = 14.21, p < 0.001.
+For each subject we computed mean reactions for correct keystrokes in each condition of the Stimulus factor. These means were submitted to a one-factor repeated-measures ANOVA, with Stimulus (Normal, Bigrams, and Random) as the sole factor. The effect of Stimulus was significant, F(2, 74) = 230.58, MSE = 2510.98, p < 0.001. The mean reaction time was significantly faster in the Normal condition (M = 833 ms, SE = 24 ms), compared to the Bigram condition, (M = 924 ms, SE = 27 ms), t(37) = 12.14, p<0.001. Additionally, mean reactions in the Bigram condition were significantly faster than the Random Condition (M = 1078 ms, SE = 32 ms), t(37) = 14.21, p < 0.001.
 
 
 #### Second way
 
-In the second way, we first report the means as we did the very first time, and then after that we report the t-test results to higlight the size the of the differences between each comparison.
+In the second way, we first report the means as we did the very first time, and then after that we report the t-test results to highlight the size the of the differences between each comparison.
 
-For each subject we computed mean reactions for correct keystrokes in each condition of the Stimulus factor. These means were submitted to a one-factor repeated-measures ANOVA, with Stimulus (Normal, Bigrams, and Random) as the sole factor. The effect of Stimulus was signficant, F(2, 74) = 230.58, MSE = 2510.98, p < 0.001. The mean reaction time was fastest in the Normal condition (M = 833 ms, SE = 24 ms), followed by the Bigram condition, (M = 924 ms, SE = 27 ms) and slowest in the Random Condition (M = 1078 ms, SE = 32 ms). Mean reaction times were significantly faster (M = 91 ms) in the Normal than Bigrams condition, t(37) = 12.14, p < 0.001. And, mean reaction times were signifcantly faster (M = 152 ms) in the Bigrams than Random condition, t(37) = 14.21, p < 0.01.
+For each subject we computed mean reactions for correct keystrokes in each condition of the Stimulus factor. These means were submitted to a one-factor repeated-measures ANOVA, with Stimulus (Normal, Bigrams, and Random) as the sole factor. The effect of Stimulus was significant, F(2, 74) = 230.58, MSE = 2510.98, p < 0.001. The mean reaction time was fastest in the Normal condition (M = 833 ms, SE = 24 ms), followed by the Bigram condition, (M = 924 ms, SE = 27 ms) and slowest in the Random Condition (M = 1078 ms, SE = 32 ms). Mean reaction times were significantly faster (M = 91 ms) in the Normal than Bigrams condition, t(37) = 12.14, p < 0.001. And, mean reaction times were significantly faster (M = 152 ms) in the Bigrams than Random condition, t(37) = 14.21, p < 0.01.
 
 There are other ways to write-up statistical results. These are just some example recipes. The important thing is to:
 

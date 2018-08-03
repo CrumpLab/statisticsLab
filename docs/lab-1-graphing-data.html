@@ -366,7 +366,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dt">mean=</span><span class="dv">50</span>, <span class="dt">sd=</span><span class="dv">25</span>))</code></pre></div>
 <p><img src="Programming_Crump_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>You just made R sample 100 numbers, and then plot the results in a histogram. Pretty neat. We’ll be doing some of this later in the course, where get R to make fake data for us, and then we learn to think about how data behaves under different kinds of assumptions.</p>
-<p>For now, let’s do something that might be a little bit more interesting…what movies are going to be filming in NYC? It turns out that NYC makes a lot of data about a lot things open and free for anyone to download and look at. This is the NYC Open Data website: <a href="https://opendata.cityofnewyork.us" class="uri">https://opendata.cityofnewyork.us</a>. I searched through the data, and found this data file that lists the locations of film permits for shooting movies all throughout the burroughs. You can download the data to your computer from <a href="https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/Film_Permits.csv">this link</a></p>
+<p>For now, let’s do something that might be a little bit more interesting…what movies are going to be filming in NYC? It turns out that NYC makes a lot of data about a lot things open and free for anyone to download and look at. This is the NYC Open Data website: <a href="https://opendata.cityofnewyork.us" class="uri">https://opendata.cityofnewyork.us</a>. I searched through the data, and found this data file that lists the locations of film permits for shooting movies all throughout the Burroughs. You can download the data to your computer from <a href="https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/Film_Permits.csv">this link</a></p>
 <p>NOTE TO SELF, COME BACK HERE AND WALKTHROUGH FILE PATHS AND THINGS</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(data.table)
 nyc_films &lt;-<span class="kw">fread</span>(<span class="st">&quot;data/Film_Permits.csv&quot;</span>)</code></pre></div>
@@ -375,7 +375,7 @@ nyc_films &lt;-<span class="kw">fread</span>(<span class="st">&quot;data/Film_Pe
 <h3><span class="header-section-number">1.2.2</span> Look at the data</h3>
 <p>You will be downloading and analyzing all kinds of data files this semester. We will follow the very same steps every time. The steps are to load the data, then look at it. You want to see what you’ve got.</p>
 <p>In R-studio, you will now see a variable called <code>nyc_films</code> in the top right-hand corner of the screen, in the environment tab. If you click this thing, it will show you the contents of the data in a new window. The data is stored in something we call a <code>data frame</code>. It’s R lingo, for the thing that contains the data. Notice is a square, with rows going across, and columns going up and down. It looks kind of like an excel spreadsheet if you are familiar with Excel.</p>
-<p>It’s useful to know you can look at the data frame this way if you need to. But, this dataframe is really big, it has 50,728 rows of data. That’s a lot too much to look at.</p>
+<p>It’s useful to know you can look at the data frame this way if you need to. But, this data frame is really big, it has 50,728 rows of data. That’s a lot too much to look at.</p>
 <div id="summarytools" class="section level4">
 <h4><span class="header-section-number">1.2.2.1</span> summarytools</h4>
 <p>The summarytools packages give a quick way to summarize all of the data in a data frame. Here’s how. When you run this code you will see the summary in the viewer on the bottom right hand side. There’s a little browser button (arrow on top of little window) that you can click to expand and see the whole thing in a browser.</p>
@@ -389,14 +389,14 @@ nyc_films &lt;-<span class="kw">fread</span>(<span class="st">&quot;data/Film_Pe
 <p>Let’s walk through a couple questions we might have about this data. We can see that there were 50,728 film permits made. We can also see that there are different columns telling us information about each of the film permits. For example, the <code>Borough</code> column lists the Borough for each request, whether it was made for: Manhattan, Brooklyn, Bronx, Queen’s, or Staten Island. Now we can ask our first question, and learn how to do some plotting in R.</p>
 <div id="where-are-the-most-film-permits-being-requested" class="section level4">
 <h4><span class="header-section-number">1.2.3.1</span> Where are the most film permits being requested?</h4>
-<p>Do you have any guesses? Is it Manhattan, or Brookyln, of the Bronx? Or Queen’s or Staten Island? We can find out by plotting the data using a bar plot. We just need to count how many film permits are made in each burough, and then make different bars represent the the counts.</p>
+<p>Do you have any guesses? Is it Manhattan, or Brooklyn, of the Bronx? Or Queen’s or Staten Island? We can find out by plotting the data using a bar plot. We just need to count how many film permits are made in each borough, and then make different bars represent the the counts.</p>
 <p>First, we do the counting in R. Run the following code.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
 
 counts &lt;-<span class="st"> </span>nyc_films %&gt;%
 <span class="st">          </span><span class="kw">group_by</span>(Borough) %&gt;%
 <span class="st">          </span><span class="kw">summarize</span>(<span class="dt">count_of_permits =</span> <span class="kw">length</span>(Borough))</code></pre></div>
-<p>The above grouped the data by each of the five Borough’s, and then counted the number of times each Borough occured (using the <code>length</code> function). The result is a new variable called <code>count</code>. I chose to name this variable <code>count</code>. You can see that it is now displayed in the top-right hand corned in the environment tab. If you gave <code>count</code> a different name, like <code>muppets</code>, then it would be named what you called it.</p>
+<p>The above grouped the data by each of the five Borough’s, and then counted the number of times each Borough occurred (using the <code>length</code> function). The result is a new variable called <code>count</code>. I chose to name this variable <code>count</code>. You can see that it is now displayed in the top-right hand corned in the environment tab. If you gave <code>count</code> a different name, like <code>muppets</code>, then it would be named what you called it.</p>
 <p>If you click on the <code>counts</code> variable, you will see the five boroughs listed, along with the counts for how many film permits were requested in each Borough. These are the numbers that we want to plot in a graph.</p>
 <p>We do the plot using a fantastic package called <code>ggplot2</code>. It is very powerful once you get the hand of it, and when you do, you will be able to make all sorts of interesting graphs. Here’s the code to make the plot</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
@@ -417,12 +417,12 @@ counts &lt;-<span class="st"> </span>nyc_films %&gt;%
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>)+<span class="st"> </span>
 <span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>))</code></pre></div>
 <p><img src="Programming_Crump_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
-<p>Ok, so this figure might look a bit weird because the labels on the bottom are running into each other. We’ll fix that in a bit. First, let’s notice the changes.</p>
+<p>OK, so this figure might look a bit weird because the labels on the bottom are running into each other. We’ll fix that in a bit. First, let’s notice the changes.</p>
 <ol style="list-style-type: decimal">
 <li><p>I changed <code>Borough</code> to <code>Category</code>. That was the main thing</p></li>
 <li><p>I left out a bunch of things from before. None of the <code>library()</code> commands are used again, and I didn’t re-run the very early code to get the data. R already has those things in it’s memory, so we don’t need to do that first. If you ever clear the memory of R, then you will need to reload those things. First-things come first.</p></li>
 </ol>
-<p>Fine, so how do we fix the graph? Good question. To be honest, I don’t know right now. I totally forgot how. But, I know ggplot2 can do this, and I’m going to google it, right now. Then I’m going to find the answer, and use it here. The googling of your questions is a fine way to learn. It’s what everybody does these days….[goes to google…].</p>
+<p>Fine, so how do we fix the graph? Good question. To be honest, I don’t know right now. I totally forgot how. But, I know ggplot2 can do this, and I’m going to Google it, right now. Then I’m going to find the answer, and use it here. The googling of your questions is a fine way to learn. It’s what everybody does these days….[goes to Google…].</p>
 <p>Found it, actually found a lot of ways to do this. The trick is to add the last line. I just copy-pasted it from the solution I found on <a href="https://stackoverflow.com/questions/1330989/rotating-and-spacing-axis-labels-in-ggplot2">stack overflow</a> (you will become friend’s with stack overflow, there are many solutions there to all of your questions)</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">counts &lt;-<span class="st"> </span>nyc_films %&gt;%
 <span class="st">          </span><span class="kw">group_by</span>(Category) %&gt;%
@@ -548,7 +548,7 @@ counts &lt;-<span class="st"> </span>nyc_films %&gt;%
 </div>
 <div id="font-size" class="section level4">
 <h4><span class="header-section-number">1.2.4.9</span> Font-size</h4>
-<p>Changing font-size is often something you want to do. ggplot2 can do this in different ways. I suggest using the <code>base_size</code> option inside <code>theme_classic()</code>. You set one number for the largest font size in the graph, and everything else gets scaled to fit with that that first number. It’s really convenient. Look for the insisde of <code>theme_classic()</code></p>
+<p>Changing font-size is often something you want to do. ggplot2 can do this in different ways. I suggest using the <code>base_size</code> option inside <code>theme_classic()</code>. You set one number for the largest font size in the graph, and everything else gets scaled to fit with that that first number. It’s really convenient. Look for the inside of <code>theme_classic()</code></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(counts, <span class="kw">aes</span>(<span class="dt">x =</span> Category, <span class="dt">y =</span> count_of_permits, 
                    <span class="dt">color=</span>Category, 
                    <span class="dt">fill=</span> Category )) +
@@ -606,7 +606,7 @@ counts &lt;-<span class="st"> </span>nyc_films %&gt;%
 <div id="categories-by-different-boroughs" class="section level4">
 <h4><span class="header-section-number">1.2.5.2</span> Categories by different Boroughs</h4>
 <p>Let’s see one more really useful thing about ggplot2. It’s called <code>facet_wrap()</code>. It’s an ugly word, but you will see that it is very cool, and you can do next-level-super-hero graph styles with <code>facet_wrap</code> that other people can’t do very easily.</p>
-<p>Here’s our question. We know that some films are made in different Boroughs, and that sme films are made in different categories, but do different Boroughs have different patterns for the kinds of categories of films they request permits for? Are their more tv shows in Brookyln? How do we find out? Watch, just like this:</p>
+<p>Here’s our question. We know that some films are made in different Boroughs, and that same films are made in different categories, but do different Boroughs have different patterns for the kinds of categories of films they request permits for? Are their more TV shows in Brooklyn? How do we find out? Watch, just like this:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># get the counts (this is a comment it&#39;s just here for you to read)</span>
 
 counts &lt;-<span class="st"> </span>nyc_films %&gt;%
@@ -647,7 +647,7 @@ counts &lt;-<span class="st"> </span>nyc_films %&gt;%
 <h3><span class="header-section-number">1.2.6</span> Gapminder Data</h3>
 <p><a href="https://www.gapminder.org" class="uri">https://www.gapminder.org</a> is an organization that collects some really interesting worldwide data. They also make cool visualization tools for looking at the data. There are many neat examples, and they have visualization tools built right into their website that you can play around with <a href="https://www.gapminder.org/tools/" class="uri">https://www.gapminder.org/tools/</a>. That’s fun check it out.</p>
 <p>There is also an R package called <code>gapminder</code>. When you install this package, it loads in some of the data from gapminder, so we can play with it in R.</p>
-<p>If you don’t have the gapminder packe installed, you can install it by running this code</p>
+<p>If you don’t have the gapminder package installed, you can install it by running this code</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;gapminder&quot;</span>)</code></pre></div>
 <p>Once the package is installed, you need to load the new library, like this. Then, you can put the <code>gapminder</code> data into a data frame, like we do here: <code>gapminder_df</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(gapminder)
@@ -664,7 +664,7 @@ gapminder_df&lt;-gapminder</code></pre></div>
 <p>We will show you how to graph some the data to answer a few different kinds of questions. Then you will form your own questions, and see if you can answer them with ggplot2 yourself. All you will need to do is copy and paste the following examples, and change them up a little bit</p>
 <div id="life-expectancy-histogram" class="section level4">
 <h4><span class="header-section-number">1.2.7.1</span> Life Expectancy histogram</h4>
-<p>How long are people living all around the world according to this data set? There are many ways we could plot the data to find out. The first way is a histogram. We have many numbers for life expectancy in the column <code>lifeExp</code>. This is a big sample, full of numbers for 142 countries across many years. It’s easy to make a histrogram in ggplot to view the distribution:</p>
+<p>How long are people living all around the world according to this data set? There are many ways we could plot the data to find out. The first way is a histogram. We have many numbers for life expectancy in the column <code>lifeExp</code>. This is a big sample, full of numbers for 142 countries across many years. It’s easy to make a histogram in ggplot to view the distribution:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(gapminder_df, <span class="kw">aes</span>(<span class="dt">x=</span>lifeExp))+
 <span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">color=</span><span class="st">&quot;white&quot;</span>)</code></pre></div>
 <p><img src="Programming_Crump_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
@@ -690,7 +690,7 @@ gapminder_df&lt;-gapminder</code></pre></div>
 <div id="life-expectancy-by-year-scatterplot" class="section level4">
 <h4><span class="header-section-number">1.2.7.2</span> Life Expectancy by year Scatterplot</h4>
 <p>We can see we have data for life expectancy and different years. So, does worldwide life expectancy change across the years in the data set? As we go into the future, are people living longer?</p>
-<p>Let’s look at this using a scatterplot. We can set the x-axis to be year, and the y-axis to be life expectancy. Then we can use <code>geom_point()</code> to display a whole bunch of dots, and then look at them. Here’s the simple code:</p>
+<p>Let’s look at this using a scatter plot. We can set the x-axis to be year, and the y-axis to be life expectancy. Then we can use <code>geom_point()</code> to display a whole bunch of dots, and then look at them. Here’s the simple code:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(gapminder_df, <span class="kw">aes</span>(<span class="dt">y=</span> lifeExp, <span class="dt">x=</span> year))+
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
 <p><img src="Programming_Crump_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
@@ -698,7 +698,7 @@ gapminder_df&lt;-gapminder</code></pre></div>
 </div>
 <div id="one-country-life-expectancy-by-year" class="section level4">
 <h4><span class="header-section-number">1.2.7.3</span> One country, life expectancy by year</h4>
-<p>I’m (Matt) from Canada, so maybe I want to know if life expectancy for Canadians is going up over the years. To find out the answer for one country, we first need to split the full data set, into another smaller data set that only contains data for Canada. In other words, we want only the rows where the word “Canada” is found in the <code>country</code> column. We will use the <code>filter</code> function from `dplyr for this:</p>
+<p>I’m (Matt) from Canada, so maybe I want to know if life expectancy for Canadians is going up over the years. To find out the answer for one country, we first need to split the full data set, into another smaller data set that only contains data for Canada. In other words, we want only the rows where the word “Canada” is found in the <code>country</code> column. We will use the <code>filter</code> function from <code>dplyr</code> for this:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># filter rows to contain Canada</span>
 
 smaller_df &lt;-<span class="st"> </span>gapminder_df %&gt;%<span class="st"> </span>
@@ -724,7 +724,7 @@ smaller_df &lt;-<span class="st"> </span>gapminder_df %&gt;%<span class="st"> </
 <span class="kw">ggplot</span>(smaller_df, <span class="kw">aes</span>(<span class="dt">y=</span> lifeExp, <span class="dt">x=</span> year, <span class="dt">group=</span> country))+
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
 <p><img src="Programming_Crump_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
-<p>Nice, we can now see three sets of dots, but which are countries do they represent? Let’s add a lengend, and make the graph better looking.</p>
+<p>Nice, we can now see three sets of dots, but which are countries do they represent? Let’s add a legend, and make the graph better looking.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(smaller_df,<span class="kw">aes</span>(<span class="dt">y=</span> lifeExp, <span class="dt">x=</span> year, 
                       <span class="dt">group=</span> country, <span class="dt">color =</span> country)) +
 <span class="st">  </span><span class="kw">geom_point</span>()+<span class="st"> </span>

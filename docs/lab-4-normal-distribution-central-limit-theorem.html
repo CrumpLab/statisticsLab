@@ -389,17 +389,17 @@ sample_of_numbers &lt;-<span class="kw">sample</span>(some_numbers, <span class=
 </div>
 <div id="runif-uniform-distribution" class="section level4">
 <h4><span class="header-section-number">4.2.1.2</span> runif uniform distribution</h4>
-<p>We can sample random numbers between any range using the <code>runif(n, min=0, max = 1)</code> function for the uniform distribution. We discussed this in the textbook. A uniform distribution is flat, and all the numbers between the min and max should occur roughly equally frequently. Let’s take 1000 random numbers between 0 and 1 and plot the histgram. We’ll just do it all in one line for speed.</p>
+<p>We can sample random numbers between any range using the <code>runif(n, min=0, max = 1)</code> function for the uniform distribution. We discussed this in the textbook. A uniform distribution is flat, and all the numbers between the min and max should occur roughly equally frequently. Let’s take 1000 random numbers between 0 and 1 and plot the histogram. We’ll just do it all in one line for speed.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(<span class="kw">runif</span>(<span class="dv">1000</span>,<span class="dv">0</span>,<span class="dv">1</span>))</code></pre></div>
 <p><img src="Programming_Crump_files/figure-html/unnamed-chunk-89-1.png" width="672" /></p>
-<p>This is histogram is flattish. Not perfectly flat, after all we only took 1000 samples. What if we took many more, say 10,000 total samples? Now it looks more flat, each bin is occuring about 500 times each, which is pretty close to the same amount.</p>
+<p>This is histogram is flattish. Not perfectly flat, after all we only took 1000 samples. What if we took many more, say 10,000 total samples? Now it looks more flat, each bin is occurring about 500 times each, which is pretty close to the same amount.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(<span class="kw">runif</span>(<span class="dv">10000</span>,<span class="dv">0</span>,<span class="dv">1</span>))</code></pre></div>
 <p><img src="Programming_Crump_files/figure-html/unnamed-chunk-90-1.png" width="672" /></p>
 </div>
 <div id="rbinom-the-binomial-distribution" class="section level4">
 <h4><span class="header-section-number">4.2.1.3</span> rbinom the binomial distribution</h4>
 <p>The binomial distribution sounds like a scary word… binomial (AAGGGGHHHHH, stay away!). The binomial can be a coin flipping distribution. You use <code>rbinom(n, size, prob)</code>. <code>n</code> gives the number of samples you want to take. We’ll keep <code>size = 1</code> for now, it’s the number of trials (forget this for now, it’s more useful for more complicated things than what we are doing, if you want to know what it does, try it out, and see if you figure it out). <code>prob</code> is a little list you make of probabilities, that define how often certain things happen.</p>
-<p>For example, consider flipping a coin. It will be heads or tails, and the coin, if it is fair, should have a 50% chance of being heads or tails. Here’s how we flip a coin 10 times using rbinom</p>
+<p>For example, consider flipping a coin. It will be heads or tails, and the coin, if it is fair, should have a 50% chance of being heads or tails. Here’s how we flip a coin 10 times using <code>rbinom</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">coin_flips &lt;-<span class="st"> </span><span class="kw">rbinom</span>(<span class="dv">10</span>,<span class="dv">1</span>,.<span class="dv">5</span>)
 coin_flips</code></pre></div>
 <pre><code>##  [1] 1 1 0 0 1 1 1 0 0 0</code></pre>
@@ -407,7 +407,7 @@ coin_flips</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">coin_flips &lt;-<span class="st"> </span><span class="kw">rbinom</span>(<span class="dv">10</span>,<span class="dv">1</span>,.<span class="dv">5</span>)
 <span class="kw">sum</span>(coin_flips)</code></pre></div>
 <pre><code>## [1] 5</code></pre>
-<p>Alright, so we get the sum, which tells us the number of heads. But, should we alwyas get that number of heads if we flipped a coin 10 times? If you keep redoing the above, you’ll get different answers. 5 heads will be the most frequent answer, but you will get lots of other answers too.</p>
+<p>Alright, so we get the sum, which tells us the number of heads. But, should we always get that number of heads if we flipped a coin 10 times? If you keep redoing the above, you’ll get different answers. 5 heads will be the most frequent answer, but you will get lots of other answers too.</p>
 <p>Hold on to your seats for this next one. With R, we can simulate the flipping of a coin 10 times (you already know that, you just did it), and we can do that over and over as many times as we want. For example, we could do it 100 times over, saving the number of heads for each set of 10 flips. Then we could look at the distribution of those sums. That would tell us about the range of things that can happen when we flip a coin 10 times. We can do that in loop like this:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">save_number_of_heads&lt;-<span class="kw">length</span>(<span class="dv">1000</span>) <span class="co"># make an empty variable to save things in</span>
 
@@ -417,7 +417,7 @@ for(i in <span class="dv">1</span>:<span class="dv">1000</span>){
 
 <span class="kw">hist</span>(save_number_of_heads)</code></pre></div>
 <p><img src="Programming_Crump_files/figure-html/unnamed-chunk-93-1.png" width="672" /></p>
-<p>See, that wasn’t too painful. Now we see another histrogram. The histogram shows us the frequency observing different numbers of heads (for 10 flips) across the 1000 simulations. 5 happens the most, but 2 happens sometimes, and so does 8. All of the possibilities seem to happen sometimes, some more than others.</p>
+<p>See, that wasn’t too painful. Now we see another histogram. The histogram shows us the frequency observing different numbers of heads (for 10 flips) across the 1000 simulations. 5 happens the most, but 2 happens sometimes, and so does 8. All of the possibilities seem to happen sometimes, some more than others.</p>
 </div>
 <div id="rnorm-the-normal-distribution" class="section level4">
 <h4><span class="header-section-number">4.2.1.4</span> rnorm the normal distribution</h4>
@@ -428,7 +428,7 @@ for(i in <span class="dv">1</span>:<span class="dv">1000</span>){
 </div>
 <div id="mixing-it-up" class="section level4">
 <h4><span class="header-section-number">4.2.1.5</span> mixing it up</h4>
-<p>The r functions are like Legos, you can put them together and come up with different things. What if wanted to sample from a distribution that looked like a two-humped camel’s back? Just sample from rnorm twice like this… mix away.</p>
+<p>The r functions are like Legos, you can put them together and come up with different things. What if wanted to sample from a distribution that looked like a two-humped camel’s back? Just sample from <code>rnorm</code> twice like this… mix away.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>( <span class="kw">c</span>( <span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">25</span>,<span class="dv">5</span>), <span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">50</span>,<span class="dv">5</span>)) )</code></pre></div>
 <p><img src="Programming_Crump_files/figure-html/unnamed-chunk-95-1.png" width="672" /></p>
 </div>
@@ -442,11 +442,11 @@ for(i in <span class="dv">1</span>:<span class="dv">1000</span>){
 <p>Remember the sampling distribution of the sample means from the textbook? Now, you will see the R code that made the graphs from before. As we’ve seen, we can take samples from distributions in R. We can take as many as we want. We can set our sample-size to be anything we want. And, we can take multiple samples of the same size as many times as we want.</p>
 <div id="taking-multiple-samples-of-the-same-size" class="section level4">
 <h4><span class="header-section-number">4.2.2.1</span> Taking multiple samples of the same size</h4>
-<p>Let’s take 10 samples from a normal distribution (mean = 0, and sd = 1). Let’s set the sample-size for each to be 20. Then, we’ll put them all in a data frame and look at 10 different histrograms, one for each sample.</p>
+<p>Let’s take 10 samples from a normal distribution (mean = 0, and SD = 1). Let’s set the sample-size for each to be 20. Then, we’ll put them all in a data frame and look at 10 different histograms, one for each sample.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">scores &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>*<span class="dv">20</span>,<span class="dv">0</span>,<span class="dv">1</span>)
 samples &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span>:<span class="dv">10</span>,<span class="dt">each=</span><span class="dv">20</span>)
 my_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(samples,scores)</code></pre></div>
-<p>First, look at the new my_df dataframe. You can see there is a column with numbers 1 to 10, these are the sample names. There are also 20 scores for each inhe scores column. Let’s make histograms for each sample, so we can see what all of the samples look like:</p>
+<p>First, look at the new my_df data frame. You can see there is a column with numbers 1 to 10, these are the sample names. There are also 20 scores for each in the scores column. Let’s make histograms for each sample, so we can see what all of the samples look like:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(my_df, <span class="kw">aes</span>(<span class="dt">x=</span>scores))+
 <span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">color=</span><span class="st">&quot;white&quot;</span>)+
 <span class="st">  </span><span class="kw">facet_wrap</span>(~samples)+
@@ -456,7 +456,7 @@ my_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(samples,s
 </div>
 <div id="getting-the-means-of-the-samples" class="section level4">
 <h4><span class="header-section-number">4.2.2.2</span> Getting the means of the samples</h4>
-<p>Now, let’s look at the means of the samples, we will use dplyr to get the means for each sample, and put them in a table:</p>
+<p>Now, let’s look at the means of the samples, we will use <code>dplyr</code> to get the means for each sample, and put them in a table:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
 
 sample_means &lt;-<span class="st"> </span>my_df %&gt;%
@@ -533,7 +533,7 @@ knitr::<span class="kw">kable</span>(sample_means)</code></pre></div>
 <div id="simulating-the-distribution-of-sample-means" class="section level4">
 <h4><span class="header-section-number">4.2.2.3</span> simulating the distribution of sample means</h4>
 <p>Our histogram with 10 sample means looked kind of sad. Let’s give it some more friends. How about we repeat our little sampling experiment 1000 times.</p>
-<p>Explain…We take 1000 samples. Each sample takes 20 scores from a normal distribution (mean=0, sd=1). Then we find the means of each sample (giving us 1000 sample means). Then, we plot that distribution.</p>
+<p>Explain…We take 1000 samples. Each sample takes 20 scores from a normal distribution (mean=0, SD=1). Then we find the means of each sample (giving us 1000 sample means). Then, we plot that distribution.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># get 1000 samples with 20 scores each</span>
 
 scores &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1000</span>*<span class="dv">20</span>,<span class="dv">0</span>,<span class="dv">1</span>)
@@ -587,12 +587,12 @@ d&lt;-<span class="kw">ggplot</span>(all_df,<span class="kw">aes</span>(<span cl
 <span class="kw">ggarrange</span>(a,b,c,d,
           <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">nrow =</span> <span class="dv">2</span>)</code></pre></div>
 <p><img src="Programming_Crump_files/figure-html/unnamed-chunk-102-1.png" width="672" /></p>
-<p>From reading the textbook and attending lecture, you should be able to start thinking about why these sampling statitistic distributions might be useful…For now, just know that you can make a sampling statistic for pretty much anythin in R, just by simulating the process of sampling, measuring the statistic, doing it over a bunch, and then plotting the histogram. This gives you a pretty good estimate of the distribution for that sampling statistic.</p>
+<p>From reading the textbook and attending lecture, you should be able to start thinking about why these sampling statistic distributions might be useful…For now, just know that you can make a sampling statistic for pretty much anything in R, just by simulating the process of sampling, measuring the statistic, doing it over a bunch, and then plotting the histogram. This gives you a pretty good estimate of the distribution for that sampling statistic.</p>
 </div>
 <div id="central-limit-theorem" class="section level3">
 <h3><span class="header-section-number">4.2.4</span> Central limit theorem</h3>
 <p>We have been building you up for the central limit theorem, described in the textbook and in class. The central limit theorem is basically that the distribution of sample means will be a normal curve. We already saw that before. But, the interesting thing about it, is that the distribution of your sample means will be normal, even if the distribution the samples came from is not normal. Huh what?</p>
-<p>To demonstrat this the next bit of code is modified from what we did ealier. We create 100 samples. Each sample has 1000 observations. All of them come from a uniform distribution between 0 to 1. This means all of the numbers between 0 and 1 should occur equally frequently. Below I plot histrograms for the first 10 samples (out of the 100 total, 100 is too many to look at). Notice the histograms are not normal, they are roughly flat.</p>
+<p>To demonstrate this the next bit of code is modified from what we did earlier. We create 100 samples. Each sample has 1000 observations. All of them come from a uniform distribution between 0 to 1. This means all of the numbers between 0 and 1 should occur equally frequently. Below I plot histograms for the first 10 samples (out of the 100 total, 100 is too many to look at). Notice the histograms are not normal, they are roughly flat.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">scores &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">100</span>*<span class="dv">1000</span>,<span class="dv">0</span>,<span class="dv">1</span>)
 samples &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span>:<span class="dv">100</span>,<span class="dt">each=</span><span class="dv">1000</span>)
 my_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(samples,scores)
@@ -615,7 +615,7 @@ my_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(samples,s
 <span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">color=</span><span class="st">&quot;white&quot;</span>, <span class="dt">bins=</span><span class="dv">15</span>)+
 <span class="st">  </span><span class="kw">theme_classic</span>()</code></pre></div>
 <p><img src="Programming_Crump_files/figure-html/unnamed-chunk-104-1.png" width="672" /></p>
-<p>As you can see, the sampling distribution of the sample means is not flat. It’s shaped kind of normalish. If we had taken many more samples, found their means, and then looked at a histogram, it would become even more normal looking. Because that’s what happens according to the central limit theorem.</p>
+<p>As you can see, the sampling distribution of the sample means is not flat. It’s shaped kind of normal-ish. If we had taken many more samples, found their means, and then looked at a histogram, it would become even more normal looking. Because that’s what happens according to the central limit theorem.</p>
 </div>
 <div id="the-normal-distribution" class="section level3">
 <h3><span class="header-section-number">4.2.5</span> The normal distribution</h3>
@@ -628,7 +628,7 @@ my_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(samples,s
 <p>To continue the build-up we now look at some more properties of the normal distribution.</p>
 <div id="graphing-the-normal-distribution" class="section level4">
 <h4><span class="header-section-number">4.2.5.1</span> Graphing the normal distribution</h4>
-<p>“Wait, I thought we alread did that”. We sort of did. We sampled numbers and made histograms that looked like normal distributions. But, a “normal distribution” is more of an abstract idea. It looks like this in the abstract:</p>
+<p>“Wait, I thought we already did that”. We sort of did. We sampled numbers and made histograms that looked like normal distributions. But, a “normal distribution” is more of an abstract idea. It looks like this in the abstract:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">normal_dist &lt;-<span class="st"> </span><span class="kw">dnorm</span>(<span class="kw">seq</span>(-<span class="dv">4</span>,<span class="dv">4</span>,.<span class="dv">1</span>), <span class="dv">0</span>, <span class="dv">1</span>)
 values &lt;-<span class="kw">seq</span>(-<span class="dv">4</span>,<span class="dv">4</span>,.<span class="dv">1</span>)
 normal_df &lt;-<span class="kw">data.frame</span>(values,normal_dist)
@@ -637,7 +637,7 @@ normal_df &lt;-<span class="kw">data.frame</span>(values,normal_dist)
 <span class="st">  </span><span class="kw">geom_line</span>()+
 <span class="st">  </span><span class="kw">theme_classic</span>()</code></pre></div>
 <p><img src="Programming_Crump_files/figure-html/unnamed-chunk-105-1.png" width="672" /></p>
-<p>A really nice shaped bell-like thing. This normal distribution has a mean of 0, and standard deviation of 1. The heights of the lines tell you roughly how likely each value is. Notice, it is centered on 0 (most likely that numbers from this distributino will be near 0), and it goes down as numbers get bigger or smaller (so bigger or smaller numbers get less likely). There is a range to it. Notice the values don’t go much beyond -4 and +4. This because those values don’t happen very often. Theoretically any value could happen, but really big or small values have really low probabilites.</p>
+<p>A really nice shaped bell-like thing. This normal distribution has a mean of 0, and standard deviation of 1. The heights of the lines tell you roughly how likely each value is. Notice, it is centered on 0 (most likely that numbers from this distribution will be near 0), and it goes down as numbers get bigger or smaller (so bigger or smaller numbers get less likely). There is a range to it. Notice the values don’t go much beyond -4 and +4. This because those values don’t happen very often. Theoretically any value could happen, but really big or small values have really low probabilities.</p>
 </div>
 <div id="calculating-the-probability-of-specific-ranges." class="section level4">
 <h4><span class="header-section-number">4.2.5.2</span> calculating the probability of specific ranges.</h4>
@@ -645,7 +645,7 @@ normal_df &lt;-<span class="kw">data.frame</span>(values,normal_dist)
 <p>We can use the <code>pnorm</code> function to confirm this:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pnorm</span>(<span class="dv">0</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd=</span> <span class="dv">1</span>, <span class="dt">lower.tail=</span><span class="ot">FALSE</span>)</code></pre></div>
 <pre><code>## [1] 0.5</code></pre>
-<p>Agreed, pnorm tells us the probability of getting 0 or greater is .5.</p>
+<p>Agreed, <code>pnorm</code> tells us the probability of getting 0 or greater is .5.</p>
 <p>Well, what is the probability of getting a 2 or greater? That’s a bit harder to judge, obviously less than 50%. Use R like this to find out:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pnorm</span>(<span class="dv">2</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd=</span> <span class="dv">1</span>, <span class="dt">lower.tail=</span><span class="ot">FALSE</span>)</code></pre></div>
 <pre><code>## [1] 0.02275013</code></pre>
@@ -664,17 +664,17 @@ ps[<span class="dv">1</span>]-ps[<span class="dv">2</span>]</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ps&lt;-<span class="kw">pnorm</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>), <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd=</span> <span class="dv">1</span>, <span class="dt">lower.tail=</span><span class="ot">FALSE</span>)
 ps[<span class="dv">1</span>]-ps[<span class="dv">2</span>]</code></pre></div>
 <pre><code>## [1] 0.02140023</code></pre>
-<p>Again a very small amount, only 2.1 % of the numbers, not a alot.</p>
+<p>Again a very small amount, only 2.1 % of the numbers, not a a lot.</p>
 </div>
 <div id="summary-pnorm" class="section level4">
 <h4><span class="header-section-number">4.2.5.3</span> summary pnorm</h4>
-<p>You can always use pnorm to figure how the probabilities of getting certain values from any normal distribution. That’s great.</p>
+<p>You can always use <code>pnorm</code> to figure how the probabilities of getting certain values from any normal distribution. That’s great.</p>
 </div>
 </div>
 <div id="z-scores" class="section level3">
 <h3><span class="header-section-number">4.2.6</span> z-scores</h3>
-<p>We just spent a bunch of time looking at a very special normal distribution, the one where the mean = 0, and the standard deviation = 1. Then we got a little bit comfortable with what those numbers mean. 0 happens a lot. Numbers between -1 and 1 happen alot. Numbers bigger or smaller than 1 also happen fairly often, but less often. Number bigger than 2 don’t happen alot, numbers bigger than 3 don’t happen hardly at all.</p>
-<p>We can use this knowledge for our convenience. Often, we are not dealing with numbers exactly like these. For example, someone might say, I got a number, it’s 550. It came from a distribution with mean = 600, and standard deviation = 25. So, does 545 happen alot or not? The numbers dont’ tell you right away.</p>
+<p>We just spent a bunch of time looking at a very special normal distribution, the one where the mean = 0, and the standard deviation = 1. Then we got a little bit comfortable with what those numbers mean. 0 happens a lot. Numbers between -1 and 1 happen a lot. Numbers bigger or smaller than 1 also happen fairly often, but less often. Number bigger than 2 don’t happen a lot, numbers bigger than 3 don’t happen hardly at all.</p>
+<p>We can use this knowledge for our convenience. Often, we are not dealing with numbers exactly like these. For example, someone might say, I got a number, it’s 550. It came from a distribution with mean = 600, and standard deviation = 25. So, does 545 happen a lot or not? The numbers don’t tell you right away.</p>
 <p>If we were talking about our handy distribution with mean = 0 and standard deviation = 1, and I told I got a number 4.5 from that distribution. You would automatically know that 4.5 doesn’t happen a lot. Right? Right!</p>
 <p>z-scores are a way of transforming one set of numbers into our neato normal distribution, with mean = 0 and standard deviation = 1.</p>
 <p>Here’s a simple example, like what we said in the textbook. If you have a normal distribution with mean = 550, and standard deviation 25, then how far from the mean is the number 575? It’s a whole 25 away (550+25 = 575). How many standard deviations is that? It’s 1 whole standard deviation. So does a number like 575 happen a lot? Well, based on what you know about normal distributions, 1 standard deviation of the mean isn’t that far, and it does happen fairly often. This is what we are doing here.</p>
@@ -709,8 +709,8 @@ my_sd &lt;-<span class="kw">sd</span>(some_numbers)
 ##  [6]  0.21022075 -1.48509470  0.63837396  1.23534841 -1.76182427
 ## [11] -0.11959043 -0.33335878  0.27042868  0.14378578  0.95875935
 ## [16] -0.02716493  1.27699863 -1.40247618  0.86608761 -1.45365470</code></pre>
-<p>Done. Now you have converted your original numbers into what we call standardized scores. They are standardized to have the same properties (assumed properties) as a normal distribution with mean = 0, and sd = 1.</p>
-<p>You could look at each of your original scores, and try to figure out if they are likely or unlikely numbers. But, if you make them into z-scores, then you can tell right away. Numbers close to 0 happen alot, bigger numbers closer to 1 happen less often, but still fairly often, and number bigger than 2 or 3 hardly happen at all.</p>
+<p>Done. Now you have converted your original numbers into what we call standardized scores. They are standardized to have the same properties (assumed properties) as a normal distribution with mean = 0, and SD = 1.</p>
+<p>You could look at each of your original scores, and try to figure out if they are likely or unlikely numbers. But, if you make them into z-scores, then you can tell right away. Numbers close to 0 happen a lot, bigger numbers closer to 1 happen less often, but still fairly often, and number bigger than 2 or 3 hardly happen at all.</p>
 <p>If someone said they did 3 standard deviations above the mean on a test, this means they did really good, and hardly nobody also did that good.</p>
 <p>Z-scores are a useful language once you understand them. We show you this language in case you find them useful.</p>
 </div>

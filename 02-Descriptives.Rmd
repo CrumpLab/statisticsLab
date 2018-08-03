@@ -17,7 +17,7 @@ Other things to say
 
 ### Descriptives basics in R
 
-We learned in lecture and from the textbook that data we want to use ask and answer questions often comes with loads of numbers. Too many numbers to look at all at once. That's one reason we use descriptive statistics. To reduce the big set of numbers to one or two summary numbers that tell use something about all of the numbers. R can produce descriptive statistics for you in many ways. There are base functions for most of the ones that you want. We'll go over some R basics for descriptive statistics, and then use our newfound skills to ask some questions about real data.
+We learned in lecture and from the textbook that data we want to use ask and answer questions often comes with loads of numbers. Too many numbers to look at all at once. That's one reason we use descriptive statistics. To reduce the big set of numbers to one or two summary numbers that tell use something about all of the numbers. R can produce descriptive statistics for you in many ways. There are base functions for most of the ones that you want. We'll go over some R basics for descriptive statistics, and then use our new found skills to ask some questions about real data.
 
 #### Making numbers in R
 
@@ -84,9 +84,9 @@ median(c(1,2,3))
 
 #### Mode
 
-R does not a base function for the Mode. You would have to write one for yourself. Here is an example of writing your own mode function, and then using it. Note I searched how to do this on google, and am using the mode defined by [this answer on stack overflow](https://stackoverflow.com/questions/2547402/is-there-a-built-in-function-for-finding-the-mode)
+R does not a base function for the Mode. You would have to write one for yourself. Here is an example of writing your own mode function, and then using it. Note I searched how to do this on Google, and am using the mode defined by [this answer on stack overflow](https://stackoverflow.com/questions/2547402/is-there-a-built-in-function-for-finding-the-mode)
 
-Remember, the mode is the most frequently occuring number in the set. Below 1 occurs the most, so the mode will be one.
+Remember, the mode is the most frequently occurring number in the set. Below 1 occurs the most, so the mode will be one.
 
 ```{r}
 
@@ -104,7 +104,7 @@ my_mode(c(1,1,1,1,1,1,1,2,3,4))
 
 We often want to know how variable the numbers are. We are going to look at descriptive statistics to describe this such as the **range**, **variance**, the **standard deviation**, and a few others.
 
-First, let's remind ourselves what variation looks like (it's when the numbers are different). We will sample 100 numbers from a normal distribution (don't worry about this yet), with a mean of 10, and a standard deviation of 5, and then make a histrogram so we can see the variation around 10..
+First, let's remind ourselves what variation looks like (it's when the numbers are different). We will sample 100 numbers from a normal distribution (don't worry about this yet), with a mean of 10, and a standard deviation of 5, and then make a histogram so we can see the variation around 10..
 
 ```{r}
 sample_numbers <- rnorm(100,10,5)
@@ -130,13 +130,13 @@ var(sample_numbers)
 
 #### sd = standard deviation
 
-We find the sample standard deviation us sd. Note, divides by (n-1)
+We find the sample standard deviation us SD. Note, divides by (n-1)
 
 ```{r}
 sd(sample_numbers)
 ```
 
-Rember that the standard deviation is just the square root of the variance, see:
+Remember that the standard deviation is just the square root of the variance, see:
 
 ```{r}
 sqrt(var(sample_numbers))
@@ -187,7 +187,7 @@ Nobody wants to do that! Not, me I stopped doing it that way, you should to.
 
 #### group_by and summarise
 
-We can easily do everthing all at once using the `group_by` and `summarise` function from the `dplyr` package. Just watch
+We can easily do everything all at once using the `group_by` and `summarise` function from the `dplyr` package. Just watch
 
 ```{r}
 library(dplyr)
@@ -243,7 +243,7 @@ knitr::kable(summary_df)
 
 ### Describing gapminder
 
-Now that we know how to get descriptive statistics from R, we cam do this will some real data. Let's quickly ask a few question about the gapminder data. Reinstall the gapminder library if you don't already have it, then laod the data into a dataframe:
+Now that we know how to get descriptive statistics from R, we cam do this will some real data. Let's quickly ask a few question about the gapminder data. Re-install the gapminder library if you don't already have it, then load the data into a data frame:
 
 ```{r}
 library(gapminder)
@@ -252,7 +252,7 @@ gapminder_df <- gapminder
 
 #### What are some descriptive for Life expectancy by continent?
 
-Copy the code from the last part of descriptives using dplyr, then change the names like this:
+Copy the code from the last part of descriptives using `dplyr`, then change the names like this:
 
 ```{r}
 

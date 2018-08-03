@@ -35,7 +35,7 @@ hist(rnorm(100, mean=50, sd=25))
 
 You just made R sample 100 numbers, and then plot the results in a histogram. Pretty neat. We'll be doing some of this later in the course, where get R to make fake data for us, and then we learn to think about how data behaves under different kinds of assumptions.
 
-For now, let's do something that might be a little bit more interesting...what movies are going to be filming in NYC? It turns out that NYC makes a lot of data about a lot things open and free for anyone to download and look at. This is the NYC Open Data website: [https://opendata.cityofnewyork.us](https://opendata.cityofnewyork.us). I searched through the data, and found this data file that lists the locations of film permits for shooting movies all throughout the burroughs. You can download the data to your computer from [this link](https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/Film_Permits.csv)
+For now, let's do something that might be a little bit more interesting...what movies are going to be filming in NYC? It turns out that NYC makes a lot of data about a lot things open and free for anyone to download and look at. This is the NYC Open Data website: [https://opendata.cityofnewyork.us](https://opendata.cityofnewyork.us). I searched through the data, and found this data file that lists the locations of film permits for shooting movies all throughout the Burroughs. You can download the data to your computer from [this link](https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/Film_Permits.csv)
 
 NOTE TO SELF, COME BACK HERE AND WALKTHROUGH FILE PATHS AND THINGS
 
@@ -51,7 +51,7 @@ You will be downloading and analyzing all kinds of data files this semester. We 
 
 In R-studio, you will now see a variable called `nyc_films` in the top right-hand corner of the screen, in the environment tab. If you click this thing, it will show you the contents of the data in a new window. The data is stored in something we call a `data frame`. It's R lingo, for the thing that contains the data. Notice is a square, with rows going across, and columns going up and down. It looks kind of like an excel spreadsheet if you are familiar with Excel.
 
-It's useful to know you can look at the data frame this way if you need to. But, this dataframe is really big, it has 50,728 rows of data. That's a lot too much to look at.
+It's useful to know you can look at the data frame this way if you need to. But, this data frame is really big, it has 50,728 rows of data. That's a lot too much to look at.
 
 #### summarytools
 
@@ -70,7 +70,7 @@ Let's walk through a couple questions we might have about this data. We can see 
 
 #### Where are the most film permits being requested?
 
-Do you have any guesses? Is it Manhattan, or Brookyln, of the Bronx? Or Queen's or Staten Island? We can find out by plotting the data using a bar plot. We just need to count how many film permits are made in each burough, and then make different bars represent the the counts.
+Do you have any guesses? Is it Manhattan, or Brooklyn, of the Bronx? Or Queen's or Staten Island? We can find out by plotting the data using a bar plot. We just need to count how many film permits are made in each borough, and then make different bars represent the the counts.
 
 First, we do the counting in R. Run the following code.
 
@@ -83,7 +83,7 @@ counts <- nyc_films %>%
 
 ```
 
-The above grouped the data by each of the five Borough's, and then counted the number of times each Borough occured (using the `length` function). The result is a new variable called `count`. I chose to name this variable `count`. You can see that it is now displayed in the top-right hand corned in the environment tab. If you gave `count` a different name, like `muppets`, then it would be named what you called it.
+The above grouped the data by each of the five Borough's, and then counted the number of times each Borough occurred (using the `length` function). The result is a new variable called `count`. I chose to name this variable `count`. You can see that it is now displayed in the top-right hand corned in the environment tab. If you gave `count` a different name, like `muppets`, then it would be named what you called it.
 
 If you click on the `counts` variable, you will see the five boroughs listed, along with the counts for how many film permits were requested in each Borough. These are the numbers that we want to plot in a graph.
 
@@ -116,13 +116,13 @@ ggplot(counts, aes(x = Category, y = count_of_permits )) +
 
 ```
 
-Ok, so this figure might look a bit weird because the labels on the bottom are running into each other. We'll fix that in a bit. First, let's notice the changes. 
+OK, so this figure might look a bit weird because the labels on the bottom are running into each other. We'll fix that in a bit. First, let's notice the changes. 
 
 1. I changed `Borough` to `Category`. That was the main thing
 
 2. I left out a bunch of things from before. None of the `library()` commands are used again, and I didn't re-run the very early code to get the data. R already has those things in it's memory, so we don't need to do that first. If you ever clear the memory of R, then you will need to reload those things. First-things come first.
 
-Fine, so how do we fix the graph? Good question. To be honest, I don't know right now. I totally forgot how. But, I know ggplot2 can do this, and I'm going to google it, right now. Then I'm going to find the answer, and use it here. The googling of your questions is a fine way to learn. It's what everybody does these days....[goes to google...].
+Fine, so how do we fix the graph? Good question. To be honest, I don't know right now. I totally forgot how. But, I know ggplot2 can do this, and I'm going to Google it, right now. Then I'm going to find the answer, and use it here. The googling of your questions is a fine way to learn. It's what everybody does these days....[goes to Google...].
 
 Found it, actually found a lot of ways to do this. The trick is to add the last line. I just copy-pasted it from the solution I found on [stack overflow](https://stackoverflow.com/questions/1330989/rotating-and-spacing-axis-labels-in-ggplot2) (you will become friend's with stack overflow, there are many solutions there to all of your questions)
 
@@ -282,7 +282,7 @@ ggplot(counts, aes(x = Category, y = count_of_permits,
 
 #### Font-size
 
-Changing font-size is often something you want to do. ggplot2 can do this in different ways. I suggest using the `base_size` option inside `theme_classic()`. You set one number for the largest font size in the graph, and everything else gets scaled to fit with that that first number. It's really convenient. Look for the insisde of `theme_classic()`
+Changing font-size is often something you want to do. ggplot2 can do this in different ways. I suggest using the `base_size` option inside `theme_classic()`. You set one number for the largest font size in the graph, and everything else gets scaled to fit with that that first number. It's really convenient. Look for the inside of `theme_classic()`
 
 ```{r}
 ggplot(counts, aes(x = Category, y = count_of_permits, 
@@ -354,7 +354,7 @@ I guess "episodic series" are the most common. Using a graph like this gave us o
 
 Let's see one more really useful thing about ggplot2. It's called `facet_wrap()`. It's an ugly word, but you will see that it is very cool, and you can do next-level-super-hero graph styles with `facet_wrap` that other people can't do very easily. 
 
-Here's our question. We know that some films are made in different Boroughs, and that sme films are made in different categories, but do different Boroughs have different patterns for the kinds of categories of films they request permits for? Are their more tv shows in Brookyln? How do we find out? Watch, just like this:
+Here's our question. We know that some films are made in different Boroughs, and that same films are made in different categories, but do different Boroughs have different patterns for the kinds of categories of films they request permits for? Are their more TV shows in Brooklyn? How do we find out? Watch, just like this:
 
 ```{r}
 
@@ -406,7 +406,7 @@ ggplot(counts, aes(x = Borough, y = count_of_permits,
 
 There is also an R package called `gapminder`. When you install this package, it loads in some of the data from gapminder, so we can play with it in R.
 
-If you don't have the gapminder packe installed, you can install it by running this code
+If you don't have the gapminder package installed, you can install it by running this code
 
 ```{r, eval=FALSE}
 install.packages("gapminder")
@@ -435,7 +435,7 @@ We will show you how to graph some the data to answer a few different kinds of q
 
 #### Life Expectancy histogram
 
-How long are people living all around the world according to this data set? There are many ways we could plot the data to find out. The first way is a histogram. We have many numbers for life expectancy in the column `lifeExp`. This is a big sample, full of numbers for 142 countries across many years. It's easy to make a histrogram in ggplot to view the distribution:
+How long are people living all around the world according to this data set? There are many ways we could plot the data to find out. The first way is a histogram. We have many numbers for life expectancy in the column `lifeExp`. This is a big sample, full of numbers for 142 countries across many years. It's easy to make a histogram in ggplot to view the distribution:
 
 ```{r}
 ggplot(gapminder_df, aes(x=lifeExp))+
@@ -476,7 +476,7 @@ See, same basic patter, but now breaking up the range into 50 little equal sized
 
 We can see we have data for life expectancy and different years. So, does worldwide life expectancy change across the years in the data set? As we go into the future, are people living longer?
 
-Let's look at this using a scatterplot. We can set the x-axis to be year, and the y-axis to be life expectancy. Then we can use `geom_point()` to display a whole bunch of dots, and then look at them. Here's the simple code:
+Let's look at this using a scatter plot. We can set the x-axis to be year, and the y-axis to be life expectancy. Then we can use `geom_point()` to display a whole bunch of dots, and then look at them. Here's the simple code:
 
 ```{r}
 ggplot(gapminder_df, aes(y= lifeExp, x= year))+
@@ -487,7 +487,7 @@ Whoa, that's a lot of dots! Remember that each country is measured each year. So
 
 #### One country, life expectancy by year
 
-I'm (Matt) from Canada, so maybe I want to know if life expectancy for Canadians is going up over the years. To find out the answer for one country, we first need to split the full data set, into another smaller data set that only contains data for Canada. In other words, we want only the rows where the word "Canada" is found in the `country` column. We will use the `filter` function from `dplyr for this:
+I'm (Matt) from Canada, so maybe I want to know if life expectancy for Canadians is going up over the years. To find out the answer for one country, we first need to split the full data set, into another smaller data set that only contains data for Canada. In other words, we want only the rows where the word "Canada" is found in the `country` column. We will use the `filter` function from `dplyr` for this:
 
 ```{r}
 # filter rows to contain Canada
@@ -522,7 +522,7 @@ ggplot(smaller_df, aes(y= lifeExp, x= year, group= country))+
 
 ```
 
-Nice, we can now see three sets of dots, but which are countries do they represent? Let's add a lengend, and make the graph better looking.
+Nice, we can now see three sets of dots, but which are countries do they represent? Let's add a legend, and make the graph better looking.
 
 ```{r}
 ggplot(smaller_df,aes(y= lifeExp, x= year, 

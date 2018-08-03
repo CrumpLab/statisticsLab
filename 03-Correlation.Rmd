@@ -15,11 +15,11 @@ Other things to say
 
 ## R
 
-In this lab we use explore to explore correlations between any two variables, and alsot show how to do a regression line. There will be three main parts. Getting R to compute the correlation, and looking at the data using scatterplots. We'll look at some correlations from the World Happiness Report. Then you'll look at correlations using data we collect from ourselves. It will be fun.
+In this lab we use explore to explore correlations between any two variables, and also show how to do a regression line. There will be three main parts. Getting R to compute the correlation, and looking at the data using scatter plots. We'll look at some correlations from the World Happiness Report. Then you'll look at correlations using data we collect from ourselves. It will be fun.
 
 ### cor for correlation
 
-R has the `cor` function for computing pearson's r between any two variables. In fact this same function computes other versions of correlation, but we'll skip those here. To use the function you just need two variables with numbers in them like this:
+R has the `cor` function for computing Pearson's r between any two variables. In fact this same function computes other versions of correlation, but we'll skip those here. To use the function you just need two variables with numbers in them like this:
 
 ```{r}
 x  <- c(1,3,2,5,4,6,5,8,9)
@@ -30,7 +30,7 @@ cor(x,y)
  
 #### scatterplots
 
-Let's take our silly example, and plot the data in a scatterplot using ggplot2, and let's also return the correlation and print it on the scatterplot. Remember, ggplot2 wants the data in a data.frame, so we first put our x and y variables in a data frame.
+Let's take our silly example, and plot the data in a scatter plot using ggplot2, and let's also return the correlation and print it on the scatter plot. Remember, ggplot2 wants the data in a data.frame, so we first put our x and y variables in a data frame.
 
 ```{r}
 library(ggplot2)
@@ -48,7 +48,7 @@ Wow, we're moving fast here.
 
 #### lots of scatterplots
 
-Before we move on to real data, let's look at some fake data first. Often we will have many measures of X and Y, split between a few different conditions, for example, A, B, C, and D. Let's make some fake data for X and Y, for each condition A, B, C, and D, and then use facet_wrapping to look at four scatterplots all at once
+Before we move on to real data, let's look at some fake data first. Often we will have many measures of X and Y, split between a few different conditions, for example, A, B, C, and D. Let's make some fake data for X and Y, for each condition A, B, C, and D, and then use facet_wrapping to look at four scatter plots all at once
 
 ```{r}
 x<-rnorm(40,0,1)
@@ -67,13 +67,13 @@ ggplot(all_df, aes(x=x,y=y))+
 
 We've seen how we can make four graphs at once. Facet_wrap will always try to make as many graphs as there are individual conditions in the column variable. In this case there are four, so it makes four.
 
-Notice, the scatterplots don't show the correlation (r) values. Getting these numbers on there is possible, but we have to calculate them first. We'll leave it to you to google how to do this, if it's something you want to do. Instead, what we will do is make a table of the correlations in addition to the scatterplot. We again use `dplyr` to do this:
+Notice, the scatter plots don't show the correlation (r) values. Getting these numbers on there is possible, but we have to calculate them first. We'll leave it to you to Google how to do this, if it's something you want to do. Instead, what we will do is make a table of the correlations in addition to the scatter plot. We again use `dplyr` to do this:
 
-Ok, we are basically ready to turn to some real data and ask if there are correlations between interesting variables...You will find that there are some... But before we do that, we do one more thing. This will help you become a little bit more skeptical of these "correlations".
+OK, we are basically ready to turn to some real data and ask if there are correlations between interesting variables...You will find that there are some... But before we do that, we do one more thing. This will help you become a little bit more skeptical of these "correlations".
 
 #### Chance correlations
 
-As you learned from the textbook. We can find correlations by chance alone, even when there is no true correlation between the variables. For example, if we sampled randomly into x, and then sampled some numbers randomly into y. We know they aren't related, because we randomly sampled the numbers. However, doing this creates some correlations some of the time just by chance. You can demonstrate this to yourself with the following code. It's a repeat of what we already saw, jut with a few more conditions added. Let's look at 20 conditions, with random numbers for x and y in each. For each, sample size will be 10. We'll make the fake data, then make a big graph to look at all. And, even though we get to regression later in the lab, I'll put the best fit line onto each scatterplot, so you can "see the correlations".
+As you learned from the textbook. We can find correlations by chance alone, even when there is no true correlation between the variables. For example, if we sampled randomly into x, and then sampled some numbers randomly into y. We know they aren't related, because we randomly sampled the numbers. However, doing this creates some correlations some of the time just by chance. You can demonstrate this to yourself with the following code. It's a repeat of what we already saw, jut with a few more conditions added. Let's look at 20 conditions, with random numbers for x and y in each. For each, sample size will be 10. We'll make the fake data, then make a big graph to look at all. And, even though we get to regression later in the lab, I'll put the best fit line onto each scatter plot, so you can "see the correlations".
 
 ```{r}
 x<-rnorm(10*20,0,1)
@@ -90,9 +90,9 @@ ggplot(all_df, aes(x=x,y=y))+
 
 ```
 
-You can see that the slope of the blue line is not always flat. Sometimes it looks like there is a correlation, when we know there shouldn't be. You can keep re-doing this graph, by reknitting your R Markdown document, or by pressing the little green play button. This is basically you simulating the outcomes as many times as you press the button.
+You can see that the slope of the blue line is not always flat. Sometimes it looks like there is a correlation, when we know there shouldn't be. You can keep re-doing this graph, by re-knitting your R Markdown document, or by pressing the little green play button. This is basically you simulating the outcomes as many times as you press the button.
 
-The point is, now you know you can find correlations by chance. So, in the next section, you should always wonder if the correlations you find reflect meaningful assocation between the x and y variable, or could have just occured by chance.
+The point is, now you know you can find correlations by chance. So, in the next section, you should always wonder if the correlations you find reflect meaningful association between the x and y variable, or could have just occurred by chance.
 
 ### Humor Styles Questionnaire
 
@@ -100,7 +100,7 @@ Let's take a look at some correlations in real data. We are going to look at res
 
 #### Load the data
 
-we load the data into a dataframe.
+we load the data into a data frame.
 
 ```{r}
 library(data.table)
@@ -120,7 +120,7 @@ You should be able to see that there is data for many different countries, acros
  
 For the year 2017 only, does a countries measure for "freedom to make life choices" correlate with that countries measure for " Confidence in national government"?
 
-Let's find out. We calculate the correlation, and then we make the scatterplot.
+Let's find out. We calculate the correlation, and then we make the scatter plot.
 
 
 ```{r}
@@ -135,7 +135,7 @@ ggplot(whr_data, aes(x=`Freedom to make life choices`,
 
 ```
 
-Interesting, what happened here? We can see some dots, but the correlation was NA (meaning undefined). This occured because there are some missing data points in the data. We can remove all the rows with missing data first, then do the correlation. We will do this a couple steps, first creating our own data.frame with only the numbers we want to analyse. We can select the columns we want to keep using `select`. Then we use `filter` to remove the rows with NAs.
+Interesting, what happened here? We can see some dots, but the correlation was NA (meaning undefined). This occurred because there are some missing data points in the data. We can remove all the rows with missing data first, then do the correlation. We will do this a couple steps, first creating our own data.frame with only the numbers we want to analyse. We can select the columns we want to keep using `select`. Then we use `filter` to remove the rows with NAs.
 
 ```{r}
 library(dplyr)
@@ -153,7 +153,7 @@ cor(smaller_df$`Freedom to make life choices`,
 
 Now we see the correlation is .408. 
 
-Although the scatterplot shows the dots are everywhere, it generally shows that as Freedom to make lifechoices increases in a country, that countries confidence in their national government also increase. This is a positive correlation. Let's do this again and add the best fit line, so the trend is more clear, we use `geom_smooth(method=lm, se=FALSE)`. I also change the `alpha` value of the dots so they blend it bit, and you can see more of them.
+Although the scatter plot shows the dots are everywhere, it generally shows that as Freedom to make life choices increases in a country, that countries confidence in their national government also increase. This is a positive correlation. Let's do this again and add the best fit line, so the trend is more clear, we use `geom_smooth(method=lm, se=FALSE)`. I also change the `alpha` value of the dots so they blend it bit, and you can see more of them.
 
 ```{r}
 
@@ -186,7 +186,7 @@ ggplot(smaller_df, aes(x=`Freedom to make life choices`,
 
 After all that work, we can now speedily answer more questions. For example, what is the relationship between positive affect in a country and negative affect in a country. I wouldn't be surprised if there was a negative correlation here: when positive feelings generally go up, shouldn't negative feelings generally go down?
 
-To answer this question, we just copy paste the last code block, and change the DVs to be `Positive affect`, nad `Negative affect`
+To answer this question, we just copy paste the last code block, and change the DVs to be `Positive affect`, and `Negative affect`
 
 ```{r}
 

@@ -416,7 +416,7 @@ out that NYC makes a lot of data about a lot things open and free for
 anyone to download and look at. This is the NYC Open Data website:
 \url{https://opendata.cityofnewyork.us}. I searched through the data,
 and found this data file that lists the locations of film permits for
-shooting movies all throughout the burroughs. You can download the data
+shooting movies all throughout the Burroughs. You can download the data
 to your computer from
 \href{https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/Film_Permits.csv}{this
 link}
@@ -445,7 +445,7 @@ with rows going across, and columns going up and down. It looks kind of
 like an excel spreadsheet if you are familiar with Excel.
 
 It's useful to know you can look at the data frame this way if you need
-to. But, this dataframe is really big, it has 50,728 rows of data.
+to. But, this data frame is really big, it has 50,728 rows of data.
 That's a lot too much to look at.
 
 \subsubsection{summarytools}\label{summarytools}
@@ -481,10 +481,10 @@ how to do some plotting in R.
 \subsubsection{Where are the most film permits being
 requested?}\label{where-are-the-most-film-permits-being-requested}
 
-Do you have any guesses? Is it Manhattan, or Brookyln, of the Bronx? Or
+Do you have any guesses? Is it Manhattan, or Brooklyn, of the Bronx? Or
 Queen's or Staten Island? We can find out by plotting the data using a
 bar plot. We just need to count how many film permits are made in each
-burough, and then make different bars represent the the counts.
+borough, and then make different bars represent the the counts.
 
 First, we do the counting in R. Run the following code.
 
@@ -499,7 +499,7 @@ First, we do the counting in R. Run the following code.
 \end{Shaded}
 
 The above grouped the data by each of the five Borough's, and then
-counted the number of times each Borough occured (using the
+counted the number of times each Borough occurred (using the
 \texttt{length} function). The result is a new variable called
 \texttt{count}. I chose to name this variable \texttt{count}. You can
 see that it is now displayed in the top-right hand corned in the
@@ -559,7 +559,7 @@ this work, I'll do it all at once:
 
 \includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-7-1.pdf}
 
-Ok, so this figure might look a bit weird because the labels on the
+OK, so this figure might look a bit weird because the labels on the
 bottom are running into each other. We'll fix that in a bit. First,
 let's notice the changes.
 
@@ -579,10 +579,10 @@ let's notice the changes.
 
 Fine, so how do we fix the graph? Good question. To be honest, I don't
 know right now. I totally forgot how. But, I know ggplot2 can do this,
-and I'm going to google it, right now. Then I'm going to find the
+and I'm going to Google it, right now. Then I'm going to find the
 answer, and use it here. The googling of your questions is a fine way to
 learn. It's what everybody does these days\ldots{}.{[}goes to
-google\ldots{}{]}.
+Google\ldots{}{]}.
 
 Found it, actually found a lot of ways to do this. The trick is to add
 the last line. I just copy-pasted it from the solution I found on
@@ -819,7 +819,7 @@ Changing font-size is often something you want to do. ggplot2 can do
 this in different ways. I suggest using the \texttt{base\_size} option
 inside \texttt{theme\_classic()}. You set one number for the largest
 font size in the graph, and everything else gets scaled to fit with that
-that first number. It's really convenient. Look for the insisde of
+that first number. It's really convenient. Look for the inside of
 \texttt{theme\_classic()}
 
 \begin{Shaded}
@@ -912,9 +912,9 @@ very cool, and you can do next-level-super-hero graph styles with
 \texttt{facet\_wrap} that other people can't do very easily.
 
 Here's our question. We know that some films are made in different
-Boroughs, and that sme films are made in different categories, but do
+Boroughs, and that same films are made in different categories, but do
 different Boroughs have different patterns for the kinds of categories
-of films they request permits for? Are their more tv shows in Brookyln?
+of films they request permits for? Are their more TV shows in Brooklyn?
 How do we find out? Watch, just like this:
 
 \begin{Shaded}
@@ -987,7 +987,7 @@ There is also an R package called \texttt{gapminder}. When you install
 this package, it loads in some of the data from gapminder, so we can
 play with it in R.
 
-If you don't have the gapminder packe installed, you can install it by
+If you don't have the gapminder package installed, you can install it by
 running this code
 
 \begin{Shaded}
@@ -1036,7 +1036,7 @@ How long are people living all around the world according to this data
 set? There are many ways we could plot the data to find out. The first
 way is a histogram. We have many numbers for life expectancy in the
 column \texttt{lifeExp}. This is a big sample, full of numbers for 142
-countries across many years. It's easy to make a histrogram in ggplot to
+countries across many years. It's easy to make a histogram in ggplot to
 view the distribution:
 
 \begin{Shaded}
@@ -1097,7 +1097,7 @@ We can see we have data for life expectancy and different years. So,
 does worldwide life expectancy change across the years in the data set?
 As we go into the future, are people living longer?
 
-Let's look at this using a scatterplot. We can set the x-axis to be
+Let's look at this using a scatter plot. We can set the x-axis to be
 year, and the y-axis to be life expectancy. Then we can use
 \texttt{geom\_point()} to display a whole bunch of dots, and then look
 at them. Here's the simple code:
@@ -1125,7 +1125,8 @@ Canadians is going up over the years. To find out the answer for one
 country, we first need to split the full data set, into another smaller
 data set that only contains data for Canada. In other words, we want
 only the rows where the word ``Canada'' is found in the \texttt{country}
-column. We will use the \texttt{filter} function from `dplyr for this:
+column. We will use the \texttt{filter} function from \texttt{dplyr} for
+this:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1171,7 +1172,7 @@ options and make the plot look pretty. First, the simple code:
 \includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-30-1.pdf}
 
 Nice, we can now see three sets of dots, but which are countries do they
-represent? Let's add a lengend, and make the graph better looking.
+represent? Let's add a legend, and make the graph better looking.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1431,8 +1432,8 @@ To reduce the big set of numbers to one or two summary numbers that tell
 use something about all of the numbers. R can produce descriptive
 statistics for you in many ways. There are base functions for most of
 the ones that you want. We'll go over some R basics for descriptive
-statistics, and then use our newfound skills to ask some questions about
-real data.
+statistics, and then use our new found skills to ask some questions
+about real data.
 
 \subsubsection{Making numbers in R}\label{making-numbers-in-r}
 
@@ -1566,12 +1567,12 @@ middle one is 2, that should be the median
 
 R does not a base function for the Mode. You would have to write one for
 yourself. Here is an example of writing your own mode function, and then
-using it. Note I searched how to do this on google, and am using the
+using it. Note I searched how to do this on Google, and am using the
 mode defined by
 \href{https://stackoverflow.com/questions/2547402/is-there-a-built-in-function-for-finding-the-mode}{this
 answer on stack overflow}
 
-Remember, the mode is the most frequently occuring number in the set.
+Remember, the mode is the most frequently occurring number in the set.
 Below 1 occurs the most, so the mode will be one.
 
 \begin{Shaded}
@@ -1598,7 +1599,7 @@ at descriptive statistics to describe this such as the \textbf{range},
 First, let's remind ourselves what variation looks like (it's when the
 numbers are different). We will sample 100 numbers from a normal
 distribution (don't worry about this yet), with a mean of 10, and a
-standard deviation of 5, and then make a histrogram so we can see the
+standard deviation of 5, and then make a histogram so we can see the
 variation around 10..
 
 \begin{Shaded}
@@ -1642,7 +1643,7 @@ We can find the sample variance using \texttt{var}. Note, divides by
 
 \subsubsection{sd = standard deviation}\label{sd-standard-deviation}
 
-We find the sample standard deviation us sd. Note, divides by (n-1)
+We find the sample standard deviation us SD. Note, divides by (n-1)
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1654,7 +1655,7 @@ We find the sample standard deviation us sd. Note, divides by (n-1)
 ## [1] 5.125843
 \end{verbatim}
 
-Rember that the standard deviation is just the square root of the
+Remember that the standard deviation is just the square root of the
 variance, see:
 
 \begin{Shaded}
@@ -1826,7 +1827,7 @@ to.
 
 \subsubsection{group\_by and summarise}\label{group_by-and-summarise}
 
-We can easily do everthing all at once using the \texttt{group\_by} and
+We can easily do everything all at once using the \texttt{group\_by} and
 \texttt{summarise} function from the \texttt{dplyr} package. Just watch
 
 \begin{Shaded}
@@ -1984,8 +1985,8 @@ J & 11.881236 & 4.591293 & 5.9818904 & 21.35033\\
 
 Now that we know how to get descriptive statistics from R, we cam do
 this will some real data. Let's quickly ask a few question about the
-gapminder data. Reinstall the gapminder library if you don't already
-have it, then laod the data into a dataframe:
+gapminder data. Re-install the gapminder library if you don't already
+have it, then load the data into a data frame:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1997,8 +1998,8 @@ have it, then laod the data into a dataframe:
 \subsubsection{What are some descriptive for Life expectancy by
 continent?}\label{what-are-some-descriptive-for-life-expectancy-by-continent}
 
-Copy the code from the last part of descriptives using dplyr, then
-change the names like this:
+Copy the code from the last part of descriptives using \texttt{dplyr},
+then change the names like this:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2069,15 +2070,15 @@ Other things to say
 \section{R}\label{r-3}
 
 In this lab we use explore to explore correlations between any two
-variables, and alsot show how to do a regression line. There will be
+variables, and also show how to do a regression line. There will be
 three main parts. Getting R to compute the correlation, and looking at
-the data using scatterplots. We'll look at some correlations from the
+the data using scatter plots. We'll look at some correlations from the
 World Happiness Report. Then you'll look at correlations using data we
 collect from ourselves. It will be fun.
 
 \subsection{cor for correlation}\label{cor-for-correlation}
 
-R has the \texttt{cor} function for computing pearson's r between any
+R has the \texttt{cor} function for computing Pearson's r between any
 two variables. In fact this same function computes other versions of
 correlation, but we'll skip those here. To use the function you just
 need two variables with numbers in them like this:
@@ -2098,9 +2099,9 @@ Well, that was easy.
 
 \subsubsection{scatterplots}\label{scatterplots}
 
-Let's take our silly example, and plot the data in a scatterplot using
+Let's take our silly example, and plot the data in a scatter plot using
 ggplot2, and let's also return the correlation and print it on the
-scatterplot. Remember, ggplot2 wants the data in a data.frame, so we
+scatter plot. Remember, ggplot2 wants the data in a data.frame, so we
 first put our x and y variables in a data frame.
 
 \begin{Shaded}
@@ -2127,7 +2128,7 @@ Before we move on to real data, let's look at some fake data first.
 Often we will have many measures of X and Y, split between a few
 different conditions, for example, A, B, C, and D. Let's make some fake
 data for X and Y, for each condition A, B, C, and D, and then use
-facet\_wrapping to look at four scatterplots all at once
+facet\_wrapping to look at four scatter plots all at once
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2152,13 +2153,13 @@ We've seen how we can make four graphs at once. Facet\_wrap will always
 try to make as many graphs as there are individual conditions in the
 column variable. In this case there are four, so it makes four.
 
-Notice, the scatterplots don't show the correlation (r) values. Getting
+Notice, the scatter plots don't show the correlation (r) values. Getting
 these numbers on there is possible, but we have to calculate them first.
-We'll leave it to you to google how to do this, if it's something you
+We'll leave it to you to Google how to do this, if it's something you
 want to do. Instead, what we will do is make a table of the correlations
-in addition to the scatterplot. We again use \texttt{dplyr} to do this:
+in addition to the scatter plot. We again use \texttt{dplyr} to do this:
 
-Ok, we are basically ready to turn to some real data and ask if there
+OK, we are basically ready to turn to some real data and ask if there
 are correlations between interesting variables\ldots{}You will find that
 there are some\ldots{} But before we do that, we do one more thing. This
 will help you become a little bit more skeptical of these
@@ -2177,7 +2178,7 @@ more conditions added. Let's look at 20 conditions, with random numbers
 for x and y in each. For each, sample size will be 10. We'll make the
 fake data, then make a big graph to look at all. And, even though we get
 to regression later in the lab, I'll put the best fit line onto each
-scatterplot, so you can ``see the correlations''.
+scatter plot, so you can ``see the correlations''.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2199,15 +2200,15 @@ scatterplot, so you can ``see the correlations''.
 
 You can see that the slope of the blue line is not always flat.
 Sometimes it looks like there is a correlation, when we know there
-shouldn't be. You can keep re-doing this graph, by reknitting your R
+shouldn't be. You can keep re-doing this graph, by re-knitting your R
 Markdown document, or by pressing the little green play button. This is
 basically you simulating the outcomes as many times as you press the
 button.
 
 The point is, now you know you can find correlations by chance. So, in
 the next section, you should always wonder if the correlations you find
-reflect meaningful assocation between the x and y variable, or could
-have just occured by chance.
+reflect meaningful association between the x and y variable, or could
+have just occurred by chance.
 
 \subsection{Humor Styles
 Questionnaire}\label{humor-styles-questionnaire}
@@ -2219,7 +2220,7 @@ happiness report}
 
 \subsubsection{Load the data}\label{load-the-data}
 
-we load the data into a dataframe.
+we load the data into a data frame.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2250,7 +2251,7 @@ life choices'' correlate with that countries measure for " Confidence in
 national government``?
 
 Let's find out. We calculate the correlation, and then we make the
-scatterplot.
+scatter plot.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2275,7 +2276,7 @@ scatterplot.
 \includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-82-1.pdf}
 
 Interesting, what happened here? We can see some dots, but the
-correlation was NA (meaning undefined). This occured because there are
+correlation was NA (meaning undefined). This occurred because there are
 some missing data points in the data. We can remove all the rows with
 missing data first, then do the correlation. We will do this a couple
 steps, first creating our own data.frame with only the numbers we want
@@ -2305,8 +2306,8 @@ NAs.
 
 Now we see the correlation is .408.
 
-Although the scatterplot shows the dots are everywhere, it generally
-shows that as Freedom to make lifechoices increases in a country, that
+Although the scatter plot shows the dots are everywhere, it generally
+shows that as Freedom to make life choices increases in a country, that
 countries confidence in their national government also increase. This is
 a positive correlation. Let's do this again and add the best fit line,
 so the trend is more clear, we use
@@ -2359,7 +2360,7 @@ negative correlation here: when positive feelings generally go up,
 shouldn't negative feelings generally go down?
 
 To answer this question, we just copy paste the last code block, and
-change the DVs to be \texttt{Positive\ affect}, nad
+change the DVs to be \texttt{Positive\ affect}, and
 \texttt{Negative\ affect}
 
 \begin{Shaded}
@@ -2537,7 +2538,7 @@ We can sample random numbers between any range using the
 distribution. We discussed this in the textbook. A uniform distribution
 is flat, and all the numbers between the min and max should occur
 roughly equally frequently. Let's take 1000 random numbers between 0 and
-1 and plot the histgram. We'll just do it all in one line for speed.
+1 and plot the histogram. We'll just do it all in one line for speed.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2549,8 +2550,8 @@ roughly equally frequently. Let's take 1000 random numbers between 0 and
 
 This is histogram is flattish. Not perfectly flat, after all we only
 took 1000 samples. What if we took many more, say 10,000 total samples?
-Now it looks more flat, each bin is occuring about 500 times each, which
-is pretty close to the same amount.
+Now it looks more flat, each bin is occurring about 500 times each,
+which is pretty close to the same amount.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2575,7 +2576,7 @@ how often certain things happen.
 
 For example, consider flipping a coin. It will be heads or tails, and
 the coin, if it is fair, should have a 50\% chance of being heads or
-tails. Here's how we flip a coin 10 times using rbinom
+tails. Here's how we flip a coin 10 times using \texttt{rbinom}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2606,7 +2607,7 @@ out.
 \end{verbatim}
 
 Alright, so we get the sum, which tells us the number of heads. But,
-should we alwyas get that number of heads if we flipped a coin 10 times?
+should we always get that number of heads if we flipped a coin 10 times?
 If you keep redoing the above, you'll get different answers. 5 heads
 will be the most frequent answer, but you will get lots of other answers
 too.
@@ -2633,7 +2634,7 @@ coin 10 times. We can do that in loop like this:
 
 \includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-93-1.pdf}
 
-See, that wasn't too painful. Now we see another histrogram. The
+See, that wasn't too painful. Now we see another histogram. The
 histogram shows us the frequency observing different numbers of heads
 (for 10 flips) across the 1000 simulations. 5 happens the most, but 2
 happens sometimes, and so does 8. All of the possibilities seem to
@@ -2664,8 +2665,8 @@ function.
 
 The r functions are like Legos, you can put them together and come up
 with different things. What if wanted to sample from a distribution that
-looked like a two-humped camel's back? Just sample from rnorm twice like
-this\ldots{} mix away.
+looked like a two-humped camel's back? Just sample from \texttt{rnorm}
+twice like this\ldots{} mix away.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2694,9 +2695,9 @@ want.
 \subsubsection{Taking multiple samples of the same
 size}\label{taking-multiple-samples-of-the-same-size}
 
-Let's take 10 samples from a normal distribution (mean = 0, and sd = 1).
+Let's take 10 samples from a normal distribution (mean = 0, and SD = 1).
 Let's set the sample-size for each to be 20. Then, we'll put them all in
-a data frame and look at 10 different histrograms, one for each sample.
+a data frame and look at 10 different histograms, one for each sample.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2706,9 +2707,9 @@ a data frame and look at 10 different histrograms, one for each sample.
 \end{Highlighting}
 \end{Shaded}
 
-First, look at the new my\_df dataframe. You can see there is a column
+First, look at the new my\_df data frame. You can see there is a column
 with numbers 1 to 10, these are the sample names. There are also 20
-scores for each inhe scores column. Let's make histograms for each
+scores for each in the scores column. Let's make histograms for each
 sample, so we can see what all of the samples look like:
 
 \begin{Shaded}
@@ -2731,8 +2732,8 @@ when you flip a coin right)
 \subsubsection{Getting the means of the
 samples}\label{getting-the-means-of-the-samples}
 
-Now, let's look at the means of the samples, we will use dplyr to get
-the means for each sample, and put them in a table:
+Now, let's look at the means of the samples, we will use \texttt{dplyr}
+to get the means for each sample, and put them in a table:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2820,7 +2821,7 @@ some more friends. How about we repeat our little sampling experiment
 1000 times.
 
 Explain\ldots{}We take 1000 samples. Each sample takes 20 scores from a
-normal distribution (mean=0, sd=1). Then we find the means of each
+normal distribution (mean=0, SD=1). Then we find the means of each
 sample (giving us 1000 sample means). Then, we plot that distribution.
 
 \begin{Shaded}
@@ -2902,10 +2903,10 @@ deviations, maximum values, and medians. Let's do it.
 \includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-102-1.pdf}
 
 From reading the textbook and attending lecture, you should be able to
-start thinking about why these sampling statitistic distributions might
-be useful\ldots{}For now, just know that you can make a sampling
-statistic for pretty much anythin in R, just by simulating the process
-of sampling, measuring the statistic, doing it over a bunch, and then
+start thinking about why these sampling statistic distributions might be
+useful\ldots{}For now, just know that you can make a sampling statistic
+for pretty much anything in R, just by simulating the process of
+sampling, measuring the statistic, doing it over a bunch, and then
 plotting the histogram. This gives you a pretty good estimate of the
 distribution for that sampling statistic.
 
@@ -2918,11 +2919,11 @@ that before. But, the interesting thing about it, is that the
 distribution of your sample means will be normal, even if the
 distribution the samples came from is not normal. Huh what?
 
-To demonstrat this the next bit of code is modified from what we did
-ealier. We create 100 samples. Each sample has 1000 observations. All of
-them come from a uniform distribution between 0 to 1. This means all of
-the numbers between 0 and 1 should occur equally frequently. Below I
-plot histrograms for the first 10 samples (out of the 100 total, 100 is
+To demonstrate this the next bit of code is modified from what we did
+earlier. We create 100 samples. Each sample has 1000 observations. All
+of them come from a uniform distribution between 0 to 1. This means all
+of the numbers between 0 and 1 should occur equally frequently. Below I
+plot histograms for the first 10 samples (out of the 100 total, 100 is
 too many to look at). Notice the histograms are not normal, they are
 roughly flat.
 
@@ -2966,7 +2967,7 @@ sample means. Let's do that:
 \includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-104-1.pdf}
 
 As you can see, the sampling distribution of the sample means is not
-flat. It's shaped kind of normalish. If we had taken many more samples,
+flat. It's shaped kind of normal-ish. If we had taken many more samples,
 found their means, and then looked at a histogram, it would become even
 more normal looking. Because that's what happens according to the
 central limit theorem.
@@ -3005,7 +3006,7 @@ normal distribution.
 \subsubsection{Graphing the normal
 distribution}\label{graphing-the-normal-distribution}
 
-``Wait, I thought we alread did that''. We sort of did. We sampled
+``Wait, I thought we already did that''. We sort of did. We sampled
 numbers and made histograms that looked like normal distributions. But,
 a ``normal distribution'' is more of an abstract idea. It looks like
 this in the abstract:
@@ -3027,12 +3028,12 @@ this in the abstract:
 A really nice shaped bell-like thing. This normal distribution has a
 mean of 0, and standard deviation of 1. The heights of the lines tell
 you roughly how likely each value is. Notice, it is centered on 0 (most
-likely that numbers from this distributino will be near 0), and it goes
+likely that numbers from this distribution will be near 0), and it goes
 down as numbers get bigger or smaller (so bigger or smaller numbers get
 less likely). There is a range to it. Notice the values don't go much
 beyond -4 and +4. This because those values don't happen very often.
 Theoretically any value could happen, but really big or small values
-have really low probabilites.
+have really low probabilities.
 
 \subsubsection{calculating the probability of specific
 ranges.}\label{calculating-the-probability-of-specific-ranges.}
@@ -3055,7 +3056,8 @@ We can use the \texttt{pnorm} function to confirm this:
 ## [1] 0.5
 \end{verbatim}
 
-Agreed, pnorm tells us the probability of getting 0 or greater is .5.
+Agreed, \texttt{pnorm} tells us the probability of getting 0 or greater
+is .5.
 
 Well, what is the probability of getting a 2 or greater? That's a bit
 harder to judge, obviously less than 50\%. Use R like this to find out:
@@ -3118,28 +3120,28 @@ How about between 2 and 3?
 ## [1] 0.02140023
 \end{verbatim}
 
-Again a very small amount, only 2.1 \% of the numbers, not a alot.
+Again a very small amount, only 2.1 \% of the numbers, not a a lot.
 
 \subsubsection{summary pnorm}\label{summary-pnorm}
 
-You can always use pnorm to figure how the probabilities of getting
-certain values from any normal distribution. That's great.
+You can always use \texttt{pnorm} to figure how the probabilities of
+getting certain values from any normal distribution. That's great.
 
 \subsection{z-scores}\label{z-scores}
 
 We just spent a bunch of time looking at a very special normal
 distribution, the one where the mean = 0, and the standard deviation =
 1. Then we got a little bit comfortable with what those numbers mean. 0
-happens a lot. Numbers between -1 and 1 happen alot. Numbers bigger or
+happens a lot. Numbers between -1 and 1 happen a lot. Numbers bigger or
 smaller than 1 also happen fairly often, but less often. Number bigger
-than 2 don't happen alot, numbers bigger than 3 don't happen hardly at
+than 2 don't happen a lot, numbers bigger than 3 don't happen hardly at
 all.
 
 We can use this knowledge for our convenience. Often, we are not dealing
 with numbers exactly like these. For example, someone might say, I got a
 number, it's 550. It came from a distribution with mean = 600, and
-standard deviation = 25. So, does 545 happen alot or not? The numbers
-dont' tell you right away.
+standard deviation = 25. So, does 545 happen a lot or not? The numbers
+don't tell you right away.
 
 If we were talking about our handy distribution with mean = 0 and
 standard deviation = 1, and I told I got a number 4.5 from that
@@ -3247,11 +3249,11 @@ doing here.
 
 Done. Now you have converted your original numbers into what we call
 standardized scores. They are standardized to have the same properties
-(assumed properties) as a normal distribution with mean = 0, and sd = 1.
+(assumed properties) as a normal distribution with mean = 0, and SD = 1.
 
 You could look at each of your original scores, and try to figure out if
 they are likely or unlikely numbers. But, if you make them into
-z-scores, then you can tell right away. Numbers close to 0 happen alot,
+z-scores, then you can tell right away. Numbers close to 0 happen a lot,
 bigger numbers closer to 1 happen less often, but still fairly often,
 and number bigger than 2 or 3 hardly happen at all.
 
@@ -3319,7 +3321,7 @@ At a minimum, when we conduct an experiment, we want to know \textbf{if
 the change we observed is bigger than the change that can be produced by
 chance}. Theoretically, random chance could produce most any change we
 might measure in our experiment. So, there will always be uncertainty
-about whether our manpiulation caused the change, or chance caused the
+about whether our manipulation caused the change, or chance caused the
 change. But, we can reduce and evaluate that uncertainty. When we do
 this, we make \textbf{inferences} about what caused change in our
 experiments. This process is called \textbf{statistical inference}. We
@@ -3327,7 +3329,7 @@ use \textbf{inferential statistics} as tools to help us make these
 inferences.
 
 In this lab we introduce you to foundational concepts in
-\textbf{statistical inference}. This is also commonyl termed
+\textbf{statistical inference}. This is also commonly termed
 \textbf{hypothesis testing}. But, for various reasons using that
 language to describe the process is tied to particular philosophies
 about doing statistical inference. We use some of that language here, so
@@ -3404,21 +3406,21 @@ simulation}). Each time we will do this:
 \item
   Compute the means for control group A and B
 \item
-  Compute the difference betweem the mean for group A and B
+  Compute the difference between the mean for group A and B
 \item
   Save the differences score in a variable
 \item
   Repeat as many times as we want
 \end{enumerate}
 
-If we repeat the simulatoin 100 times, we will see the differences that
+If we repeat the simulation 100 times, we will see the differences that
 can be produced by chance, when given the opportunity 100 times. For
 example, in a simulation like this, the biggest difference (the maximum
 value) only happens once. We can find that difference, and then roughly
 conclude that a difference of that big happens 1 out of 100 times just
-by chance. That's not alot.
+by chance. That's not a lot.
 
-If we want to be more restrictive, we can make the simluation go to
+If we want to be more restrictive, we can make the simulation go to
 1,000, or 10,000, or greater. Each time the maximum value will tell us
 what is the biggest thing chance did 1 out of 1000 times, or 1 out of
 10,000 times.
@@ -3466,7 +3468,7 @@ simple.
 \subsubsection{find the range}\label{find-the-range}
 
 We can see that chance produces some differences that are non-zero. The
-histrogram shows all the mean differences that were produced by chance.
+histogram shows all the mean differences that were produced by chance.
 Most of the differences are between -2 and +2, but some of them are bit
 more negative, or a bit more positive. If we want to know what chance
 \textbf{did} do in this one simulation with 100 runs, then we need to
@@ -3542,8 +3544,8 @@ scenario's.
     \textbf{Answer}: No, it is outside the range
   \end{enumerate}
 \item
-  You run an experiment. Group A recieves additional instruction that
-  shoul make them do better on a test. Group B takes the test, but
+  You run an experiment. Group A receives additional instruction that
+  should make them do better on a test. Group B takes the test, but
   without the instruction. There are 20 people in each group. You have a
   pretty good idea that group B's test scores will be coming from a
   normal distribution with mean = 75, and standard deviation = 5. You
@@ -3715,7 +3717,7 @@ chance does not do this even 1 times out of 100.
 
 In this example we look at how you can run a Crump test to evaluate the
 results in a published paper. The goal of this is to build up your
-intutions about whether or not an observed difference could have been
+intuitions about whether or not an observed difference could have been
 caused by chance. We take many liberties, and this is not an exact test
 of anything. However, we will see how a series of rough, and reasonable
 assumptions can be made to simulate the results of published
@@ -3798,7 +3800,7 @@ How big is one standard error on the figure? I'm going to guesstimate
 that at about .02. It's not .1, that's difference say between .5, and
 .6.. That's too big. It's smaller than half of that .05. In fact two
 standard errors (the whole line from top hat to bottom hat\ldots{}the
-little ticks) seems smaller thant .05, I'd say the total width is about
+little ticks) seems smaller than .05, I'd say the total width is about
 .04. But, .04 is for two standard errors, so that's where I get my
 guesstimate of .02 for one standard error.
 
@@ -3833,14 +3835,14 @@ What we want to know is whether chance could produce a difference of
 I think this is how the simulation should work. We can run it, then look
 to see if a difference of .14 can happen by chance 1 out of 100 times.
 There is a wrinkle in this experiment, and to be honest, I'm pretty sure
-I've done it correctly, but perhaps I made a mistake. It's ok to put
+I've done it correctly, but perhaps I made a mistake. It's OK to put
 things out there and be corrected later. Maybe one of you can correct me
 if I'm wrong.
 
 The code is almost the same as what we did before. I changed the
 \texttt{sample\_n} to 120, the \texttt{dist\_mean} to .48, and the
 \texttt{dist\_sd} to .02. These were our guesstimates for the
-distribution paramaters.
+distribution parameters.
 
 Notice however, that I commented out two lines. These are the green
 lines inside the simulation. I do not use 120 for the number of samples.
@@ -3922,7 +3924,7 @@ simulation, and any mean difference outside the range \textbf{was not
 produced by chance} in our simulation.
 
 Clearly, a difference of .14 or 14\% was never produced by chance, it
-was completely outside the range. Based on this anlaysis we can be
+was completely outside the range. Based on this analysis we can be
 fairly confident that the test-enhanced learning effect was not a fluke,
 it was not produced by chance. We have evidence to support the claim
 that testing enhances learning, and because of this we test you while
@@ -3931,7 +3933,7 @@ you are learning to enhance your learning while you learn.
 \subsection{The Randomization Test}\label{the-randomization-test}
 
 Unlike the Crump test, which was made to help you understand some basic
-ideas about how chnace can do things, the Randomization test is a
+ideas about how chance can do things, the Randomization test is a
 well-known, very real, statistical test for making inferences about what
 chance can do. You will see that it is very similar to the Crump test in
 many respects. In fact, we might say that the Crump test is really just
@@ -4071,7 +4073,7 @@ region}\label{finding-the-critical-region}
 
 \includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-120-1.pdf}
 
-Ok, so our alpha criterion or cutoff is located at 7.6 on the x-xaxis.
+OK, so our alpha criterion or cutoff is located at 7.6 on the x-axis.
 This shows us that mean differences of 7.6 or larger happen only 5\% of
 the time by chance.
 
@@ -4085,7 +4087,7 @@ chance produced the difference in your experiments
   chance did not produce the difference
 \item
   When the mean difference is less than 7.6, you might conclude that
-  chance could hve produced the mean difference.
+  chance could have produced the mean difference.
 \end{enumerate}
 
 It's up to you to set your alpha criterion. In practice it is often set
@@ -4127,7 +4129,7 @@ Stats Labs (Dr.~Kevin P. McIntyre) for their fantastic work.
 Infants?}\label{does-music-convey-social-information-to-infants}
 
 This lab activity uses the open data from Experiment 1 of Mehr, Song,
-and Spelke (2016) to teach one-sample and paired samplest -tests.
+and Spelke (2016) to teach one-sample and paired samples t-tests.
 Results of the activity provided below should exactly reproduce the
 results described in the paper.
 
@@ -4215,8 +4217,9 @@ It turns out there are lots of ways to load .csv files into R.
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  Load the data.table library. Then use the fread function and supply
-  the web address to the file. Just like this. No downloading required.
+  Load the data.table library. Then use the \texttt{fread} function and
+  supply the web address to the file. Just like this. No downloading
+  required.
 \end{enumerate}
 
 \begin{Shaded}
@@ -4231,10 +4234,10 @@ It turns out there are lots of ways to load .csv files into R.
 \setcounter{enumi}{1}
 \tightlist
 \item
-  Or, if you downloaded the .csv file. Then you can use fread, but you
-  need to point it to the correct file location. The file location in
-  this next example will not work for you, because the file is on my
-  computer.
+  Or, if you downloaded the .csv file. Then you can use \texttt{fread},
+  but you need to point it to the correct file location. The file
+  location in this next example will not work for you, because the file
+  is on my computer.
 \end{enumerate}
 
 \begin{Shaded}
@@ -4256,11 +4259,11 @@ for.
 
 \subsubsection{summarytools}\label{summarytools-1}
 
-The summarytools packages give a quick way to summarize all of the data
-in a data frame. Here's how. When you run this code you will see the
-summary in the viewer on the bottom right hand side. There's a little
-browser button (arrow on top of little window) that you can click to
-expand and see the whole thing in a browser.
+The \texttt{summarytools} packages give a quick way to summarize all of
+the data in a data frame. Here's how. When you run this code you will
+see the summary in the viewer on the bottom right hand side. There's a
+little browser button (arrow on top of little window) that you can click
+to expand and see the whole thing in a browser.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4273,7 +4276,7 @@ expand and see the whole thing in a browser.
 one}\label{get-the-data-for-experiment-one}
 
 The data contains all of the measurements from all five experiments in
-the paper. By searching through the \texttt{all\_data} dataframe, you
+the paper. By searching through the \texttt{all\_data} data frame, you
 should look for the variables that code for each experiment. For
 example, the third column is called \texttt{exp1}, which stands for
 experiment 1. Notice that it contains a series of 1s. If you keep
@@ -4299,9 +4302,9 @@ t-test}\label{baseline-phase-conduct-a-one-sample-t-test}
 
 You first want to show that infants' looking behavior did not differ
 from chance during the baseline trial. The baseline trial was 16 seconds
-long. During the baseline, infants watched a video of two unfamilar
+long. During the baseline, infants watched a video of two unfamiliar
 people, one of the left and one on the right. There was no sound during
-the basline. Both of the actors in the video smiled directly at the
+the baseline. Both of the actors in the video smiled directly at the
 infant.
 
 The important question was to determine whether the infant looked more
@@ -4310,7 +4313,7 @@ should look at both people about 50\% of the time. How could we
 determine whether the infant looked at both people about 50\% of the
 time?
 
-The \texttt{experiment\_one} dataframe has a column called
+The \texttt{experiment\_one} data frame has a column called
 \texttt{Baseline\_Proportion\_Gaze\_to\_Singer}. All of these values
 show how the proportion of time that the infant looked to the person who
 would later sing the familiar song to them. If the average of these
@@ -4329,7 +4332,7 @@ the \texttt{\$} operator. The \texttt{\$} operator is placed after any
 data frame variable, and allows you to select a column of the data. The
 next bit of code will select the column of data we want, and put it into
 a new variable called \texttt{Baseline}. Note, if you type
-\texttt{exp1\$} then Rstudio should automatically bring up all the
+\texttt{exp1\$} then R-Studio should automatically bring up all the
 columns you can choose from.
 
 \begin{Shaded}
@@ -4343,7 +4346,7 @@ columns you can choose from.
 \textbf{Question:} Why is it important to look at your numbers? What
 could happen if you didn't?
 
-Ok, we could just do the t-test right away, it's really easy, only one
+OK, we could just do the t-test right away, it's really easy, only one
 line of code. But, we haven't even looked at the numbers yet. Let's at
 least do that. First, we'll just use plot. It will show every data point
 for each infant as a dot.
@@ -4357,7 +4360,7 @@ for each infant as a dot.
 \includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-126-1.pdf}
 
 That's helpful, we see that the dots are all over the place. Let's do a
-histrogram, so we can get a better sense of the frequency of different
+histogram, so we can get a better sense of the frequency of different
 proportions.
 
 \begin{Shaded}
@@ -4392,7 +4395,7 @@ Let's get the mean and standard deviation of the sample
 ## [1] 0.1769651
 \end{verbatim}
 
-Ok, so just looking at the mean, we see the proportion is close to .5
+OK, so just looking at the mean, we see the proportion is close to .5
 (it's .521). And, we see there is a healthy amount of variance (the dots
 were all over the place), as the standard deviation was about .176.
 
@@ -4461,7 +4464,7 @@ Remember how the experiment went. Infants watched silent video
 recordings of two women (Baseline). Then each person sung a song, one
 was familiar to the infant (their parents sung the song to them many
 times), and one was unfamiliar (singing phase). After the singing phase,
-the infants watched the silent video of the two singers argain (test
+the infants watched the silent video of the two singers again (test
 phase). The critical question was whether the infants would look more to
 the person who sung the familiar song compared to the person who sun the
 unfamiliar song. If the infants did this, they should look more than
@@ -4578,7 +4581,7 @@ We do it like this in one line:
 already did two one sample t-test? What new question is the paired
 samples t-test asking?
 
-I'l leave it to you to interpret these values, and to see if they are
+I'll leave it to you to interpret these values, and to see if they are
 the same as the ones in the paper. Based on these values what do you
 conclude? Is there a difference between the mean proportion looking
 times for the baseline and testing phase?
@@ -4648,7 +4651,7 @@ are different from 0. We can show this in r easily like this:
 \subsubsection{Usefulness of difference
 scores}\label{usefulness-of-difference-scores}
 
-Ok fine, the paired samples t-test can be a one sample t-test if you use
+OK fine, the paired samples t-test can be a one sample t-test if you use
 the difference scores. This might just seem like a mildly useful factoid
 you can use for stats trivia games (which no one plays). The point of
 drawing your attention to the relationship, is to get you to focus on
@@ -4697,7 +4700,7 @@ chance.
 
 We will use the ggplot2 package to make our graphs. Remember, there are
 two steps to take when using ggplot2. 1) put your data in a long form
-dataframe, where each measure has one row, and 2) define the layers of
+data frame, where each measure has one row, and 2) define the layers of
 the ggplot.
 
 \subsubsection{Make the dataframe for
@@ -4721,9 +4724,9 @@ proportions for each infant.
 
 This shows every scores value on the y-axis, split by the baseline and
 test groups. If you just looked at this, you might not think the test
-phase was different from the basline phase. Still very useful to see the
-spread of individual scores. Supports the intuition that the scores are
-still kind of in a similar ballpark.
+phase was different from the baseline phase. Still very useful to see
+the spread of individual scores. Supports the intuition that the scores
+are still kind of in a similar ballpark.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4749,11 +4752,12 @@ do it, we need to supply ggplot with another data frame, one that
 contains the means for each phase in long form. There are are only two
 phases, and two means, so we will make a rather small data.frame. It
 will have two columns, a Phase column, and Mean\_value column. There
-will only be two rows in the dataframe, one for the mean for each phase.
+will only be two rows in the data frame, one for the mean for each
+phase.
 
 To make the smaller data frame for the means we will use the
 \texttt{aggregate} function. This allows us to find the means for each
-phase from the plot\_df dataframe. It also automatically returns the
+phase from the plot\_df data frame. It also automatically returns the
 data frame we are looking for.
 
 \begin{Shaded}
@@ -4798,7 +4802,7 @@ Also look for these changes.
 
 \includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-137-1.pdf}
 
-Ok, we see the bars and some of the dots, but not all of them. What is
+OK, we see the bars and some of the dots, but not all of them. What is
 going on? Remember, ggplot2 works in layers. Whatever layer you add
 first will be printed first in the graph, whatever layer you add second
 will be printed on top of the first. We put the bars on top of the dots.
@@ -4872,7 +4876,7 @@ the error bar for Test, resulting in a difference greater than 2
 standard error bars. So, based on this graph, we might expect the
 difference between conditions to be significant. We can also complain
 about what we have done here, we are placing the same error bars from
-the meand difference scores onto the means for each condition. In some
+the mean difference scores onto the means for each condition. In some
 sense this is misleading. The error bars are not for the depicted sample
 means, they are for the hidden single set of difference scores. To make
 this more clear, we will make a bar plot with a single bar only for the
@@ -4961,7 +4965,7 @@ experiment. One way to do this is to estimate the standard deviation of
 the looking time proportions. Perhaps the best way to do that would be
 to an average of the standard deviation in the baseline and test\_phase
 conditions. Then, we could simulate 32 scores from a normal distribution
-with mean = .5, and standard deviation equalling our mean standard
+with mean = .5, and standard deviation equaling our mean standard
 deviation. We could calculate the mean of our simulated sample. And, we
 could do this many times, say 1000 times. Then, we could look at a
 histogram of our means. This will show the range of sample means we
@@ -4988,7 +4992,7 @@ What do you think?
 
 We can do the simulation slightly differently to give us a different
 look at chance. Above we simulated the sample means from a normal
-distibrution centered on .5. The experimental question of interest was
+distribution centered on .5. The experimental question of interest was
 whether the mean difference between the baseline and test\_phase
 condition was different. So, we should do a simulation of the difference
 scores. First, we estimate the standard deviation of the difference
@@ -5136,7 +5140,7 @@ view it in your browser, then take a look to see what is in it.
 
 \subsection{Find the data you need}\label{find-the-data-you-need}
 
-This time the data comes prefiltered for us. The authors ran lots of
+This time the data comes pre-filtered for us. The authors ran lots of
 experiments, but we only have the data from Experiment 4. This is great,
 we don't need to subset the data frame to find all of the data that we
 need. But, we do still need to understand what data we want to analyze.
@@ -5200,7 +5204,7 @@ words transcript and audio, where 0s and 1s used to be.
 
 \subsubsection{Dependent Measures}\label{dependent-measures}
 
-Next it's time to find the depende measure columns. The graph from the
+Next it's time to find the dependent measure columns. The graph from the
 paper shows three different measures in each condition. These included
 \texttt{Intellect}, \texttt{General\ Impression}, and
 \texttt{Hiring\ Likelihood}. Every evaluator (either given a transcript
@@ -5243,11 +5247,11 @@ really weird numbers in the data (who knows maybe the data file is
 corrupted, you need to look), it will also give us strong intuitions
 about what to expect for the t-test.
 
-We can plot each score as a dot using the \texttt{all\_data} dataframe.
+We can plot each score as a dot using the \texttt{all\_data} data frame.
 If we want to add on a layer for the sample means, and for the sample
-standard errors, we have to compute those and put them in a new
-dataframe first. Then we use both dataframes with ggplot to plot all of
-the information.
+standard errors, we have to compute those and put them in a new data
+frame first. Then we use both data frames with ggplot to plot all of the
+information.
 
 We will use \texttt{dplyr} to quickly get the means and the standard
 errors and put them in a new data frame called \texttt{decriptive\_df}.
@@ -5280,7 +5284,7 @@ This plot is very useful. First, we can see the numbers in our dependent
 measure are behaving sensibly. We know that the numbers have to be
 between 1-10, because those were the only options in the scale. If we
 found numbers bigger or smaller, we would know something was wrong.
-Checking for things that are obvsiouly wrong in the data is one reason
+Checking for things that are obviously wrong in the data is one reason
 why we always look at first. We are checking for obvious errors. There
 are other ways to check to, but looking is fast and easy.
 
@@ -5306,7 +5310,7 @@ and not a one-sample or paired samples t-test?
 
 We use the very same \texttt{t.test} function that we used last time to
 conduct a t-test. The only difference is that we don't tell the R to use
-a paired sample t-test. We leave the \texttt{paired=TRUE} statment out,
+a paired sample t-test. We leave the \texttt{paired=TRUE} statement out,
 and R automatically knows we want to do an independent samples t-test.
 Remember to set the \texttt{var.equal=TRUE}, otherwise R will compute a
 different version of the t-test.
@@ -5372,7 +5376,7 @@ found the same results as reported by the authors.
 
 \subsection{Remaining ratings}\label{remaining-ratings}
 
-Now, you should use what you have learned to anlayse the last two
+Now, you should use what you have learned to analyse the last two
 ratings for the dependent variables \texttt{Impression\_Rating}, and
 \texttt{Hire\_Rating}. Remember to plot the data for each, and conduct a
 t-test for each. Then compare what you found to the original article.
@@ -5381,10 +5385,10 @@ What did you find, and what do the results mean?
 \subsection{Reconstructing the graph from the
 paper}\label{reconstructing-the-graph-from-the-paper}
 
-The results from Experimen4 4 in the paper plot the means and error bars
+The results from Experiment 4 in the paper plot the means and error bars
 (+1 / -1 SEM) for all three dependent measures, for both experimental
 conditions. We can do this in ggplot using the data. We will have to
-make a couple changes to the dataframe. But, it won't be too hard. What
+make a couple changes to the data frame. But, it won't be too hard. What
 we need to do is make a fully long form data frame. Remember a long form
 data frame has one row per dependent measure.
 
@@ -5397,7 +5401,7 @@ columns, the dependent measures for \texttt{Impression\_Rating} and
 \texttt{Hire\_Rating} are in the same rows.
 
 Before continuing, it is very much worth mentioning that this part of
-data analysis happens alot, and it is kind of annoying. I call it the
+data analysis happens a lot, and it is kind of annoying. I call it the
 rubix cube problem, because we need to ``rotate'' and transform the
 format of the data to accomplish different kinds of analysis goals. It's
 good to be able to know how to do this. This problem occurs all of the
@@ -5413,7 +5417,7 @@ correct them. That sucks.
 There's more than one way to transform data in R. For example the
 \texttt{cast} and \texttt{melt} functions do this kind of thing. You can
 look those up. In this example we will not use those functions. Instead
-we will show some steps to build the required dataframe one step at a
+we will show some steps to build the required data frame one step at a
 time.
 
 \begin{Shaded}
@@ -6548,7 +6552,7 @@ pressed can be measured and stored for later analysis.
 Behmer \& Crump were interested in asking a few different questions,
 however, we will simplify everything and talk about replication. First
 we describe an interesting finding from previous research. Behmer \&
-Crump repeated an experiment that should alos produce this same finding.
+Crump repeated an experiment that should also produce this same finding.
 If they succeed in doing this, it means the finding can be replicated,
 and that it happens in more than one lab.
 
@@ -6556,7 +6560,7 @@ and that it happens in more than one lab.
 typists do something funny. Skilled typists can type normal words very
 fast. This suggests they know how to locate all of the letters on the
 keyboard, and can press each letter very quickly to type words. That
-part isn't particulary funny. However, if you take really skilled
+part isn't particularly funny. However, if you take really skilled
 typists and make them type random letters like this: kwitb dhhgjtryq
 xkldpt mazhyffdt, guess what happens? They slow down a lot. It's kind of
 weird that a typist would slow down, after all they can type letters
@@ -6574,10 +6578,10 @@ fastest to slowest.
 Random strings (SLOWEST)
 
 \textbf{Replication question:} Behmer \& Crump also measured typists
-while they typed words, non-words that were english-like, and random
+while they typed words, non-words that were English-like, and random
 strings. They had some additional things they were interested in, but
 for us, we are interested in whether they would show the same effect.
-Would they replicate the patten: Normal words (Fastest) \textless{}
+Would they replicate the pattern: Normal words (Fastest) \textless{}
 Word-like Non-words (medium) \textless{}- Random strings (Slowest)?
 
 \subsection{Study Methods}\label{study-methods-1}
@@ -6587,7 +6591,7 @@ subjects were used for the analysis.
 
 \textbf{Independent Variable}: The IV Stimulus or typing material had
 three levels: Normal, Bigrams, and Random. Normal refers to normal 5
-letter english words (like truck, or plant). Bigrams refers to non-words
+letter English words (like truck, or plant). Bigrams refers to non-words
 that have properties similar to words (e.g., phemt quilp). Random refers
 to 5 letter strings whose letters were totally random (qmklt gdrzn
 lprni).
@@ -6596,8 +6600,8 @@ lprni).
 all measured different aspects of typing performance. Reaction times
 (RTs) were defined as the temporal interval between seeing a stimulus
 (to type), and then starting to type it (first key press).
-Interkeystroke intervals (IKSIs) are the times between each keypress.
-Last, accuracy was also measured (correct or incorrect keypresses)
+Inter-keystroke intervals (IKSIs) are the times between each key-press.
+Last, accuracy was also measured (correct or incorrect key-presses)
 
 \textbf{The task}: Participants (who happened to also be students from
 Brooklyn College) sat in front a computer. They were presented with one
@@ -6679,14 +6683,14 @@ This data file contains all of the data from Experiment 1 in the paper.
 So, we don't need to get rid of any rows.
 
 There are numerous columns, some of them we don't need for the analysis.
-But, we'll just ignore these later when we use dplyr to group by the
-columns we want.
+But, we'll just ignore these later when we use \texttt{dplyr} to group
+by the columns we want.
 
 The structure of this data a file is in long form. Every row described a
-measurement for a single keypress. For example, the first 5 rows, have
-data for the timing of the first 5 keypresses, that the first subject
+measurement for a single key-press. For example, the first 5 rows, have
+data for the timing of the first 5 key-presses, that the first subject
 made to type the first string of letters they saw. In total there were
-85,410 keypresses made. That's quite a lot.
+85,410 key-presses made. That's quite a lot.
 
 \subsubsection{The independent
 variable}\label{the-independent-variable-1}
@@ -6696,7 +6700,7 @@ The important independent variable is in the column \texttt{Stimulus}.
 \begin{itemize}
 \tightlist
 \item
-  Normal (5 letter english words)
+  Normal (5 letter English words)
 \item
   Bigrams (5 letter strings that kind of looked like words)
 \item
@@ -6725,15 +6729,15 @@ column.
 \tightlist
 \item
   \texttt{TimeFromOnset} : This column records the temporal interval in
-  milliseconds between the onset of the word and each keypress. When
+  milliseconds between the onset of the word and each key-press. When
   order is 1 (first keystroke), the number here is the reaction time to
   start typing.
 \item
   \texttt{PureRTs} : This column contains keystroke intervals. The first
-  interval is between the onset of the word and the first keypress
+  interval is between the onset of the word and the first key-press
   (order 1), the second interval is between the first and second
-  keypress (order 2), and so on. \texttt{PureRTs} for orders 2 to 5,
-  represent the interkeystroke intervals reported in paper.
+  key-press (order 2), and so on. \texttt{PureRTs} for orders 2 to 5,
+  represent the inter-keystroke intervals reported in paper.
 \item
   \texttt{AllCorrect} : 0 means incorrect (wrong letter was typed), 1
   means correct (correct letter was typed)
@@ -6750,10 +6754,10 @@ For example, this study involves reaction times: the time between seeing
 something and responding to it. If you had done a study like this
 before, you would know that it usually doesn't take people that long to
 start responding. Most reaction times will be under a second (or 1000
-millseconds). But, sometime people are little slow, and sometimes they
+milliseconds). But, sometime people are little slow, and sometimes they
 do funny things like check their phone in the middle of an experiment.
 
-Before I analyze reaction time data, I often make a histrogram of all of
+Before I analyze reaction time data, I often make a histogram of all of
 the RT data, like this:
 
 \begin{Shaded}
@@ -6767,7 +6771,7 @@ the RT data, like this:
 We can see that almost all of the reaction times are well below 5000
 milliseconds (5 seconds), which is good. Most of the time people were
 paying attention and not ``checking their phone''. Notice, the range of
-the histrogram goes out to 15,000 milliseconds. You can't see any bars
+the histogram goes out to 15,000 milliseconds. You can't see any bars
 out there (too small to notice), but there must be at least a few trials
 where somebody took 15 seconds to start responding. These are called
 outliers. We will remove them before we conduct our analysis
@@ -6853,7 +6857,7 @@ ggplot function.
 
 \textbf{VERY IMPORTANT}: We did something in the above code that we
 didn't point out. We filtered the data before we found the means. For
-most of the datasets in other labs, we given you data that is more or
+most of the data sets in other labs, we given you data that is more or
 less ready to analyse. More often than not data needs to be
 pre-processed, or filtered before you analyze it. We can use the
 \texttt{filter} function in \texttt{dplyr} to do our filtering.
@@ -6943,12 +6947,12 @@ ANOVA}\label{conduct-the-repeated-measures-anova}
 
 We use the same \texttt{aov} function as we used last time. The only
 difference is that we add in a new part to the formula. Remember the
-formula for a one-factor betwee-n subjects ANOVA looked like this:
+formula for a one-factor between subjects ANOVA looked like this:
 
 \texttt{aov(\ DV\ \textasciitilde{}\ IV\ ,\ dataframe)}, where DV is the
 name of the column with your independent variable, IV is the name of the
 column with your independent variable, and \texttt{dataframe} is the
-name of your dataframe containing the means in each condition.
+name of your data frame containing the means in each condition.
 
 The formula for a repeated-measures ANOVA looks like this:
 
@@ -6963,7 +6967,7 @@ The formula for our data would be:
 \texttt{aov(\ mean\_rt\ \textasciitilde{}\ Stimulus\ +\ Error(Subject/Stimulus),\ subject\_means)}.
 
 Here is the code below. Just as reminder, the raw data codes every
-single keypress on each row. We don't want to submit this as the data
+single key press on each row. We don't want to submit this as the data
 frame to the \texttt{aov} function. Instead, we need to calculate the
 data frame for the subject means in each condition. We did that above as
 a step toward making the graphs. We do it again here to remind you that
@@ -7105,9 +7109,9 @@ Random Condition (M = 1078 ms, SE = 32 ms).
 \subsection{Follow-up comparisons}\label{follow-up-comparisons}
 
 The ANOVA tells us that the differences between the means are unlikely
-to be due to chance. But, remember, this is an ombnibus test. It does
-not tell us if specific pairs of means are different from one another.
-To determine whether the difference between two specific means is not
+to be due to chance. But, remember, this is an omnibus test. It does not
+tell us if specific pairs of means are different from one another. To
+determine whether the difference between two specific means is not
 likely due to chance, we need to conduct follow-up tests.
 
 Because this is a repeated-measures design, we can use the
@@ -7194,7 +7198,7 @@ description of the mean reaction times.
 For each subject we computed mean reactions for correct keystrokes in
 each condition of the Stimulus factor. These means were submitted to a
 one-factor repeated-measures ANOVA, with Stimulus (Normal, Bigrams, and
-Random) as the sole factor. The effect of Stimulus was signficant, F(2,
+Random) as the sole factor. The effect of Stimulus was significant, F(2,
 74) = 230.58, MSE = 2510.98, p \textless{} 0.001. The mean reaction time
 was significantly faster in the Normal condition (M = 833 ms, SE = 24
 ms), compared to the Bigram condition, (M = 924 ms, SE = 27 ms), t(37) =
@@ -7205,20 +7209,20 @@ ms, SE = 32 ms), t(37) = 14.21, p \textless{} 0.001.
 \subsubsection{Second way}\label{second-way}
 
 In the second way, we first report the means as we did the very first
-time, and then after that we report the t-test results to higlight the
+time, and then after that we report the t-test results to highlight the
 size the of the differences between each comparison.
 
 For each subject we computed mean reactions for correct keystrokes in
 each condition of the Stimulus factor. These means were submitted to a
 one-factor repeated-measures ANOVA, with Stimulus (Normal, Bigrams, and
-Random) as the sole factor. The effect of Stimulus was signficant, F(2,
+Random) as the sole factor. The effect of Stimulus was significant, F(2,
 74) = 230.58, MSE = 2510.98, p \textless{} 0.001. The mean reaction time
 was fastest in the Normal condition (M = 833 ms, SE = 24 ms), followed
 by the Bigram condition, (M = 924 ms, SE = 27 ms) and slowest in the
 Random Condition (M = 1078 ms, SE = 32 ms). Mean reaction times were
 significantly faster (M = 91 ms) in the Normal than Bigrams condition,
 t(37) = 12.14, p \textless{} 0.001. And, mean reaction times were
-signifcantly faster (M = 152 ms) in the Bigrams than Random condition,
+significantly faster (M = 152 ms) in the Bigrams than Random condition,
 t(37) = 14.21, p \textless{} 0.01.
 
 There are other ways to write-up statistical results. These are just

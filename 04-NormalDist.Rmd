@@ -61,13 +61,13 @@ We are looking at lots of samples from our little gumball machine of numbers. We
 
 #### runif uniform distribution
 
-We can sample random numbers between any range using the `runif(n, min=0, max = 1)` function for the uniform distribution. We discussed this in the textbook. A uniform distribution is flat, and all the numbers between the min and max should occur roughly equally frequently. Let's take 1000 random numbers between 0 and 1 and plot the histgram. We'll just do it all in one line for speed.
+We can sample random numbers between any range using the `runif(n, min=0, max = 1)` function for the uniform distribution. We discussed this in the textbook. A uniform distribution is flat, and all the numbers between the min and max should occur roughly equally frequently. Let's take 1000 random numbers between 0 and 1 and plot the histogram. We'll just do it all in one line for speed.
 
 ```{r}
 hist(runif(1000,0,1))
 ```
 
-This is histogram is flattish. Not perfectly flat, after all we only took 1000 samples. What if we took many more, say 10,000 total samples? Now it looks more flat, each bin is occuring about 500 times each, which is pretty close to the same amount.
+This is histogram is flattish. Not perfectly flat, after all we only took 1000 samples. What if we took many more, say 10,000 total samples? Now it looks more flat, each bin is occurring about 500 times each, which is pretty close to the same amount.
 
 ```{r}
 hist(runif(10000,0,1))
@@ -78,7 +78,7 @@ hist(runif(10000,0,1))
 
 The binomial distribution sounds like a scary word... binomial (AAGGGGHHHHH, stay away!). The binomial can be a coin flipping distribution. You use `rbinom(n, size, prob)`. `n` gives the number of samples you want to take. We'll keep `size = 1` for now, it's the number of trials (forget this for now, it's more useful for more complicated things than what we are doing, if you want to know what it does, try it out, and see if you figure it out). `prob` is a little list you make of probabilities, that define how often certain things happen. 
 
-For example, consider flipping a coin. It will be heads or tails, and the coin, if it is fair, should have a 50% chance of being heads or tails. Here's how we flip a coin 10 times using rbinom
+For example, consider flipping a coin. It will be heads or tails, and the coin, if it is fair, should have a 50% chance of being heads or tails. Here's how we flip a coin 10 times using `rbinom`.
 
 ```{r}
 coin_flips <- rbinom(10,1,.5)
@@ -92,7 +92,7 @@ We get a bunch of 0s, and 1s. We can pretend 0 = tails, and 1 = heads. Great, no
 coin_flips <- rbinom(10,1,.5)
 sum(coin_flips)
 ```
- Alright, so we get the sum, which tells us the number of heads. But, should we alwyas get that number of heads if we flipped a coin 10 times? If you keep redoing the above, you'll get different answers. 5 heads will be the most frequent answer, but you will get lots of other answers too.
+ Alright, so we get the sum, which tells us the number of heads. But, should we always get that number of heads if we flipped a coin 10 times? If you keep redoing the above, you'll get different answers. 5 heads will be the most frequent answer, but you will get lots of other answers too.
  
 Hold on to your seats for this next one. With R, we can simulate the flipping of a coin 10 times (you already know that, you just did it), and we can do that over and over as many times as we want. For example, we could do it 100 times over, saving the number of heads for each set of 10 flips. Then we could look at the distribution of those sums. That would tell us about the range of things that can happen when we flip a coin 10 times. We can do that in loop like this:
 
@@ -107,7 +107,7 @@ hist(save_number_of_heads)
 
 ```
  
-See, that wasn't too painful. Now we see another histrogram. The histogram shows us the frequency observing different numbers of heads (for 10 flips) across the 1000 simulations. 5 happens the most, but 2 happens sometimes, and so does 8. All of the possibilities seem to happen sometimes, some more than others.
+See, that wasn't too painful. Now we see another histogram. The histogram shows us the frequency observing different numbers of heads (for 10 flips) across the 1000 simulations. 5 happens the most, but 2 happens sometimes, and so does 8. All of the possibilities seem to happen sometimes, some more than others.
 
 #### rnorm the normal distribution
 
@@ -121,7 +121,7 @@ There it is, a bell-shaped normal distribution with a mean of 0, and a standard 
 
 #### mixing it up
 
-The r functions are like Legos, you can put them together and come up with different things. What if wanted to sample from a distribution that looked like a two-humped camel's back? Just sample from rnorm twice like this... mix away.
+The r functions are like Legos, you can put them together and come up with different things. What if wanted to sample from a distribution that looked like a two-humped camel's back? Just sample from `rnorm` twice like this... mix away.
 
 ```{r}
 hist( c( rnorm(100,25,5), rnorm(100,50,5)) )
@@ -137,7 +137,7 @@ Remember the sampling distribution of the sample means from the textbook? Now, y
 
 #### Taking multiple samples of the same size
 
-Let's take 10 samples from a normal distribution (mean = 0, and sd = 1). Let's set the sample-size for each to be 20. Then, we'll put them all in a data frame and look at 10 different histrograms, one for each sample.
+Let's take 10 samples from a normal distribution (mean = 0, and SD = 1). Let's set the sample-size for each to be 20. Then, we'll put them all in a data frame and look at 10 different histograms, one for each sample.
 
 ```{r}
 scores <- rnorm(10*20,0,1)
@@ -145,7 +145,7 @@ samples <- rep(1:10,each=20)
 my_df <- data.frame(samples,scores)
 ```
 
-First, look at the new my_df dataframe. You can see there is a column with numbers 1 to 10, these are the sample names. There are also 20 scores for each inhe scores column. Let's make histograms for each sample, so we can see what all of the samples look like:
+First, look at the new my_df data frame. You can see there is a column with numbers 1 to 10, these are the sample names. There are also 20 scores for each in the scores column. Let's make histograms for each sample, so we can see what all of the samples look like:
 
 ```{r}
 ggplot(my_df, aes(x=scores))+
@@ -158,7 +158,7 @@ Notice, all of the samples do not have the same looking histogram. This is becau
 
 #### Getting the means of the samples
 
-Now, let's look at the means of the samples, we will use dplyr to get the means for each sample, and put them in a table:
+Now, let's look at the means of the samples, we will use `dplyr` to get the means for each sample, and put them in a table:
 
 ```{r}
 library(dplyr)
@@ -198,7 +198,7 @@ Well, that's pretty close to zero. Which is good. When we average over our sampl
 
 Our histogram with 10 sample means looked kind of sad. Let's give it some more friends. How about we repeat our little sampling experiment 1000 times. 
 
-Explain...We take 1000 samples. Each sample takes 20 scores from a normal distribution (mean=0, sd=1). Then we find the means of each sample (giving us 1000 sample means). Then, we plot that distribution.
+Explain...We take 1000 samples. Each sample takes 20 scores from a normal distribution (mean=0, SD=1). Then we find the means of each sample (giving us 1000 sample means). Then, we plot that distribution.
 
 ```{r}
 # get 1000 samples with 20 scores each
@@ -262,13 +262,13 @@ ggarrange(a,b,c,d,
 
 ```
 
-From reading the textbook and attending lecture, you should be able to start thinking about why these sampling statitistic distributions might be useful...For now, just know that you can make a sampling statistic for pretty much anythin in R, just by simulating the process of sampling, measuring the statistic, doing it over a bunch, and then plotting the histogram. This gives you a pretty good estimate of the distribution for that sampling statistic.
+From reading the textbook and attending lecture, you should be able to start thinking about why these sampling statistic distributions might be useful...For now, just know that you can make a sampling statistic for pretty much anything in R, just by simulating the process of sampling, measuring the statistic, doing it over a bunch, and then plotting the histogram. This gives you a pretty good estimate of the distribution for that sampling statistic.
 
 ### Central limit theorem
 
 We have been building you up for the central limit theorem, described in the textbook and in class. The central limit theorem is basically that the distribution of sample means will be a normal curve. We already saw that before. But, the interesting thing about it, is that the distribution of your sample means will be normal, even if the distribution the samples came from is not normal. Huh what? 
 
-To demonstrat this the next bit of code is modified from what we did ealier. We create 100 samples. Each sample has 1000 observations. All of them come from a uniform distribution between 0 to 1. This means all of the numbers between 0 and 1 should occur equally frequently. Below I plot histrograms for the first 10 samples (out of the 100 total, 100 is too many to look at). Notice the histograms are not normal, they are roughly flat.
+To demonstrate this the next bit of code is modified from what we did earlier. We create 100 samples. Each sample has 1000 observations. All of them come from a uniform distribution between 0 to 1. This means all of the numbers between 0 and 1 should occur equally frequently. Below I plot histograms for the first 10 samples (out of the 100 total, 100 is too many to look at). Notice the histograms are not normal, they are roughly flat.
 
 ```{r}
 scores <- runif(100*1000,0,1)
@@ -302,7 +302,7 @@ sample_means <- my_df %>%
 
 ```
 
-As you can see, the sampling distribution of the sample means is not flat. It's shaped kind of normalish. If we had taken many more samples, found their means, and then looked at a histogram, it would become even more normal looking. Because that's what happens according to the central limit theorem.
+As you can see, the sampling distribution of the sample means is not flat. It's shaped kind of normal-ish. If we had taken many more samples, found their means, and then looked at a histogram, it would become even more normal looking. Because that's what happens according to the central limit theorem.
 
 ### The normal distribution
 
@@ -323,7 +323,7 @@ To continue the build-up we now look at some more properties of the normal distr
 
 #### Graphing the normal distribution
 
-"Wait, I thought we alread did that". We sort of did. We sampled numbers and made histograms that looked like normal distributions. But, a "normal distribution" is more of an abstract idea. It looks like this in the abstract:
+"Wait, I thought we already did that". We sort of did. We sampled numbers and made histograms that looked like normal distributions. But, a "normal distribution" is more of an abstract idea. It looks like this in the abstract:
 
 
 ```{r}
@@ -338,7 +338,7 @@ ggplot(normal_df, aes(x=values,y=normal_dist))+
 
 ```
 
-A really nice shaped bell-like thing. This normal distribution has a mean of 0, and standard deviation of 1. The heights of the lines tell you roughly how likely each value is. Notice, it is centered on 0 (most likely that numbers from this distributino will be near 0), and it goes down as numbers get bigger or smaller (so bigger or smaller numbers get less likely). There is a range to it. Notice the values don't go much beyond -4 and +4. This because those values don't happen very often. Theoretically any value could happen, but really big or small values have really low probabilites.
+A really nice shaped bell-like thing. This normal distribution has a mean of 0, and standard deviation of 1. The heights of the lines tell you roughly how likely each value is. Notice, it is centered on 0 (most likely that numbers from this distribution will be near 0), and it goes down as numbers get bigger or smaller (so bigger or smaller numbers get less likely). There is a range to it. Notice the values don't go much beyond -4 and +4. This because those values don't happen very often. Theoretically any value could happen, but really big or small values have really low probabilities.
 
 #### calculating the probability of specific ranges.
 
@@ -350,7 +350,7 @@ We can use the `pnorm` function to confirm this:
 pnorm(0, mean = 0, sd= 1, lower.tail=FALSE)
 ```
 
-Agreed, pnorm tells us the probability of getting 0 or greater is .5. 
+Agreed, `pnorm` tells us the probability of getting 0 or greater is .5. 
 
 Well, what is the probability of getting a 2 or greater? That's a bit harder to judge, obviously less than 50%. Use R like this to find out:
 
@@ -383,18 +383,18 @@ ps<-pnorm(c(2,3), mean = 0, sd= 1, lower.tail=FALSE)
 ps[1]-ps[2]
 ```
 
-Again a very small amount, only 2.1 % of the numbers, not a alot.
+Again a very small amount, only 2.1 % of the numbers, not a a lot.
 
 #### summary pnorm
 
-You can always use pnorm to figure how the probabilities of getting certain values from any normal distribution. That's great.
+You can always use `pnorm` to figure how the probabilities of getting certain values from any normal distribution. That's great.
 
 
 ### z-scores
 
-We just spent a bunch of time looking at a very special normal distribution, the one where the mean = 0, and the standard deviation = 1. Then we got a little bit comfortable with what those numbers mean. 0 happens a lot. Numbers between -1 and 1 happen alot. Numbers bigger or smaller than 1 also happen fairly often, but less often. Number bigger than 2 don't happen alot, numbers bigger than 3 don't happen hardly at all. 
+We just spent a bunch of time looking at a very special normal distribution, the one where the mean = 0, and the standard deviation = 1. Then we got a little bit comfortable with what those numbers mean. 0 happens a lot. Numbers between -1 and 1 happen a lot. Numbers bigger or smaller than 1 also happen fairly often, but less often. Number bigger than 2 don't happen a lot, numbers bigger than 3 don't happen hardly at all. 
 
-We can use this knowledge for our convenience. Often, we are not dealing with numbers exactly like these. For example, someone might say, I got a number, it's 550. It came from a distribution with mean = 600, and standard deviation = 25. So, does 545 happen alot or not? The numbers dont' tell you right away.
+We can use this knowledge for our convenience. Often, we are not dealing with numbers exactly like these. For example, someone might say, I got a number, it's 550. It came from a distribution with mean = 600, and standard deviation = 25. So, does 545 happen a lot or not? The numbers don't tell you right away.
 
 If we were talking about our handy distribution with mean = 0 and standard deviation = 1, and I told I got a number 4.5 from that distribution. You would automatically know that 4.5 doesn't happen a lot. Right? Right!
 
@@ -434,9 +434,9 @@ z_scores<-differences/my_sd
 print(z_scores)
 ```
 
-Done. Now you have converted your original numbers into what we call standardized scores. They are standardized to have the same properties (assumed properties) as a normal distribution with mean = 0, and sd = 1.
+Done. Now you have converted your original numbers into what we call standardized scores. They are standardized to have the same properties (assumed properties) as a normal distribution with mean = 0, and SD = 1.
 
-You could look at each of your original scores, and try to figure out if they are likely or unlikely numbers. But, if you make them into z-scores, then you can tell right away. Numbers close to 0 happen alot, bigger numbers closer to 1 happen less often, but still fairly often, and number bigger than 2 or 3 hardly happen at all. 
+You could look at each of your original scores, and try to figure out if they are likely or unlikely numbers. But, if you make them into z-scores, then you can tell right away. Numbers close to 0 happen a lot, bigger numbers closer to 1 happen less often, but still fairly often, and number bigger than 2 or 3 hardly happen at all. 
 
 If someone said they did 3 standard deviations above the mean on a test, this means they did really good, and hardly nobody also did that good. 
 

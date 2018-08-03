@@ -19,9 +19,9 @@ From here on out in the labs we will be focusing on making sense of data from ex
 
 However, as you well know from reading the textbook, and attending the lectures. Experimental manipulations are not the only thing that can cause change in our measure. Chance alone can cause change. Our measures are usually variable themselves, so they come along with some change in them due to sampling error. 
 
-At a minimum, when we conduct an experiment, we want to know **if the change we observed is bigger than the change that can be produced by chance**. Theoretically, random chance could produce most any change we might measure in our experiment. So, there will always be uncertainty about whether our manpiulation caused the change, or chance caused the change. But, we can reduce and evaluate that uncertainty. When we do this, we make **inferences** about what caused change in our experiments. This process is called **statistical inference**. We use **inferential statistics** as tools to help us make these inferences. 
+At a minimum, when we conduct an experiment, we want to know **if the change we observed is bigger than the change that can be produced by chance**. Theoretically, random chance could produce most any change we might measure in our experiment. So, there will always be uncertainty about whether our manipulation caused the change, or chance caused the change. But, we can reduce and evaluate that uncertainty. When we do this, we make **inferences** about what caused change in our experiments. This process is called **statistical inference**. We use **inferential statistics** as tools to help us make these inferences. 
 
-In this lab we introduce you to foundational concepts in **statistical inference**. This is also commonyl termed **hypothesis testing**. But, for various reasons using that language to describe the process is tied to particular philosophies about doing statistical inference. We use some of that language here, so that you know what it means. But, we also use our own plain language, so you know what the point is, without the statistical jargon.
+In this lab we introduce you to foundational concepts in **statistical inference**. This is also commonly termed **hypothesis testing**. But, for various reasons using that language to describe the process is tied to particular philosophies about doing statistical inference. We use some of that language here, so that you know what it means. But, we also use our own plain language, so you know what the point is, without the statistical jargon.
 
 The textbook describes a few different statistical tests for building your conceptual understanding for statistical inference. In this lab, we work through some of them. In particular, we work through the Crump test, and the Randomization test. We show you how to conduct these tests in R on fake data, and real data.
 
@@ -52,13 +52,13 @@ We are going to run a fake experiment with no manipulation, and do this many tim
 1. Sample 20 numbers for control group A using `rnorm(20, mean=75, sd=5)`
 2. Sample 20 numbers for control group B using `rnorm(20, mean=75, sd=5)`
 3. Compute the means for control group A and B
-4. Compute the difference betweem the mean for group A and B
+4. Compute the difference between the mean for group A and B
 5. Save the differences score in a variable
 6. Repeat as many times as we want
 
-If we repeat the simulatoin 100 times, we will see the differences that can be produced by chance, when given the opportunity 100 times. For example, in a simulation like this, the biggest difference (the maximum value) only happens once. We can find that difference, and then roughly conclude that a difference of that big happens 1 out of 100 times just by chance. That's not alot. 
+If we repeat the simulation 100 times, we will see the differences that can be produced by chance, when given the opportunity 100 times. For example, in a simulation like this, the biggest difference (the maximum value) only happens once. We can find that difference, and then roughly conclude that a difference of that big happens 1 out of 100 times just by chance. That's not a lot. 
 
-If we want to be more restrictive, we can make the simluation go to 1,000, or 10,000, or greater. Each time the maximum value will tell us what is the biggest thing chance did 1 out of 1000 times, or 1 out of 10,000 times. 
+If we want to be more restrictive, we can make the simulation go to 1,000, or 10,000, or greater. Each time the maximum value will tell us what is the biggest thing chance did 1 out of 1000 times, or 1 out of 10,000 times. 
 
 The textbook uses 10,000 times. Let's use 100 times here to keep things simple.
 
@@ -99,7 +99,7 @@ ggplot(plot_df,aes(x=mean_differences))+
 
 #### find the range
 
-We can see that chance produces some differences that are non-zero. The histrogram shows all the mean differences that were produced by chance. Most of the differences are between -2 and +2, but some of them are bit more negative, or a bit more positive. If we want to know what chance **did** do in this one simulation with 100 runs, then we need to find the range, the minimum and maximum value. This will tell us the most negative mean difference that chance did produce, and the most positive mean difference that chance did produce. Then, we will also know that chance **did not** produce any larger negative, or larger positive differences, in this simulation.
+We can see that chance produces some differences that are non-zero. The histogram shows all the mean differences that were produced by chance. Most of the differences are between -2 and +2, but some of them are bit more negative, or a bit more positive. If we want to know what chance **did** do in this one simulation with 100 runs, then we need to find the range, the minimum and maximum value. This will tell us the most negative mean difference that chance did produce, and the most positive mean difference that chance did produce. Then, we will also know that chance **did not** produce any larger negative, or larger positive differences, in this simulation.
 
 We use the `min()` and `max()` functions to get the minimum and maximum value.
 
@@ -125,7 +125,7 @@ This part requires you to think about the answers. Let's go through some scenari
     a. **Question**: According to the histogram did a mean difference of 6 or -6 occur by chance?
     b. **Answer**: No, it is outside the range
     
-3. You run an experiment. Group A recieves additional instruction that shoul make them do better on a test. Group B takes the test, but without the instruction. There are 20 people in each group. You have a pretty good idea that group B's test scores will be coming from a normal distribution with mean = 75, and standard deviation = 5. You know this because you have given the test many times, and this is what the distribution usually looks like. You are making an educated guess. You find that the mean test performance for Group A (with additional instruction) was 76%, and the mean test performance for Group B (no additional instruction) was 75%. The mean difference has an absolute value of +1.
+3. You run an experiment. Group A receives additional instruction that should make them do better on a test. Group B takes the test, but without the instruction. There are 20 people in each group. You have a pretty good idea that group B's test scores will be coming from a normal distribution with mean = 75, and standard deviation = 5. You know this because you have given the test many times, and this is what the distribution usually looks like. You are making an educated guess. You find that the mean test performance for Group A (with additional instruction) was 76%, and the mean test performance for Group B (no additional instruction) was 75%. The mean difference has an absolute value of +1.
 
     a. **Question #1**: According to the histogram, could chance alone have produced a mean absolute difference of +1?
     b. **Answer**: Yes, it is inside the range
@@ -193,7 +193,7 @@ max(mean_differences)
 
 ### Crumping real data
 
-In this example we look at how you can run a Crump test to evaluate the results in a published paper. The goal of this is to build up your intutions about whether or not an observed difference could have been caused by chance. We take many liberties, and this is not an exact test of anything. However, we will see how a series of rough, and reasonable assumptions can be made to simulate the results of published experiments, even when exact information is not provided in the paper.
+In this example we look at how you can run a Crump test to evaluate the results in a published paper. The goal of this is to build up your intuitions about whether or not an observed difference could have been caused by chance. We take many liberties, and this is not an exact test of anything. However, we will see how a series of rough, and reasonable assumptions can be made to simulate the results of published experiments, even when exact information is not provided in the paper.
 
 #### Test-enhanced learning
 
@@ -223,7 +223,7 @@ What should our standard deviation be? This is a little bit nuanced, pay close a
 
 Guess what, if you remember from the textbook and the lecture, the **standard deviation** of the sampling distribution of the sample means, IS **the standard error of the mean**. So, we can use the standard error of the mean from the figure to help us with our simulation.
 
-How big is one standard error on the figure? I'm going to guesstimate that at about .02. It's not .1, that's difference say between .5, and .6.. That's too big. It's smaller than half of that .05. In fact two standard errors (the whole line from top hat to bottom hat...the little ticks) seems smaller thant .05, I'd say the total width is about .04. But, .04 is for two standard errors, so that's where I get my guesstimate of .02 for one standard error. 
+How big is one standard error on the figure? I'm going to guesstimate that at about .02. It's not .1, that's difference say between .5, and .6.. That's too big. It's smaller than half of that .05. In fact two standard errors (the whole line from top hat to bottom hat...the little ticks) seems smaller than .05, I'd say the total width is about .04. But, .04 is for two standard errors, so that's where I get my guesstimate of .02 for one standard error. 
 
 Finally, how many subjects were in each condition? There were a total of 120 subjects, and they each contributed data in both conditions (study-study & study-test). So, our N is 120.
 
@@ -241,9 +241,9 @@ What we want to know is whether chance could produce a difference of 14%, or .14
 
 #### Run the simulation
 
-I think this is how the simulation should work. We can run it, then look to see if a difference of .14 can happen by chance 1 out of 100 times. There is a wrinkle in this experiment, and to be honest, I'm pretty sure I've done it correctly, but perhaps I made a mistake. It's ok to put things out there and be corrected later. Maybe one of you can correct me if I'm wrong.
+I think this is how the simulation should work. We can run it, then look to see if a difference of .14 can happen by chance 1 out of 100 times. There is a wrinkle in this experiment, and to be honest, I'm pretty sure I've done it correctly, but perhaps I made a mistake. It's OK to put things out there and be corrected later. Maybe one of you can correct me if I'm wrong.
 
-The code is almost the same as what we did before. I changed the `sample_n` to 120, the `dist_mean` to .48, and the `dist_sd` to .02. These were our guesstimates for the distribution paramaters.
+The code is almost the same as what we did before. I changed the `sample_n` to 120, the `dist_mean` to .48, and the `dist_sd` to .02. These were our guesstimates for the distribution parameters.
 
 Notice however, that I commented out two lines. These are the green lines inside the simulation. I do not use 120 for the number of samples. Instead I only take 1 sample for each group. Why did I do this, and not use 120? I did this because we are using the standard deviation of the sample means (the standard error of the mean from the figure), and not the standard deviation of each subjects proportion recalled (which isn't really a thing, because each subject gives one number, one proportion, reflecting the proportion of idea units). For this reason, we shouldn't use 120, we are not taking 120 samples and then computing the mean, instead we are taking 1 sample each from the presumed sampling distribution of the sample means, and then taking the difference. This I know is a big mouthful. Please correct me if I am wrong here. We all need to understand what would be the appropriate thing to do. If you can make a justifiable and reasonable argument about what should be done here, then you are really learning the concepts behind what we are doing.
 
@@ -286,11 +286,11 @@ max(mean_differences)
 
 According to the simulation, the biggest negative difference was `r round(min(mean_differences), digits=3)`, and the biggest positive difference was `r round(max(mean_differences), digits=3)`. We also know that any mean difference inside the range **was produced by chance** in our simulation, and any mean difference outside the range **was not produced by chance** in our simulation.
 
-Clearly, a difference of .14 or 14% was never produced by chance, it was completely outside the range. Based on this anlaysis we can be fairly confident that the test-enhanced learning effect was not a fluke, it was not produced by chance. We have evidence to support the claim that testing enhances learning, and because of this we test you while you are learning to enhance your learning while you learn.
+Clearly, a difference of .14 or 14% was never produced by chance, it was completely outside the range. Based on this analysis we can be fairly confident that the test-enhanced learning effect was not a fluke, it was not produced by chance. We have evidence to support the claim that testing enhances learning, and because of this we test you while you are learning to enhance your learning while you learn.
 
 ### The Randomization Test
 
-Unlike the Crump test, which was made to help you understand some basic ideas about how chnace can do things, the Randomization test is a well-known, very real, statistical test for making inferences about what chance can do. You will see that it is very similar to the Crump test in many respects. In fact, we might say that the Crump test is really just a randomization test.
+Unlike the Crump test, which was made to help you understand some basic ideas about how chance can do things, the Randomization test is a well-known, very real, statistical test for making inferences about what chance can do. You will see that it is very similar to the Crump test in many respects. In fact, we might say that the Crump test is really just a randomization test.
 
 You read about the randomization test in the textbook. We won't repeat much about that here, but we will show you how to do one in R.
 
@@ -366,13 +366,13 @@ ggplot(plot_df,aes(x=mean_differences))+
 
 ```
 
-Ok, so our alpha criterion or cutoff is located at `r round(alpha_cutoff, digits=2)` on the x-xaxis. This shows us that mean differences of `r round(alpha_cutoff, digits=2)` or larger happen only 5% of the time by chance. 
+OK, so our alpha criterion or cutoff is located at `r round(alpha_cutoff, digits=2)` on the x-axis. This shows us that mean differences of `r round(alpha_cutoff, digits=2)` or larger happen only 5% of the time by chance. 
 
 You could use this information to make an inference about whether or not chance produced the difference in your experiments
 
 1. When the mean difference is `r round(alpha_cutoff, digits=2)` or larger, you might conclude that chance did not produce the difference
 
-2. When the mean difference is less than `r round(alpha_cutoff, digits=2)`, you might conclude that chance could hve produced the mean difference.
+2. When the mean difference is less than `r round(alpha_cutoff, digits=2)`, you might conclude that chance could have produced the mean difference.
 
 It's up to you to set your alpha criterion. In practice it is often set at p=.05. But, you could be more conservative and set it to p=.01. Or more liberal and set it to p=.1. It's up to you. 
 
