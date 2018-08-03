@@ -35,7 +35,7 @@ hist(rnorm(100, mean=50, sd=25))
 
 You just made R sample 100 numbers, and then plot the results in a histogram. Pretty neat. We'll be doing some of this later in the course, where get R to make fake data for us, and then we learn to think about how data behaves under different kinds of assumptions.
 
-For now, let's do something that might be a little bit more interesting...what movies are going to be filming in NYC? It turns out that NYC makes a lot of data about a lot things open and free for anyone to download and look at. This is the NYC Open Data website: [https://opendata.cityofnewyork.us](https://opendata.cityofnewyork.us). I searched through the data, and found this data file that lists the locations of film permits for shooting movies all throughout the burroughs. You can download the data to your computer from [this link](https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/MehrSongSpelke2016.csv)
+For now, let's do something that might be a little bit more interesting...what movies are going to be filming in NYC? It turns out that NYC makes a lot of data about a lot things open and free for anyone to download and look at. This is the NYC Open Data website: [https://opendata.cityofnewyork.us](https://opendata.cityofnewyork.us). I searched through the data, and found this data file that lists the locations of film permits for shooting movies all throughout the burroughs. You can download the data to your computer from [this link](https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/Film_Permits.csv)
 
 NOTE TO SELF, COME BACK HERE AND WALKTHROUGH FILE PATHS AND THINGS
 
