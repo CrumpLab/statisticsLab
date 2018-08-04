@@ -30,7 +30,7 @@ Following this 1-2 week exposure period, the parents and their infant returned t
 ## Important Stuff
 - citation: Mehr, S. A., Song. L. A., & Spelke, E. S. (2016). For 5-month-old infants, melodies are social. Psychological Science, 27, 486-501.
 - [Link to .pdf of article](http://journals.sagepub.com/stoken/default+domain/d5HcBHg85XamSXGdYqYN/full)
-- [Data in .csv format](https://drive.google.com/open?id=0Bz-rhZ21ShvOdW1wV0pmUTJSSk0)
+- [Data in .csv format](https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/MehrSongSpelke2016.csv)
 - [Data in SPSS format](https://drive.google.com/open?id=0Bz-rhZ21ShvOa3c4X3hqOWxwcUU)
 
 ## R
@@ -50,7 +50,7 @@ all_data <- fread("https://raw.githubusercontent.com/CrumpLab/statisticsLab/mast
 
 ```{r}
 library(data.table)
-all_data <- fread("Data/MehrSongSpelke2016.csv")
+all_data <- fread("data/MehrSongSpelke2016.csv")
 ```
 
 ### Inspect the data frame
