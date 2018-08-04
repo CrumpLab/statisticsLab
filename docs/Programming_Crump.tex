@@ -126,7 +126,7 @@ will be recognized by the time we are finished.}
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2018: Last Compiled 2018-08-03}
+    \date{2018: Last Compiled 2018-08-04}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -4197,7 +4197,7 @@ experiment's methods, please refer to Mehr et al. (2016) Experiment 1.
   \href{http://journals.sagepub.com/stoken/default+domain/d5HcBHg85XamSXGdYqYN/full}{Link
   to .pdf of article}
 \item
-  \href{https://drive.google.com/open?id=0Bz-rhZ21ShvOdW1wV0pmUTJSSk0}{Data
+  \href{https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/MehrSongSpelke2016.csv}{Data
   in .csv format}
 \item
   \href{https://drive.google.com/open?id=0Bz-rhZ21ShvOa3c4X3hqOWxwcUU}{Data
@@ -4243,7 +4243,7 @@ It turns out there are lots of ways to load .csv files into R.
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{(data.table)}
-\NormalTok{all_data <-}\StringTok{ }\KeywordTok{fread}\NormalTok{(}\StringTok{"Data/MehrSongSpelke2016.csv"}\NormalTok{)}
+\NormalTok{all_data <-}\StringTok{ }\KeywordTok{fread}\NormalTok{(}\StringTok{"data/MehrSongSpelke2016.csv"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5099,7 +5099,7 @@ have the data, we can find out.
   \href{http://journals.sagepub.com/stoken/default+domain/PhtK6MPtXvkgnYRrnGbA/full}{Link
   to .pdf of article}
 \item
-  \href{https://drive.google.com/open?id=0Bz-rhZ21ShvOei1MM24xNndnQ00}{Data
+  \href{https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/SchroederEpley2015data.csv}{Data
   in .csv format}
 \item
   \href{https://drive.google.com/open?id=0Bz-rhZ21ShvOVXlDMjEzQU1oY1k}{Data
@@ -5604,7 +5604,7 @@ triggered an intrusive memory.
   \href{http://journals.sagepub.com/stoken/default+domain/hQ2W4fbPrZVJ7eyNJaqu/full}{Link
   to .pdf of article}
 \item
-  \href{https://drive.google.com/open?id=0Bz-rhZ21ShvOM1cxWUpUNlQ0UlE}{Data
+  \href{https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/Jamesetal2015Experiment2.csv}{Data
   in .csv format}
 \item
   \href{https://drive.google.com/file/d/0Bz-rhZ21ShvOZ1lvQ0dQekZGWU0/view?usp=sharing}{Data
@@ -7272,38 +7272,657 @@ How to do it in JAMOVI
 
 \chapter{Lab 10: Factorial ANOVA}\label{lab-10-factorial-anova}
 
+\section{Does standing up make you focus
+more?}\label{does-standing-up-make-you-focus-more}
+
+This lab activity uses the data from ``Stand by your Stroop: Standing up
+enhances selective attention and cognitive control'' (Rosenbaum, Mama,
+Algom, 2017) to teach the analysis of a 2x2 design using ANOVA. Although
+the research design is a 2x2 repeated meaures design, we treat the
+design both as repeated measures, and as a between-subjects design to
+illustrate how to conduct either type of ANOVA in software.
+
+\subsection{STUDY DESCRIPTION}\label{study-description-4}
+
+Do you pay more attention when you are sitting or standing? We analyse
+the data from ``Stand by your Stroop: Standing up enhances selective
+attention and cognitive control'' (Rosenbaum, Mama, Algom, 2017). This
+paper asked whether sitting versus standing would influence a measure of
+selective attention, the ability to ignore distracting information.
+
+They used a classic test of selective attention, called the Stroop
+effect. In a typical Stroop experiment, subjects name the color of words
+as fast as they can. The trick is that sometimes the color of the word
+is the same as the name of the word, and sometimes it is not. Here are
+some examples:
+
+\includegraphics[width=11.67in]{figures/Stroop}
+
+Congruent trials occur when the color and word match. So, the correct
+answers for each of the congruent stimuli shown would be to say, red,
+green, blue and yello. Incongruent trials occur when the color and word
+mismatch. The correct answers for each of the incongruent stimuli would
+be: blue, yellow, red, green.
+
+The Stroop effect is an example of a well-known phenomena. What happens
+is that people are faster to name the color of the congruent items
+compared to the color of the incongruent items. This difference
+(incongruent reaction time - congruent reaction time) is called the
+Stroop effect.
+
+Many researchers argue that the Stroop effect measures something about
+selective attention, the ability to ignore distracting information. In
+this case, the target information that you need to pay attention to is
+the color, not the word. For each item, the word is potentially
+distracting, it is not information that you are supposed to respond to.
+However, it seems that most people can't help but notice the word, and
+their performance in the color-naming task is subsequently influenced by
+the presence of the distracting word.
+
+People who are good at ignoring the distracting words should have small
+Stroop effects. They will ignore the word, and it won't influence them
+very much for either congruent or incongruent trials. As a result, the
+difference in performance (the Stroop effect) should be fairly small (if
+you have ``good'' selective attention in this task). People who are bad
+at ignoring the distracting words should have big Stroop effects. They
+will not ignore the words, causing them to be relatively fast when the
+word helps, and relatively slow when the word mismatches. As a result,
+they will show a difference in performance between the incongruent and
+congruent conditions.
+
+If we take the size of the Stroop effect as a measure of selective
+attention, we can then start wondering what sorts of things improve
+selective attention (e.g., that make the Stroop effect smaller), and
+what kinds of things impair selective attention (e.g., make the Stroop
+effect bigger).
+
+The research question of this study was to ask whether standing up
+improves selective attention compared to sitting down. They predicted
+smaller Stroop effects when people were standing up and doing the task,
+compared to when they were sitting down and doing the task.
+
+\subsection{Study Methods}\label{study-methods-2}
+
+The design of the study was a 2x2 repeated-measures design. The first IV
+was congruency (congruent vs incongruent). The second IV was posture
+(sitting vs.~standing). The DV was reaction time to name the word. There
+were 50 participants in the study.
+
 \section{Lab Skills Learned}\label{lab-skills-learned-4}
+
+\begin{itemize}
+\tightlist
+\item
+  Conducting a 2x2 between-subjects ANOVA
+\item
+  Conducting a 2x2 repeated-measures ANOVA
+\end{itemize}
 
 \section{Important Stuff}\label{important-stuff-4}
 
 \begin{itemize}
 \tightlist
 \item
-  citation: Barasch, A., Diehl, K., Silverman, J., \& Zauberman, G.
-  (2017). Photographic memory: The effects of volitional photo taking on
-  memory for visual and auditory aspects of an experience. Psychological
-  science, 28(8), 1056-1066.
+  citation: Rosenbaum, D., Mama, Y., \& Algom, D. (2017). Stand by Your
+  Stroop: Standing Up Enhances Selective Attention and Cognitive
+  Control. Psychological science, 28(12), 1864-1867.
 \item
-  \href{http://journals.sagepub.com/doi/abs/10.1177/0956797617694868}{Link
+  \href{https://www.researchgate.net/profile/David_Rosenbaum6/publication/320070495_Stand_by_Your_Stroop_Standing_Up_Enhances_Selective_Attention_and_Cognitive_Control/links/5a82b4f10f7e9bda869fac5b/Stand-by-Your-Stroop-Standing-Up-Enhances-Selective-Attention-and-Cognitive-Control.pdf}{Link
   to .pdf of article}
 \item
-  \href{}{Data in .csv format}
-\item
-  \href{}{Data in SPSS format}
+  \href{https://github.com/CrumpLab/statisticsLab/raw/master/stroop_stand.csv}{Data
+  in .csv format}
 \end{itemize}
-
-\section{Outline of Problem to
-solve}\label{outline-of-problem-to-solve-4}
-
-Stuff we need to say in general
-
-\subsection{important things}\label{important-things-4}
-
-Other things to say
 
 \section{R}\label{r-10}
 
-How to do it in R
+\subsection{Load the data}\label{load-the-data-4}
+
+Remember that any line with a \# makes a comment and the code does not
+run. Below is how to load the .csv data from the online repository, or
+from a local file (you need to change the file path to where the local
+file is, if you downloaded it). The data contains all of the measures
+and conditions from Experiment 1 in the paper.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(data.table)}
+\CommentTok{#all_data <- fread("https://github.com/CrumpLab/statisticsLab/raw/master/stroop_stand.csv")}
+\NormalTok{all_data <-}\StringTok{ }\KeywordTok{fread}\NormalTok{(}\StringTok{"data/stroop_stand.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Inspect the dataframe}\label{inspect-the-dataframe-2}
+
+This will give you a big picture of the data frame. Click the button to
+view it in your browser, then take a look to see what is in it.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(summarytools)}
+\KeywordTok{view}\NormalTok{(}\KeywordTok{dfSummary}\NormalTok{(all_data))}
+\end{Highlighting}
+\end{Shaded}
+
+We see there are four columns of numbers. The column names tell us
+whether the data is for a congruent or incongruent condition, and
+whether the participant was sitting or standing. Note, this data is in
+wide-format, not long-format. Each subject has 4 measures per row. We
+will need to change this to work with the data in R.
+
+\subsection{Get the data you need}\label{get-the-data-you-need-2}
+
+This data file contains all of the data from Experiment 1 in the paper.
+So, we don't need to get rid of any rows.
+
+\subsection{Get the data into the format you
+want}\label{get-the-data-into-the-format-you-want}
+
+As mentioned before we need to convert the data from wide to long
+format. What we want at the end of this conversion is:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  A column for the subject variable
+\item
+  A column for the congruency variable
+\item
+  A column for the posture (sit vs.~stand) variable
+\item
+  A column for the DV ( mean reaction times)
+\end{enumerate}
+
+We look at two ways to do the transformation from wide to long. The
+first way is to ``do it by hand'', which refers to creating every
+variable individually, and then putting them together in a single data
+frame. This next bit of code does this, and you can check out
+\texttt{stroop\_df} to see the result.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{RTs <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\KeywordTok{as.numeric}\NormalTok{(}\KeywordTok{unlist}\NormalTok{(all_data[,}\DecValTok{1}\NormalTok{])),}
+         \KeywordTok{as.numeric}\NormalTok{(}\KeywordTok{unlist}\NormalTok{(all_data[,}\DecValTok{2}\NormalTok{])),}
+         \KeywordTok{as.numeric}\NormalTok{(}\KeywordTok{unlist}\NormalTok{(all_data[,}\DecValTok{3}\NormalTok{])),}
+         \KeywordTok{as.numeric}\NormalTok{(}\KeywordTok{unlist}\NormalTok{(all_data[,}\DecValTok{4}\NormalTok{]))}
+         \NormalTok{)}
+
+\NormalTok{Congruency <-}\StringTok{ }\KeywordTok{rep}\NormalTok{(}\KeywordTok{rep}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"Congruent"}\NormalTok{,}\StringTok{"Incongruent"}\NormalTok{),}\DataTypeTok{each=}\DecValTok{50}\NormalTok{),}\DecValTok{2}\NormalTok{)}
+\NormalTok{Posture <-}\StringTok{ }\KeywordTok{rep}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"Stand"}\NormalTok{,}\StringTok{"Sit"}\NormalTok{),}\DataTypeTok{each=}\DecValTok{100}\NormalTok{)}
+\NormalTok{Subject <-}\StringTok{ }\KeywordTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{:}\DecValTok{50}\NormalTok{,}\DecValTok{4}\NormalTok{)}
+
+\NormalTok{stroop_df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(Subject,Congruency,Posture,RTs)}
+\end{Highlighting}
+\end{Shaded}
+
+Another way to transform between long and wide is to use R functions
+that were designed to do this job. For example there are the
+\texttt{spread} and \texttt{gather} functions from the \texttt{tidyr}
+package, and the \texttt{melt} and \texttt{cast} functions, which also
+do some data frame transforming. The transformation from wide to long
+can be complicated depending on the structure of the data, and you may
+often find it helpful to google these functions to look for more
+examples of their use.
+
+Let's use the \texttt{tidyr} \texttt{gather} function to change our data
+from wide to long
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tidyr)}
+
+\NormalTok{stroop_long<-}\StringTok{ }\KeywordTok{gather}\NormalTok{(all_data, }\DataTypeTok{key=}\NormalTok{Condition, }\DataTypeTok{value=}\NormalTok{RTs, }
+                     \NormalTok{congruent_stand, incongruent_stand,}
+                     \NormalTok{congruent_sit, incongruent_sit)}
+\end{Highlighting}
+\end{Shaded}
+
+Take a moment to look at \texttt{stroop\_long}. It is almost what we
+need. It is certainly in long format. There is a column for Subjects,
+and a column for the RTs, but there is only one column for both IVs,
+that's no good. There are two IVs, we need two columns. Fortunately, the
+levels in the new Condition column are coded with a specific and
+consistent structure:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  congruent\_stand
+\item
+  incongruent\_stand
+\item
+  congruent\_sit
+\item
+  incongruent\_sit
+\end{enumerate}
+
+If only we could split these by the ``\_" (underscore), then we would
+have two columns for the congruency and the posture variable. We can do
+this using \texttt{tstrsplit} from the \texttt{data.table} package
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{new_columns <-}\StringTok{ }\KeywordTok{tstrsplit}\NormalTok{(stroop_long$Condition, }\StringTok{"_"}\NormalTok{, }\DataTypeTok{names=}\KeywordTok{c}\NormalTok{(}\StringTok{"Congruency"}\NormalTok{,}\StringTok{"Posture"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+You can look inside \texttt{new\_columns} to see that we succesfully
+made the split. Now, we just need to add them on to the
+\texttt{stroop\_long\ data} frame.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{stroop_long <-}\StringTok{ }\KeywordTok{cbind}\NormalTok{(stroop_long,new_columns)}
+\end{Highlighting}
+\end{Shaded}
+
+Look at the \texttt{stroop\_long} data frame and you will find that we
+have added two new columns, one that codes for Congruency, and the other
+that codes for posture.
+
+Using this method we still haven't added a column for subjects. We can
+do that like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{stroop_long <-}\StringTok{ }\KeywordTok{cbind}\NormalTok{(stroop_long,}\DataTypeTok{Subject=}\KeywordTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{:}\DecValTok{50}\NormalTok{,}\DecValTok{4}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{The independent
+variable}\label{the-independent-variable-2}
+
+After all of this data transformation you should be familiar with the
+IVs.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Congruency: congruent vs.~incongruent
+\item
+  Posture: stand vs.~sit
+\end{enumerate}
+
+\subsubsection{The dependent variables}\label{the-dependent-variables-1}
+
+There is only one DV that we look at, that is the mean reaction time to
+name the color.
+
+\subsection{Look at the data}\label{look-at-the-data-4}
+
+Remember before we do any analysis, we always want to ``look'' at the
+data. This first pass let's us know if the data ``look right''. For
+example, the data file could be messed up and maybe there aren't any
+numbers there, or maybe the numbers are just too weird.
+
+Let's make a quick histogram of all of the RT data, like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{hist}\NormalTok{(stroop_long$RTs)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-183-1.pdf}
+
+This looks pretty good, there are no super huge numbers here.
+
+\subsection{Look at the means}\label{look-at-the-means-1}
+
+As part of looking at the data, we might as well make a figure that
+shows the mean reaction times in each condition, and some error bars to
+look at the spread in each condition. The following code takes two
+important steps:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Get the means for each condition, by averaging over the means for each
+  subject. These are put into the data frame called
+  \texttt{plot\_means}.
+\item
+  Make a graph with the \texttt{plot\_means} data frame using ggplot2.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(dplyr)}
+\KeywordTok{library}\NormalTok{(ggplot2)}
+
+\NormalTok{plot_means <-}\StringTok{ }\NormalTok{stroop_long %>%}
+\StringTok{            }\KeywordTok{group_by}\NormalTok{(Congruency,Posture) %>%}
+\StringTok{            }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{mean_RT =} \KeywordTok{mean}\NormalTok{(RTs),}
+                      \DataTypeTok{SEM =} \KeywordTok{sd}\NormalTok{(RTs)/}\KeywordTok{sqrt}\NormalTok{(}\KeywordTok{length}\NormalTok{(RTs)))}
+
+\KeywordTok{ggplot}\NormalTok{(plot_means, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Posture, }\DataTypeTok{y=}\NormalTok{mean_RT, }\DataTypeTok{group=}\NormalTok{Congruency, }\DataTypeTok{fill=}\NormalTok{Congruency))+}
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{, }\DataTypeTok{position=}\StringTok{"dodge"}\NormalTok{)+}
+\StringTok{  }\KeywordTok{geom_errorbar}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{ymin=}\NormalTok{mean_RT-SEM, }\DataTypeTok{ymax=}\NormalTok{mean_RT+SEM), }
+                \DataTypeTok{position=}\KeywordTok{position_dodge}\NormalTok{(}\DataTypeTok{width=}\FloatTok{0.9}\NormalTok{),}
+                \DataTypeTok{width=}\NormalTok{.}\DecValTok{2}\NormalTok{)+}
+\StringTok{  }\KeywordTok{theme_classic}\NormalTok{()+}
+\StringTok{  }\KeywordTok{coord_cartesian}\NormalTok{(}\DataTypeTok{ylim=}\KeywordTok{c}\NormalTok{(}\DecValTok{700}\NormalTok{,}\DecValTok{1000}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Programming_Crump_files/figure-latex/unnamed-chunk-184-1.pdf}
+
+\subsection{Conduct the ANOVA}\label{conduct-the-anova-1}
+
+In this lab we will show you how to conduct ANOVAs for factorial designs
+that are for:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  fully between-subjects designs (both IVs are between-subjects IVs)
+\item
+  fully repeated measures designs (both IVs are repeated measures)
+\end{enumerate}
+
+The data we are looking at right now is fully repeated measures.
+
+However, in this lab we are first going to pretend that the experiment
+was not repeated measures. We are going to pretend it was fully
+between-subjects. Then we are going to conduct a between-subjects ANOVA.
+After that, we will conduct a repeated-measures ANOVA, which is what
+would be most appropriate for this data set. The overall point is to
+show you how to both of them, and the discuss how to interpret them and
+write them both up.
+
+\subsection{Between Subjects ANOVA}\label{between-subjects-anova}
+
+We can always conduct a between-subjects version of the ANOVA on
+repeated-measures data if we wanted to. In this case we wouldn't really
+want to do this. But, we will do this for educational purposes to show
+you how to do it in R.
+
+The syntax is very similar to what we do for one-way ANOVAs, remember
+the syntax was:
+
+\texttt{aov(DV\ \textasciitilde{}\ IV,\ dataframe)}
+
+If you want to add another IV, all you need to do is insert another one
+into the formula, like this:
+
+\texttt{aov(DV\ \textasciitilde{}\ IV1*IV2,\ dataframe)}
+
+Just, switch DV to the name of your dependent measure, and IV1 and IV2
+to the names of your independent variables. Finally, put the name of
+your dataframe. Your dataframe must be in long format with one
+observation of the DV per row.
+
+Our formula will look like this:
+
+\texttt{aov(RTs\ \textasciitilde{}\ Congruency*Posture,\ stroop\_long)}
+
+In plain language, this formula means, analyze RTs by the Congruency and
+Posture Variables. R will automatically produce the main effects for
+Congruency and Posture, as well as the interaction (Congruency X
+Posture). Also, remember, that in the following code, we use a few other
+functions so that we can print out the results nicely.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(xtable)}
+
+\NormalTok{aov_out<-}\KeywordTok{aov}\NormalTok{(RTs ~}\StringTok{ }\NormalTok{Congruency*Posture, stroop_long)}
+\NormalTok{summary_out<-}\KeywordTok{summary}\NormalTok{(aov_out)}
+
+\KeywordTok{library}\NormalTok{(xtable)}
+\NormalTok{knitr::}\KeywordTok{kable}\NormalTok{(}\KeywordTok{xtable}\NormalTok{(summary_out))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{l|r|r|r|r|r}
+\hline
+  & Df & Sum Sq & Mean Sq & F value & Pr(>F)\\
+\hline
+Congruency & 1 & 576821.635 & 576821.635 & 43.7344419 & 0.0000000\\
+\hline
+Posture & 1 & 32303.453 & 32303.453 & 2.4492381 & 0.1191950\\
+\hline
+Congruency:Posture & 1 & 6560.339 & 6560.339 & 0.4974029 & 0.4814808\\
+\hline
+Residuals & 196 & 2585080.215 & 13189.185 & NA & NA\\
+\hline
+\end{tabular}
+
+We can also have R print out the Grand Mean, the means for each level of
+each main effect, and the means for the interaction term. This is the
+same print out you would get in the console for R. It is admittedly not
+very pretty. There's probably a way to make the means provided by
+\texttt{model.tables()} more pretty. If we find a way we will update
+this section, if you find a way, please let us know.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{print}\NormalTok{(}\KeywordTok{model.tables}\NormalTok{(aov_out,}\StringTok{"means"}\NormalTok{), }\DataTypeTok{format=}\StringTok{"markdown"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Tables of means
+## Grand mean
+##          
+## 868.6454 
+## 
+##  Congruency 
+## Congruency
+##   congruent incongruent 
+##       814.9       922.3 
+## 
+##  Posture 
+## Posture
+##   sit stand 
+## 881.4 855.9 
+## 
+##  Congruency:Posture 
+##              Posture
+## Congruency    sit   stand
+##   congruent   821.9 808.0
+##   incongruent 940.8 903.9
+\end{verbatim}
+
+\subsubsection{ANOVA write-up}\label{anova-write-up}
+
+Here are the steps for writing up the results of an ANOVA:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Say what means you analyzed
+\item
+  Say what test you performed
+\item
+  Say the inferential statisic for each of the effects (main effects and
+  interaction)
+\item
+  Say the pattern of results for each effect.
+\end{enumerate}
+
+A short example of the whole write-up is below:
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\textbf{Example write-up}
+
+We submitted the mean reaction times for each group to a 2 (Congruency:
+congrueny vs.~incongruent) x 2 (Posture: Standing vs.~Sitting)
+between-subjects ANOVA.
+
+There was a main effect of Congruency, F (1, 196) = 43.73, MSE =
+13189.185, p \textless{} 0.001. Mean reaction times were slower for
+incongruent (922 ms) than congruent groups (815 ms).
+
+There main effect of Posture was not significant, F (1, 196) = 2.45, MSE
+= 13189.185, p =.119. Mean reaction times were slower for sitting (881
+ms) than standing groups (855 ms).
+
+The two-way interaction between Congruency and Posture was not
+significant, F (1, 196) = .497, MSE = 13189.185, p \textless{} 0.481.
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+For every F-value, we report F (df1, df2) = F-value, MSE = MSE for the
+error term, and p = x.xxx.
+
+In R, the df1, for the df in the numerator is always listed beside the
+name for a particular effect. For example, Congruency has 1 degree of
+freedom (there are two condition, and 2-1 =1). Similarly, the relevant F
+and p-value are listed in the same row as the effect of interest.
+
+However, the error term used to calculate the F-value is listed at the
+bottom, in R this is called ``Residuals''. Df2, the df for the
+denominator is listed beside ``Residuals'', in our case it was 196. The
+important bit is the MSE, which was 13189.185. Notice, that in the write
+up for each main effect and interaction we always reported the same MSE.
+That's because in this between-subjects version of the ANOVA, we divide
+by same very same error term. Also notice that we don't report the sums
+of squares of the MSE for the effect.
+
+Why not? The main reason why not is that you can reconstruct those
+missing numbers just by knowing the dfs, the MSE for the error, and the
+f-value.
+
+For example, you can get the MSE for the effect by multiplying the
+F-value by the MSE for the error. Now you have both MSEs. You can get
+both Sums of Squares by multiplying by their associated dfs. That's just
+working backwards from the F-value.
+
+You can always check if you are reporting the correct MSE for the error
+term. If the MSE for your effect (numerator) divided by the MSE you are
+using for the error term does not equal the F-value, then you must be
+using the wrong terms!
+
+\subsection{Repeated measures ANOVA}\label{repeated-measures-anova}
+
+Of course, the design for this experiment was not between-subjects, it
+was fully within-subjects. Every participant completed both congruent
+and incongruent trials, while they were standing or sitting. For this
+reason, we should conduct a repeated measures ANOVA. This way we will be
+able capitilize on the major benefit provided by the repeated measures
+design. We can remove the variance due to individual subjects from the
+error terms we use to calculate F-values for each main effect and
+interaction.
+
+Rember the formula for the one-factor repeated-measures ANOVA, we'll
+remind you:
+
+\texttt{aov(\ DV\ \textasciitilde{}\ IV\ +\ Error(Subject/IV),\ dataframe)}
+
+To do the same for a design with more than one IV we put in another IV
+to the formula, like this:
+
+\texttt{aov(\ DV\ \textasciitilde{}\ IV1*IV2\ +\ Error(\ Subject/(IV1*IV2)\ ),\ dataframe)}
+
+\begin{itemize}
+\tightlist
+\item
+  DV = name of dependent variable
+\item
+  IV1 = name of first independent variable
+\item
+  IV2 = name of second indpendent variable
+\item
+  Subject = name of the subject variable, coding the means for each
+  subject in each condition
+\item
+  dataframe = name of the long-format data frame
+\end{itemize}
+
+Here is what our formula will look like:
+
+\texttt{aov(RTs\ \textasciitilde{}\ Congruency*Posture\ +\ Error(Subject/(Congruency*Posture)),\ stroop\_long)}
+
+The main thing you need to watch out for when running this analysis in
+R, is that all your factors need to be \texttt{factors} in R. Often
+times people will use numbers rather than words or letters to code the
+levels for specific factors. This can be very often done for the
+subjects factor, using number 1 for subject one, and number 2 for
+subject 2. If you want your column variable to be treated as a factor,
+then you may need to convert it to a factor. We do this below for the
+Subject variable, which happens to be coded as numbers. If we do not do
+this, the repeated-measures ANOVA will return incorrect results.
+
+For example, if you look at the \texttt{stroop\_long} data frame, and
+click the little circle with an arrow on in it in the environment panel,
+you should see that Subject is an \texttt{int}. That stands for integer.
+You should also see that Congruency and Posture are \texttt{Factor},
+that's good. We need to turn Subject into \texttt{Factor}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{stroop_long$Subject <-}\StringTok{ }\KeywordTok{as.factor}\NormalTok{(stroop_long$Subject) }\CommentTok{#convert subject to factor}
+
+\NormalTok{summary_out<-}\KeywordTok{aov}\NormalTok{(RTs ~}\StringTok{ }\NormalTok{Congruency*Posture +}\StringTok{ }\KeywordTok{Error}\NormalTok{(Subject/(Congruency*Posture)), stroop_long)}
+
+\KeywordTok{library}\NormalTok{(xtable)}
+\NormalTok{knitr::}\KeywordTok{kable}\NormalTok{(}\KeywordTok{xtable}\NormalTok{(summary_out))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{l|r|r|r|r|r}
+\hline
+  & Df & Sum Sq & Mean Sq & F value & Pr(>F)\\
+\hline
+Residuals & 49 & 2250738.636 & 45933.4416 & NA & NA\\
+\hline
+Congruency & 1 & 576821.635 & 576821.6349 & 342.452244 & 0.0000000\\
+\hline
+Residuals & 49 & 82534.895 & 1684.3856 & NA & NA\\
+\hline
+Posture & 1 & 32303.453 & 32303.4534 & 7.329876 & 0.0093104\\
+\hline
+Residuals1 & 49 & 215947.614 & 4407.0942 & NA & NA\\
+\hline
+Congruency:Posture & 1 & 6560.339 & 6560.3389 & 8.964444 & 0.0043060\\
+\hline
+Residuals & 49 & 35859.069 & 731.8177 & NA & NA\\
+\hline
+\end{tabular}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{print}\NormalTok{(}\KeywordTok{model.tables}\NormalTok{(aov_out,}\StringTok{"means"}\NormalTok{), }\DataTypeTok{format=}\StringTok{"markdown"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Tables of means
+## Grand mean
+##          
+## 868.6454 
+## 
+##  Congruency 
+## Congruency
+##   congruent incongruent 
+##       814.9       922.3 
+## 
+##  Posture 
+## Posture
+##   sit stand 
+## 881.4 855.9 
+## 
+##  Congruency:Posture 
+##              Posture
+## Congruency    sit   stand
+##   congruent   821.9 808.0
+##   incongruent 940.8 903.9
+\end{verbatim}
+
+What's different here? Are any of the means different now that we have
+conducted a repeated-meaures version of the ANOVA, instead of the
+between-subjects ANOVA? NO! The Grand Mean is still the Grand Mean. The
+means for the congruency conditions are still the same, the means for
+the Posture conditions are still the same, and the means for the
+interaction effect are still the same. The only thing that has changed
+is the ANOVA table. Now that we have removed the variance associated
+with individual subjects, our F-values are different.
 
 \section{Excel}\label{excel-9}
 
@@ -7338,7 +7957,7 @@ ANOVA}\label{lab-11-mixed-factorial-anova}
 
 Stuff we need to say in general
 
-\subsection{important things}\label{important-things-5}
+\subsection{important things}\label{important-things-4}
 
 Other things to say
 
