@@ -314,8 +314,85 @@ print(model.tables(aov_out,"means"), format="markdown")
 ```
 
 
-What's different here? Are any of the means different now that we have conducted a repeated-meaures version of the ANOVA, instead of the between-subjects ANOVA? NO! The Grand Mean is still the Grand Mean. The means for the congruency conditions are still the same, the means for the Posture conditions are still the same, and the means for the interaction effect are still the same. The only thing that has changed is the ANOVA table. Now that we have removed the variance associated with individual subjects, our F-values are different.
+What's different here? Are any of the means different now that we have conducted a repeated-meaures version of the ANOVA, instead of the between-subjects ANOVA? NO! The grand mean is still the grand mean. The means for the congruency conditions are still the same, the means for the Posture conditions are still the same, and the means for the interaction effect are still the same. The only thing that has changed is the ANOVA table. Now that we have removed the variance associated with individual subjects, our F-values are different, and so are the-pvalues. Using an alpha of 0.05, all of the effects are "statistically significant".
 
+Each main effect and the one interaction all have their own error term. In the table below, R lists each effect in one row, and then immediately below lists the error term for that effect.
+
+#### ANOVA write-up
+
+Here is what a write-up would look like.
+
+---
+
+**Example write-up**
+
+We submitted the mean reaction times for each subject in each condition to a 2 (Congruency: congrueny vs. incongruent) x 2 (Posture: Standing vs. Sitting) repeated measures ANOVA.
+
+There was a main effect of Congruency, F (1, 49) = 342.45, MSE = 1684.39, p < 0.001. Mean reaction times were slower for incongruent (922 ms) than congruent groups (815 ms). 
+
+There main effect of Posture was significant, F (1, 49) = 7.33, MSE = 4407.09, p =.009. Mean reaction times were slower for sitting  (881 ms) than standing groups (855 ms). 
+
+The two-way interaction between Congruency and Posture was significant, F (1, 49) = 8.96, MSE = 731.82, p < 0.004. The Stroop effect was 23 ms smaller in the standing than sitting conditions.
+
+---
+
+### Follow-up comparisons
+
+In a 2x2 ANOVA there are some follow-up comparisons you may be interested in making that are not done for you with the ANOVA. If an IV only have 2 levels, then you do not have to do any follow-up tests for the main effects of those IVs (that's what the main effect from the ANOVA tells you). So, we don't have to do follow-up comparisons for the main effects of congruency or posture. What about the interaction?
+
+Notice the interaction is composed of four means. The mean RT for congruent and incongruent for both sitting and standing.
+
+Also notice that we only got one F-value and one p-value from the ANOVA for the interaction term. So, what comparison was the ANOVA making? And what comparisons was it not making? It has already made one comparison, so you do not need a follow-up test for that...which one is it?
+
+If you remember back to the textbook, we should you how to analyze a 2x2 design with paired-samples t-tests. We analyzed the interaction term as the comparison of difference scores. Here, we would find the differences scores between incongruent and congruent for each level of the posture variable. In other words, we compute the Stroop effect for each subjet when they were sitting and standing, then compare the two Stroop effects. This comparison is looking at the difference between two differences scores, and that is the comparison that the ANOVA does for the interaction. To be more precise the comparison is:
+
+$(sit:incongruent - sit:congruent) - (stand:incongruent - stand:congruent)$
+
+What comparisons are not made, what are the other ones we could do? Here are some:
+
+1. sit:congruent vs  sit:incongruent
+2. stand:congruent vs  stand:incongruent
+3. sit:congruent vs  stand:incongruent
+4. stand:congruent vs  sit:incongruent
+
+We could add a few more. These kinds of comparisons are often called **simple effects**, apparently referring to the fact they are just comparing means in a straight forward way. There are a few different comparisons we could do. Should we do any of them?
+
+Whether or not you compare means usually depends on the research question you are asking. Some comparisons make sense within context of the research question, and others may not. We will do two follow-up comparisons. Our question will be about the size of the Stroop effect in the Sitting and Standing conditions. We already know that the size of the effect was smaller in the Standing condition. But, we don't know if it got so small that it went away (at least statistically speaking). Now, we can ask:
+
+1. Was the Stroop effect only for the sitting condition statistically signficant. In other words, was the difference in mean RT between the incongruent and congruent conditions unlikely under the null (or unlikely to be produced by chance)
+
+2. Was the Stroop effect only for the standing condition statistically signficant. In other words, was the difference in mean RT between the incongruent and congruent conditions unlikely under the null (or unlikely to be produced by chance)
+
+We can answer both of the questions using paired sample t-tests comparing the means in question
+
+#### Sitting Stroop
+
+```{r}
+means_to_compare <- stroop_long %>%
+                      filter(Posture=="sit")
+
+t.test(RTs~Congruency, paired=TRUE, var.equal=TRUE, data=means_to_compare)
+
+```
+
+
+#### Standing Stroop
+
+```{r}
+means_to_compare <- stroop_long %>%
+                      filter(Posture=="stand")
+
+t.test(RTs~Congruency, paired=TRUE, var.equal=TRUE, data=means_to_compare)
+
+```
+
+### Generalization Exercise
+
+Complete the generalization exercise described in your R Markdown document for this lab.
+
+### Writing asignment
+
+Complete the writing assignment described in your R Markdown document for this lab. When you have finished everything. Knit the document and hand in your stuff (you can submit your .RMD file to blackboard if it does not knit.)
 
 
 ## Excel

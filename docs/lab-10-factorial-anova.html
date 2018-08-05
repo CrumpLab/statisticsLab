@@ -317,6 +317,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="10.4.7" data-path="lab-10-factorial-anova.html"><a href="lab-10-factorial-anova.html#conduct-the-anova-1"><i class="fa fa-check"></i><b>10.4.7</b> Conduct the ANOVA</a></li>
 <li class="chapter" data-level="10.4.8" data-path="lab-10-factorial-anova.html"><a href="lab-10-factorial-anova.html#between-subjects-anova"><i class="fa fa-check"></i><b>10.4.8</b> Between Subjects ANOVA</a></li>
 <li class="chapter" data-level="10.4.9" data-path="lab-10-factorial-anova.html"><a href="lab-10-factorial-anova.html#repeated-measures-anova"><i class="fa fa-check"></i><b>10.4.9</b> Repeated measures ANOVA</a></li>
+<li class="chapter" data-level="10.4.10" data-path="lab-10-factorial-anova.html"><a href="lab-10-factorial-anova.html#follow-up-comparisons-1"><i class="fa fa-check"></i><b>10.4.10</b> Follow-up comparisons</a></li>
+<li class="chapter" data-level="10.4.11" data-path="lab-10-factorial-anova.html"><a href="lab-10-factorial-anova.html#generalization-exercise-7"><i class="fa fa-check"></i><b>10.4.11</b> Generalization Exercise</a></li>
+<li class="chapter" data-level="10.4.12" data-path="lab-10-factorial-anova.html"><a href="lab-10-factorial-anova.html#writing-asignment-7"><i class="fa fa-check"></i><b>10.4.12</b> Writing asignment</a></li>
 </ul></li>
 <li class="chapter" data-level="10.5" data-path="lab-10-factorial-anova.html"><a href="lab-10-factorial-anova.html#excel-9"><i class="fa fa-check"></i><b>10.5</b> Excel</a></li>
 <li class="chapter" data-level="10.6" data-path="lab-10-factorial-anova.html"><a href="lab-10-factorial-anova.html#spss-9"><i class="fa fa-check"></i><b>10.6</b> SPSS</a></li>
@@ -732,7 +735,85 @@ knitr::<span class="kw">kable</span>(<span class="kw">xtable</span>(summary_out)
 ## Congruency    sit   stand
 ##   congruent   821.9 808.0
 ##   incongruent 940.8 903.9</code></pre>
-<p>What’s different here? Are any of the means different now that we have conducted a repeated-meaures version of the ANOVA, instead of the between-subjects ANOVA? NO! The Grand Mean is still the Grand Mean. The means for the congruency conditions are still the same, the means for the Posture conditions are still the same, and the means for the interaction effect are still the same. The only thing that has changed is the ANOVA table. Now that we have removed the variance associated with individual subjects, our F-values are different.</p>
+<p>What’s different here? Are any of the means different now that we have conducted a repeated-meaures version of the ANOVA, instead of the between-subjects ANOVA? NO! The grand mean is still the grand mean. The means for the congruency conditions are still the same, the means for the Posture conditions are still the same, and the means for the interaction effect are still the same. The only thing that has changed is the ANOVA table. Now that we have removed the variance associated with individual subjects, our F-values are different, and so are the-pvalues. Using an alpha of 0.05, all of the effects are “statistically significant”.</p>
+<p>Each main effect and the one interaction all have their own error term. In the table below, R lists each effect in one row, and then immediately below lists the error term for that effect.</p>
+<div id="anova-write-up-1" class="section level4">
+<h4><span class="header-section-number">10.4.9.1</span> ANOVA write-up</h4>
+<p>Here is what a write-up would look like.</p>
+<hr />
+<p><strong>Example write-up</strong></p>
+<p>We submitted the mean reaction times for each subject in each condition to a 2 (Congruency: congrueny vs. incongruent) x 2 (Posture: Standing vs. Sitting) repeated measures ANOVA.</p>
+<p>There was a main effect of Congruency, F (1, 49) = 342.45, MSE = 1684.39, p &lt; 0.001. Mean reaction times were slower for incongruent (922 ms) than congruent groups (815 ms).</p>
+<p>There main effect of Posture was significant, F (1, 49) = 7.33, MSE = 4407.09, p =.009. Mean reaction times were slower for sitting (881 ms) than standing groups (855 ms).</p>
+<p>The two-way interaction between Congruency and Posture was significant, F (1, 49) = 8.96, MSE = 731.82, p &lt; 0.004. The Stroop effect was 23 ms smaller in the standing than sitting conditions.</p>
+<hr />
+</div>
+</div>
+<div id="follow-up-comparisons-1" class="section level3">
+<h3><span class="header-section-number">10.4.10</span> Follow-up comparisons</h3>
+<p>In a 2x2 ANOVA there are some follow-up comparisons you may be interested in making that are not done for you with the ANOVA. If an IV only have 2 levels, then you do not have to do any follow-up tests for the main effects of those IVs (that’s what the main effect from the ANOVA tells you). So, we don’t have to do follow-up comparisons for the main effects of congruency or posture. What about the interaction?</p>
+<p>Notice the interaction is composed of four means. The mean RT for congruent and incongruent for both sitting and standing.</p>
+<p>Also notice that we only got one F-value and one p-value from the ANOVA for the interaction term. So, what comparison was the ANOVA making? And what comparisons was it not making? It has already made one comparison, so you do not need a follow-up test for that…which one is it?</p>
+<p>If you remember back to the textbook, we should you how to analyze a 2x2 design with paired-samples t-tests. We analyzed the interaction term as the comparison of difference scores. Here, we would find the differences scores between incongruent and congruent for each level of the posture variable. In other words, we compute the Stroop effect for each subjet when they were sitting and standing, then compare the two Stroop effects. This comparison is looking at the difference between two differences scores, and that is the comparison that the ANOVA does for the interaction. To be more precise the comparison is:</p>
+<p><span class="math inline">\((sit:incongruent - sit:congruent) - (stand:incongruent - stand:congruent)\)</span></p>
+<p>What comparisons are not made, what are the other ones we could do? Here are some:</p>
+<ol style="list-style-type: decimal">
+<li>sit:congruent vs sit:incongruent</li>
+<li>stand:congruent vs stand:incongruent</li>
+<li>sit:congruent vs stand:incongruent</li>
+<li>stand:congruent vs sit:incongruent</li>
+</ol>
+<p>We could add a few more. These kinds of comparisons are often called <strong>simple effects</strong>, apparently referring to the fact they are just comparing means in a straight forward way. There are a few different comparisons we could do. Should we do any of them?</p>
+<p>Whether or not you compare means usually depends on the research question you are asking. Some comparisons make sense within context of the research question, and others may not. We will do two follow-up comparisons. Our question will be about the size of the Stroop effect in the Sitting and Standing conditions. We already know that the size of the effect was smaller in the Standing condition. But, we don’t know if it got so small that it went away (at least statistically speaking). Now, we can ask:</p>
+<ol style="list-style-type: decimal">
+<li><p>Was the Stroop effect only for the sitting condition statistically signficant. In other words, was the difference in mean RT between the incongruent and congruent conditions unlikely under the null (or unlikely to be produced by chance)</p></li>
+<li><p>Was the Stroop effect only for the standing condition statistically signficant. In other words, was the difference in mean RT between the incongruent and congruent conditions unlikely under the null (or unlikely to be produced by chance)</p></li>
+</ol>
+<p>We can answer both of the questions using paired sample t-tests comparing the means in question</p>
+<div id="sitting-stroop" class="section level4">
+<h4><span class="header-section-number">10.4.10.1</span> Sitting Stroop</h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">means_to_compare &lt;-<span class="st"> </span>stroop_long %&gt;%
+<span class="st">                      </span><span class="kw">filter</span>(Posture==<span class="st">&quot;sit&quot;</span>)
+
+<span class="kw">t.test</span>(RTs~Congruency, <span class="dt">paired=</span><span class="ot">TRUE</span>, <span class="dt">var.equal=</span><span class="ot">TRUE</span>, <span class="dt">data=</span>means_to_compare)</code></pre></div>
+<pre><code>## 
+##  Paired t-test
+## 
+## data:  RTs by Congruency
+## t = -16.516, df = 49, p-value &lt; 2.2e-16
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -133.3250 -104.3997
+## sample estimates:
+## mean of the differences 
+##               -118.8623</code></pre>
+</div>
+<div id="standing-stroop" class="section level4">
+<h4><span class="header-section-number">10.4.10.2</span> Standing Stroop</h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">means_to_compare &lt;-<span class="st"> </span>stroop_long %&gt;%
+<span class="st">                      </span><span class="kw">filter</span>(Posture==<span class="st">&quot;stand&quot;</span>)
+
+<span class="kw">t.test</span>(RTs~Congruency, <span class="dt">paired=</span><span class="ot">TRUE</span>, <span class="dt">var.equal=</span><span class="ot">TRUE</span>, <span class="dt">data=</span>means_to_compare)</code></pre></div>
+<pre><code>## 
+##  Paired t-test
+## 
+## data:  RTs by Congruency
+## t = -14.327, df = 49, p-value &lt; 2.2e-16
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -109.41185  -82.49462
+## sample estimates:
+## mean of the differences 
+##               -95.95323</code></pre>
+</div>
+</div>
+<div id="generalization-exercise-7" class="section level3">
+<h3><span class="header-section-number">10.4.11</span> Generalization Exercise</h3>
+<p>Complete the generalization exercise described in your R Markdown document for this lab.</p>
+</div>
+<div id="writing-asignment-7" class="section level3">
+<h3><span class="header-section-number">10.4.12</span> Writing asignment</h3>
+<p>Complete the writing assignment described in your R Markdown document for this lab. When you have finished everything. Knit the document and hand in your stuff (you can submit your .RMD file to blackboard if it does not knit.)</p>
 </div>
 </div>
 <div id="excel-9" class="section level2">

@@ -126,7 +126,7 @@ will be recognized by the time we are finished.}
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2018: Last Compiled 2018-08-04}
+    \date{2018: Last Compiled 2018-08-05}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -7917,12 +7917,182 @@ Residuals & 49 & 35859.069 & 731.8177 & NA & NA\\
 
 What's different here? Are any of the means different now that we have
 conducted a repeated-meaures version of the ANOVA, instead of the
-between-subjects ANOVA? NO! The Grand Mean is still the Grand Mean. The
+between-subjects ANOVA? NO! The grand mean is still the grand mean. The
 means for the congruency conditions are still the same, the means for
 the Posture conditions are still the same, and the means for the
 interaction effect are still the same. The only thing that has changed
 is the ANOVA table. Now that we have removed the variance associated
-with individual subjects, our F-values are different.
+with individual subjects, our F-values are different, and so are
+the-pvalues. Using an alpha of 0.05, all of the effects are
+``statistically significant''.
+
+Each main effect and the one interaction all have their own error term.
+In the table below, R lists each effect in one row, and then immediately
+below lists the error term for that effect.
+
+\subsubsection{ANOVA write-up}\label{anova-write-up-1}
+
+Here is what a write-up would look like.
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\textbf{Example write-up}
+
+We submitted the mean reaction times for each subject in each condition
+to a 2 (Congruency: congrueny vs.~incongruent) x 2 (Posture: Standing
+vs.~Sitting) repeated measures ANOVA.
+
+There was a main effect of Congruency, F (1, 49) = 342.45, MSE =
+1684.39, p \textless{} 0.001. Mean reaction times were slower for
+incongruent (922 ms) than congruent groups (815 ms).
+
+There main effect of Posture was significant, F (1, 49) = 7.33, MSE =
+4407.09, p =.009. Mean reaction times were slower for sitting (881 ms)
+than standing groups (855 ms).
+
+The two-way interaction between Congruency and Posture was significant,
+F (1, 49) = 8.96, MSE = 731.82, p \textless{} 0.004. The Stroop effect
+was 23 ms smaller in the standing than sitting conditions.
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\subsection{Follow-up comparisons}\label{follow-up-comparisons-1}
+
+In a 2x2 ANOVA there are some follow-up comparisons you may be
+interested in making that are not done for you with the ANOVA. If an IV
+only have 2 levels, then you do not have to do any follow-up tests for
+the main effects of those IVs (that's what the main effect from the
+ANOVA tells you). So, we don't have to do follow-up comparisons for the
+main effects of congruency or posture. What about the interaction?
+
+Notice the interaction is composed of four means. The mean RT for
+congruent and incongruent for both sitting and standing.
+
+Also notice that we only got one F-value and one p-value from the ANOVA
+for the interaction term. So, what comparison was the ANOVA making? And
+what comparisons was it not making? It has already made one comparison,
+so you do not need a follow-up test for that\ldots{}which one is it?
+
+If you remember back to the textbook, we should you how to analyze a 2x2
+design with paired-samples t-tests. We analyzed the interaction term as
+the comparison of difference scores. Here, we would find the differences
+scores between incongruent and congruent for each level of the posture
+variable. In other words, we compute the Stroop effect for each subjet
+when they were sitting and standing, then compare the two Stroop
+effects. This comparison is looking at the difference between two
+differences scores, and that is the comparison that the ANOVA does for
+the interaction. To be more precise the comparison is:
+
+\((sit:incongruent - sit:congruent) - (stand:incongruent - stand:congruent)\)
+
+What comparisons are not made, what are the other ones we could do? Here
+are some:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  sit:congruent vs sit:incongruent
+\item
+  stand:congruent vs stand:incongruent
+\item
+  sit:congruent vs stand:incongruent
+\item
+  stand:congruent vs sit:incongruent
+\end{enumerate}
+
+We could add a few more. These kinds of comparisons are often called
+\textbf{simple effects}, apparently referring to the fact they are just
+comparing means in a straight forward way. There are a few different
+comparisons we could do. Should we do any of them?
+
+Whether or not you compare means usually depends on the research
+question you are asking. Some comparisons make sense within context of
+the research question, and others may not. We will do two follow-up
+comparisons. Our question will be about the size of the Stroop effect in
+the Sitting and Standing conditions. We already know that the size of
+the effect was smaller in the Standing condition. But, we don't know if
+it got so small that it went away (at least statistically speaking).
+Now, we can ask:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Was the Stroop effect only for the sitting condition statistically
+  signficant. In other words, was the difference in mean RT between the
+  incongruent and congruent conditions unlikely under the null (or
+  unlikely to be produced by chance)
+\item
+  Was the Stroop effect only for the standing condition statistically
+  signficant. In other words, was the difference in mean RT between the
+  incongruent and congruent conditions unlikely under the null (or
+  unlikely to be produced by chance)
+\end{enumerate}
+
+We can answer both of the questions using paired sample t-tests
+comparing the means in question
+
+\subsubsection{Sitting Stroop}\label{sitting-stroop}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{means_to_compare <-}\StringTok{ }\NormalTok{stroop_long %>%}
+\StringTok{                      }\KeywordTok{filter}\NormalTok{(Posture==}\StringTok{"sit"}\NormalTok{)}
+
+\KeywordTok{t.test}\NormalTok{(RTs~Congruency, }\DataTypeTok{paired=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{var.equal=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{data=}\NormalTok{means_to_compare)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Paired t-test
+## 
+## data:  RTs by Congruency
+## t = -16.516, df = 49, p-value < 2.2e-16
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -133.3250 -104.3997
+## sample estimates:
+## mean of the differences 
+##               -118.8623
+\end{verbatim}
+
+\subsubsection{Standing Stroop}\label{standing-stroop}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{means_to_compare <-}\StringTok{ }\NormalTok{stroop_long %>%}
+\StringTok{                      }\KeywordTok{filter}\NormalTok{(Posture==}\StringTok{"stand"}\NormalTok{)}
+
+\KeywordTok{t.test}\NormalTok{(RTs~Congruency, }\DataTypeTok{paired=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{var.equal=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{data=}\NormalTok{means_to_compare)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Paired t-test
+## 
+## data:  RTs by Congruency
+## t = -14.327, df = 49, p-value < 2.2e-16
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -109.41185  -82.49462
+## sample estimates:
+## mean of the differences 
+##               -95.95323
+\end{verbatim}
+
+\subsection{Generalization Exercise}\label{generalization-exercise-7}
+
+Complete the generalization exercise described in your R Markdown
+document for this lab.
+
+\subsection{Writing asignment}\label{writing-asignment-7}
+
+Complete the writing assignment described in your R Markdown document
+for this lab. When you have finished everything. Knit the document and
+hand in your stuff (you can submit your .RMD file to blackboard if it
+does not knit.)
 
 \section{Excel}\label{excel-9}
 
