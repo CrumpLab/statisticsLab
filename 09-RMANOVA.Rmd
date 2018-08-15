@@ -1,5 +1,14 @@
 # Lab 9 Repeated Measures ANOVA
 
+<script>
+$("#coverpic").hide();
+</script>
+
+<span class="newthought">
+However, perhaps the main point is that you are under no obligation to analyse variance into its parts if it does not come apart easily, and its unwillingness to do so naturally indicates that one’s line of approach is not very fruitful.
+---R. A. Fisher
+</span>
+
 ## Betcha can't type JHDBZKCO very fast on your first try
 
 This lab activity uses the data from Behmer & Crump (2017) to teach one-factor repeated measures ANOVA with-up follow comparisons
@@ -350,13 +359,36 @@ There are other ways to write-up statistical results. These are just some exampl
 
 ### Generalization Exercise
 
-Complete the generalization exercise described in your R Markdown document for this lab.
+Your task is to conduct another repeated-measures ANOVA. Rather than using the reaction time for the first-keystroke as the dependent measure, you will use the reaction times between all of the keystrokes in each word, these are called interkeystroke intervals. The `Order` variable is used to code keystroke position (1 to 5). You will want to analyze only the `PureRTs` that have an `Order` greater than 1. For example, you could use the following code to get the subject_means for the mean interkeystroke intervals.
 
-### Writing asignment
+```{r, eval=FALSE}
+subject_means <- all_data %>%
+                 filter(Order > 1, Correct==1, PureRTs<5000) %>%
+                 group_by(Subject, Stimulus) %>%
+                 summarise(mean_rt = mean(PureRTs))
 
-Complete the writing assignment described in your R Markdown document for this lab. When you have finished everything. Knit the document and hand in your stuff (you can submit your .RMD file to blackboard if it does not knit.)
+```
 
+A. Make a figure for the new DV
+B. Report the ANOVA table for the new repeated measures ANOVA
+C. Discuss whether the general pattern is the same as before.
 
+### Writing assignment
+
+(2 points - Graded)
+
+1. Explain the concept of $SS_\text{Total}$ (.5 points)
+
+2. Explain the concept of partitioning SS_\text{Total} into smaller pieces. What is the goal of the spitting? (.5 points)
+
+3. Explain the major difference between a between-subjects ANOVA and repeated-measures ANOVA in terms of what is being partioned. (1 point)
+
+General grading. 
+
+- You will receive 0 points for missing answers 
+- You must write in complete sentences. Point form sentences will be given 0 points.
+- Completely incorrect answers will receive 0 points. 
+- If your answer is generally correct but very difficult to understand and unclear you may receive half points for the question
 
 
 ## Excel

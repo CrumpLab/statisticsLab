@@ -1,5 +1,14 @@
 # Lab 10: Factorial ANOVA
 
+<script>
+$("#coverpic").hide();
+</script>
+
+<span class="newthought">
+Simplicity is complex. It's never simple to keep things simple. Simple solutions require the most advanced thinking.
+---Richie Norton
+</span>
+
 ## Does standing up make you focus more?
 
 This lab activity uses the data from "Stand by your Stroop: Standing up enhances selective attention and cognitive control" (Rosenbaum, Mama, Algom, 2017) to teach the analysis of a 2x2 design using ANOVA. Although the research design is a 2x2 repeated meaures design, we treat the design both as repeated measures, and as a between-subjects design to illustrate how to conduct either type of ANOVA in software.
@@ -135,7 +144,7 @@ Using this method we still haven't added a column for subjects. We can do that l
 stroop_long <- cbind(stroop_long,Subject=rep(1:50,4))
 ```
 
-#### The independent variable
+#### The independent variables
 
 After all of this data transformation you should be familiar with the IVs. 
 
@@ -388,11 +397,42 @@ t.test(RTs~Congruency, paired=TRUE, var.equal=TRUE, data=means_to_compare)
 
 ### Generalization Exercise
 
-Complete the generalization exercise described in your R Markdown document for this lab.
+Here are some means for four conditions in a 2x2 Design:
+
+                   IV1
+------  --------- ----------  ---------
+                   Level 1     Level 2
+IV 2     Level 1     100         200
+         Level 2     200         500
+
+Your task is to:
+
+A. Compute the mean difference for the main effect of IV1
+
+B. Compute the mean difference for the main effect of IV2
+
+C. Compute the mean difference for the interaction
+
+
+
 
 ### Writing asignment
 
-Complete the writing assignment described in your R Markdown document for this lab. When you have finished everything. Knit the document and hand in your stuff (you can submit your .RMD file to blackboard if it does not knit.)
+(2 points - Graded)
+
+Factorial designs have main effects and interactions.
+
+1. Explain the concept of a main effect. (1 point)
+
+2. Explain the concept of an interaction. (1 point)
+
+
+General grading. 
+
+- You will receive 0 points for missing answers 
+- You must write in complete sentences. Point form sentences will be given 0 points.
+- Completely incorrect answers will receive 0 points. 
+- If your answer is generally correct but very difficult to understand and unclear you may receive half points for the question
 
 
 ## Excel

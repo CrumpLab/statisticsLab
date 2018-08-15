@@ -1,5 +1,15 @@
 # Lab 8 One-way ANOVA
 
+<script>
+$("#coverpic").hide();
+</script>
+
+<span class="newthought">
+The analysis of variance is not a mathematical theorem, but rather a convenient method of arranging the arithmetic.
+---R. A. Fisher
+</span>
+
+
 <div class="marginnote">
 This lab is modified and extended from [Open Stats Labs](https://sites.trinity.edu/osl). Thanks to Open Stats Labs (Dr. Kevin P. McIntyre) for their fantastic work.
 </div>
@@ -336,9 +346,6 @@ Well, according to the t-test, the p-value is again fairly small. Suggesting tha
 
 Because we have spent so much time on individual comparisons, we won't do a full write up of the results. A full write-up would include telling the reader what data was used, what test was conducted, the results of the test, and the pattern of the means, AND then, the results of specific comparisons of interest. You can read the paper to see how the authors did it.
 
-### Now it's your turn.
-
-You get to repeat the above, but instead of analyzing the first Dependent variable (mean intrusive memories per week), you get to analyze the other one (see if you can find it from what is described in the paper)
 
 ### Food for thought
 
@@ -425,12 +432,25 @@ That's ANOVA. Come back next week for another ANOVA tutorial, this time using wi
 
 ### Generalization Exercise
 
-Complete the generalization exercise described in your R Markdown document for this lab.
+Your task is to conduct the ANOVA using `Day_Zero_Number_of_Instrusions` as the dependent variable. Report the ANOVA table, a figure to show the means, and a short write-up of the main effects and interaction.
 
-### Writing asignment
 
-Complete the writing assignment described in your R Markdown document for this lab. When you have finished everything. Knit the document and hand in your stuff (you can submit your .RMD file to blackboard if it does not knit.)
+### Writing assignment
 
+(2 points - Graded)
+
+Answer the following questions:
+
+1. Explain why the ANOVA is called an omnibus test, and how the omnibus test is different from comparing specific means with t-tests. (1 point)
+
+2. Explain the general similarity between the ratios that are used to calculate the F value and the t-value (1 point)
+
+General grading. 
+
+- You will receive 0 points for missing answers 
+- You must write in complete sentences. Point form sentences will be given 0 points.
+- Completely incorrect answers will receive 0 points. 
+- If your answer is generally correct but very difficult to understand and unclear you may receive half points for the question
 
 
 ## Excel

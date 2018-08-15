@@ -1,5 +1,14 @@
 # Lab 6: t-Test (one-sample, paired sample)
 
+<script>
+$("#coverpic").hide();
+</script>
+
+<span class="newthought">
+Any experiment may be regarded as forming an individual of a 'population' of experiments which might be performed under the same conditions. A series of experiments is a sample drawn from this population.
+---William Sealy Gossett
+</span>
+
 
 <div class="marginnote">
 This lab is modified and extended from [Open Stats Labs](https://sites.trinity.edu/osl). Thanks to Open Stats Labs (Dr. Kevin P. McIntyre) for their fantastic work.
@@ -412,7 +421,7 @@ Condition_A <- rnorm(20,100,25)
 Condition_B <- rnorm(20,100,25)
 Subjects <- rep(1:20,2)
 
-sim_df <- data.frame(Subjects, Condition_A, ConditionB)
+sim_df <- data.frame(Subjects, Condition_A, Condition_B)
 
 ```
 
@@ -421,6 +430,27 @@ sim_df <- data.frame(Subjects, Condition_A, ConditionB)
 2. The above code assumes no difference in the means between Condition A and Condition B. Both samples come from the same normal distribution. Change the mean for one of the distributions. Make the change large enough so that you find a significant p-value (p < 0.05) when you conduct the t-test on the new simulated data. Report the t-test and the means for each condition
 
 ### Writing assignment
+
+(2 points - Graded)
+
+Complete the writing assignment described in your R Markdown document for this lab. When you have finished everything. Knit the document and hand in your stuff (you can submit your .RMD file to blackboard if it does not knit.)
+
+1. Answer the following questions
+
+a. Explain the general concept of a t value, and how it is different from a mean and the standard error. (.33 points)
+
+b. Imagine you obtained a t-value with an associated p-value of .25. Explain what this means. (.33 points)
+
+c. Imagine the critical t value for a particular test was 2.6. What does the critical t-value mean (assuming alpha = 0.05 and the test is two-tailed) (.33 points)
+
+d. Explain the differences between a one-sample and paired-sample t-test ( 1 point )
+
+General grading. 
+
+- You will receive 0 points for missing answers 
+- You must write in complete sentences. Point form sentences will be given 0 points.
+- Completely incorrect answers will receive 0 points. 
+- If your answer is generally correct but very difficult to understand and unclear you may receive half points for the question
 
 
 

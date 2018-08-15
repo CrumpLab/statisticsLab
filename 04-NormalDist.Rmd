@@ -1,8 +1,12 @@
 # Lab 4: Normal Distribution & Central Limit Theorem
 
+<script>
+$("#coverpic").hide();
+</script>
+
 <span class="newthought">
-Some inspiring quote
----Inspiring Person
+By a small sample, we may judge of the whole piece.
+---Miguel de Cervantes from Don Quixote
 </span>
 
 
@@ -458,20 +462,19 @@ Complete the generalization exercise described in your R Markdown document for t
  b. Report the mean of the sampling distribution of the mean
  c. Report the standard deviation of the sampling distribution of the mean
 
-### Writing asignment
+### Writing assignment
 
 (2 points - Graded)
 
 Complete the writing assignment described in your R Markdown document for this lab. When you have finished everything. Knit the document and hand in your stuff (you can submit your .RMD file to blackboard if it does not knit.)
 
-1. The central limit theorem says that the sampling distribution of the mean will be shaped like a particular kind of distribution. Explain what kind of distribution this is, and attempt to explain why the sampling distribution of the mean will have this shape (according to the central limit theorem) (1 point)
+1. Explain the concept of sampling error (1 point)
 
 2. Explain why the standard deviation of the sampling distribution of mean gets smaller as sample-size increases (1 point)
 
 General grading. 
 
-- You will receive 0 points for missing answers (say, if you do not answer question c, then you will receive 0 out .25 points for that question)
-- You must write in complete sentences. Point form sentences will given 0 points.
+- You must write in complete sentences. Point form sentences will be given 0 points.
 - Completely incorrect answers will receive 0 points. 
 - If your answer is generally correct but very difficult to understand and unclear you may receive half points for the question
 

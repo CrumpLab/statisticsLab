@@ -1,8 +1,12 @@
 # Lab 2: Descriptive Statistics
 
+<script>
+$("#coverpic").hide();
+</script>
+
 <span class="newthought">
-Some inspiring quote
----Inspiring Person
+Describing comic sensibility is near impossible. It's sort of an abstract silliness, that sometimes the joke isn't the star.
+---Dana Carvey
 </span>
 
 The purpose of this lab is to show you how to compute basic descriptive statistics, including measures of central tendency (mean, mode, median) and variation (range, variance, standard deviation). 
@@ -283,7 +287,7 @@ Complete the generalization exercise described in your R Markdown document for t
 
 2. What is the mean, standard deviation, minimum and maximum life expectancy for all of the continents in 2007, the most recent year in the dataset. Hint: add another pipe using `filter(year==2007) %>%`
 
-### Writing asignment
+### Writing assignment
 
 (2 points - Graded)
 
@@ -305,7 +309,7 @@ Your writing assignment is to answer these questions in full sentences using sim
 General grading. 
 
 - You will receive 0 points for missing answers (say, if you do not answer question c, then you will receive 0 out .25 points for that question)
-- You must write in complete sentences. Point form sentences will given 0 points.
+- You must write in complete sentences. Point form sentences will be given 0 points.
 - Completely incorrect answers will receive 0 points. 
 - If your answer is generally correct but very difficult to understand and unclear you may receive half points for the question
 

@@ -1,5 +1,18 @@
 # Lab 7: t-test (Independent Sample)
 
+<script>
+$("#coverpic").hide();
+</script>
+
+
+<span class="newthought">
+I think he [Gosset] was really the big influence in
+statistics... he asked the questions and Pearson and Fisher put them into statistical language, and then Neyman came to work with the mathematics. But I think
+most of it came from Gosset.
+---F. N. David
+</span>
+
+
 <div class="marginnote">
 This lab is modified and extended from [Open Stats Labs](https://sites.trinity.edu/osl). Thanks to Open Stats Labs (Dr. Kevin P. McIntyre) for their fantastic work.
 </div>
@@ -164,7 +177,7 @@ The results from Experiment 4 in the paper plot the means and error bars (+1 / -
 
 The `all_data` frame is partly long and partly wide. If we are only interested in one dependent measure, then it is a long data frame for that measure. For example, example if we are only interested in plotting `Intellect_Rating`, then we already have one observation of that dependent measure for each row. But, in the other columns, the dependent measures for `Impression_Rating` and `Hire_Rating` are in the same rows. 
 
-Before continuing, it is very much worth mentioning that this part of data analysis happens a lot, and it is kind of annoying. I call it the rubix cube problem, because we need to "rotate" and transform the format of the data to accomplish different kinds of analysis goals. It's good to be able to know how to do this. This problem occurs all of the time, can occur for any software package. It's a good thing you are learning R, because we can do these things easily in R. They are not often so easy to do without a computer programming language like R. The worst thing to do is transform the data by hand. That really sucks. Believe me you don't want to do it. Why? Because you will make mistakes, and you will mess up the data, then you will mess up your analysis. And, you won't be able to find your mistakes, and it will take you ages to correct them. That sucks.
+Before continuing, it is very much worth mentioning that this part of data analysis happens a lot, and it is kind of annoying. I call it the rubix cube problem, because we need to "rotate" and transform the format of the data to accomplish different kinds of analysis goals. It's good to be able to know how to do this. This problem occurs all of the time, and can occur for any software package. It's a good thing you are learning R, because we can do these things easily in R. They are not often so easy to do without a computer programming language like R. The worst thing to do is transform the data by hand. That really sucks. Believe me you don't want to do it. Why? Because you will make mistakes, and you will mess up the data, then you will mess up your analysis. And, you won't be able to find your mistakes, and it will take you ages to correct them. That sucks.
 
 There's more than one way to transform data in R. For example the `cast` and `melt` functions do this kind of thing. You can look those up. In this example we will not use those functions. Instead we will show some steps to build the required data frame one step at a time.
 
@@ -225,7 +238,7 @@ Complete the generalization exercise described in your R Markdown document for t
 
 Now, you should use what you have learned to analyse the last two ratings for the dependent variables `Impression_Rating`, and `Hire_Rating`. Report the t-tests and means for each.
 
-### Writing asignment
+### Writing assignment
 
 (2 points - Graded)
 
@@ -233,13 +246,16 @@ Complete the writing assignment described in your R Markdown document for this l
 
 1. Answer the following questions
 
-a. Explain the general concept of a t value, and how it is different from a mean and the standard error. (.33 points)
+a. Explain the difference between a paired-samples t-test and an independent samples t-test.  ( 1 point )
 
-b. Imagine you obtained a t-value with an associated p-value of .25. Explain what this means. (.33 points)
+b. Imagine you were to conduct a between-subjects experiment with two groups, where the manipulation had no effect whatsoever. If you repeated this experiment (that doesn't work) 100 times and computed a t-test each time, approximately how many of the experiments out of 100 would you expect find the associated p-value is .05 or smaller? Explain (1 point)
 
-c. Imagine the critical t value for a particular test was 2.6. What does the critical t-value mean (assuming alpha = 0.05 and the test is two-tailed) (.33 points)
+General grading. 
 
-d. Explain the differences between a one-sample, paired-sample, and independent samples test.  ( 1 point )
+- You will receive 0 points for missing answers 
+- You must write in complete sentences. Point form sentences will be given 0 points.
+- Completely incorrect answers will receive 0 points. 
+- If your answer is generally correct but very difficult to understand and unclear you may receive half points for the question
 
 
 ## Excel

@@ -1,8 +1,12 @@
 # Lab 5: Fundamentals of Hypothesis Testing
 
+<script>
+$("#coverpic").hide();
+</script>
+
 <span class="newthought">
-Some inspiring quote
----Inspiring Person
+The null hypothesis is never proved or established, but is possibly disproved, in the course of experimentation. Every experiment may be said to exist only to give the facts a chance of disproving the null hypothesis.
+---R. A. Fisher
 </span>
 
 
@@ -384,7 +388,7 @@ d. Report a mean difference that, according to the simulation was observed by ch
 e. What is the smallest mean difference that, if you found this difference in an experiment, you would be willing to entertain the possibility that the difference was unlikely to be due to chance (note this is a subjective question, give your subjective answer)
 
 
-### Writing asignment
+### Writing assignment
 
 Complete the writing assignment described in your R Markdown document for this lab. When you have finished everything. Knit the document and hand in your stuff (you can submit your .RMD file to blackboard if it does not knit.)
 
@@ -400,8 +404,8 @@ d. If you obtained a mean difference that was very large and it fell outside the
 
 General grading. 
 
-- You will receive 0 points for missing answers (say, if you do not answer question c, then you will receive 0 out .25 points for that question)
-- You must write in complete sentences. Point form sentences will given 0 points.
+- You will receive 0 points for missing answers 
+- You must write in complete sentences. Point form sentences will be given 0 points.
 - Completely incorrect answers will receive 0 points. 
 - If your answer is generally correct but very difficult to understand and unclear you may receive half points for the question
 

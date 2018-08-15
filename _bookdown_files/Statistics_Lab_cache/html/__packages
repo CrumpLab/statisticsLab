@@ -1,0 +1,10 @@
+base
+data.table
+dplyr
+bindrcpp
+ggplot2
+gapminder
+magrittr
+ggpubr
+xtable
+tidyr
