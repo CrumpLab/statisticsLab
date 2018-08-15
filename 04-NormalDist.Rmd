@@ -5,7 +5,9 @@ Some inspiring quote
 ---Inspiring Person
 </span>
 
-## Outline of Problem to solve
+
+
+## General Goals
 
 1. Distributions
 2. Sampling from distributions
@@ -14,10 +16,6 @@ Some inspiring quote
 5. Central limit theorem
 6. Normal Distribution
 7. z-scores
-
-### important  things
-
-Other things to say
 
 ## R
 
@@ -444,11 +442,38 @@ Z-scores are a useful language once you understand them. We show you this langua
 
 ### Generalization Exercise
 
+(1 point - Pass/Fail)
+
 Complete the generalization exercise described in your R Markdown document for this lab.
+
+1. Simulate the sampling distribution of the mean for sample-size =10, from a normal distribution with mean =100, and standard deviation = 25. Run the simulation 1000 times, taking 1000 samples, and computing the sample mean each time.
+
+ a. Plot the sampling distribution of the mean in a histogram
+ b. Report the mean of the sampling distribution of the mean
+ c. Report the standard deviation of the sampling distribution of the mean
+ 
+2. Repeat all of the above, except change the sample-size to 100 for all simulations
+
+ a. Plot the sampling distribution of the mean in a histogram
+ b. Report the mean of the sampling distribution of the mean
+ c. Report the standard deviation of the sampling distribution of the mean
 
 ### Writing asignment
 
+(2 points - Graded)
+
 Complete the writing assignment described in your R Markdown document for this lab. When you have finished everything. Knit the document and hand in your stuff (you can submit your .RMD file to blackboard if it does not knit.)
+
+1. The central limit theorem says that the sampling distribution of the mean will be shaped like a particular kind of distribution. Explain what kind of distribution this is, and attempt to explain why the sampling distribution of the mean will have this shape (according to the central limit theorem) (1 point)
+
+2. Explain why the standard deviation of the sampling distribution of mean gets smaller as sample-size increases (1 point)
+
+General grading. 
+
+- You will receive 0 points for missing answers (say, if you do not answer question c, then you will receive 0 out .25 points for that question)
+- You must write in complete sentences. Point form sentences will given 0 points.
+- Completely incorrect answers will receive 0 points. 
+- If your answer is generally correct but very difficult to understand and unclear you may receive half points for the question
 
 
 

@@ -401,6 +401,29 @@ hist(simulated_mean_difference)
 
 ```
 
+### Generalization Exercise
+
+( 1 point - Pass/Fail )
+
+The following code creates a data frame with simulated means for each of 20 subjects in two conditions (A and B)
+
+```{r}
+Condition_A <- rnorm(20,100,25)
+Condition_B <- rnorm(20,100,25)
+Subjects <- rep(1:20,2)
+
+sim_df <- data.frame(Subjects, Condition_A, ConditionB)
+
+```
+
+1. Conduct a paired samples t-test on the `sim_df` dataframe. Report the results of the t-test, and the mean difference between conditions
+
+2. The above code assumes no difference in the means between Condition A and Condition B. Both samples come from the same normal distribution. Change the mean for one of the distributions. Make the change large enough so that you find a significant p-value (p < 0.05) when you conduct the t-test on the new simulated data. Report the t-test and the means for each condition
+
+### Writing assignment
+
+
+
 ## Excel
 
 How to do it in Excel

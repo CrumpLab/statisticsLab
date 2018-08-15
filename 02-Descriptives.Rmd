@@ -5,13 +5,19 @@ Some inspiring quote
 ---Inspiring Person
 </span>
 
-## Outline of Problem to solve
+The purpose of this lab is to show you how to compute basic descriptive statistics, including measures of central tendency (mean, mode, median) and variation (range, variance, standard deviation). 
 
-Stuff we need to say in general
+## General Goals
 
-### important  things
+1. Compute measures of central tendency using software
+2. Compute measures of variation using software
+3. Ask some questions of a data set using descriptive statistics
 
-Other things to say
+### Important info
+
+We will be using data from the gapminder project. You can download a small snippet of the data in .csv format from this link (note this dataset was copied from the gapminder library for R)
+
+[https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/gapminder.csv](https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/gapminder.csv)
 
 ## R
 
@@ -269,11 +275,39 @@ knitr::kable(summary_df)
 
 ### Generalization Exercise
 
+(1 point - Pass/Fail)
+
 Complete the generalization exercise described in your R Markdown document for this lab.
+
+1. What is the mean, standard deviation, minimum and maximum life expectancy for all the gapminder data (across all the years and countries). Hint: do not use `group_by`
+
+2. What is the mean, standard deviation, minimum and maximum life expectancy for all of the continents in 2007, the most recent year in the dataset. Hint: add another pipe using `filter(year==2007) %>%`
 
 ### Writing asignment
 
+(2 points - Graded)
+
 Complete the writing assignment described in your R Markdown document for this lab. When you have finished everything. Knit the document and hand in your stuff (you can submit your .RMD file to blackboard if it does not knit.)
+
+Your writing assignment is to answer these questions in full sentences using simple plain langauge:
+
+1. Define the mode.
+2. Explain what would need to happen in order for a set of numbers to have two modes
+3. Define the median
+4. Define the mean
+5. Define the range
+6. When calculating the standard deviation, explain what the difference scores represent
+7. Explain why the difference scores are squared when calculating the standard deviation
+8. If one set of numbers had a standard deviation of 5, and another had a standard deviation of 10, which set of numbers would have greater variance, explain why.
+
+**Rubric**
+
+General grading. 
+
+- You will receive 0 points for missing answers (say, if you do not answer question c, then you will receive 0 out .25 points for that question)
+- You must write in complete sentences. Point form sentences will given 0 points.
+- Completely incorrect answers will receive 0 points. 
+- If your answer is generally correct but very difficult to understand and unclear you may receive half points for the question
 
 
 ## Excel

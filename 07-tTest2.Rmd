@@ -156,7 +156,7 @@ So, now we have the t-test. It shows the t-value, the p-value, and the means for
 
 ### Remaining ratings
 
-Now, you should use what you have learned to analyse the last two ratings for the dependent variables `Impression_Rating`, and `Hire_Rating`. Remember to plot the data for each, and conduct a t-test for each. Then compare what you found to the original article. What did you find, and what do the results mean?
+Now, you should use what you have learned to analyse the last two ratings for the dependent variables `Impression_Rating`, and `Hire_Rating`. This is your task for the generalization exercise. Remember to plot the data for each, and conduct a t-test for each. Then compare what you found to the original article. What did you find, and what do the results mean?
 
 ### Reconstructing the graph from the paper
 
@@ -219,11 +219,27 @@ Well, we didn't make the exact graph. We have the bars, the error bars, and we a
 
 ### Generalization Exercise
 
+(1 point - Pass/Fail)
+
 Complete the generalization exercise described in your R Markdown document for this lab.
+
+Now, you should use what you have learned to analyse the last two ratings for the dependent variables `Impression_Rating`, and `Hire_Rating`. Report the t-tests and means for each.
 
 ### Writing asignment
 
+(2 points - Graded)
+
 Complete the writing assignment described in your R Markdown document for this lab. When you have finished everything. Knit the document and hand in your stuff (you can submit your .RMD file to blackboard if it does not knit.)
+
+1. Answer the following questions
+
+a. Explain the general concept of a t value, and how it is different from a mean and the standard error. (.33 points)
+
+b. Imagine you obtained a t-value with an associated p-value of .25. Explain what this means. (.33 points)
+
+c. Imagine the critical t value for a particular test was 2.6. What does the critical t-value mean (assuming alpha = 0.05 and the test is two-tailed) (.33 points)
+
+d. Explain the differences between a one-sample, paired-sample, and independent samples test.  ( 1 point )
 
 
 ## Excel

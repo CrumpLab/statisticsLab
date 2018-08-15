@@ -5,13 +5,6 @@ Some inspiring quote
 ---Inspiring Person
 </span>
 
-## Outline of Problem to solve
-
-
-
-### important  things
-
-Other things to say
 
 ## R
 
@@ -137,7 +130,7 @@ This part requires you to think about the answers. Let's go through some scenari
     a. **Question #1**: According to the histogram, could chance alone have produced a mean absolute difference of +15?
     b. **Answer**: No, it is well outside the range
     c. **Question #2**: It looks like Group A did better on the test (on average), by 15%, compared to the control group B. Are you willing to believe that your additional instruction **caused the increase in test performance**?
-    d. **Answer**: The answer is up to you. There is no correct answer. You know from the simulation that chance never produced a difference this big, and that that producing a difference this big by chance would be like winning the lottery (almost never happens to you). My inference is that I believe chance did not produce the difference, I'm willing to believe that my instructional did cause the difference.
+    d. **Answer**: The answer is up to you. There is no correct answer. You know from the simulation that chance never produced a difference this big, and that producing a difference this big by chance would be like winning the lottery (almost never happens to you). My inference is that I believe chance did not produce the difference, I'm willing to believe that my instructional did cause the difference.
     
 #### Planning your experiment
 
@@ -380,9 +373,37 @@ It's up to you to set your alpha criterion. In practice it is often set at p=.05
 
 Complete the generalization exercise described in your R Markdown document for this lab.
 
+1. Consider taking measurements from a normal distribution with mean = 100 and standard deviation = 25. You will have 10 subjects in two conditions (20 subject total). You will take 1 measurement (sample 1 score) of each subject.
+
+Use the process for simulating the Crump test. Pretend that there are now differences between the conditions. Run a Crump test simulation 100 times.
+
+a. Report the maximum mean difference in the simulation
+b. Report the minimum mean difference in the simulation
+c. Report a mean difference that, according to the simulation, was not observed by chance
+d. Report a mean difference that, according to the simulation was observed by chance
+e. What is the smallest mean difference that, if you found this difference in an experiment, you would be willing to entertain the possibility that the difference was unlikely to be due to chance (note this is a subjective question, give your subjective answer)
+
+
 ### Writing asignment
 
 Complete the writing assignment described in your R Markdown document for this lab. When you have finished everything. Knit the document and hand in your stuff (you can submit your .RMD file to blackboard if it does not knit.)
+
+Imagine you conduct an experiment. There is one independent variable with two levels, representing the manipulation. There is one dependent variable representing the measurement. Critically, the measurement has variability, so all of the samples will not be the same because of variability. The researcher is interested in whether the manipulation causes a change in the dependent measure. Explain how random chance, or sampling error, could produce a difference in the dependent measure even if the manipulation had no causal role.
+
+a. Explain how the sampling distribution of the mean differences from the Crump or Randomization test relates to the concept that chance can produce differences (0.5 points)
+
+b. Imagining a sampling distribution of the mean differences from a Crump test simulation, which values in the distribution are most likely to be produced by chance (0.5 points)
+
+c. From above, which values are least likely to be produced by chance (0.5 points)
+
+d. If you obtained a mean difference that was very large and it fell outside the range of the sampling distribution of the mean differences from a Crump test, what would you conclude about the possibility that chance produced your difference. Explain your decision. (0.5 points)
+
+General grading. 
+
+- You will receive 0 points for missing answers (say, if you do not answer question c, then you will receive 0 out .25 points for that question)
+- You must write in complete sentences. Point form sentences will given 0 points.
+- Completely incorrect answers will receive 0 points. 
+- If your answer is generally correct but very difficult to understand and unclear you may receive half points for the question
 
 
 

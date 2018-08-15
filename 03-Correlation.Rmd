@@ -5,13 +5,20 @@ Some inspiring quote
 ---Inspiring Person
 </span>
 
-## Outline of Problem to solve
+In lecture and in the textbook, we have been discussing the idea of correlation. This is the idea that two things that we measure can be somehow related to one another. For example, your personal happiness, which we could try to measure say with a questionnaire, might be related to other things in your life that we could also measure, such as number of close friends, yearly salary, how much chocolate you have in your bedroom, or how many times you have said the word Nintendo in your life. Some of the relationships that we can measure are meaningful, and might reflect a causal relationship where one thing causes a change in another thing. Some of the relationships are spurious, and do not reflect a causal relationship.
 
-Stuff we need to say in general
+In this lab you will learn how to compute correlations between two variables in software, and then ask some questions about the correlations that you observe.
 
-### important  things
+## General Goals
 
-Other things to say
+1. Compute Pearson's r between two variables using software
+2. Discuss the possible meaning of correlations that you observe
+
+### Important Info
+
+We use data from the [World Happiness Report](http://worldhappiness.report). A .csv of the data can be found here:
+
+[https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/WHR2018.csv](https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/WHR2018.csv)
 
 ## R
 
@@ -94,7 +101,7 @@ You can see that the slope of the blue line is not always flat. Sometimes it loo
 
 The point is, now you know you can find correlations by chance. So, in the next section, you should always wonder if the correlations you find reflect meaningful association between the x and y variable, or could have just occurred by chance.
 
-### Humor Styles Questionnaire
+### World Happiness Report
 
 Let's take a look at some correlations in real data. We are going to look at responses to a questionnaire about happiness that was sent around the world, from the [world happiness report](http://worldhappiness.report)
 
