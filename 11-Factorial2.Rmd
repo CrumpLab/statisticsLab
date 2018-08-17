@@ -200,7 +200,162 @@ How to do it in Excel
 
 ## SPSS
 
-How to do it in SPSS
+
+In this lab, we will use SPSS to:
+
+1. Conduct and graph a Mixed-Factorial Analysis of Variance (ANOVA)
+2. Calculate simple effects
+
+
+### Experiment Background
+
+---
+
+
+People take pictures of things all the time on their phones. Barasch et al. (2017) asked whether taking pictures of things had consequences for later memory of those experiences.
+
+In this experiment participants visited a museum exhibit. Half the participants were able to use a camera to document their visit, while the other half were not, all while listening to an audio tour of the exhibit. At the end of the visit, everyone was given two memory tests (visual and audio) for the content they saw and heard, respectively.
+
+This is a 2x2 Mixed-Factorial design. The individuals in the photo group are different than the individuals in the no photo group (this is our between-subjects variable--it is called `condition`), while the memory `test_type` (audio and visual) is our within-subjects variable since everyone took both types of tests. 
+
+### Conduct a Mixed-Factorial Analysis of Variance (ANOVA)
+
+---
+
+
+Using SPSS, open the data file linked [here](https://github.com/CrumpLab/statisticsLab/blob/master/data/spssdata/study1_data_photo.sav). It is called "study1_data_photo.sav". It should look like this:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/11.4.11.png')
+```
+
+Scroll through the file. Find the variable named `condition`. This variable tells you if the row in question corresponds to a person who was or was not able to use a camera. Now, find the variables `apercent` and `vpercent`. These variables refer to the percentage score received by everyone on the audio and visual memory tests, respectively. 
+
+Notice that every row in the data file only has ONE "condition" label. That is, you were either in the camera or no camera condition. BUT, everyone in the file has scores for BOTH tests, audio and visual. This is the way your data must be structed in SPSS in order to perform a mixed-factorial ANOVA. Now, let's begin.
+
+Go to the top menu and choose <span style="color:blue">Analyze</span>, <span style="color:blue">General Linear Model </span>, and <span style="color:blue">Repeated Measures...</span>
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/11.4.12.png')
+```
+
+The next window will ask for you to specify the Within-Subjects variable ONLY. Our within-subjects variable (the variable for which participants were measured across all levels) was the memory `test_type`. Enter `test_type` into this field, and specify that there are 2 levels. You must click <span style="color:blue">Add</span> in order to continue:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/11.4.13.png')
+```
+
+Then click <span style="color:blue">Define</span>. The next window will ask you to specify the levels of your within-subjects variable. Place `apercent` and `vpercent` from the list on the left into the field labeled "Within-Subjects Variables". Then, place `condition` into the field labeled "Between-Subjects variables". 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/11.4.14.png')
+```
+
+Now, click <span style="color:blue">Plots</span>. Place `condition` in the "Separate Lines" field and `test_type` in the "Horizontal axis" field:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/11.4.15.png')
+```
+
+Then click <span style="color:blue">Add</span>. Your window will look like this once you've done that:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/11.4.16.png')
+```
+
+Now, click <span style="color:blue">Continue</span> and then <span style="color:blue">OK</span>. SPSS will produce output tables for your ANOVA, as well as a plot:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/11.4.17.png')
+```
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/11.4.18.png')
+```
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/11.4.19.png')
+```
+
+Let's look at our output tables. Based on its values, we can tell that:
+
+1. There is a significant main effect of test type, F(1, 295)=108.59, p<.05. Overall, memory test scores were higher for the audio test than the video test.
+
+2. There is a significant ineraction effect between test type and condition, F(1, 295)=13.79, p<.05. People taking photos did worse on the audio test than people without photos, however, on the visual test, people taking photos did better than those who did not take photos.
+
+3. There is no significant main effect of condition, F(1, 295)=2.26, p=NS.
+
+### Calculate simple effects
+
+---
+
+What if we asked the questions:
+1. In the no photo condition only, was there a difference between audio and visual memory score?
+2. In the photo condition only, was there a difference between audio and visual memory score?
+3. Were audio memory test scores different between photo and no photo conditions?
+4. Were visual memory test scores different between photo and no photo conditions?
+
+To answer these questions, we must run simple effects. If you remember from earlier labs, we must use SPSS syntax to do this. Go to <span style="color:blue">Analyze</span>, then <span style="color:blue">General Linear Model</span>, then <span style="color:blue">Repeated Measures...</span>
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/11.4.20.png')
+```
+
+In the next window, you'll find your settings from the previously-run ANOVA have been saved. 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/11.4.21.png')
+```
+
+Click <span style="color:blue">Define</span>. The following window will appear:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/11.4.22.png')
+```
+
+Click <span style="color:blue">Paste</span> and the SPSS Syntax Editor will appear:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/11.4.23.png')
+```
+
+Change the code on the screen to the following:
+
+
+> GLM apercent vpercent BY condition <br>
+> /WSFACTOR=test_type 2 Polynomial <br>
+> /METHOD=SSTYPE(3) <br>
+> /EMMEANS=TABLES(test_type * condition) compare(test_type) adj(lsd) <br>
+> /EMMEANS=TABLES(test_type * condition) compare(condition) adj(lsd) <br>
+> /CRITERIA=ALPHA(.05) <br>
+> /WSDESIGN=test_type <br>
+> /DESIGN=condition.
+  
+  
+Click the green triangle (<span style="color:blue">"play"</span>) at the top of the window. The following two tables will appear (among others) in your output window:
+  
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/11.4.24.png')
+```
+
+Keep in mind that for `test_type`, 1=audio and 2=visual
+. 
+According to the table, we can see that:
+
+1. In the no photo condition only, there was a significant difference between audio and visual memory (p<.05)?
+2. In the photo condition only, there was a significant difference between audio and visual memory (p<.05)?
+3. Audio memory test scores in the photo condition were not significantly different from those in the no photo condition (p=NS). 
+4. Visual memory test scores in the photo condition were significantly different from those in the no photo condition (p<.05).
+
+
+### Practice Problems
+
+___
+
+
+1. Using the same data file we used for this lab’s tutorial, run a Mixed-Factorial ANOVA using test type (audio and visual) and Gender (Male, Female). Use an alpha level of .05. Report your results in standard statistical reporting format. 
+
+2. Produce a plot of means.
 
 ## JAMOVI
 

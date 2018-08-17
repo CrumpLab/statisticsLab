@@ -459,7 +459,195 @@ How to do it in Excel
 
 ## SPSS
 
-How to do it in SPSS
+In this lab, we will use SPSS to:
+
+1. Perform a One-Factor Analysis of Variance (ANOVA) and Graphing the data
+2. Planned comparisons: Use t-tests to locate differences
+3. Unplanned comparisons: Use a post-hoc test to locate differences
+
+### Experiment Background
+
+---
+
+
+As described at the beginning of this lab manual section, researchers in the James et al. (2015) study sought to explore whether completing a visuospatial task (e.g., Tetris) after a memory was formed would interfere with the storage of that memory, and thereby reduce the frequency of subsequent intrusions. They hypothesized that only participants who complete a visuo-spatial task after reactivation of the traumatic memories would experience a reduction in intrusive memories. In comparison, simply completing a visuo-spatial task (without reactivation) or reactivation (without a visuo-spatial task), would not reduce the occurrence intrusive memories.In other words, if you play Tetris shortly after you were remembering bad memories, you will experience intrusive memories less often in the future.
+
+The authors conducted an experiment ( N = 72, n = 18 per condition) wherein all participants viewed a series of video clips of graphic violence (e.g., a person getting hit by a van while using his phone as he crosses the road). Pver the next 24 hours, participants recorded their intrusive memories. All groups were predicted to have an equal occurrence of intrusive memories during this pre-manipulation period (called Day 0).
+
+Experimental Task: After this 24-hour period, the participants returned to the lab and completed the experimental task. The experimenters randomly assigned participants to ONE of the following conditions:
+
+1. No-task control: These participants completed a 10-minute music filler task.
+2. Reactivation + Tetris: These participants were shown a series of images from the trauma film to reactivate the traumatic memories (i.e., reactivation task). After a 10-minute music filler task, participants played the video game Tetris for 12 minutes.
+3. Tetris Only: These participants played Tetris for 12 minutes, but did not complete the reactivation task.
+4. Reactivation Only: These participants completed the reactivation task, but did not play Tetris.
+
+Dependent variable: Intrusive Memories: All participants were asked to record the number of intrusive memories that they experienced over the next seven days (Days 1 to 7).
+
+### Performing a One-Factor Analysis of Variance (ANOVA) & Graphing the data
+
+---
+
+
+First, let's open the relevant data file; [Here](https://github.com/CrumpLab/statisticsLab/blob/master/data/spssdata/James2015_Experiment2.sav) is the link. It's called "James2015_Experiment2.sav" Open this file in SPSS. Your data should look like this:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/8.4.11.png')
+```
+
+In this experiment, there was one important independent variable, called `condition`, and it has four levels. The levels are 1, 2, 3, and 4 in the spreadsheet. These will correspond to the four levels in shown below:
+
+1. No-task control
+2. Reactivation Plus Tetris
+3. Tetris only
+4. Reactivation only
+
+The dependent variable is coded in the column `Days_One_to_Seven_Number_of_Intrusions`. This represents the mean number of intrusions for that week. We are testing the hypothesis that the number of intrusive memories will be different among the groups (1-4). For now, we will not specify which group we think is going to have the highest or lowest number of memories, but rather we will test if there is a difference SOMEWHERE between these 4 groups.
+
+Let's begin. Go to <span style="color:blue">Analyze</span>, then <span style="color:blue">Compare Means</span>, then select <span style="color:blue">One-Way ANOVA...</span>
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/8.4.12.png')
+```
+
+The next window will ask you to specify the dependent variable (move the variable `Days_One_to_Seven_Number_of_Intrusions` from the list on the left to the field labeled Dependent Variable) and the "Factor"", which is the same thing as the independent variable or grouping variable (remember back to t-tests!). Move the variable `Condition` from the list into the field labeled "Factor". Your window should look like this:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/8.4.13.png')
+```
+
+Now, click the <span style="color:blue">Options</span> button, and then choose <span style="color:blue">Means plot</span>.
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/8.4.14.png')
+```
+
+Then, click <span style="color:blue">Continue</span> and <span style="color:blue">OK</span>.
+
+SPSS will produce an output window containing the results of the ANOVA (an ANOVA table), as well as a graph of the group means. It should look as follows:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/8.4.15.png')
+```
+
+First, let's look at our ANOVA  table: We see our F-statistic listed is 3.795, with a p-value o .014. This tests the null hypothesis that there is no difference among the groups. Since p is less than our likely alpha level (.05), we can reject the null hypothesis and conclude that there IS a difference somewhere among these groups. We may say it more formally as follows:
+
+The effect of condition on mean intrusive memories over days 1-7 was significant, F(3, 68)=3.795, p<.05. 
+
+To examine the data further, let's refer to the graph created by SPSS: we can see that the Reactivation + Tetris condition appears to have the smallest mean. As for the others, they are all greater than Reactivation + Tetris, but differ somewhat from each other as well. It is important to know that at this point, we do not know where the significant differences could be. For example, it could be that only Reactivation + Tetris is different from No-Task Control, or it could be that there are other groups different from one another as well. In order to locate where the differences are, we must conduct additional analyses called either planned or unplanned comparisons.
+
+### Planned Comparisons: T-tests
+
+---
+
+
+To find out where the differences are, one approach is to conduct as many t-tests as 2-group comparisons (also called pairwise comparisons) you can make out of your groups. That is, if you have 4 groups like we do, we can make the following pairwise comparisons:
+
+1. groups 1 vs. 2
+2. groups 1 vs. 3
+3. groups 1 vs. 4
+4. groups 2 vs. 3
+5. groups 2 vs. 4
+6. groups 3 vs. 4
+
+For each of these, we can run a separate independent-samples t-test. Let's start with the first comparison (Groups 1 and 2). Go to <span style="color:blue">Analyze</span>, then <span style="color:blue">Compare Means</span>, then <span style="color:blue">Independent-Samples t-test...</span>
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/8.4.16.png')
+```
+
+Let's place our dependent variable (`Days_One_to_Seven_Number_of_Intrusions`) in its appropriate field. Then, place `Condition` into the Factor field. 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/8.4.17.png')
+```
+
+Remember here that we have to click <span style="color:blue">Define Groups</span> to specify which groups we are comparing. Let's put 1 and 2 in the fields from Group 1 and Group 2, as follows:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/8.4.18.png')
+```
+
+Click <span style="color:blue">Continue</span> and then <span style="color:blue">OK</span>. SPSS will produce the standard output tables for an independent-samples t-test. 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/8.4.19.png')
+```
+
+As we can see, our t-test is significant; there is indeed a difference between groups 1 and 2, t(22.632)= 2.989, p<.05.
+
+Now, that covers the comparison between groups 1 and 2. We now need to do the same thing for the rest of the comparisons (there are 5 comparisons left to conduct). The procedure for conducting these t-tests is the same as described here, and will only differ in the <span style="color:blue">Define Groups</span> stage of setting up the analysis; in this step, we used the numbers 1 and 2 to represent groups 1 and 2, but for the remainder of the comparisons you will use 1 and 3, 1 and 4, 2 and 3, 2 and 4, and so on. 
+
+
+### Unplanned Comparisons: Post-hoc tests
+
+---
+
+
+Another way to find the differences between groups in a One-Factor ANOVA is to conduct something called a post-hoc test. This test is referred to as "unplanned" because you only conduct one when you have a significant overall ANOVA. The post-hoc test is neat because it is conveniently summoned during the process of conducting an ANOVA, and presents its results in a compact table. 
+
+Let's use a post-hoc test to look at this data. Although there are many types of post-hoc tests, we're going to conduct the commonly-used Tukey post-hoc test in this example. Let's begin.
+
+We are going to go through the same steps as before in order to conduct our ANOVA: Go to <span style="color:blue">Analyze</span>, then <span style="color:blue">Compare Means</span>, then <span style="color:blue">One-Way ANOVA...</span>
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/8.4.12.png')
+```
+
+Place the dependent variable (`Days_One_to_Seven_Number_of_Intrusions`) in its appropriate field. Then, place `Condition` into the "Factor"" field. Now, click the button labeled <span style="color:blue">Post-hoc</span>. A window will appear with options for various post-hoc tests. We are going to choose <span style="color:blue">Tukey</span>:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/8.4.20.png')
+```
+
+Click <span style="color:blue">Continue</span>, and then <span style="color:blue">OK</span>. SPSS will produce the ANOVA table once again, followed by two tables that refer to the post-hoc test. Let's look at the first table, named "Multiple Comparisons:"
+
+
+#### Multiple Comparisons
+
+---
+
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/8.4.21.png')
+```
+
+In this table, every possible group of 2 conditions is being compared. Notice that the table is redundant; it considers the comparison between no-task control and reactivation + tetris to be different from reactivation + tetris vs. no-task control. However, we know these are the same comparisons. So, we only need to look at half of the table, in essence. 
+
+If you start with row 1, this row compares no-task control with reactivation + tetris. If we find the Sig. column, we see the corresponding p-value for this row is .017. Because this is less than our likely alpha level (.05), this means that these two conditions ARE significantly different from one another. Where else is there a Sig. that is less than alpha (.05)?
+
+Reactivation + Tetris compared with Reactivation only has a p-value of .034. This is also a significant difference. These are the only significant differences we see here. This means that, among the 4 groups, only two differences were found: Reactivation + tetris is different from no-task control, and reactivation + tetris is different from reactivation only.
+
+#### Homogeneous Subsets
+
+---
+
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/8.4.22.png')
+```
+
+This table actually gives you the same kind of information as the above table, but is more compact and easier to use. In this table you will see the conditions listed on the left, and a number of "subsets"--in this case there are 2 subsets (2 columns labeled 1 and 2, respectively). In these columns, the means of the conditions are listed (in this case, mean number of intrusive memories).
+
+The way to read a homogeneous subsets table is as simple as follows: If the means of two groups ever appear in the same column together, they are not significantly different from one another. If the means of two groups NEVER appear in the same column together, then they ARE significantly different from one another. 
+
+Let's start with Reactivation + Tetris and Tetris Only. Look at the table to determine if the means of these conditions ever appear in the same column together. The answer should be yes. The Reactivation + tetris mean (1.89) and Tetris only mean (3.89) appear in column 1 together. Now, let's move on to Reactivation + Tetris as compared to Reactivation only. Do the means of these two groups ever appear in the same column together? No. The Reactivation + Tetris mean (1.89) only appears in column 1, and the reactivation only mean (4.83) only appears in column 2. This means they are different. 
+
+If you go through every possible comparison of two groups, you will find that the only differences are between:
+
+1. reactivation + tetris vs. reactivation only
+2. reactivation + tetris vs. no-task control
+
+These are the same pairwise differences we noted using the multiple comparisons table.
+
+### Practice Problems
+
+___
+
+Using this lab’s data set, think about the following question: What if participants’ intrusive memories were not actually affected by the manipulation (tetris and reactivation), but rather the group with the most intrusive memories just happened to react more strongly to the disturbing films? What if there were differences in “level of disturbance” (hint hint: post-film distress rating) among the 4 groups?
+
+1. Test this hypothesis using an alpha level of .05. Report your result in proper statistical reporting format. What do you conclude? 
+
+2. Do the same type of analysis to determine whether the amount of attention paid to the film differed between the 4 groups. Report your result in proper statistical reporting format. What do you conclude?
 
 ## JAMOVI
 

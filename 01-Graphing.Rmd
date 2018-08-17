@@ -615,6 +615,158 @@ General grading.
 
 ## SPSS
 
+
+In this lab, we will get you acquainted with the SPSS software layout and graph some sample data to make sense of it. We will be doing the following:
+
+1. Opening SPSS and the SPSS layout 
+2. Reviewing variable properties and the Variable View tab
+3. Opening a data file and producing different types of graphs
+
+### Opening SPSS and the SPSS layout
+
+---
+
+Your lab instructor will take you through the process of opening the SPSS program. You may double-click on its icon located on the desktop of your lab computer, or you may find it using the Start menu. Once the program loads,  you will be prompted with a pop-up window that asks you which file you would like to open. For now, we will be examining the basic layout of SPSS without a data set, so you can click <span style="color:blue">Cancel</span>. 
+
+Once you do, the main SPSS spreadsheet should open. It will look like this, a basic spreadsheet:
+
+```{r , fig.cap="Empty SPSS spreadsheet", echo=FALSE,dev='png'}
+knitr::include_graphics('img/1.4.11.png')
+```
+Notice at the bottom of your window there are two tabs; "Data View" and "Variable View". In data view, we enter data into our spreadsheet. You will notice that rows are numbered on the left-hand side of the spreadsheet, while columns are labeled "var". This is an indication of the general structure of SPSS: Variables are contained in the columns, and rows indicate individual observations.  For example, if you obtained the heights (in inches) of 5 people {x= 64, 70, 63, 62, 65} and wanted to enter their data into SPSS, each person's height would be entered in a new row, not across the columns, as seen below:
+
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/1.4.12.png')
+```
+
+### Reviewing variable properties and the Variable View tab
+
+---
+
+Now that we have some data entered, we might want to name our variable so that it's evident our measurements represent heights. In order o view or modify variable names and other properties, look to the bottom of your SPSS window and switch over to the "Data View" tab. Once you do this, your window will appear as follows:
+
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/1.4.13.png')
+```
+
+Here, you can edit the name of your variables, and specify their properties. Variable names can be anything you like, with the restriction that you cannot use numbers or spaces. Next, notice several other important properties of variables you may at some point need to set or modify:
+
++ Name: the name of your variable that will appear as a colum header in Data View. No spaces or numerals.
++ Type: Your data will most often be Numeric, but sometimes, as in data representing currency or data in scientific notation, you may change the data type appropriately. If your data is simply a label, word, or response (such as an open-ended response to a survey question), choose "String": this tells SPSS not to treat this variable as a number. (Nota bene: if you select the wrong type of variable, SPSS may not be able to process your requested calculations, so always remember to check this parameter!)
++ Width: This refers to how many digits will be visible by default.
++ Decimals: This refers to how many decimal places will be visible by default.
++ Label: This is a description of the variable. Any information too long to be included in the variable name goes here.
++ Values: For nominal scale data, let's say 1 represents male and 2 represents female, this is where you include the values and their corresponding labels. 
++ Measure: This variable property allows you to specify the nature of your data. Depending on the kind of scale you are using, you will choose a different measure type. Nominal and ordinal are chosen for nominal and ordinal scales, respectively. "Scale" is used when your data is measured on a ratio or interval scale. (Nota bene: this "Measure" designation is only a marker; it does not affect the calculations as in the "Type" parameter. Even if you choose the wrong icon/label for "Measure", SPSS will still produce the correct output)
+
+### Opening a data file and producing different types of graphs
+
+---
+
+
+Now that we know about the properties of the SPSS spreadsheet window, let's open a data file and learn how to make some sense of it by creating different types of graphs. [Here](https://github.com/CrumpLab/statisticsLab/blob/master/data/spssdata/nyc_films.sav) is a link to an SPSS-based data file containing information about film permits (requests made by film companies to shoot TV shows and movies on location) filed in New York City. The file is named nyc_films.sav.
+
+Once you open the data file, browse through to familiarize yourself with the variables that are being measured. Switch over to Variable View for details of each variable. 
+
+#### Bar Graphs
+
+---
+
+
+Now, back to Data View. We will not be working with every single variable in this spreadsheet, but we'll select a few interesting ones with which to answer questions. Let's start with `borough`. Suppose we wanted to know which borough receives the most film permits (you can probably guess which one is most popular). Let's use SPSS to produce a graph to answer this question. With your data file open, go up to the top menu and choose <span style="color:blue">Graphs</span>, then <span style="color:blue">Legacy Dialogs</span>. You will see an entire list of possible graphs we can use to plot our data. 
+
+Let's think about the nature of our question: we would like to know how many permits were filed for each borough. Borough is simply a label or a name for a region, and we want to know the frequency of permits for each borough. This is a nominal scale variable and so, we will appropriately choose a BAR graph to plot it. Select <span style="color:blue">Bar...</span>
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/1.4.14.png')
+```
+
+The next window will ask you to specify what kind of graph you would like. Select <span style="color:blue">Simple</span> and then <span style="color:blue">Define</span>. 
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/1.4.15.png')
+```
+The following window will ask which variable you'd like to plot. Select `borough` from the left-hand list and use the arrow to move it into the field labeled "Category Axis". Then click <span style="color:blue">OK</span>. 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/1.4.16.png')
+```
+
+SPSS will produce a new output window which will contain the bar graph you have generated. Notice which borough receives the most film permits. Are you surprised?
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/1.4.17.png')
+```
+
+#### Histograms
+
+---
+
+
+Now, let's use a different data set to plot a histogram. The defining difference between a histogram and a bar graph (although they look very similar as they both utilize bars) is that a histogram is used to display a continuous variable (interval or ratio scale). In the previous example, boroughs were simply labels or names, so we used a nominal scale and therefore a bar graph. Here, we will deal with life expectancy (measured in years), an interval scale measure. [Here](https://github.com/CrumpLab/statisticsLab/blob/master/data/spssdata/life_expectancy.sav) is a link to the SPSS data file, life_expectancy.sav. Open this file and examine its rows and columns. Each column represents a year during which life expectancy was measured. Each row represents a different country. 
+
+Let's first get an idea about life expectancy in general. We want to plot a histogram with life expectancy on the x-axis and frequency on the y-axis. Choose <span style="color:blue">Graphs</span> in the top menu, then <span style="color:blue">Legacy Dialogs</span>. From here, remember we want a histogram, not a bar graph, so let's select <span style="color:blue">Histogram...</span>. 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/1.4.18.png')
+```
+
+The window that appears contains every variable in your spreadsheet listed on the left-hand side. We can choose one variable at a time to plot. Let's scroll all the way down the list and choose `2017 [v219]`. This is the variable containing life expectancies for the year 2017. Using the arrow, move that variable into the field labeled "Variable:", then click <span style="color:blue">OK</span>.
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/1.4.19.png')
+```
+
+SPSS will produce an output window containing the distribution of life expectancy for the year 2017.
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/1.4.20.png')
+```
+
+#### Scatterplots
+
+---
+
+
+Now, we will look to a different type of data plot; the scatterplot. A scatterplot allows us to visualize bivariate data, that is, data for which there are two measurements per individual. For example, we may ask whether life expectancy in a country (or how long you live, on average) is related to the average income. Using the life_expectancy.sav data file, let's plot both variables: `2017 [v219]` and `income`. The income variable in the spreadsheet refers to data collected in 2017 by the Better Life Initiative. Notice not all the countries listed have estimates for average annual income. For those that do, this value represents household net adjusted income (annual) in US dollars. 
+
+To create the scatterplot, let's go to <span style="color:blue">Graphs</span> in the menu toolbar, then <span style="color:blue">Legacy Dialogs</span>, then <span style="color:blue">Scatter</span>. 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/1.4.21.png')
+```
+
+You will choose <span style="color:blue">Simple</span> scatter, then click <span style="color:blue">Define</span>.
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/1.4.22.png')
+```
+
+Next, indicate which variables (there are 2 this time!) you would like in the x- and y-axes. Use the arrows to place `income` in the x-axis field, and `2017 (V219)` in the y-axis field. (For the purposes of graphing a scatterplot, it does not matter which variable goes into the y-axis and x-axis fields for now; you can reverse them if you'd like and you can still interpret the data similarly)
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/1.4.23.png')
+```
+
+Then click <span style="color:blue">OK</span>. 
+SPSS will produce output containing a scatterplot. What relationship do you notice? What happens to life expectancy the more individuals earn, on average?
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/1.4.24.png')
+```
+
+
+
+### Practice Problems
+
+___
+
+
+1. Create a histogram for life expectancy in the year 1800. Describe the distribution. How does it differ from the one we plotted for 2017?
+
+2. Plot the life expectancy of each country in 1800 vs. that of 2018. What does this graph show you? What are your conclusions regarding the development of nations?
+
+
 ## JAMOVI
 
 

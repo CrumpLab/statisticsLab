@@ -491,7 +491,120 @@ How to do it in Excel
 
 ## SPSS
 
-How to do it in SPSS
+In this lab, we will use SPSS to transform a set of raw data into z-scores using two methods:
+
+1. Saving data as standardized values
+2. Computing a new variable manually
+
+Let's first begin with a short data set we will enter into a new SPSS data spreadsheet. Let's use the following data set: {x= 1, 3, 2, 5, 4, 6, 5, 8, 9}. Enter these into SPSS and name them appropriately. 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/4.4.11.png')
+```
+
+### Saving data as standardized values.
+
+---
+
+
+This method is a quick and simple way to turn a set of scores in raw format into z-scores. First, go to <span style="color:blue">Analyze</span>, then <span style="color:blue">Descriptive Statistics</span>, then <span style="color:blue">Descriptives</span>:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/4.4.12.png')
+```
+
+A window will appear, asking for you to specify for which variable you would like descriptive statistics. Move the `x` variable into the right field using the arrow. Then, make sure to check off <span style="color:blue">Save standardized values as variables</span>:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/4.4.13.png')
+```
+
+Now, click <span style="color:blue">Ok</span>. 
+
+SPSS will produce an output table containing some basic descriptive statistics for the `x` variable:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/4.4.14.png')
+```
+
+However, you can ignore this window for now. Go back to data view in your spreadsheet and you will notice a new column of data (a new variable) as been created called `Zx`. This variable contains the z-scores that correspond to the values in the `x` columm:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/4.4.15.png')
+```
+
+### Computing variables
+
+---
+
+
+If you use the method shown above to convert a set of measurements to z-scores, you don't need to use this method to do the same thing. However, computing new variables may be useful for more than just converting scores to z-scores, so it's worth illustrating as well. The take-away message here is that you can use SPSS to create new variables based on existing ones. 
+
+To illustrate how this is done, let's work with the data sheet we used in the previous example. Currently, it includes a column for our x variable, and the new `Zx` variable we created using the Analyze > Descriptive Statistics > Descriptives menu. 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/4.4.15.png')
+```
+
+This time, we are going to turn our x variable measurements into z-scores manually. In order to do this, we're going to need the necessary components to calculate z-scores: We will need the mean and standard deviation of the `x` variable. Remember, in the previous section a table of descriptive statistics was generated: 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/4.4.14.png')
+```
+
+We know that the mean of variable `x` is 4.78 and the standard deviation is 2.635. In order to turn every measurement in variable `x` into a z-score, then, we must subtract 4.78 from each `x`, then divide that difference by 2.635. We are going to ask SPSS to do this by going to the <span style="color:blue">Transform</span> menu, and then selecting <span style="color:blue">Compute Variable</span>. 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/4.4.16.png')
+```
+
+
+This will open the Compute window:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/4.4.17.png')
+```
+
+Here, let's first enter a name for the new variable we're about to create. In the field labeled "Target Variable", enter a name for your new variable. Let's try `new_z` as the name. 
+
+Next, in the field labeled "Numeric Expression", we will specify the calculation to be made. Because I want SPSS to take the variable `x`, subtract 4.78 from it, and then divide this difference by 2.635, I am going to type in this formula:
+1. First, type in an open parenthesis
+2. Second, select `x` from the field on the left and move it to the "Numeric Expression" field using the arrow.
+3. Type a minus sign, followed by 4.78
+4. Type in a closed parenthesis.
+5. Type in a backslash "/" (this specifies division)
+6. Type in the standard deviation, 2.635
+
+Your Compute window should now look like this:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/4.4.18.png')
+```
+
+Now, click <span style="color:blue">OK</span>. SPSS will generate a blank output window that confirms you have computed a variable. You may minimize or close this window and go back to your SPSS spreadsheet. It should now have a new variable listed, `new_z`, and the computed z-scores should look very similar to the previously calculated z-scores (any differences are due to using rounded figures):
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/4.4.19.png')
+```
+
+You can use this Compute Variable window to calculate z-scores or make any calculations using existing variables. 
+
+
+### Practice Problems
+
+___
+
+“Professor, do you grade on a curve?”
+
+This is probably the most commonly-asked question in Statistics class. Everyone assumes that grading on a curve will benefit them. But does it?
+
+[Here](https://github.com/CrumpLab/statisticsLab/blob/master/data/spssdata/StatsGrades.sav) is a link to an SPSS file containing 50 students’ exam grades (let’s say it’s the final exam for a Statistics class).
+
+1. Create a table containing the mean and standard deviation for this sample of scores. Now, produce a frequency histogram of the score data. Describe the distribution.
+
+2. Transform each student’s score into a Z-score (you can use either method shown in this tutorial). Now, plot the frequency histogram of this Z-score distribution. Compare it to the raw score distribution. How are they the same? How are they different?
+
+3. Imagine you are a student in this class who received a 90 on this exam. However, the Professor has decided to GRADE ON A CURVE (shock! awe!), such that only the top 10% of the class receives an A (this professor only gives whole grades, no minuses or pluses). Calculate the z-score that corresponds to a raw score of 90 on this exam. Will you get an A with this grade? Why or why not?
 
 ## JAMOVI
 

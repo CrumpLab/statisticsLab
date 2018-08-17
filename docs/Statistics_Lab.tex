@@ -125,7 +125,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2018: Last Compiled 2018-08-15}
+    \date{2018: Last Compiled 2018-08-17}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -160,7 +160,7 @@
 \chapter*{Preface}\label{preface}
 \addcontentsline{toc}{chapter}{Preface}
 
-First Draft (version 0.9 = August 15th, 2018) Last Compiled: 2018-08-15
+First Draft (version 0.9 = August 15th, 2018) Last Compiled: 2018-08-17
 
 This is the companion lab to our free introductory statistics for
 undergraduates in psychology textbook,
@@ -1431,6 +1431,257 @@ General grading.
 
 \section{SPSS}\label{spss-1}
 
+In this lab, we will get you acquainted with the SPSS software layout
+and graph some sample data to make sense of it. We will be doing the
+following:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Opening SPSS and the SPSS layout
+\item
+  Reviewing variable properties and the Variable View tab
+\item
+  Opening a data file and producing different types of graphs
+\end{enumerate}
+
+\subsection{Opening SPSS and the SPSS
+layout}\label{opening-spss-and-the-spss-layout}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+Your lab instructor will take you through the process of opening the
+SPSS program. You may double-click on its icon located on the desktop of
+your lab computer, or you may find it using the Start menu. Once the
+program loads, you will be prompted with a pop-up window that asks you
+which file you would like to open. For now, we will be examining the
+basic layout of SPSS without a data set, so you can click {Cancel}.
+
+Once you do, the main SPSS spreadsheet should open. It will look like
+this, a basic spreadsheet:
+
+\begin{figure}
+\includegraphics[width=14.04in]{img/1.4.11} \caption{Empty SPSS spreadsheet}\label{fig:unnamed-chunk-33}
+\end{figure}
+
+Notice at the bottom of your window there are two tabs; ``Data View''
+and ``Variable View''. In data view, we enter data into our spreadsheet.
+You will notice that rows are numbered on the left-hand side of the
+spreadsheet, while columns are labeled ``var''. This is an indication of
+the general structure of SPSS: Variables are contained in the columns,
+and rows indicate individual observations. For example, if you obtained
+the heights (in inches) of 5 people \{x= 64, 70, 63, 62, 65\} and wanted
+to enter their data into SPSS, each person's height would be entered in
+a new row, not across the columns, as seen below:
+
+\includegraphics[width=14.04in]{img/1.4.12}
+
+\subsection{Reviewing variable properties and the Variable View
+tab}\label{reviewing-variable-properties-and-the-variable-view-tab}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+Now that we have some data entered, we might want to name our variable
+so that it's evident our measurements represent heights. In order o view
+or modify variable names and other properties, look to the bottom of
+your SPSS window and switch over to the ``Data View'' tab. Once you do
+this, your window will appear as follows:
+
+\includegraphics[width=14.04in]{img/1.4.13}
+
+Here, you can edit the name of your variables, and specify their
+properties. Variable names can be anything you like, with the
+restriction that you cannot use numbers or spaces. Next, notice several
+other important properties of variables you may at some point need to
+set or modify:
+
+\begin{itemize}
+\tightlist
+\item
+  Name: the name of your variable that will appear as a colum header in
+  Data View. No spaces or numerals.
+\item
+  Type: Your data will most often be Numeric, but sometimes, as in data
+  representing currency or data in scientific notation, you may change
+  the data type appropriately. If your data is simply a label, word, or
+  response (such as an open-ended response to a survey question), choose
+  ``String'': this tells SPSS not to treat this variable as a number.
+  (Nota bene: if you select the wrong type of variable, SPSS may not be
+  able to process your requested calculations, so always remember to
+  check this parameter!)
+\item
+  Width: This refers to how many digits will be visible by default.
+\item
+  Decimals: This refers to how many decimal places will be visible by
+  default.
+\item
+  Label: This is a description of the variable. Any information too long
+  to be included in the variable name goes here.
+\item
+  Values: For nominal scale data, let's say 1 represents male and 2
+  represents female, this is where you include the values and their
+  corresponding labels.
+\item
+  Measure: This variable property allows you to specify the nature of
+  your data. Depending on the kind of scale you are using, you will
+  choose a different measure type. Nominal and ordinal are chosen for
+  nominal and ordinal scales, respectively. ``Scale'' is used when your
+  data is measured on a ratio or interval scale. (Nota bene: this
+  ``Measure'' designation is only a marker; it does not affect the
+  calculations as in the ``Type'' parameter. Even if you choose the
+  wrong icon/label for ``Measure'', SPSS will still produce the correct
+  output)
+\end{itemize}
+
+\subsection{Opening a data file and producing different types of
+graphs}\label{opening-a-data-file-and-producing-different-types-of-graphs}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+Now that we know about the properties of the SPSS spreadsheet window,
+let's open a data file and learn how to make some sense of it by
+creating different types of graphs.
+\href{https://github.com/CrumpLab/statisticsLab/blob/master/data/spssdata/nyc_films.sav}{Here}
+is a link to an SPSS-based data file containing information about film
+permits (requests made by film companies to shoot TV shows and movies on
+location) filed in New York City. The file is named nyc\_films.sav.
+
+Once you open the data file, browse through to familiarize yourself with
+the variables that are being measured. Switch over to Variable View for
+details of each variable.
+
+\subsubsection{Bar Graphs}\label{bar-graphs}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+Now, back to Data View. We will not be working with every single
+variable in this spreadsheet, but we'll select a few interesting ones
+with which to answer questions. Let's start with \texttt{borough}.
+Suppose we wanted to know which borough receives the most film permits
+(you can probably guess which one is most popular). Let's use SPSS to
+produce a graph to answer this question. With your data file open, go up
+to the top menu and choose {Graphs}, then {Legacy Dialogs}. You will see
+an entire list of possible graphs we can use to plot our data.
+
+Let's think about the nature of our question: we would like to know how
+many permits were filed for each borough. Borough is simply a label or a
+name for a region, and we want to know the frequency of permits for each
+borough. This is a nominal scale variable and so, we will appropriately
+choose a BAR graph to plot it. Select {Bar\ldots{}}
+
+\includegraphics[width=15.51in]{img/1.4.14}
+
+The next window will ask you to specify what kind of graph you would
+like. Select {Simple} and then {Define}.
+
+\includegraphics[width=13.65in]{img/1.4.15} The following window will
+ask which variable you'd like to plot. Select \texttt{borough} from the
+left-hand list and use the arrow to move it into the field labeled
+``Category Axis''. Then click {OK}.
+
+\includegraphics[width=13.65in]{img/1.4.16}
+
+SPSS will produce a new output window which will contain the bar graph
+you have generated. Notice which borough receives the most film permits.
+Are you surprised?
+
+\includegraphics[width=8.68in]{img/1.4.17}
+
+\subsubsection{Histograms}\label{histograms}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+Now, let's use a different data set to plot a histogram. The defining
+difference between a histogram and a bar graph (although they look very
+similar as they both utilize bars) is that a histogram is used to
+display a continuous variable (interval or ratio scale). In the previous
+example, boroughs were simply labels or names, so we used a nominal
+scale and therefore a bar graph. Here, we will deal with life expectancy
+(measured in years), an interval scale measure.
+\href{https://github.com/CrumpLab/statisticsLab/blob/master/data/spssdata/life_expectancy.sav}{Here}
+is a link to the SPSS data file, life\_expectancy.sav. Open this file
+and examine its rows and columns. Each column represents a year during
+which life expectancy was measured. Each row represents a different
+country.
+
+Let's first get an idea about life expectancy in general. We want to
+plot a histogram with life expectancy on the x-axis and frequency on the
+y-axis. Choose {Graphs} in the top menu, then {Legacy Dialogs}. From
+here, remember we want a histogram, not a bar graph, so let's select
+{Histogram\ldots{}}.
+
+\includegraphics[width=15.53in]{img/1.4.18}
+
+The window that appears contains every variable in your spreadsheet
+listed on the left-hand side. We can choose one variable at a time to
+plot. Let's scroll all the way down the list and choose
+\texttt{2017\ {[}v219{]}}. This is the variable containing life
+expectancies for the year 2017. Using the arrow, move that variable into
+the field labeled ``Variable:'', then click {OK}.
+
+\includegraphics[width=13.65in]{img/1.4.19}
+
+SPSS will produce an output window containing the distribution of life
+expectancy for the year 2017.
+
+\includegraphics[width=8.68in]{img/1.4.20}
+
+\subsubsection{Scatterplots}\label{scatterplots}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+Now, we will look to a different type of data plot; the scatterplot. A
+scatterplot allows us to visualize bivariate data, that is, data for
+which there are two measurements per individual. For example, we may ask
+whether life expectancy in a country (or how long you live, on average)
+is related to the average income. Using the life\_expectancy.sav data
+file, let's plot both variables: \texttt{2017\ {[}v219{]}} and
+\texttt{income}. The income variable in the spreadsheet refers to data
+collected in 2017 by the Better Life Initiative. Notice not all the
+countries listed have estimates for average annual income. For those
+that do, this value represents household net adjusted income (annual) in
+US dollars.
+
+To create the scatterplot, let's go to {Graphs} in the menu toolbar,
+then {Legacy Dialogs}, then {Scatter}.
+
+\includegraphics[width=15.49in]{img/1.4.21}
+
+You will choose {Simple} scatter, then click {Define}.
+
+\includegraphics[width=13.65in]{img/1.4.22}
+
+Next, indicate which variables (there are 2 this time!) you would like
+in the x- and y-axes. Use the arrows to place \texttt{income} in the
+x-axis field, and \texttt{2017\ (V219)} in the y-axis field. (For the
+purposes of graphing a scatterplot, it does not matter which variable
+goes into the y-axis and x-axis fields for now; you can reverse them if
+you'd like and you can still interpret the data similarly)
+
+\includegraphics[width=13.65in]{img/1.4.23}
+
+Then click {OK}. SPSS will produce output containing a scatterplot. What
+relationship do you notice? What happens to life expectancy the more
+individuals earn, on average?
+
+\includegraphics[width=8.68in]{img/1.4.24}
+
+\section{Practice Problems}\label{practice-problems}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Create a histogram for life expectancy in the year 1800. Describe the
+  distribution. How does it differ from the one we plotted for 2017?
+\item
+  Plot the life expectancy of each country in 1800 vs.~that of 2018.
+  What does this graph show you? What are your conclusions regarding the
+  development of nations?
+\end{enumerate}
+
 \section{JAMOVI}\label{jamovi-1}
 
 \chapter{Lab 2: Descriptive
@@ -1653,7 +1904,7 @@ variation around 10..
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-42-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-56-1.pdf}
 
 \subsubsection{range}\label{range}
 
@@ -2236,7 +2487,7 @@ need two variables with numbers in them like this:
 
 Well, that was easy.
 
-\subsubsection{scatterplots}\label{scatterplots}
+\subsubsection{scatterplots}\label{scatterplots-1}
 
 Let's take our silly example, and plot the data in a scatter plot using
 ggplot2, and let's also return the correlation and print it on the
@@ -2257,7 +2508,7 @@ first put our x and y variables in a data frame.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-57-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-71-1.pdf}
 
 Wow, we're moving fast here.
 
@@ -2283,7 +2534,7 @@ facet\_wrapping to look at four scatter plots all at once
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-58-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-72-1.pdf}
 
 \subsubsection{computing the correlations all at
 once}\label{computing-the-correlations-all-at-once}
@@ -2335,7 +2586,7 @@ scatter plot, so you can ``see the correlations''.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-59-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-73-1.pdf}
 
 You can see that the slope of the blue line is not always flat.
 Sometimes it looks like there is a correlation, when we know there
@@ -2411,7 +2662,7 @@ scatter plot.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-62-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-76-1.pdf}
 
 Interesting, what happened here? We can see some dots, but the
 correlation was NA (meaning undefined). This occurred because there are
@@ -2487,7 +2738,7 @@ more of them.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-64-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-78-1.pdf}
 
 \subsubsection{My Question \#2}\label{my-question-2}
 
@@ -2535,7 +2786,7 @@ change the DVs to be \texttt{Positive\ affect}, and
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-65-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-79-1.pdf}
 
 Bam, there we have it. As positive affect goes up, negative affect goes
 down. A negative correlation.
@@ -2658,7 +2909,7 @@ Let's do one more thing with sample. Let's sample 1000 times from our
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-68-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-82-1.pdf}
 
 We are looking at lots of samples from our little gumball machine of
 numbers. We put more 5s in, and voila, more 5s come out of in our big
@@ -2680,7 +2931,7 @@ roughly equally frequently. Let's take 1000 random numbers between 0 and
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-69-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-83-1.pdf}
 
 This is histogram is flattish. Not perfectly flat, after all we only
 took 1000 samples. What if we took many more, say 10,000 total samples?
@@ -2693,7 +2944,7 @@ which is pretty close to the same amount.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-70-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-84-1.pdf}
 
 \subsubsection{rbinom the binomial
 distribution}\label{rbinom-the-binomial-distribution}
@@ -2766,7 +3017,7 @@ coin 10 times. We can do that in loop like this:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-73-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-87-1.pdf}
 
 See, that wasn't too painful. Now we see another histogram. The
 histogram shows us the frequency observing different numbers of heads
@@ -2787,7 +3038,7 @@ the normal distribution later, because it is so important.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-74-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-88-1.pdf}
 
 There it is, a bell-shaped normal distribution with a mean of 0, and a
 standard deviation of 1. You've probably seen things like this before.
@@ -2808,7 +3059,7 @@ twice like this\ldots{} mix away.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-75-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-89-1.pdf}
 
 \subsubsection{summary}\label{summary}
 
@@ -2855,7 +3106,7 @@ sample, so we can see what all of the samples look like:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-77-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-91-1.pdf}
 
 Notice, all of the samples do not have the same looking histogram. This
 is because of random sampling error. All of the samples are coming from
@@ -2925,7 +3176,7 @@ distribution?
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-79-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-93-1.pdf}
 
 That is the distribution of the sample means. It doesn't look like much
 eh? That's because we only took 10 samples right.
@@ -2980,7 +3231,7 @@ sample (giving us 1000 sample means). Then, we plot that distribution.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-81-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-95-1.pdf}
 
 There, that looks more like a sampling distribution of the sample means.
 Notice it's properties. It is centered on 0, which tells us that sample
@@ -3034,7 +3285,7 @@ deviations, maximum values, and medians. Let's do it.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-82-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-96-1.pdf}
 
 From reading the textbook and attending lecture, you should be able to
 start thinking about why these sampling statistic distributions might be
@@ -3075,7 +3326,7 @@ roughly flat.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-83-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-97-1.pdf}
 
 We took samples from a flat uniform distribution, and the samples
 themselves look like that same flat distribution.
@@ -3098,7 +3349,7 @@ sample means. Let's do that:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-84-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-98-1.pdf}
 
 As you can see, the sampling distribution of the sample means is not
 flat. It's shaped kind of normal-ish. If we had taken many more samples,
@@ -3157,7 +3408,7 @@ this in the abstract:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-85-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-99-1.pdf}
 
 A really nice shaped bell-like thing. This normal distribution has a
 mean of 0, and standard deviation of 1. The heights of the lines tell
@@ -3661,7 +3912,7 @@ simple.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-95-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-109-1.pdf}
 
 \subsubsection{find the range}\label{find-the-range}
 
@@ -3889,7 +4140,7 @@ chance does not do this even 1 times out of 100.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-97-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-111-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4093,7 +4344,7 @@ Let's see how the simulation would work:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-98-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-112-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4197,7 +4448,7 @@ group, we will take the absolute value of the mean difference.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-99-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-113-1.pdf}
 
 The histogram shows us the kinds of absolute mean difference that happen
 by chance alone. So, in this data, a mean difference of 10 hardly
@@ -4269,7 +4520,7 @@ region}\label{finding-the-critical-region}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-100-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-114-1.pdf}
 
 OK, so our alpha criterion or cutoff is located at 7.08 on the x-axis.
 This shows us that mean differences of 7.08 or larger happen only 5\% of
@@ -4639,7 +4890,7 @@ for each infant as a dot.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-106-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-120-1.pdf}
 
 That's helpful, we see that the dots are all over the place. Let's do a
 histogram, so we can get a better sense of the frequency of different
@@ -4651,7 +4902,7 @@ proportions.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-107-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-121-1.pdf}
 
 \subsubsection{Look at the descriptives}\label{look-at-the-descriptives}
 
@@ -4769,7 +5020,7 @@ into the variable \texttt{baseline}. We will make a new variable called
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-110-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-124-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4777,7 +5028,7 @@ into the variable \texttt{baseline}. We will make a new variable called
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-110-2.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-124-2.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5018,7 +5269,7 @@ are still kind of in a similar ballpark.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-115-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-129-1.pdf}
 
 \subsubsection{Dot plot with means and raw
 scores}\label{dot-plot-with-means-and-raw-scores}
@@ -5052,7 +5303,7 @@ data frame we are looking for.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-116-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-130-1.pdf}
 
 \subsubsection{Bar plot}\label{bar-plot}
 
@@ -5082,7 +5333,7 @@ Also look for these changes.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-117-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-131-1.pdf}
 
 OK, we see the bars and some of the dots, but not all of them. What is
 going on? Remember, ggplot2 works in layers. Whatever layer you add
@@ -5098,7 +5349,7 @@ Let's change the order of the layers so the dot's go on top of the bars.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-118-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-132-1.pdf}
 
 \subsubsection{Bar plot with error bars}\label{bar-plot-with-error-bars}
 
@@ -5143,7 +5394,7 @@ Baseline and Test, and then add error bars to the plot.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-119-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-133-1.pdf}
 
 \textbf{Question:} What is one reason why these error bars (standard
 error of the mean difference between Baseline and Test) are appropriate
@@ -5179,7 +5430,7 @@ differences scores.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-120-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-134-1.pdf}
 
 \textbf{Question:} Why is is it more appropriate to put the standard
 error of the difference on this bar graph? What important aspects of the
@@ -5226,7 +5477,7 @@ bars.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-121-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-135-1.pdf}
 
 Notice that the 95\% confidence intervals around the mean are wider than
 the SEM error bars from the previous graph. These new confidence
@@ -5269,7 +5520,7 @@ What do you think?
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-122-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-136-1.pdf}
 \#\#\#\# Simulating the mean differences
 
 We can do the simulation slightly differently to give us a different
@@ -5300,7 +5551,7 @@ already made from the data.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-123-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-137-1.pdf}
 
 \subsection{Generalization Exercise}\label{generalization-exercise-5}
 
@@ -5646,7 +5897,7 @@ errors and put them in a new data frame called \texttt{decriptive\_df}.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-129-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-143-1.pdf}
 
 This plot is very useful. First, we can see the numbers in our dependent
 measure are behaving sensibly. We know that the numbers have to be
@@ -5837,7 +6088,7 @@ time.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-132-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-146-1.pdf}
 
 Well, we didn't make the exact graph. We have the bars, the error bars,
 and we added the individual scores because they are useful to look at.
@@ -6171,7 +6422,7 @@ doing things this way.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-136-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-150-1.pdf}
 
 There we have it. A nice graph showing us everything. We can see there
 was a lot of differences at the level of individual subjects. Some
@@ -6826,7 +7077,7 @@ other software programs. You are lucky to be learning R.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-146-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-160-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7209,7 +7460,7 @@ the RT data, like this:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-149-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-163-1.pdf}
 
 We can see that almost all of the reaction times are well below 5000
 milliseconds (5 seconds), which is good. Most of the time people were
@@ -7281,7 +7532,7 @@ important steps:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-150-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-164-1.pdf}
 
 Alright, we made things a little bit more complicated than they need to
 be. Our primary question is whether reaction times followed this
@@ -7383,7 +7634,7 @@ equal signs in a row has a special meaning. It means conduct a
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-151-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-165-1.pdf}
 
 \subsection{Conduct the repeated Measures
 ANOVA}\label{conduct-the-repeated-measures-anova}
@@ -8056,7 +8307,7 @@ Let's make a quick histogram of all of the RT data, like this:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-165-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-179-1.pdf}
 
 This looks pretty good, there are no super huge numbers here.
 
@@ -8097,7 +8348,7 @@ important steps:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-166-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-180-1.pdf}
 
 \subsection{Conduct the ANOVA}\label{conduct-the-anova-1}
 
@@ -8816,7 +9067,7 @@ know something is wrong.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-176-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-190-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8864,7 +9115,7 @@ As part of looking at the data, let's graph the means in each condition.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-177-1.pdf}
+\includegraphics{Statistics_Lab_files/figure-latex/unnamed-chunk-191-1.pdf}
 
 \subsection{Conduct the ANOVA}\label{conduct-the-anova-2}
 

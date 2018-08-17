@@ -320,7 +320,156 @@ How to do it in Excel
 
 ## SPSS
 
-How to do it in SPSS
+In this lab, we will use SPSS to calculate a variety of descriptive statistics. SPSS allows us to specify which statistics we would like calculated and produce them all in one output table. Here, we will learn to:
+
+1. Calculate descriptive statistics
+2. Graph data using a histogram
+3. Editing graphs
+
+Let's begin with a short data set {x= 1, 1, 4, 1, 2, 5, 7}
+
+Suppose we want to calculate the measures of central tendency (mean, median, and mode) as well as variability (range, standard deviation, and variance). First, we will have to enter our data into the SPSS spreadsheet. There are 7 measurements, so we will need 7 rows of data (I have also changed the name of this variable in Variable View to `x`:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/2.4.11.png')
+```
+
+### Calculating Descriptive Statistics
+
+---
+
+From here, go to the top menu and choose <span style="color:blue">Analyze</span>, then <span style="color:blue">Descriptive Statistics</span> and then <span style="color:blue">Frequencies</span>:
+
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/2.4.12.png')
+```
+
+A new window will ask you to specify for which variables you want descriptives statistics calculated. Use the arrow to move the `x` variable from the left-hand to the right-hand field. 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/2.4.13.png')
+```
+
+Now, click the <span style="color:blue">Statistics</span> button. This will open a new window containing a list of statistics. You can choose as many as you want to be calculated. We will choose <span style="color:blue">mean, median mode, range, standard deviation, and variance</span>. 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/2.4.14.png')
+```
+
+
+Then click <span style="color:blue">Continue</span>, and then <span style="color:blue">OK</span>. SPSS will produce a set of two output tables: one containing the descriptive statistics we have chosen, and the other a frequency table--a list of all the possible values in our data set and their corresponding frequencies.
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/2.4.15.png')
+```
+
+### Descriptive Statistics and Histograms
+
+---
+
+
+Now let's use a real dataset to calculate the same measures of central tendency and variability as in the last example, but with the addition of a histogram to visualize a distribution to relate back to the descriptive statistics. [Here](https://github.com/CrumpLab/statisticsLab/blob/master/data/spssdata/life_expectancy.sav) is a link to the life expectancy dataset we used for our graphing tutorial. It is named life_expectancy.sav. 
+
+Suppose we wanted to know about life expectancy (around the world) in 2018. This will include calculating descriptive statistics, as well as graphing a histogram to examine the distribution of our data. SPSS often has neat shortcuts to graph data within other menu options. For example, in the process of asking SPSS to produce a table of descriptive statistics, we can also add a histogram to the output without having to go to the Graphs menu. 
+
+First, we go to <span style="color:blue">Analyze</span>, then <span style="color:blue">Descriptive Statistics</span>, then <span style="color:blue">Frequencies</span>.
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/2.4.16.png')
+```
+
+A window will appear asking us to indicate which variable to use. We will scroll all the way down in the list of variables on the left, choose `2018 [V220]`, and then move it into the field on the right using the arrow. 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/2.4.17.png')
+```
+
+As in the previous example, we will click the <span style="color:blue">Statistics</span> button next, and choose our measures of central tendency <span style="color:blue">(mean, median, mode)</span> as well as variability <span style="color:blue">(range, standard deviation, variance)</span>. 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/2.4.18.png')
+```
+
+Once we click continue, we are back to the previous window. Here, we can conveniently ask SPSS to insert a histogram. Let's click on the <span style="color:blue">Charts</span> button:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/2.4.19.png')
+```
+
+This will open a new window that asks us to specify the type of chart we would like. Let's select <span style="color:blue">Histogram</span>, and check off <span style="color:blue">Show normal curve on histogram</span>:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/2.4.20.png')
+```
+
+Click <span style="color:blue">Continue</span>, and then <span style="color:blue">OK</span>.
+
+SPSS will produce a table of the requested descriptive statistics, a frequency table (we will ignore this for now because it is long and not relevant to this exercise), and finally, a histogram showing the distribution of life expectancy (in years) with a normal distribution superimposed for comparison. 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/2.4.21.png')
+```
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/2.4.22.png')
+```
+
+Something to think about: What do the mean, median, and mode indicate about the shape of the distribution? Is it confirmed when we look at the histogram? How does the shape of this distribution compare to the symmetrical normal distribution which is superimposed over it? 
+
+### Editing graphs
+
+---
+
+For future reference, we will take this opportunity to make edits to the appearance of this graph. It is helpful to know how to manipulate not just the superficial, cosmetic appearance of data visualizations, but also the components of graphs that communicate important information. One feature to consider is the scale of our axes. 
+
+To modify the scale in a graph, first <span style="color:blue">double-click</span> on the graph itself in the output window. A Chart Editor should pop up. 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/2.4.23.png')
+```
+
+Now, hover your mouse over one of the values on the x-axis, and click down once. You will see all the x-axis values suddenly highlight:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/2.4.24.png')
+```
+
+Now that you know how to select the entire axis, <span style="color:blue">double click</span> on it. A properties window will pop up:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/2.4.25.png')
+```
+
+Notice that in the default tab, you can change the fill color of components of your graph. For now, we will select the <span style="color:blue">Scale</span> tab instead:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/2.4.26.png')
+```
+
+Notice in this tab, we can change the minimum, maximum, and increments of our scale. Lets change the major increment to 5:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/2.4.27.png')
+```
+
+
+Click <span style="color:blue">Apply</span>. Then <span style="color:blue">Close</span>. Now, close your Chart Editor window by simply <span style="color:blue">x</span>-ing it out. The SPSS output window will now contain your edited graph:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/2.4.28.png')
+```
+
+
+
+### Practice Problems
+
+___
+
+
+1. Using the life expectancy data set, produce a table of output showing the descriptive statistics (measures of central tendency and variability) for both years 1800 and 1934 (during the Great Depression). 
+
+2. Plot histograms of life expectancy for both years. How are these distributions different? (Hint: Plot these on the same axes so that they are comparable).
 
 ## JAMOVI
 

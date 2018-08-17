@@ -264,7 +264,126 @@ How to do it in Excel
 
 ## SPSS
 
-How to do it in SPSS
+In this lab, we will use SPSS to:
+
+1. Perform an independent-samples t-test
+2. Graph the data
+
+### Experiment Background
+
+---
+
+
+Schroeder and Epley (2015) conducted an experiment to determine whether a person’s speech (i.e., vocal tone, cadence, and pitch) communicates information about their intellect better than their written words (even if they are the same words as in the speech).
+
+To conduct this study, the authors randomly assigned 39 professional recruiters for Fortune 500 companies to one of two conditions. In the audio condition, participants listened to audio recordings of a job candidate’s spoken job pitch. In the transcript condition, participants read a transcription of the job candidate’s pitch. After hearing or reading the pitch, the participants rated the job candidates on three dimensions: intelligence, competence, and thoughtfulness. These ratings were then averaged to create a single measure of the job candidate’s intellect, with higher scores indicating the recruiters rated the candidates as higher in intellect. The participants also rated their overall impression of the job candidate (a composite of two items measuring positive and negative impressions). Finally, the participants indicated how likely they would be to recommend hiring the job candidate (0 - not at all likely, 10 - extremely likely).
+
+So, what happened? Did the recruiters think job applicants were smarter when they read the transcripts, or when the heard the applicants speak? We have the data, we can find out.
+
+### Performing an independent-samples t-test
+
+---
+
+
+First, let's open the relevant data file; [Here](https://github.com/CrumpLab/statisticsLab/blob/master/data/spssdata/SchroederEpley2015_Study4_data.sav) is the link. It's called "SchroederEpley2015_Study4_data.sav" Open this file in SPSS. Your data should look like this:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/7.4.11.png')
+```
+
+For our analysis, we will focus on only one of the three measures mentioned above: `intellect`. We want to know if perceived intellect is different in the audio condition (where recruiters listened to a job pitch) than in the transcript condition (where recruiters read a transcript of a job pitch). 
+
+Before we run the t-test, let's introduce a button at the top of our SPSS spreadsheet window. This will be important for identifying the values assigned to groups later on. The button I refer to here is highlighted below; it has two boxes, one with an A and one with a 1 on it, with arrows in-between. 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/7.4.12.png')
+```
+
+Press this button and see what happens to your data spreadsheet:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/7.4.13.png')
+```
+
+Notice that this button has revealed the values used to signify the Audio and Transcript groups. We will need to know that these groups are signified by 0s and 1s when we come to running our t-test. If you click the button again, the cells will go back to displaying their labels. Keep in mind that revealing the values or labels does not change anything about the data itself or any subsequent analyses; it is merely a cosmetic change. 
+
+Now, we're ready to run the independent-samples t-test. Go to <span style="color:blue">Analyze</span>, then <span style="color:blue">Compare Means</span>, then <span style="color:blue">Independent Samples T-test...</span>
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/7.4.14.png')
+```
+
+A window will appear asking you to specify which variable to use in this analysis. Remember, we are only using `intellect`, so find this variable in the left-hand list and move it into the "Test Variable(s)" field on the right using the arrow. For the field labeled "Grouping Variable", we will specify which variable is our independent variable. That variable is `Condition` (we have two conditions: audio and transcript). Move `Condition` into the "Grouping Variable" field. Notice that next to the variable name there are two question marks and the OK button is disabled:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/7.4.15.png')
+```
+
+Here, SPSS wants to know the values used to signify these conditions (remember the 0s and 1s?). So, click <span style="color:blue">Define Groups</span>, and place 0 and 1 in the fields that ask for Values for Group 1 and Group 2.
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/7.4.16.png')
+```
+
+Click <span style="color:blue">Continue</span>, and then <span style="color:blue">OK</span>. SPSS will produce output tables as follows:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/7.4.17.png')
+```
+
+The t-test output is very similar to our previous t-test examples and can be interpreted similarly. In the case of an independent-samples t-test, there is one special consideration to be made: the equality of variances. One of the assumptions of a t-test is that the groups being compared have roughly equal variances. Conveniently, the independent-samples t-test performs another test within itself to determine if the variances are equal or not: this test is called the Levene's test. 
+
+In the second output table, there is a section dedicated to the Levene's test. The rule is as follows: If the Sig. value under the Levene's test heading is smaller than your alpha level, then your variances are NOT equal and you must refer to the values in the second row of the table, labeled "Equal variances not assumed." If the Sig. value for Levele's test is larger than alpha, then you can use the top row labeled "Equal variances assumed."
+
+In this case, the Sig. value associated with the Levene's test is .035, which is less than the conventional alpha level of .05. This means that the t-statistic for our independent-samples t-test is -3.398, the degrees of freedom are adjusted to 28.668, and the p-value for the t-test is .002. What does this mean? We can put our finding into words to clarify:
+
+Recruiter ratings for audio job pitches are 2.04 points higher than ratings for transcripts of pitches. This difference is significant, t(28.668)=-3.398, p<.05.
+
+### Graphing your data
+
+---
+
+
+Condition in this experiment represents a discrete, categorical variable. Therefore, we will be using a bar chart to visualize this data. To begin, go to <span style="color:blue">Graphs</span>, then <span style="color:blue">Legacy Dialogs</span>, then <span style="color:blue">Bar...</span>
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/7.4.18.png')
+```
+
+Next, choose <span style="color:blue">Simple</span> in the window that appears, then click <span style="color:blue">Define</span>.
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/7.4.19.png')
+```
+
+In the next window, make sure that under "Bars Represent", you have chosen <span style="color:blue">Other statistic</span>. Move your variable of interest (`intellect`) into the field labeled "Variable." Then, move `CONDITION` to the "category axis" field. 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/7.4.20.png')
+```
+
+Next, click <span style="color:blue">Options</span>. Then choose <span style="color:blue">Display Error Bars</span>, and have them represent <span style="color:blue">Standard Error</span> with a <span style="color:blue">multiplier of 1</span>. 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/7.4.21.png')
+```
+
+Click <span style="color:blue">Continue</span>, then <span style="color:blue">OK</span>.
+
+SPSS will produce a bar graph of your mean ratings for both audio and transcript conditions. 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/7.4.22.png')
+```
+
+### Practice Problems
+
+___
+
+
+1. Use the same data file from this lab’s tutorial to test whether intelligence ratings were different between genders (use alpha = .05). Who was rated as more intelligent, males or females? Report your result in proper statistical reporting format.
+
+2. Graph this result (including 1 SEM error bars) as a bar graph.
 
 ## JAMOVI
 

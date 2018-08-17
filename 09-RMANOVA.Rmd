@@ -397,7 +397,204 @@ How to do it in Excel
 
 ## SPSS
 
-How to do it in SPSS
+In this lab, we will use SPSS to:
+
+1. Produce a frequency histogram and remove outliers
+2. Conduct and graph One-Factor Repeated Measures ANOVA
+3. Conduct planned comparisons using a paired-samples t-test
+
+### Experiment Background
+
+---
+
+
+In this experiment, Behmer and Crump (2017) recruited 38 subjects to type words presented on a screen as quickly as they could. The independent variable was typing material and it had 3 levels: Normal (5 letter English words), Bigrams (5 letter non-words that have properties like real words), and Random (random 5 letter strings). The authors wanted to know whether reaction time (RT) was different according to the type of word being typed.
+
+Dependent Variables: There were three dependent variables, that all measured different aspects of typing performance. Reaction times (RTs) were defined as the temporal interval between seeing a stimulus (to type), and then starting to type it (first key press). Inter-keystroke intervals (IKSIs) are the times between each key-press. Last, accuracy was also measured (correct or incorrect key-presses). For this analysis we will use `Pure RTs` as our one DV.
+
+Nota bene: This is a repeated measures design because each participant typed letter strings from the word, bigrams, and random conditions.
+
+
+### Produce a frequency histogram and remove outliers
+
+---
+
+
+[Here](https://github.com/CrumpLab/statisticsLab/blob/master/data/spssdata/BehmerCrump.sav) is a link to the data file. It is named BehmerCrump.sav. Your data should look like this:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/9.4.11.png')
+```
+
+First, we'll be creating a histogram to look at our data. Go to <span style="color:blue">Graphs</span>, then <span style="color:blue">Legacy Dialogs</span>, then <span style="color:blue">Histogram...</span>
+
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/9.4.12.png')
+```
+
+
+The next window will ask you to specify the variable you would like graphed. Choose `PureRTs` from the list on the left and move it into the "Variable" field using the arrow. 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/9.4.13.png')
+```
+
+
+Click <span style="color:blue">OK</span>. SPSS will produce a frequency histogram of your data. 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/9.4.14.png')
+```
+
+Notice that the RTs form a positively skewed distribution. Most RT measurements are on the lower end of the scale, and there are very few RTs that are higher than 5000ms. These measurements could have resulted from subjects falling asleep, looking at their phones, or being otherwise distracted in the middle of the experiment. We want to remove those values so they do not influence and mischaracterize our results. To do this, go to the top menu and choose <span style="color:blue">Data</span>, then <span style="color:blue">Select Cases...</span>
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/9.4.15.png')
+```
+
+The next window will ask you which cases to select. We specifically want to remove any cases larger than 5000, so check off <span style="color:blue">If condition is satisfied:</span>
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/9.4.16.png')
+```
+
+Then click <span style="color:blue">If...</span> The window that follows will ask you to specify the condition for inclusion. Find the variable `PureRTs` in the left-hand list and move it to the field on top using the arrow. Then, type "< 5000" to specify that we want to keep only values under 5000ms.
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/9.4.17.png')
+```
+
+Click <span style="color:blue">Continue</span>. Your data has now been edited so that trials on which the `PureRTs` value was greater than 5000 have been removed. 
+
+Let's take some time to think about this data. We have measurements taken from many participants across multiple trials and multiple conditions. Our goal is to be able to come up with a single RT for each person per condition. The only way to do this is to take an individual's RTs for a particular condition and average them. To do this, we need to calculate means. First, go to <span style="color:blue">Analyze</span>, then <span style="color:blue">Compare Means</span>, then <span style="color:blue"> Means...</span>
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/9.4.18.png')
+```
+
+In the next window, move the `PureRTs` variable into the "Dependent List" field. In the field below, labeled "Independent List", place the `Subject` variable:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/9.4.19.png')
+```
+
+Then, click <span style="color:blue">Next</span>. The bottom field will become blank again, and you can now place the `Stimulus` variable into it. 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/9.4.20.png')
+```
+
+Click <span style="color:blue">OK</span>. SPSS will produce an output table containing each subject's average RT per condition:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/9.4.21.png')
+```
+
+### Conduct and graph One-Factor Repeated Measures ANOVA
+
+---
+
+For this part of the tutorial, we will switch over to a new SPSS file. [Here](https://github.com/CrumpLab/statisticsLab/blob/master/data/spssdata/BehmerCrumpMeanRTs.sav) is the link; it's called BehmerCrumpMeanRTs.sav. When you open the file, it should look like this:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/9.4.22.png')
+```
+
+Notice that this file contains the means from the table we just created. Each person's data is contained within a row: there are 3 measurements corresponding to all stimulus conditions. To calculate a One-Factor Repeated Measures ANOVA, go to <span style="color:blue">Analyze</span>, then <span style="color:blue">General Linear Model</span>, then <span style="color:blue">Repeated Measures...</span>
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/9.4.23.png')
+```
+
+The next window will ask you to label your within-subjects variable. Type `Stimulus` into the "Within-Subjects Factor Name" field. Indicate that this variable has 3 levels. Then click <span style="color:blue">Add</span>, and then <span style="color:blue">Define</span>.
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/9.4.24.png')
+```
+
+In the next window, move all 3 conditions listed on the left into the "Within-Subjects Variables" field. 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/9.4.25.png')
+```
+
+Click <span style="color:blue">OK</span>. SPSS will produce an output table labeled "Tests of Within-SUbjects Effects" that contains The F statistic and its corresponding p-value.
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/9.4.26.png')
+```
+
+From this table, we see that there is a significant effect of stimulus on RT, F(2, 74)= 420.33, p<.05. In order to graph this data and look at the means, go to <span style="color:blue">Graphs</span>, then <span style="color:blue">Legacy Dialogs</span>, then <span style="color:blue">Bar...</span>
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/9.4.27.png')
+```
+
+In the next window, choose <span style="color:blue">Simple</span>, but this time select <span style="color:blue">Summaries of separate variables</span>, then <span style="color:blue">Define</span>:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/9.4.28.png')
+```
+
+In the next window, move the three stimulus conditions listed in the field on the left into the field labeled "Bars Represent."
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/9.4.29.png')
+```
+
+Then click <span style="color:blue">OK</span>. SPSS will produce a bar graph with each bar representing the mean of each of the conditions. We can see that the Random condition has the longest RT, followed by Bigrams, and then Normal. However, at this point we do not know which groups are significantly different from the others. 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/9.4.30.png')
+```
+
+### Conduct planned comparisons using a paired-samples t-test
+
+---
+
+
+To find out where the difference among these 3 conditions exists, we will use a planned comparison in the form of a paired-samples t-test. This method takes 2 groups at a time and tests for pairwise differences. There are three comparisons that can be made here:
+
+1. normal vs. bigram
+2. bigram vs. random
+3. random vs. normal
+
+We will use a paired-samples t-test instead of an independent-samples t-test because in each comparison, the same people are being remeasured in each group. 
+
+To begin, go to <span style="color:blue">Analyze</span>, then <span style="color:blue">Compare Means</span>, then <span style="color:blue">Paired Samples T-test...</span>
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/9.4.31.png')
+```
+
+In the next window, move the two conditions of our first pairwise comparison (`normal` vs. `bigram`) into the field on the right using the arrow.
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/9.4.32.png')
+```
+
+Click <span style="color:blue">OK</span>. SPSS will produce a series of tables. The "Paired Samples test" table contains the t-statistic and its associated p-value.
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/9.4.33.png')
+```
+
+Looking at this output, we can see that the Normal and Bigrams conditions are indeed significantly different, t(37)= 13.09, p<.05. 
+
+You can use this same method for the remaining comparisons.
+
+
+### Practice Problems
+
+___
+
+
+1. Run the same analysis as illustrated in this lab tutorial but with accuracy (correct) as the dependent variable. Use an alpha level of .05. Remember to calculate  means per subject and stimulus first. This will generate a table, whose values you can enter into a new SPSS spreadsheet file.
+
+2. Is there an effect of stimulus on error rate? If so, conduct the appropriate planned comparisons. 
+
+3. Graph the means using a bar graph; include +/-1 SEM Error bars.
 
 ## JAMOVI
 

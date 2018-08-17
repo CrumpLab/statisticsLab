@@ -460,7 +460,228 @@ How to do it in Excel
 
 ## SPSS
 
-How to do it in SPSS
+In this lab, we will use SPSS to:
+
+1. Perform a one-sample t-test
+2. Perform a paired-samples t-test
+3. Graph the data
+4. Assess the relationship between a one-sample and a paired-samples t-test
+
+### Experiment Background
+
+---
+
+
+For this lab, we will be using the data from Mehr, Song, and Spelke's (2016) study of how music may convey important social information to infants. 
+
+To test their hypothesis, the researchers recruited 32 infants and their parents to complete an experiment. During their first visit to the lab, the parents were taught a new lullaby (one that neither they nor their infants had heard before).The experimenters asked the parents to sing the new lullaby to their child every day for the next 1-2 weeks.
+
+Following this exposure period, the parents and their infant returned to the lab to complete the experimental portion of the study. Infants were first shown a screen with side-by-side videos of two unfamiliar people, each of whom were silently smiling and looking at the infant. The researchers recorded the looking behavior (or gaze) of the infants during this ‘baseline’ phase. Next, one by one, the two unfamiliar people on the screen sang either the lullaby that the parents learned or a different lullaby (that had the same lyrics and rhythm, but a different melody). Finally, the infants saw the same silent video used at baseline, and the researchers again recorded the looking behavior of the infants during this ‘test’ phase.
+
+### Performing a one-sample t-test
+
+---
+
+
+First, let's open the relevant data file; [Here](https://github.com/CrumpLab/statisticsLab/blob/master/data/spssdata/MehrSongSpelke2016_Experiment1.sav) is the link. It's called "MehrSongSpelke2016_Experiment1.sav" Open this file in SPSS. Your data should look like this:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/6.4.11.png')
+```
+
+We will use SPSS to determine whether the infants looked equally at each of the people in the side-by-side videos at baseline. Let's think about why this is important. The infants in this experiment watched silent video recordings of two women (Baseline). Later, each person sungs a song, one familiar (their parents sung the song to them many times), and one unfamiliar. Afterwards, the infants watched the silent video of the two singers again (test phase). The critical question was whether the infants would look more to the person who sung the familiar song compared to the person who sung the unfamiliar song.
+
+If the measure of what infants "like" or "prefer" is based on how long they look at a stimulus (in this case, a person in a video), we need to know that at baseline (before either of the people were associated with a song), infants looked equally at each person. If one of the people in the video was more memorable or attractive to the infants, then they would have a preferential bias towards looking at one person over the other. This could mean that the results of the study may have nothing to do with the songs, but rather an inherent bias towards the appearance of one of the people. This is why it is important to ensure that the infants looked at the people equally to start with (at baseline). 
+
+In our data file, the variable we will use is called "Baseline_Proportion_Gaze_to_Singer"; this variable represents the proportion of time (out of 100%) that the infant spent looking at the person who would later be the singer of the familiar song. If the infant looks equally at each person, then the proportion of time spent looking at one out of the two people should be .5, or half of the time. Thus, we want to test whether the proportions measured are different from .5. Whenever we want to compare a sample data set (the proportions measured for all 32 infants) to a known mean (.5, or the proportion we expect if infants looked equally at both people), we use a one-sample t-test.
+
+Before we begin, it's important to notice that our data file has 96 rows in it, for 96 infants. However, Experiment 1 only used 32 infants. If you find the column labeled `exp1`, it will show you which infants belong to that experiment. You'll notice there are a series of 1s (32 of them, to be exact) signifying the infants in Experiment 1. We will have to split our data file so we can run subsequent analyses only on this Experiment 1 data. 
+
+Go to <span style="color:blue">Data</span>, then <span style="color:blue">Split file...</span>
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/6.4.12.png')
+```
+
+A window will appear. Choose <span style="color:blue">Organize output by groups</span> and enter the `exp1` variable in the "Groups Based on" field:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/6.4.13.png')
+```
+Click <span style="color:blue">OK</span>. SPSS will generate an output window to confirm you have split your file.  In order to run the t-test, go to the <span style="color:blue">Analyze</span> menu, then choose <span style="color:blue">Compare Means</span> and then <span style="color:blue">One-Sample T-test</span>:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/6.4.14.png')
+```
+
+This will open up a window in which you will specify which variable contains the relevant sample data. Remember, we are interested in the variable labeled `Baseline_Proportion_Gaze_to_Singer`, so let's choose this variable from the list on the left and move it to the right-hand field using the arrow. 
+
+Next, make sure to change the value in the field labeled "Test Value" to the mean to which you are comparing the sample. Since we are comparing our sample's proportions to the proportion that represents equal time spent looking at both people in the video, we are going to use .5 as our test value. Enter this number in the appropriate field. Your window should look like this:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/6.4.15.png')
+```
+
+Now, click <span style="color:blue">OK</span>. SPSS will produce several output tables; some for exp1 = 0 (these are the infants not included in experiment 1) and for exp = 1 (for the infants included in experiment 1--this is the one we want!), as follows:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/6.4.16.png')
+```
+
+The first table contains descriptive statistics related to the sample. We can see from this table that the average proportion of time spent looking at the person who would later be the familiar song singer is .521. This is very close to .50. 
+
+The second table contains the information resulting from our t-test: The t-statistic calculated is .674, with 31 (N-1) degrees of freedom. The p-value is listed under "Sig.". The fact that this value is not less than our alpha level (set at .05) means we fail to reject the null hypothesis. In other words, the proportion of time infants spent looking at the singer was not different from .50. We might formally words this as follows:
+
+During the baseline condition, the mean proportion looking time toward the singer was .52, and was not significantly different from .5, according to a one-sample test, t(31) = .67, p = .505.
+
+
+### Performing a paired-samples t-test
+
+---
+
+
+In this example, we will be comparing data from two samples taken from the same individuals. In the same data file as above, we have two variables named `Baseline_Proportion_Gaze_to_Singer` and `Test_Proportion_Gaze_to_Singer`. These variables represent the proportion of time spent looking at the familiar song singer at baseline, and then again in the test phase (after the 1-2 week period in which infants have been familiarized with the song). Because each infant was measured once (baseline), and then re-measured again (test), we will use a paired-samples t-test.
+
+Let's continue with the split file we used in the previous example. In order to run the paired-samples t-test, go to <span style="color:blue">Analyze</span>, then <span style="color:blue">Compare Means</span>, then <span style="color:blue">Paired-Samples T-test..</span>.
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/6.4.17.png')
+```
+
+A window will appear with a list of all variables in a field on the left. We must choose the two variables that contain our data: `Baseline_Proportion_Gaze_to_Singer` and `Test_Proportion_Gaze_to_Singer`. Move these into the right-hand field individually using the arrow. Make sure that they appear next to each other in the right-hand field, as follows:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/6.4.18.png')
+```
+
+Click <span style="color:blue">OK</span>, and SPSS will produce several output tables. Remember, we're only choosing the tables for exp1 = 1 (this includes only the 32 infants in experiment 1). The tables are as follows:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/6.4.19.png')
+```
+
+The paired-samples t-test produces a t-value, degrees of freedom (N-1), and a p-value. You can interpret these values the same way as in the previous example. 
+
+During the baseline condition, The difference between Infants' mean proportion looking time toward the singer at baseline and the test phase was -.072, and was significant according to a paired-samples t-test, t(31) = -2.416, p < .05.
+
+### Graphing your results
+
+---
+
+
+In order to visualize the difference between means (for a paired-samples t-test, in this case), it is most appropriate to create a bar chart, or bar plot. Because our two conditions (baseline and test) are categorical, discrete (and not continuous) variables, this type of chart is most appropriate. Let's begin by going to <span style="color:blue">Graphs</span>, then <span style="color:blue">Chart Builder...</span>
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/6.4.20.png')
+```
+
+The Chart Builder window will open and look like this:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/6.4.21.png')
+```
+
+We are going to choose a simple bar chart, which is represented by the bar icon at the top left of the set of chart options. Click on this icon and drag it into the chart window as follows:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/6.4.22.png')
+```
+Once you do this, your window should look like this:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/6.4.23.png')
+```
+
+From here, you must indicate which variables should be included in the chart on the y-axis. We will first take the `Baseline_Proportion_Gaze_to_Singer` variable, found in the list on the left of the window, and drag it to the y-axis in the chart window. You will see that the y-axis area will highlight with a red border when you do this. 
+
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/6.4.24.png')
+```
+
+Now, take the next variable, `Test_Proportion_Gaze_to_Singer`, and drag it over the same y-axis title, but this time aim for the very top of the variable field. You will know you're doing it right when a red plus sign appears in this area as you hover:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/6.4.25.png')
+```
+
+Drop this variable into this field once you see the plus sign. A window will pop us asking if you want both variables on this axis. <span style="color:blue">Click OK</span>. 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/6.4.26.png')
+```
+
+
+The result will look like this (both variables' means, baseline and test, appear in the chart). 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/6.4.27.png')
+```
+
+From here, you can customize the appearance of the graph. One thing we will do is add Error Bars. Find the window to the right of the main chart builder window, and select <span style="color:blue">Error Bars</span>. You will have the option to select Confidence Intervals, Standard Error, etc. Choose <span style="color:blue">Standard Error</span> and set the <span style="color:blue">Multiplier to 2</span>. Click <span style="color:blue">Apply</span>.
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/6.4.28.png')
+```
+
+Now, you should be able to see the bars in the chart builder window. 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/6.4.29.png')
+```
+
+If you are satisfied with the chart, click OK and it will appear in an SPSS output window:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/6.4.30.png')
+```
+
+### The relationship between the one-sample and the paired-samples t-test
+
+---
+
+
+This section is dedicated to demonstrating that the one-sample and paired-samples t-tests are almost the very same thing. In order to understand this, we must reframe how we think about the paired-samples t-test. We typically consider it a comparison between two samples in which observations have been repeated (like in a before-after scenario, for example). We can also think of the paired-samples t-test as testing the DIFFERENCE scores between two conditions. If the difference between two conditions is 0, then there is no difference, or there is no effect of the independent variable. If the difference is non-zero, then we can say there IS a difference. 
+
+Thus, the paired-samples t-test is exactly the same as the one-sample t-test if we consider it as a comparison of the mean DIFFERENCE score to 0. Let's demonstrate this using SPSS. 
+
+We'll continue using the same data as above. Specifically, locate the variable named `Difference_in_Proportion_Looking`. This variable contains the difference score between the baseline and test conditions for each infant. We're going to treat this as our one sample (as in the one-sample t-test), and we'll be comparing it to a mean of 0. Remember also that our file is still split so we can do analyses on only those individuals in experiment 1. 
+
+Let's begin. Go to <span style="color:blue">Analyze</span>, then <span style="color:blue">Compare Means</span>, then <span style="color:blue">One-Sample t-test...</span>
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/6.4.31.png')
+```
+
+A window will appear. Move the variable of interest, `Difference_in_Proportion_Looking`, into the "Test Variable(s)" field. Below that, make sure to enter 0 in the "Test Value" field. 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/6.4.32.png')
+```
+
+Then click <span style="color:blue">OK</span>. SPSS will generate several tables in the output window. Make sure to find the tables associated with exp1 = 1. They should look like this:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/6.4.33.png')
+```
+
+You will see that the t-statistic and p-value are identical to the ones obtained when we conducted a paired-samples t-test. Therefore, a paired-samples t-test conducted on two samples is equivalent to a one-sample t-test conducted on the difference scores (calculated on the two samples) compared against 0. 
+
+Nota Bene: You will see that in the previous paired-samples t-test we obtained a t-statistic of -2.416, but here the t-statistic is positive. This difference comes from the fact that SPSS automatically subtracts the later-occuring variable in your spreadsheet from the earlier-occuring one. If your variables were ordered differently, you would obtain a positive t-statistic as well. In other words, the sign does not matter; it results from the order of the variables. 
+
+
+
+### Practice Problems
+
+___
+
+
+1. Use the data file from this lab tutorial to test whether the number of frames the baby spent gazing at the familiar song is significantly different than the number of frames spent gazing at the unfamiliar song (use alpha = .05). Report your results in proper statistical reporting format.
+
+2. Graph this result (including 1 SEM error bars) as a bar graph.
+
+
+3. Compute a new variable representing the difference in number of frames the baby spent gazing between the familiar and unfamiliar song conditions. Test this difference score against a mean of 0 (use alpha=.05). Report your results in proper statistical reporting format.
 
 ## JAMOVI
 

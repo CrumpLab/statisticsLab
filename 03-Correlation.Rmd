@@ -243,7 +243,226 @@ How to do it in Excel
 
 ## SPSS
 
-How to do it in SPSS
+
+In this lab, we will use SPSS to calculate the correlation coefficient. We will focus on the most-commonly used Pearson's coefficient, r. We will learn how to:
+
+1. Calculate the Pearson's r correlation coefficient for bivariate data
+2. Produce a correlation matrix, reporting Pearson's r for more than two variables at a time
+3. Produce a scatterplot
+4. Split a data file for further analysis
+
+Let's first begin with a short data set we will enter into a new SPSS data spreadsheet. Remember, in order to calculate a correlation, you need to have bivariate data; that is, you must have at least two variables, x and y. You can have more than two variables, in which case we can calculate a correlation matrix, as indicated in the section that follows. 
+
+### Correlation Coefficient for Bivariate Data: Two Variables
+
+---
+
+Let's use the following data set: {x= 1, 3, 2, 5, 4, 6, 5, 8, 9} {y= 6, 5, 8, 7, 9, 7, 8, 10, 13}. Notice there are two variables, `x` and `y`. Enter these into SPSS and name them appropriately. 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/3.4.11.png')
+```
+
+Next, click <span style="color:blue">Analyze</span>, then <span style="color:blue">Correlate</span>, then <span style="color:blue">Bivariate</span>:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/3.4.12.png')
+```
+
+The next window will ask you to select variables to correlate. Since we have two (`x` and `y`) move them both from the left-hand field to the right-hand field using the arrow. Notice that in this window, <span style="color:blue">Pearson</span> is selected. This is the default setting (and the one we want), but notice there are other ways to calculate the correlation between variables. We will stick with Pearson's correlation coefficient for this course. 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/3.4.13.png')
+```
+
+Now, click <span style="color:blue">OK</span>. 
+
+SPSS will produce an output table containing the correlation coefficient requested. Notice that the table is redundant; it gives us the correlation between x and y, the correlation between y and x, the correlation between x and itself, and the correlation between y and itself. Any variable correlated with itself will result in an r of 1. The Pearson r correlation between variables x and y is .765.
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/3.4.14.png')
+```
+
+
+### Correlation Matrix
+
+---
+
+
+In the event that you have more than two variables in your spreadsheet, and would like to evaluate correlations between several variables taken two at a time, you need not re-run the correlations in SPSS repeatedly. You can, in fact, enter multiple variables into the correlation window and obtain a correlation matrix--a table showing every possible bivariate correlation amongst a group of variables.
+
+To illustrate how this is done, let's add a new variable to our existing spreadsheet: variable `z`, {z= 1, 4, 2, 9, 5, 7, 12, 5, 3}
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/3.4.15.png')
+```
+
+From here, go to <span style="color:blue">Analyze</span>, then <span style="color:blue">Correlate</span>, then <span style="color:blue">Bivariate</span>:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/3.4.16.png')
+```
+
+Next, you will encounter the window that asks you to indicate which variables to correlate. Select all three variables (`x`, `y`, and `z`) and move them to the right-hand field using the arrow. 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/3.4.17.png')
+```
+
+Click <span style="color:blue">OK</span>. SPSS will produce an output table that contains correlations for every pairing of our three variables, along with the correlations of each variable with itself. 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/3.4.18.png')
+```
+
+According to this output:
+
+1. The correlation coefficient between variables `x` and `y` is .765
+2. The correlation coefficient between variables `x` and `z` is .294
+3. The correlation coefficient between variables `y` and `z` is -.080
+
+
+### Correlation and Scatterplots
+
+---
+
+
+To accompany the calculation of the correlation coefficient, the scatterplot is the relevant visualization tool. Let's use data from The World Happiness Report, a questionnaire about happiness. [Here](https://github.com/CrumpLab/statisticsLab/blob/master/data/spssdata/WHR2018.sav) is a link to the file named WHR2018.sav.
+
+Using this data, let's answer the following question: does a country's measure for `freedom to make life choices` correlate with that country's measure for `Confidence in national government`?
+
+Let's find the correlation coefficient between these variables first. Go to <span style="color:blue">Analyze</span>, then <span style="color:blue">Correlate</span>, then <span style="color:blue">Bivariate</span>:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/3.4.19.png')
+```
+
+Next, a window will appear asking for the variables to be correlated. Go through the list on the left and find `Freedom to make life choices` as well as `Confidence in national government`. Move both of these variables to the field on the right using the arrow.
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/3.4.20.png')
+```
+Click OK. SPSS will produce a correlation table.
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/3.4.21.png')
+```
+
+Based on this output, the correlation between `Freedom to make life choices` and `Confidence in national government` is .408.
+
+Let's continue to create the scatterplot for this data. Go to <span style="color:blue">Graphs</span>, then <span style="color:blue">Legacy Dialogs</span>, then <span style="color:blue">Scatter...</span>
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/3.4.22.png')
+```
+
+In the next window, choose <span style="color:blue">Simple</span>, then <span style="color:blue">Define</span>:
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/3.4.23.png')
+```
+
+Next, move your two variables (`freedom to make life choices` and `confidence in national government`) into the x-axis and y-axis fields. Again, it does not matter which variable goes where, for now.
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/3.4.24.png')
+```
+
+Click <span style="color:blue">OK</span>. SPSS will produce a scatterplot of your data, as follows:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/3.4.25.png')
+```
+
+You can keep this scatterplot as it is, or, you can edit it to include a straight line that best fits the data points. This line is known as the best-fitting line as it minimizes the distance from it to all the data. To edit the scatterplot double click on the graph and a window labeled Chart Editor should appear:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/3.4.26.png')
+```
+
+In this window, find the button at the top that reads <span style="color:blue">Fit Line at Total</span> when you hover your mouse over it. Below, I have highlighted it for clarity:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/3.4.27.png')
+```
+
+Press this button and you will see a new menu. Make sure <span style="color:blue">Linear</span> is selected and click <span style="color:blue">Apply</span>.
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/3.4.28.png')
+```
+
+Next, exit from the Chart Editor. This means you will hit the <span style="color:blue">X</span> in the corner of the window. You will find that the graph in your output window has now updated and has a line drawn on it.
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/3.4.29.png')
+```
+
+This scatterplot is very important. The distance between the line and the data points is indicative of the strength of the correlation coefficient; they are directly related. For example, if the data were more clustered or tighter to the line, the correlation would be stronger. If the data points are more spread out and far from the line, the correlation is weaker. 
+
+### Splitting a File
+
+---
+
+What if we asked the question: for the year 2017 only, does a countries measure for `freedom to make life choices` correlate with that countries measure for `Confidence in national government`?
+
+Notice that this question is asking us to find the correlation between the same two variables we used in the previous example, but only in the case where the year is 2017. To acheive this, we're going to utilize a function called splitting. Splitting takes the file as a whole, and sets it up so that every analysis is done on some subset of the data. For example, if we split our data by year and calculate a correlation coefficient, SPSS will find Pearson r for only 2017, and another for only 2016, and so on. 
+
+In order to split the data, we go to the top menu and choose <span style="color:blue">Data</span>, then <span style="color:blue">Split file...</span>
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/3.4.30.png')
+```
+
+In the next window, you must select <span style="color:blue">Organize output by groups</span> and then specify which variable will be used to split the data. Select `year` and move it to the right-hand field using the arrow. 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/3.4.31.png')
+```
+
+Click <span style="color:blue">OK</span>. Notice that this will cause the output window to produce some next indicating that you have split your file. You can ignore this and go back to your data window.
+
+From here, any analysis you choose to do will be done separately for each year's worth of data. Let's calculate the correlation coefficient, as usual. Click <span style="color:blue">Analyze</span>, then <span style="color:blue">Correlate</span>, then <span style="color:blue">Bivariate</span>:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/3.4.32.png')
+```
+
+In the next window, select the variables to be used (they will be the same as in the last example). 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/3.4.33.png')
+```
+
+Click <span style="color:blue">OK</span>. Notice that in the output window you will see a bunch of correlation tables (13 of them to be exact); one for each year. Scroll down and find the table with the heading "year = 2017". That's the table we need in order to answer our question:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/3.4.34.png')
+```
+
+This table indicates that, if we only look at the year 2017, the correlation coefficient between `freedom to make life choices` and `confidence in national government` is .442.
+
+It is VERY important to remember that once you have split a file, every analysis that follows the split will be done on the split variable. If you want to go back to performing analyses and calculating statistics for the data as a whole, you must UNSPLIT your data file (or undo the split). To do this, go to <span style="color:blue">Data</span>, then <span style="color:blue">Split file...</span>
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/3.4.35.png')
+```
+
+Then make sure to select <span style="color:blue">Analyze all cases, do not create groups</span> and click <span style="color:blue">OK</span>.
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/3.4.36.png')
+```
+
+
+
+### Practice Problems
+
+___
+
+
+1. For the year 2005 ONLY, find the correlation between “perceptions of corruption” and “positive affect”. Create a scatterplot to visualize this relationship. What are your conclusions about the relationship between affect and perceived corruption? Is this surprising to you?
+
+2. What has happened to log GDP (consider this a measure of GDP) in the United States ONLY with time (as the year has increased)? Explain this relationship and provide a scatterplot.
+
+3. Which country (or countries) have seen a more consistent and strong increase in log GDP over time? Which country (or countries) have seen a decrease over time?
 
 ## JAMOVI
 

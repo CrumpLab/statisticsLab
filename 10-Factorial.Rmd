@@ -441,7 +441,272 @@ How to do it in Excel
 
 ## SPSS
 
-How to do it in SPSS
+In this lab, we will use SPSS to:
+
+1. Conduct and graph a Between-Subjects Two-Factor Analysis of Variance (ANOVA)
+2. Calculate simple effects
+3. Conduct and graph a Repeated Measures Two-Factor Analysis of Variance (ANOVA)
+4. Calculate simple effects
+
+### Experiment Background
+
+---
+
+
+The Rosenbaum, Mama, and Algom (2017) paper asked whether sitting versus standing would influence a measure of selective attention, the ability to ignore distracting information. Selective attention here is measured as performance on the Stroop task.
+
+In a typical Stroop experiment, subjects name the color of words as fast as they can. The trick is that sometimes the color of the word is the same as the name of the word, and sometimes it is not. 
+
+The design of the study was a 2x2 design. The first IV was `congruency` (congruent vs incongruent). The second IV was `posture` (sitting vs. standing). The DV was reaction time (`RT`)to name the word. 
+
+### Conduct a Between-Subjects Two-Factor Analysis of Variance (ANOVA)
+
+---
+
+
+[Here](https://github.com/CrumpLab/statisticsLab/blob/master/data/spssdata/stroopsit.sav) is a link to our data file. It is named stroopsit.sav. Your data should look like this:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/10.4.11.png')
+```
+
+Notice that in this file, there are 200 rows (corresponding to 200 subjects). Each subject is categorized according to 2 independent variables: posture (whether they were in the standing or sitting condition), and congruency (whether the stimuli they received were congruent or incongruent). In this application, we are treating the design as between-subjects. This means each participant only experienced one of the following four conditions:
+
+1. congruent stand
+2. incongruent stand
+3. congruent sit
+4. incongruent sit
+
+Now, let's run our Two-Factor ANOVA. Go to <span style="color:blue">Analyze</span>, then <span style="color:blue">General Linear Model</span>, then <span style="color:blue">Univariate...</span>
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/10.4.12.png')
+```
+
+A window will appear asking for you to specify your variables. Place `RT` into the "Dependent Variable" field, and put both "posture" and "congruency" into the "Fixed Factors" field. 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/10.4.13.png')
+```
+
+Now, before pressing anything else, click on <span style="color:blue">Plots...</span> (this will allow us to create a plot of means right along with our SPSS output). In the plots window, you must place the `congruency` and `posture` variables into the fields labeled "Horizontal Axis"" and "Separate Lines". You can place either variable in either field, and the graph will still make sense. However, for this example, I will be putting `congruency` into the "Separate Lines"" field, and `posture` in "Horizontal Axis":
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/10.4.14.png')
+```
+You must click <span style="color:blue">Add</span> for this table to be included in your SPSS output. After you do this, Your window should look like this:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/10.4.15.png')
+```
+Then click <span style="color:blue">Continue</span> and <span style="color:blue">OK</span>. Your output will include a table labeled "Tests of Between Subjects Effects" and a plot of the means. 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/10.4.16.png')
+```
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/10.4.17.png')
+```
+You can see from this output that:
+
+1. There is no main effect of posture, F(1, 196)=2.449, p=NS
+2. There is a main effect of congruency, F(1, 196)=43.734, p<.05 where (from looking at the plot) incongruent stimuli were processed with a longer reaction time than congruent stimuli.
+3. There is no interaction between posture and congruency, F(1, 196)=.497, p=NS
+
+### Calculate simple effects
+
+---
+
+
+In previous ANOVAs, we have conducted both planned and unplanned comparisons to locate the significant differences. In the case of a two-factor ANOVA, there are many comparisons that can be made. However, the comparisons you choose will depend on the results of your ANOVA. In this case, we found only a significant main effect of congruency. So, we can explore this effect more by asking:
+
+1. For the sitting condition only, are congruent and incongruent means significantly different?
+2. For the standing condition only, are congruent and incongruent means significantly different?
+
+To answer these questions, we must calculate something called simple effects. They look at mean differences within levels of a single independent variable. In order to acheive this in SPSS, we have to get into the coding environment that runs the SPSS program; it's called Syntax. Don't freak out here, we're going to make this as simple as possible. 
+
+First, let's go to the menu just as we did to run this ANOVA. <span style="color:blue">Analyze</span>, <span style="color:blue">General Linear Model</span>, then <span style="color:blue">Univariate...</span>
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/10.4.18.png')
+```
+
+The next window looks just as we left it, with the variables in the right places. Here, click on the button that says <span style="color:blue">Paste</span>.
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/10.4.19.png')
+```
+
+The result will be a new window with code already entered into it. This code correponds to the ANOVA setup we have specified. 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/10.4.20.png')
+```
+
+
+You are going to edit this code so that it looks like this:
+
+ > UNIANOVA RT BY posture congruency <br>
+ > /METHOD=SSTYPE(3) <br>
+ > /INTERCEPT=INCLUDE <br>
+ > /PLOT=PROFILE(posture * congruency) <br>
+ > /EMMEANS=TABLES(posture * congruency) COMPARE(congruency) ADJ(LSD) <br>
+ > /CRITERIA=ALPHA(.05) <br>
+ > /DESIGN=posture congruency posture * congruency. 
+ 
+Once it does, click the big green triangle ("<span style="color:blue">play</span>") at the top of the window. 
+
+SPSS will produce a series of tables. The one that refers to simple effects is called "Pairwise Comparisons."
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/10.4.22.png')
+```
+
+From this table, we can see that, 
+
+1. In the sitting condition, the congruent and incongruent conditions are significantly different (p<.05).
+2. In the standing condition, the congruent and incongruent conditions are significantly different (p<.05).
+
+### Conduct a Repeated Measures Two-Factor Analysis of Variance (ANOVA)
+
+---
+
+
+Next, we will use this same data but treat it as a repeated measures (within-subjects) design (just as in the original experiment). This means each person in the study experienced ALL 4 conditions.
+
+To start, we need a new data file. [Here](https://github.com/CrumpLab/statisticsLab/blob/master/data/spssdata/stroopsit_RM.sav) is link. This data file is called stroopsit_RM.sav. I have set it up so that the data is arranged for a repeated-measures design. Notice that each person is represented by a single row, and the columns correspond to the 4 conditions:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/10.4.23.png')
+```
+
+Now, to run a repeated measures ANOVA, we go to <span style="color:blue">Analyze</span>, then <span style="color:blue">General Linear Model</span>, then <span style="color:blue">Repeated Measures</span>:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/10.4.24.png')
+```
+
+The next window will ask for the name and number of levels of your within-subjects factors (variables); We have two within-subjects factors: `posture` and `congruency`, and each factor has two levels. We must enter then here one at a time. First, change the default `factor1` name to `congruency`, and specify that it has 2 levels:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/10.4.25.png')
+```
+
+Click <span style="color:blue">Add</span>, and then enter a new within-subjects factor, `posture` with 2 levels as well:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/10.4.26.png')
+```
+
+Now, click <span style="color:blue">Add</span>, and then <span style="color:blue">Define</a>. The next window asks for the 4 conditions produced by our two independent variables. Because we entered `posture` first, and `congruency next`, the four conditions, in THIS EXACT order, are entered as follows:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/10.4.27.png')
+```
+
+Click <span style="color:blue">Plots</span> and specify a graph exactly as we did in the previous example. Place `posture` in the "Separate Lines" field and `congruency` in the "Horizontal axis" field. 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/10.4.28.png')
+```
+
+Remember, you must click <span style="color:blue">Add</span> to process this graph!
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/10.4.29.png')
+```
+
+Now, click <span style="color:blue">Continue</span>, then <span style="color:blue">OK</span>. 
+
+SPSS will produce several tables of output, along with a graph. The Fs for our ANOVA are located in the table labeled "Tests of Within-Subjects Effects", and the plot we requested is found below:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/10.4.30.png')
+```
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/10.4.31.png')
+```
+
+According to this output:
+1. There is a main effect of congruency, F(1, 49)=342.45, p<.05.
+2. There is a main effect of posture, F(1, 49)=7.33, p<.05.
+3. There is an interaction effect between congruency and posture, F(1, 49)=8.96, p<.05.
+
+From the plot we can see that incongruent words produced longer RTs than congruent words. We also see that sitting produced longer RTs than standing. As for the interaction, you can see that the difference between congruent and incongruent is more pronounced (larger) in the sitting condition than in the standing condition.
+
+### Calculate simple effects
+
+---
+
+
+We may want to dissect these effects similarly to the way did in the previous example. This time, because all 3 effects were significant, we will ask SPSS to conduct simple effects for both `congruency` and `posture`. To begin, go to <span style="color:blue">Analyze</span>, <span style="color:blue">General Linear Model</span>, and <span style="color:blue">Repeated Measures...</span>
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/10.4.32.png')
+```
+
+In the next window, all of your saved settings are still there, so click <span style="color:blue">Define</span>. In the next window, click <span style="color:blue">Paste</span>:
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/10.4.33.png')
+```
+
+You will be taken to the SPSS Syntax window. 
+
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/10.4.34.png')
+```
+
+Change the syntax you see to the following:
+
+
+> GLM congruent_stand congruent_sit incongruent_stand incongruent_sit <br>
+>  /WSFACTOR=congruency 2 Polynomial posture 2 Polynomial <br>
+>  /METHOD=SSTYPE(3) <br>
+>  /PLOT=PROFILE(congruency * posture) <br>
+>  /EMMEANS=TABLES(congruency * posture) compare(congruency) adj(lsd) <br>
+>  /EMMEANS=TABLES(congruency * posture) compare(posture) adj(lsd) <br>
+>  /CRITERIA=ALPHA(.05) <br>
+>  /WSDESIGN=congruency posture congruency * posture. <br>
+
+
+  Click the green triangle (<span style="color:blue">"play"</span>)at the top and you will see several output tables appear in the output window. We will focus on the following two:
+  
+```{r , echo=FALSE,dev='png'}
+knitr::include_graphics('img/10.4.35.png')
+```
+
+When reading these tables, remember that:
+
+1. For `posture`, 1=stand and 2=sit
+2. For `congruency`, 1=congruent and 2=incongruent.
+
+In this output, we can see that:
+1. For standing only, congruent and incongruent RTs are significantly different (p<.05).
+2. For sitting only, congruent and incongruent RTs are significantly different (p<.05).
+3. For congruent words only, standing and sitting RTs are not significantly different (p=NS).
+4. For incongruent words only, standing and sitting are significantly different (p<.05).
+
+
+### Practice Problems
+
+___
+
+
+Below is fictitious data representing the number of milliimeters a plant has grown under several water/sunlight combinations:
+
+| Water & Sunlight  | NoWater & Sunlight | Water & NoSunlight | NoWater & NoSunlight |
+--- | --- | --- | ---
+1.2 | 2.4 | 3.1 | 2.5
+3.0 | 1.1 | 2.2 | 3.4
+2.5 | 1.2 | 2.5 | 4.2
+1.6 | 2.4 | 4.3 | 2.1
+
+1. Enter this data into SPSS as appropriate for a Two-Factor Between-Subjects ANOVA (N=16). Perform the ANOVA and report all results in standard statistical reporting format (use alpha=.05). Include a plot of means.
+
+2. Enter this data into SPSS as appropriate for a Two-Factor Repeated-Measures ANOVA (N=4). Perform the ANOVA and report all results in standard statistical reporting format (use alpha=.05). Include a plot of means.
 
 ## JAMOVI
 
