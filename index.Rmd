@@ -95,6 +95,12 @@ Thanks to the librarians at Brooklyn College of CUNY, especially Miriam Deutch, 
 $("#coverpic").hide();
 </script>
 
+## Data
+
+Data files used for the labs are all taken from open data sources. Links are provided for each lab. For convenience, all of the data files are also available here:
+
+[https://github.com/CrumpLab/statisticsLab/tree/master/data](https://github.com/CrumpLab/statisticsLab/tree/master/data)
+
 
 ## R
 
