@@ -48,7 +48,7 @@ Reminder, this is a repeated measures design because each participant typed lett
 ## Important Stuff
 - citation: Behmer, Lawrence P., Crump, M. J. C. (2017). Spatial Knowledge during Skilled Action Sequencing: Hierarchical versus Non-Hierarchical Representations. Attention, Perception & Psychophysics, 79, 2435-2448.
 - [Link to .pdf of article](https://github.com/CrumpLab/CrumpLab.github.io/raw/master/files/8753/Behmer%20and%20Crump%20-%202017.pdf)
-- [Data in .csv format](https://github.com/CrumpLab/statisticsLab/raw/master/data/exp1_BehmerCrumpAPP.csv)
+- <a href="https://github.com/CrumpLab/statisticsLab/raw/master/data/exp1_BehmerCrumpAPP.csv" download>Data in .csv format</a>
 
 
 ## R

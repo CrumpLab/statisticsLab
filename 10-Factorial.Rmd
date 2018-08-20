@@ -48,7 +48,7 @@ The design of the study was a 2x2 repeated-measures design. The first IV was con
 
 - citation: Rosenbaum, D., Mama, Y., & Algom, D. (2017). Stand by Your Stroop: Standing Up Enhances Selective Attention and Cognitive Control. Psychological science, 28(12), 1864-1867.
 - [Link to .pdf of article](https://www.researchgate.net/profile/David_Rosenbaum6/publication/320070495_Stand_by_Your_Stroop_Standing_Up_Enhances_Selective_Attention_and_Cognitive_Control/links/5a82b4f10f7e9bda869fac5b/Stand-by-Your-Stroop-Standing-Up-Enhances-Selective-Attention-and-Cognitive-Control.pdf)
-- [Data in .csv format](https://github.com/CrumpLab/statisticsLab/raw/master/stroop_stand.csv)
+- <a href="https://github.com/CrumpLab/statisticsLab/raw/master/stroop_stand.csv" download>Data in .csv format</a>
 
 
 ## R

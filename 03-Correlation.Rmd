@@ -20,9 +20,7 @@ In this lab you will learn how to compute correlations between two variables in 
 
 ### Important Info
 
-We use data from the [World Happiness Report](http://worldhappiness.report). A .csv of the data can be found here:
-
-[https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/WHR2018.csv](https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/WHR2018.csv)
+We use data from the [World Happiness Report](http://worldhappiness.report). A .csv of the data can be found here: <a href="https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/WHR2018.csv" download>WHR2018.csv</a>
 
 ## R
 

@@ -36,7 +36,7 @@ What happened? Did the recruiters think job applicants were smarter when they re
 ## Important Stuff
 - citation: Schroeder, J., & Epley, N. (2015). The sound of intellect: Speech reveals a thoughtful mind, increasing a job candidate’s appeal. Psychological Science, 26, 877-891.
 - [Link to .pdf of article](http://journals.sagepub.com/stoken/default+domain/PhtK6MPtXvkgnYRrnGbA/full)
-- [Data in .csv format](https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/SchroederEpley2015data.csv)
+- <a href="https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/SchroederEpley2015data.csv" download>Data in .csv format</a>
 - [Data in SPSS format](https://drive.google.com/open?id=0Bz-rhZ21ShvOVXlDMjEzQU1oY1k)
 
 

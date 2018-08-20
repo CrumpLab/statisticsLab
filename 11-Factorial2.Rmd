@@ -32,7 +32,7 @@ An overarching question was whether or not participants would have better visual
 
 - citation: Barasch, A., Diehl, K., Silverman, J., & Zauberman, G. (2017). Photographic memory: The effects of volitional photo taking on memory for visual and auditory aspects of an experience. Psychological science, 28(8), 1056-1066.
 - [Link to .pdf of article](http://journals.sagepub.com/doi/abs/10.1177/0956797617694868)
-- [Data in .csv format](https://github.com/CrumpLab/statisticsLab/raw/master/study1_data_photo.csv)
+- <a href="https://github.com/CrumpLab/statisticsLab/raw/master/study1_data_photo.csv" download>Data in .csv format</a>
 
 ## R
 

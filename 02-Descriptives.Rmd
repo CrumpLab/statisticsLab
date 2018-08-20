@@ -19,9 +19,9 @@ The purpose of this lab is to show you how to compute basic descriptive statisti
 
 ### Important info
 
-We will be using data from the gapminder project. You can download a small snippet of the data in .csv format from this link (note this dataset was copied from the gapminder library for R)
+We will be using data from the gapminder project. You can download a small snippet of the data in .csv format from this link (note this dataset was copied from the gapminder library for R) <a href="https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/gapminder.csv" download>gapminder.csv</a>
 
-[https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/gapminder.csv](https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/gapminder.csv)
+
 
 ## R
 
