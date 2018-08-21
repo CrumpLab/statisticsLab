@@ -168,6 +168,86 @@ The top right panel contains two tabs, one for the workspace and another for his
 
 The bottom-right window has four tabs for files, plots, packages, and help. The files tab allows browsing of the computers file directory. An important concept in R is the **current working directory**. This is file folder that R points to by default. Many functions in R will save things directly to this direct, or attempt to read files from this directory. The current working directory can be changed by navigating to the desired folder in the file menu, and then clicking on the more option to set that folder to the current working directory. This is especially important when reading in data to R. The current working directory should be set to the folder containing the data to be inputted into R. The plots tab will show recent plots and figures made in R. The packages tab lists the current R libraries loaded into memory, and provides the ability to download and enable new R packages. The help menu is an invaluable tool. Here, you can search for individual R commands to see examples of how they are used. Sometimes the help files for individual commands are opaque and difficult to understand, so it is necessary to do a Google search to find better examples of using these commands.
 
+### How to complete the R Labs
+
+Each of the labs focuses on particular data-analysis problems, from graphing data, computing descriptive statistics, to running inferential tests in R. All of the labs come in three parts, a training part, a generalization part, and a writing part. The training part includes step-by-step examples of R code that solves particular problems. The R code is always highlighted in grey. The generalization part gives short assignments to change parts of the provided code to solve a new problem. The writing part tasks you with answering questions about statitiscal concepts. 
+
+The way to complete each lab is to open a new R Markdown document in R-studio, and then document your progression through each of the parts. By doing this, you will become familiar with how R and R-studio works, and how to create documents that preserve both the code and your notes all in one place. There are a few tricks to getting started that are outline below.
+
+1. Open R-studio
+
+#### R projects
+
+2. Create a new R project
+    a. Go to the file menu and select new project, or go to the top right-hand corner of  R-studio, you should see a blue cube with an R in it, then select New project from the dropdown menu
+3. Save the new R project somewhere that you can find it. If you are working on a lab computer, then save the new R project to the desktop.
+
+What is an R project? When you create a new R project you are creating two things, 1) a new folder on your computer, and 2) a ".Rproj" file. For example, if you gave your R project the name "Lab1", then you will have created a folder title "Lab1", and inside the folder you will find an R project file called "Lab1.Rproj".
+
+As you work inside R-studio you will be creating text documents, and you will be doing things like loading data, and saving the results of your analyses. As your work grows and becomes more complex, you can often find yourself creating many different files. **The R project folder is a very useful way of organizing your files all in one place so you can find them later.** If you double-clik an R project file, R-studio will automatically load and restore your last session. In the labs, you will be using your R project folder to:
+
+1. save data files into this folder
+2. save R-markdown files that you will use to write your R-code and lab notes
+3. save the results of your analysis
+
+#### Installing libraries
+
+When you install R and R-studio, you get what is called Base R. Base R contains many libraries that allow you to conduct statistical anlayses. Because R is free and open-source, many other developers have created add-on libraries that extend the functionality of R. **We use some of these libraries, and you need to install them before you can do the labs**.
+
+For example, in any of the labs, whenever you see a line code that uses the word library like this `library(libraryname)`, this line of code telling R to load up that library so it can be used. The `libraryname` would be replaced with the actual name of the library. For example, you will see code like this in the labs:
+
+```
+library(data.table)
+```
+
+This line of code is saying that the `data.table` library needs to be loaded. You can check to see if any library is already loaded by clicking on the "packages" tab in the bottom right hand panel. You will see many packages listed in alphabetical order. Packages that are currently loaded and available have a checkmark. If you scroll down and find that you **do not** have `data.table` installed, then you need to install it. To install any package follow these steps:
+
+1. Click on the packages tab
+2. Find the "install" button in the top left hand corner of the packages tab.
+3. Click the install button
+4. Make sure "install from:" is set to CRAN repository
+5. Make sure "dependencies" is clicked on (with a checkmark)
+6. type the name of the library into the search bar. 
+7. As you type, you should see the names of different packages you can install pop-up in a drop-down menu. **You must be connected to the internet to install packages from CRAN**
+8. Once you find the package (e.g., `data.table`), click it, or just make sure the full, correctly spelled name, is in the search bar
+9. Press the install button
+
+You should see some text appear in the console while R installs the package.
+
+10. After you have installed the package, you should now see that it is listed in the packages tab.
+11. You can turn the package on by clicking it in the package tab.
+12. OR, you can turn the packge on by running the command `library(data.table)` in the console, to do this type `library(data.table)` into the console, and press enter.
+
+#### Quick install
+
+If you are using R on one of the lab computers, you may find that some of the packages are not installed. The lab computers get wiped everynight, so it may be necessary to install packages each time you come back to the lab. Fortunately, we can tell R to install all of the packages we need in one go. Copy the following lines of code into the console, and press enter. Note you can select all of the lines at once, then copy them, then paste all of them into the console, and press enter to run them all. After each of the packages are installed, you will then be able to load them using `library()`.
+
+```
+install.packages(ggplot2)
+install.packages(dplyr)
+install.packages(data.table)
+install.packages(summarytools)
+install.packages(gapminder)
+install.packages(ggpubr)
+```
+
+#### R markdown
+
+Once you have the necessary packages installed you can begin creating R markdown documents for each lab. We admit that at the beginning, R markdown documents might seem a little bit confusing, but you will find they are extremely useful and flexible. Basically, what R markdown allows you to do is combine two kinds of writing, 1) writing R code to conduct analyses, and 2) writing normal text, with headers, sub-headers, and paragraphs. You can think of this like a lab journal, that contains both your writing about what you are doing (e.g., notes to self), and the code that you use for analysis. Additionally, when your code does something like make a graph, or run a statistical test, you can ask R markdown to print the results.
+
+The R markdown website has an excellent tutorial that is well worth your time to check out: [https://rmarkdown.rstudio.com/lesson-1.html](https://rmarkdown.rstudio.com/lesson-1.html)
+
+#### R markdown lab templates
+
+We have created a set of template documents for each lab that can be downloaded here: [download lab templates]().
+
+
+
+
+
+
+
+
 
 
 ## Excel 
