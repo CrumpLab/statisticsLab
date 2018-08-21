@@ -241,6 +241,32 @@ The R markdown website has an excellent tutorial that is well worth your time to
 
 We have created a set of template documents for each lab that can be downloaded here: [download lab templates](https://github.com/CrumpLab/statisticsLab/raw/master/RMarkdownsLab.zip).
 
+When you unzip the file you should find the following:
+
+1. A new folder titled "RMarkdownsLab"
+2. Inside the folder you will see the "RMarkdownsLab.Rproj" file
+3. A data folder containing data files for the labs
+4. A "LabTemplates" folder containing the R markdown templates for each lab.
+
+To get started with Lab 1, follow these steps:
+
+1. copy the template file for lab 1, "Lab 01 Graphing_Student Name.Rmd", and place it into the "RMarkdownsLab" (copy it out of the template folder, and into the RMarkdownsLab folder).
+2. Rename the file to add your own name, eg., "Lab1GraphingMattCrump.Rmd"
+2. double-click the "RMarkdownsLab.Rproj" file
+3. R-studio will now load up.
+4. If you click the files tab, you will see all of the files and folders inside the "RMarkdownsLab" folder
+5. Click on your lab1 .rmd file, it will now load into the editor window. 
+
+Each lab template .rmd file contains three main sections, one for each part of the lab. You will write things inside each section to complete the lab.
+
+### Screencast tutorial
+
+Follow this guide to get up running for Lab 1.
+
+
+
+
+
 
 
 

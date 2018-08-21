@@ -29,9 +29,9 @@ Our general goals for this first lab are to get your feet wet, so to speak. We'l
 
 ## R 
 
-Your lab instructor will show you how to open R-studio on the lab computer. Just find it and double-click. Now you have R-studio.
+Your lab instructor will show you how to open R-studio on the lab computer. Just find it and double-click. Now you have R-studio. Your lab instructor will also walk you through the steps to get started completing the first lab. We also wrote down the steps [here](https://crumplab.github.io/statisticsLab/software.html#how-to-complete-the-r-labs), and made a [little movie]().
 
-There are numerous resources for learning about R, we put some of them on the course website, under the [resouces page](https://crumplab.github.io/psyc3400/Resources.html). You will find these resources helpful as you learn. We also have a kind of [general introduction to R and Rstudio here](). This shows you how to download R and R-studio at home (it's free).
+There are numerous resources for learning about R, we put some of them on the course website, under the [resouces page](https://crumplab.github.io/psyc3400/Resources.html). You will find these resources helpful as you learn. We also have a kind of [general introduction to R and Rstudio here](https://crumplab.github.io/statisticsLab/software.html#r). This shows you how to download R and R-studio at home (it's free). Throughout the labs you will be writing things called R Markdown documents. You will learn how to do this throughout the labs, but it can also be worthwhile reading other tutorials, such as the one provided by [R Markdown](https://rmarkdown.rstudio.com/lesson-1.html).
 
 When we made this course, we assumed that most students would be unfamiliar with R and R-studio, and might even be frightened of it, because it is a computer programming language (OOOOHHH NOOOOOOO, I NEED TO DROP THIS COURSE NOW)...Don't worry. It's going to be way easier than you think. Let's compare to other statistics courses where you would learn something like SPSS. That is also a limited programming language, but you would mostly learn how to point with a mouse, and click with button. I bet you already know how to do that. I bet you also already know how to copy and paste text, and press enter. That's mostly what we'll be doing to learn R. We will be doing statistics by typing commands, rather than by clicking buttons. However, lucky for you, all of the commands are already written for you. You just have to copy/paste them. 
 
@@ -49,7 +49,6 @@ You just made R sample 100 numbers, and then plot the results in a histogram. Pr
 
 For now, let's do something that might be a little bit more interesting...what movies are going to be filming in NYC? It turns out that NYC makes a lot of data about a lot things open and free for anyone to download and look at. This is the NYC Open Data website: [https://opendata.cityofnewyork.us](https://opendata.cityofnewyork.us). I searched through the data, and found this data file that lists the locations of film permits for shooting movies all throughout the Burroughs. You can download the data to your computer from [this link](https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/Film_Permits.csv)
 
-NOTE TO SELF, COME BACK HERE AND WALKTHROUGH FILE PATHS AND THINGS
 
 ```{r}
 library(data.table)
