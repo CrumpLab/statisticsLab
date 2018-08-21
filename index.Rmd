@@ -239,7 +239,7 @@ The R markdown website has an excellent tutorial that is well worth your time to
 
 #### R markdown lab templates
 
-We have created a set of template documents for each lab that can be downloaded here: [download lab templates]().
+We have created a set of template documents for each lab that can be downloaded here: [download lab templates](https://github.com/CrumpLab/statisticsLab/raw/master/RMarkdownsLab.zip).
 
 
 
