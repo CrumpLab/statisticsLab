@@ -273,6 +273,11 @@ R-studio is also in the cloud. This means that if you want to use R and R-studio
 
 3. To see how everything would work, follow the steps in this video. You will need to download this [.zip file to your computer to get started](https://github.com/CrumpLab/statisticsLab/raw/master/RstudioCloud.zip)
 
+The link to the video is [https://www.youtube.com/watch?v=WsbnV0t7FE4](https://www.youtube.com/watch?v=WsbnV0t7FE4), or you can watch it here:
+
+<iframe width="560" height="315" src="https://www.youtube.com/watch?v=WsbnV0t7FE4" frameborder="0" allowfullscreen></iframe>
+
+
 
 
 
