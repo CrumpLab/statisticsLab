@@ -263,6 +263,16 @@ Each lab template .rmd file contains three main sections, one for each part of t
 
 Follow this guide to get up running for Lab 1.
 
+### R-studio Cloud
+
+R-studio is also in the cloud. This means that if you want to use R and R-studio through your web-browser you can do that without even installing R or R-studio on your computer. It's also free!
+
+1. sign up for an R-studio cloud account here: [https://rstudio.cloud](https://rstudio.cloud)
+
+2. You can make new R projects, work inside them, and everything is saved in the cloud!
+
+3. To see how everything would work, follow the steps in this video. You will need to download this [.zip file to your computer to get started]([download lab templates](https://github.com/CrumpLab/statisticsLab/raw/master/RstudioCloud.zip)
+
 
 
 
