@@ -271,7 +271,7 @@ R-studio is also in the cloud. This means that if you want to use R and R-studio
 
 2. You can make new R projects, work inside them, and everything is saved in the cloud!
 
-3. To see how everything would work, follow the steps in this video. You will need to download this [.zip file to your computer to get started]([download lab templates](https://github.com/CrumpLab/statisticsLab/raw/master/RstudioCloud.zip)
+3. To see how everything would work, follow the steps in this video. You will need to download this [.zip file to your computer to get started](https://github.com/CrumpLab/statisticsLab/raw/master/RstudioCloud.zip)
 
 
 
