@@ -100,7 +100,7 @@ If you click on the `counts` variable, you will see the five boroughs listed, al
 
 We do the plot using a fantastic package called `ggplot2`. It is very powerful once you get the hand of it, and when you do, you will be able to make all sorts of interesting graphs. Here's the code to make the plot
 
-```{r}
+```{r 1borough}
 library(ggplot2)
 
 ggplot(counts, aes(x = Borough, y = count_of_permits )) +
@@ -115,7 +115,7 @@ There it is, we're done here! We can easily look at this graph, and answer our q
 
 We think you might be skeptical of what you are doing here, copying and pasting things. Soon you'll see just how fast you can do things by copying and pasting, and make a few little changes. Let's quickly ask another question about what kinds of films are being made. The column `Category`, gives us some information about that. Let's just copy paste the code we already made, and see what kinds of categories the films fall into. See if you can tell what I changed in the code to make this work, I'll do it all at once:
 
-```{r}
+```{r 1category}
 
 counts <- nyc_films %>%
           group_by(Category) %>%
@@ -138,7 +138,7 @@ Fine, so how do we fix the graph? Good question. To be honest, I don't know righ
 Found it, actually found a lot of ways to do this. The trick is to add the last line. I just copy-pasted it from the solution I found on [stack overflow](https://stackoverflow.com/questions/1330989/rotating-and-spacing-axis-labels-in-ggplot2) (you will become friend's with stack overflow, there are many solutions there to all of your questions)
 
 
-```{r}
+```{r 1categoryB}
 
 counts <- nyc_films %>%
           group_by(Category) %>%
@@ -176,7 +176,7 @@ For now, let's the get the hang of adding things to the graph that let us change
 
 The last graph had `count_of_permits` as the label on the y-axis. That doesn't look right. ggplot2 automatically took the label from the column, and made it be the name on the y-axis. We can change that by adding `ylab("what we want")`. We do this by adding a $+$ to the last line, then adding `ylab()`
 
-```{r}
+```{r 1categoryC}
 ggplot(counts, aes(x = Category, y = count_of_permits )) +
   geom_bar(stat="identity") + 
   theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
@@ -187,7 +187,7 @@ ggplot(counts, aes(x = Category, y = count_of_permits )) +
 
 Let's slightly modify the x label too:
 
-```{r}
+```{r 1categoryD}
 ggplot(counts, aes(x = Category, y = count_of_permits )) +
   geom_bar(stat="identity") + 
   theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
@@ -200,7 +200,7 @@ ggplot(counts, aes(x = Category, y = count_of_permits )) +
 
 Let's give our graph a title
 
-```{r}
+```{r 1categoryE}
 ggplot(counts, aes(x = Category, y = count_of_permits )) +
   geom_bar(stat="identity") + 
   theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
@@ -213,7 +213,7 @@ ggplot(counts, aes(x = Category, y = count_of_permits )) +
 
 Let's make the bars different colors. To do this, we add new code to the inside of the `aes()` part:
 
-```{r}
+```{r 1categoryF}
 ggplot(counts, aes(x = Category, y = count_of_permits, color=Category )) +
   geom_bar(stat="identity") + 
   theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
@@ -226,7 +226,7 @@ ggplot(counts, aes(x = Category, y = count_of_permits, color=Category )) +
 
 Let's make the bars different colors. To do this, we add new code to the inside of the `aes()` part...Notice I've started using new lines to make the code more readable. 
 
-```{r}
+```{r 1categoryG}
 ggplot(counts, aes(x = Category, y = count_of_permits, 
                    color=Category, 
                    fill= Category )) +
@@ -243,7 +243,7 @@ Sometimes you just don't want the legend on the side, to remove it add
 
 `theme(legend.position="none")`
 
-```{r}
+```{r 1categoryH}
 ggplot(counts, aes(x = Category, y = count_of_permits, 
                    color=Category, 
                    fill= Category )) +
@@ -259,7 +259,7 @@ ggplot(counts, aes(x = Category, y = count_of_permits,
 
 The rest is often just visual preference. For example, the graph above has this grey grid behind the bars. For a clean classic no nonsense look, use `theme_classic()` to take away the grid.
 
-```{r}
+```{r 1categoryI}
 ggplot(counts, aes(x = Category, y = count_of_permits, 
                    color=Category, 
                    fill= Category )) +
@@ -276,7 +276,7 @@ ggplot(counts, aes(x = Category, y = count_of_permits,
 
 Interesting, `theme_classic()` is misbehaving a little bit. It looks like we have some of our layer out of order, let's re-order. I just moved `theme_classic()` to just underneath the `geom_bar()` line. Now everything get's drawn properly.
 
-```{r}
+```{r 1categoryJ}
 ggplot(counts, aes(x = Category, y = count_of_permits, 
                    color=Category, 
                    fill= Category )) +
@@ -295,7 +295,7 @@ ggplot(counts, aes(x = Category, y = count_of_permits,
 
 Changing font-size is often something you want to do. ggplot2 can do this in different ways. I suggest using the `base_size` option inside `theme_classic()`. You set one number for the largest font size in the graph, and everything else gets scaled to fit with that that first number. It's really convenient. Look for the inside of `theme_classic()`
 
-```{r}
+```{r 1categoryK}
 ggplot(counts, aes(x = Category, y = count_of_permits, 
                    color=Category, 
                    fill= Category )) +
@@ -311,7 +311,7 @@ ggplot(counts, aes(x = Category, y = count_of_permits,
 ```
 or make things small... just to see what happens
 
-```{r}
+```{r 1categoryL}
 ggplot(counts, aes(x = Category, y = count_of_permits, 
                    color=Category, 
                    fill= Category )) +
@@ -336,7 +336,7 @@ That's enough of the ggplot2 basics for now. You will discover that many things 
  
 Notice the `nyc_films` data frame also has a column for `SubCategoryName`. Let's see what's going on there with a quick plot.
 
-```{r}
+```{r 1subcategory}
 
 # get the counts (this is a comment it's just here for you to read)
 
@@ -367,7 +367,7 @@ Let's see one more really useful thing about ggplot2. It's called `facet_wrap()`
 
 Here's our question. We know that some films are made in different Boroughs, and that same films are made in different categories, but do different Boroughs have different patterns for the kinds of categories of films they request permits for? Are their more TV shows in Brooklyn? How do we find out? Watch, just like this:
 
-```{r}
+```{r 1facetwrap}
 
 # get the counts (this is a comment it's just here for you to read)
 
@@ -396,7 +396,7 @@ We did two important things. First we added `Borough` and `Category` into the `g
 The nice thing about this is we can switch things around if we want. For example, we could do it this way by switching the `Category` with `Borough`, and facet-wrapping by Category instead of Borough like we did above. Do what works for you.
 
 
-```{r}
+```{r 1facetwrap2}
 ggplot(counts, aes(x = Borough, y = count_of_permits, 
                    color=Borough, 
                    fill= Borough )) +
@@ -448,14 +448,14 @@ We will show you how to graph some the data to answer a few different kinds of q
 
 How long are people living all around the world according to this data set? There are many ways we could plot the data to find out. The first way is a histogram. We have many numbers for life expectancy in the column `lifeExp`. This is a big sample, full of numbers for 142 countries across many years. It's easy to make a histogram in ggplot to view the distribution:
 
-```{r}
+```{r 1gapminder}
 ggplot(gapminder_df, aes(x=lifeExp))+
   geom_histogram(color="white")
 ```
 
 See, that was easy. Next, is a code block that adds more layers and settings if you wanted to modify parts of the graph:
 
-```{r}
+```{r 1gapminderB}
 
 ggplot(gapminder_df, aes(x = lifeExp)) +
   geom_histogram(color="white")+ 
@@ -470,7 +470,7 @@ The histogram shows a wide range of life expectancies, from below 40 to just ove
 
 One final thing about histograms in ggplot. You may want to change the bin size. That controls how wide or narrow, or the number of bars (how they split across the range), in the histogram. You need to set the `bins=` option in `geom_histogram()`.
 
-```{r}
+```{r 1gapminderC}
 
 ggplot(gapminder_df, aes(x = lifeExp)) +
   geom_histogram(color="white", bins=50)+ 
@@ -489,7 +489,7 @@ We can see we have data for life expectancy and different years. So, does worldw
 
 Let's look at this using a scatter plot. We can set the x-axis to be year, and the y-axis to be life expectancy. Then we can use `geom_point()` to display a whole bunch of dots, and then look at them. Here's the simple code:
 
-```{r}
+```{r 1scatterplot}
 ggplot(gapminder_df, aes(y= lifeExp, x= year))+
   geom_point()
 ```
@@ -500,7 +500,7 @@ Whoa, that's a lot of dots! Remember that each country is measured each year. So
 
 I'm (Matt) from Canada, so maybe I want to know if life expectancy for Canadians is going up over the years. To find out the answer for one country, we first need to split the full data set, into another smaller data set that only contains data for Canada. In other words, we want only the rows where the word "Canada" is found in the `country` column. We will use the `filter` function from `dplyr` for this:
 
-```{r}
+```{r 1scatterB}
 # filter rows to contain Canada
 
 smaller_df <- gapminder_df %>% 
@@ -519,7 +519,7 @@ I would say things are looking good for Canadians, their life expectancy is goin
 
 What if we want to look at a few countries altogether. We can do this too. We just change how we filter the data so more than one country is allowed, then we plot the data. We will also add some nicer color options and make the plot look pretty. First, the simple code:
 
-```{r}
+```{r 1scatterC}
 
 # filter rows to contain countries of choice
 
@@ -535,7 +535,7 @@ ggplot(smaller_df, aes(y= lifeExp, x= year, group= country))+
 
 Nice, we can now see three sets of dots, but which are countries do they represent? Let's add a legend, and make the graph better looking.
 
-```{r}
+```{r 1scatterD}
 ggplot(smaller_df,aes(y= lifeExp, x= year, 
                       group= country, color = country)) +
   geom_point()+ 
@@ -550,7 +550,7 @@ ggplot(smaller_df,aes(y= lifeExp, x= year,
 
 We might also want to connect the dots with a line, to make it easier to see the connection! Remember, ggplot2 draws layers on top of layers. So, we add in a new `geom_line()` layer.
 
-```{r}
+```{r 1scatline}
 ggplot(smaller_df,aes(y= lifeExp, x= year, 
                       group= country, color = country)) +
   geom_point()+ 

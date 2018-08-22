@@ -520,7 +520,7 @@ new_data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(subjec
 <h3><span class="header-section-number">11.4.5</span> Look at the data</h3>
 <p>Remember before we do any analysis, we always want to “look” at the data. This first pass let’s us know if the data “look right”. For example, the data file could be messed up and maybe there aren’t any numbers there, or maybe the numbers are just too weird. For example, the memory performance DV is a percent, so it should range between 0 and 100, if we find numbers that are negative or greater than 100, then we know something is wrong.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(new_data$memory_accuracy)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-348-1.png" width="672" /></p>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-324-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">range</span>(new_data$memory_accuracy)</code></pre></div>
 <pre><code>## [1]  11.11111 100.00000</code></pre>
 <p>Great, the numbers check out, they are all inside the range of 0 to 100.</p>
@@ -547,7 +547,7 @@ plot_means &lt;-<span class="st"> </span>new_data %&gt;%
                 <span class="dt">width=</span>.<span class="dv">2</span>)+
 <span class="st">  </span><span class="kw">theme_classic</span>()+
 <span class="st">  </span><span class="kw">coord_cartesian</span>(<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">50</span>,<span class="dv">100</span>))</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-349-1.png" width="672" /></p>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-325-1.png" width="672" /></p>
 </div>
 <div id="conduct-the-anova-2" class="section level3">
 <h3><span class="header-section-number">11.4.7</span> Conduct the ANOVA</h3>

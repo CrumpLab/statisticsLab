@@ -541,7 +541,7 @@ descriptive_df &lt;-<span class="st"> </span>all_data %&gt;%<span class="st"> </
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data=</span>all_data, <span class="kw">aes</span>(<span class="dt">x=</span>CONDITION, <span class="dt">y=</span>Intellect_Rating), <span class="dt">alpha=</span>.<span class="dv">5</span>)+
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha=</span>.<span class="dv">25</span>)+
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Rating&quot;</span>)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-229-1.png" width="672" /></p>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-205-1.png" width="672" /></p>
 <p>This plot is very useful. First, we can see the numbers in our dependent measure are behaving sensibly. We know that the numbers have to be between 1-10, because those were the only options in the scale. If we found numbers bigger or smaller, we would know something was wrong. Checking for things that are obviously wrong in the data is one reason why we always look at first. We are checking for obvious errors. There are other ways to check to, but looking is fast and easy.</p>
 <div class="marginnote">
 <p><strong>Question:</strong> Why are the standard errors of each sample an appropriate thing to use for error bars?</p>
@@ -640,7 +640,7 @@ descriptive_all &lt;-<span class="st"> </span>plot_all %&gt;%<span class="st"> <
              <span class="dt">position =</span> <span class="kw">position_dodge</span>(<span class="dt">width=</span>.<span class="dv">9</span>))+
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha=</span>.<span class="dv">25</span>)+
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Rating&quot;</span>)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-232-1.png" width="672" /></p>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-208-1.png" width="672" /></p>
 <p>Well, we didn’t make the exact graph. We have the bars, the error bars, and we added the individual scores because they are useful to look at. Otherwise, it’s the same graph (except the the ordering of bars is determined alphabetically here. We change that in ggplot, but we won’t do that today.)</p>
 </div>
 <div id="generalization-exercise-6" class="section level3">

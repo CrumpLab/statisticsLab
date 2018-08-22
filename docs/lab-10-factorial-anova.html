@@ -556,7 +556,7 @@ stroop_long&lt;-<span class="st"> </span><span class="kw">gather</span>(all_data
 <p>Remember before we do any analysis, we always want to “look” at the data. This first pass let’s us know if the data “look right”. For example, the data file could be messed up and maybe there aren’t any numbers there, or maybe the numbers are just too weird.</p>
 <p>Let’s make a quick histogram of all of the RT data, like this:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(stroop_long$RTs)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-313-1.png" width="672" /></p>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-289-1.png" width="672" /></p>
 <p>This looks pretty good, there are no super huge numbers here.</p>
 </div>
 <div id="look-at-the-means-1" class="section level3">
@@ -581,7 +581,7 @@ plot_means &lt;-<span class="st"> </span>stroop_long %&gt;%
                 <span class="dt">width=</span>.<span class="dv">2</span>)+
 <span class="st">  </span><span class="kw">theme_classic</span>()+
 <span class="st">  </span><span class="kw">coord_cartesian</span>(<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">700</span>,<span class="dv">1000</span>))</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-314-1.png" width="672" /></p>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-290-1.png" width="672" /></p>
 </div>
 <div id="conduct-the-anova-1" class="section level3">
 <h3><span class="header-section-number">10.4.7</span> Conduct the ANOVA</h3>

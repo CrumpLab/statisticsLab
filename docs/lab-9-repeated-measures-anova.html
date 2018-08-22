@@ -528,7 +528,7 @@ all_data &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class
 <p>For example, this study involves reaction times: the time between seeing something and responding to it. If you had done a study like this before, you would know that it usually doesn’t take people that long to start responding. Most reaction times will be under a second (or 1000 milliseconds). But, sometime people are little slow, and sometimes they do funny things like check their phone in the middle of an experiment.</p>
 <p>Before I analyze reaction time data, I often make a histogram of all of the RT data, like this:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(all_data$PureRTs)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-274-1.png" width="672" /></p>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-250-1.png" width="672" /></p>
 <p>We can see that almost all of the reaction times are well below 5000 milliseconds (5 seconds), which is good. Most of the time people were paying attention and not “checking their phone”. Notice, the range of the histogram goes out to 15,000 milliseconds. You can’t see any bars out there (too small to notice), but there must be at least a few trials where somebody took 15 seconds to start responding. These are called outliers. We will remove them before we conduct our analysis</p>
 </div>
 <div id="look-at-the-means" class="section level3">
@@ -575,7 +575,7 @@ plot_means$Stimulus &lt;-<span class="st"> </span><span class="kw">factor</span>
 <span class="st">  </span><span class="kw">theme_classic</span>()+
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Mean Reaction Time (ms)&quot;</span>)+
 <span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Typing Material&quot;</span>)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-275-1.png" width="672" /></p>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-251-1.png" width="672" /></p>
 <p>Alright, we made things a little bit more complicated than they need to be. Our primary question is whether reaction times followed this pattern: Normal &lt; Bigrams &lt; Random. We can see the means do follow this pattern. However, shouldn’t we only be looking at three means, why are their six means, and two lines?</p>
 <p>The above code included the second independent variable <code>Block</code>. As a result, you are seeing the means for Typing material when subjects could see the keyboard, and when the couldn’t see the keyboard. We will come back to this later. For now, let’s ignore the Block condition, and find the means for the Typing Material IV by averaging over the Block conditions. We run the same code as above, by take out <code>Block</code>, in the <code>group_by</code> function. We also take <code>Block</code> out the ggplot function.</p>
 <p><strong>VERY IMPORTANT</strong>: We did something in the above code that we didn’t point out. We filtered the data before we found the means. For most of the data sets in other labs, we given you data that is more or less ready to analyse. More often than not data needs to be pre-processed, or filtered before you analyze it. We can use the <code>filter</code> function in <code>dplyr</code> to do our filtering. <code>filter</code> filters the rows for us, so we will only include the rows that we want.</p>
@@ -616,7 +616,7 @@ plot_means$Stimulus &lt;-<span class="st"> </span><span class="kw">factor</span>
 <span class="st">  </span><span class="kw">theme_classic</span>()+
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Mean Reaction Time (ms)&quot;</span>)+
 <span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Typing Material&quot;</span>)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-276-1.png" width="672" /></p>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-252-1.png" width="672" /></p>
 </div>
 <div id="conduct-the-repeated-measures-anova" class="section level3">
 <h3><span class="header-section-number">9.4.6</span> Conduct the repeated Measures ANOVA</h3>
