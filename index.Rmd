@@ -97,9 +97,19 @@ $("#coverpic").hide();
 
 ## Data
 
-Data files used for the labs are all taken from open data sources. Links are provided for each lab. For convenience, all of the data files are also available here:
+Data files used for the labs are all taken from open data sources. Links are provided for each lab. For convenience, all of the data files are also available here as single files in the github repository for this lab manual
+
+### Data Repository
 
 [https://github.com/CrumpLab/statisticsLab/tree/master/data](https://github.com/CrumpLab/statisticsLab/tree/master/data)
+
+### CSV format
+
+All of the data files in .csv format are also available to [download as a .zip file](https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/data_csv.zip)
+
+### SPSS format
+
+All of the data files in SPSS format are also available to [download as a .zip file](https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/spssdata/spss_data.zip)
 
 
 ## R
