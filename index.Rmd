@@ -9,7 +9,7 @@ output:
     includes:
       in_header: includeme.html
       before_body: testpic.html
-    css: tufte.css
+    css: [tufte.css, style.css]
     fontsettings:
       theme: white
       family: sans

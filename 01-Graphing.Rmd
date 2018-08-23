@@ -29,6 +29,20 @@ Our general goals for this first lab are to get your feet wet, so to speak. We'l
 
 ## R 
 
+### Download the lab templates
+
+You will be completing each lab by writing your code and notes in an R Markdown document. 
+
+1. Download the [RMarkdownsLab.zip](https://github.com/CrumpLab/statisticsLab/raw/master/RMarkdownsLab.zip) to your computer.
+2. Unzip the file, this will produce a new folder with three important parts
+    a. data folder (contains data files for all labs)
+    b. LabTemplates folder (contains blank templates for completing all the labs)
+    c. RMarkdownsLab.Rproj A file with a little blue cube with an R in it.
+3. Double-click the RMarkdownsLab.Rproj file, this will automatically open R-studio (if you are at home, you must [install R and R-studio first](https://crumplab.github.io/statisticsLab/software.html#installing-r-and-r-studio), or you can use [R-studio Cloud](https://crumplab.github.io/statisticsLab/software.html#r-studio-cloud) through your web-browser)
+4. Copy the template .Rmd file for lab 1 from the LabTemplates folder into the main folder, then open it, and use it to begin adding your code and notes for lab 1.
+5. Watch this screencast to help you get started.
+
+
 Your lab instructor will show you how to open R-studio on the lab computer. Just find it and double-click. Now you have R-studio. Your lab instructor will also walk you through the steps to get started completing the first lab. We also wrote down the steps [here](https://crumplab.github.io/statisticsLab/software.html#how-to-complete-the-r-labs), and made a [little movie]().
 
 There are numerous resources for learning about R, we put some of them on the course website, under the [resouces page](https://crumplab.github.io/psyc3400/Resources.html). You will find these resources helpful as you learn. We also have a kind of [general introduction to R and Rstudio here](https://crumplab.github.io/statisticsLab/software.html#r). This shows you how to download R and R-studio at home (it's free). Throughout the labs you will be writing things called R Markdown documents. You will learn how to do this throughout the labs, but it can also be worthwhile reading other tutorials, such as the one provided by [R Markdown](https://rmarkdown.rstudio.com/lesson-1.html).
