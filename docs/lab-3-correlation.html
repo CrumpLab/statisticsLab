@@ -633,10 +633,10 @@ smaller_df &lt;-<span class="st"> </span>whr_data %&gt;%
 </div>
 <div id="generalization-exercise-2" class="section level3">
 <h3><span class="header-section-number">3.2.3</span> Generalization Exercise</h3>
-<p>This generalization exercise will explore the idea that correlations between two measures can arise by chance alone. There are two questions to answer. For each question you will be sampling random numbers from uniform distribution.</p>
+<p>This generalization exercise will explore the idea that correlations between two measures can arise by chance alone. There are two questions to answer. For each question you will be sampling random numbers from uniform distribution. To conduct the estimate, you will be running a simulation 100 times. The questions are:</p>
 <ol style="list-style-type: decimal">
 <li><p>Estimate the range (minimum and maximum) of correlations (using pearons’s r) that could occur by chance between two variables with n=10.</p></li>
-<li><p>Estimate the range (minimum of correlations (using pearons’s r) that could occur bychance between two variables with n = 100.</p></li>
+<li><p>Estimate the range (minimum and maximum) of correlations (using pearons’s r) that could occur bychance between two variables with n = 100.</p></li>
 </ol>
 <p>Use these tips to answer the question.</p>
 <p>Tip 1: You can use the <code>runif()</code> function to sample random numbers between a minimum value, and maximum value. The example below sample 10 (n=10) random numbers between the range 0 (min = 0) and 10 (max=10). Everytime you run this code, the 10 values in x will be re-sampled, and will be 10 new random numbers</p>
@@ -645,7 +645,7 @@ smaller_df &lt;-<span class="st"> </span>whr_data %&gt;%
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dt">n=</span><span class="dv">10</span>, <span class="dt">min=</span><span class="dv">0</span>, <span class="dt">max=</span><span class="dv">10</span>)
 y &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dt">n=</span><span class="dv">10</span>, <span class="dt">min=</span><span class="dv">0</span>, <span class="dt">max=</span><span class="dv">10</span>)
 <span class="kw">cor</span>(x,y)</code></pre></div>
-<pre><code>## [1] -0.6646765</code></pre>
+<pre><code>## [1] 0.2104852</code></pre>
 <p>Running the above code will give different values for the correlation each time, because the numbers in x and y are always randomly different. We might expect that because x and y are chosen randomly that there should be a 0 correlation. However, what we see is that random sampling can produce “fake” correlations just by chance alone. We want to estimate the range of correlations that chance can produce.</p>
 <p>Tip 3: One way to estimate the range of correlations that chance can produce is to repeat the above code many times. For example, if you ran the above code 100 times, you could save the correlations each time, then look at the smallest and largest correlation. This would be an estimate of the range of correlations that can be produced by chance. How can you repeat the above code many times to solve this problem?</p>
 <p>We can do this using a <code>for</code> loop. The code below shows how to repeat everything inside the for loop 100 times. The variable <code>i</code> is an index, that goes from 1 to 100. The <code>saved_value</code> variable starts out as an empty variable, and then we put a value into it (at index position i, from 1 to 100). In this code, we put the sum of the products of x and y into the <code>saved_value</code> variable. At the end of the simulation, the <code>save_value</code> variable contains 100 numbers. The <code>min()</code> and <code>max()</code> functions are used to find the minimum and maximum values for each of the 100 simulations. You should be able to modify this code by replacing <code>sum(x*y)</code> with <code>cor(x,y)</code>. Doing this will allow you to run the simulation 100 times, and find the minimum correlation and maximum correlation that arises by chance. This will be estimate for question 1. To provide an estimate for question 2, you will need to change <code>n=10</code> to <code>n=100</code>.</p>
@@ -657,9 +657,9 @@ for (i in <span class="dv">1</span>:<span class="dv">100</span>){
 }
 
 <span class="kw">min</span>(saved_value)</code></pre></div>
-<pre><code>## [1] 113.6301</code></pre>
+<pre><code>## [1] 90.26721</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">max</span>(saved_value)</code></pre></div>
-<pre><code>## [1] 475.6685</code></pre>
+<pre><code>## [1] 411.1956</code></pre>
 </div>
 <div id="writing-assignment-2" class="section level3">
 <h3><span class="header-section-number">3.2.4</span> Writing assignment</h3>

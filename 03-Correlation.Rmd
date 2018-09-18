@@ -229,11 +229,11 @@ Bam, there we have it. As positive affect goes up, negative affect goes down. A 
 
 ### Generalization Exercise
 
-This generalization exercise will explore the idea that correlations between two measures can arise by chance alone. There are two questions to answer. For each question you will be sampling random numbers from uniform distribution. 
+This generalization exercise will explore the idea that correlations between two measures can arise by chance alone. There are two questions to answer. For each question you will be sampling random numbers from uniform distribution. To conduct the estimate, you will be running a simulation 100 times. The questions are: 
 
 1. Estimate the range (minimum and maximum) of correlations (using pearons's r) that could occur by chance between two variables with n=10.
 
-2. Estimate the range (minimum of correlations (using pearons's r) that could occur bychance between two variables with n = 100.
+2. Estimate the range (minimum and maximum) of correlations (using pearons's r) that could occur bychance between two variables with n = 100.
 
 Use these tips to answer the question.
 
