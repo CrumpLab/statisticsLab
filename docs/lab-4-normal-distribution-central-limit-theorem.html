@@ -472,28 +472,28 @@ $("#coverpic").hide();
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gumballs &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>)
 sample_of_gumballs &lt;-<span class="kw">sample</span>(gumballs, <span class="dv">10</span>, <span class="dt">replace=</span><span class="ot">TRUE</span>)
 sample_of_gumballs</code></pre></div>
-<pre><code>##  [1] &quot;A&quot; &quot;B&quot; &quot;B&quot; &quot;B&quot; &quot;A&quot; &quot;B&quot; &quot;B&quot; &quot;B&quot; &quot;A&quot; &quot;A&quot;</code></pre>
+<pre><code>##  [1] &quot;B&quot; &quot;B&quot; &quot;A&quot; &quot;A&quot; &quot;B&quot; &quot;B&quot; &quot;B&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot;</code></pre>
 <p>Here the sample function randomly picks A or B each time. We set it do this 10 times, so our sample has 10 things in it. We set <code>replace=TRUE</code> so that after each sample, we put the item back into the gumball machine and start again. Here’s another example with numbers</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">some_numbers &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>)
 sample_of_numbers &lt;-<span class="kw">sample</span>(some_numbers, <span class="dv">20</span>, <span class="dt">replace=</span><span class="ot">TRUE</span>)
 sample_of_numbers</code></pre></div>
-<pre><code>##  [1] 3 5 4 5 5 2 5 1 1 1 5 4 5 3 4 5 5 5 5 5</code></pre>
+<pre><code>##  [1] 5 4 3 2 1 5 5 1 5 2 5 5 5 5 1 1 5 5 5 2</code></pre>
 <p>Let’s do one more thing with sample. Let’s sample 1000 times from our <code>some_numbers</code> variable, and then look at the histogram</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
 some_numbers &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>)
 sample_of_numbers &lt;-<span class="kw">sample</span>(some_numbers, <span class="dv">1000</span>, <span class="dt">replace=</span><span class="ot">TRUE</span>)
 <span class="kw">hist</span>(sample_of_numbers)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-102-1.png" width="672" /></p>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-105-1.png" width="672" /></p>
 <p>We are looking at lots of samples from our little gumball machine of numbers. We put more 5s in, and voila, more 5s come out of in our big sample of 1000.</p>
 </div>
 <div id="runif-uniform-distribution" class="section level4">
 <h4><span class="header-section-number">4.2.1.2</span> runif uniform distribution</h4>
 <p>We can sample random numbers between any range using the <code>runif(n, min=0, max = 1)</code> function for the uniform distribution. We discussed this in the textbook. A uniform distribution is flat, and all the numbers between the min and max should occur roughly equally frequently. Let’s take 1000 random numbers between 0 and 1 and plot the histogram. We’ll just do it all in one line for speed.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(<span class="kw">runif</span>(<span class="dv">1000</span>,<span class="dv">0</span>,<span class="dv">1</span>))</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-103-1.png" width="672" /></p>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-106-1.png" width="672" /></p>
 <p>This is histogram is flattish. Not perfectly flat, after all we only took 1000 samples. What if we took many more, say 10,000 total samples? Now it looks more flat, each bin is occurring about 500 times each, which is pretty close to the same amount.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(<span class="kw">runif</span>(<span class="dv">10000</span>,<span class="dv">0</span>,<span class="dv">1</span>))</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-104-1.png" width="672" /></p>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-107-1.png" width="672" /></p>
 </div>
 <div id="rbinom-the-binomial-distribution" class="section level4">
 <h4><span class="header-section-number">4.2.1.3</span> rbinom the binomial distribution</h4>
@@ -501,11 +501,11 @@ sample_of_numbers &lt;-<span class="kw">sample</span>(some_numbers, <span class=
 <p>For example, consider flipping a coin. It will be heads or tails, and the coin, if it is fair, should have a 50% chance of being heads or tails. Here’s how we flip a coin 10 times using <code>rbinom</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">coin_flips &lt;-<span class="st"> </span><span class="kw">rbinom</span>(<span class="dv">10</span>,<span class="dv">1</span>,.<span class="dv">5</span>)
 coin_flips</code></pre></div>
-<pre><code>##  [1] 0 0 0 0 1 1 1 1 0 1</code></pre>
+<pre><code>##  [1] 0 1 1 0 1 1 0 0 1 1</code></pre>
 <p>We get a bunch of 0s, and 1s. We can pretend 0 = tails, and 1 = heads. Great, now we can do coin flipping if we want. For example, if you flip 10 coins, how many heads do you get? We can can do the above again, and then <code>sum(coin_flips)</code>. All the 1s are heads, so it will work out.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">coin_flips &lt;-<span class="st"> </span><span class="kw">rbinom</span>(<span class="dv">10</span>,<span class="dv">1</span>,.<span class="dv">5</span>)
 <span class="kw">sum</span>(coin_flips)</code></pre></div>
-<pre><code>## [1] 6</code></pre>
+<pre><code>## [1] 5</code></pre>
 <p>Alright, so we get the sum, which tells us the number of heads. But, should we always get that number of heads if we flipped a coin 10 times? If you keep redoing the above, you’ll get different answers. 5 heads will be the most frequent answer, but you will get lots of other answers too.</p>
 <p>Hold on to your seats for this next one. With R, we can simulate the flipping of a coin 10 times (you already know that, you just did it), and we can do that over and over as many times as we want. For example, we could do it 100 times over, saving the number of heads for each set of 10 flips. Then we could look at the distribution of those sums. That would tell us about the range of things that can happen when we flip a coin 10 times. We can do that in loop like this:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">save_number_of_heads&lt;-<span class="kw">length</span>(<span class="dv">1000</span>) <span class="co"># make an empty variable to save things in</span>
@@ -515,21 +515,21 @@ for(i in <span class="dv">1</span>:<span class="dv">1000</span>){
 }
 
 <span class="kw">hist</span>(save_number_of_heads)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-107-1.png" width="672" /></p>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-110-1.png" width="672" /></p>
 <p>See, that wasn’t too painful. Now we see another histogram. The histogram shows us the frequency observing different numbers of heads (for 10 flips) across the 1000 simulations. 5 happens the most, but 2 happens sometimes, and so does 8. All of the possibilities seem to happen sometimes, some more than others.</p>
 </div>
 <div id="rnorm-the-normal-distribution" class="section level4">
 <h4><span class="header-section-number">4.2.1.4</span> rnorm the normal distribution</h4>
 <p>We’ll quickly show how to use <code>rnorm(n, mean=0, sd=1)</code> to sample numbers from a normal distribution. And, then we’ll come back to the normal distribution later, because it is so important.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(<span class="kw">rnorm</span>(<span class="dv">10000</span>,<span class="dv">0</span>,<span class="dv">1</span>))</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-108-1.png" width="672" /></p>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-111-1.png" width="672" /></p>
 <p>There it is, a bell-shaped normal distribution with a mean of 0, and a standard deviation of 1. You’ve probably seen things like this before. Now you can sample numbers from normal distributions with any mean or standard deviation, just by changing those parts of the <code>rnorm</code> function.</p>
 </div>
 <div id="mixing-it-up" class="section level4">
 <h4><span class="header-section-number">4.2.1.5</span> mixing it up</h4>
 <p>The r functions are like Legos, you can put them together and come up with different things. What if wanted to sample from a distribution that looked like a two-humped camel’s back? Just sample from <code>rnorm</code> twice like this… mix away.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>( <span class="kw">c</span>( <span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">25</span>,<span class="dv">5</span>), <span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">50</span>,<span class="dv">5</span>)) )</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-109-1.png" width="672" /></p>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-112-1.png" width="672" /></p>
 </div>
 <div id="summary" class="section level4">
 <h4><span class="header-section-number">4.2.1.6</span> summary</h4>
@@ -550,7 +550,7 @@ my_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(samples,s
 <span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">color=</span><span class="st">&quot;white&quot;</span>)+
 <span class="st">  </span><span class="kw">facet_wrap</span>(~samples)+
 <span class="st">  </span><span class="kw">theme_classic</span>()</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-111-1.png" width="672" /></p>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-114-1.png" width="672" /></p>
 <p>Notice, all of the samples do not have the same looking histogram. This is because of random sampling error. All of the samples are coming from the same normal distributions, but random chance makes each sample a little bit different (e.g., you don’t always get 5 heads and 5 tails when you flip a coin right)</p>
 </div>
 <div id="getting-the-means-of-the-samples" class="section level4">
@@ -573,64 +573,63 @@ knitr::<span class="kw">kable</span>(sample_means)</code></pre></div>
 <tbody>
 <tr class="odd">
 <td align="right">1</td>
-<td align="right">0.6015556</td>
+<td align="right">0.4492527</td>
 </tr>
 <tr class="even">
 <td align="right">2</td>
-<td align="right">0.4499811</td>
+<td align="right">-0.0918667</td>
 </tr>
 <tr class="odd">
 <td align="right">3</td>
-<td align="right">0.1592190</td>
+<td align="right">0.3164514</td>
 </tr>
 <tr class="even">
 <td align="right">4</td>
-<td align="right">-0.3887547</td>
+<td align="right">0.0808239</td>
 </tr>
 <tr class="odd">
 <td align="right">5</td>
-<td align="right">0.0387552</td>
+<td align="right">0.0812338</td>
 </tr>
 <tr class="even">
 <td align="right">6</td>
-<td align="right">-0.3169049</td>
+<td align="right">0.0406694</td>
 </tr>
 <tr class="odd">
 <td align="right">7</td>
-<td align="right">0.2870481</td>
+<td align="right">-0.0231231</td>
 </tr>
 <tr class="even">
 <td align="right">8</td>
-<td align="right">-0.1158912</td>
+<td align="right">-0.3376269</td>
 </tr>
 <tr class="odd">
 <td align="right">9</td>
-<td align="right">0.1425027</td>
+<td align="right">0.0798264</td>
 </tr>
 <tr class="even">
 <td align="right">10</td>
-<td align="right">0.1087166</td>
-</tr>
-<tr class="odd">
-<td align="right">So, those</td>
-<td align="right">are the means of our samples. What should the means be? Well, we would hope they are estimating the mean of the distribution they came from, which was 0. Notice, the numbers are all not 0, but they are kind of close to 0.</td>
+<td align="right">-0.2175523</td>
 </tr>
 </tbody>
 </table>
-<p>#### histogram for the means of the samples</p>
+<p>So, those are the means of our samples. What should the means be? Well, we would hope they are estimating the mean of the distribution they came from, which was 0. Notice, the numbers are all not 0, but they are kind of close to 0.</p>
+</div>
+<div id="histogram-for-the-means-of-the-samples" class="section level4">
+<h4><span class="header-section-number">4.2.2.3</span> histogram for the means of the samples</h4>
 <p>What if we now plot these 10 means (of each of the samples) in their own distribution?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">ggplot</span>(sample_means, <span class="kw">aes</span>(<span class="dt">x=</span>means))+
 <span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">color=</span><span class="st">&quot;white&quot;</span>)+
 <span class="st">  </span><span class="kw">theme_classic</span>()</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-113-1.png" width="672" /></p>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-116-1.png" width="672" /></p>
 <p>That is the distribution of the sample means. It doesn’t look like much eh? That’s because we only took 10 samples right.</p>
 <p>Notice one more thing…What is the mean of our 10 sample means? This is a mean of means. Remember that.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(sample_means$means)</code></pre></div>
-<pre><code>## [1] 0.09662276</code></pre>
+<pre><code>## [1] 0.03780885</code></pre>
 <p>Well, that’s pretty close to zero. Which is good. When we average over our samples, they better estimate the mean of the distribution they came from.</p>
 </div>
 <div id="simulating-the-distribution-of-sample-means" class="section level4">
-<h4><span class="header-section-number">4.2.2.3</span> simulating the distribution of sample means</h4>
+<h4><span class="header-section-number">4.2.2.4</span> simulating the distribution of sample means</h4>
 <p>Our histogram with 10 sample means looked kind of sad. Let’s give it some more friends. How about we repeat our little sampling experiment 1000 times.</p>
 <p>Explain…We take 1000 samples. Each sample takes 20 scores from a normal distribution (mean=0, SD=1). Then we find the means of each sample (giving us 1000 sample means). Then, we plot that distribution.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># get 1000 samples with 20 scores each</span>
@@ -650,7 +649,7 @@ sample_means &lt;-<span class="st"> </span>my_df %&gt;%
  <span class="kw">ggplot</span>(sample_means, <span class="kw">aes</span>(<span class="dt">x=</span>means))+
 <span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">color=</span><span class="st">&quot;white&quot;</span>)+
 <span class="st">  </span><span class="kw">theme_classic</span>()</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-115-1.png" width="672" /></p>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-118-1.png" width="672" /></p>
 <p>There, that looks more like a sampling distribution of the sample means. Notice it’s properties. It is centered on 0, which tells us that sample means are mostly around zero. It is also bell-shaped, like the normal distribution it came from. It is also quite narrow. The numbers on the x-axis don’t go much past -.5 to +.5.</p>
 <p>We will use things like the sampling distribution of the mean to make inferences about what chance can do in your data later on in this course.</p>
 </div>
@@ -685,7 +684,7 @@ d&lt;-<span class="kw">ggplot</span>(all_df,<span class="kw">aes</span>(<span cl
 
 <span class="kw">ggarrange</span>(a,b,c,d,
           <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">nrow =</span> <span class="dv">2</span>)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-116-1.png" width="672" /></p>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-119-1.png" width="672" /></p>
 <p>From reading the textbook and attending lecture, you should be able to start thinking about why these sampling statistic distributions might be useful…For now, just know that you can make a sampling statistic for pretty much anything in R, just by simulating the process of sampling, measuring the statistic, doing it over a bunch, and then plotting the histogram. This gives you a pretty good estimate of the distribution for that sampling statistic.</p>
 </div>
 <div id="central-limit-theorem" class="section level3">
@@ -701,7 +700,7 @@ my_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(samples,s
 <span class="st">  </span><span class="kw">facet_wrap</span>(~samples)+
 <span class="st">  </span><span class="kw">theme_classic</span>()+
 <span class="st">  </span><span class="kw">ylim</span>(<span class="dv">0</span>,<span class="dv">200</span>)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-117-1.png" width="672" /></p>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-120-1.png" width="672" /></p>
 <p>We took samples from a flat uniform distribution, and the samples themselves look like that same flat distribution.</p>
 <p>HOWEVER, if we now do the next step, and compute the means of each of our 100 samples, we could then look at the sampling distribution of the sample means. Let’s do that:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sample_means &lt;-<span class="st"> </span>my_df %&gt;%
@@ -713,7 +712,7 @@ my_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(samples,s
  <span class="kw">ggplot</span>(sample_means, <span class="kw">aes</span>(<span class="dt">x=</span>means))+
 <span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">color=</span><span class="st">&quot;white&quot;</span>, <span class="dt">bins=</span><span class="dv">15</span>)+
 <span class="st">  </span><span class="kw">theme_classic</span>()</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-118-1.png" width="672" /></p>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-121-1.png" width="672" /></p>
 <p>As you can see, the sampling distribution of the sample means is not flat. It’s shaped kind of normal-ish. If we had taken many more samples, found their means, and then looked at a histogram, it would become even more normal looking. Because that’s what happens according to the central limit theorem.</p>
 </div>
 <div id="the-normal-distribution" class="section level3">
@@ -735,7 +734,7 @@ normal_df &lt;-<span class="kw">data.frame</span>(values,normal_dist)
 <span class="kw">ggplot</span>(normal_df, <span class="kw">aes</span>(<span class="dt">x=</span>values,<span class="dt">y=</span>normal_dist))+
 <span class="st">  </span><span class="kw">geom_line</span>()+
 <span class="st">  </span><span class="kw">theme_classic</span>()</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-119-1.png" width="672" /></p>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-122-1.png" width="672" /></p>
 <p>A really nice shaped bell-like thing. This normal distribution has a mean of 0, and standard deviation of 1. The heights of the lines tell you roughly how likely each value is. Notice, it is centered on 0 (most likely that numbers from this distribution will be near 0), and it goes down as numbers get bigger or smaller (so bigger or smaller numbers get less likely). There is a range to it. Notice the values don’t go much beyond -4 and +4. This because those values don’t happen very often. Theoretically any value could happen, but really big or small values have really low probabilities.</p>
 </div>
 <div id="calculating-the-probability-of-specific-ranges." class="section level4">
@@ -790,24 +789,24 @@ ps[<span class="dv">1</span>]-ps[<span class="dv">2</span>]</code></pre></div>
 my_sd &lt;-<span class="kw">sd</span>(some_numbers)
 
 <span class="kw">print</span>(my_mean)</code></pre></div>
-<pre><code>## [1] 48.96828</code></pre>
+<pre><code>## [1] 47.94752</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(my_sd)</code></pre></div>
-<pre><code>## [1] 20.12495</code></pre>
+<pre><code>## [1] 27.78933</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>subtract the mean from your numbers</li>
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">differences&lt;-some_numbers-my_mean
 <span class="kw">print</span>(my_sd)</code></pre></div>
-<pre><code>## [1] 20.12495</code></pre>
+<pre><code>## [1] 27.78933</code></pre>
 <ol start="4" style="list-style-type: decimal">
 <li>divide by the standard deviation</li>
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z_scores&lt;-differences/my_sd
 <span class="kw">print</span>(z_scores)</code></pre></div>
-<pre><code>##  [1] -1.1147615 -0.5935131  2.1080700  1.1142097 -0.3611972  0.6293053
-##  [7]  0.5713444  1.5495495 -0.4046440  0.0490482 -0.1496067 -0.9198323
-## [13]  0.6650836 -0.5582829  0.1024056 -0.9101487 -1.0488045  0.6516684
-## [19] -1.9863639  0.6064702</code></pre>
+<pre><code>##  [1]  0.71839435 -0.14111087 -1.55574899  0.42782416 -1.48583533
+##  [6] -1.03730063  0.83952493  1.10660829  0.85754923 -0.52612651
+## [11]  0.60294812  1.17177616  0.31620027  1.04480181 -0.94697464
+## [16] -0.57161891 -0.06888555 -0.97935213  1.61264662 -1.38532037</code></pre>
 <p>Done. Now you have converted your original numbers into what we call standardized scores. They are standardized to have the same properties (assumed properties) as a normal distribution with mean = 0, and SD = 1.</p>
 <p>You could look at each of your original scores, and try to figure out if they are likely or unlikely numbers. But, if you make them into z-scores, then you can tell right away. Numbers close to 0 happen a lot, bigger numbers closer to 1 happen less often, but still fairly often, and number bigger than 2 or 3 hardly happen at all.</p>
 <p>If someone said they did 3 standard deviations above the mean on a test, this means they did really good, and hardly nobody also did that good.</p>

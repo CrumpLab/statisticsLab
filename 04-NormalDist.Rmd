@@ -172,11 +172,12 @@ sample_means <- my_df %>%
 knitr::kable(sample_means)
 
 ```
- So, those are the means of our samples. What should the means be? Well, we would hope they are estimating the mean of the distribution they came from, which was 0. Notice, the numbers are all not 0, but they are kind of close to 0.
  
- #### histogram for the means of the samples
+So, those are the means of our samples. What should the means be? Well, we would hope they are estimating the mean of the distribution they came from, which was 0. Notice, the numbers are all not 0, but they are kind of close to 0.
  
- What if we now plot these 10 means (of each of the samples) in their own distribution?
+#### histogram for the means of the samples
+ 
+What if we now plot these 10 means (of each of the samples) in their own distribution?
  
 ```{r}
  

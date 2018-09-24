@@ -514,7 +514,7 @@ plot_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span c
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Histogram of mean differences between two samples (n=20) </span><span class="ch">\n</span>
 <span class="st">          both drawn from the same normal distribution (u=75, sd=5&quot;</span>)+
 <span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;mean difference&quot;</span>)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-140-1.png" width="672" /></p>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-143-1.png" width="672" /></p>
 </div>
 <div id="find-the-range" class="section level4">
 <h4><span class="header-section-number">5.1.1.5</span> find the range</h4>
@@ -593,7 +593,7 @@ plot_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span c
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Histogram of mean differences between two samples (n=20) </span><span class="ch">\n</span>
 <span class="st">          both drawn from the same normal distribution (u=75, sd=5&quot;</span>)+
 <span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;mean difference&quot;</span>)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-142-1.png" width="672" /></p>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-145-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">min</span>(mean_differences)</code></pre></div>
 <pre><code>## [1] -4.571732</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">max</span>(mean_differences)</code></pre></div>
@@ -667,7 +667,7 @@ plot_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span c
 <span class="st">  </span><span class="kw">theme_classic</span>()+
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Histogram of mean differences in proportion remembered&quot;</span>)+
 <span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;mean difference&quot;</span>)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-143-1.png" width="672" /></p>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-146-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">min</span>(mean_differences)</code></pre></div>
 <pre><code>## [1] -0.05829014</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">max</span>(mean_differences)</code></pre></div>
@@ -711,7 +711,7 @@ plot_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span c
 <span class="st">  </span><span class="kw">theme_classic</span>()+
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Histogram of mean differences&quot;</span>)+
 <span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;mean difference&quot;</span>)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-144-1.png" width="672" /></p>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-147-1.png" width="672" /></p>
 <p>The histogram shows us the kinds of absolute mean difference that happen by chance alone. So, in this data, a mean difference of 10 hardly wouldn’t happen very often. A difference between 0 and 2.5 happens fairly often by chance.</p>
 </div>
 <div id="decision-criteria" class="section level4">
@@ -740,7 +740,7 @@ alpha_cutoff</code></pre></div>
 <span class="st">  </span><span class="kw">theme_classic</span>()+
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Histogram of mean differences&quot;</span>)+
 <span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;absolute mean difference&quot;</span>)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-145-1.png" width="672" /></p>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-148-1.png" width="672" /></p>
 <p>OK, so our alpha criterion or cutoff is located at 7.75 on the x-axis. This shows us that mean differences of 7.75 or larger happen only 5% of the time by chance.</p>
 <p>You could use this information to make an inference about whether or not chance produced the difference in your experiments</p>
 <ol style="list-style-type: decimal">
