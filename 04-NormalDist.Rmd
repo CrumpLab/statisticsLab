@@ -25,11 +25,11 @@ By a small sample, we may judge of the whole piece.
 
 This is one of two special labs where we don't use too much real data. We will mostly fake everything. Yes, you will learn how to fake data in this course. Be a superhero, and only use these skills for good and not for evil.
 
-As we progress through the course, you will learn how generating simulated data can be very useful to help you understand real data. In fact, I will say this right now. If you can't simulate the data you expect to find, then you probably can't understand the data that you do find very well. That's a bold statement. It's probably partly true.
+As we progress through the course, you will learn that generating simulated data can be very useful to help you understand real data. In fact, I will say this right now. If you can't simulate the data you expect to find, then you probably can't understand the data that you do find very well. That's a bold statement. It's probably partly true.
 
 ### Generating Numbers in R
 
-There are many ways to make R generate numbers for you. In all of the case you get define how the numbers are generated. We'll go through a few of the many ways.
+There are many ways to make R generate numbers for you. In all cases you define how the numbers are generated. We'll go through a few of the many ways.
 
 #### sample
 

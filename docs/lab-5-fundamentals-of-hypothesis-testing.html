@@ -449,7 +449,7 @@ $("#coverpic").hide();
 <p><span class="newthought"> The null hypothesis is never proved or established, but is possibly disproved, in the course of experimentation. Every experiment may be said to exist only to give the facts a chance of disproving the null hypothesis. —R. A. Fisher </span></p>
 <div id="r-5" class="section level2">
 <h2><span class="header-section-number">5.1</span> R</h2>
-<p>From here on out in the labs we will be focusing on making sense of data from experiments. In all of this, we use experiments to ask a question about whether one thing causes change (influences) another thing. Then, we look at the data to help us answer that question. In general, we expect to find a difference in our measurement between the conditions of the experimental manipulation. We expect to find a difference when the manipulation works, and causes change in our measure. We expect not to find a difference when the manipulation does not work, and does not cause change.</p>
+<p>From here on, we will be focusing on making sense of data from experiments. In all of this, we use experiments to ask a question about whether one thing causes change (influences) another thing. Then, we look at the data to help us answer that question. In general, we expect to find a difference in our measurement between the conditions of the experimental manipulation. We expect to find a difference when the manipulation works, and causes change in our measure. We expect not to find a difference when the manipulation does not work, and does not cause change.</p>
 <p>However, as you well know from reading the textbook, and attending the lectures. Experimental manipulations are not the only thing that can cause change in our measure. Chance alone can cause change. Our measures are usually variable themselves, so they come along with some change in them due to sampling error.</p>
 <p>At a minimum, when we conduct an experiment, we want to know <strong>if the change we observed is bigger than the change that can be produced by chance</strong>. Theoretically, random chance could produce most any change we might measure in our experiment. So, there will always be uncertainty about whether our manipulation caused the change, or chance caused the change. But, we can reduce and evaluate that uncertainty. When we do this, we make <strong>inferences</strong> about what caused change in our experiments. This process is called <strong>statistical inference</strong>. We use <strong>inferential statistics</strong> as tools to help us make these inferences.</p>
 <p>In this lab we introduce you to foundational concepts in <strong>statistical inference</strong>. This is also commonly termed <strong>hypothesis testing</strong>. But, for various reasons using that language to describe the process is tied to particular philosophies about doing statistical inference. We use some of that language here, so that you know what it means. But, we also use our own plain language, so you know what the point is, without the statistical jargon.</p>
@@ -606,23 +606,29 @@ plot_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span c
 <div id="test-enhanced-learning" class="section level4">
 <h4><span class="header-section-number">5.1.2.1</span> Test-enhanced learning</h4>
 <p>We have already been using an educational example. We’ve been talking about a manipulation that might be employed to help students learn something better than they otherwise would without the manipulation.</p>
-<p>Research in Cognitive Psychology has discovered clear evidence of some teaching practices that really work to enhance memory and comprehension. On of these practices is called test-enhanced learning. Students who study material, and take a quick test (quiz) while they study, do better at remember the material compared to students who just studied the whole time and did not take a quiz (why do you think we have so many quizzes, in the textbook and for this class? This is why. Prior research shows this will improve your memory for the content, so we are asking you to take the quizzes so that it helps you learn!).</p>
+<p>Research in Cognitive Psychology has discovered clear evidence of some teaching practices that really work to enhance memory and comprehension. One of these practices is called test-enhanced learning. Students who study material, and take a quick test (quiz) while they study, do better at remembering the material compared to students who just studied the whole time and did not take a quiz (why do you think we have so many quizzes, in the textbook and for this class? This is why. Prior research shows this will improve your memory for the content, so we are asking you to take the quizzes so that it helps you learn!).</p>
 <p>Here is a link to a <a href="https://www.jstor.org/stable/pdf/40064526.pdf?casa_token=jMQnevvTRoIAAAAA:J96DQ0EHWCDKvjV3D-OdQ7TFnJ_DTZEz_G6zG1YMstqGu7fuzjzM0V4PiNREvB1sfLxTXn68FpHhoIUFpOx9p5fjsB7hcqQTUCQix9jxdj_hx-zqoZ8">paper demonstrating the test-enhanced learning effect</a>.</p>
 <p>The citation is: Roediger III, H. L., &amp; Karpicke, J. D. (2006). Test-enhanced learning: Taking memory tests improves long-term retention. Psychological science, 17(3), 249-255.</p>
 </div>
 <div id="brief-summary" class="section level4">
 <h4><span class="header-section-number">5.1.2.2</span> Brief summary</h4>
-<p>This is really brief. The subjects learned about some things in two conditions. In one condition (study-study) they studied some things, then studied them again. In the other condition (study-test) they studied some things, then took a quiz about the things rather then studying them one more time.</p>
-<p>Everyone received follow up tests to see what they learned and remembered. They came back one week later and took the test. The researchers measured the mean proportion of things remembered in both conditions. They found the study-test condition had a higher mean proportion than the study-study condition. So, the difference between the mean proportions suggest that taking a quick test after studying was beneficial for remembering the content. The researchers also conducted statistical tests, and they concluded the difference they found was not likely due to chance. Let’s apply the Crump test to their findings, and see if we come to the same conclusion about the role of chance.</p>
+<p>The subjects learned about some things in two conditions. In one condition (study-study) they studied some things, then studied them again. In the other condition (study-test) they studied some things, then took a quiz about the things rather then studying them one more time.</p>
+<p>Everyone received follow up tests to see what they learned and remembered. They came back one week later and took the test. The researchers measured the mean proportion of things remembered in both conditions. They found the study-test condition had a higher mean proportion of remembered idea units than the study-study condition. So, the difference between the mean proportions suggest that taking a quick test after studying was beneficial for remembering the content. The researchers also conducted statistical tests, and they concluded the difference they found was not likely due to chance. Let’s apply the Crump test to their findings, and see if we come to the same conclusion about the role of chance.</p>
 </div>
 <div id="estimate-the-paramaters-of-the-distribution" class="section level4">
 <h4><span class="header-section-number">5.1.2.3</span> Estimate the paramaters of the distribution</h4>
-<p>To do the Crump test, we need to make assumptions about where out sample data is coming from. Download the paper from the link, then look at Figure 1. We will estimate our distribution by looking at this figure. We will be doing <strong>informed guesstimation</strong> (a real word I just made up).</p>
-<p>Look only at the two bars for the <code>1 week</code> condition. There are two bars there, one for each group. First, what is the overall mean for these two bars? We don’t know, we have to <strong>visually guesstimate</strong> that. One bare is below .5 on the y-axis, and the other bar is above .5 on the y-axis. For simplicity sake, I will guesstimate that the mean is .5…I that right. I made the graph much bigger on my computer and drew a line across, the middle is probably more like .48 (more precise guesstimation). So, we will set the mean of our normal distribution for the Crump test to be mean =.48.</p>
-<p>What should our standard deviation be? This is a little bit nuanced, pay close attention. Read the description of the figure. What does it say about the error bars? It says they are <strong>standard errors of the mean</strong>.</p>
-<p>Guess what, if you remember from the textbook and the lecture, the <strong>standard deviation</strong> of the sampling distribution of the sample means, IS <strong>the standard error of the mean</strong>. So, we can use the standard error of the mean from the figure to help us with our simulation.</p>
-<p>How big is one standard error on the figure? I’m going to guesstimate that at about .02. It’s not .1, that’s difference say between .5, and .6.. That’s too big. It’s smaller than half of that .05. In fact two standard errors (the whole line from top hat to bottom hat…the little ticks) seems smaller than .05, I’d say the total width is about .04. But, .04 is for two standard errors, so that’s where I get my guesstimate of .02 for one standard error.</p>
-<p>Finally, how many subjects were in each condition? There were a total of 120 subjects, and they each contributed data in both conditions (study-study &amp; study-test). So, our N is 120.</p>
+<p>To do the Crump test, we need to make assumptions about where the sample data is coming from. Download the paper from the link, then look at Figure 1. We will estimate our distribution by looking at this figure. We will be doing <strong>informed guesstimation</strong> (a real word I just made up).</p>
+<p>Look only at the two bars for the <code>1 week</code> condition.</p>
+<p>The mean for the study-study group is about .4. The mean for the study-test group is about .55. The results section reports that the actual mean for the study-study group was .42 (42%) and the mean for the study-test group was .56 (56%). Pretty close to our visual guesstimate.</p>
+<p>The data show that the study-test group remembered .14 (14%, or .56-.42=.14) more idea units than the study-study group.</p>
+<p><strong>Estimating the mean</strong></p>
+<p>We can imagine for the moment that this difference could have been caused by chance. For example, in this case, both samples would have been drawn from the same distribution. For example, we might say that on average people remember about .49 idea units after a one week delay. I got .49 by averaging the .42 and the .56 together. We can use this as the mean for our distribution in the Crump test.</p>
+<p><strong>N</strong></p>
+<p>The paper says there were 120 subjects in total, and that different groups of subjects were measured in the three different delay conditions (5 minutes, 2 Days and 1 week). We will assume there were an equal number of subjects in each group. There were 3 groups, 120/3 = 40, so we assume there were 40 subjects in the 1 week delay group</p>
+<p><strong>Estimating Standard Deviation</strong></p>
+<p>The paper doesn’t directly report the standard deviation for the measurement of proportion idea units. But, we can guesstimate it visually. Look at the little bars with a line on them coming out of each bar. These are called error bars, and they represent the standard error of the mean.</p>
+<p>These look like they are about .033 in length. We know the standard error of the mean (SEM) is the standard deviation divided by the sqare root of N. So, we can infer that the standard deviation is <span class="math inline">\(.033 * \sqrt{40} = .21\)</span>.</p>
+<p>The paper also reports cohen’s D, which is a measure of effect size using the mean difference divided the standard deviation. Cohen’s D was .83, so the standard deviation must have been <span class="math inline">\(.14/.83 = .168\)</span>, which is pretty close to our guesstimate of .21.</p>
 </div>
 <div id="findings-from-the-original-study" class="section level4">
 <h4><span class="header-section-number">5.1.2.4</span> Findings from the original study</h4>
@@ -636,25 +642,26 @@ plot_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span c
 </div>
 <div id="run-the-simulation" class="section level4">
 <h4><span class="header-section-number">5.1.2.5</span> Run the simulation</h4>
-<p>I think this is how the simulation should work. We can run it, then look to see if a difference of .14 can happen by chance 1 out of 100 times. There is a wrinkle in this experiment, and to be honest, I’m pretty sure I’ve done it correctly, but perhaps I made a mistake. It’s OK to put things out there and be corrected later. Maybe one of you can correct me if I’m wrong.</p>
-<p>The code is almost the same as what we did before. I changed the <code>sample_n</code> to 120, the <code>dist_mean</code> to .48, and the <code>dist_sd</code> to .02. These were our guesstimates for the distribution parameters.</p>
-<p>Notice however, that I commented out two lines. These are the green lines inside the simulation. I do not use 120 for the number of samples. Instead I only take 1 sample for each group. Why did I do this, and not use 120? I did this because we are using the standard deviation of the sample means (the standard error of the mean from the figure), and not the standard deviation of each subjects proportion recalled (which isn’t really a thing, because each subject gives one number, one proportion, reflecting the proportion of idea units). For this reason, we shouldn’t use 120, we are not taking 120 samples and then computing the mean, instead we are taking 1 sample each from the presumed sampling distribution of the sample means, and then taking the difference. This I know is a big mouthful. Please correct me if I am wrong here. We all need to understand what would be the appropriate thing to do. If you can make a justifiable and reasonable argument about what should be done here, then you are really learning the concepts behind what we are doing.</p>
-<p>Let’s see how the simulation would work:</p>
+<p>Now we can plug our numbers in to the Crump test simulation.</p>
+<ol style="list-style-type: decimal">
+<li>We run the simulation 100 times</li>
+<li>Our sample N is 40</li>
+<li>The mean of our distribution is .49</li>
+<li>The standard deviation of the distribution is .168</li>
+</ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># set paramaters of simulation</span>
 
 sims_to_run &lt;-<span class="st"> </span><span class="dv">100</span>
-sample_n   &lt;-<span class="st"> </span><span class="dv">120</span>
-dist_mean  &lt;-<span class="st"> </span>.<span class="dv">48</span>
-dist_sd    &lt;-<span class="st"> </span>.<span class="dv">02</span>
+sample_n   &lt;-<span class="st"> </span><span class="dv">40</span>
+dist_mean  &lt;-<span class="st"> </span>.<span class="dv">49</span>
+dist_sd    &lt;-<span class="st"> </span>.<span class="dv">168</span>
 
 <span class="co"># run simulation</span>
 
 mean_differences &lt;-<span class="st"> </span><span class="kw">length</span>(sims_to_run)
 for(i in <span class="dv">1</span>:sims_to_run){
-  <span class="co">#mean_control_A      &lt;- mean(rnorm(sample_n, dist_mean, dist_sd))</span>
-  <span class="co">#mean_control_B      &lt;- mean(rnorm(sample_n, dist_mean, dist_sd))</span>
-  mean_control_A      &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1</span>, dist_mean, dist_sd)
-  mean_control_B      &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1</span>, dist_mean, dist_sd)
+  mean_control_A      &lt;-<span class="st"> </span><span class="kw">mean</span>(<span class="kw">rnorm</span>(sample_n, dist_mean, dist_sd))
+  mean_control_B      &lt;-<span class="st"> </span><span class="kw">mean</span>(<span class="kw">rnorm</span>(sample_n, dist_mean, dist_sd))
   mean_differences[i] &lt;-<span class="st"> </span>mean_control_A -<span class="st"> </span>mean_control_B
 }
 
@@ -669,11 +676,11 @@ plot_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span c
 <span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;mean difference&quot;</span>)</code></pre></div>
 <p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-146-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">min</span>(mean_differences)</code></pre></div>
-<pre><code>## [1] -0.05829014</code></pre>
+<pre><code>## [1] -0.08935782</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">max</span>(mean_differences)</code></pre></div>
-<pre><code>## [1] 0.06732755</code></pre>
-<p>According to the simulation, the biggest negative difference was -0.058, and the biggest positive difference was 0.067. We also know that any mean difference inside the range <strong>was produced by chance</strong> in our simulation, and any mean difference outside the range <strong>was not produced by chance</strong> in our simulation.</p>
-<p>Clearly, a difference of .14 or 14% was never produced by chance, it was completely outside the range. Based on this analysis we can be fairly confident that the test-enhanced learning effect was not a fluke, it was not produced by chance. We have evidence to support the claim that testing enhances learning, and because of this we test you while you are learning to enhance your learning while you learn.</p>
+<pre><code>## [1] 0.07754367</code></pre>
+<p>According to the simulation, the biggest negative difference was -0.089, and the biggest positive difference was 0.078. We also know that any mean difference inside the range <strong>was produced by chance</strong> in our simulation, and any mean difference outside the range <strong>was not produced by chance</strong> in our simulation.</p>
+<p>A difference of .14 or 14% was never produced by chance, it was completely outside the range. Based on this analysis we can be fairly confident that the test-enhanced learning effect was not a fluke, it was not produced by chance. We have evidence to support the claim that testing enhances learning, and because of this we test you while you are learning to enhance your learning while you learn.</p>
 </div>
 </div>
 <div id="the-randomization-test" class="section level3">
