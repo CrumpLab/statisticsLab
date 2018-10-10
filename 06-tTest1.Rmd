@@ -414,7 +414,7 @@ hist(simulated_mean_difference)
 
 ( 1 point - Pass/Fail )
 
-The following code creates a data frame with simulated means for each of 20 subjects in two conditions (A and B). Each sample comes from a normal distribution with mean = 100, and standard deviation = 25.
+The following code creates two variables with simulated means for each of 20 subjects in two conditions (A and B). Each sample comes from a normal distribution with mean = 100, and standard deviation = 25.
 
 ```{r}
 Condition_A <- rnorm(20,100,25)
