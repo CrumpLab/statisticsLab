@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Answering questions with data: Lab Manual</title>
+  <title>Chapter 6 Lab 6: t-Test (one-sample, paired sample) | Answering questions with data: Lab Manual</title>
   <meta name="description" content="A lab manual for Psyc 3400">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Answering questions with data: Lab Manual" />
+  <meta property="og:title" content="Chapter 6 Lab 6: t-Test (one-sample, paired sample) | Answering questions with data: Lab Manual" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Answering questions with data: Lab Manual" />
+  <meta name="twitter:title" content="Chapter 6 Lab 6: t-Test (one-sample, paired sample) | Answering questions with data: Lab Manual" />
   
   <meta name="twitter:description" content="A lab manual for Psyc 3400" />
   
@@ -35,6 +35,7 @@
 <link rel="next" href="lab-7-t-test-independent-sample.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -63,41 +64,67 @@ mattcrump=1;
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="tufte.css" type="text/css" />
@@ -446,7 +473,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <script>
 $("#coverpic").hide();
 </script>
-<p><span class="newthought"> Any experiment may be regarded as forming an individual of a ‘population’ of experiments which might be performed under the same conditions. A series of experiments is a sample drawn from this population. —William Sealy Gossett </span></p>
+<p><span class="newthought">
+Any experiment may be regarded as forming an individual of a ‘population’ of experiments which might be performed under the same conditions. A series of experiments is a sample drawn from this population.
+—William Sealy Gossett
+</span></p>
 <div class="marginnote">
 <p>This lab is modified and extended from <a href="https://sites.trinity.edu/osl">Open Stats Labs</a>. Thanks to Open Stats Labs (Dr. Kevin P. McIntyre) for their fantastic work.</p>
 </div>
@@ -458,7 +488,7 @@ $("#coverpic").hide();
 <p>Parents often sing to their children and, even as infants, children listen to and look at their parents while they are singing. Research by Mehr, Song, and Spelke (2016) sought to explore the psychological function that music has for parents and infants, by examining the hypothesis that particular melodies convey important social information to infants. Specifically, melodies convey information about social affiliation.</p>
 <p>The authors argue that melodies are shared within social groups. Whereas children growing up in one culture may be exposed to certain songs as infants (e.g., “Rock-a-bye Baby”), children growing up in other cultures (or even other groups within a culture) may be exposed to different songs.Thus, when a novel person (someone who the infant has never seen before) sings a familiar song, it may signal to the infant that this new person is a member of their social group.</p>
 <p>To test this hypothesis, the researchers recruited 32 infants and their parents to complete an experiment.During their first visit to the lab, the parents were taught a new lullaby (one that neither they nor their infants had heard before).The experimenters asked the parents to sing the new lullaby to their child every day for the next 1-2 weeks.</p>
-<p>Following this 1-2 week exposure period, the parents and their infant returned to the lab to complete the experimental portion of the study.Infants were first shown a screen with side-by-side videos of two unfamiliar people, each of whom were silently smiling and looking at the infant.The researchers recorded the looking behavior (or gaze) of the infants during this ‘baseline’ phase. Next, one by one, the two unfamiliar people on the screen sang either the lullaby that the parents learned or a different lullaby (that had the same lyrics and rhythm, but a different melody).Finally, the infants saw the same silent video used at baseline, and the researchers again recorded the looking behavior of the infants during this ‘test’ phase.For more details on the experiment’s methods, please refer to Mehr et al. (2016) Experiment 1.</p>
+<p>Following this 1-2 week exposure period, the parents and their infant returned to the lab to complete the experimental portion of the study.Infants were first shown a screen with side-by-side videos of two unfamiliar people, each of whom were silently smiling and looking at the infant.The researchers recorded the looking behavior (or gaze) of the infants during this ‘baseline’ phase. Next, one by one, the two unfamiliar people on the screen sang either the lullaby that the parents learned or a different lullaby (that had the same lyrics and rhythm, but a different melody).Finally, the infants saw the same silent video used at baseline, and the researchers again recorded the looking behavior of the infants during this ‘test’ phase.For more details on the experiment’s methods, please refer to Mehr et al. (2016) Experiment 1.</p>
 </div>
 </div>
 <div id="lab-skills-learned" class="section level2">
@@ -487,13 +517,13 @@ $("#coverpic").hide();
 <ol style="list-style-type: decimal">
 <li>Load the data.table library. Then use the <code>fread</code> function and supply the web address to the file. Just like this. No downloading required.</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(data.table)
-all_data &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class="st">&quot;https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/MehrSongSpelke2016.csv&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(data.table)
+all_data &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class="st">&quot;https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/MehrSongSpelke2016.csv&quot;</span>)</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Or, if you downloaded the .csv file. Then you can use <code>fread</code>, but you need to point it to the correct file location. The file location in this next example will not work for you, because the file is on my computer.</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(data.table)
-all_data &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class="st">&quot;data/MehrSongSpelke2016.csv&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(data.table)
+all_data &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class="st">&quot;data/MehrSongSpelke2016.csv&quot;</span>)</code></pre>
 </div>
 <div id="inspect-the-data-frame" class="section level3">
 <h3><span class="header-section-number">6.4.2</span> Inspect the data frame</h3>
@@ -501,15 +531,15 @@ all_data &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class
 <div id="summarytools-1" class="section level4">
 <h4><span class="header-section-number">6.4.2.1</span> summarytools</h4>
 <p>The <code>summarytools</code> packages give a quick way to summarize all of the data in a data frame. Here’s how. When you run this code you will see the summary in the viewer on the bottom right hand side. There’s a little browser button (arrow on top of little window) that you can click to expand and see the whole thing in a browser.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(summarytools)
-<span class="kw">view</span>(<span class="kw">dfSummary</span>(all_data))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(summarytools)
+<span class="kw">view</span>(<span class="kw">dfSummary</span>(all_data))</code></pre>
 </div>
 </div>
 <div id="get-the-data-for-experiment-one" class="section level3">
 <h3><span class="header-section-number">6.4.3</span> Get the data for Experiment one</h3>
 <p>The data contains all of the measurements from all five experiments in the paper. By searching through the <code>all_data</code> data frame, you should look for the variables that code for each experiment. For example, the third column is called <code>exp1</code>, which stands for experiment 1. Notice that it contains a series of 1s. If you keep scrolling down, the 1s stop. These 1s identify the rows associated with the data for Experiment 1. We only want to analyse that data. So, we need to filter our data, and put only those rows into a new variable. We do this with the <code>dplyr</code> library, using the <code>filter</code> function.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
-experiment_one &lt;-<span class="st"> </span>all_data %&gt;%<span class="st"> </span><span class="kw">filter</span>(exp1==<span class="dv">1</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
+experiment_one &lt;-<span class="st"> </span>all_data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(exp1<span class="op">==</span><span class="dv">1</span>)</code></pre>
 <p>Now if you look at the new variable <code>experiment_one</code>, there are only 32 rows of data. Much less than before. Now we have the data from experiment 1.</p>
 </div>
 <div id="baseline-phase-conduct-a-one-sample-t-test" class="section level3">
@@ -519,25 +549,25 @@ experiment_one &lt;-<span class="st"> </span>all_data %&gt;%<span class="st"> </
 <p>The <code>experiment_one</code> data frame has a column called <code>Baseline_Proportion_Gaze_to_Singer</code>. All of these values show how the proportion of time that the infant looked to the person who would later sing the familiar song to them. If the average of these proportion is .5 across the infants, then we would have some evidence that the infants were not biased at the beginning of the experiment. However, if the infants on average had a bias toward the singer, then the average proportion of the looking time should be different than .5.</p>
 <p>Using a one-sample t-test, we can test the hypothesis that our sample mean for the <code>Baseline_Proportion_Gaze_to_Singer</code> was not different from .5.</p>
 <p>To do this in R, we just need to isolate the column of data called <code>Baseline_Proportion_Gaze_to_Singer</code>. We will do this using the <code>$</code> operator. The <code>$</code> operator is placed after any data frame variable, and allows you to select a column of the data. The next bit of code will select the column of data we want, and put it into a new variable called <code>Baseline</code>. Note, if you type <code>exp1$</code> then R-Studio should automatically bring up all the columns you can choose from.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">baseline &lt;-<span class="st"> </span>experiment_one$Baseline_Proportion_Gaze_to_Singer</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">baseline &lt;-<span class="st"> </span>experiment_one<span class="op">$</span>Baseline_Proportion_Gaze_to_Singer</code></pre>
 <div id="look-at-the-numbers" class="section level4">
 <h4><span class="header-section-number">6.4.4.1</span> Look at the numbers</h4>
 <div class="marginnote">
 <p><strong>Question:</strong> Why is it important to look at your numbers? What could happen if you didn’t?</p>
 </div>
 <p>OK, we could just do the t-test right away, it’s really easy, only one line of code. But, we haven’t even looked at the numbers yet. Let’s at least do that. First, we’ll just use plot. It will show every data point for each infant as a dot.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(baseline)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-162-1.png" width="672" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(baseline)</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-164-1.png" width="672" /></p>
 <p>That’s helpful, we see that the dots are all over the place. Let’s do a histogram, so we can get a better sense of the frequency of different proportions.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(baseline)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-163-1.png" width="672" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(baseline)</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-165-1.png" width="672" /></p>
 </div>
 <div id="look-at-the-descriptives" class="section level4">
 <h4><span class="header-section-number">6.4.4.2</span> Look at the descriptives</h4>
 <p>Let’s get the mean and standard deviation of the sample</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(baseline)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(baseline)</code></pre>
 <pre><code>## [1] 0.5210967</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sd</span>(baseline)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sd</span>(baseline)</code></pre>
 <pre><code>## [1] 0.1769651</code></pre>
 <p>OK, so just looking at the mean, we see the proportion is close to .5 (it’s .521). And, we see there is a healthy amount of variance (the dots were all over the place), as the standard deviation was about .176.</p>
 <div class="marginnote">
@@ -548,7 +578,7 @@ experiment_one &lt;-<span class="st"> </span>all_data %&gt;%<span class="st"> </
 </div>
 <div id="conduct-t.test" class="section level4">
 <h4><span class="header-section-number">6.4.4.3</span> Conduct t.test</h4>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(baseline, <span class="dt">mu=</span>.<span class="dv">5</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(baseline, <span class="dt">mu=</span>.<span class="dv">5</span>)</code></pre>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -574,16 +604,16 @@ experiment_one &lt;-<span class="st"> </span>all_data %&gt;%<span class="st"> </
 <h3><span class="header-section-number">6.4.5</span> Test phase</h3>
 <p>Remember how the experiment went. Infants watched silent video recordings of two women (Baseline). Then each person sung a song, one was familiar to the infant (their parents sung the song to them many times), and one was unfamiliar (singing phase). After the singing phase, the infants watched the silent video of the two singers again (test phase). The critical question was whether the infants would look more to the person who sung the familiar song compared to the person who sun the unfamiliar song. If the infants did this, they should look more than 50% of the time to the singer who sang the familiar song. We have the data, we can do another one sample t-test to find out. We can re-use all the code we already wrote to do this. I’ll put it all in one place. If we run all of this code, we will see all of the things we want to see.</p>
 <p>We only need to make two changes. We will change <code>experiment_one$Baseline_Proportion_Gaze_to_Singer</code> to <code>experiment_one$Test_Proportion_Gaze_to_Singer</code>, because that column has the test phase data. And, instead of putting the data into the variable <code>baseline</code>. We will make a new variable called <code>test_phase</code> to store the data.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">test_phase &lt;-<span class="st"> </span>experiment_one$Test_Proportion_Gaze_to_Singer
-<span class="kw">plot</span>(test_phase)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-166-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(test_phase)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-166-2.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(test_phase)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">test_phase &lt;-<span class="st"> </span>experiment_one<span class="op">$</span>Test_Proportion_Gaze_to_Singer
+<span class="kw">plot</span>(test_phase)</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-168-1.png" width="672" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(test_phase)</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-168-2.png" width="672" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(test_phase)</code></pre>
 <pre><code>## [1] 0.5934913</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sd</span>(test_phase)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sd</span>(test_phase)</code></pre>
 <pre><code>## [1] 0.1786884</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(test_phase, <span class="dt">mu =</span> .<span class="dv">5</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(test_phase, <span class="dt">mu =</span> <span class="fl">.5</span>)</code></pre>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -603,7 +633,7 @@ experiment_one &lt;-<span class="st"> </span>all_data %&gt;%<span class="st"> </
 <div id="paired-samples-t-test" class="section level3">
 <h3><span class="header-section-number">6.4.6</span> Paired-samples t-test</h3>
 <p>The paired samples t-test is easy to do. We’ve already made two variables called <code>baseline</code>, and <code>test_phase</code>. These contain each of the infants looking time proportions to the singer for both parts of the experiment. We can see if the difference between them was likely or unlikely due to chance by running a paired samples t-test. We do it like this in one line:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(test_phase, baseline, <span class="dt">paired=</span><span class="ot">TRUE</span>, <span class="dt">var.equal=</span><span class="ot">TRUE</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(test_phase, baseline, <span class="dt">paired=</span><span class="ot">TRUE</span>, <span class="dt">var.equal=</span><span class="ot">TRUE</span>)</code></pre>
 <pre><code>## 
 ##  Paired t-test
 ## 
@@ -625,7 +655,7 @@ experiment_one &lt;-<span class="st"> </span>all_data %&gt;%<span class="st"> </
 <p><strong>Question:</strong> Why is it that a paired samples t-test can be the same as the one sample t-test? What do you have to do the data in the paired samples t-test in order to conduct a one-sample t-test that would give you the same result?</p>
 </div>
 <p>We’ve discussed in the textbook that the one-sample and paired sample t-test are related, they can be the same test. The one-sample test whether a sample mean is different from some particular mean. The paired sample t-test, is to determine whether one sample mean is different from another sample mean. If you take the scores for each variable in a paired samples t-test, and subtract them from one another, then you have one list of difference scores. Then, you could use a one sample t-test to test whether these difference scores are different from 0. It turns out you get the same answer from a paired sample t-test testing the difference between two sample means, and the one sample t-test testing whether the mean difference of the difference scores between the samples are different from 0. We can show this in r easily like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(test_phase, baseline, <span class="dt">paired=</span><span class="ot">TRUE</span>, <span class="dt">var.equal=</span><span class="ot">TRUE</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(test_phase, baseline, <span class="dt">paired=</span><span class="ot">TRUE</span>, <span class="dt">var.equal=</span><span class="ot">TRUE</span>)</code></pre>
 <pre><code>## 
 ##  Paired t-test
 ## 
@@ -637,8 +667,8 @@ experiment_one &lt;-<span class="st"> </span>all_data %&gt;%<span class="st"> </
 ## sample estimates:
 ## mean of the differences 
 ##              0.07239458</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">difference_scores&lt;-test_phase-baseline
-<span class="kw">t.test</span>(difference_scores, <span class="dt">mu=</span><span class="dv">0</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">difference_scores&lt;-test_phase<span class="op">-</span>baseline
+<span class="kw">t.test</span>(difference_scores, <span class="dt">mu=</span><span class="dv">0</span>)</code></pre>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -656,8 +686,8 @@ experiment_one &lt;-<span class="st"> </span>all_data %&gt;%<span class="st"> </
 <p>OK fine, the paired samples t-test can be a one sample t-test if you use the difference scores. This might just seem like a mildly useful factoid you can use for stats trivia games (which no one plays). The point of drawing your attention to the relationship, is to get you to focus on the difference scores. These are what we are actually interested in.</p>
 <p>Let’s use the difference scores to one more useful thing. Sometime the results of a t-test aren’t intuitively obvious. By the t-test we found out that a small difference between the test phase and baseline was not likely produced by chance. How does this relate to the research question about infants using familiar songs as cues for being social? Let’s ask a very simple question. How many infants actually showed the bias? How many infants out of 32 looked longer at the singer who sang the familiar song during test, compared to during baseline.</p>
 <p>We can determine this by calculating the difference scores. Then, asking how many of them were greater than zero:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">difference_scores &lt;-<span class="st"> </span>test_phase-baseline
-<span class="kw">length</span>(difference_scores[difference_scores&gt;<span class="dv">0</span>])</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">difference_scores &lt;-<span class="st"> </span>test_phase<span class="op">-</span>baseline
+<span class="kw">length</span>(difference_scores[difference_scores<span class="op">&gt;</span><span class="dv">0</span>])</code></pre>
 <pre><code>## [1] 22</code></pre>
 <p>So, 22 out of 32 infants showed the effect. To put that in terms of probability, 68.75% of infants showed the effect. These odds and percentages give us another way to appreciate how strong the effect is. It wasn’t strong enough for all infants to show it.</p>
 </div>
@@ -669,17 +699,17 @@ experiment_one &lt;-<span class="st"> </span>all_data %&gt;%<span class="st"> </
 <div id="make-the-dataframe-for-plotting" class="section level4">
 <h4><span class="header-section-number">6.4.7.1</span> Make the dataframe for plotting</h4>
 <p>To start we will need 2 columns. One column will code the experimental phase, Baseline or Test. There are 32 observations in each phase, so we want the word <code>Baseline</code> to appear 32 times, followed by the word <code>Test</code> 32 times. Then we want a single column with each of the proportions for each infant.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Phase &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;Baseline&quot;</span>,<span class="st">&quot;Test&quot;</span>), <span class="dt">each =</span> <span class="dv">32</span>)
+<pre class="sourceCode r"><code class="sourceCode r">Phase &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;Baseline&quot;</span>,<span class="st">&quot;Test&quot;</span>), <span class="dt">each =</span> <span class="dv">32</span>)
 Proportions &lt;-<span class="st"> </span><span class="kw">c</span>(baseline,test_phase)
-plot_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(Phase,Proportions)</code></pre></div>
+plot_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(Phase,Proportions)</code></pre>
 </div>
 <div id="dot-plot-of-raw-scores" class="section level4">
 <h4><span class="header-section-number">6.4.7.2</span> Dot plot of raw scores</h4>
 <p>This shows every scores value on the y-axis, split by the baseline and test groups. If you just looked at this, you might not think the test phase was different from the baseline phase. Still very useful to see the spread of individual scores. Supports the intuition that the scores are still kind of in a similar ballpark.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
-<span class="kw">ggplot</span>(plot_df, <span class="kw">aes</span>(<span class="dt">x=</span>Phase, <span class="dt">y=</span>Proportions))+
-<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-171-1.png" width="672" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+<span class="kw">ggplot</span>(plot_df, <span class="kw">aes</span>(<span class="dt">x=</span>Phase, <span class="dt">y=</span>Proportions))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-173-1.png" width="672" /></p>
 </div>
 <div id="dot-plot-with-means-and-raw-scores" class="section level4">
 <h4><span class="header-section-number">6.4.7.3</span> Dot plot with means and raw scores</h4>
@@ -688,30 +718,30 @@ plot_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(Phase,P
 </div>
 <p><code>ggplot2</code> is great because it let’s us add different layers on top of an existing plot. It would be good to see where the mean values for each sample lie on top of the sample scores. We can do this. But, to do it, we need to supply ggplot with another data frame, one that contains the means for each phase in long form. There are are only two phases, and two means, so we will make a rather small data.frame. It will have two columns, a Phase column, and Mean_value column. There will only be two rows in the data frame, one for the mean for each phase.</p>
 <p>To make the smaller data frame for the means we will use the <code>aggregate</code> function. This allows us to find the means for each phase from the plot_df data frame. It also automatically returns the data frame we are looking for.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mean_df &lt;-<span class="st"> </span><span class="kw">aggregate</span>(Proportions ~<span class="st"> </span>Phase, plot_df, mean)
+<pre class="sourceCode r"><code class="sourceCode r">mean_df &lt;-<span class="st"> </span><span class="kw">aggregate</span>(Proportions <span class="op">~</span><span class="st"> </span>Phase, plot_df, mean)
 
-<span class="kw">ggplot</span>(plot_df, <span class="kw">aes</span>(<span class="dt">x=</span>Phase, <span class="dt">y=</span>Proportions))+<span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_point</span>()+
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data=</span>mean_df, <span class="dt">color=</span><span class="st">&quot;Red&quot;</span>, <span class="dt">size=</span><span class="dv">2</span>)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-172-1.png" width="672" /></p>
+<span class="kw">ggplot</span>(plot_df, <span class="kw">aes</span>(<span class="dt">x=</span>Phase, <span class="dt">y=</span>Proportions))<span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data=</span>mean_df, <span class="dt">color=</span><span class="st">&quot;Red&quot;</span>, <span class="dt">size=</span><span class="dv">2</span>)</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-174-1.png" width="672" /></p>
 </div>
 <div id="bar-plot" class="section level4">
 <h4><span class="header-section-number">6.4.7.4</span> Bar plot</h4>
 <p>It’s very common to use bars in graphs. We can easily do this by using <code>geom_bar</code>, rather than <code>geom_point</code>. Also, we can plot bars for the means, and keep showing the dots like this…(note this will be messed up, but I want to show you why).</p>
 <p>Also look for these changes.</p>
 <ol style="list-style-type: decimal">
-<li>added <code>stat=&quot;identity&quot;</code> Necessary for bar plot to show specific numbers</li>
+<li>added <code>stat="identity"</code> Necessary for bar plot to show specific numbers</li>
 <li>added <code>aes(fill=Phase)</code> Makes each bar a different color, depending on which phase it comes from</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(plot_df, <span class="kw">aes</span>(<span class="dt">x=</span>Phase, <span class="dt">y=</span>Proportions))+<span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_point</span>()+
-<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">data=</span>mean_df, <span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>,<span class="kw">aes</span>(<span class="dt">fill=</span>Phase))</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-173-1.png" width="672" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(plot_df, <span class="kw">aes</span>(<span class="dt">x=</span>Phase, <span class="dt">y=</span>Proportions))<span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">data=</span>mean_df, <span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>,<span class="kw">aes</span>(<span class="dt">fill=</span>Phase))</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-175-1.png" width="672" /></p>
 <p>OK, we see the bars and some of the dots, but not all of them. What is going on? Remember, ggplot2 works in layers. Whatever layer you add first will be printed first in the graph, whatever layer you add second will be printed on top of the first. We put the bars on top of the dots. Let’s change the order of the layers so the dot’s go on top of the bars.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(plot_df, <span class="kw">aes</span>(<span class="dt">x=</span>Phase, <span class="dt">y=</span>Proportions))+<span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">data=</span>mean_df, <span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>,<span class="kw">aes</span>(<span class="dt">fill=</span>Phase))+
-<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-174-1.png" width="672" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(plot_df, <span class="kw">aes</span>(<span class="dt">x=</span>Phase, <span class="dt">y=</span>Proportions))<span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">data=</span>mean_df, <span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>,<span class="kw">aes</span>(<span class="dt">fill=</span>Phase))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-176-1.png" width="672" /></p>
 </div>
 <div id="bar-plot-with-error-bars" class="section level4">
 <h4><span class="header-section-number">6.4.7.5</span> Bar plot with error bars</h4>
@@ -723,31 +753,31 @@ plot_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(Phase,P
 <p><strong>Question:</strong> How would error bars based on the standard error of the mean differences aid in visual inference about the role of chance in producing the difference?</p>
 </div>
 <p>Error bars are commonly used as an aid for visual inference. The use of error bars can be a subtle nuanced issue. This is because there a different kinds of error bars that can be plotted, and each one supports different kinds of inference. In general, the error bar is supposed to represent some aspect of the variability associated with each mean. We could plot little bars that are +1 or -1 standard deviations of each mean, or we would do +1 or -1 standard errors of each mean. In the case of paired samples, neither or these error bars would be appropriate, they wouldn’t reflect the variability associated with mean we are interested in. In a paired samples t-test, we are interested in the variability of the mean of the difference scores. Let’s calculate the standard error of the mean (SEM) for the difference scores between Baseline and Test, and then add error bars to the plot.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">difference_scores &lt;-<span class="st"> </span>baseline-test_phase <span class="co">#calculate difference scores</span>
-standard_error &lt;-<span class="st"> </span><span class="kw">sd</span>(difference_scores)/<span class="kw">sqrt</span>(<span class="kw">length</span>(difference_scores)) <span class="co">#calculate SEM</span>
+<pre class="sourceCode r"><code class="sourceCode r">difference_scores &lt;-<span class="st"> </span>baseline<span class="op">-</span>test_phase <span class="co">#calculate difference scores</span>
+standard_error &lt;-<span class="st"> </span><span class="kw">sd</span>(difference_scores)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">length</span>(difference_scores)) <span class="co">#calculate SEM</span>
 
 
-<span class="kw">ggplot</span>(plot_df, <span class="kw">aes</span>(<span class="dt">x=</span>Phase, <span class="dt">y=</span>Proportions))+<span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">data=</span>mean_df, <span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>,<span class="kw">aes</span>(<span class="dt">fill=</span>Phase))+
-<span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="dt">data=</span>mean_df, <span class="kw">aes</span>(<span class="dt">ymin=</span>Proportions-standard_error, 
-                                  <span class="dt">ymax=</span>Proportions+standard_error), <span class="dt">width=</span>.<span class="dv">1</span>) +
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha=</span>.<span class="dv">25</span>)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-175-1.png" width="672" /></p>
+<span class="kw">ggplot</span>(plot_df, <span class="kw">aes</span>(<span class="dt">x=</span>Phase, <span class="dt">y=</span>Proportions))<span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">data=</span>mean_df, <span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>,<span class="kw">aes</span>(<span class="dt">fill=</span>Phase))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="dt">data=</span>mean_df, <span class="kw">aes</span>(<span class="dt">ymin=</span>Proportions<span class="op">-</span>standard_error, 
+                                  <span class="dt">ymax=</span>Proportions<span class="op">+</span>standard_error), <span class="dt">width=</span>.<span class="dv">1</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha=</span>.<span class="dv">25</span>)</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-177-1.png" width="672" /></p>
 <div class="marginnote">
 <p><strong>Question:</strong> What is one reason why these error bars (standard error of the mean difference between Baseline and Test) are appropriate to use. What is one reason they are not appropriate to use?</p>
 </div>
 <p>We have done something that is useful for visual inference. From the textbook, we learned that differences of about 2 standard errors of the mean are near the point where we would claim that chance is unlikely to have produced the difference. This is a rough estimate. But, we can see that the top of the error bar for Baseline is lower than the bottom of the error bar for Test, resulting in a difference greater than 2 standard error bars. So, based on this graph, we might expect the difference between conditions to be significant. We can also complain about what we have done here, we are placing the same error bars from the mean difference scores onto the means for each condition. In some sense this is misleading. The error bars are not for the depicted sample means, they are for the hidden single set of difference scores. To make this more clear, we will make a bar plot with a single bar only for the differences scores.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">difference_scores &lt;-<span class="st"> </span>test_phase-baseline <span class="co">#calculate difference scores</span>
-standard_error &lt;-<span class="st"> </span><span class="kw">sd</span>(difference_scores)/<span class="kw">sqrt</span>(<span class="kw">length</span>(difference_scores)) <span class="co">#calculate SEM</span>
+<pre class="sourceCode r"><code class="sourceCode r">difference_scores &lt;-<span class="st"> </span>test_phase<span class="op">-</span>baseline <span class="co">#calculate difference scores</span>
+standard_error &lt;-<span class="st"> </span><span class="kw">sd</span>(difference_scores)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">length</span>(difference_scores)) <span class="co">#calculate SEM</span>
 mean_difference &lt;-<span class="st"> </span><span class="kw">mean</span>(difference_scores)
 
-<span class="kw">qplot</span>(<span class="dt">x=</span><span class="st">&quot;MeanDifference&quot;</span>, <span class="dt">y=</span>mean_difference)+
-<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="dt">width=</span>.<span class="dv">5</span>, <span class="dt">alpha=</span>.<span class="dv">5</span>)+
-<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept=</span><span class="dv">0</span>)+
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y=</span>difference_scores), <span class="dt">alpha=</span>.<span class="dv">25</span>)+
-<span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin=</span>mean_difference-standard_error, 
-                                  <span class="dt">ymax=</span>mean_difference+standard_error), <span class="dt">width=</span>.<span class="dv">1</span>)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-176-1.png" width="672" /></p>
+<span class="kw">qplot</span>(<span class="dt">x=</span><span class="st">&quot;MeanDifference&quot;</span>, <span class="dt">y=</span>mean_difference)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="dt">width=</span>.<span class="dv">5</span>, <span class="dt">alpha=</span>.<span class="dv">5</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept=</span><span class="dv">0</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y=</span>difference_scores), <span class="dt">alpha=</span>.<span class="dv">25</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin=</span>mean_difference<span class="op">-</span>standard_error, 
+                                  <span class="dt">ymax=</span>mean_difference<span class="op">+</span>standard_error), <span class="dt">width=</span>.<span class="dv">1</span>)</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-178-1.png" width="672" /></p>
 <div class="marginnote">
 <p><strong>Question:</strong> Why is is it more appropriate to put the standard error of the difference on this bar graph? What important aspects of the original results shown in the previous graph are missing from this graph?</p>
 </div>
@@ -756,49 +786,50 @@ mean_difference &lt;-<span class="st"> </span><span class="kw">mean</span>(diffe
 <div id="bar-plot-with-confidence-intervals" class="section level4">
 <h4><span class="header-section-number">6.4.7.6</span> Bar plot with confidence intervals</h4>
 <p>Confidence intervals are also often used for error bars, rather than the standard error (or other measure of variance). If we use 95% confidence intervals, then our error bars can be even more helpful for visual inference. Running the <code>t.test</code> function produces confidence interval estimates, and we can pull them out and use them for error bars.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">t_test_results &lt;-<span class="st"> </span><span class="kw">t.test</span>(difference_scores)
-lower_interval&lt;-<span class="st"> </span>t_test_results$conf.int[<span class="dv">1</span>]
-upper_interval&lt;-<span class="st"> </span>t_test_results$conf.int[<span class="dv">2</span>]
+<pre class="sourceCode r"><code class="sourceCode r">t_test_results &lt;-<span class="st"> </span><span class="kw">t.test</span>(difference_scores)
+lower_interval&lt;-<span class="st"> </span>t_test_results<span class="op">$</span>conf.int[<span class="dv">1</span>]
+upper_interval&lt;-<span class="st"> </span>t_test_results<span class="op">$</span>conf.int[<span class="dv">2</span>]
 
-<span class="kw">qplot</span>(<span class="dt">x=</span><span class="st">&quot;MeanDifference&quot;</span>, <span class="dt">y=</span>mean_difference)+
-<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="dt">width=</span>.<span class="dv">5</span>, <span class="dt">alpha=</span>.<span class="dv">5</span>)+
-<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept=</span><span class="dv">0</span>)+
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y=</span>difference_scores), <span class="dt">alpha=</span>.<span class="dv">25</span>)+
+<span class="kw">qplot</span>(<span class="dt">x=</span><span class="st">&quot;MeanDifference&quot;</span>, <span class="dt">y=</span>mean_difference)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="dt">width=</span>.<span class="dv">5</span>, <span class="dt">alpha=</span>.<span class="dv">5</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept=</span><span class="dv">0</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y=</span>difference_scores), <span class="dt">alpha=</span>.<span class="dv">25</span>)<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin=</span>lower_interval, 
-                                  <span class="dt">ymax=</span>upper_interval), <span class="dt">width=</span>.<span class="dv">1</span>)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-177-1.png" width="672" /></p>
+                                  <span class="dt">ymax=</span>upper_interval), <span class="dt">width=</span>.<span class="dv">1</span>)</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-179-1.png" width="672" /></p>
 <p>Notice that the 95% confidence intervals around the mean are wider than the SEM error bars from the previous graph. These new confidence intervals tell us that 95% of the time our sample mean will fall between the two lines. The bottom line is slightly above 0, so we can now visually see support for our statistical inference that chance was unlikely to produce the result. If chance was likely to produce the result, the horizontal line indicating 0, would be well inside the confidence interval. We can also notice that the mean difference was just barely different from chance, that lower bar is almost touching 0.</p>
 </div>
 </div>
 <div id="data-simulation" class="section level3">
 <h3><span class="header-section-number">6.4.8</span> Data-simulation</h3>
 <p>We can do a little bit of data simulation to get a better feel for this kind of data. For example, we saw that the dots in our plots were quite variable. We might wonder about what chance can do in the current experiment. One way to do this is to estimate the standard deviation of the looking time proportions. Perhaps the best way to do that would be to an average of the standard deviation in the baseline and test_phase conditions. Then, we could simulate 32 scores from a normal distribution with mean = .5, and standard deviation equaling our mean standard deviation. We could calculate the mean of our simulated sample. And, we could do this many times, say 1000 times. Then, we could look at a histogram of our means. This will show the range of sample means we would expect just by chance. This is another way to tell whether the observed difference in this experiment in the testing phase was close or not close from being produced by chance. Take a look at the histogram. What do you think?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sample_sd   &lt;-<span class="st"> </span>(<span class="kw">sd</span>(baseline)+<span class="kw">sd</span>(test_phase))/<span class="dv">2</span>
+<pre class="sourceCode r"><code class="sourceCode r">sample_sd   &lt;-<span class="st"> </span>(<span class="kw">sd</span>(baseline)<span class="op">+</span><span class="kw">sd</span>(test_phase))<span class="op">/</span><span class="dv">2</span>
 
 simulated_means &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
-for(i in <span class="dv">1</span>:<span class="dv">1000</span>){
+<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>){
  simulated_means[i] &lt;-<span class="st"> </span><span class="kw">mean</span>(<span class="kw">rnorm</span>(<span class="dv">32</span>,.<span class="dv">5</span>, sample_sd))
 }
 
-<span class="kw">hist</span>(simulated_means)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-178-1.png" width="672" /> #### Simulating the mean differences</p>
+<span class="kw">hist</span>(simulated_means)</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-180-1.png" width="672" />
+#### Simulating the mean differences</p>
 <p>We can do the simulation slightly differently to give us a different look at chance. Above we simulated the sample means from a normal distribution centered on .5. The experimental question of interest was whether the mean difference between the baseline and test_phase condition was different. So, we should do a simulation of the difference scores. First, we estimate the standard deviation of the difference scores, and then run the simulation with a normal distribution centered on 0 (an expected mean difference of 0). This shows roughly how often we might expect mean differences of various sizes to occur. One major limitation is that we likely had only a rough estimate of the true standard deviation of these mean differences, after all there were only 32 of them, so we should take this with a grain of salt. Nevertheless, the pattern in the simulation fits well with the observations in that we already made from the data.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sample_sd   &lt;-<span class="st"> </span><span class="kw">sd</span>(baseline-test_phase)
+<pre class="sourceCode r"><code class="sourceCode r">sample_sd   &lt;-<span class="st"> </span><span class="kw">sd</span>(baseline<span class="op">-</span>test_phase)
 
 simulated_mean_difference &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
-for(i in <span class="dv">1</span>:<span class="dv">1000</span>){
+<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>){
  simulated_mean_difference[i] &lt;-<span class="st"> </span><span class="kw">mean</span>(<span class="kw">rnorm</span>(<span class="dv">32</span>,<span class="dv">0</span>, sample_sd))
 }
 
-<span class="kw">hist</span>(simulated_mean_difference)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-179-1.png" width="672" /></p>
+<span class="kw">hist</span>(simulated_mean_difference)</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-181-1.png" width="672" /></p>
 </div>
 <div id="generalization-exercise-5" class="section level3">
 <h3><span class="header-section-number">6.4.9</span> Generalization Exercise</h3>
 <p>( 1 point - Pass/Fail )</p>
 <p>The following code creates two variables with simulated means for each of 20 subjects in two conditions (A and B). Each sample comes from a normal distribution with mean = 100, and standard deviation = 25.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Condition_A &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">20</span>,<span class="dv">100</span>,<span class="dv">25</span>)
-Condition_B &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">20</span>,<span class="dv">100</span>,<span class="dv">25</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">Condition_A &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">20</span>,<span class="dv">100</span>,<span class="dv">25</span>)
+Condition_B &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">20</span>,<span class="dv">100</span>,<span class="dv">25</span>)</code></pre>
 <ol style="list-style-type: decimal">
 <li><p>Conduct a paired samples t-test on sample data stored in the variables <code>Condition_A</code>, and <code>Condition_B</code>. Report the results of the t-test, and the mean difference between conditions</p></li>
 <li><p>The above code assumes no difference in the means between Condition A and Condition B. Both samples come from the same normal distribution. Change the mean for one of the distributions. Make the change large enough so that you find a significant p-value (p &lt; 0.05) when you conduct the t-test on the new simulated data. Report the t-test and the means for each condition</p></li>
@@ -858,7 +889,8 @@ Condition_B &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span cl
 <p>Go to <span style="color:blue">Data</span>, then <span style="color:blue">Split file…</span></p>
 <p><img src="img/6.4.12.png" width="533" /></p>
 <p>A window will appear. Choose <span style="color:blue">Organize output by groups</span> and enter the <code>exp1</code> variable in the “Groups Based on” field:</p>
-<p><img src="img/6.4.13.png" width="531" /> Click <span style="color:blue">OK</span>. SPSS will generate an output window to confirm you have split your file. In order to run the t-test, go to the <span style="color:blue">Analyze</span> menu, then choose <span style="color:blue">Compare Means</span> and then <span style="color:blue">One-Sample T-test</span>:</p>
+<p><img src="img/6.4.13.png" width="531" />
+Click <span style="color:blue">OK</span>. SPSS will generate an output window to confirm you have split your file. In order to run the t-test, go to the <span style="color:blue">Analyze</span> menu, then choose <span style="color:blue">Compare Means</span> and then <span style="color:blue">One-Sample T-test</span>:</p>
 <p><img src="img/6.4.14.png" width="506" /></p>
 <p>This will open up a window in which you will specify which variable contains the relevant sample data. Remember, we are interested in the variable labeled <code>Baseline_Proportion_Gaze_to_Singer</code>, so let’s choose this variable from the list on the left and move it to the right-hand field using the arrow.</p>
 <p>Next, make sure to change the value in the field labeled “Test Value” to the mean to which you are comparing the sample. Since we are comparing our sample’s proportions to the proportion that represents equal time spent looking at both people in the video, we are going to use .5 as our test value. Enter this number in the appropriate field. Your window should look like this:</p>
@@ -890,7 +922,8 @@ Condition_B &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span cl
 <p>The Chart Builder window will open and look like this:</p>
 <p><img src="img/6.4.21.png" width="531" /></p>
 <p>We are going to choose a simple bar chart, which is represented by the bar icon at the top left of the set of chart options. Click on this icon and drag it into the chart window as follows:</p>
-<p><img src="img/6.4.22.png" width="511" /> Once you do this, your window should look like this:</p>
+<p><img src="img/6.4.22.png" width="511" />
+Once you do this, your window should look like this:</p>
 <p><img src="img/6.4.23.png" width="623" /></p>
 <p>From here, you must indicate which variables should be included in the chart on the y-axis. We will first take the <code>Baseline_Proportion_Gaze_to_Singer</code> variable, found in the list on the left of the window, and drag it to the y-axis in the chart window. You will see that the y-axis area will highlight with a red border when you do this.</p>
 <p><img src="img/6.4.24.png" width="616" /></p>
@@ -964,7 +997,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -976,6 +1009,10 @@ gitbook.start({
 "edit": {
 "link": "https://github.com/CrumpLab/statisticsLab/blob/master/06-tTest1.Rmd",
 "text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
 },
 "download": ["Statistics_Lab.pdf"],
 "toc": {
@@ -990,8 +1027,8 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;

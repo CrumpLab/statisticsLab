@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Answering questions with data: Lab Manual</title>
+  <title>Chapter 4 Lab 4: Normal Distribution &amp; Central Limit Theorem | Answering questions with data: Lab Manual</title>
   <meta name="description" content="A lab manual for Psyc 3400">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Answering questions with data: Lab Manual" />
+  <meta property="og:title" content="Chapter 4 Lab 4: Normal Distribution &amp; Central Limit Theorem | Answering questions with data: Lab Manual" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Answering questions with data: Lab Manual" />
+  <meta name="twitter:title" content="Chapter 4 Lab 4: Normal Distribution &amp; Central Limit Theorem | Answering questions with data: Lab Manual" />
   
   <meta name="twitter:description" content="A lab manual for Psyc 3400" />
   
@@ -35,6 +35,7 @@
 <link rel="next" href="lab-5-fundamentals-of-hypothesis-testing.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -63,41 +64,67 @@ mattcrump=1;
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="tufte.css" type="text/css" />
@@ -446,7 +473,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <script>
 $("#coverpic").hide();
 </script>
-<p><span class="newthought"> By a small sample, we may judge of the whole piece. —Miguel de Cervantes from Don Quixote </span></p>
+<p><span class="newthought">
+By a small sample, we may judge of the whole piece.
+—Miguel de Cervantes from Don Quixote
+</span></p>
 <div id="general-goals-3" class="section level2">
 <h2><span class="header-section-number">4.1</span> General Goals</h2>
 <ol style="list-style-type: decimal">
@@ -469,67 +499,67 @@ $("#coverpic").hide();
 <div id="sample" class="section level4">
 <h4><span class="header-section-number">4.2.1.1</span> sample</h4>
 <p>The sample function is like an endless gumball machine. You put the gumballs inside with different properties, say As and Bs, and then you let sample endlessly take gumballs out. Check it out:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gumballs &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>)
+<pre class="sourceCode r"><code class="sourceCode r">gumballs &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>)
 sample_of_gumballs &lt;-<span class="kw">sample</span>(gumballs, <span class="dv">10</span>, <span class="dt">replace=</span><span class="ot">TRUE</span>)
-sample_of_gumballs</code></pre></div>
+sample_of_gumballs</code></pre>
 <pre><code>##  [1] &quot;B&quot; &quot;B&quot; &quot;A&quot; &quot;A&quot; &quot;B&quot; &quot;B&quot; &quot;B&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot;</code></pre>
 <p>Here the sample function randomly picks A or B each time. We set it do this 10 times, so our sample has 10 things in it. We set <code>replace=TRUE</code> so that after each sample, we put the item back into the gumball machine and start again. Here’s another example with numbers</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">some_numbers &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>)
+<pre class="sourceCode r"><code class="sourceCode r">some_numbers &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>)
 sample_of_numbers &lt;-<span class="kw">sample</span>(some_numbers, <span class="dv">20</span>, <span class="dt">replace=</span><span class="ot">TRUE</span>)
-sample_of_numbers</code></pre></div>
+sample_of_numbers</code></pre>
 <pre><code>##  [1] 5 4 3 2 1 5 5 1 5 2 5 5 5 5 1 1 5 5 5 2</code></pre>
 <p>Let’s do one more thing with sample. Let’s sample 1000 times from our <code>some_numbers</code> variable, and then look at the histogram</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
 some_numbers &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>)
 sample_of_numbers &lt;-<span class="kw">sample</span>(some_numbers, <span class="dv">1000</span>, <span class="dt">replace=</span><span class="ot">TRUE</span>)
-<span class="kw">hist</span>(sample_of_numbers)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-105-1.png" width="672" /></p>
+<span class="kw">hist</span>(sample_of_numbers)</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-107-1.png" width="672" /></p>
 <p>We are looking at lots of samples from our little gumball machine of numbers. We put more 5s in, and voila, more 5s come out of in our big sample of 1000.</p>
 </div>
 <div id="runif-uniform-distribution" class="section level4">
 <h4><span class="header-section-number">4.2.1.2</span> runif uniform distribution</h4>
 <p>We can sample random numbers between any range using the <code>runif(n, min=0, max = 1)</code> function for the uniform distribution. We discussed this in the textbook. A uniform distribution is flat, and all the numbers between the min and max should occur roughly equally frequently. Let’s take 1000 random numbers between 0 and 1 and plot the histogram. We’ll just do it all in one line for speed.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(<span class="kw">runif</span>(<span class="dv">1000</span>,<span class="dv">0</span>,<span class="dv">1</span>))</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-106-1.png" width="672" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(<span class="kw">runif</span>(<span class="dv">1000</span>,<span class="dv">0</span>,<span class="dv">1</span>))</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-108-1.png" width="672" /></p>
 <p>This is histogram is flattish. Not perfectly flat, after all we only took 1000 samples. What if we took many more, say 10,000 total samples? Now it looks more flat, each bin is occurring about 500 times each, which is pretty close to the same amount.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(<span class="kw">runif</span>(<span class="dv">10000</span>,<span class="dv">0</span>,<span class="dv">1</span>))</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-107-1.png" width="672" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(<span class="kw">runif</span>(<span class="dv">10000</span>,<span class="dv">0</span>,<span class="dv">1</span>))</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-109-1.png" width="672" /></p>
 </div>
 <div id="rbinom-the-binomial-distribution" class="section level4">
 <h4><span class="header-section-number">4.2.1.3</span> rbinom the binomial distribution</h4>
 <p>The binomial distribution sounds like a scary word… binomial (AAGGGGHHHHH, stay away!). The binomial can be a coin flipping distribution. You use <code>rbinom(n, size, prob)</code>. <code>n</code> gives the number of samples you want to take. We’ll keep <code>size = 1</code> for now, it’s the number of trials (forget this for now, it’s more useful for more complicated things than what we are doing, if you want to know what it does, try it out, and see if you figure it out). <code>prob</code> is a little list you make of probabilities, that define how often certain things happen.</p>
 <p>For example, consider flipping a coin. It will be heads or tails, and the coin, if it is fair, should have a 50% chance of being heads or tails. Here’s how we flip a coin 10 times using <code>rbinom</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">coin_flips &lt;-<span class="st"> </span><span class="kw">rbinom</span>(<span class="dv">10</span>,<span class="dv">1</span>,.<span class="dv">5</span>)
-coin_flips</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">coin_flips &lt;-<span class="st"> </span><span class="kw">rbinom</span>(<span class="dv">10</span>,<span class="dv">1</span>,.<span class="dv">5</span>)
+coin_flips</code></pre>
 <pre><code>##  [1] 0 1 1 0 1 1 0 0 1 1</code></pre>
 <p>We get a bunch of 0s, and 1s. We can pretend 0 = tails, and 1 = heads. Great, now we can do coin flipping if we want. For example, if you flip 10 coins, how many heads do you get? We can can do the above again, and then <code>sum(coin_flips)</code>. All the 1s are heads, so it will work out.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">coin_flips &lt;-<span class="st"> </span><span class="kw">rbinom</span>(<span class="dv">10</span>,<span class="dv">1</span>,.<span class="dv">5</span>)
-<span class="kw">sum</span>(coin_flips)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">coin_flips &lt;-<span class="st"> </span><span class="kw">rbinom</span>(<span class="dv">10</span>,<span class="dv">1</span>,.<span class="dv">5</span>)
+<span class="kw">sum</span>(coin_flips)</code></pre>
 <pre><code>## [1] 5</code></pre>
 <p>Alright, so we get the sum, which tells us the number of heads. But, should we always get that number of heads if we flipped a coin 10 times? If you keep redoing the above, you’ll get different answers. 5 heads will be the most frequent answer, but you will get lots of other answers too.</p>
 <p>Hold on to your seats for this next one. With R, we can simulate the flipping of a coin 10 times (you already know that, you just did it), and we can do that over and over as many times as we want. For example, we could do it 100 times over, saving the number of heads for each set of 10 flips. Then we could look at the distribution of those sums. That would tell us about the range of things that can happen when we flip a coin 10 times. We can do that in loop like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">save_number_of_heads&lt;-<span class="kw">length</span>(<span class="dv">1000</span>) <span class="co"># make an empty variable to save things in</span>
+<pre class="sourceCode r"><code class="sourceCode r">save_number_of_heads&lt;-<span class="kw">length</span>(<span class="dv">1000</span>) <span class="co"># make an empty variable to save things in</span>
 
-for(i in <span class="dv">1</span>:<span class="dv">1000</span>){
+<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>){
   save_number_of_heads[i] &lt;-<span class="st"> </span><span class="kw">sum</span>(<span class="kw">rbinom</span>(<span class="dv">10</span>,<span class="dv">1</span>,.<span class="dv">5</span>))
 }
 
-<span class="kw">hist</span>(save_number_of_heads)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-110-1.png" width="672" /></p>
+<span class="kw">hist</span>(save_number_of_heads)</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-112-1.png" width="672" /></p>
 <p>See, that wasn’t too painful. Now we see another histogram. The histogram shows us the frequency observing different numbers of heads (for 10 flips) across the 1000 simulations. 5 happens the most, but 2 happens sometimes, and so does 8. All of the possibilities seem to happen sometimes, some more than others.</p>
 </div>
 <div id="rnorm-the-normal-distribution" class="section level4">
 <h4><span class="header-section-number">4.2.1.4</span> rnorm the normal distribution</h4>
 <p>We’ll quickly show how to use <code>rnorm(n, mean=0, sd=1)</code> to sample numbers from a normal distribution. And, then we’ll come back to the normal distribution later, because it is so important.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(<span class="kw">rnorm</span>(<span class="dv">10000</span>,<span class="dv">0</span>,<span class="dv">1</span>))</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-111-1.png" width="672" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(<span class="kw">rnorm</span>(<span class="dv">10000</span>,<span class="dv">0</span>,<span class="dv">1</span>))</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-113-1.png" width="672" /></p>
 <p>There it is, a bell-shaped normal distribution with a mean of 0, and a standard deviation of 1. You’ve probably seen things like this before. Now you can sample numbers from normal distributions with any mean or standard deviation, just by changing those parts of the <code>rnorm</code> function.</p>
 </div>
 <div id="mixing-it-up" class="section level4">
 <h4><span class="header-section-number">4.2.1.5</span> mixing it up</h4>
 <p>The r functions are like Legos, you can put them together and come up with different things. What if wanted to sample from a distribution that looked like a two-humped camel’s back? Just sample from <code>rnorm</code> twice like this… mix away.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>( <span class="kw">c</span>( <span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">25</span>,<span class="dv">5</span>), <span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">50</span>,<span class="dv">5</span>)) )</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-112-1.png" width="672" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>( <span class="kw">c</span>( <span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">25</span>,<span class="dv">5</span>), <span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">50</span>,<span class="dv">5</span>)) )</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-114-1.png" width="672" /></p>
 </div>
 <div id="summary" class="section level4">
 <h4><span class="header-section-number">4.2.1.6</span> summary</h4>
@@ -542,27 +572,27 @@ for(i in <span class="dv">1</span>:<span class="dv">1000</span>){
 <div id="taking-multiple-samples-of-the-same-size" class="section level4">
 <h4><span class="header-section-number">4.2.2.1</span> Taking multiple samples of the same size</h4>
 <p>Let’s take 10 samples from a normal distribution (mean = 0, and SD = 1). Let’s set the sample-size for each to be 20. Then, we’ll put them all in a data frame and look at 10 different histograms, one for each sample.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">scores &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>*<span class="dv">20</span>,<span class="dv">0</span>,<span class="dv">1</span>)
-samples &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span>:<span class="dv">10</span>,<span class="dt">each=</span><span class="dv">20</span>)
-my_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(samples,scores)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">scores &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span><span class="op">*</span><span class="dv">20</span>,<span class="dv">0</span>,<span class="dv">1</span>)
+samples &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,<span class="dt">each=</span><span class="dv">20</span>)
+my_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(samples,scores)</code></pre>
 <p>First, look at the new my_df data frame. You can see there is a column with numbers 1 to 10, these are the sample names. There are also 20 scores for each in the scores column. Let’s make histograms for each sample, so we can see what all of the samples look like:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(my_df, <span class="kw">aes</span>(<span class="dt">x=</span>scores))+
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">color=</span><span class="st">&quot;white&quot;</span>)+
-<span class="st">  </span><span class="kw">facet_wrap</span>(~samples)+
-<span class="st">  </span><span class="kw">theme_classic</span>()</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-114-1.png" width="672" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(my_df, <span class="kw">aes</span>(<span class="dt">x=</span>scores))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">color=</span><span class="st">&quot;white&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>samples)<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_classic</span>()</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-116-1.png" width="672" /></p>
 <p>Notice, all of the samples do not have the same looking histogram. This is because of random sampling error. All of the samples are coming from the same normal distributions, but random chance makes each sample a little bit different (e.g., you don’t always get 5 heads and 5 tails when you flip a coin right)</p>
 </div>
 <div id="getting-the-means-of-the-samples" class="section level4">
 <h4><span class="header-section-number">4.2.2.2</span> Getting the means of the samples</h4>
 <p>Now, let’s look at the means of the samples, we will use <code>dplyr</code> to get the means for each sample, and put them in a table:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
 
-sample_means &lt;-<span class="st"> </span>my_df %&gt;%
-<span class="st">                </span><span class="kw">group_by</span>(samples) %&gt;%
+sample_means &lt;-<span class="st"> </span>my_df <span class="op">%&gt;%</span>
+<span class="st">                </span><span class="kw">group_by</span>(samples) <span class="op">%&gt;%</span>
 <span class="st">                </span><span class="kw">summarise</span>(<span class="dt">means=</span><span class="kw">mean</span>(scores))
 
-knitr::<span class="kw">kable</span>(sample_means)</code></pre></div>
+knitr<span class="op">::</span><span class="kw">kable</span>(sample_means)</code></pre>
 <table>
 <thead>
 <tr class="header">
@@ -618,13 +648,13 @@ knitr::<span class="kw">kable</span>(sample_means)</code></pre></div>
 <div id="histogram-for-the-means-of-the-samples" class="section level4">
 <h4><span class="header-section-number">4.2.2.3</span> histogram for the means of the samples</h4>
 <p>What if we now plot these 10 means (of each of the samples) in their own distribution?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">ggplot</span>(sample_means, <span class="kw">aes</span>(<span class="dt">x=</span>means))+
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">color=</span><span class="st">&quot;white&quot;</span>)+
-<span class="st">  </span><span class="kw">theme_classic</span>()</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-116-1.png" width="672" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">ggplot</span>(sample_means, <span class="kw">aes</span>(<span class="dt">x=</span>means))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">color=</span><span class="st">&quot;white&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_classic</span>()</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-118-1.png" width="672" /></p>
 <p>That is the distribution of the sample means. It doesn’t look like much eh? That’s because we only took 10 samples right.</p>
 <p>Notice one more thing…What is the mean of our 10 sample means? This is a mean of means. Remember that.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(sample_means$means)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(sample_means<span class="op">$</span>means)</code></pre>
 <pre><code>## [1] 0.03780885</code></pre>
 <p>Well, that’s pretty close to zero. Which is good. When we average over our samples, they better estimate the mean of the distribution they came from.</p>
 </div>
@@ -632,24 +662,24 @@ knitr::<span class="kw">kable</span>(sample_means)</code></pre></div>
 <h4><span class="header-section-number">4.2.2.4</span> simulating the distribution of sample means</h4>
 <p>Our histogram with 10 sample means looked kind of sad. Let’s give it some more friends. How about we repeat our little sampling experiment 1000 times.</p>
 <p>Explain…We take 1000 samples. Each sample takes 20 scores from a normal distribution (mean=0, SD=1). Then we find the means of each sample (giving us 1000 sample means). Then, we plot that distribution.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># get 1000 samples with 20 scores each</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># get 1000 samples with 20 scores each</span>
 
-scores &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1000</span>*<span class="dv">20</span>,<span class="dv">0</span>,<span class="dv">1</span>)
-samples &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span>:<span class="dv">1000</span>,<span class="dt">each=</span><span class="dv">20</span>)
+scores &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1000</span><span class="op">*</span><span class="dv">20</span>,<span class="dv">0</span>,<span class="dv">1</span>)
+samples &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>,<span class="dt">each=</span><span class="dv">20</span>)
 my_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(samples,scores)
 
 <span class="co"># get the means of the samples</span>
 
-sample_means &lt;-<span class="st"> </span>my_df %&gt;%
-<span class="st">                </span><span class="kw">group_by</span>(samples) %&gt;%
+sample_means &lt;-<span class="st"> </span>my_df <span class="op">%&gt;%</span>
+<span class="st">                </span><span class="kw">group_by</span>(samples) <span class="op">%&gt;%</span>
 <span class="st">                </span><span class="kw">summarise</span>(<span class="dt">means=</span><span class="kw">mean</span>(scores))
 
 <span class="co"># make a histogram</span>
 
- <span class="kw">ggplot</span>(sample_means, <span class="kw">aes</span>(<span class="dt">x=</span>means))+
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">color=</span><span class="st">&quot;white&quot;</span>)+
-<span class="st">  </span><span class="kw">theme_classic</span>()</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-118-1.png" width="672" /></p>
+ <span class="kw">ggplot</span>(sample_means, <span class="kw">aes</span>(<span class="dt">x=</span>means))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">color=</span><span class="st">&quot;white&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_classic</span>()</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-120-1.png" width="672" /></p>
 <p>There, that looks more like a sampling distribution of the sample means. Notice it’s properties. It is centered on 0, which tells us that sample means are mostly around zero. It is also bell-shaped, like the normal distribution it came from. It is also quite narrow. The numbers on the x-axis don’t go much past -.5 to +.5.</p>
 <p>We will use things like the sampling distribution of the mean to make inferences about what chance can do in your data later on in this course.</p>
 </div>
@@ -657,8 +687,8 @@ sample_means &lt;-<span class="st"> </span>my_df %&gt;%
 <div id="sampling-distributions-for-any-statistic" class="section level3">
 <h3><span class="header-section-number">4.2.3</span> Sampling distributions for any statistic</h3>
 <p>Just for fun here are some different sampling distributions for different statistics. We will take a normal distribution with mean = 100, and standard deviation =20. Then, we’ll take lots of samples with n = 50 (50 observations per sample). We’ll save all of the sample statistics, then plot their histograms. We do the sample means, standard deviations, maximum values, and medians. Let’s do it.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">all_df&lt;-<span class="kw">data.frame</span>()
-for(i in <span class="dv">1</span>:<span class="dv">1000</span>){
+<pre class="sourceCode r"><code class="sourceCode r">all_df&lt;-<span class="kw">data.frame</span>()
+<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>){
   sample&lt;-<span class="kw">rnorm</span>(<span class="dv">50</span>,<span class="dv">100</span>,<span class="dv">20</span>)
   sample_mean&lt;-<span class="kw">mean</span>(sample)
   sample_sd&lt;-<span class="kw">sd</span>(sample)
@@ -669,50 +699,50 @@ for(i in <span class="dv">1</span>:<span class="dv">1000</span>){
 }
 
 <span class="kw">library</span>(ggpubr)
-a&lt;-<span class="kw">ggplot</span>(all_df,<span class="kw">aes</span>(<span class="dt">x=</span>sample_mean))+
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">color=</span><span class="st">&quot;white&quot;</span>)+
+a&lt;-<span class="kw">ggplot</span>(all_df,<span class="kw">aes</span>(<span class="dt">x=</span>sample_mean))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">color=</span><span class="st">&quot;white&quot;</span>)<span class="op">+</span>
 <span class="st">  </span><span class="kw">theme_classic</span>()
-b&lt;-<span class="kw">ggplot</span>(all_df,<span class="kw">aes</span>(<span class="dt">x=</span>sample_sd))+
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">color=</span><span class="st">&quot;white&quot;</span>)+
+b&lt;-<span class="kw">ggplot</span>(all_df,<span class="kw">aes</span>(<span class="dt">x=</span>sample_sd))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">color=</span><span class="st">&quot;white&quot;</span>)<span class="op">+</span>
 <span class="st">  </span><span class="kw">theme_classic</span>()
-c&lt;-<span class="kw">ggplot</span>(all_df,<span class="kw">aes</span>(<span class="dt">x=</span>sample_max))+
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">color=</span><span class="st">&quot;white&quot;</span>)+
+c&lt;-<span class="kw">ggplot</span>(all_df,<span class="kw">aes</span>(<span class="dt">x=</span>sample_max))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">color=</span><span class="st">&quot;white&quot;</span>)<span class="op">+</span>
 <span class="st">  </span><span class="kw">theme_classic</span>()
-d&lt;-<span class="kw">ggplot</span>(all_df,<span class="kw">aes</span>(<span class="dt">x=</span>sample_median))+
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">color=</span><span class="st">&quot;white&quot;</span>)+
+d&lt;-<span class="kw">ggplot</span>(all_df,<span class="kw">aes</span>(<span class="dt">x=</span>sample_median))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">color=</span><span class="st">&quot;white&quot;</span>)<span class="op">+</span>
 <span class="st">  </span><span class="kw">theme_classic</span>()
 
 <span class="kw">ggarrange</span>(a,b,c,d,
-          <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">nrow =</span> <span class="dv">2</span>)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-119-1.png" width="672" /></p>
+          <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">nrow =</span> <span class="dv">2</span>)</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-121-1.png" width="672" /></p>
 <p>From reading the textbook and attending lecture, you should be able to start thinking about why these sampling statistic distributions might be useful…For now, just know that you can make a sampling statistic for pretty much anything in R, just by simulating the process of sampling, measuring the statistic, doing it over a bunch, and then plotting the histogram. This gives you a pretty good estimate of the distribution for that sampling statistic.</p>
 </div>
 <div id="central-limit-theorem" class="section level3">
 <h3><span class="header-section-number">4.2.4</span> Central limit theorem</h3>
 <p>We have been building you up for the central limit theorem, described in the textbook and in class. The central limit theorem is basically that the distribution of sample means will be a normal curve. We already saw that before. But, the interesting thing about it, is that the distribution of your sample means will be normal, even if the distribution the samples came from is not normal. Huh what?</p>
 <p>To demonstrate this the next bit of code is modified from what we did earlier. We create 100 samples. Each sample has 1000 observations. All of them come from a uniform distribution between 0 to 1. This means all of the numbers between 0 and 1 should occur equally frequently. Below I plot histograms for the first 10 samples (out of the 100 total, 100 is too many to look at). Notice the histograms are not normal, they are roughly flat.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">scores &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">100</span>*<span class="dv">1000</span>,<span class="dv">0</span>,<span class="dv">1</span>)
-samples &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span>:<span class="dv">100</span>,<span class="dt">each=</span><span class="dv">1000</span>)
+<pre class="sourceCode r"><code class="sourceCode r">scores &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">100</span><span class="op">*</span><span class="dv">1000</span>,<span class="dv">0</span>,<span class="dv">1</span>)
+samples &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>,<span class="dt">each=</span><span class="dv">1000</span>)
 my_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(samples,scores)
 
-<span class="kw">ggplot</span>(my_df[<span class="dv">1</span>:(<span class="dv">10</span>*<span class="dv">1000</span>),], <span class="kw">aes</span>(<span class="dt">x=</span>scores))+
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">color=</span><span class="st">&quot;white&quot;</span>, <span class="dt">bins=</span><span class="dv">10</span>)+
-<span class="st">  </span><span class="kw">facet_wrap</span>(~samples)+
-<span class="st">  </span><span class="kw">theme_classic</span>()+
-<span class="st">  </span><span class="kw">ylim</span>(<span class="dv">0</span>,<span class="dv">200</span>)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-120-1.png" width="672" /></p>
+<span class="kw">ggplot</span>(my_df[<span class="dv">1</span><span class="op">:</span>(<span class="dv">10</span><span class="op">*</span><span class="dv">1000</span>),], <span class="kw">aes</span>(<span class="dt">x=</span>scores))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">color=</span><span class="st">&quot;white&quot;</span>, <span class="dt">bins=</span><span class="dv">10</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>samples)<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_classic</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">ylim</span>(<span class="dv">0</span>,<span class="dv">200</span>)</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-122-1.png" width="672" /></p>
 <p>We took samples from a flat uniform distribution, and the samples themselves look like that same flat distribution.</p>
 <p>HOWEVER, if we now do the next step, and compute the means of each of our 100 samples, we could then look at the sampling distribution of the sample means. Let’s do that:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sample_means &lt;-<span class="st"> </span>my_df %&gt;%
-<span class="st">                </span><span class="kw">group_by</span>(samples) %&gt;%
+<pre class="sourceCode r"><code class="sourceCode r">sample_means &lt;-<span class="st"> </span>my_df <span class="op">%&gt;%</span>
+<span class="st">                </span><span class="kw">group_by</span>(samples) <span class="op">%&gt;%</span>
 <span class="st">                </span><span class="kw">summarise</span>(<span class="dt">means=</span><span class="kw">mean</span>(scores))
 
 <span class="co"># make a histogram</span>
 
- <span class="kw">ggplot</span>(sample_means, <span class="kw">aes</span>(<span class="dt">x=</span>means))+
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">color=</span><span class="st">&quot;white&quot;</span>, <span class="dt">bins=</span><span class="dv">15</span>)+
-<span class="st">  </span><span class="kw">theme_classic</span>()</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-121-1.png" width="672" /></p>
+ <span class="kw">ggplot</span>(sample_means, <span class="kw">aes</span>(<span class="dt">x=</span>means))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">color=</span><span class="st">&quot;white&quot;</span>, <span class="dt">bins=</span><span class="dv">15</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_classic</span>()</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-123-1.png" width="672" /></p>
 <p>As you can see, the sampling distribution of the sample means is not flat. It’s shaped kind of normal-ish. If we had taken many more samples, found their means, and then looked at a histogram, it would become even more normal looking. Because that’s what happens according to the central limit theorem.</p>
 </div>
 <div id="the-normal-distribution" class="section level3">
@@ -727,40 +757,40 @@ my_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(samples,s
 <div id="graphing-the-normal-distribution" class="section level4">
 <h4><span class="header-section-number">4.2.5.1</span> Graphing the normal distribution</h4>
 <p>“Wait, I thought we already did that”. We sort of did. We sampled numbers and made histograms that looked like normal distributions. But, a “normal distribution” is more of an abstract idea. It looks like this in the abstract:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">normal_dist &lt;-<span class="st"> </span><span class="kw">dnorm</span>(<span class="kw">seq</span>(-<span class="dv">4</span>,<span class="dv">4</span>,.<span class="dv">1</span>), <span class="dv">0</span>, <span class="dv">1</span>)
-values &lt;-<span class="kw">seq</span>(-<span class="dv">4</span>,<span class="dv">4</span>,.<span class="dv">1</span>)
+<pre class="sourceCode r"><code class="sourceCode r">normal_dist &lt;-<span class="st"> </span><span class="kw">dnorm</span>(<span class="kw">seq</span>(<span class="op">-</span><span class="dv">4</span>,<span class="dv">4</span>,.<span class="dv">1</span>), <span class="dv">0</span>, <span class="dv">1</span>)
+values &lt;-<span class="kw">seq</span>(<span class="op">-</span><span class="dv">4</span>,<span class="dv">4</span>,.<span class="dv">1</span>)
 normal_df &lt;-<span class="kw">data.frame</span>(values,normal_dist)
 
-<span class="kw">ggplot</span>(normal_df, <span class="kw">aes</span>(<span class="dt">x=</span>values,<span class="dt">y=</span>normal_dist))+
-<span class="st">  </span><span class="kw">geom_line</span>()+
-<span class="st">  </span><span class="kw">theme_classic</span>()</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-122-1.png" width="672" /></p>
+<span class="kw">ggplot</span>(normal_df, <span class="kw">aes</span>(<span class="dt">x=</span>values,<span class="dt">y=</span>normal_dist))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_classic</span>()</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-124-1.png" width="672" /></p>
 <p>A really nice shaped bell-like thing. This normal distribution has a mean of 0, and standard deviation of 1. The heights of the lines tell you roughly how likely each value is. Notice, it is centered on 0 (most likely that numbers from this distribution will be near 0), and it goes down as numbers get bigger or smaller (so bigger or smaller numbers get less likely). There is a range to it. Notice the values don’t go much beyond -4 and +4. This because those values don’t happen very often. Theoretically any value could happen, but really big or small values have really low probabilities.</p>
 </div>
 <div id="calculating-the-probability-of-specific-ranges." class="section level4">
 <h4><span class="header-section-number">4.2.5.2</span> calculating the probability of specific ranges.</h4>
 <p>We can use R to tell us about the probability of getting numbers in a certain range. For example, when you think about. It should be obvious that you have a 50% probability of getting the number 0 or greater. Half of the distribution is 0 or greater, so you have a 50% probability.</p>
 <p>We can use the <code>pnorm</code> function to confirm this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pnorm</span>(<span class="dv">0</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd=</span> <span class="dv">1</span>, <span class="dt">lower.tail=</span><span class="ot">FALSE</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pnorm</span>(<span class="dv">0</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd=</span> <span class="dv">1</span>, <span class="dt">lower.tail=</span><span class="ot">FALSE</span>)</code></pre>
 <pre><code>## [1] 0.5</code></pre>
 <p>Agreed, <code>pnorm</code> tells us the probability of getting 0 or greater is .5.</p>
 <p>Well, what is the probability of getting a 2 or greater? That’s a bit harder to judge, obviously less than 50%. Use R like this to find out:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pnorm</span>(<span class="dv">2</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd=</span> <span class="dv">1</span>, <span class="dt">lower.tail=</span><span class="ot">FALSE</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pnorm</span>(<span class="dv">2</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd=</span> <span class="dv">1</span>, <span class="dt">lower.tail=</span><span class="ot">FALSE</span>)</code></pre>
 <pre><code>## [1] 0.02275013</code></pre>
 <p>The probability of getting a 2 or greater is .0227 (not very probable)</p>
 <p>What is the probability of getting a score between -1 and 1?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ps&lt;-<span class="kw">pnorm</span>(<span class="kw">c</span>(-<span class="dv">1</span>,<span class="dv">1</span>), <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd=</span> <span class="dv">1</span>, <span class="dt">lower.tail=</span><span class="ot">FALSE</span>)
-ps[<span class="dv">1</span>]-ps[<span class="dv">2</span>]</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">ps&lt;-<span class="kw">pnorm</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>), <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd=</span> <span class="dv">1</span>, <span class="dt">lower.tail=</span><span class="ot">FALSE</span>)
+ps[<span class="dv">1</span>]<span class="op">-</span>ps[<span class="dv">2</span>]</code></pre>
 <pre><code>## [1] 0.6826895</code></pre>
 <p>About 68%. About 68% of all the numbers would be between -1 and 1. So naturally, about 34% of the numbers would be between 0 and 1. Notice, we are just getting a feeling for this, you’ll see why in a bit when we do z-scores (some of you may realize we are already doing that…)</p>
 <p>What about the numbers between 1 and 2?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ps&lt;-<span class="kw">pnorm</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd=</span> <span class="dv">1</span>, <span class="dt">lower.tail=</span><span class="ot">FALSE</span>)
-ps[<span class="dv">1</span>]-ps[<span class="dv">2</span>]</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">ps&lt;-<span class="kw">pnorm</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd=</span> <span class="dv">1</span>, <span class="dt">lower.tail=</span><span class="ot">FALSE</span>)
+ps[<span class="dv">1</span>]<span class="op">-</span>ps[<span class="dv">2</span>]</code></pre>
 <pre><code>## [1] 0.1359051</code></pre>
 <p>About 13.5% of numbers fall in that range, not much.</p>
 <p>How about between 2 and 3?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ps&lt;-<span class="kw">pnorm</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>), <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd=</span> <span class="dv">1</span>, <span class="dt">lower.tail=</span><span class="ot">FALSE</span>)
-ps[<span class="dv">1</span>]-ps[<span class="dv">2</span>]</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">ps&lt;-<span class="kw">pnorm</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>), <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd=</span> <span class="dv">1</span>, <span class="dt">lower.tail=</span><span class="ot">FALSE</span>)
+ps[<span class="dv">1</span>]<span class="op">-</span>ps[<span class="dv">2</span>]</code></pre>
 <pre><code>## [1] 0.02140023</code></pre>
 <p>Again a very small amount, only 2.1 % of the numbers, not a a lot.</p>
 </div>
@@ -781,28 +811,28 @@ ps[<span class="dv">1</span>]-ps[<span class="dv">2</span>]</code></pre></div>
 <ol style="list-style-type: decimal">
 <li>get some numbers</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">some_numbers &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">20</span>,<span class="dv">50</span>,<span class="dv">25</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">some_numbers &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">20</span>,<span class="dv">50</span>,<span class="dv">25</span>)</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Calculate the mean and standard deviation</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_mean &lt;-<span class="st"> </span><span class="kw">mean</span>(some_numbers)
+<pre class="sourceCode r"><code class="sourceCode r">my_mean &lt;-<span class="st"> </span><span class="kw">mean</span>(some_numbers)
 my_sd &lt;-<span class="kw">sd</span>(some_numbers)
 
-<span class="kw">print</span>(my_mean)</code></pre></div>
+<span class="kw">print</span>(my_mean)</code></pre>
 <pre><code>## [1] 47.94752</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(my_sd)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(my_sd)</code></pre>
 <pre><code>## [1] 27.78933</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>subtract the mean from your numbers</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">differences&lt;-some_numbers-my_mean
-<span class="kw">print</span>(my_sd)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">differences&lt;-some_numbers<span class="op">-</span>my_mean
+<span class="kw">print</span>(my_sd)</code></pre>
 <pre><code>## [1] 27.78933</code></pre>
 <ol start="4" style="list-style-type: decimal">
 <li>divide by the standard deviation</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z_scores&lt;-differences/my_sd
-<span class="kw">print</span>(z_scores)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">z_scores&lt;-differences<span class="op">/</span>my_sd
+<span class="kw">print</span>(z_scores)</code></pre>
 <pre><code>##  [1]  0.71839435 -0.14111087 -1.55574899  0.42782416 -1.48583533
 ##  [6] -1.03730063  0.83952493  1.10660829  0.85754923 -0.52612651
 ## [11]  0.60294812  1.17177616  0.31620027  1.04480181 -0.94697464
@@ -889,7 +919,13 @@ my_sd &lt;-<span class="kw">sd</span>(some_numbers)
 <p>This will open the Compute window:</p>
 <p><img src="img/4.4.17.png" width="531" /></p>
 <p>Here, let’s first enter a name for the new variable we’re about to create. In the field labeled “Target Variable”, enter a name for your new variable. Let’s try <code>new_z</code> as the name.</p>
-<p>Next, in the field labeled “Numeric Expression”, we will specify the calculation to be made. Because I want SPSS to take the variable <code>x</code>, subtract 4.78 from it, and then divide this difference by 2.635, I am going to type in this formula: 1. First, type in an open parenthesis 2. Second, select <code>x</code> from the field on the left and move it to the “Numeric Expression” field using the arrow. 3. Type a minus sign, followed by 4.78 4. Type in a closed parenthesis. 5. Type in a backslash “/” (this specifies division) 6. Type in the standard deviation, 2.635</p>
+<p>Next, in the field labeled “Numeric Expression”, we will specify the calculation to be made. Because I want SPSS to take the variable <code>x</code>, subtract 4.78 from it, and then divide this difference by 2.635, I am going to type in this formula:
+1. First, type in an open parenthesis
+2. Second, select <code>x</code> from the field on the left and move it to the “Numeric Expression” field using the arrow.
+3. Type a minus sign, followed by 4.78
+4. Type in a closed parenthesis.
+5. Type in a backslash “/” (this specifies division)
+6. Type in the standard deviation, 2.635</p>
 <p>Your Compute window should now look like this:</p>
 <p><img src="img/4.4.18.png" width="531" /></p>
 <p>Now, click <span style="color:blue">OK</span>. SPSS will generate a blank output window that confirms you have computed a variable. You may minimize or close this window and go back to your SPSS spreadsheet. It should now have a new variable listed, <code>new_z</code>, and the computed z-scores should look very similar to the previously calculated z-scores (any differences are due to using rounded figures):</p>
@@ -941,7 +977,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -953,6 +989,10 @@ gitbook.start({
 "edit": {
 "link": "https://github.com/CrumpLab/statisticsLab/blob/master/04-NormalDist.Rmd",
 "text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
 },
 "download": ["Statistics_Lab.pdf"],
 "toc": {
@@ -967,8 +1007,8 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;

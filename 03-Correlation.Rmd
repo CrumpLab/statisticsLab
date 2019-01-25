@@ -109,11 +109,18 @@ Let's take a look at some correlations in real data. We are going to look at res
 
 #### Load the data
 
-we load the data into a data frame.
+We load the data into a data frame. Reminder, the following assumes that you have downloaded the [RMarkdownsLab.zip](https://github.com/CrumpLab/statisticsLab/raw/master/RMarkdownsLab.zip) file which contains the data file in the data folder.
 
 ```{r, warning=F, message=F}
 library(data.table)
 whr_data <- fread('data/WHR2018.csv')
+```
+
+You can also load the data using the following URL
+
+```{r, warning=F, message=F, eval=F}
+library(data.table)
+whr_data <- fread("https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/WHR2018.csv")
 ```
 
 #### Look at the data

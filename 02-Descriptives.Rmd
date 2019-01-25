@@ -19,7 +19,7 @@ The purpose of this lab is to show you how to compute basic descriptive statisti
 
 ### Important info
 
-We will be using data from the gapminder project. You can download a small snippet of the data in .csv format from this link (note this dataset was copied from the gapminder library for R) <a href="https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/gapminder.csv" download>gapminder.csv</a>
+We will be using data from the gapminder project. You can download a small snippet of the data in .csv format from this link (note this dataset was copied from the gapminder library for R) <a href="https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/gapminder.csv" download>gapminder.csv</a>. If you are using R, then you can install the gapminder package. This method is described later in the R section.
 
 
 
@@ -253,12 +253,14 @@ knitr::kable(summary_df)
 
 ### Describing gapminder
 
-Now that we know how to get descriptive statistics from R, we cam do this will some real data. Let's quickly ask a few question about the gapminder data. Re-install the gapminder library if you don't already have it, then load the data into a data frame:
+Now that we know how to get descriptive statistics from R, we cam do this will some real data. Let's quickly ask a few question about the gapminder data. 
 
 ```{r}
 library(gapminder)
 gapminder_df <- gapminder
 ```
+
+Note: The above code will only work if you have installed the gapminder package. Make sure you are connected to the internet, then choose the Packages tab from the bottom right panel, and choose install. Thens search for gapminder, choose it, and install it. 
 
 #### What are some descriptive for Life expectancy by continent?
 

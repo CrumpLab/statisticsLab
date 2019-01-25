@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Answering questions with data: Lab Manual</title>
+  <title>Chapter 3 Lab 3: Correlation | Answering questions with data: Lab Manual</title>
   <meta name="description" content="A lab manual for Psyc 3400">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Answering questions with data: Lab Manual" />
+  <meta property="og:title" content="Chapter 3 Lab 3: Correlation | Answering questions with data: Lab Manual" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Answering questions with data: Lab Manual" />
+  <meta name="twitter:title" content="Chapter 3 Lab 3: Correlation | Answering questions with data: Lab Manual" />
   
   <meta name="twitter:description" content="A lab manual for Psyc 3400" />
   
@@ -35,6 +35,7 @@
 <link rel="next" href="lab-4-normal-distribution-central-limit-theorem.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -63,41 +64,67 @@ mattcrump=1;
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="tufte.css" type="text/css" />
@@ -446,7 +473,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <script>
 $("#coverpic").hide();
 </script>
-<p><span class="newthought"> If … we choose a group of social phenomena with no antecedent knowledge of the causation or absence of causation among them, then the calculation of correlation coefficients, total or partial, will not advance us a step toward evaluating the importance of the causes at work. —Sir Ronald Fisher </span></p>
+<p><span class="newthought">
+If … we choose a group of social phenomena with no antecedent knowledge of the causation or absence of causation among them, then the calculation of correlation coefficients, total or partial, will not advance us a step toward evaluating the importance of the causes at work.
+—Sir Ronald Fisher
+</span></p>
 <p>In lecture and in the textbook, we have been discussing the idea of correlation. This is the idea that two things that we measure can be somehow related to one another. For example, your personal happiness, which we could try to measure say with a questionnaire, might be related to other things in your life that we could also measure, such as number of close friends, yearly salary, how much chocolate you have in your bedroom, or how many times you have said the word Nintendo in your life. Some of the relationships that we can measure are meaningful, and might reflect a causal relationship where one thing causes a change in another thing. Some of the relationships are spurious, and do not reflect a causal relationship.</p>
 <p>In this lab you will learn how to compute correlations between two variables in software, and then ask some questions about the correlations that you observe.</p>
 <div id="general-goals-2" class="section level2">
@@ -466,39 +496,39 @@ $("#coverpic").hide();
 <div id="cor-for-correlation" class="section level3">
 <h3><span class="header-section-number">3.2.1</span> cor for correlation</h3>
 <p>R has the <code>cor</code> function for computing Pearson’s r between any two variables. In fact this same function computes other versions of correlation, but we’ll skip those here. To use the function you just need two variables with numbers in them like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x  &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">8</span>,<span class="dv">9</span>)
+<pre class="sourceCode r"><code class="sourceCode r">x  &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">8</span>,<span class="dv">9</span>)
 y  &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">8</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">13</span>)
-<span class="kw">cor</span>(x,y)</code></pre></div>
+<span class="kw">cor</span>(x,y)</code></pre>
 <pre><code>## [1] 0.76539</code></pre>
 <p>Well, that was easy.</p>
 <div id="scatterplots-1" class="section level4">
 <h4><span class="header-section-number">3.2.1.1</span> scatterplots</h4>
 <p>Let’s take our silly example, and plot the data in a scatter plot using ggplot2, and let’s also return the correlation and print it on the scatter plot. Remember, ggplot2 wants the data in a data.frame, so we first put our x and y variables in a data frame.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
 
 <span class="co"># create data frame for plotting</span>
 my_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(x,y)
 
 <span class="co"># plot it</span>
-<span class="kw">ggplot</span>(my_df, <span class="kw">aes</span>(<span class="dt">x=</span>x,<span class="dt">y=</span>y))+
-<span class="st">  </span><span class="kw">geom_point</span>()+
-<span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> <span class="kw">round</span>(<span class="kw">cor</span>(x,y), <span class="dt">digits=</span><span class="dv">2</span>), <span class="dt">y=</span><span class="dv">12</span>, <span class="dt">x=</span><span class="dv">2</span> ))</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-65-1.png" width="672" /></p>
+<span class="kw">ggplot</span>(my_df, <span class="kw">aes</span>(<span class="dt">x=</span>x,<span class="dt">y=</span>y))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> <span class="kw">round</span>(<span class="kw">cor</span>(x,y), <span class="dt">digits=</span><span class="dv">2</span>), <span class="dt">y=</span><span class="dv">12</span>, <span class="dt">x=</span><span class="dv">2</span> ))</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-66-1.png" width="672" /></p>
 <p>Wow, we’re moving fast here.</p>
 </div>
 <div id="lots-of-scatterplots" class="section level4">
 <h4><span class="header-section-number">3.2.1.2</span> lots of scatterplots</h4>
 <p>Before we move on to real data, let’s look at some fake data first. Often we will have many measures of X and Y, split between a few different conditions, for example, A, B, C, and D. Let’s make some fake data for X and Y, for each condition A, B, C, and D, and then use facet_wrapping to look at four scatter plots all at once</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x&lt;-<span class="kw">rnorm</span>(<span class="dv">40</span>,<span class="dv">0</span>,<span class="dv">1</span>)
+<pre class="sourceCode r"><code class="sourceCode r">x&lt;-<span class="kw">rnorm</span>(<span class="dv">40</span>,<span class="dv">0</span>,<span class="dv">1</span>)
 y&lt;-<span class="kw">rnorm</span>(<span class="dv">40</span>,<span class="dv">0</span>,<span class="dv">1</span>)
 conditions&lt;-<span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;D&quot;</span>), <span class="dt">each=</span><span class="dv">10</span>)
 
 all_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(conditions, x, y)
 
-<span class="kw">ggplot</span>(all_df, <span class="kw">aes</span>(<span class="dt">x=</span>x,<span class="dt">y=</span>y))+
-<span class="st">  </span><span class="kw">geom_point</span>()+
-<span class="st">  </span><span class="kw">facet_wrap</span>(~conditions)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-66-1.png" width="672" /></p>
+<span class="kw">ggplot</span>(all_df, <span class="kw">aes</span>(<span class="dt">x=</span>x,<span class="dt">y=</span>y))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>conditions)</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-67-1.png" width="672" /></p>
 </div>
 <div id="computing-the-correlations-all-at-once" class="section level4">
 <h4><span class="header-section-number">3.2.1.3</span> computing the correlations all at once</h4>
@@ -509,18 +539,18 @@ all_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(conditio
 <div id="chance-correlations" class="section level4">
 <h4><span class="header-section-number">3.2.1.4</span> Chance correlations</h4>
 <p>As you learned from the textbook. We can find correlations by chance alone, even when there is no true correlation between the variables. For example, if we sampled randomly into x, and then sampled some numbers randomly into y. We know they aren’t related, because we randomly sampled the numbers. However, doing this creates some correlations some of the time just by chance. You can demonstrate this to yourself with the following code. It’s a repeat of what we already saw, jut with a few more conditions added. Let’s look at 20 conditions, with random numbers for x and y in each. For each, sample size will be 10. We’ll make the fake data, then make a big graph to look at all. And, even though we get to regression later in the lab, I’ll put the best fit line onto each scatter plot, so you can “see the correlations”.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x&lt;-<span class="kw">rnorm</span>(<span class="dv">10</span>*<span class="dv">20</span>,<span class="dv">0</span>,<span class="dv">1</span>)
-y&lt;-<span class="kw">rnorm</span>(<span class="dv">10</span>*<span class="dv">20</span>,<span class="dv">0</span>,<span class="dv">1</span>)
-conditions&lt;-<span class="kw">rep</span>(<span class="dv">1</span>:<span class="dv">20</span>, <span class="dt">each=</span><span class="dv">10</span>)
+<pre class="sourceCode r"><code class="sourceCode r">x&lt;-<span class="kw">rnorm</span>(<span class="dv">10</span><span class="op">*</span><span class="dv">20</span>,<span class="dv">0</span>,<span class="dv">1</span>)
+y&lt;-<span class="kw">rnorm</span>(<span class="dv">10</span><span class="op">*</span><span class="dv">20</span>,<span class="dv">0</span>,<span class="dv">1</span>)
+conditions&lt;-<span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">20</span>, <span class="dt">each=</span><span class="dv">10</span>)
 
 all_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(conditions, x, y)
 
-<span class="kw">ggplot</span>(all_df, <span class="kw">aes</span>(<span class="dt">x=</span>x,<span class="dt">y=</span>y))+
-<span class="st">  </span><span class="kw">geom_point</span>()+
-<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span>lm, <span class="dt">se=</span><span class="ot">FALSE</span>)+
-<span class="st">  </span><span class="kw">facet_wrap</span>(~conditions)+
-<span class="st">  </span><span class="kw">theme_classic</span>()</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-67-1.png" width="672" /></p>
+<span class="kw">ggplot</span>(all_df, <span class="kw">aes</span>(<span class="dt">x=</span>x,<span class="dt">y=</span>y))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span>lm, <span class="dt">se=</span><span class="ot">FALSE</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>conditions)<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_classic</span>()</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-68-1.png" width="672" /></p>
 <p>You can see that the slope of the blue line is not always flat. Sometimes it looks like there is a correlation, when we know there shouldn’t be. You can keep re-doing this graph, by re-knitting your R Markdown document, or by pressing the little green play button. This is basically you simulating the outcomes as many times as you press the button.</p>
 <p>The point is, now you know you can find correlations by chance. So, in the next section, you should always wonder if the correlations you find reflect meaningful association between the x and y variable, or could have just occurred by chance.</p>
 </div>
@@ -530,92 +560,95 @@ all_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(conditio
 <p>Let’s take a look at some correlations in real data. We are going to look at responses to a questionnaire about happiness that was sent around the world, from the <a href="http://worldhappiness.report">world happiness report</a></p>
 <div id="load-the-data" class="section level4">
 <h4><span class="header-section-number">3.2.2.1</span> Load the data</h4>
-<p>we load the data into a data frame.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(data.table)
-whr_data &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class="st">&#39;data/WHR2018.csv&#39;</span>)</code></pre></div>
+<p>We load the data into a data frame. Reminder, the following assumes that you have downloaded the <a href="https://github.com/CrumpLab/statisticsLab/raw/master/RMarkdownsLab.zip">RMarkdownsLab.zip</a> file which contains the data file in the data folder.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(data.table)
+whr_data &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class="st">&#39;data/WHR2018.csv&#39;</span>)</code></pre>
+<p>You can also load the data using the following URL</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(data.table)
+whr_data &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class="st">&quot;https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/WHR2018.csv&quot;</span>)</code></pre>
 </div>
 <div id="look-at-the-data-1" class="section level4">
 <h4><span class="header-section-number">3.2.2.2</span> Look at the data</h4>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(summarytools)
-<span class="kw">view</span>(<span class="kw">dfSummary</span>(whr_data))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(summarytools)
+<span class="kw">view</span>(<span class="kw">dfSummary</span>(whr_data))</code></pre>
 <p>You should be able to see that there is data for many different countries, across a few different years. There are lots of different kinds of measures, and each are given a name. I’ll show you some examples of asking questions about correlations with this data, then you get to ask and answer your own questions.</p>
 </div>
 <div id="my-question-1" class="section level4">
 <h4><span class="header-section-number">3.2.2.3</span> My Question #1</h4>
-<p>For the year 2017 only, does a countries measure for “freedom to make life choices” correlate with that countries measure for &quot; Confidence in national government“?</p>
+<p>For the year 2017 only, does a countries measure for “freedom to make life choices” correlate with that countries measure for " Confidence in national government"?</p>
 <p>Let’s find out. We calculate the correlation, and then we make the scatter plot.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(whr_data$<span class="st">`</span><span class="dt">Freedom to make life choices</span><span class="st">`</span>,
-    whr_data$<span class="st">`</span><span class="dt">Confidence in national government</span><span class="st">`</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(whr_data<span class="op">$</span><span class="st">`</span><span class="dt">Freedom to make life choices</span><span class="st">`</span>,
+    whr_data<span class="op">$</span><span class="st">`</span><span class="dt">Confidence in national government</span><span class="st">`</span>)</code></pre>
 <pre><code>## [1] NA</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(whr_data, <span class="kw">aes</span>(<span class="dt">x=</span><span class="st">`</span><span class="dt">Freedom to make life choices</span><span class="st">`</span>,
-                     <span class="dt">y=</span><span class="st">`</span><span class="dt">Confidence in national government</span><span class="st">`</span>))+
-<span class="st">  </span><span class="kw">geom_point</span>()+
-<span class="st">  </span><span class="kw">theme_classic</span>()</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-70-1.png" width="672" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(whr_data, <span class="kw">aes</span>(<span class="dt">x=</span><span class="st">`</span><span class="dt">Freedom to make life choices</span><span class="st">`</span>,
+                     <span class="dt">y=</span><span class="st">`</span><span class="dt">Confidence in national government</span><span class="st">`</span>))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_classic</span>()</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-72-1.png" width="672" /></p>
 <p>Interesting, what happened here? We can see some dots, but the correlation was NA (meaning undefined). This occurred because there are some missing data points in the data. We can remove all the rows with missing data first, then do the correlation. We will do this a couple steps, first creating our own data.frame with only the numbers we want to analyse. We can select the columns we want to keep using <code>select</code>. Then we use <code>filter</code> to remove the rows with NAs.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
 
-smaller_df &lt;-<span class="st"> </span>whr_data %&gt;%
+smaller_df &lt;-<span class="st"> </span>whr_data <span class="op">%&gt;%</span>
 <span class="st">               </span><span class="kw">select</span>(country,
                       <span class="st">`</span><span class="dt">Freedom to make life choices</span><span class="st">`</span>,
-                      <span class="st">`</span><span class="dt">Confidence in national government</span><span class="st">`</span>) %&gt;%
-<span class="st">               </span><span class="kw">filter</span>(!<span class="kw">is.na</span>(<span class="st">`</span><span class="dt">Freedom to make life choices</span><span class="st">`</span>),
-                      !<span class="kw">is.na</span>(<span class="st">`</span><span class="dt">Confidence in national government</span><span class="st">`</span>))
+                      <span class="st">`</span><span class="dt">Confidence in national government</span><span class="st">`</span>) <span class="op">%&gt;%</span>
+<span class="st">               </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(<span class="st">`</span><span class="dt">Freedom to make life choices</span><span class="st">`</span>),
+                      <span class="op">!</span><span class="kw">is.na</span>(<span class="st">`</span><span class="dt">Confidence in national government</span><span class="st">`</span>))
 
-<span class="kw">cor</span>(smaller_df$<span class="st">`</span><span class="dt">Freedom to make life choices</span><span class="st">`</span>,
-    smaller_df$<span class="st">`</span><span class="dt">Confidence in national government</span><span class="st">`</span>)</code></pre></div>
+<span class="kw">cor</span>(smaller_df<span class="op">$</span><span class="st">`</span><span class="dt">Freedom to make life choices</span><span class="st">`</span>,
+    smaller_df<span class="op">$</span><span class="st">`</span><span class="dt">Confidence in national government</span><span class="st">`</span>)</code></pre>
 <pre><code>## [1] 0.4080963</code></pre>
 <p>Now we see the correlation is .408.</p>
 <p>Although the scatter plot shows the dots are everywhere, it generally shows that as Freedom to make life choices increases in a country, that countries confidence in their national government also increase. This is a positive correlation. Let’s do this again and add the best fit line, so the trend is more clear, we use <code>geom_smooth(method=lm, se=FALSE)</code>. I also change the <code>alpha</code> value of the dots so they blend it bit, and you can see more of them.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># select DVs and filter for NAs</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># select DVs and filter for NAs</span>
 
-smaller_df &lt;-<span class="st"> </span>whr_data %&gt;%
+smaller_df &lt;-<span class="st"> </span>whr_data <span class="op">%&gt;%</span>
 <span class="st">               </span><span class="kw">select</span>(country,
                       <span class="st">`</span><span class="dt">Freedom to make life choices</span><span class="st">`</span>,
-                      <span class="st">`</span><span class="dt">Confidence in national government</span><span class="st">`</span>) %&gt;%
-<span class="st">               </span><span class="kw">filter</span>(!<span class="kw">is.na</span>(<span class="st">`</span><span class="dt">Freedom to make life choices</span><span class="st">`</span>),
-                      !<span class="kw">is.na</span>(<span class="st">`</span><span class="dt">Confidence in national government</span><span class="st">`</span>))
+                      <span class="st">`</span><span class="dt">Confidence in national government</span><span class="st">`</span>) <span class="op">%&gt;%</span>
+<span class="st">               </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(<span class="st">`</span><span class="dt">Freedom to make life choices</span><span class="st">`</span>),
+                      <span class="op">!</span><span class="kw">is.na</span>(<span class="st">`</span><span class="dt">Confidence in national government</span><span class="st">`</span>))
 
 <span class="co"># calcualte correlation</span>
 
-<span class="kw">cor</span>(smaller_df$<span class="st">`</span><span class="dt">Freedom to make life choices</span><span class="st">`</span>,
-    smaller_df$<span class="st">`</span><span class="dt">Confidence in national government</span><span class="st">`</span>)</code></pre></div>
+<span class="kw">cor</span>(smaller_df<span class="op">$</span><span class="st">`</span><span class="dt">Freedom to make life choices</span><span class="st">`</span>,
+    smaller_df<span class="op">$</span><span class="st">`</span><span class="dt">Confidence in national government</span><span class="st">`</span>)</code></pre>
 <pre><code>## [1] 0.4080963</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># plot the data with best fit line</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># plot the data with best fit line</span>
 
 <span class="kw">ggplot</span>(smaller_df, <span class="kw">aes</span>(<span class="dt">x=</span><span class="st">`</span><span class="dt">Freedom to make life choices</span><span class="st">`</span>,
-                     <span class="dt">y=</span><span class="st">`</span><span class="dt">Confidence in national government</span><span class="st">`</span>))+
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha=</span>.<span class="dv">5</span>)+
-<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span>lm, <span class="dt">se=</span><span class="ot">FALSE</span>)+
-<span class="st">  </span><span class="kw">theme_classic</span>()</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-72-1.png" width="672" /></p>
+                     <span class="dt">y=</span><span class="st">`</span><span class="dt">Confidence in national government</span><span class="st">`</span>))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha=</span>.<span class="dv">5</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span>lm, <span class="dt">se=</span><span class="ot">FALSE</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_classic</span>()</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-74-1.png" width="672" /></p>
 </div>
 <div id="my-question-2" class="section level4">
 <h4><span class="header-section-number">3.2.2.4</span> My Question #2</h4>
 <p>After all that work, we can now speedily answer more questions. For example, what is the relationship between positive affect in a country and negative affect in a country. I wouldn’t be surprised if there was a negative correlation here: when positive feelings generally go up, shouldn’t negative feelings generally go down?</p>
 <p>To answer this question, we just copy paste the last code block, and change the DVs to be <code>Positive affect</code>, and <code>Negative affect</code></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># select DVs and filter for NAs</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># select DVs and filter for NAs</span>
 
-smaller_df &lt;-<span class="st"> </span>whr_data %&gt;%
+smaller_df &lt;-<span class="st"> </span>whr_data <span class="op">%&gt;%</span>
 <span class="st">               </span><span class="kw">select</span>(country,
                       <span class="st">`</span><span class="dt">Positive affect</span><span class="st">`</span>,
-                      <span class="st">`</span><span class="dt">Negative affect</span><span class="st">`</span>) %&gt;%
-<span class="st">               </span><span class="kw">filter</span>(!<span class="kw">is.na</span>(<span class="st">`</span><span class="dt">Positive affect</span><span class="st">`</span>),
-                      !<span class="kw">is.na</span>(<span class="st">`</span><span class="dt">Negative affect</span><span class="st">`</span>))
+                      <span class="st">`</span><span class="dt">Negative affect</span><span class="st">`</span>) <span class="op">%&gt;%</span>
+<span class="st">               </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(<span class="st">`</span><span class="dt">Positive affect</span><span class="st">`</span>),
+                      <span class="op">!</span><span class="kw">is.na</span>(<span class="st">`</span><span class="dt">Negative affect</span><span class="st">`</span>))
 
 <span class="co"># calcualte correlation</span>
 
-<span class="kw">cor</span>(smaller_df$<span class="st">`</span><span class="dt">Positive affect</span><span class="st">`</span>,
-    smaller_df$<span class="st">`</span><span class="dt">Negative affect</span><span class="st">`</span>)</code></pre></div>
+<span class="kw">cor</span>(smaller_df<span class="op">$</span><span class="st">`</span><span class="dt">Positive affect</span><span class="st">`</span>,
+    smaller_df<span class="op">$</span><span class="st">`</span><span class="dt">Negative affect</span><span class="st">`</span>)</code></pre>
 <pre><code>## [1] -0.3841123</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># plot the data with best fit line</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># plot the data with best fit line</span>
 
 <span class="kw">ggplot</span>(smaller_df, <span class="kw">aes</span>(<span class="dt">x=</span><span class="st">`</span><span class="dt">Positive affect</span><span class="st">`</span>,
-                     <span class="dt">y=</span><span class="st">`</span><span class="dt">Negative affect</span><span class="st">`</span>))+
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha=</span>.<span class="dv">5</span>)+
-<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span>lm, <span class="dt">se=</span><span class="ot">FALSE</span>)+
-<span class="st">  </span><span class="kw">theme_classic</span>()</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-73-1.png" width="672" /></p>
+                     <span class="dt">y=</span><span class="st">`</span><span class="dt">Negative affect</span><span class="st">`</span>))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha=</span>.<span class="dv">5</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span>lm, <span class="dt">se=</span><span class="ot">FALSE</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_classic</span>()</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-75-1.png" width="672" /></p>
 <p>Bam, there we have it. As positive affect goes up, negative affect goes down. A negative correlation.</p>
 </div>
 </div>
@@ -628,25 +661,25 @@ smaller_df &lt;-<span class="st"> </span>whr_data %&gt;%
 </ol>
 <p>Use these tips to answer the question.</p>
 <p>Tip 1: You can use the <code>runif()</code> function to sample random numbers between a minimum value, and maximum value. The example below sample 10 (n=10) random numbers between the range 0 (min = 0) and 10 (max=10). Everytime you run this code, the 10 values in x will be re-sampled, and will be 10 new random numbers</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dt">n=</span><span class="dv">10</span>, <span class="dt">min=</span><span class="dv">0</span>, <span class="dt">max=</span><span class="dv">10</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dt">n=</span><span class="dv">10</span>, <span class="dt">min=</span><span class="dv">0</span>, <span class="dt">max=</span><span class="dv">10</span>)</code></pre>
 <p>Tip 2: You can compute the correlation between two sets of random numbers, by first sampling random numbers into each variable, and then running the <code>cor()</code> function.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dt">n=</span><span class="dv">10</span>, <span class="dt">min=</span><span class="dv">0</span>, <span class="dt">max=</span><span class="dv">10</span>)
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dt">n=</span><span class="dv">10</span>, <span class="dt">min=</span><span class="dv">0</span>, <span class="dt">max=</span><span class="dv">10</span>)
 y &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dt">n=</span><span class="dv">10</span>, <span class="dt">min=</span><span class="dv">0</span>, <span class="dt">max=</span><span class="dv">10</span>)
-<span class="kw">cor</span>(x,y)</code></pre></div>
+<span class="kw">cor</span>(x,y)</code></pre>
 <pre><code>## [1] -0.32222</code></pre>
 <p>Running the above code will give different values for the correlation each time, because the numbers in x and y are always randomly different. We might expect that because x and y are chosen randomly that there should be a 0 correlation. However, what we see is that random sampling can produce “fake” correlations just by chance alone. We want to estimate the range of correlations that chance can produce.</p>
 <p>Tip 3: One way to estimate the range of correlations that chance can produce is to repeat the above code many times. For example, if you ran the above code 100 times, you could save the correlations each time, then look at the smallest and largest correlation. This would be an estimate of the range of correlations that can be produced by chance. How can you repeat the above code many times to solve this problem?</p>
 <p>We can do this using a <code>for</code> loop. The code below shows how to repeat everything inside the for loop 100 times. The variable <code>i</code> is an index, that goes from 1 to 100. The <code>saved_value</code> variable starts out as an empty variable, and then we put a value into it (at index position i, from 1 to 100). In this code, we put the sum of the products of x and y into the <code>saved_value</code> variable. At the end of the simulation, the <code>save_value</code> variable contains 100 numbers. The <code>min()</code> and <code>max()</code> functions are used to find the minimum and maximum values for each of the 100 simulations. You should be able to modify this code by replacing <code>sum(x*y)</code> with <code>cor(x,y)</code>. Doing this will allow you to run the simulation 100 times, and find the minimum correlation and maximum correlation that arises by chance. This will be estimate for question 1. To provide an estimate for question 2, you will need to change <code>n=10</code> to <code>n=100</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">saved_value &lt;-<span class="st"> </span><span class="kw">c</span>() <span class="co">#make an empty variable</span>
-for (i in <span class="dv">1</span>:<span class="dv">100</span>){
+<pre class="sourceCode r"><code class="sourceCode r">saved_value &lt;-<span class="st"> </span><span class="kw">c</span>() <span class="co">#make an empty variable</span>
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>){
   x &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dt">n=</span><span class="dv">10</span>, <span class="dt">min=</span><span class="dv">0</span>, <span class="dt">max=</span><span class="dv">10</span>)
   y &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dt">n=</span><span class="dv">10</span>, <span class="dt">min=</span><span class="dv">0</span>, <span class="dt">max=</span><span class="dv">10</span>)
-  saved_value[i] &lt;-<span class="st"> </span><span class="kw">sum</span>(x*y)
+  saved_value[i] &lt;-<span class="st"> </span><span class="kw">sum</span>(x<span class="op">*</span>y)
 }
 
-<span class="kw">min</span>(saved_value)</code></pre></div>
+<span class="kw">min</span>(saved_value)</code></pre>
 <pre><code>## [1] 86.74403</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">max</span>(saved_value)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">max</span>(saved_value)</code></pre>
 <pre><code>## [1] 460.789</code></pre>
 </div>
 <div id="writing-assignment-2" class="section level3">
@@ -690,7 +723,8 @@ for (i in <span class="dv">1</span>:<span class="dv">100</span>){
 <h3><span class="header-section-number">3.4.2</span> Correlation Matrix</h3>
 <hr />
 <p>In the event that you have more than two variables in your spreadsheet, and would like to evaluate correlations between several variables taken two at a time, you need not re-run the correlations in SPSS repeatedly. You can, in fact, enter multiple variables into the correlation window and obtain a correlation matrix–a table showing every possible bivariate correlation amongst a group of variables.</p>
-<p>To illustrate how this is done, let’s add a new variable to our existing spreadsheet: variable <code>z</code>, {z= 1, 4, 2, 9, 5, 7, 12, 5, 3} <img src="img/3.4.15.png" width="568" /></p>
+<p>To illustrate how this is done, let’s add a new variable to our existing spreadsheet: variable <code>z</code>, {z= 1, 4, 2, 9, 5, 7, 12, 5, 3}
+<img src="img/3.4.15.png" width="568" /></p>
 <p>From here, go to <span style="color:blue">Analyze</span>, then <span style="color:blue">Correlate</span>, then <span style="color:blue">Bivariate</span>:</p>
 <p><img src="img/3.4.16.png" width="510" /></p>
 <p>Next, you will encounter the window that asks you to indicate which variables to correlate. Select all three variables (<code>x</code>, <code>y</code>, and <code>z</code>) and move them to the right-hand field using the arrow.</p>
@@ -712,11 +746,14 @@ for (i in <span class="dv">1</span>:<span class="dv">100</span>){
 <p>Let’s find the correlation coefficient between these variables first. Go to <span style="color:blue">Analyze</span>, then <span style="color:blue">Correlate</span>, then <span style="color:blue">Bivariate</span>:</p>
 <p><img src="img/3.4.19.png" width="507" /></p>
 <p>Next, a window will appear asking for the variables to be correlated. Go through the list on the left and find <code>Freedom to make life choices</code> as well as <code>Confidence in national government</code>. Move both of these variables to the field on the right using the arrow.</p>
-<p><img src="img/3.4.20.png" width="552" /> Click OK. SPSS will produce a correlation table.</p>
+<p><img src="img/3.4.20.png" width="552" />
+Click OK. SPSS will produce a correlation table.</p>
 <p><img src="img/3.4.21.png" width="249" /></p>
 <p>Based on this output, the correlation between <code>Freedom to make life choices</code> and <code>Confidence in national government</code> is .408.</p>
-<p>Let’s continue to create the scatterplot for this data. Go to <span style="color:blue">Graphs</span>, then <span style="color:blue">Legacy Dialogs</span>, then <span style="color:blue">Scatter…</span> <img src="img/3.4.22.png" width="561" /></p>
-<p>In the next window, choose <span style="color:blue">Simple</span>, then <span style="color:blue">Define</span>: <img src="img/3.4.23.png" width="552" /></p>
+<p>Let’s continue to create the scatterplot for this data. Go to <span style="color:blue">Graphs</span>, then <span style="color:blue">Legacy Dialogs</span>, then <span style="color:blue">Scatter…</span>
+<img src="img/3.4.22.png" width="561" /></p>
+<p>In the next window, choose <span style="color:blue">Simple</span>, then <span style="color:blue">Define</span>:
+<img src="img/3.4.23.png" width="552" /></p>
 <p>Next, move your two variables (<code>freedom to make life choices</code> and <code>confidence in national government</code>) into the x-axis and y-axis fields. Again, it does not matter which variable goes where, for now.</p>
 <p><img src="img/3.4.24.png" width="552" /></p>
 <p>Click <span style="color:blue">OK</span>. SPSS will produce a scatterplot of your data, as follows:</p>
@@ -795,7 +832,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -807,6 +844,10 @@ gitbook.start({
 "edit": {
 "link": "https://github.com/CrumpLab/statisticsLab/blob/master/03-Correlation.Rmd",
 "text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
 },
 "download": ["Statistics_Lab.pdf"],
 "toc": {
@@ -821,8 +862,8 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;

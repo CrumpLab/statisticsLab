@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Answering questions with data: Lab Manual</title>
+  <title>Chapter 5 Lab 5: Fundamentals of Hypothesis Testing | Answering questions with data: Lab Manual</title>
   <meta name="description" content="A lab manual for Psyc 3400">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Answering questions with data: Lab Manual" />
+  <meta property="og:title" content="Chapter 5 Lab 5: Fundamentals of Hypothesis Testing | Answering questions with data: Lab Manual" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Answering questions with data: Lab Manual" />
+  <meta name="twitter:title" content="Chapter 5 Lab 5: Fundamentals of Hypothesis Testing | Answering questions with data: Lab Manual" />
   
   <meta name="twitter:description" content="A lab manual for Psyc 3400" />
   
@@ -35,6 +35,7 @@
 <link rel="next" href="lab-6-t-test-one-sample-paired-sample.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -63,41 +64,67 @@ mattcrump=1;
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="tufte.css" type="text/css" />
@@ -446,7 +473,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <script>
 $("#coverpic").hide();
 </script>
-<p><span class="newthought"> The null hypothesis is never proved or established, but is possibly disproved, in the course of experimentation. Every experiment may be said to exist only to give the facts a chance of disproving the null hypothesis. —R. A. Fisher </span></p>
+<p><span class="newthought">
+The null hypothesis is never proved or established, but is possibly disproved, in the course of experimentation. Every experiment may be said to exist only to give the facts a chance of disproving the null hypothesis.
+—R. A. Fisher
+</span></p>
 <div id="r-5" class="section level2">
 <h2><span class="header-section-number">5.1</span> R</h2>
 <p>From here on, we will be focusing on making sense of data from experiments. In all of this, we use experiments to ask a question about whether one thing causes change (influences) another thing. Then, we look at the data to help us answer that question. In general, we expect to find a difference in our measurement between the conditions of the experimental manipulation. We expect to find a difference when the manipulation works, and causes change in our measure. We expect not to find a difference when the manipulation does not work, and does not cause change.</p>
@@ -486,7 +516,7 @@ $("#coverpic").hide();
 </div>
 <div id="run-the-simluation" class="section level4">
 <h4><span class="header-section-number">5.1.1.4</span> Run the simluation</h4>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
 
 <span class="co"># set paramaters of simulation</span>
 
@@ -498,31 +528,31 @@ dist_sd    &lt;-<span class="st"> </span><span class="dv">5</span>
 <span class="co"># run simulation</span>
 
 mean_differences &lt;-<span class="st"> </span><span class="kw">length</span>(sims_to_run)
-for(i in <span class="dv">1</span>:sims_to_run){
+<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>sims_to_run){
   mean_control_A      &lt;-<span class="st"> </span><span class="kw">mean</span>(<span class="kw">rnorm</span>(sample_n, dist_mean, dist_sd))
   mean_control_B      &lt;-<span class="st"> </span><span class="kw">mean</span>(<span class="kw">rnorm</span>(sample_n, dist_mean, dist_sd))
-  mean_differences[i] &lt;-<span class="st"> </span>mean_control_A -<span class="st"> </span>mean_control_B
+  mean_differences[i] &lt;-<span class="st"> </span>mean_control_A <span class="op">-</span><span class="st"> </span>mean_control_B
 }
 
 <span class="co"># plot the  distribution of mean difference scores</span>
 
-plot_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">sim=</span><span class="dv">1</span>:sims_to_run,mean_differences)
+plot_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">sim=</span><span class="dv">1</span><span class="op">:</span>sims_to_run,mean_differences)
 
-<span class="kw">ggplot</span>(plot_df,<span class="kw">aes</span>(<span class="dt">x=</span>mean_differences))+
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins=</span><span class="dv">20</span>, <span class="dt">color=</span><span class="st">&quot;white&quot;</span>)+
-<span class="st">  </span><span class="kw">theme_classic</span>()+
+<span class="kw">ggplot</span>(plot_df,<span class="kw">aes</span>(<span class="dt">x=</span>mean_differences))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins=</span><span class="dv">20</span>, <span class="dt">color=</span><span class="st">&quot;white&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_classic</span>()<span class="op">+</span>
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Histogram of mean differences between two samples (n=20) </span><span class="ch">\n</span>
-<span class="st">          both drawn from the same normal distribution (u=75, sd=5&quot;</span>)+
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;mean difference&quot;</span>)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-143-1.png" width="672" /></p>
+<span class="st">          both drawn from the same normal distribution (u=75, sd=5&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;mean difference&quot;</span>)</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-145-1.png" width="672" /></p>
 </div>
 <div id="find-the-range" class="section level4">
 <h4><span class="header-section-number">5.1.1.5</span> find the range</h4>
 <p>We can see that chance produces some differences that are non-zero. The histogram shows all the mean differences that were produced by chance. Most of the differences are between -2 and +2, but some of them are bit more negative, or a bit more positive. If we want to know what chance <strong>did</strong> do in this one simulation with 100 runs, then we need to find the range, the minimum and maximum value. This will tell us the most negative mean difference that chance did produce, and the most positive mean difference that chance did produce. Then, we will also know that chance <strong>did not</strong> produce any larger negative, or larger positive differences, in this simulation.</p>
 <p>We use the <code>min()</code> and <code>max()</code> functions to get the minimum and maximum value.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">min</span>(mean_differences)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">min</span>(mean_differences)</code></pre>
 <pre><code>## [1] -4.145403</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">max</span>(mean_differences)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">max</span>(mean_differences)</code></pre>
 <pre><code>## [1] 4.260606</code></pre>
 <p>We now know, that biggest negative difference was -4.145, and the biggest positive difference was 4.261. We also know that any mean difference inside the range <strong>was produced by chance</strong> in our simulation, and any mean difference outside the range <strong>was not produced by chance</strong> in our simulation</p>
 </div>
@@ -565,7 +595,7 @@ plot_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span c
 <p>One problem for the instructor, is that they just don’t know in advance how good their new teaching materials will be. Some of them will be good and produce bigger differences, and some of them won’t. The size of the difference from the manipulation can be unknown. However, this doesn’t really matter for planning the experiment. The instructor wants to know that they can <strong>find</strong> or detect any real difference (not due to chance) that is say 2% or bigger. We can use the simulation to figure out roughly (or more exactly, depending on how much we work at it) how many subjects are needed to detect difference of at least 2%.</p>
 <p>Notice, from our prior simulation, chance does produce differences of 2% some of the time (given 100 runs). The task now is to re-run the simulation, but use different numbers of subjects to figure out how many subjects are needed to always detect differences of 2%. To be simple about this, we are interested in producing a distribution of mean differences that never produces a mean difference of -2% to + 2% (not once out of 100 times). You can re-run this code, and change N until the min and max are always smaller than -2 to +2.</p>
 <p>The code starts out exactly as it was before. You should change the number for <code>sample_n</code>. As you make the number bigger, the range (min and max) of the mean differences by chance will get smaller and smaller. Eventually it will be smaller than -2 to +2. When you get it this small, then the N that you used is your answer. Use that many subjects. If you run your experiment with that many subjects, <strong>AND</strong> you find a difference or 2 or greater, then you know that chance does not do this even 1 times out of 100.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
 
 <span class="co"># set paramaters of simulation</span>
 
@@ -577,26 +607,26 @@ dist_sd    &lt;-<span class="st"> </span><span class="dv">5</span>
 <span class="co"># run simulation</span>
 
 mean_differences &lt;-<span class="st"> </span><span class="kw">length</span>(sims_to_run)
-for(i in <span class="dv">1</span>:sims_to_run){
+<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>sims_to_run){
   mean_control_A      &lt;-<span class="st"> </span><span class="kw">mean</span>(<span class="kw">rnorm</span>(sample_n, dist_mean, dist_sd))
   mean_control_B      &lt;-<span class="st"> </span><span class="kw">mean</span>(<span class="kw">rnorm</span>(sample_n, dist_mean, dist_sd))
-  mean_differences[i] &lt;-<span class="st"> </span>mean_control_A -<span class="st"> </span>mean_control_B
+  mean_differences[i] &lt;-<span class="st"> </span>mean_control_A <span class="op">-</span><span class="st"> </span>mean_control_B
 }
 
 <span class="co"># plot the  distribution of mean difference scores</span>
 
-plot_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">sim=</span><span class="dv">1</span>:sims_to_run,mean_differences)
+plot_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">sim=</span><span class="dv">1</span><span class="op">:</span>sims_to_run,mean_differences)
 
-<span class="kw">ggplot</span>(plot_df,<span class="kw">aes</span>(<span class="dt">x=</span>mean_differences))+
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins=</span><span class="dv">20</span>, <span class="dt">color=</span><span class="st">&quot;white&quot;</span>)+
-<span class="st">  </span><span class="kw">theme_classic</span>()+
+<span class="kw">ggplot</span>(plot_df,<span class="kw">aes</span>(<span class="dt">x=</span>mean_differences))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins=</span><span class="dv">20</span>, <span class="dt">color=</span><span class="st">&quot;white&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_classic</span>()<span class="op">+</span>
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Histogram of mean differences between two samples (n=20) </span><span class="ch">\n</span>
-<span class="st">          both drawn from the same normal distribution (u=75, sd=5&quot;</span>)+
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;mean difference&quot;</span>)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-145-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">min</span>(mean_differences)</code></pre></div>
+<span class="st">          both drawn from the same normal distribution (u=75, sd=5&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;mean difference&quot;</span>)</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-147-1.png" width="672" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">min</span>(mean_differences)</code></pre>
 <pre><code>## [1] -4.571732</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">max</span>(mean_differences)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">max</span>(mean_differences)</code></pre>
 <pre><code>## [1] 4.571482</code></pre>
 </div>
 </div>
@@ -649,35 +679,35 @@ plot_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span c
 <li>The mean of our distribution is .49</li>
 <li>The standard deviation of the distribution is .168</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># set paramaters of simulation</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># set paramaters of simulation</span>
 
 sims_to_run &lt;-<span class="st"> </span><span class="dv">100</span>
 sample_n   &lt;-<span class="st"> </span><span class="dv">40</span>
-dist_mean  &lt;-<span class="st"> </span>.<span class="dv">49</span>
-dist_sd    &lt;-<span class="st"> </span>.<span class="dv">168</span>
+dist_mean  &lt;-<span class="st"> </span><span class="fl">.49</span>
+dist_sd    &lt;-<span class="st"> </span><span class="fl">.168</span>
 
 <span class="co"># run simulation</span>
 
 mean_differences &lt;-<span class="st"> </span><span class="kw">length</span>(sims_to_run)
-for(i in <span class="dv">1</span>:sims_to_run){
+<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>sims_to_run){
   mean_control_A      &lt;-<span class="st"> </span><span class="kw">mean</span>(<span class="kw">rnorm</span>(sample_n, dist_mean, dist_sd))
   mean_control_B      &lt;-<span class="st"> </span><span class="kw">mean</span>(<span class="kw">rnorm</span>(sample_n, dist_mean, dist_sd))
-  mean_differences[i] &lt;-<span class="st"> </span>mean_control_A -<span class="st"> </span>mean_control_B
+  mean_differences[i] &lt;-<span class="st"> </span>mean_control_A <span class="op">-</span><span class="st"> </span>mean_control_B
 }
 
 <span class="co"># plot the  distribution of mean difference scores</span>
 
-plot_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">sim=</span><span class="dv">1</span>:sims_to_run,mean_differences)
+plot_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">sim=</span><span class="dv">1</span><span class="op">:</span>sims_to_run,mean_differences)
 
-<span class="kw">ggplot</span>(plot_df,<span class="kw">aes</span>(<span class="dt">x=</span>mean_differences))+
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins=</span><span class="dv">20</span>, <span class="dt">color=</span><span class="st">&quot;white&quot;</span>)+
-<span class="st">  </span><span class="kw">theme_classic</span>()+
-<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Histogram of mean differences in proportion remembered&quot;</span>)+
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;mean difference&quot;</span>)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-146-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">min</span>(mean_differences)</code></pre></div>
+<span class="kw">ggplot</span>(plot_df,<span class="kw">aes</span>(<span class="dt">x=</span>mean_differences))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins=</span><span class="dv">20</span>, <span class="dt">color=</span><span class="st">&quot;white&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_classic</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Histogram of mean differences in proportion remembered&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;mean difference&quot;</span>)</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-148-1.png" width="672" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">min</span>(mean_differences)</code></pre>
 <pre><code>## [1] -0.08935782</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">max</span>(mean_differences)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">max</span>(mean_differences)</code></pre>
 <pre><code>## [1] 0.07754367</code></pre>
 <p>According to the simulation, the biggest negative difference was -0.089, and the biggest positive difference was 0.078. We also know that any mean difference inside the range <strong>was produced by chance</strong> in our simulation, and any mean difference outside the range <strong>was not produced by chance</strong> in our simulation.</p>
 <p>A difference of .14 or 14% was never produced by chance, it was completely outside the range. Based on this analysis we can be fairly confident that the test-enhanced learning effect was not a fluke, it was not produced by chance. We have evidence to support the claim that testing enhances learning, and because of this we test you while you are learning to enhance your learning while you learn.</p>
@@ -697,28 +727,28 @@ plot_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span c
 <div id="run-the-randomization-test" class="section level4">
 <h4><span class="header-section-number">5.1.3.1</span> Run the randomization test</h4>
 <p>Note, this time when we calculate the mean differences for each new group, we will take the absolute value of the mean difference.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># get sample numbers from one experiment</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># get sample numbers from one experiment</span>
 Group_A &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">20</span>,<span class="dv">50</span>,<span class="dv">10</span>)
 Group_B &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">20</span>,<span class="dv">50</span>,<span class="dv">10</span>)
 
 <span class="co"># randomize the numbers, compute mean difference, save the mean difference</span>
 mean_differences &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
-for(i in <span class="dv">1</span>:<span class="dv">1000</span>){
+<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>){
   shuffle_numbers &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(Group_A, Group_B), <span class="dt">replace=</span><span class="ot">FALSE</span>)
-  new_group_A &lt;-<span class="st"> </span>shuffle_numbers[<span class="dv">1</span>:<span class="dv">20</span>]
-  new_group_B &lt;-<span class="st"> </span>shuffle_numbers[<span class="dv">21</span>:<span class="dv">40</span>]
-  mean_differences[i] &lt;-<span class="st"> </span><span class="kw">abs</span>(<span class="kw">mean</span>(new_group_A)-<span class="kw">mean</span>(new_group_B))
+  new_group_A &lt;-<span class="st"> </span>shuffle_numbers[<span class="dv">1</span><span class="op">:</span><span class="dv">20</span>]
+  new_group_B &lt;-<span class="st"> </span>shuffle_numbers[<span class="dv">21</span><span class="op">:</span><span class="dv">40</span>]
+  mean_differences[i] &lt;-<span class="st"> </span><span class="kw">abs</span>(<span class="kw">mean</span>(new_group_A)<span class="op">-</span><span class="kw">mean</span>(new_group_B))
 }
 
 <span class="co"># plot the histogram</span>
-plot_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">sim=</span><span class="dv">1</span>:<span class="dv">1000</span>,mean_differences)
+plot_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">sim=</span><span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>,mean_differences)
 
-<span class="kw">ggplot</span>(plot_df,<span class="kw">aes</span>(<span class="dt">x=</span>mean_differences))+
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins=</span><span class="dv">20</span>, <span class="dt">color=</span><span class="st">&quot;white&quot;</span>)+
-<span class="st">  </span><span class="kw">theme_classic</span>()+
-<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Histogram of mean differences&quot;</span>)+
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;mean difference&quot;</span>)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-147-1.png" width="672" /></p>
+<span class="kw">ggplot</span>(plot_df,<span class="kw">aes</span>(<span class="dt">x=</span>mean_differences))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins=</span><span class="dv">20</span>, <span class="dt">color=</span><span class="st">&quot;white&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_classic</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Histogram of mean differences&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;mean difference&quot;</span>)</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-149-1.png" width="672" /></p>
 <p>The histogram shows us the kinds of absolute mean difference that happen by chance alone. So, in this data, a mean difference of 10 hardly wouldn’t happen very often. A difference between 0 and 2.5 happens fairly often by chance.</p>
 </div>
 <div id="decision-criteria" class="section level4">
@@ -735,24 +765,24 @@ plot_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span c
 <li>The number in position 950 is the alpha location. All of the numbers from position 0 to 950, reflect 95% of the numbers. What is left over is 5% of the numbers.</li>
 <li>Find the alpha cut-off, and plot it on the histogram</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ordered_differences &lt;-<span class="st"> </span><span class="kw">sort</span>(mean_differences) <span class="co"># sort</span>
+<pre class="sourceCode r"><code class="sourceCode r">ordered_differences &lt;-<span class="st"> </span><span class="kw">sort</span>(mean_differences) <span class="co"># sort</span>
 alpha_cutoff &lt;-<span class="st"> </span>ordered_differences[<span class="dv">950</span>] <span class="co"># pick 950th number</span>
-alpha_cutoff</code></pre></div>
-<pre><code>## [1] 7.74664</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># add to histogram using vline</span>
+alpha_cutoff</code></pre>
+<pre><code>## [1] 5.902222</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># add to histogram using vline</span>
 
-<span class="kw">ggplot</span>(plot_df,<span class="kw">aes</span>(<span class="dt">x=</span>mean_differences))+
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins=</span><span class="dv">20</span>, <span class="dt">color=</span><span class="st">&quot;white&quot;</span>)+
-<span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept=</span>alpha_cutoff)+
-<span class="st">  </span><span class="kw">theme_classic</span>()+
-<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Histogram of mean differences&quot;</span>)+
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;absolute mean difference&quot;</span>)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-148-1.png" width="672" /></p>
-<p>OK, so our alpha criterion or cutoff is located at 7.75 on the x-axis. This shows us that mean differences of 7.75 or larger happen only 5% of the time by chance.</p>
+<span class="kw">ggplot</span>(plot_df,<span class="kw">aes</span>(<span class="dt">x=</span>mean_differences))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins=</span><span class="dv">20</span>, <span class="dt">color=</span><span class="st">&quot;white&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept=</span>alpha_cutoff)<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_classic</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Histogram of mean differences&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;absolute mean difference&quot;</span>)</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-150-1.png" width="672" /></p>
+<p>OK, so our alpha criterion or cutoff is located at 5.9 on the x-axis. This shows us that mean differences of 5.9 or larger happen only 5% of the time by chance.</p>
 <p>You could use this information to make an inference about whether or not chance produced the difference in your experiments</p>
 <ol style="list-style-type: decimal">
-<li><p>When the mean difference is 7.75 or larger, you might conclude that chance did not produce the difference</p></li>
-<li><p>When the mean difference is less than 7.75, you might conclude that chance could have produced the mean difference.</p></li>
+<li><p>When the mean difference is 5.9 or larger, you might conclude that chance did not produce the difference</p></li>
+<li><p>When the mean difference is less than 5.9, you might conclude that chance could have produced the mean difference.</p></li>
 </ol>
 <p>It’s up to you to set your alpha criterion. In practice it is often set at p=.05. But, you could be more conservative and set it to p=.01. Or more liberal and set it to p=.1. It’s up to you.</p>
 </div>
@@ -818,7 +848,7 @@ alpha_cutoff</code></pre></div>
 <p><img src="img/5.4.12.png" width="545" /></p>
 <p>A calculation window will open. First, give your new variable a name in the field “Target Variable”. I am going to call it <code>Difference</code>. Then, in the field labeled “Numeric Expression”, we must convey that we want SPSS to take the <code>Pepsi</code> score minus the <code>Coke</code> score (the order in which you do this really doesn’t matter, as long as you know the order you used). Take your <code>Pepsi</code> variable from the list on the left and move it into the “Numeric Expression” field using the arrow. Then, type (or you can use the keypad in the window to insert) a minus sign, followed by moving the <code>Coke</code> variable into the field. The result in this field should look like “Pepsi - Coke”.</p>
 <p><img src="img/5.4.13.png" width="546" /></p>
-<p>Click <span style="color:blue">OK</span>. An SPSS output window will pop up to confirm that you have created a new variable, but you can ignore or x it out. Go back to the data spreadsheet and you will find there is a new variable, labeled <code>Difference</code> that contains the difference scores for each person. Pay attention to the sign on each difference score. Since we used the calculation “Pepsi - Coke”“, anyone who has a positive difference score preferred the Pepsi better, while anyone with a negative difference score preferred the Coke.</p>
+<p>Click <span style="color:blue">OK</span>. An SPSS output window will pop up to confirm that you have created a new variable, but you can ignore or x it out. Go back to the data spreadsheet and you will find there is a new variable, labeled <code>Difference</code> that contains the difference scores for each person. Pay attention to the sign on each difference score. Since we used the calculation “Pepsi - Coke”", anyone who has a positive difference score preferred the Pepsi better, while anyone with a negative difference score preferred the Coke.</p>
 <p><img src="img/5.4.14.png" width="560" /></p>
 </div>
 <div id="conduct-a-sign-test" class="section level3">
@@ -893,7 +923,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -905,6 +935,10 @@ gitbook.start({
 "edit": {
 "link": "https://github.com/CrumpLab/statisticsLab/blob/master/05-HypothesisTesting.Rmd",
 "text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
 },
 "download": ["Statistics_Lab.pdf"],
 "toc": {
@@ -919,8 +953,8 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;

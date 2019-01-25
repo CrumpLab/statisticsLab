@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Answering questions with data: Lab Manual</title>
+  <title>Chapter 8 Lab 8 One-way ANOVA | Answering questions with data: Lab Manual</title>
   <meta name="description" content="A lab manual for Psyc 3400">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Answering questions with data: Lab Manual" />
+  <meta property="og:title" content="Chapter 8 Lab 8 One-way ANOVA | Answering questions with data: Lab Manual" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Answering questions with data: Lab Manual" />
+  <meta name="twitter:title" content="Chapter 8 Lab 8 One-way ANOVA | Answering questions with data: Lab Manual" />
   
   <meta name="twitter:description" content="A lab manual for Psyc 3400" />
   
@@ -35,6 +35,7 @@
 <link rel="next" href="lab-9-repeated-measures-anova.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -63,41 +64,67 @@ mattcrump=1;
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="tufte.css" type="text/css" />
@@ -446,16 +473,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <script>
 $("#coverpic").hide();
 </script>
-<p><span class="newthought"> The analysis of variance is not a mathematical theorem, but rather a convenient method of arranging the arithmetic. —R. A. Fisher </span></p>
+<p><span class="newthought">
+The analysis of variance is not a mathematical theorem, but rather a convenient method of arranging the arithmetic.
+—R. A. Fisher
+</span></p>
 <div class="marginnote">
 <p>This lab is modified and extended from <a href="https://sites.trinity.edu/osl">Open Stats Labs</a>. Thanks to Open Stats Labs (Dr. Kevin P. McIntyre) for their fantastic work.</p>
 </div>
 <div id="how-to-not-think-about-bad-memories-by-playing-tetris" class="section level2">
 <h2><span class="header-section-number">8.1</span> How to not think about bad memories by playing Tetris</h2>
-<p>This lab activity uses the open data from Experiment 2 of James et al. (2015) to teach one-way ANOVA with planned comparisons. Results of the activity provided below should exactly reproduce the results described in the paper.</p>
+<p>This lab activity uses the open data from Experiment 2 of James et al. (2015) to teach one-way ANOVA with planned comparisons. Results of the activity provided below should exactly reproduce the results described in the paper.</p>
 <div id="study-description-2" class="section level3">
 <h3><span class="header-section-number">8.1.1</span> STUDY DESCRIPTION</h3>
-<p>Following traumatic experiences, some people have flashbacks, which are also called “intrusive memories”&quot; and are characterized by involuntary images of aspects of the traumatic event. Although people often try to simply forget traumatic memories, this approach is not very effective. Instead, previous research suggests that a better approach may be to try to change aspects of the memory after it is formed. For example, some research shows that traumatic memories can be altered and weakened to the point that they are no longer intrusive.</p>
+<p>Following traumatic experiences, some people have flashbacks, which are also called “intrusive memories”" and are characterized by involuntary images of aspects of the traumatic event. Although people often try to simply forget traumatic memories, this approach is not very effective. Instead, previous research suggests that a better approach may be to try to change aspects of the memory after it is formed. For example, some research shows that traumatic memories can be altered and weakened to the point that they are no longer intrusive.</p>
 <p>Because intrusive memories of trauma are often visual in nature, James and colleagues (2015) sought to explore whether completing a visuospatial task (e.g., Tetris) after a memory was formed would interfere with the storage of that memory, and thereby reduce the frequency of subsequent intrusions. They hypothesized that only participants who complete a visuo-spatial task after reactivation of the traumatic memories would experience a reduction in intrusive memories. In comparison, simply completing a visuo-spatial task (without reactivation) or reactivation (without a visuo-spatial task), would not reduce the occurrence intrusive memories.</p>
 <p>In other words, if you play Tetris shortly after you were remembering bad memories, playing Tetris might weaken those memories, which could cause you experience those kinds of intrusive memories less often in the future.</p>
 </div>
@@ -491,15 +521,15 @@ $("#coverpic").hide();
 <div id="load-the-data-2" class="section level3">
 <h3><span class="header-section-number">8.4.1</span> Load the data</h3>
 <p>Remember that any line with a # makes a comment and the code does not run. Below is how to load the .csv data from the online repository, or from a local file (you need to change the file path to where the local file is, if you downloaded it). The data contains all of the measures and conditions from Experiment 2 in the paper.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(data.table)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(data.table)
 <span class="co">#fread(&quot;https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/Jamesetal2015Experiment2.csv&quot;)</span>
-all_data &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class="st">&quot;data/Jamesetal2015Experiment2.csv&quot;</span>)</code></pre></div>
+all_data &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class="st">&quot;data/Jamesetal2015Experiment2.csv&quot;</span>)</code></pre>
 </div>
 <div id="inspect-the-dataframe" class="section level3">
 <h3><span class="header-section-number">8.4.2</span> Inspect the dataframe</h3>
 <p>This will give you a big picture of the data frame. Click the button to view it in your browser, then take a look to see what is in it.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(summarytools)
-<span class="kw">view</span>(<span class="kw">dfSummary</span>(all_data))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(summarytools)
+<span class="kw">view</span>(<span class="kw">dfSummary</span>(all_data))</code></pre>
 </div>
 <div id="get-the-data-you-need" class="section level3">
 <h3><span class="header-section-number">8.4.3</span> Get the data you need</h3>
@@ -521,11 +551,11 @@ all_data &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class
 <li>Reactivation only</li>
 </ol>
 <p>Let’s do ourselves a favor and rename the levels of the <code>Condition</code> column with words so we know what they refer to. First, convert the <code>Condition</code> column to a factor, then rename the levels. Then.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">all_data$Condition &lt;-<span class="st"> </span><span class="kw">as.factor</span>(all_data$Condition)
-<span class="kw">levels</span>(all_data$Condition) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Control&quot;</span>,
+<pre class="sourceCode r"><code class="sourceCode r">all_data<span class="op">$</span>Condition &lt;-<span class="st"> </span><span class="kw">as.factor</span>(all_data<span class="op">$</span>Condition)
+<span class="kw">levels</span>(all_data<span class="op">$</span>Condition) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Control&quot;</span>,
                                 <span class="st">&quot;Reactivation+Tetris&quot;</span>, 
                                 <span class="st">&quot;Tetris_only&quot;</span>,
-                                <span class="st">&quot;Reactivation_only&quot;</span>)</code></pre></div>
+                                <span class="st">&quot;Reactivation_only&quot;</span>)</code></pre>
 </div>
 <div id="the-dependent-variable" class="section level4">
 <h4><span class="header-section-number">8.4.3.2</span> The dependent variable</h4>
@@ -537,25 +567,25 @@ all_data &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class
 <h3><span class="header-section-number">8.4.4</span> Look at the data</h3>
 <p>Remember before we do any analysis, we always want to “look” at the data. This first pass let’s us know if the data “look right”. For example, the data file could be messed up and maybe there aren’t any numbers there, or maybe the numbers are just too weird.</p>
 <p>In the last two labs, we saw how to show all the data we are interested in looking at in one go. We can do the same things here. For example, in one little piece of code, we can display the means in each condition, the standard errors of the mean, and the individual scores for each subject in each condition. This is a lot to look at, but it’s everything we want to look at for starters all in the same place. Looking at the data this way will also give us intuitions about what our ANOVA will tell us before we run the ANOVA. This is helpful for determining whether the results of your ANOVA are accurate or not. Let’s do it…also notice that the code is very similar to what we did for the independent t-test. In fact, all I did was copy and paste that code right here, and edited it a little bit. This is really fast, and shows the efficiency of doing things this way.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
 
 <span class="kw">library</span>(ggplot2)
 
 <span class="co"># get means and SEs</span>
-descriptive_df &lt;-<span class="st"> </span>all_data %&gt;%<span class="st"> </span>
-<span class="st">                    </span><span class="kw">group_by</span>(Condition) %&gt;%<span class="st"> </span>
+descriptive_df &lt;-<span class="st"> </span>all_data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">                    </span><span class="kw">group_by</span>(Condition) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">                    </span><span class="kw">summarise</span>(<span class="dt">means=</span> <span class="kw">mean</span>(Days_One_to_Seven_Number_of_Intrusions),
-                              <span class="dt">SEs =</span> <span class="kw">sd</span>(Days_One_to_Seven_Number_of_Intrusions)/<span class="kw">sqrt</span>(<span class="kw">length</span>(Days_One_to_Seven_Number_of_Intrusions)))
+                              <span class="dt">SEs =</span> <span class="kw">sd</span>(Days_One_to_Seven_Number_of_Intrusions)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">length</span>(Days_One_to_Seven_Number_of_Intrusions)))
 
 <span class="co"># Make the plot</span>
-<span class="kw">ggplot</span>(descriptive_df, <span class="kw">aes</span>(<span class="dt">x=</span>Condition, <span class="dt">y=</span>means))+<span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="kw">aes</span>(<span class="dt">fill=</span>Condition))+<span class="st"> </span><span class="co"># add means</span>
-<span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin=</span>means-SEs,               <span class="co"># add error bars</span>
-                    <span class="dt">ymax=</span>means+SEs), <span class="dt">width=</span>.<span class="dv">1</span>) +
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data=</span>all_data, <span class="kw">aes</span>(<span class="dt">x=</span>Condition, <span class="dt">y=</span>Days_One_to_Seven_Number_of_Intrusions), <span class="dt">alpha=</span>.<span class="dv">5</span>)+
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha=</span>.<span class="dv">25</span>)+
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Intrusive Memories (Mean for Week)&quot;</span>)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-227-1.png" width="672" /></p>
+<span class="kw">ggplot</span>(descriptive_df, <span class="kw">aes</span>(<span class="dt">x=</span>Condition, <span class="dt">y=</span>means))<span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="kw">aes</span>(<span class="dt">fill=</span>Condition))<span class="op">+</span><span class="st"> </span><span class="co"># add means</span>
+<span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin=</span>means<span class="op">-</span>SEs,               <span class="co"># add error bars</span>
+                    <span class="dt">ymax=</span>means<span class="op">+</span>SEs), <span class="dt">width=</span>.<span class="dv">1</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data=</span>all_data, <span class="kw">aes</span>(<span class="dt">x=</span>Condition, <span class="dt">y=</span>Days_One_to_Seven_Number_of_Intrusions), <span class="dt">alpha=</span>.<span class="dv">5</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha=</span>.<span class="dv">25</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Intrusive Memories (Mean for Week)&quot;</span>)</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-229-1.png" width="672" /></p>
 <p>There we have it. A nice graph showing us everything. We can see there was a lot of differences at the level of individual subjects. Some subjects had a mean of 15 intrusive memories for the week. Some had 0. Lots of differences.</p>
 <p>And, to be completely honest, this data seems a bit weird to me. It might not be weird, but it might be. The wording in the manuscript is that this data is the mean frequency of intrusive memories over the week. For the people who had 15, this means that every day they had on average 15 intrusive memories. Some people had on average 0 per day. This could be the data. But, it also seems like the data might just be frequency counts and not means at all. For example, the data could be that some people had a total of 15 intrusive over the week. The data might make more sense if these were frequency counts. Otherwise the differences between people are truly very large. For example the person who had an average of 15 intrusive memories per week, must have had 15*7 = 105 intrusive memories, which is a lot more than zero. In any case, this kind of wondering about the data is what happens when you start to notice how numbers work. It’s useful develop your data sense.</p>
 <p>Let’s move on to the ANOVA. By looking at the above graph do you have an intuition about what the ANOVA will tell us? I do, it should easily tell us that we are going to get an F-value that is bigger than one, and a p-value that is probably smaller than .05? How do I know this? I looked at the error bars, which represent the standard errors of the mean. If we look across conditions we can see that that the error bars don’t always overlap. This suggests there are differences in the data that don’t happen very often by chance. So, we expect a smallish p-value. Why do you think I expect the F-value to be greater than 1? If you can answer this question with a justification and explanation of how F works, pat yourself on the back!</p>
@@ -577,7 +607,7 @@ descriptive_df &lt;-<span class="st"> </span>all_data %&gt;%<span class="st"> </
 <p><code>aov(Days_One_to_Seven_Number_of_Intrusions ~ Condition, all_data)</code></p>
 <p>In English, this means, do an ANOVA on the dependent variable as a function of the independent variable, and use the data in my data frame.</p>
 <p>This is it for now. The <code>aov</code> function is very flexible because you can define different kinds of formulas (the <code>DV ~ IV</code> part). We’ll see other examples in later chapters. For now, this is all we need. Also, what’s cool, is that this will work for any single IV with any number of levels (conditions) 2 or greater. Fun. Let’s see it in action.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">aov</span>(Days_One_to_Seven_Number_of_Intrusions ~<span class="st"> </span>Condition, all_data)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">aov</span>(Days_One_to_Seven_Number_of_Intrusions <span class="op">~</span><span class="st"> </span>Condition, all_data)</code></pre>
 <pre><code>## Call:
 ##    aov(formula = Days_One_to_Seven_Number_of_Intrusions ~ Condition, 
 ##     data = all_data)
@@ -591,18 +621,18 @@ descriptive_df &lt;-<span class="st"> </span>all_data %&gt;%<span class="st"> </
 ## Estimated effects may be unbalanced</code></pre>
 <p>What is this garbage? I don’t see an ANOVA table, what is this? You are seeing the raw print out of the aov function. Clearly, this is not helpful, it’s not what we want to see.</p>
 <p>Fortunately, R comes with another function called <code>summary</code>. What it does is summarize the results of functions like <code>aov</code>, and prints them out in a nicer way. Let’s see the summary function do it’s thing:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(<span class="kw">aov</span>(Days_One_to_Seven_Number_of_Intrusions ~<span class="st"> </span>Condition, all_data))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(<span class="kw">aov</span>(Days_One_to_Seven_Number_of_Intrusions <span class="op">~</span><span class="st"> </span>Condition, all_data))</code></pre>
 <pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)  
 ## Condition    3  114.8   38.27   3.795 0.0141 *
 ## Residuals   68  685.8   10.09                 
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>Alright, now we have an ANOVA table we can look at. However, it still looks ugly, at least to me. When you are working inside an R Markdown document, you have some more options to make it look nice. We can use the <code>kable</code> and <code>xtable</code> function together, like this.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(xtable)
-aov_out&lt;-<span class="kw">aov</span>(Days_One_to_Seven_Number_of_Intrusions ~<span class="st"> </span>Condition, all_data)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(xtable)
+aov_out&lt;-<span class="kw">aov</span>(Days_One_to_Seven_Number_of_Intrusions <span class="op">~</span><span class="st"> </span>Condition, all_data)
 summary_out&lt;-<span class="kw">summary</span>(aov_out)
 
-knitr::<span class="kw">kable</span>(<span class="kw">xtable</span>(summary_out))</code></pre></div>
+knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">xtable</span>(summary_out))</code></pre>
 <table>
 <thead>
 <tr class="header">
@@ -653,13 +683,13 @@ knitr::<span class="kw">kable</span>(<span class="kw">xtable</span>(summary_out)
 <p>We found a main effect of Intervention type, F(3, 68) = 3.79, MSE = 10.09, p = 0.014.</p>
 </blockquote>
 <p>Part 3 is saying what the pattern was in the means. Remember, that in the ANOVA, a significant effect refers to the global variation among the means. In other words, we can say that there are some differences between the means, but we can’t specifically say which pairs of means are different, or which groups of means are different from one another. How can we report this, where are the means? In fact, we already found them when we plotted the data earlier. So, we can copy paste that code, and print out the means, rather than the figure:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># get means and SEs</span>
-descriptive_df &lt;-<span class="st"> </span>all_data %&gt;%<span class="st"> </span>
-<span class="st">                    </span><span class="kw">group_by</span>(Condition) %&gt;%<span class="st"> </span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># get means and SEs</span>
+descriptive_df &lt;-<span class="st"> </span>all_data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">                    </span><span class="kw">group_by</span>(Condition) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">                    </span><span class="kw">summarise</span>(<span class="dt">means=</span> <span class="kw">mean</span>(Days_One_to_Seven_Number_of_Intrusions),
-                              <span class="dt">SEs =</span> <span class="kw">sd</span>(Days_One_to_Seven_Number_of_Intrusions)/<span class="kw">sqrt</span>(<span class="kw">length</span>(Days_One_to_Seven_Number_of_Intrusions)))
+                              <span class="dt">SEs =</span> <span class="kw">sd</span>(Days_One_to_Seven_Number_of_Intrusions)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">length</span>(Days_One_to_Seven_Number_of_Intrusions)))
 
-knitr::<span class="kw">kable</span>(descriptive_df)</code></pre></div>
+knitr<span class="op">::</span><span class="kw">kable</span>(descriptive_df)</code></pre>
 <table>
 <thead>
 <tr class="header">
@@ -725,17 +755,17 @@ knitr::<span class="kw">kable</span>(descriptive_df)</code></pre></div>
 <p>Do we actually care about all of these comparisons? Perhaps. What was the point of the experiment? Remember, the experiment was asking a questions, that’s why they set-up the condition necessary to produce these means. What question were they asking? What did they want to know?</p>
 <p>They wanted to find out if various interventions after watching the scary movie, would change how many bad intrusive memories people would experience in the week following the movie. They discuss the idea that a memory can become malleable when it is re-activated. They want to “Re-activate” the bad memories, and then while they were changeable, do something to them to make them less likely to be intrusive later on. The big idea was that doing a bit of “re-activation” AND then playing Tetris (which takes up visual cognitive bandwidth) could cause changes to the re-activated memories, that would decrease the number of intrusive memories later on. With that reminder, let’s go through some different comparisons that we can make, and talk about what they might mean.</p>
 </div>
-<div id="control-vs.reactivation_only" class="section level4">
+<div id="control-vs.-reactivation_only" class="section level4">
 <h4><span class="header-section-number">8.4.7.3</span> Control vs. Reactivation_only</h4>
 <p>There was a control group that did not do anything special after watching the traumatic movie. The mean number of intrusive memories for the control group, gives some idea of the amount of intrusive memories we would expect to measure, when you do nothing to change that number.</p>
 <p>Comparing to the control group is a very sensible thing do to for each of the other groups. If one of the manipulations worked, it should show a different mean (something changed) than the control group.</p>
 <p>So, did the Reaction_only group have less intrusive memories over the control group? First we use the <code>filter</code> function from <code>dplyr</code> to select only the rows from the data frame that have the Control and Reactivation_only conditions. Then we run a t-test</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">comparison_df &lt;-<span class="st"> </span>all_data %&gt;%<span class="st"> </span>
-<span class="st">                  </span><span class="kw">filter</span>(Condition %in%<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Control&#39;</span>,<span class="st">&#39;Reactivation_only&#39;</span>)==<span class="ot">TRUE</span>)
+<pre class="sourceCode r"><code class="sourceCode r">comparison_df &lt;-<span class="st"> </span>all_data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">                  </span><span class="kw">filter</span>(Condition <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Control&#39;</span>,<span class="st">&#39;Reactivation_only&#39;</span>)<span class="op">==</span><span class="ot">TRUE</span>)
                         
-<span class="kw">t.test</span>(Days_One_to_Seven_Number_of_Intrusions ~<span class="st"> </span>Condition, 
+<span class="kw">t.test</span>(Days_One_to_Seven_Number_of_Intrusions <span class="op">~</span><span class="st"> </span>Condition, 
        comparison_df,
-       <span class="dt">var.equal=</span><span class="ot">TRUE</span>)</code></pre></div>
+       <span class="dt">var.equal=</span><span class="ot">TRUE</span>)</code></pre>
 <pre><code>## 
 ##  Two Sample t-test
 ## 
@@ -750,16 +780,16 @@ knitr::<span class="kw">kable</span>(descriptive_df)</code></pre></div>
 <p>The means are both basically 5, not a big difference!. The p-value is large, suggesting that change could easily have produced the tiny differences between the means. In other words, it doesn’t look like the “re-activation” phase did anything to suppress the amount of intrusive memories that people would have over one week, compared to control.</p>
 <p>Notice, this was a comparison we could make. But, was it an informative one about the goal of the study? Not really.</p>
 </div>
-<div id="control-vs.reactivationtetris" class="section level4">
+<div id="control-vs.-reactivationtetris" class="section level4">
 <h4><span class="header-section-number">8.4.7.4</span> Control vs. Reactivation+Tetris</h4>
 <p>What we really want to know is if Reactivation+Tetris cause fewer intrusive memories…but compared to what? Well, if it did something, it should have a smaller mean than the Control group. So, let’s do that comparison:</p>
 <p>Note: we just change the one level name to the level we want <code>Reactivation+Tetris</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">comparison_df &lt;-<span class="st"> </span>all_data %&gt;%<span class="st"> </span>
-<span class="st">                  </span><span class="kw">filter</span>(Condition %in%<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Control&#39;</span>,<span class="st">&#39;Reactivation+Tetris&#39;</span>)==<span class="ot">TRUE</span>)
+<pre class="sourceCode r"><code class="sourceCode r">comparison_df &lt;-<span class="st"> </span>all_data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">                  </span><span class="kw">filter</span>(Condition <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Control&#39;</span>,<span class="st">&#39;Reactivation+Tetris&#39;</span>)<span class="op">==</span><span class="ot">TRUE</span>)
                         
-<span class="kw">t.test</span>(Days_One_to_Seven_Number_of_Intrusions ~<span class="st"> </span>Condition, 
+<span class="kw">t.test</span>(Days_One_to_Seven_Number_of_Intrusions <span class="op">~</span><span class="st"> </span>Condition, 
        comparison_df,
-       <span class="dt">var.equal=</span><span class="ot">TRUE</span>)</code></pre></div>
+       <span class="dt">var.equal=</span><span class="ot">TRUE</span>)</code></pre>
 <pre><code>## 
 ##  Two Sample t-test
 ## 
@@ -773,15 +803,15 @@ knitr::<span class="kw">kable</span>(descriptive_df)</code></pre></div>
 ##                          5.111111                          1.888889</code></pre>
 <p>There is a bigger difference now, roughly 5.1 intrusive memories for control, and 1.9 for Reactivation+Tetris. The p-value is quite small, indicating this difference was not likely produced by chance. Now, we have some evidence that Reactivation+Tetris caused something to change, that condition produced fewer intrusive memories than control.</p>
 </div>
-<div id="control-vs.tetris_only" class="section level4">
+<div id="control-vs.-tetris_only" class="section level4">
 <h4><span class="header-section-number">8.4.7.5</span> Control vs. Tetris_only</h4>
 <p>Now we can really start wondering what caused the difference. Was it just playing Tetris? It wasn’t just doing the reactivation, we already found out that didn’t do anything. Does just playing Tetris reduce the number of intrusive memories during the week? Let’s compare that to control:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">comparison_df &lt;-<span class="st"> </span>all_data %&gt;%<span class="st"> </span>
-<span class="st">                  </span><span class="kw">filter</span>(Condition %in%<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Control&#39;</span>,<span class="st">&#39;Tetris_only&#39;</span>)==<span class="ot">TRUE</span>)
+<pre class="sourceCode r"><code class="sourceCode r">comparison_df &lt;-<span class="st"> </span>all_data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">                  </span><span class="kw">filter</span>(Condition <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Control&#39;</span>,<span class="st">&#39;Tetris_only&#39;</span>)<span class="op">==</span><span class="ot">TRUE</span>)
                         
-<span class="kw">t.test</span>(Days_One_to_Seven_Number_of_Intrusions ~<span class="st"> </span>Condition, 
+<span class="kw">t.test</span>(Days_One_to_Seven_Number_of_Intrusions <span class="op">~</span><span class="st"> </span>Condition, 
        comparison_df,
-       <span class="dt">var.equal=</span><span class="ot">TRUE</span>)</code></pre></div>
+       <span class="dt">var.equal=</span><span class="ot">TRUE</span>)</code></pre>
 <pre><code>## 
 ##  Two Sample t-test
 ## 
@@ -795,15 +825,15 @@ knitr::<span class="kw">kable</span>(descriptive_df)</code></pre></div>
 ##                  5.111111                  3.888889</code></pre>
 <p>There’s mean difference of about 1, but the p-value isn’t very small. This suggests chance produces a difference of this size fairly often. If we claimed that just playing Tetris caused a difference based on this data, we could easily be making a type I error (claiming the result is real when it is not, a false-positive). Still, the difference was in the right direction wasn’t it.</p>
 </div>
-<div id="tetris_only-vs.reactivation-tetris" class="section level4">
+<div id="tetris_only-vs.-reactivation-tetris" class="section level4">
 <h4><span class="header-section-number">8.4.7.6</span> Tetris_only vs. Reactivation + Tetris</h4>
 <p>Finally, we might ask if the Reactivation+Tetris group had fewer unwanted memories than the Tetris_only group. Did putting the two things together (reactivation AND Tetris) really do something special here, beyond just playing Tetris.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">comparison_df &lt;-<span class="st"> </span>all_data %&gt;%<span class="st"> </span>
-<span class="st">                  </span><span class="kw">filter</span>(Condition %in%<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Tetris_only&#39;</span>,<span class="st">&#39;Reactivation+Tetris&#39;</span>)==<span class="ot">TRUE</span>)
+<pre class="sourceCode r"><code class="sourceCode r">comparison_df &lt;-<span class="st"> </span>all_data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">                  </span><span class="kw">filter</span>(Condition <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Tetris_only&#39;</span>,<span class="st">&#39;Reactivation+Tetris&#39;</span>)<span class="op">==</span><span class="ot">TRUE</span>)
                         
-<span class="kw">t.test</span>(Days_One_to_Seven_Number_of_Intrusions ~<span class="st"> </span>Condition, 
+<span class="kw">t.test</span>(Days_One_to_Seven_Number_of_Intrusions <span class="op">~</span><span class="st"> </span>Condition, 
        comparison_df,
-       <span class="dt">var.equal=</span><span class="ot">TRUE</span>)</code></pre></div>
+       <span class="dt">var.equal=</span><span class="ot">TRUE</span>)</code></pre>
 <pre><code>## 
 ##  Two Sample t-test
 ## 
@@ -826,13 +856,13 @@ knitr::<span class="kw">kable</span>(descriptive_df)</code></pre></div>
 <h3><span class="header-section-number">8.4.9</span> Food for thought</h3>
 <p>Think about what we did here. We almost blindly just downloaded the data and ran the same analysis as the authors did. Sure, we looked at the data first, and then did the analysis. But, did we really look? Did you notice anything about what you looked at? What did we not look closely at that might make you skeptical of the conclusions from the research…</p>
 <p>Here’s a hint. Sample-size. We know that is important. Let’s ask the question, was there an equal number of participants in each of the 4 conditions. We can use <code>dplyr</code> again to do this. We’ll add the <code>length</code> function, which counts the number of subjects in each condition:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">descriptive_df &lt;-<span class="st"> </span>all_data %&gt;%<span class="st"> </span>
-<span class="st">                    </span><span class="kw">group_by</span>(Condition) %&gt;%<span class="st"> </span>
+<pre class="sourceCode r"><code class="sourceCode r">descriptive_df &lt;-<span class="st"> </span>all_data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">                    </span><span class="kw">group_by</span>(Condition) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">                    </span><span class="kw">summarise</span>(<span class="dt">means=</span> <span class="kw">mean</span>(Days_One_to_Seven_Number_of_Intrusions),
-                              <span class="dt">SEs =</span> <span class="kw">sd</span>(Days_One_to_Seven_Number_of_Intrusions)/<span class="kw">sqrt</span>(<span class="kw">length</span>(Days_One_to_Seven_Number_of_Intrusions)),
+                              <span class="dt">SEs =</span> <span class="kw">sd</span>(Days_One_to_Seven_Number_of_Intrusions)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">length</span>(Days_One_to_Seven_Number_of_Intrusions)),
                               <span class="dt">count =</span> <span class="kw">length</span>(Days_One_to_Seven_Number_of_Intrusions))
 
-knitr::<span class="kw">kable</span>(descriptive_df)</code></pre></div>
+knitr<span class="op">::</span><span class="kw">kable</span>(descriptive_df)</code></pre>
 <table>
 <thead>
 <tr class="header">
@@ -873,34 +903,34 @@ knitr::<span class="kw">kable</span>(descriptive_df)</code></pre></div>
 <p>Let’s do one more thing for fun, and to see everything in action all in one place. Let’s consider the role of outliers. Looking at the first graph we can see that most people in all the groups had fewer than 10 intrusive memories (mean we assume) per week. It looks like 5 people had more than that, and they just happened to be in the other groups. Maybe Reactivation+Tetris made those people have way less intrusive memories (which is why no one is above 10), or maybe the researchers got a little bit unlucky, and accidentally didn’t get any “outliers” (people with extreme values on the measure) in that group.</p>
 <p>Let’s re-run the analysis, but remove anybody with a mean higher than 10. This will only remove 5 subjects, so we will still have a lot left. What happens?</p>
 <p>Before we find out, let me point out again the beauty of R. All we need to do is copy and paste our previous code. Then, just filter the data once to remove the outliers, then voila, we redo everything all in one go. It’s much more complicated and time consuming to do this in many other software programs. You are lucky to be learning R.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># get rid out of outliers</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># get rid out of outliers</span>
 
-all_data  &lt;-<span class="st"> </span>all_data %&gt;%
-<span class="st">             </span><span class="kw">filter</span>(Days_One_to_Seven_Number_of_Intrusions &lt;<span class="st"> </span><span class="dv">10</span>)
+all_data  &lt;-<span class="st"> </span>all_data <span class="op">%&gt;%</span>
+<span class="st">             </span><span class="kw">filter</span>(Days_One_to_Seven_Number_of_Intrusions <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>)
 
 <span class="co"># get means and SEs</span>
 
-descriptive_df &lt;-<span class="st"> </span>all_data %&gt;%<span class="st"> </span>
-<span class="st">                    </span><span class="kw">group_by</span>(Condition) %&gt;%<span class="st"> </span>
+descriptive_df &lt;-<span class="st"> </span>all_data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">                    </span><span class="kw">group_by</span>(Condition) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">                    </span><span class="kw">summarise</span>(<span class="dt">means=</span> <span class="kw">mean</span>(Days_One_to_Seven_Number_of_Intrusions),
-                              <span class="dt">SEs =</span> <span class="kw">sd</span>(Days_One_to_Seven_Number_of_Intrusions)/<span class="kw">sqrt</span>(<span class="kw">length</span>(Days_One_to_Seven_Number_of_Intrusions)))
+                              <span class="dt">SEs =</span> <span class="kw">sd</span>(Days_One_to_Seven_Number_of_Intrusions)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">length</span>(Days_One_to_Seven_Number_of_Intrusions)))
 
 <span class="co"># Make the plot</span>
 
-<span class="kw">ggplot</span>(descriptive_df, <span class="kw">aes</span>(<span class="dt">x=</span>Condition, <span class="dt">y=</span>means))+<span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="kw">aes</span>(<span class="dt">fill=</span>Condition))+<span class="st"> </span><span class="co"># add means</span>
-<span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin=</span>means-SEs,               <span class="co"># add error bars</span>
-                    <span class="dt">ymax=</span>means+SEs), <span class="dt">width=</span>.<span class="dv">1</span>) +
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data=</span>all_data, <span class="kw">aes</span>(<span class="dt">x=</span>Condition, <span class="dt">y=</span>Days_One_to_Seven_Number_of_Intrusions), <span class="dt">alpha=</span>.<span class="dv">5</span>)+
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha=</span>.<span class="dv">25</span>)+
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Intrusive Memories (Mean for Week)&quot;</span>)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-237-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># run and report the ANOVA</span>
+<span class="kw">ggplot</span>(descriptive_df, <span class="kw">aes</span>(<span class="dt">x=</span>Condition, <span class="dt">y=</span>means))<span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="kw">aes</span>(<span class="dt">fill=</span>Condition))<span class="op">+</span><span class="st"> </span><span class="co"># add means</span>
+<span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin=</span>means<span class="op">-</span>SEs,               <span class="co"># add error bars</span>
+                    <span class="dt">ymax=</span>means<span class="op">+</span>SEs), <span class="dt">width=</span>.<span class="dv">1</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data=</span>all_data, <span class="kw">aes</span>(<span class="dt">x=</span>Condition, <span class="dt">y=</span>Days_One_to_Seven_Number_of_Intrusions), <span class="dt">alpha=</span>.<span class="dv">5</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha=</span>.<span class="dv">25</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Intrusive Memories (Mean for Week)&quot;</span>)</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-239-1.png" width="672" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># run and report the ANOVA</span>
 
-aov_out&lt;-<span class="kw">aov</span>(Days_One_to_Seven_Number_of_Intrusions ~<span class="st"> </span>Condition, all_data)
+aov_out&lt;-<span class="kw">aov</span>(Days_One_to_Seven_Number_of_Intrusions <span class="op">~</span><span class="st"> </span>Condition, all_data)
 summary_out&lt;-<span class="kw">summary</span>(aov_out)
 
-knitr::<span class="kw">kable</span>(<span class="kw">xtable</span>(summary_out))</code></pre></div>
+knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">xtable</span>(summary_out))</code></pre>
 <table>
 <thead>
 <tr class="header">
@@ -931,16 +961,16 @@ knitr::<span class="kw">kable</span>(<span class="kw">xtable</span>(summary_out)
 </tr>
 </tbody>
 </table>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># conduct critical comparisons</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># conduct critical comparisons</span>
 
-## control vs reactivation+Tetris
+<span class="co">## control vs reactivation+Tetris</span>
 
-comparison_df &lt;-<span class="st"> </span>all_data %&gt;%<span class="st"> </span>
-<span class="st">                  </span><span class="kw">filter</span>(Condition %in%<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Control&#39;</span>,<span class="st">&#39;Reactivation+Tetris&#39;</span>)==<span class="ot">TRUE</span>)
+comparison_df &lt;-<span class="st"> </span>all_data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">                  </span><span class="kw">filter</span>(Condition <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Control&#39;</span>,<span class="st">&#39;Reactivation+Tetris&#39;</span>)<span class="op">==</span><span class="ot">TRUE</span>)
                         
-<span class="kw">t.test</span>(Days_One_to_Seven_Number_of_Intrusions ~<span class="st"> </span>Condition, 
+<span class="kw">t.test</span>(Days_One_to_Seven_Number_of_Intrusions <span class="op">~</span><span class="st"> </span>Condition, 
        comparison_df,
-       <span class="dt">var.equal=</span><span class="ot">TRUE</span>)</code></pre></div>
+       <span class="dt">var.equal=</span><span class="ot">TRUE</span>)</code></pre>
 <pre><code>## 
 ##  Two Sample t-test
 ## 
@@ -952,14 +982,14 @@ comparison_df &lt;-<span class="st"> </span>all_data %&gt;%<span class="st"> </s
 ## sample estimates:
 ##             mean in group Control mean in group Reactivation+Tetris 
 ##                          3.533333                          1.888889</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Tetris_only vs reactivation+Tetris
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## Tetris_only vs reactivation+Tetris</span>
 
-comparison_df &lt;-<span class="st"> </span>all_data %&gt;%<span class="st"> </span>
-<span class="st">                  </span><span class="kw">filter</span>(Condition %in%<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Tetris_only&#39;</span>,<span class="st">&#39;Reactivation+Tetris&#39;</span>)==<span class="ot">TRUE</span>)
+comparison_df &lt;-<span class="st"> </span>all_data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">                  </span><span class="kw">filter</span>(Condition <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Tetris_only&#39;</span>,<span class="st">&#39;Reactivation+Tetris&#39;</span>)<span class="op">==</span><span class="ot">TRUE</span>)
                         
-<span class="kw">t.test</span>(Days_One_to_Seven_Number_of_Intrusions ~<span class="st"> </span>Condition, 
+<span class="kw">t.test</span>(Days_One_to_Seven_Number_of_Intrusions <span class="op">~</span><span class="st"> </span>Condition, 
        comparison_df,
-       <span class="dt">var.equal=</span><span class="ot">TRUE</span>)</code></pre></div>
+       <span class="dt">var.equal=</span><span class="ot">TRUE</span>)</code></pre>
 <pre><code>## 
 ##  Two Sample t-test
 ## 
@@ -1010,7 +1040,7 @@ comparison_df &lt;-<span class="st"> </span>all_data %&gt;%<span class="st"> </s
 <div id="experiment-background-3" class="section level3">
 <h3><span class="header-section-number">8.6.1</span> Experiment Background</h3>
 <hr />
-<p>As described at the beginning of this lab manual section, researchers in the James et al. (2015) study sought to explore whether completing a visuospatial task (e.g., Tetris) after a memory was formed would interfere with the storage of that memory, and thereby reduce the frequency of subsequent intrusions. They hypothesized that only participants who complete a visuo-spatial task after reactivation of the traumatic memories would experience a reduction in intrusive memories. In comparison, simply completing a visuo-spatial task (without reactivation) or reactivation (without a visuo-spatial task), would not reduce the occurrence intrusive memories.In other words, if you play Tetris shortly after you were remembering bad memories, you will experience intrusive memories less often in the future.</p>
+<p>As described at the beginning of this lab manual section, researchers in the James et al. (2015) study sought to explore whether completing a visuospatial task (e.g., Tetris) after a memory was formed would interfere with the storage of that memory, and thereby reduce the frequency of subsequent intrusions. They hypothesized that only participants who complete a visuo-spatial task after reactivation of the traumatic memories would experience a reduction in intrusive memories. In comparison, simply completing a visuo-spatial task (without reactivation) or reactivation (without a visuo-spatial task), would not reduce the occurrence intrusive memories.In other words, if you play Tetris shortly after you were remembering bad memories, you will experience intrusive memories less often in the future.</p>
 <p>The authors conducted an experiment ( N = 72, n = 18 per condition) wherein all participants viewed a series of video clips of graphic violence (e.g., a person getting hit by a van while using his phone as he crosses the road). Pver the next 24 hours, participants recorded their intrusive memories. All groups were predicted to have an equal occurrence of intrusive memories during this pre-manipulation period (called Day 0).</p>
 <p>Experimental Task: After this 24-hour period, the participants returned to the lab and completed the experimental task. The experimenters randomly assigned participants to ONE of the following conditions:</p>
 <ol style="list-style-type: decimal">
@@ -1036,7 +1066,7 @@ comparison_df &lt;-<span class="st"> </span>all_data %&gt;%<span class="st"> </s
 <p>The dependent variable is coded in the column <code>Days_One_to_Seven_Number_of_Intrusions</code>. This represents the mean number of intrusions for that week. We are testing the hypothesis that the number of intrusive memories will be different among the groups (1-4). For now, we will not specify which group we think is going to have the highest or lowest number of memories, but rather we will test if there is a difference SOMEWHERE between these 4 groups.</p>
 <p>Let’s begin. Go to <span style="color:blue">Analyze</span>, then <span style="color:blue">Compare Means</span>, then select <span style="color:blue">One-Way ANOVA…</span></p>
 <p><img src="img/8.4.12.png" width="538" /></p>
-<p>The next window will ask you to specify the dependent variable (move the variable <code>Days_One_to_Seven_Number_of_Intrusions</code> from the list on the left to the field labeled Dependent Variable) and the “Factor”“, which is the same thing as the independent variable or grouping variable (remember back to t-tests!). Move the variable <code>Condition</code> from the list into the field labeled”Factor“. Your window should look like this:</p>
+<p>The next window will ask you to specify the dependent variable (move the variable <code>Days_One_to_Seven_Number_of_Intrusions</code> from the list on the left to the field labeled Dependent Variable) and the “Factor”“, which is the same thing as the independent variable or grouping variable (remember back to t-tests!). Move the variable <code>Condition</code> from the list into the field labeled”Factor". Your window should look like this:</p>
 <p><img src="img/8.4.13.png" width="534" /></p>
 <p>Now, click the <span style="color:blue">Options</span> button, and then choose <span style="color:blue">Means plot</span>.</p>
 <p><img src="img/8.4.14.png" width="534" /></p>
@@ -1077,7 +1107,7 @@ comparison_df &lt;-<span class="st"> </span>all_data %&gt;%<span class="st"> </s
 <p>Let’s use a post-hoc test to look at this data. Although there are many types of post-hoc tests, we’re going to conduct the commonly-used Tukey post-hoc test in this example. Let’s begin.</p>
 <p>We are going to go through the same steps as before in order to conduct our ANOVA: Go to <span style="color:blue">Analyze</span>, then <span style="color:blue">Compare Means</span>, then <span style="color:blue">One-Way ANOVA…</span></p>
 <p><img src="img/8.4.12.png" width="538" /></p>
-<p>Place the dependent variable (<code>Days_One_to_Seven_Number_of_Intrusions</code>) in its appropriate field. Then, place <code>Condition</code> into the “Factor”&quot; field. Now, click the button labeled <span style="color:blue">Post-hoc</span>. A window will appear with options for various post-hoc tests. We are going to choose <span style="color:blue">Tukey</span>:</p>
+<p>Place the dependent variable (<code>Days_One_to_Seven_Number_of_Intrusions</code>) in its appropriate field. Then, place <code>Condition</code> into the “Factor”" field. Now, click the button labeled <span style="color:blue">Post-hoc</span>. A window will appear with options for various post-hoc tests. We are going to choose <span style="color:blue">Tukey</span>:</p>
 <p><img src="img/8.4.20.png" width="534" /></p>
 <p>Click <span style="color:blue">Continue</span>, and then <span style="color:blue">OK</span>. SPSS will produce the ANOVA table once again, followed by two tables that refer to the post-hoc test. Let’s look at the first table, named “Multiple Comparisons:”</p>
 <div id="multiple-comparisons" class="section level4">
@@ -1094,7 +1124,7 @@ comparison_df &lt;-<span class="st"> </span>all_data %&gt;%<span class="st"> </s
 <p><img src="img/8.4.22.png" width="212" /></p>
 <p>This table actually gives you the same kind of information as the above table, but is more compact and easier to use. In this table you will see the conditions listed on the left, and a number of “subsets”–in this case there are 2 subsets (2 columns labeled 1 and 2, respectively). In these columns, the means of the conditions are listed (in this case, mean number of intrusive memories).</p>
 <p>The way to read a homogeneous subsets table is as simple as follows: If the means of two groups ever appear in the same column together, they are not significantly different from one another. If the means of two groups NEVER appear in the same column together, then they ARE significantly different from one another.</p>
-<p>Let’s start with Reactivation + Tetris and Tetris Only. Look at the table to determine if the means of these conditions ever appear in the same column together. The answer should be yes. The Reactivation + tetris mean (1.89) and Tetris only mean (3.89) appear in column 1 together. Now, let’s move on to Reactivation + Tetris as compared to Reactivation only. Do the means of these two groups ever appear in the same column together? No. The Reactivation + Tetris mean (1.89) only appears in column 1, and the reactivation only mean (4.83) only appears in column 2. This means they are different.</p>
+<p>Let’s start with Reactivation + Tetris and Tetris Only. Look at the table to determine if the means of these conditions ever appear in the same column together. The answer should be yes. The Reactivation + tetris mean (1.89) and Tetris only mean (3.89) appear in column 1 together. Now, let’s move on to Reactivation + Tetris as compared to Reactivation only. Do the means of these two groups ever appear in the same column together? No. The Reactivation + Tetris mean (1.89) only appears in column 1, and the reactivation only mean (4.83) only appears in column 2. This means they are different.</p>
 <p>If you go through every possible comparison of two groups, you will find that the only differences are between:</p>
 <ol style="list-style-type: decimal">
 <li>reactivation + tetris vs. reactivation only</li>
@@ -1145,7 +1175,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -1157,6 +1187,10 @@ gitbook.start({
 "edit": {
 "link": "https://github.com/CrumpLab/statisticsLab/blob/master/08-ANOVA.Rmd",
 "text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
 },
 "download": ["Statistics_Lab.pdf"],
 "toc": {
@@ -1171,8 +1205,8 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;

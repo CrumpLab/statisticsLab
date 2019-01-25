@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Answering questions with data: Lab Manual</title>
+  <title>Chapter 9 Lab 9 Repeated Measures ANOVA | Answering questions with data: Lab Manual</title>
   <meta name="description" content="A lab manual for Psyc 3400">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Answering questions with data: Lab Manual" />
+  <meta property="og:title" content="Chapter 9 Lab 9 Repeated Measures ANOVA | Answering questions with data: Lab Manual" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Answering questions with data: Lab Manual" />
+  <meta name="twitter:title" content="Chapter 9 Lab 9 Repeated Measures ANOVA | Answering questions with data: Lab Manual" />
   
   <meta name="twitter:description" content="A lab manual for Psyc 3400" />
   
@@ -35,6 +35,7 @@
 <link rel="next" href="lab-10-factorial-anova.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -63,41 +64,67 @@ mattcrump=1;
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="tufte.css" type="text/css" />
@@ -446,7 +473,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <script>
 $("#coverpic").hide();
 </script>
-<p><span class="newthought"> However, perhaps the main point is that you are under no obligation to analyse variance into its parts if it does not come apart easily, and its unwillingness to do so naturally indicates that one’s line of approach is not very fruitful. —R. A. Fisher </span></p>
+<p><span class="newthought">
+However, perhaps the main point is that you are under no obligation to analyse variance into its parts if it does not come apart easily, and its unwillingness to do so naturally indicates that one’s line of approach is not very fruitful.
+—R. A. Fisher
+</span></p>
 <div id="betcha-cant-type-jhdbzkco-very-fast-on-your-first-try" class="section level2">
 <h2><span class="header-section-number">9.1</span> Betcha can’t type JHDBZKCO very fast on your first try</h2>
 <p>This lab activity uses the data from Behmer &amp; Crump (2017) to teach one-factor repeated measures ANOVA with-up follow comparisons</p>
@@ -488,15 +518,15 @@ $("#coverpic").hide();
 <div id="load-the-data-3" class="section level3">
 <h3><span class="header-section-number">9.4.1</span> Load the data</h3>
 <p>Remember that any line with a # makes a comment and the code does not run. Below is how to load the .csv data from the online repository, or from a local file (you need to change the file path to where the local file is, if you downloaded it). The data contains all of the measures and conditions from Experiment 1 in the paper.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(data.table)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(data.table)
 <span class="co">#all_data &lt;- fread(&quot;https://github.com/CrumpLab/statisticsLab/raw/master/data/exp1_BehmerCrumpAPP.csv&quot;)</span>
-all_data &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class="st">&quot;data/exp1_BehmerCrumpAPP.csv&quot;</span>)</code></pre></div>
+all_data &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class="st">&quot;data/exp1_BehmerCrumpAPP.csv&quot;</span>)</code></pre>
 </div>
 <div id="inspect-the-dataframe-1" class="section level3">
 <h3><span class="header-section-number">9.4.2</span> Inspect the dataframe</h3>
 <p>This will give you a big picture of the data frame. Click the button to view it in your browser, then take a look to see what is in it.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(summarytools)
-<span class="kw">view</span>(<span class="kw">dfSummary</span>(all_data[,<span class="kw">c</span>(<span class="dv">1</span>:<span class="dv">7</span>,<span class="dv">10</span>:<span class="dv">20</span>)]))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(summarytools)
+<span class="kw">view</span>(<span class="kw">dfSummary</span>(all_data[,<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">7</span>,<span class="dv">10</span><span class="op">:</span><span class="dv">20</span>)]))</code></pre>
 <p>Note, there is some weird stuff in code above. Normally, we would just write <code>view(dfSummary(all_data))</code>, why we add this: <code>all_data[,c(1:7,10:20)]</code>? It turns out the dfSummary function didn’t like some of the data. In particular it didn’t like the data in columns 8 an 9 (notice those numbers are missing, the range inside c is 1 to 7 and 10 to 20). It doesn’t mean the data isn’t there, just that it didn’t want to display it in the viewer.</p>
 </div>
 <div id="get-the-data-you-need-1" class="section level3">
@@ -533,8 +563,8 @@ all_data &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class
 <p>Remember before we do any analysis, we always want to “look” at the data. This first pass let’s us know if the data “look right”. For example, the data file could be messed up and maybe there aren’t any numbers there, or maybe the numbers are just too weird.</p>
 <p>For example, this study involves reaction times: the time between seeing something and responding to it. If you had done a study like this before, you would know that it usually doesn’t take people that long to start responding. Most reaction times will be under a second (or 1000 milliseconds). But, sometime people are little slow, and sometimes they do funny things like check their phone in the middle of an experiment.</p>
 <p>Before I analyze reaction time data, I often make a histogram of all of the RT data, like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(all_data$PureRTs)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-253-1.png" width="672" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(all_data<span class="op">$</span>PureRTs)</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-255-1.png" width="672" /></p>
 <p>We can see that almost all of the reaction times are well below 5000 milliseconds (5 seconds), which is good. Most of the time people were paying attention and not “checking their phone”. Notice, the range of the histogram goes out to 15,000 milliseconds. You can’t see any bars out there (too small to notice), but there must be at least a few trials where somebody took 15 seconds to start responding. These are called outliers. We will remove them before we conduct our analysis</p>
 </div>
 <div id="look-at-the-means" class="section level3">
@@ -545,43 +575,43 @@ all_data &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class
 <li>Get the means for each condition, by averaging over the means for each subject. These are put into the data frame called <code>plot_means</code>.</li>
 <li>Make a graph with the <code>plot_means</code> data frame using ggplot2.</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
 <span class="kw">library</span>(ggplot2)
 
-all_data$Block&lt;-<span class="kw">as.factor</span>(all_data$Block)
-<span class="kw">levels</span>(all_data$Block) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Visible keyboard&quot;</span>,<span class="st">&quot;Covered Keyboard&quot;</span>)
+all_data<span class="op">$</span>Block&lt;-<span class="kw">as.factor</span>(all_data<span class="op">$</span>Block)
+<span class="kw">levels</span>(all_data<span class="op">$</span>Block) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Visible keyboard&quot;</span>,<span class="st">&quot;Covered Keyboard&quot;</span>)
 
-## get subject mean RTs
+<span class="co">## get subject mean RTs</span>
 
-subject_means &lt;-<span class="st"> </span>all_data %&gt;%
-<span class="st">                 </span><span class="kw">filter</span>(Order==<span class="dv">1</span>, Correct==<span class="dv">1</span>, PureRTs&lt;<span class="dv">5000</span>) %&gt;%
-<span class="st">                 </span><span class="kw">group_by</span>(Subject, Block, Stimulus) %&gt;%
+subject_means &lt;-<span class="st"> </span>all_data <span class="op">%&gt;%</span>
+<span class="st">                 </span><span class="kw">filter</span>(Order<span class="op">==</span><span class="dv">1</span>, Correct<span class="op">==</span><span class="dv">1</span>, PureRTs<span class="op">&lt;</span><span class="dv">5000</span>) <span class="op">%&gt;%</span>
+<span class="st">                 </span><span class="kw">group_by</span>(Subject, Block, Stimulus) <span class="op">%&gt;%</span>
 <span class="st">                 </span><span class="kw">summarise</span>(<span class="dt">mean_rt =</span> <span class="kw">mean</span>(PureRTs))
 
-subject_means$Subject&lt;-<span class="kw">as.factor</span>(subject_means$Subject)
-subject_means$Block&lt;-<span class="kw">as.factor</span>(subject_means$Block)
-subject_means$Stimulus&lt;-<span class="kw">as.factor</span>(subject_means$Stimulus)
+subject_means<span class="op">$</span>Subject&lt;-<span class="kw">as.factor</span>(subject_means<span class="op">$</span>Subject)
+subject_means<span class="op">$</span>Block&lt;-<span class="kw">as.factor</span>(subject_means<span class="op">$</span>Block)
+subject_means<span class="op">$</span>Stimulus&lt;-<span class="kw">as.factor</span>(subject_means<span class="op">$</span>Stimulus)
 
-## get condition mean RTs
+<span class="co">## get condition mean RTs</span>
 
-plot_means &lt;-<span class="st"> </span>subject_means %&gt;%
-<span class="st">              </span><span class="kw">group_by</span>(Block, Stimulus) %&gt;%
+plot_means &lt;-<span class="st"> </span>subject_means <span class="op">%&gt;%</span>
+<span class="st">              </span><span class="kw">group_by</span>(Block, Stimulus) <span class="op">%&gt;%</span>
 <span class="st">              </span><span class="kw">summarise</span>(<span class="dt">means =</span> <span class="kw">mean</span>(mean_rt),
-                        <span class="dt">SEs =</span> <span class="kw">sd</span>(mean_rt)/<span class="kw">sqrt</span>(<span class="kw">length</span>(mean_rt)))
+                        <span class="dt">SEs =</span> <span class="kw">sd</span>(mean_rt)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">length</span>(mean_rt)))
 
-## plot the condition means
+<span class="co">## plot the condition means</span>
 
 <span class="co"># re-order stimulus factor for plotting</span>
-plot_means$Stimulus &lt;-<span class="st"> </span><span class="kw">factor</span>(plot_means$Stimulus, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;Normal&quot;</span>, <span class="st">&quot;Bigrams&quot;</span>, <span class="st">&quot;Random&quot;</span>))
+plot_means<span class="op">$</span>Stimulus &lt;-<span class="st"> </span><span class="kw">factor</span>(plot_means<span class="op">$</span>Stimulus, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;Normal&quot;</span>, <span class="st">&quot;Bigrams&quot;</span>, <span class="st">&quot;Random&quot;</span>))
 
-<span class="kw">ggplot</span>(plot_means, <span class="kw">aes</span>(<span class="dt">x=</span>Stimulus, <span class="dt">y=</span>means, <span class="dt">group=</span>Block, <span class="dt">color=</span>Block))+
-<span class="st">  </span><span class="kw">geom_point</span>()+
-<span class="st">  </span><span class="kw">geom_line</span>()+
-<span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin=</span>means-SEs, <span class="dt">ymax=</span>means+SEs), <span class="dt">width=</span>.<span class="dv">2</span>)+
-<span class="st">  </span><span class="kw">theme_classic</span>()+
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Mean Reaction Time (ms)&quot;</span>)+
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Typing Material&quot;</span>)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-254-1.png" width="672" /></p>
+<span class="kw">ggplot</span>(plot_means, <span class="kw">aes</span>(<span class="dt">x=</span>Stimulus, <span class="dt">y=</span>means, <span class="dt">group=</span>Block, <span class="dt">color=</span>Block))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin=</span>means<span class="op">-</span>SEs, <span class="dt">ymax=</span>means<span class="op">+</span>SEs), <span class="dt">width=</span>.<span class="dv">2</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_classic</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Mean Reaction Time (ms)&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Typing Material&quot;</span>)</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-256-1.png" width="672" /></p>
 <p>Alright, we made things a little bit more complicated than they need to be. Our primary question is whether reaction times followed this pattern: Normal &lt; Bigrams &lt; Random. We can see the means do follow this pattern. However, shouldn’t we only be looking at three means, why are their six means, and two lines?</p>
 <p>The above code included the second independent variable <code>Block</code>. As a result, you are seeing the means for Typing material when subjects could see the keyboard, and when the couldn’t see the keyboard. We will come back to this later. For now, let’s ignore the Block condition, and find the means for the Typing Material IV by averaging over the Block conditions. We run the same code as above, by take out <code>Block</code>, in the <code>group_by</code> function. We also take <code>Block</code> out the ggplot function.</p>
 <p><strong>VERY IMPORTANT</strong>: We did something in the above code that we didn’t point out. We filtered the data before we found the means. For most of the data sets in other labs, we given you data that is more or less ready to analyse. More often than not data needs to be pre-processed, or filtered before you analyze it. We can use the <code>filter</code> function in <code>dplyr</code> to do our filtering. <code>filter</code> filters the rows for us, so we will only include the rows that we want.</p>
@@ -593,36 +623,36 @@ plot_means$Stimulus &lt;-<span class="st"> </span><span class="kw">factor</span>
 <ol start="3" style="list-style-type: decimal">
 <li>We want to analyze only reaction times that are “sensible” to analyze. What does sensible mean? We don’t want to analyze data that is clearly garbage data. For example, if someone fell asleep at the computer and didn’t respond for 15 seconds, that kind of data is not what we want to analyze. If we were to filter the data, and exclude these kinds of <code>outliers</code>, we would be conducting an outlier elimination procedure. Behmer &amp; Crump (2017) did this, and it is commonly done in many different kinds of studies. We skip an extended discussion of outlier elimination for this lab. But, we do introduce the idea of doing it. We want to keep as much of the data as possible. So, what we do is keep all of the RTs that are less than 5000 ms (that’s 5 seconds). To do this, we add <code>PureRTs&lt;5000</code> to the filter function.</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## get subject mean RTs
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## get subject mean RTs</span>
 
-subject_means &lt;-<span class="st"> </span>all_data %&gt;%
-<span class="st">                 </span><span class="kw">filter</span>(Order==<span class="dv">1</span>, Correct==<span class="dv">1</span>, PureRTs&lt;<span class="dv">5000</span>) %&gt;%
-<span class="st">                 </span><span class="kw">group_by</span>(Subject, Stimulus) %&gt;%
+subject_means &lt;-<span class="st"> </span>all_data <span class="op">%&gt;%</span>
+<span class="st">                 </span><span class="kw">filter</span>(Order<span class="op">==</span><span class="dv">1</span>, Correct<span class="op">==</span><span class="dv">1</span>, PureRTs<span class="op">&lt;</span><span class="dv">5000</span>) <span class="op">%&gt;%</span>
+<span class="st">                 </span><span class="kw">group_by</span>(Subject, Stimulus) <span class="op">%&gt;%</span>
 <span class="st">                 </span><span class="kw">summarise</span>(<span class="dt">mean_rt =</span> <span class="kw">mean</span>(PureRTs))
 
-subject_means$Subject&lt;-<span class="kw">as.factor</span>(subject_means$Subject)
-subject_means$Stimulus&lt;-<span class="kw">as.factor</span>(subject_means$Stimulus)
+subject_means<span class="op">$</span>Subject&lt;-<span class="kw">as.factor</span>(subject_means<span class="op">$</span>Subject)
+subject_means<span class="op">$</span>Stimulus&lt;-<span class="kw">as.factor</span>(subject_means<span class="op">$</span>Stimulus)
 
-## get condition mean RTs
+<span class="co">## get condition mean RTs</span>
 
-plot_means &lt;-<span class="st"> </span>subject_means %&gt;%
-<span class="st">              </span><span class="kw">group_by</span>(Stimulus) %&gt;%
+plot_means &lt;-<span class="st"> </span>subject_means <span class="op">%&gt;%</span>
+<span class="st">              </span><span class="kw">group_by</span>(Stimulus) <span class="op">%&gt;%</span>
 <span class="st">              </span><span class="kw">summarise</span>(<span class="dt">means =</span> <span class="kw">mean</span>(mean_rt),
-                        <span class="dt">SEs =</span> <span class="kw">sd</span>(mean_rt)/<span class="kw">sqrt</span>(<span class="kw">length</span>(mean_rt)))
+                        <span class="dt">SEs =</span> <span class="kw">sd</span>(mean_rt)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">length</span>(mean_rt)))
 
-## plot the condition means
+<span class="co">## plot the condition means</span>
 
 <span class="co"># re-order stimulus factor for plotting</span>
-plot_means$Stimulus &lt;-<span class="st"> </span><span class="kw">factor</span>(plot_means$Stimulus, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;Normal&quot;</span>, <span class="st">&quot;Bigrams&quot;</span>, <span class="st">&quot;Random&quot;</span>))
+plot_means<span class="op">$</span>Stimulus &lt;-<span class="st"> </span><span class="kw">factor</span>(plot_means<span class="op">$</span>Stimulus, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;Normal&quot;</span>, <span class="st">&quot;Bigrams&quot;</span>, <span class="st">&quot;Random&quot;</span>))
 
-<span class="kw">ggplot</span>(plot_means, <span class="kw">aes</span>(<span class="dt">x=</span>Stimulus, <span class="dt">y=</span>means, <span class="dt">group=</span><span class="dv">1</span>))+
-<span class="st">  </span><span class="kw">geom_point</span>()+
-<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>)+
-<span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin=</span>means-SEs, <span class="dt">ymax=</span>means+SEs), <span class="dt">width=</span>.<span class="dv">2</span>)+
-<span class="st">  </span><span class="kw">theme_classic</span>()+
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Mean Reaction Time (ms)&quot;</span>)+
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Typing Material&quot;</span>)</code></pre></div>
-<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-255-1.png" width="672" /></p>
+<span class="kw">ggplot</span>(plot_means, <span class="kw">aes</span>(<span class="dt">x=</span>Stimulus, <span class="dt">y=</span>means, <span class="dt">group=</span><span class="dv">1</span>))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin=</span>means<span class="op">-</span>SEs, <span class="dt">ymax=</span>means<span class="op">+</span>SEs), <span class="dt">width=</span>.<span class="dv">2</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_classic</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Mean Reaction Time (ms)&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Typing Material&quot;</span>)</code></pre>
+<p><img src="Statistics_Lab_files/figure-html/unnamed-chunk-257-1.png" width="672" /></p>
 </div>
 <div id="conduct-the-repeated-measures-anova" class="section level3">
 <h3><span class="header-section-number">9.4.6</span> Conduct the repeated Measures ANOVA</h3>
@@ -632,24 +662,24 @@ plot_means$Stimulus &lt;-<span class="st"> </span><span class="kw">factor</span>
 <p><code>aov( DV ~ IV + Error(Subject/IV), dataframe)</code>. We have added <code>+ Error(Subject/IV)</code>. This tells R to use the appropriate error term for the repeated measures ANOVA. In the formula, <code>Subject</code> refers to the name of the column coding your subjects (make sure this is a factor in R), and <code>IV</code> is the name of the column for your independent variable.</p>
 <p>The formula for our data would be: <code>aov( mean_rt ~ Stimulus + Error(Subject/Stimulus), subject_means)</code>.</p>
 <p>Here is the code below. Just as reminder, the raw data codes every single key press on each row. We don’t want to submit this as the data frame to the <code>aov</code> function. Instead, we need to calculate the data frame for the subject means in each condition. We did that above as a step toward making the graphs. We do it again here to remind you that you need to do this.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># get subject means</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># get subject means</span>
 
-subject_means &lt;-<span class="st"> </span>all_data %&gt;%
-<span class="st">                 </span><span class="kw">filter</span>(Order==<span class="dv">1</span>, Correct==<span class="dv">1</span>, PureRTs&lt;<span class="dv">5000</span>) %&gt;%
-<span class="st">                 </span><span class="kw">group_by</span>(Subject, Stimulus) %&gt;%
+subject_means &lt;-<span class="st"> </span>all_data <span class="op">%&gt;%</span>
+<span class="st">                 </span><span class="kw">filter</span>(Order<span class="op">==</span><span class="dv">1</span>, Correct<span class="op">==</span><span class="dv">1</span>, PureRTs<span class="op">&lt;</span><span class="dv">5000</span>) <span class="op">%&gt;%</span>
+<span class="st">                 </span><span class="kw">group_by</span>(Subject, Stimulus) <span class="op">%&gt;%</span>
 <span class="st">                 </span><span class="kw">summarise</span>(<span class="dt">mean_rt =</span> <span class="kw">mean</span>(PureRTs))
 
 <span class="co"># Make sure IV and Subject are coded as factors</span>
-subject_means$Subject  &lt;-<span class="st"> </span><span class="kw">as.factor</span>(subject_means$Subject)
-subject_means$Stimulus &lt;-<span class="st"> </span><span class="kw">as.factor</span>(subject_means$Stimulus)
+subject_means<span class="op">$</span>Subject  &lt;-<span class="st"> </span><span class="kw">as.factor</span>(subject_means<span class="op">$</span>Subject)
+subject_means<span class="op">$</span>Stimulus &lt;-<span class="st"> </span><span class="kw">as.factor</span>(subject_means<span class="op">$</span>Stimulus)
 
 <span class="co"># Conduct the anova</span>
 
-aov_out &lt;-<span class="st"> </span><span class="kw">aov</span>( mean_rt ~<span class="st"> </span>Stimulus +<span class="st"> </span><span class="kw">Error</span>(Subject/Stimulus), subject_means)
+aov_out &lt;-<span class="st"> </span><span class="kw">aov</span>( mean_rt <span class="op">~</span><span class="st"> </span>Stimulus <span class="op">+</span><span class="st"> </span><span class="kw">Error</span>(Subject<span class="op">/</span>Stimulus), subject_means)
 summary_out &lt;-<span class="st"> </span><span class="kw">summary</span>(aov_out)
 
 <span class="kw">library</span>(xtable)
-knitr::<span class="kw">kable</span>(<span class="kw">xtable</span>(summary_out))</code></pre></div>
+knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">xtable</span>(summary_out))</code></pre>
 <table>
 <thead>
 <tr class="header">
@@ -703,24 +733,24 @@ knitr::<span class="kw">kable</span>(<span class="kw">xtable</span>(summary_out)
 <h4><span class="header-section-number">9.4.6.1</span> Report the means too</h4>
 <p>Remember, the important goal when conducting analyses, and then writing about them, is to tell people what you did and what you found. This involves more than one step. For this example, we might do three basic things. 1) make a figure to show the means, 2) report the ANOVA so people know if there is support for the inference that the differences between the means are not caused by chance, and 3) report descriptives for the means, so people know what the numbers are (the figure doesn’t show the exact values).</p>
 <p>We’ve already made the figure and done the ANOVA, let’s report the condition means. To do this, we need to find the means for each condition, collapsing over the means for each subject in each condition. Note that, we already did this to make the figure. Here’s the code again:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## get subject mean RTs
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## get subject mean RTs</span>
 
-subject_means &lt;-<span class="st"> </span>all_data %&gt;%
-<span class="st">                 </span><span class="kw">filter</span>(Order==<span class="dv">1</span>, Correct==<span class="dv">1</span>, PureRTs&lt;<span class="dv">5000</span>) %&gt;%
-<span class="st">                 </span><span class="kw">group_by</span>(Subject, Stimulus) %&gt;%
+subject_means &lt;-<span class="st"> </span>all_data <span class="op">%&gt;%</span>
+<span class="st">                 </span><span class="kw">filter</span>(Order<span class="op">==</span><span class="dv">1</span>, Correct<span class="op">==</span><span class="dv">1</span>, PureRTs<span class="op">&lt;</span><span class="dv">5000</span>) <span class="op">%&gt;%</span>
+<span class="st">                 </span><span class="kw">group_by</span>(Subject, Stimulus) <span class="op">%&gt;%</span>
 <span class="st">                 </span><span class="kw">summarise</span>(<span class="dt">mean_rt =</span> <span class="kw">mean</span>(PureRTs))
 
-subject_means$Subject&lt;-<span class="kw">as.factor</span>(subject_means$Subject)
-subject_means$Stimulus&lt;-<span class="kw">as.factor</span>(subject_means$Stimulus)
+subject_means<span class="op">$</span>Subject&lt;-<span class="kw">as.factor</span>(subject_means<span class="op">$</span>Subject)
+subject_means<span class="op">$</span>Stimulus&lt;-<span class="kw">as.factor</span>(subject_means<span class="op">$</span>Stimulus)
 
-## get condition mean RTs
+<span class="co">## get condition mean RTs</span>
 
-plot_means &lt;-<span class="st"> </span>subject_means %&gt;%
-<span class="st">              </span><span class="kw">group_by</span>(Stimulus) %&gt;%
+plot_means &lt;-<span class="st"> </span>subject_means <span class="op">%&gt;%</span>
+<span class="st">              </span><span class="kw">group_by</span>(Stimulus) <span class="op">%&gt;%</span>
 <span class="st">              </span><span class="kw">summarise</span>(<span class="dt">means =</span> <span class="kw">mean</span>(mean_rt),
-                        <span class="dt">SEs =</span> <span class="kw">sd</span>(mean_rt)/<span class="kw">sqrt</span>(<span class="kw">length</span>(mean_rt)))
+                        <span class="dt">SEs =</span> <span class="kw">sd</span>(mean_rt)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">length</span>(mean_rt)))
 
-knitr::<span class="kw">kable</span>(plot_means)</code></pre></div>
+knitr<span class="op">::</span><span class="kw">kable</span>(plot_means)</code></pre>
 <table>
 <thead>
 <tr class="header">
@@ -764,13 +794,13 @@ knitr::<span class="kw">kable</span>(plot_means)</code></pre></div>
 <div id="normal-vs-bigrams" class="section level4">
 <h4><span class="header-section-number">9.4.7.1</span> Normal vs Bigrams</h4>
 <p>We use the <code>subject_means</code> data frame. But, we want to rid of all the rows containing the means from the Random condition. We use filter to do that, then we conduct the paired-samples t-test.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">comparison_df &lt;-<span class="st"> </span>subject_means %&gt;%
-<span class="st">                  </span><span class="kw">filter</span>(Stimulus !=<span class="st"> &quot;Random&quot;</span>)
+<pre class="sourceCode r"><code class="sourceCode r">comparison_df &lt;-<span class="st"> </span>subject_means <span class="op">%&gt;%</span>
+<span class="st">                  </span><span class="kw">filter</span>(Stimulus <span class="op">!=</span><span class="st"> &quot;Random&quot;</span>)
 
-<span class="kw">t.test</span>(mean_rt~Stimulus, 
+<span class="kw">t.test</span>(mean_rt<span class="op">~</span>Stimulus, 
        <span class="dt">paired=</span><span class="ot">TRUE</span>, 
        <span class="dt">var.equal=</span><span class="ot">TRUE</span>, 
-       <span class="dt">data =</span> comparison_df)</code></pre></div>
+       <span class="dt">data =</span> comparison_df)</code></pre>
 <pre><code>## 
 ##  Paired t-test
 ## 
@@ -786,13 +816,13 @@ knitr::<span class="kw">kable</span>(plot_means)</code></pre></div>
 <div id="bigrams-vs-random" class="section level4">
 <h4><span class="header-section-number">9.4.7.2</span> Bigrams vs Random</h4>
 <p>We use the <code>subject_means</code> data frame. But, we want to rid of all the rows containing the means from the Normal condition. We use filter to do that, then we conduct the paired-samples t-test.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">comparison_df &lt;-<span class="st"> </span>subject_means %&gt;%
-<span class="st">                  </span><span class="kw">filter</span>(Stimulus !=<span class="st"> &quot;Normal&quot;</span>)
+<pre class="sourceCode r"><code class="sourceCode r">comparison_df &lt;-<span class="st"> </span>subject_means <span class="op">%&gt;%</span>
+<span class="st">                  </span><span class="kw">filter</span>(Stimulus <span class="op">!=</span><span class="st"> &quot;Normal&quot;</span>)
 
-<span class="kw">t.test</span>(mean_rt~Stimulus, 
+<span class="kw">t.test</span>(mean_rt<span class="op">~</span>Stimulus, 
        <span class="dt">paired=</span><span class="ot">TRUE</span>, 
        <span class="dt">var.equal=</span><span class="ot">TRUE</span>, 
-       <span class="dt">data =</span> comparison_df)</code></pre></div>
+       <span class="dt">data =</span> comparison_df)</code></pre>
 <pre><code>## 
 ##  Paired t-test
 ## 
@@ -832,11 +862,13 @@ knitr::<span class="kw">kable</span>(plot_means)</code></pre></div>
 <div id="generalization-exercise-8" class="section level3">
 <h3><span class="header-section-number">9.4.9</span> Generalization Exercise</h3>
 <p>Your task is to conduct another repeated-measures ANOVA. Rather than using the reaction time for the first-keystroke as the dependent measure, you will use the reaction times between all of the keystrokes in each word, these are called interkeystroke intervals. The <code>Order</code> variable is used to code keystroke position (1 to 5). You will want to analyze only the <code>PureRTs</code> that have an <code>Order</code> greater than 1. For example, you could use the following code to get the subject_means for the mean interkeystroke intervals.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">subject_means &lt;-<span class="st"> </span>all_data %&gt;%
-<span class="st">                 </span><span class="kw">filter</span>(Order &gt;<span class="st"> </span><span class="dv">1</span>, Correct==<span class="dv">1</span>, PureRTs&lt;<span class="dv">5000</span>) %&gt;%
-<span class="st">                 </span><span class="kw">group_by</span>(Subject, Stimulus) %&gt;%
-<span class="st">                 </span><span class="kw">summarise</span>(<span class="dt">mean_rt =</span> <span class="kw">mean</span>(PureRTs))</code></pre></div>
-<p>A. Make a figure for the new DV B. Report the ANOVA table for the new repeated measures ANOVA C. Discuss whether the general pattern is the same as before.</p>
+<pre class="sourceCode r"><code class="sourceCode r">subject_means &lt;-<span class="st"> </span>all_data <span class="op">%&gt;%</span>
+<span class="st">                 </span><span class="kw">filter</span>(Order <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>, Correct<span class="op">==</span><span class="dv">1</span>, PureRTs<span class="op">&lt;</span><span class="dv">5000</span>) <span class="op">%&gt;%</span>
+<span class="st">                 </span><span class="kw">group_by</span>(Subject, Stimulus) <span class="op">%&gt;%</span>
+<span class="st">                 </span><span class="kw">summarise</span>(<span class="dt">mean_rt =</span> <span class="kw">mean</span>(PureRTs))</code></pre>
+<p>A. Make a figure for the new DV
+B. Report the ANOVA table for the new repeated measures ANOVA
+C. Discuss whether the general pattern is the same as before.</p>
 </div>
 <div id="writing-assignment-8" class="section level3">
 <h3><span class="header-section-number">9.4.10</span> Writing assignment</h3>
@@ -935,7 +967,7 @@ knitr::<span class="kw">kable</span>(plot_means)</code></pre></div>
 <p>We will use a paired-samples t-test instead of an independent-samples t-test because in each comparison, the same people are being remeasured in each group.</p>
 <p>To begin, go to <span style="color:blue">Analyze</span>, then <span style="color:blue">Compare Means</span>, then <span style="color:blue">Paired Samples T-test…</span></p>
 <p><img src="img/9.4.31.png" width="518" /></p>
-<p>In the next window, move the two conditions of our first pairwise comparison (<code>normal</code> vs. <code>bigram</code>) into the field on the right using the arrow.</p>
+<p>In the next window, move the two conditions of our first pairwise comparison (<code>normal</code> vs. <code>bigram</code>) into the field on the right using the arrow.</p>
 <p><img src="img/9.4.32.png" width="515" /></p>
 <p>Click <span style="color:blue">OK</span>. SPSS will produce a series of tables. The “Paired Samples test” table contains the t-statistic and its associated p-value.</p>
 <p><img src="img/9.4.33.png" width="439" /></p>
@@ -984,7 +1016,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -996,6 +1028,10 @@ gitbook.start({
 "edit": {
 "link": "https://github.com/CrumpLab/statisticsLab/blob/master/09-RMANOVA.Rmd",
 "text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
 },
 "download": ["Statistics_Lab.pdf"],
 "toc": {
@@ -1010,8 +1046,8 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;
