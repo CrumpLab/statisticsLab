@@ -826,8 +826,11 @@ my_sd &lt;-<span class="kw">sd</span>(some_numbers)
 <li>subtract the mean from your numbers</li>
 </ol>
 <pre class="sourceCode r"><code class="sourceCode r">differences&lt;-some_numbers<span class="op">-</span>my_mean
-<span class="kw">print</span>(my_sd)</code></pre>
-<pre><code>## [1] 27.78933</code></pre>
+<span class="kw">print</span>(differences)</code></pre>
+<pre><code>##  [1]  19.963698  -3.921377 -43.233222  11.888947 -41.290368 -28.825889
+##  [7]  23.329835  30.751903  23.830718 -14.620703  16.755524  32.562874
+## [13]   8.786994  29.034342 -26.315791 -15.884907  -1.914283 -27.215540
+## [19]  44.814369 -38.497125</code></pre>
 <ol start="4" style="list-style-type: decimal">
 <li>divide by the standard deviation</li>
 </ol>
@@ -838,9 +841,7 @@ my_sd &lt;-<span class="kw">sd</span>(some_numbers)
 ## [11]  0.60294812  1.17177616  0.31620027  1.04480181 -0.94697464
 ## [16] -0.57161891 -0.06888555 -0.97935213  1.61264662 -1.38532037</code></pre>
 <p>Done. Now you have converted your original numbers into what we call standardized scores. They are standardized to have the same properties (assumed properties) as a normal distribution with mean = 0, and SD = 1.</p>
-<p>You could look at each of your original scores, and try to figure out if they are likely or unlikely numbers. But, if you make them into z-scores, then you can tell right away. Numbers close to 0 happen a lot, bigger numbers closer to 1 happen less often, but still fairly often, and number bigger than 2 or 3 hardly happen at all.</p>
-<p>If someone said they did 3 standard deviations above the mean on a test, this means they did really good, and hardly nobody also did that good.</p>
-<p>Z-scores are a useful language once you understand them. We show you this language in case you find them useful.</p>
+<p>You could look at each of your original scores, and try to figure out if they are likely or unlikely numbers. But, if you make them into z-scores, then you can tell right away. Numbers close to 0 happen a lot, bigger numbers closer to 1 happen less often, but still fairly often, and numbers bigger than 2 or 3 hardly happen at all.</p>
 </div>
 </div>
 <div id="generalization-exercise-3" class="section level3">

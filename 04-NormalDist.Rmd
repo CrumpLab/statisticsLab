@@ -427,7 +427,7 @@ print(my_sd)
 
 ```{r}
 differences<-some_numbers-my_mean
-print(my_sd)
+print(differences)
 ```
 
 4. divide by the standard deviation
@@ -439,11 +439,8 @@ print(z_scores)
 
 Done. Now you have converted your original numbers into what we call standardized scores. They are standardized to have the same properties (assumed properties) as a normal distribution with mean = 0, and SD = 1.
 
-You could look at each of your original scores, and try to figure out if they are likely or unlikely numbers. But, if you make them into z-scores, then you can tell right away. Numbers close to 0 happen a lot, bigger numbers closer to 1 happen less often, but still fairly often, and number bigger than 2 or 3 hardly happen at all. 
+You could look at each of your original scores, and try to figure out if they are likely or unlikely numbers. But, if you make them into z-scores, then you can tell right away. Numbers close to 0 happen a lot, bigger numbers closer to 1 happen less often, but still fairly often, and numbers bigger than 2 or 3 hardly happen at all. 
 
-If someone said they did 3 standard deviations above the mean on a test, this means they did really good, and hardly nobody also did that good. 
-
-Z-scores are a useful language once you understand them. We show you this language in case you find them useful.
 
 ### Generalization Exercise
 
