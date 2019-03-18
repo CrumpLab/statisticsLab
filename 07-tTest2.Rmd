@@ -51,7 +51,7 @@ library(data.table)
 # load from github repo
 #all_data <- fread("https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/SchroederEpley2015data.csv")
 
-all_data <- fread("Data/SchroederEpley2015data.csv") # load from file on computer
+all_data <- fread("data/SchroederEpley2015data.csv") # load from file on computer
 
 ```
 
