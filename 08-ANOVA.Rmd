@@ -432,7 +432,7 @@ That's ANOVA. Come back next week for another ANOVA tutorial, this time using wi
 
 ### Generalization Exercise
 
-Your task is to conduct the ANOVA using `Day_Zero_Number_of_Instrusions` as the dependent variable. Report the ANOVA table, a figure to show the means, and a short write-up of the main effects and interaction.
+Your task is to conduct the ANOVA using `Day_Zero_Number_of_Intrusions` as the dependent variable. Report the ANOVA table, a figure to show the means, and a short write-up of the main effects and interaction.
 
 
 ### Writing assignment
