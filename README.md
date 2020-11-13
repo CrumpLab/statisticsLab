@@ -20,6 +20,6 @@ The major work for this project was completed in Summer 2018, with updates conti
 
 1. We wrote the book in Rmarkdown, using the bookdown package. All of the source code for compiling the book is in this repo.
 
-3. We wrote a companion lab manual with weekly exercises, covering how to do things using R, Excel, SPSS, and JAMOVE. Major focus is to get R into the undergrad curriculum @ BC. The github repo for the lab manual is here: [https://github.com/CrumpLab/statisticsLab](https://github.com/CrumpLab/statisticsLab)
+3. We wrote a companion lab manual with weekly exercises, covering how to do things using R, Excel, SPSS, and JAMOVI. Major focus is to get R into the undergrad curriculum @ BC. The github repo for the lab manual is here: [https://github.com/CrumpLab/statisticsLab](https://github.com/CrumpLab/statisticsLab)
 
 
