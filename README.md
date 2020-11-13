@@ -8,18 +8,6 @@ Lab manual is here: [https://crumplab.github.io/statisticsLab/](https://crumplab
 
 Course website is here: [https://crumplab.github.io/psyc3400/](https://crumplab.github.io/psyc3400/)
 
-## We are remixing, editing, revising, these amazing resources:
-
-1. Danielle Navarro's "Learning Statistics with R" [https://compcogscisydney.org/learning-statistics-with-r/](https://compcogscisydney.org/learning-statistics-with-r/)
-
-3. We are adding our own stuff too! 
-
-## Project notes
-
-The major work for this project was completed in Summer 2018, with updates continuously from that point.
-
-1. We wrote the book in Rmarkdown, using the bookdown package. All of the source code for compiling the book is in this repo.
-
-3. We wrote a companion lab manual with weekly exercises, covering how to do things using R, Excel, SPSS, and JAMOVI. Major focus is to get R into the undergrad curriculum @ BC. The github repo for the lab manual is here: [https://github.com/CrumpLab/statisticsLab](https://github.com/CrumpLab/statisticsLab)
+This repository contains the source code for the lab manual.
 
 
