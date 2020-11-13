@@ -1,23 +1,25 @@
-## What it this?
+## What is this?
 
-This textbook is a collection of notes for a course on programming for psychologists, taught at the Graduate Center of CUNY in 2014, by Matthew Crump. This github repo contain all of the source code to compile the book using bookdown...I hacked the together the style files for the gitbook style and the tufte style, and may have changed some .css settings in the bookdown package itself on my computer (so I apologize in advance if it doesn't compile properly).
+This is a FREE Statistics for Undergrads in Psychology Textbook, on a creative commons license. Yes, there are so many existing OERs (open-educational resources) for statistics, but there is always room for one more. Source code for everything available in the respective repos.
 
-The textbook can be viewed as a webook here at [https://crumplab.github.io/programmingforpsych/](https://crumplab.github.io/programmingforpsych/).
+Web-book is here: [https://crumplab.github.io/statistics/](https://crumplab.github.io/statistics/)
 
-## Contributing to the textbook while you read it
+Lab manual is here: [https://crumplab.github.io/statisticsLab/](https://crumplab.github.io/statisticsLab/)
 
-1. Use Hypothes.is, an amazing tool for annotating the web.
-  
-  a. Go to [Hypothes.is](https://web.hypothes.is/), and "get-started"
-  
-  b. Install the the add-on for chrome, or other browser
-  
-  c. That's it, turn on Hypothes.is when you are reading this textbook, and you will see all public annotations made by anyone else.
-  
-## Contribute by making push reqeusts
+Course website is here: [https://crumplab.github.io/psyc3400/](https://crumplab.github.io/psyc3400/)
 
-2. The source code for this textbook is available in this repo. 
- 
- a. Edit the .Rmd files, and then submit pull requests
-  
- b. When you are reading the textbook, the edit link in the top bar of the textbook should automatically take you to the source .Rmd file
+## We are remixing, editing, revising, these amazing resources:
+
+1. Danielle Navarro's "Learning Statistics with R" [https://compcogscisydney.org/learning-statistics-with-r/](https://compcogscisydney.org/learning-statistics-with-r/)
+
+3. We are adding our own stuff too! 
+
+## Project notes
+
+The major work for this project was completed in Summer 2018, with updates continuously from that point.
+
+1. We wrote the book in Rmarkdown, using the bookdown package. All of the source code for compiling the book is in this repo.
+
+3. We wrote a companion lab manual with weekly exercises, covering how to do things using R, Excel, SPSS, and JAMOVE. Major focus is to get R into the undergrad curriculum @ BC. The github repo for the lab manual is here: [https://github.com/CrumpLab/statisticsLab](https://github.com/CrumpLab/statisticsLab)
+
+
