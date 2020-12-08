@@ -1,6 +1,10 @@
 ## What is this?
 
-This is a FREE Statistics for Undergrads in Psychology Textbook, on a creative commons license. Yes, there are so many existing OERs (open-educational resources) for statistics, but there is always room for one more. Source code for everything available in the respective repos.
+This is a FREE multi-platform statistics lab manual for undergrads in psychology on a creative commons license. 
+
+[![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
+
+This lab manual is a part of the Answering Questions with Data bundle, including a textbook, this manual, and a course website (including slide decks).
 
 Web-book is here: [https://crumplab.github.io/statistics/](https://crumplab.github.io/statistics/)
 
